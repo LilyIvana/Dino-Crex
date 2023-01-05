@@ -1,0 +1,62 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31005.135
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "Presentacion", "DinoM\Presentacion.vbproj", "{5FF432C8-DA23-4D3C-824D-06597034AC77}"
+	ProjectSection(ProjectDependencies) = postProject
+		{49D8FCCB-6E29-4320-AD90-AB16F88B84D8} = {49D8FCCB-6E29-4320-AD90-AB16F88B84D8}
+	EndProjectSection
+EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "Modelo", "Modelo\Modelo.vbproj", "{C4004973-BE46-410B-82D3-4B6B36F5B877}"
+EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "Datos", "Datos\Datos.vbproj", "{EF9CB732-4B0B-43F4-B777-C8BF22CD323B}"
+EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "Logica", "Logica\Logica.vbproj", "{9B559FE0-7390-4846-B80F-0BC7826D2561}"
+EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "Facturacion", "Facturacion\Facturacion.vbproj", "{49D8FCCB-6E29-4320-AD90-AB16F88B84D8}"
+EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "UTILITIES", "UTILITIES\UTILITIES.vbproj", "{A016F9D2-799C-4F16-ACE6-9B706599101D}"
+EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "InstallDinoM20", "InstallDinoM20\InstallDinoM20.vdproj", "{B7E369B3-4C35-496F-BC34-ACDFECACA5A4}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5FF432C8-DA23-4D3C-824D-06597034AC77}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5FF432C8-DA23-4D3C-824D-06597034AC77}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5FF432C8-DA23-4D3C-824D-06597034AC77}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5FF432C8-DA23-4D3C-824D-06597034AC77}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C4004973-BE46-410B-82D3-4B6B36F5B877}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C4004973-BE46-410B-82D3-4B6B36F5B877}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C4004973-BE46-410B-82D3-4B6B36F5B877}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C4004973-BE46-410B-82D3-4B6B36F5B877}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EF9CB732-4B0B-43F4-B777-C8BF22CD323B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EF9CB732-4B0B-43F4-B777-C8BF22CD323B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EF9CB732-4B0B-43F4-B777-C8BF22CD323B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EF9CB732-4B0B-43F4-B777-C8BF22CD323B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9B559FE0-7390-4846-B80F-0BC7826D2561}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9B559FE0-7390-4846-B80F-0BC7826D2561}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9B559FE0-7390-4846-B80F-0BC7826D2561}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9B559FE0-7390-4846-B80F-0BC7826D2561}.Release|Any CPU.Build.0 = Release|Any CPU
+		{49D8FCCB-6E29-4320-AD90-AB16F88B84D8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{49D8FCCB-6E29-4320-AD90-AB16F88B84D8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{49D8FCCB-6E29-4320-AD90-AB16F88B84D8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{49D8FCCB-6E29-4320-AD90-AB16F88B84D8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A016F9D2-799C-4F16-ACE6-9B706599101D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A016F9D2-799C-4F16-ACE6-9B706599101D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A016F9D2-799C-4F16-ACE6-9B706599101D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A016F9D2-799C-4F16-ACE6-9B706599101D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B7E369B3-4C35-496F-BC34-ACDFECACA5A4}.Debug|Any CPU.ActiveCfg = Debug
+		{B7E369B3-4C35-496F-BC34-ACDFECACA5A4}.Release|Any CPU.ActiveCfg = Release
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {3F7E7AF2-1867-43DE-A842-A76596493A27}
+	EndGlobalSection
+EndGlobal
