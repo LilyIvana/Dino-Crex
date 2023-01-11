@@ -3084,19 +3084,31 @@ Public Class AccesoLogica
 
 #Region "Anular Factura"
 
-    Public Shared Function L_Obtener_Facturas() As DataSet
+    Public Shared Function L_Obtener_Facturas(mostrar As Boolean) As DataSet
         Dim _Tabla1 As New DataTable
         Dim _Tabla2 As New DataTable
         Dim _Ds As New DataSet
         Dim _Where As String
-        _Where = " 1 = 1"
+
         'Cambiar la logica para visualizar las facturas esto en el programa de facturas
-        _Tabla1 = D_Datos_Tabla("concat(fvanfac, '_', fvaautoriz) as Archivo, fvanumi as Codigo, fvanfac as [Nro Factura], " _
-                                + "fvafec as Fecha, fvacodcli as [Cod Cliente], " _
-                                + " fvadescli1 as [Nombre 1], fvadescli2 as [Nombre 2], fvanitcli as Nit, " _
-                                + " fvastot as Subtotal, fvadesc as Descuento, fvatotal as Total, " _
-                                + " fvaccont as [Cod Control], fvaflim as [Fec Limite], fvaest as Estado",
-                                "TFV001", _Where)
+        If mostrar = True Then
+            _Where = " 1 = 1"
+            _Tabla1 = D_Datos_Tabla("concat(fvanfac, '_', fvaautoriz) as Archivo, fvanumi as Codigo, fvanfac as [Nro Factura], " _
+                         + "fvafec as Fecha, fvacodcli as [Cod Cliente], " _
+                         + " fvadescli1 as [Nombre 1], fvadescli2 as [Nombre 2], fvanitcli as Nit, " _
+                         + " fvastot as Subtotal, fvadesc as Descuento, fvatotal as Total, " _
+                         + " fvaccont as [Cod Control], fvaflim as [Fec Limite], fvaest as Estado",
+                         "TFV001", _Where)
+        Else
+            _Where = " 1 = 1  Order By fvanumi desc"
+            _Tabla1 = D_Datos_Tabla("Top(5000) concat(fvanfac, '_', fvaautoriz) as Archivo, fvanumi as Codigo, fvanfac as [Nro Factura], " _
+                         + "fvafec as Fecha, fvacodcli as [Cod Cliente], " _
+                         + " fvadescli1 as [Nombre 1], fvadescli2 as [Nombre 2], fvanitcli as Nit, " _
+                         + " fvastot as Subtotal, fvadesc as Descuento, fvatotal as Total, " _
+                         + " fvaccont as [Cod Control], fvaflim as [Fec Limite], fvaest as Estado",
+                         "TFV001", _Where)
+        End If
+
         '_Tabla1.Columns(0).ColumnMapping = MappingType.Hidden
         _Ds.Tables.Add(_Tabla1)
 
@@ -3777,13 +3789,14 @@ Public Class AccesoLogica
 #End Region
 
 #Region "TI002 MOVIMIENTOS "
-    Public Shared Function L_fnGeneralMovimiento() As DataTable
+    Public Shared Function L_fnGeneralMovimiento(mostrar As Integer) As DataTable
         Dim _Tabla As DataTable
 
         Dim _listParam As New List(Of Datos.DParametro)
 
         _listParam.Add(New Datos.DParametro("@tipo", 3))
         _listParam.Add(New Datos.DParametro("@ibuact", L_Usuario))
+        _listParam.Add(New Datos.DParametro("@mostrar", mostrar))
         _Tabla = D_ProcedimientoConParam("sp_Mam_TI002", _listParam)
 
         Return _Tabla

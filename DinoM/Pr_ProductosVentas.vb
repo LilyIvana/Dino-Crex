@@ -142,7 +142,7 @@ Public Class Pr_ProductosVentas
             .DropDownList.Columns.Add("idProducto").Width = 60
             .DropDownList.Columns("idProducto").Caption = "COD"
             .DropDownList.Columns.Add("Descripcion").Width = 500
-            .DropDownList.Columns("Descripcion").Caption = "SUCURSAL"
+            .DropDownList.Columns("Descripcion").Caption = "PRODUCTO"
             .ValueMember = "idProducto"
             .DisplayMember = "Descripcion"
             .DataSource = dt

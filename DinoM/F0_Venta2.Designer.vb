@@ -87,6 +87,7 @@ Partial Class F0_Venta2
         Me.tbPdesc = New DevComponents.Editors.DoubleInput()
         Me.LabelX9 = New DevComponents.DotNetBar.LabelX()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.lbEjemplo = New DevComponents.DotNetBar.LabelX()
         Me.tbNroTarjeta = New DevComponents.DotNetBar.Controls.TextBoxX()
         Me.lbNroTarjeta = New DevComponents.DotNetBar.LabelX()
         Me.tbMontoTarej = New DevComponents.Editors.DoubleInput()
@@ -128,7 +129,6 @@ Partial Class F0_Venta2
         Me.CbTipoDoc = New Janus.Windows.GridEX.EditControls.MultiColumnCombo()
         Me.LabelX25 = New DevComponents.DotNetBar.LabelX()
         Me.Label1Conn = New System.Windows.Forms.Label()
-        Me.lbEjemplo = New DevComponents.DotNetBar.LabelX()
         Me.PanelSuperior.SuspendLayout()
         Me.PanelInferior.SuspendLayout()
         CType(Me.BubbleBarUsuario, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -1525,6 +1525,22 @@ Partial Class F0_Venta2
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Efectivo:"
         '
+        'lbEjemplo
+        '
+        Me.lbEjemplo.BackColor = System.Drawing.Color.Transparent
+        '
+        '
+        '
+        Me.lbEjemplo.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.lbEjemplo.Font = New System.Drawing.Font("Georgia", 8.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lbEjemplo.ForeColor = System.Drawing.Color.White
+        Me.lbEjemplo.Location = New System.Drawing.Point(279, 81)
+        Me.lbEjemplo.Name = "lbEjemplo"
+        Me.lbEjemplo.SingleLineColor = System.Drawing.SystemColors.Control
+        Me.lbEjemplo.Size = New System.Drawing.Size(130, 15)
+        Me.lbEjemplo.TabIndex = 376
+        Me.lbEjemplo.Text = "Ej:4041000000002321"
+        '
         'tbNroTarjeta
         '
         Me.tbNroTarjeta.BackColor = System.Drawing.Color.White
@@ -2227,8 +2243,6 @@ Partial Class F0_Venta2
         Me.SwDescuentoProveedor.Size = New System.Drawing.Size(170, 28)
         Me.SwDescuentoProveedor.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
         Me.SwDescuentoProveedor.TabIndex = 387
-        Me.SwDescuentoProveedor.Value = True
-        Me.SwDescuentoProveedor.ValueObject = "Y"
         Me.SwDescuentoProveedor.Visible = False
         '
         'CbTipoDoc
@@ -2277,22 +2291,6 @@ Partial Class F0_Venta2
         Me.Label1Conn.TabIndex = 414
         Me.Label1Conn.Text = "."
         Me.Label1Conn.Visible = False
-        '
-        'lbEjemplo
-        '
-        Me.lbEjemplo.BackColor = System.Drawing.Color.Transparent
-        '
-        '
-        '
-        Me.lbEjemplo.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.lbEjemplo.Font = New System.Drawing.Font("Georgia", 8.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lbEjemplo.ForeColor = System.Drawing.Color.White
-        Me.lbEjemplo.Location = New System.Drawing.Point(279, 81)
-        Me.lbEjemplo.Name = "lbEjemplo"
-        Me.lbEjemplo.SingleLineColor = System.Drawing.SystemColors.Control
-        Me.lbEjemplo.Size = New System.Drawing.Size(130, 15)
-        Me.lbEjemplo.TabIndex = 376
-        Me.lbEjemplo.Text = "Ej:4041000000002321"
         '
         'F0_Venta2
         '

@@ -2546,7 +2546,7 @@ Public Class F0_VentasSupermercado
                 End If
             Else
                 grdetalle.DataChanged = False
-                ToastNotification.Show(Me, "El código de barra del producto no existe o no tiene precio, verifique!!!".ToUpper, My.Resources.WARNING, 3300, eToastGlowColor.Red, eToastPosition.TopCenter)
+                ToastNotification.Show(Me, "El código de barra del producto no existe, no se tiene stock o no tiene precio, verifique!!!".ToUpper, My.Resources.WARNING, 3300, eToastGlowColor.Red, eToastPosition.TopCenter)
             End If
 
             'End If

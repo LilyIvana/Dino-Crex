@@ -544,9 +544,11 @@ Partial Class F0_CierreCaja
         Me.tbObservacion.Font = New System.Drawing.Font("Georgia", 9.0!, System.Drawing.FontStyle.Bold)
         Me.tbObservacion.ForeColor = System.Drawing.SystemColors.ControlText
         Me.tbObservacion.Location = New System.Drawing.Point(104, 168)
+        Me.tbObservacion.MaxLength = 600
         Me.tbObservacion.Multiline = True
         Me.tbObservacion.Name = "tbObservacion"
         Me.tbObservacion.PreventEnterBeep = True
+        Me.tbObservacion.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
         Me.tbObservacion.Size = New System.Drawing.Size(280, 52)
         Me.tbObservacion.TabIndex = 379
         '

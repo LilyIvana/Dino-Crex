@@ -325,7 +325,7 @@ Public Class F0_Movimiento
 
     Private Sub _prCargarVenta()
         Dim dt As New DataTable
-        dt = L_fnGeneralMovimiento()
+        dt = L_fnGeneralMovimiento(IIf(swMostrar.Value = True, 1, 0))
         grmovimiento.DataSource = dt
         grmovimiento.RetrieveStructure()
         grmovimiento.AlternatingColors = True
@@ -1445,6 +1445,10 @@ salirIf:
         Catch ex As Exception
             MostrarMensajeError(ex.Message)
         End Try
+    End Sub
+
+    Private Sub swMostrar_ValueChanged(sender As Object, e As EventArgs) Handles swMostrar.ValueChanged
+        _prCargarVenta()
     End Sub
 #End Region
 End Class

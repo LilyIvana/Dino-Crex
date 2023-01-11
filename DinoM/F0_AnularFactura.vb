@@ -387,7 +387,7 @@ Public Class F0_AnularFactura
     Private Sub P_LlenarDatosGrilla()
         DgdFactura.PrimaryGrid.Rows.Clear()
 
-        DgdFactura.PrimaryGrid.DataSource = L_Obtener_Facturas()
+        DgdFactura.PrimaryGrid.DataSource = L_Obtener_Facturas(swMostrar.Value)
 
         DgdFactura.PrimaryGrid.SetActiveRow(CType(DgdFactura.PrimaryGrid.ActiveRow, GridRow))
     End Sub
@@ -549,4 +549,7 @@ Public Class F0_AnularFactura
         End Try
     End Function
 
+    Private Sub swMostrar_ValueChanged(sender As Object, e As EventArgs) Handles swMostrar.ValueChanged
+        P_ArmarGrilla()
+    End Sub
 End Class
