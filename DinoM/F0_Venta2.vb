@@ -2740,7 +2740,7 @@ Public Class F0_Venta2
                     Dim Row As Janus.Windows.GridEX.GridEXRow = ef.Row
 
                     _CodCliente = Row.Cells("ydnumi").Value
-                    tbCliente.Text = Row.Cells("ydrazonsocial").Value
+                    tbCliente.Text = Row.Cells("yddesc").Value
                     _dias = Row.Cells("yddias").Value
                     tbNit.Text = Row.Cells("ydnit").Value
                     TbNombre1.Text = Row.Cells("ydnomfac").Value

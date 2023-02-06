@@ -59,21 +59,20 @@ Public Class MetodoDatos
 
     Public Shared Function EjecutarProcedimiento(Comando As SqlCommand) As DataTable
         Dim _tabla As New DataTable()
-        'Try
-        'Comando.Connection.Open()
-        Dim _adaptador As New SqlDataAdapter 'SqlDataAdapter()
-            _adaptador.SelectCommand = Comando
+        Try
+            'Comando.Connection.Open()
+            Dim _adaptador As New SqlDataAdapter(Comando) 'SqlDataAdapter()
+            '_adaptador.SelectCommand = Comando
 
-        Comando.CommandTimeout = 0
-        'Comando.CommandTimeout = 3200
+            _adaptador.Fill(_tabla)
+            Comando.CommandTimeout = 0
 
-        _adaptador.Fill(_tabla)
-            'Catch ex As Exception
-            '    MsgBox(ex.Message)
-            '    'Finally
-            '    '    Comando.Connection.Close()
-            'End Try
-            Return _tabla
+        Catch ex As Exception
+            MsgBox(ex.Message)
+            'Finally
+            '    Comando.Connection.Close()
+        End Try
+        Return _tabla
     End Function
 
 End Class

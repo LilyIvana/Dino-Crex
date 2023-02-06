@@ -4959,7 +4959,7 @@ Public Class AccesoLogica
         Return _Tabla
     End Function
 
-    Public Shared Function L_prReporteUtilidadal(_codAlmacen As Integer, _codCat As Integer, _date1 As Date) As DataTable
+    Public Shared Function L_prReporteUtilidadal(_codAlmacen As Integer, _codCat As Integer, _date1 As String) As DataTable
         Dim _Tabla As DataTable
 
         Dim _listParam As New List(Of Datos.DParametro)
@@ -4968,13 +4968,13 @@ Public Class AccesoLogica
         _listParam.Add(New Datos.DParametro("@yduact", L_Usuario))
         _listParam.Add(New Datos.DParametro("@almacen", _codAlmacen))
         _listParam.Add(New Datos.DParametro("@catPrecio", _codCat))
-        _listParam.Add(New Datos.DParametro("@fechaf", _date1))
+        _listParam.Add(New Datos.DParametro("@fechaF", _date1))
         _Tabla = D_ProcedimientoConParam("sp_Mam_VentasCredito", _listParam)
 
         Return _Tabla
     End Function
 
-    Public Shared Function L_prReporteUtilidadmayor(_codAlmacen As Integer, _codCat As Integer, _date1 As Date) As DataTable
+    Public Shared Function L_prReporteUtilidadmayor(_codAlmacen As Integer, _codCat As Integer, _date1 As String) As DataTable
         Dim _Tabla As DataTable
 
         Dim _listParam As New List(Of Datos.DParametro)
@@ -4983,13 +4983,13 @@ Public Class AccesoLogica
         _listParam.Add(New Datos.DParametro("@yduact", L_Usuario))
         _listParam.Add(New Datos.DParametro("@almacen", _codAlmacen))
         _listParam.Add(New Datos.DParametro("@catPrecio", _codCat))
-        _listParam.Add(New Datos.DParametro("@fechaf", _date1))
+        _listParam.Add(New Datos.DParametro("@fechaF", _date1))
         _Tabla = D_ProcedimientoConParam("sp_Mam_VentasCredito", _listParam)
 
         Return _Tabla
     End Function
 
-    Public Shared Function L_prReporteUtilidadConsolidado(_codAlmacen As Integer, _codCat As Integer, _date1 As Date) As DataTable
+    Public Shared Function L_prReporteUtilidadConsolidado(_codAlmacen As Integer, _codCat As Integer, _date1 As String, MayorCero As String) As DataTable
         Dim _Tabla As DataTable
 
         Dim _listParam As New List(Of Datos.DParametro)
@@ -4998,7 +4998,8 @@ Public Class AccesoLogica
         _listParam.Add(New Datos.DParametro("@yduact", L_Usuario))
         _listParam.Add(New Datos.DParametro("@almacen", _codAlmacen))
         _listParam.Add(New Datos.DParametro("@catPrecio", _codCat))
-        _listParam.Add(New Datos.DParametro("@fechaf", _date1))
+        _listParam.Add(New Datos.DParametro("@fechaF", _date1))
+        _listParam.Add(New Datos.DParametro("@MayorCero", MayorCero))
         _Tabla = D_ProcedimientoConParam("sp_Mam_VentasCredito", _listParam)
 
         Return _Tabla
