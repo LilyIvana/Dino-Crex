@@ -225,8 +225,9 @@ Public Class F0_Movimiento
 
         End With
         With grdetalle.RootTable.Columns("iccprod")
-            .Width = 90
-            .Visible = False
+            .Width = 120
+            .Caption = "COD. DYNASYS"
+            .Visible = True
         End With
         With grdetalle.RootTable.Columns("icibid")
             .Width = 90
@@ -234,29 +235,23 @@ Public Class F0_Movimiento
         End With
         With grdetalle.RootTable.Columns("yfcprod")
             .Width = 140
-            .Caption = "COD. PRODUCTO"
+            .Caption = "COD. DELTA"
             .Visible = True
         End With
         With grdetalle.RootTable.Columns("producto")
             .Caption = "PRODUCTOS"
-            .Width = 250
+            .Width = 390
             .Visible = True
-
-
         End With
         With grdetalle.RootTable.Columns("Laboratorio")
-            .Caption = "ORIGEN"
+            .Caption = "CALIBRE-GRAMAJE"
             .Width = 200
-            .Visible = True
-
-
+            .Visible = False
         End With
         With grdetalle.RootTable.Columns("Presentacion")
-            .Caption = "PRESENTACION"
+            .Caption = "PROVEEDOR"
             .Width = 150
-            .Visible = True
-
-
+            .Visible = False
         End With
         With grdetalle.RootTable.Columns("iccant")
             .Width = 160
@@ -456,13 +451,13 @@ Public Class F0_Movimiento
         grproducto.AlternatingColors = True
         With grproducto.RootTable.Columns("yfnumi")
             .Width = 100
-            .Caption = "CODIGO"
-            .Visible = False
+            .Caption = "COD. DYN"
+            .Visible = True
 
         End With
         With grproducto.RootTable.Columns("yfcprod")
             .Width = 120
-            .Caption = "COD. PRODUCTO"
+            .Caption = "COD. DELTA"
             .Visible = True
 
         End With
@@ -482,12 +477,12 @@ Public Class F0_Movimiento
         With grproducto.RootTable.Columns("Laboratorio")
             .Width = 200
             .Visible = True
-            .Caption = "ORIGEN"
+            .Caption = "CALIBRE-GRAMAJE"
         End With
         With grproducto.RootTable.Columns("Presentacion")
             .Width = 120
             .Visible = True
-            .Caption = "PRESENTACION"
+            .Caption = "PROVEEDOR"
         End With
         With grproducto.RootTable.Columns("yfcdprod2")
             .Width = 200

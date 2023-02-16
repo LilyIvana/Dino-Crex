@@ -482,7 +482,6 @@ Public Class F0_Compra
             .Width = 100
             .Caption = "CODIGO"
             .Visible = False
-
         End With
 
         With grProductos.RootTable.Columns("yfcdprod1")

@@ -4,7 +4,7 @@
         Public Property codigoProducto As String
         Public Property descripcion As String
         Public Property unidadMedida As Integer
-        Public Property cantidad As Integer
+        Public Property cantidad As Double
         Public Property precioUnitario As Double
         Public Property montoDescuento As Double
         Public Property subTotal As Double
