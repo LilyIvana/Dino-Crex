@@ -1914,7 +1914,7 @@ Public Class F0_Venta2
                         gb_cufSifac,
                         "1",
                         tbNit.Text.Trim,
-                        _CodCliente,
+                        "A-" + _CodCliente.ToString,
                         TbNombre1.Text,
                         "",
                         CStr(Format(a, "####0.00")),

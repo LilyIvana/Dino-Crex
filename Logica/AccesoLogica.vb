@@ -2766,7 +2766,7 @@ Public Class AccesoLogica
                 + "'" + _NAutoriz + "', " _
                 + "" + _Est + ", " _
                 + "'" + _NitCli + "', " _
-                + "" + _CodCli + ", " _
+                + "'" + _CodCli + "', " _
                 + "'" + _DesCli1 + "', " _
                 + "'" + _DesCli2 + "', " _
                 + "" + _A + ", " _
@@ -2885,6 +2885,17 @@ Public Class AccesoLogica
         _Where = " fvanumi = " + _Numi + " and fvanumi = " + _Numi2
 
         _Tabla = D_Datos_Tabla("*", "VR_GO_Factura", _Where)
+        _Ds.Tables.Add(_Tabla)
+        Return _Ds
+    End Function
+
+    Public Shared Function L_Reporte_FacturaNueva(_Numi As String, _Numi2 As String) As DataSet
+        Dim _Tabla As DataTable
+        Dim _Ds As New DataSet
+        Dim _Where As String
+        _Where = " fvanumi = " + _Numi + " and fvanumi = " + _Numi2
+
+        _Tabla = D_Datos_Tabla("*", "VR_GO_Factura2", _Where)
         _Ds.Tables.Add(_Tabla)
         Return _Ds
     End Function
