@@ -1709,7 +1709,7 @@ Public Class F0_Venta2
                                           eToastGlowColor.Green,
                                           eToastPosition.TopCenter
                                           )
-                System.Diagnostics.Process.Start(FactUrl)
+                'System.Diagnostics.Process.Start(FactUrl)
 
                 _prCargarVenta()
                 _Limpiar()
@@ -1874,6 +1874,7 @@ Public Class F0_Venta2
             If (P_fnValidarFactura()) Then
                 'Validar para facturar
                 'P_prImprimirFacturar(numi, True, True) '_Codigo de a tabla TV001
+                F0_VentasSupermercado.P_prImprimirFacturaNueva(numi, True, True)
             Else
                 'Volver todo al estada anterior
                 ToastNotification.Show(Me, "No es posible facturar, vuelva a ingresar he intente nuevamente!!!".ToUpper,
@@ -3925,14 +3926,20 @@ salirIf:
         Try
             If (Not _fnAccesible()) Then
 
-                Dim dt As DataTable = L_fnRecuperarFactura(tbCodigo.Text)
+                'Dim dt As DataTable = L_fnRecuperarFactura(tbCodigo.Text)
 
-                Dim url As String = dt.Rows(0).Item("fvaFactUrl").ToString
-                System.Diagnostics.Process.Start(url)
+                'Dim url As String = dt.Rows(0).Item("fvaFactUrl").ToString
+                'System.Diagnostics.Process.Start(url)
+
+                '_prImiprimirNotaVenta(tbCodigo.Text)
+
+
+
+
+
+                F0_VentasSupermercado.P_prImprimirFacturaNueva(tbCodigo.Text, True, False)
 
                 _prImiprimirNotaVenta(tbCodigo.Text)
-
-
 
 
                 'If (gb_FacturaEmite) Then
