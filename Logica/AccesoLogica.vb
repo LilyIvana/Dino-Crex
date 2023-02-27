@@ -30,7 +30,16 @@ Public Class AccesoLogica
         _Error = D_Modificar_Datos("TC000", Sql, _where)
         Return Not _Error
     End Function
+    Public Shared Function L_fnConfParametrosFacturacion() As DataTable
+        Dim _Tabla As DataTable
+        Dim _Where, _campos As String
 
+
+        _Where = "estado=1"
+        _campos = "*"
+        _Tabla = D_Datos_Tabla(_campos, "ParametrosFact", _Where)
+        Return _Tabla
+    End Function
 #End Region
 
 #Region "METODOS PRIVADOS"

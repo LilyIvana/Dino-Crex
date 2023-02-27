@@ -91,6 +91,7 @@ Public Class P_Principal
 
         P_prCargarParametros()
         _prValidarMayusculas()
+        P_prCargarParametrosFacturacion()
     End Sub
     Public Sub _prValidarMayusculas()
         Dim dt As DataTable = L_fnPorcUtilidad()
@@ -114,6 +115,13 @@ Public Class P_Principal
         gb_NotaAdicional = dtConfSistema.Rows(0).Item("cccnotaadic")
         gb_TipoAyuda = dtConfSistema.Rows(0).Item("cccTipoAyuda")
         gb_MostrarFamilia = dtConfSistema.Rows(0).Item("cccMostrarFamilia")
+    End Sub
+    Private Sub P_prCargarParametrosFacturacion()
+        Dim dtFact As DataTable = L_fnConfParametrosFacturacion()
+
+        gb_email = dtFact.Rows(0).Item("email")
+        gb_password = dtFact.Rows(0).Item("password")
+        gb_url = dtFact.Rows(0).Item("url")
     End Sub
 
     Private Sub _prCargarConfiguracionSistema()

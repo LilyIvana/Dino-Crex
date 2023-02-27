@@ -1266,7 +1266,7 @@ Public Class F1_Productos
 
         Dim api = New DBApi()
 
-        Dim url = "https://crex.sifac.nwc.com.bo/api/v2/actividades-economicas"
+        Dim url = gb_url + "/api/v2/actividades-economicas"
 
         Dim headers = New List(Of Parametro) From {
             New Parametro("Authorization", "Bearer " + tokenObtenido),
@@ -1297,7 +1297,7 @@ Public Class F1_Productos
 
         Dim api = New DBApi()
 
-        Dim url = "https://crex.sifac.nwc.com.bo/api/v2/unidad-medida"
+        Dim url = gb_url + "/api/v2/unidad-medida"
 
         Dim headers = New List(Of Parametro) From {
             New Parametro("Authorization", "Bearer " + tokenObtenido),
@@ -1329,7 +1329,7 @@ Public Class F1_Productos
         Dim cantpag = "1000"
         Dim api = New DBApi()
 
-        Dim url = "https://crex.sifac.nwc.com.bo/api/v2/productos-servicios/1/1000"
+        Dim url = gb_url + "/api/v2/productos-servicios/1/1000"
 
         Dim headers = New List(Of Parametro) From {
             New Parametro("Authorization", "Bearer " + tokenObtenido),
@@ -1434,7 +1434,7 @@ Public Class F1_Productos
         Henvio.tipo = ""
         Henvio.formula = ""
 
-        Dim url = "https://crex.sifac.nwc.com.bo/api/v2/homologar"
+        Dim url = gb_url + "/api/v2/homologar"
 
         Dim headers = New List(Of Parametro) From {
             New Parametro("Authorization", "Bearer " + tokenObtenido),

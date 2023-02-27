@@ -3476,10 +3476,11 @@ Public Class F0_VentasSupermercado
         Dim api = New DBApi()
 
         Dim Lenvio = New LoginEnvio()
-        Lenvio.email = "lilian@dynasys.com.bo"
-        Lenvio.password = "123456Lily*"
+        Lenvio.email = gb_email
+        Lenvio.password = gb_password
 
-        Dim url = "https://crex.sifac.nwc.com.bo/api/v2/login"
+
+        Dim url = gb_url + "/api/v2/login"
 
         Dim headers = New List(Of Parametro) From {
             New Parametro("Authorization", "bearer "),
@@ -3503,7 +3504,7 @@ Public Class F0_VentasSupermercado
 
         Dim api = New DBApi()
 
-        Dim url = "https://crex.sifac.nwc.com.bo/api/v2/conexion-siat"
+        Dim url = gb_url + "/api/v2/conexion-siat"
 
         Dim headers = New List(Of Parametro) From {
             New Parametro("Authorization", "Bearer " + tokenObtenido),
@@ -3526,7 +3527,7 @@ Public Class F0_VentasSupermercado
 
         Dim api = New DBApi()
 
-        Dim url = "https://crex.sifac.nwc.com.bo/api/v2/metodos-pago"
+        Dim url = gb_url + "/api/v2/metodos-pago"
 
         Dim headers = New List(Of Parametro) From {
             New Parametro("Authorization", "Bearer " + tokenObtenido),
@@ -3546,7 +3547,7 @@ Public Class F0_VentasSupermercado
 
         Dim api = New DBApi()
 
-        Dim url = "https://crex.sifac.nwc.com.bo/api/v2/tipo-documento"
+        Dim url = gb_url + "/api/v2/tipo-documento"
 
         Dim headers = New List(Of Parametro) From {
             New Parametro("Authorization", "Bearer " + tokenObtenido),
@@ -3673,7 +3674,7 @@ Public Class F0_VentasSupermercado
         Emenvio.actividadEconomica = 471110 'Actividad económica una sola para todos los productos
         Emenvio.detalles = array
         Dim json = JsonConvert.SerializeObject(Emenvio)
-        Dim url = "https://crex.sifac.nwc.com.bo/api/v2/emision"
+        Dim url = gb_url + "/api/v2/emision"
 
         Dim headers = New List(Of Parametro) From {
             New Parametro("Authorization", "Bearer " + tokenObtenido),
@@ -3742,7 +3743,7 @@ Public Class F0_VentasSupermercado
             Dim api = New DBApi()
             Dim nit As String = nitCli.Trim
 
-            Dim url = "https://crex.sifac.nwc.com.bo/api/v2/nit/" + nit + ""
+            Dim url = gb_url + "/api/v2/nit/" + nit + ""
 
             Dim headers = New List(Of Parametro) From {
                 New Parametro("Authorization", "Bearer " + tokenObtenido),
