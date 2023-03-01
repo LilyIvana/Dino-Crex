@@ -1552,6 +1552,8 @@ Public Class F0_VentasSupermercado
                 CType(grdetalle.DataSource, DataTable).Rows(PosDataExistente).Item("tbtotdesc") = CType(grdetalle.DataSource, DataTable).Rows(PosDataExistente).Item("tbpbas") * cantidad
                 CType(grdetalle.DataSource, DataTable).Rows(PosDataExistente).Item("tbptot2") = CType(grdetalle.DataSource, DataTable).Rows(PosDataExistente).Item("tbpcos") * cantidad
 
+                CType(grdetalle.DataSource, DataTable).Rows(PosDataExistente).Item("stock") = grProductos.GetValue("stock")
+
                 _prCalcularPrecioTotal()
                 _DesHabilitarProductos()
 
@@ -3160,7 +3162,7 @@ Public Class F0_VentasSupermercado
                 Cantidad = ef.Cantidad
             End If
 
-            If (Cantidad > 0) Then
+            If (Cantidad > 0 And Cantidad <= ef.Stock) Then
                 'Dim lin As Integer = grdetalle.GetValue("tbnumi")
                 Dim lin As Integer = fila(0).Item("tbnumi")
                 Dim pos As Integer = -1
@@ -3182,6 +3184,24 @@ Public Class F0_VentasSupermercado
 
                 _prCalcularPrecioTotal()
                 tbProducto.Focus()
+            Else
+                Dim lin As Integer = fila(0).Item("tbnumi")
+                Dim pos As Integer = -1
+                _fnObtenerFilaDetalle(pos, lin)
+
+                CType(grdetalle.DataSource, DataTable).Rows(pos).Item("tbcmin") = fila(0).Item("tbcmin")
+                CType(grdetalle.DataSource, DataTable).Rows(pos).Item("tbptot") = fila(0).Item("tbpbas") * fila(0).Item("tbcmin")
+                CType(grdetalle.DataSource, DataTable).Rows(pos).Item("tbtotdesc") = fila(0).Item("tbpbas") * fila(0).Item("tbcmin")
+                CType(grdetalle.DataSource, DataTable).Rows(pos).Item("tbptot2") = fila(0).Item("tbpcos") * fila(0).Item("tbcmin")
+
+
+                CalcularDescuentos(fila(0).Item("tbty5prod"), Cantidad, fila(0).Item("tbpbas"), pos)
+
+                _prCalcularPrecioTotal()
+
+
+                Dim img As Bitmap = New Bitmap(My.Resources.mensaje, 50, 50)
+                ToastNotification.Show(Me, "La cantidad ingresada es superior a la cantidad disponible que es: " + Str(ef.Stock) + " , Primero se debe regularizar el stock", img, 7000, eToastGlowColor.Red, eToastPosition.TopCenter)
 
             End If
 

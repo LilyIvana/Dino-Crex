@@ -240,7 +240,7 @@ Public Class F0_Movimiento
         End With
         With grdetalle.RootTable.Columns("producto")
             .Caption = "PRODUCTOS"
-            .Width = 390
+            .Width = 420
             .Visible = True
         End With
         With grdetalle.RootTable.Columns("Laboratorio")
@@ -350,7 +350,7 @@ Public Class F0_Movimiento
             .Caption = "CONCEPTO"
         End With
         With grmovimiento.RootTable.Columns("ibobs")
-            .Width = 250
+            .Width = 900
             .Visible = True
             .Caption = "observacion".ToUpper
         End With

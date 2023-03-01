@@ -51,14 +51,14 @@ Public Class Descuentos
 
         With grProducto.RootTable.Columns("ProductoId")
             .Width = 50
-            .Caption = "Id"
+            .Caption = "Cod.Dynasys"
             .WordWrap = True
             .MaxLines = 3
             .Visible = True
         End With
 
         With grProducto.RootTable.Columns("CodigoExterno")
-            .Caption = "Cod.Externo"
+            .Caption = "Cod.Delta"
             .Width = 50
             .WordWrap = True
             .MaxLines = 3

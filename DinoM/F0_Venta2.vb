@@ -3414,28 +3414,57 @@ salirIf:
 
                     P_PonerTotal(rowIndex)
                 Else
+                    Dim stock As Double = grdetalle.GetValue("stock")
                     If (grdetalle.GetValue("tbcmin") > 0) Then
-                        Dim rowIndex As Integer = grdetalle.Row
-                        Dim porcdesc As Double = grdetalle.GetValue("tbporc")
-                        Dim montodesc As Double = ((grdetalle.GetValue("tbpbas") * grdetalle.GetValue("tbcmin")) * (porcdesc / 100))
-                        Dim lin As Integer = grdetalle.GetValue("tbnumi")
-                        Dim pos As Integer = -1
-                        _fnObtenerFilaDetalle(pos, lin)
-                        CType(grdetalle.DataSource, DataTable).Rows(pos).Item("tbptot") = grdetalle.GetValue("tbpbas") * grdetalle.GetValue("tbcmin")
+                        If (grdetalle.GetValue("tbcmin") <= stock) Then
 
-                        'CType(grdetalle.DataSource, DataTable).Rows(pos).Item("tbdesc") = montodesc
-                        'grdetalle.SetValue("tbdesc", montodesc)
-                        'CType(grdetalle.DataSource, DataTable).Rows(pos).Item("tbtotdesc") = (grdetalle.GetValue("tbpbas") * grdetalle.GetValue("tbcmin")) - montodesc
+                            Dim rowIndex As Integer = grdetalle.Row
+                            Dim porcdesc As Double = grdetalle.GetValue("tbporc")
+                            Dim montodesc As Double = ((grdetalle.GetValue("tbpbas") * grdetalle.GetValue("tbcmin")) * (porcdesc / 100))
+                            Dim lin As Integer = grdetalle.GetValue("tbnumi")
+                            Dim pos As Integer = -1
+                            _fnObtenerFilaDetalle(pos, lin)
+                            CType(grdetalle.DataSource, DataTable).Rows(pos).Item("tbptot") = grdetalle.GetValue("tbpbas") * grdetalle.GetValue("tbcmin")
 
-                        CType(grdetalle.DataSource, DataTable).Rows(pos).Item("tbptot2") = grdetalle.GetValue("tbpcos") * grdetalle.GetValue("tbcmin")
+                            'CType(grdetalle.DataSource, DataTable).Rows(pos).Item("tbdesc") = montodesc
+                            'grdetalle.SetValue("tbdesc", montodesc)
+                            'CType(grdetalle.DataSource, DataTable).Rows(pos).Item("tbtotdesc") = (grdetalle.GetValue("tbpbas") * grdetalle.GetValue("tbcmin")) - montodesc
+
+                            CType(grdetalle.DataSource, DataTable).Rows(pos).Item("tbptot2") = grdetalle.GetValue("tbpcos") * grdetalle.GetValue("tbcmin")
 
 
-                        CalcularDescuentos(grdetalle.GetValue("tbty5prod"), grdetalle.GetValue("tbcmin"), grdetalle.GetValue("tbpbas"), pos)
+                            CalcularDescuentos(grdetalle.GetValue("tbty5prod"), grdetalle.GetValue("tbcmin"), grdetalle.GetValue("tbpbas"), pos)
 
 
-                        P_PonerTotal(rowIndex)
-                        CalculoDescuentoXProveedor()
+                            P_PonerTotal(rowIndex)
+                            CalculoDescuentoXProveedor()
 
+                        Else
+                            Dim rowIndex As Integer = grdetalle.Row
+                            Dim lin As Integer = grdetalle.GetValue("tbnumi")
+                            Dim pos As Integer = -1
+                            _fnObtenerFilaDetalle(pos, lin)
+                            CType(grdetalle.DataSource, DataTable).Rows(pos).Item("tbcmin") = 1
+                            CType(grdetalle.DataSource, DataTable).Rows(pos).Item("tbptot") = CType(grdetalle.DataSource, DataTable).Rows(pos).Item("tbpbas")
+
+                            CType(grdetalle.DataSource, DataTable).Rows(pos).Item("tbporc") = 0
+                            CType(grdetalle.DataSource, DataTable).Rows(pos).Item("tbdesc") = 0
+                            CType(grdetalle.DataSource, DataTable).Rows(pos).Item("tbtotdesc") = CType(grdetalle.DataSource, DataTable).Rows(pos).Item("tbpbas")
+                            CType(grdetalle.DataSource, DataTable).Rows(pos).Item("tbptot2") = CType(grdetalle.DataSource, DataTable).Rows(pos).Item("tbpcos")
+                            grdetalle.SetValue("tbcmin", 1)
+                            grdetalle.SetValue("tbptot", grdetalle.GetValue("tbpbas"))
+
+                            CalcularDescuentos(grdetalle.GetValue("tbty5prod"), grdetalle.GetValue("tbcmin"), grdetalle.GetValue("tbpbas"), pos)
+
+
+                            _prCalcularPrecioTotal()
+                            P_PonerTotal(rowIndex)
+                            CalculoDescuentoXProveedor()
+
+                            Dim img As Bitmap = New Bitmap(My.Resources.mensaje, 50, 50)
+                            ToastNotification.Show(Me, "La cantidad ingresada es superior a la cantidad disponible que es: " + Str(stock) + " , Primero se debe regularizar el stock", img, 7000, eToastGlowColor.Red, eToastPosition.TopCenter)
+
+                        End If
                     Else
                         Dim rowIndex As Integer = grdetalle.Row
                         Dim lin As Integer = grdetalle.GetValue("tbnumi")
