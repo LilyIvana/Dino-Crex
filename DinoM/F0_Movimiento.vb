@@ -451,13 +451,19 @@ Public Class F0_Movimiento
         grproducto.AlternatingColors = True
         With grproducto.RootTable.Columns("yfnumi")
             .Width = 100
-            .Caption = "COD. DYN"
+            .Caption = "COD. DYNASYS"
             .Visible = True
 
         End With
         With grproducto.RootTable.Columns("yfcprod")
             .Width = 120
             .Caption = "COD. DELTA"
+            .Visible = True
+
+        End With
+        With grproducto.RootTable.Columns("yfcbarra")
+            .Width = 120
+            .Caption = "COD. BARRAS"
             .Visible = True
 
         End With
