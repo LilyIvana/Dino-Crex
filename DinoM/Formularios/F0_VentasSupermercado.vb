@@ -42,6 +42,7 @@ Public Class F0_VentasSupermercado
     Public TotalBs As Double = 0
     Public TotalSus As Double = 0
     Public TotalTarjeta As Double = 0
+    Public TotalQR As Double = 0
     Public TipoCambio As Double = 0
     Dim ListImagenes As String()
     Dim contador As Integer = 0
@@ -1381,7 +1382,7 @@ Public Class F0_VentasSupermercado
         Return True
     End Function
     Private Sub _prInsertarMontoNuevo(ByRef tabla As DataTable)
-        tabla.Rows.Add(0, TotalBs, TotalSus, TotalTarjeta, TipoCambio, NroTarjeta, 0)
+        tabla.Rows.Add(0, TotalBs, TotalSus, TotalTarjeta, TipoCambio, NroTarjeta, TotalQR, 0)
     End Sub
 
     'Private Sub _prInsertarMontoModificar(ByRef tabla As DataTable)
@@ -2586,6 +2587,7 @@ Public Class F0_VentasSupermercado
                 TotalBs = ef.TotalBs
                 TotalSus = ef.TotalSus
                 TotalTarjeta = ef.TotalTarjeta
+                TotalQR = ef.TotalQR
                 lbNit.Text = ef.Nit
                 lbCliente.Text = ef.RazonSocial
                 TipoCambio = ef.TipoCambio
@@ -3654,9 +3656,14 @@ Public Class F0_VentasSupermercado
             email = TbEmailS.Text
         End If
 
+
         If NroTarjeta <> "" And TotalTarjeta > 0 Then
             CodMetPago = 2
             NTarjeta = NroTarjeta
+
+        ElseIf TotalQR > 0 Then
+            CodMetPago = 33
+            NTarjeta = ""
         Else
             CodMetPago = 1
             NTarjeta = ""

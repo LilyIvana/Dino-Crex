@@ -636,7 +636,7 @@ Public Class F0_MCompras
             .Visible = False
         End With
         With grCompra.RootTable.Columns("proveedor")
-            .Width = 250
+            .Width = 220
             .Visible = True
             .Caption = "proveedor".ToUpper
         End With
@@ -669,22 +669,18 @@ Public Class F0_MCompras
             .Visible = False
         End With
         With grCompra.RootTable.Columns("moneda")
-            .Width = 150
+            .Width = 100
             .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Near
             .Visible = True
             .Caption = "MONEDA"
         End With
         With grCompra.RootTable.Columns("caobs")
-            .Width = 200
+            .Width = 280
             .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Near
             .Visible = True
             .Caption = "OBSERVACION"
         End With
-        With grCompra.RootTable.Columns("cadesc")
-            .Width = 50
-            .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Near
-            .Visible = False
-        End With
+
         With grCompra.RootTable.Columns("caest")
             .Width = 50
             .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Near
@@ -705,8 +701,37 @@ Public Class F0_MCompras
             .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Near
             .Visible = False
         End With
+        With grCompra.RootTable.Columns("casubtot")
+            .Width = 100
+            .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far
+            .Visible = True
+            .Caption = "SUBTOTAL"
+            .FormatString = "0.00"
+        End With
+        With grCompra.RootTable.Columns("cadesc")
+            .Width = 100
+            .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far
+            .Visible = True
+            .Caption = "DESCUENTO UN."
+            .FormatString = "0.00"
+        End With
+        With grCompra.RootTable.Columns("cadescpro")
+            .Width = 100
+            .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far
+            .Visible = True
+            .Caption = "DESCUENTO PRO."
+            .FormatString = "0.00"
+        End With
+        With grCompra.RootTable.Columns("caice")
+            .Width = 100
+            .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far
+            .Visible = True
+            .Caption = "ICE"
+            .FormatString = "0.00"
+        End With
+
         With grCompra.RootTable.Columns("total")
-            .Width = 150
+            .Width = 100
             .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far
             .Visible = True
             .Caption = "TOTAL"

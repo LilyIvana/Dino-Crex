@@ -52,6 +52,7 @@ Public Class F0_Venta2
     Public PrecioTot As Double
     Public NombreProd As String
     Public NroFact As Integer
+    Public NroTarjeta As String
 
     Public _Fecha As Date
 
@@ -207,8 +208,11 @@ Public Class F0_Venta2
         tbMontoBs.IsInputReadOnly = True
         tbMontoDolar.IsInputReadOnly = True
         tbMontoTarej.IsInputReadOnly = True
-        tbNroTarjeta.ReadOnly = True
+        tbMontoQR.IsInputReadOnly = True
+        tbNroTarjeta1.ReadOnly = True
+        tbNroTarjeta3.ReadOnly = True
         chbTarjeta.Enabled = False
+        chbQR.Enabled = False
         'txtCambio1.IsInputReadOnly = True
 
         'txtMontoPagado1.IsInputReadOnly = True
@@ -257,8 +261,11 @@ Public Class F0_Venta2
         tbMontoBs.IsInputReadOnly = False
         tbMontoDolar.IsInputReadOnly = False
         tbMontoTarej.IsInputReadOnly = False
-        tbNroTarjeta.ReadOnly = False
+
+        tbNroTarjeta1.ReadOnly = False
+        tbNroTarjeta3.ReadOnly = False
         chbTarjeta.Enabled = True
+        chbQR.Enabled = True
         'tbMdesc.IsInputReadOnly = False
 
         'txtCambio1.IsInputReadOnly = False
@@ -317,6 +324,7 @@ Public Class F0_Venta2
         tbMontoBs.Value = 0
         tbMontoDolar.Value = 0
         tbMontoTarej.Value = 0
+        tbMontoQR.Value = 0
         'txtCambio1.Value = 0
         'txtMontoPagado1.Value = 0
         txtCambio1.Text = "0.00"
@@ -324,9 +332,13 @@ Public Class F0_Venta2
         tbTotalBs.Text = "0.00"
         tbTotalDo.Text = "0.00"
         chbTarjeta.Checked = False
-        tbNroTarjeta.Text = ""
+        chbQR.Checked = False
+        tbNroTarjeta1.Text = ""
+        tbNroTarjeta3.Text = ""
         lbNroTarjeta.Visible = False
-        tbNroTarjeta.Visible = False
+        tbNroTarjeta1.Visible = False
+        tbNroTarjeta2.Visible = False
+        tbNroTarjeta3.Visible = False
 
 
 
@@ -414,6 +426,7 @@ Public Class F0_Venta2
                 tbNit.Clear()
                 TbNombre1.Clear()
                 TbNombre2.Clear()
+                TbEmail.Clear()
 
                 tbNroAutoriz.Clear()
                 tbNroFactura.Clear()
@@ -437,12 +450,16 @@ Public Class F0_Venta2
         If tMonto.Rows.Count > 0 Then
 
             tbMontoTarej.Value = tMonto.Rows(0).Item("tgMontTare").ToString
+            tbMontoQR.Text = tMonto.Rows(0).Item("tgMontQR").ToString
             cbCambioDolar.Text = tMonto.Rows(0).Item("tgCambioDol").ToString
             tbMontoBs.Value = tMonto.Rows(0).Item("tgMontBs").ToString
             tbMontoDolar.Value = tMonto.Rows(0).Item("tgMontDol").ToString
-            tbNroTarjeta.Text = tMonto.Rows(0).Item("tgNroTarjeta").ToString
+            tbNroTarjeta1.Text = Mid(tMonto.Rows(0).Item("tgNroTarjeta").ToString, 1, 4)
+            tbNroTarjeta2.Text = "00000000"
+            tbNroTarjeta3.Text = Mid(tMonto.Rows(0).Item("tgNroTarjeta").ToString, 13, 4)
 
-            txtMontoPagado1.Text = tbMontoBs.Value + (tbMontoDolar.Value * IIf(cbCambioDolar.Text = "", 0, Convert.ToDecimal(cbCambioDolar.Text))) + tbMontoTarej.Value
+
+            txtMontoPagado1.Text = tbMontoBs.Value + (tbMontoDolar.Value * IIf(cbCambioDolar.Text = "", 0, Convert.ToDecimal(cbCambioDolar.Text))) + tbMontoTarej.Value + tbMontoQR.Value
 
             If Convert.ToDecimal(tbTotalBs.Text) <> 0 And Convert.ToDecimal(txtMontoPagado1.Text) >= Convert.ToDecimal(tbTotalBs.Text) Then
                 txtCambio1.Text = Convert.ToDecimal(txtMontoPagado1.Text) - Convert.ToDecimal(tbTotalBs.Text)
@@ -452,13 +469,25 @@ Public Class F0_Venta2
             If tMonto.Rows(0).Item("tgMontTare") > 0 Then
                 chbTarjeta.Checked = True
                 lbNroTarjeta.Visible = True
-                tbNroTarjeta.Visible = True
+                tbNroTarjeta1.Visible = True
+                tbNroTarjeta2.Visible = True
+                tbNroTarjeta3.Visible = True
+
                 lbEjemplo.Visible = True
             Else
                 chbTarjeta.Checked = False
+                chbTarjeta.Enabled = False
                 lbNroTarjeta.Visible = False
-                tbNroTarjeta.Visible = False
+                tbNroTarjeta1.Visible = False
+                tbNroTarjeta2.Visible = False
+                tbNroTarjeta3.Visible = False
                 lbEjemplo.Visible = False
+            End If
+            If tMonto.Rows(0).Item("tgMontQR") > 0 Then
+                chbQR.Checked = True
+            Else
+                chbQR.Checked = False
+                chbQR.Enabled = False
             End If
 
         End If
@@ -1462,10 +1491,11 @@ Public Class F0_Venta2
 
             If (chbTarjeta.Checked = True) Then
 
-                If tbNroTarjeta.Text = String.Empty Or tbNroTarjeta.Text = "0" Then
+                If tbNroTarjeta1.Text = String.Empty Or tbNroTarjeta1.Text = "0" Or tbNroTarjeta1.Text = "0000" Or
+                    tbNroTarjeta3.Text = String.Empty Or tbNroTarjeta3.Text = "0" Or tbNroTarjeta3.Text = "0000" Then
                     Dim img As Bitmap = New Bitmap(My.Resources.mensaje, 50, 50)
-                    ToastNotification.Show(Me, "Debe colocar el Nro. de Tarjeta".ToUpper, img, 2000, eToastGlowColor.Red, eToastPosition.BottomCenter)
-                    tbNroTarjeta.Focus()
+                    ToastNotification.Show(Me, "Debe colocar el Nro. de Tarjeta en los espacios correspondientes".ToUpper, img, 3000, eToastGlowColor.Red, eToastPosition.BottomCenter)
+                    tbNroTarjeta1.Focus()
 
                     Return False
                 End If
@@ -1516,7 +1546,7 @@ Public Class F0_Venta2
 
     End Function
     Private Sub _prInsertarMontoNuevo(ByRef tabla As DataTable)
-        tabla.Rows.Add(0, tbMontoBs.Value, tbMontoDolar.Value, tbMontoTarej.Value, cbCambioDolar.Text, tbNroTarjeta.Text, 0)
+        tabla.Rows.Add(0, tbMontoBs.Value, tbMontoDolar.Value, tbMontoTarej.Value, cbCambioDolar.Text, NroTarjeta, tbMontoQR.Text, 0)
     End Sub
     Private Sub _prInsertarMontoModificar(ByRef tabla As DataTable)
         tabla.Rows.Add(tbCodigo.Text, tbMontoBs.Value, tbMontoDolar.Value, tbMontoTarej.Value, cbCambioDolar.Text, 2)
@@ -1678,7 +1708,6 @@ Public Class F0_Venta2
             Dim tabla As DataTable = L_fnMostrarMontos2(0)
             Dim factura = gb_FacturaEmite
             _prInsertarMontoNuevo(tabla)
-
 
             ''Verifica si existe estock para los productos
             'If _prExisteStockParaProducto() Then
@@ -4061,18 +4090,35 @@ salirIf:
         If chbTarjeta.Checked Then
             tbMontoBs.Value = 0
             tbMontoDolar.Value = 0
+            tbMontoQR.Value = 0
+            tbMontoQR.Enabled = False
+            chbQR.Checked = False
+            chbQR.Enabled = False
             tbMontoTarej.Value = Convert.ToDecimal(tbTotalBs.Text)
+            tbMontoBs.Enabled = False
+            tbMontoDolar.Enabled = False
             tbMontoTarej.IsInputReadOnly = True
             lbNroTarjeta.Visible = True
-            tbNroTarjeta.Visible = True
+            tbNroTarjeta1.Visible = True
+            tbNroTarjeta2.Visible = True
+            tbNroTarjeta3.Visible = True
             lbEjemplo.Visible = True
         Else
+            tbMontoBs.Enabled = True
+            tbMontoDolar.Enabled = True
             tbMontoTarej.Value = 0
-            tbNroTarjeta.Text = ""
+            tbMontoQR.Enabled = True
+            chbQR.Enabled = True
+            tbNroTarjeta1.Text = ""
+            tbNroTarjeta3.Text = ""
             lbNroTarjeta.Visible = False
-            tbNroTarjeta.Visible = False
+            tbNroTarjeta1.Visible = False
+            tbNroTarjeta2.Visible = False
+            tbNroTarjeta3.Visible = False
             lbEjemplo.Visible = False
         End If
+
+
     End Sub
     Private Sub cbCambioDolar_ValueChanged_1(sender As Object, e As EventArgs) Handles cbCambioDolar.ValueChanged
         If cbCambioDolar.SelectedIndex < 0 And cbCambioDolar.Text <> String.Empty Then
@@ -4478,7 +4524,7 @@ salirIf:
         End If
         Return tabla
     End Function
-    Private Sub tbNroTarjeta_KeyPress(sender As Object, e As KeyPressEventArgs) Handles tbNroTarjeta.KeyPress
+    Private Sub tbNroTarjeta_KeyPress(sender As Object, e As KeyPressEventArgs) Handles tbNroTarjeta1.KeyPress
         g_prValidarTextBox(1, e)
     End Sub
 
@@ -4646,7 +4692,7 @@ salirIf:
         Dim NumFactura As Integer
         Dim email As String
         Dim CodMetPago As Integer
-        Dim NroTarjeta As String
+
 
         If TbEmail.Text = String.Empty Then
             email = "cliente@crex.com.bo"
@@ -4657,7 +4703,10 @@ salirIf:
 
         If chbTarjeta.Checked = True And tbMontoTarej.Value > 0 Then
             CodMetPago = 2
-            NroTarjeta = tbNroTarjeta.Text
+            NroTarjeta = tbNroTarjeta1.Text & tbNroTarjeta2.Text & tbNroTarjeta3.Text
+        ElseIf chbQR.Checked = True And tbMontoQR.Value > 0 Then
+            CodMetPago = 33
+            NroTarjeta = ""
         Else
             CodMetPago = 1
             NroTarjeta = ""
@@ -4890,6 +4939,55 @@ salirIf:
 
             End If
         End If
+    End Sub
+
+    Private Sub chbQR_CheckedChanged(sender As Object, e As EventArgs) Handles chbQR.CheckedChanged
+        If chbQR.Checked Then
+            tbMontoBs.Value = 0
+            tbMontoDolar.Value = 0
+            tbMontoTarej.Value = 0
+            tbMontoQR.Value = Convert.ToDecimal(tbTotalBs.Text)
+            tbMontoBs.Enabled = False
+            tbMontoDolar.Enabled = False
+            tbMontoTarej.Enabled = False
+            chbTarjeta.Enabled = False
+            tbMontoQR.IsInputReadOnly = True
+            chbTarjeta.Checked = False
+            tbNroTarjeta1.Clear()
+            tbNroTarjeta3.Clear()
+            tbMontoQR.Focus()
+        Else
+            tbMontoBs.Enabled = True
+            tbMontoDolar.Enabled = True
+            tbMontoTarej.Enabled = True
+            chbTarjeta.Enabled = True
+            tbMontoQR.Value = 0
+        End If
+
+
+
+
+
+    End Sub
+
+    Private Sub tbMontoQR_ValueChanged(sender As Object, e As EventArgs) Handles tbMontoQR.ValueChanged
+        tbMontoDolar.Value = 0
+        tbMontoBs.Value = 0
+        tbMontoTarej.Value = 0
+
+        Dim diferencia As Double = tbMontoQR.Value - tbTotalBs.Text
+        If (diferencia >= 0) Then
+            txtMontoPagado1.Text = tbTotalBs.Text.ToString
+            txtCambio1.Text = diferencia.ToString
+
+        Else
+            txtMontoPagado1.Text = "0.00"
+            txtCambio1.Text = "0.00"
+        End If
+    End Sub
+
+    Private Sub tbNroTarjeta3_KeyPress(sender As Object, e As KeyPressEventArgs) Handles tbNroTarjeta3.KeyPress
+        g_prValidarTextBox(1, e)
     End Sub
 
 

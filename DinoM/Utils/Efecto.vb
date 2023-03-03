@@ -19,6 +19,7 @@ Public Class Efecto
     Public TotalBs As Double = 0
     Public TotalSus As Double = 0
     Public TotalTarjeta As Double = 0
+    Public TotalQR As Double = 0
     Public TotalVenta As Double
     Public NameProducto As String = ""
     Public TipoCambio As Double = 0
@@ -116,13 +117,14 @@ Public Class Efecto
             TotalBs = frmAyuda.TotalBs
             TotalSus = frmAyuda.TotalSus
             TotalTarjeta = frmAyuda.TotalTarjeta
+            TotalQR = frmAyuda.TotalQR
             Nit = frmAyuda.Nit
             RazonSocial = frmAyuda.RazonSocial
             TipoCambio = frmAyuda.TipoCambio
             Tdoc.Value = frmAyuda.CbTipoDoc.Value
             Email = frmAyuda.TbEmail.Text
             IdNit = frmAyuda.IdNit
-            nroTarjeta = frmAyuda.tbNroTarjeta.Text
+            nroTarjeta = (frmAyuda.tbNroTarjeta1.Text & frmAyuda.tbNroTarjeta2.Text & frmAyuda.tbNroTarjeta3.Text)
             CExc = frmAyuda.CExcep
 
             band = True

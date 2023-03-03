@@ -21,6 +21,7 @@ Public Class F1_MontoPagar
     Public TotalBs As Double = 0
     Public TotalSus As Double = 0
     Public TotalTarjeta As Double = 0
+    Public TotalQR As Double = 0
     Public Nit As String = ""
     Public RazonSocial As String = ""
     Public TipoCambio As Double = 0
@@ -43,13 +44,19 @@ Public Class F1_MontoPagar
         tbMontoDolar.Value = 0
         tbMontoTarej.Value = 0
         tbMontoTarej.Enabled = False
+        tbMontoQR.Value = 0
+        tbMontoQR.Enabled = False
         tbNit.Text = Nit
         tbRazonSocial.Text = RazonSocial
 
         chbTarjeta.Checked = False
-        tbNroTarjeta.Text = ""
+        tbNroTarjeta1.Text = ""
+        tbNroTarjeta2.Text = "00000000"
+        tbNroTarjeta3.Text = ""
         lbNroTarjeta.Visible = False
-        tbNroTarjeta.Visible = False
+        tbNroTarjeta1.Visible = False
+        tbNroTarjeta2.Visible = False
+        tbNroTarjeta3.Visible = False
         lbEjemplo.Visible = False
 
         'tbNit.Focus()
@@ -103,6 +110,7 @@ Public Class F1_MontoPagar
     Private Sub tbMontoTarej_ValueChanged(sender As Object, e As EventArgs) Handles tbMontoTarej.ValueChanged
         tbMontoDolar.Value = 0
         tbMontoBs.Value = 0
+        tbMontoQR.Value = 0
 
         Dim diferencia As Double = tbMontoTarej.Value - TotalVenta
         If (diferencia >= 0) Then
@@ -145,6 +153,7 @@ Public Class F1_MontoPagar
                 TotalBs = tbMontoBs.Value
                 TotalSus = tbMontoDolar.Value
                 TotalTarjeta = tbMontoTarej.Value
+                TotalQR = tbMontoQR.Value
                 Nit = tbNit.Text
                 RazonSocial = tbRazonSocial.Text
                 Me.Close()
@@ -182,6 +191,7 @@ Public Class F1_MontoPagar
                 TotalBs = tbMontoBs.Value
                 TotalSus = tbMontoDolar.Value
                 TotalTarjeta = tbMontoTarej.Value
+                TotalQR = tbMontoQR.Value
                 Nit = tbNit.Text
                 RazonSocial = tbRazonSocial.Text
                 Me.Close()
@@ -218,6 +228,7 @@ Public Class F1_MontoPagar
                 TotalBs = tbMontoBs.Value
                 TotalSus = tbMontoDolar.Value
                 TotalTarjeta = tbMontoTarej.Value
+                TotalQR = tbMontoQR.Value
                 Nit = tbNit.Text
                 RazonSocial = tbRazonSocial.Text
                 Me.Close()
@@ -299,6 +310,7 @@ Public Class F1_MontoPagar
                 TotalBs = tbMontoBs.Value
                 TotalSus = tbMontoDolar.Value
                 TotalTarjeta = tbMontoTarej.Value
+                TotalQR = tbMontoQR.Value
                 Nit = tbNit.Text
                 RazonSocial = tbRazonSocial.Text
                 Me.Close()
@@ -368,19 +380,20 @@ Public Class F1_MontoPagar
 
             If (chbTarjeta.Checked = True) Then
 
-                If tbNroTarjeta.Text = String.Empty Or tbNroTarjeta.Text = "0" Then
+                If tbNroTarjeta1.Text = String.Empty Or tbNroTarjeta1.Text = "0" Or tbNroTarjeta1.Text = "0000" Or tbNroTarjeta3.Text = String.Empty Or tbNroTarjeta3.Text = "0" Or tbNroTarjeta3.Text = "0000" Then
                     Dim img As Bitmap = New Bitmap(My.Resources.mensaje, 50, 50)
-                    ToastNotification.Show(Me, "Debe colocar el Nro. de Tarjeta".ToUpper, img, 2000, eToastGlowColor.Red, eToastPosition.BottomCenter)
-                    tbNroTarjeta.Focus()
+                    ToastNotification.Show(Me, "Debe colocar el Nro. de Tarjeta en los espacios correspondientes".ToUpper, img, 3000, eToastGlowColor.Red, eToastPosition.BottomCenter)
+                    tbNroTarjeta1.Focus()
                     Exit Sub
                 End If
             End If
 
-            If (tbMontoTarej.Value + (tbMontoDolar.Value * cbCambioDolar.Text) + tbMontoBs.Value >= TotalVenta) Then
+            If ((tbMontoTarej.Value + (tbMontoDolar.Value * cbCambioDolar.Text) + tbMontoBs.Value + tbMontoQR.Value) >= TotalVenta) Then
                 Bandera = True
                 TotalBs = tbMontoBs.Value
                 TotalSus = tbMontoDolar.Value
                 TotalTarjeta = tbMontoTarej.Value
+                TotalQR = tbMontoQR.Value
                 Nit = tbNit.Text
                 RazonSocial = tbRazonSocial.Text
                 TipoCambio = cbCambioDolar.Text
@@ -418,13 +431,19 @@ Public Class F1_MontoPagar
         If chbTarjeta.Checked Then
             tbMontoBs.Value = 0
             tbMontoDolar.Value = 0
+            tbMontoQR.Value = 0
+            tbMontoQR.Enabled = False
+            chbQR.Checked = False
+            chbQR.Enabled = False
             tbMontoTarej.Enabled = True
             tbMontoTarej.Value = Convert.ToDecimal(TotalVenta)
             tbMontoBs.Enabled = False
             tbMontoDolar.Enabled = False
             tbMontoTarej.IsInputReadOnly = True
             lbNroTarjeta.Visible = True
-            tbNroTarjeta.Visible = True
+            tbNroTarjeta1.Visible = True
+            tbNroTarjeta2.Visible = True
+            tbNroTarjeta3.Visible = True
             lbEjemplo.Visible = True
 
             tbMontoTarej.Focus()
@@ -432,8 +451,12 @@ Public Class F1_MontoPagar
             tbMontoBs.Enabled = True
             tbMontoDolar.Enabled = True
             tbMontoTarej.Value = 0
+            tbMontoQR.Enabled = True
+            chbQR.Enabled = True
             lbNroTarjeta.Visible = False
-            tbNroTarjeta.Visible = False
+            tbNroTarjeta1.Visible = False
+            tbNroTarjeta2.Visible = False
+            tbNroTarjeta3.Visible = False
             lbEjemplo.Visible = False
         End If
     End Sub
@@ -484,7 +507,57 @@ Public Class F1_MontoPagar
         End If
     End Sub
 
-    Private Sub tbNroTarjeta_KeyPress(sender As Object, e As KeyPressEventArgs) Handles tbNroTarjeta.KeyPress
+    Private Sub tbNroTarjeta_KeyPress(sender As Object, e As KeyPressEventArgs) Handles tbNroTarjeta1.KeyPress
         g_prValidarTextBox(1, e)
     End Sub
+
+    Private Sub chbQR_CheckedChanged(sender As Object, e As EventArgs) Handles chbQR.CheckedChanged
+        If chbQR.Checked Then
+            tbMontoBs.Value = 0
+            tbMontoDolar.Value = 0
+            tbMontoTarej.Value = 0
+            tbMontoQR.Value = Convert.ToDecimal(TotalVenta)
+            tbMontoBs.Enabled = False
+            tbMontoDolar.Enabled = False
+            tbMontoTarej.Enabled = False
+            chbTarjeta.Enabled = False
+            tbMontoQR.IsInputReadOnly = True
+            chbTarjeta.Checked = False
+            tbNroTarjeta1.Clear()
+            tbNroTarjeta3.Clear()
+            tbMontoQR.Focus()
+        Else
+            tbMontoBs.Enabled = True
+            tbMontoDolar.Enabled = True
+            tbMontoTarej.Enabled = True
+            chbTarjeta.Enabled = True
+            tbMontoQR.Value = 0
+        End If
+
+
+
+
+
+    End Sub
+
+    Private Sub tbMontoQR_ValueChanged(sender As Object, e As EventArgs) Handles tbMontoQR.ValueChanged
+        tbMontoDolar.Value = 0
+        tbMontoBs.Value = 0
+        tbMontoTarej.Value = 0
+
+        Dim diferencia As Double = tbMontoQR.Value - TotalVenta
+        If (diferencia >= 0) Then
+            txtMontoPagado1.Text = TotalVenta.ToString
+            txtCambio1.Text = diferencia.ToString
+
+        Else
+            txtMontoPagado1.Text = "0.00"
+            txtCambio1.Text = "0.00"
+        End If
+    End Sub
+
+    Private Sub tbNroTarjeta3_KeyPress(sender As Object, e As KeyPressEventArgs) Handles tbNroTarjeta3.KeyPress
+        g_prValidarTextBox(1, e)
+    End Sub
+
 End Class
