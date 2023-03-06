@@ -3623,14 +3623,14 @@ Public Class F0_VentasSupermercado
             EmenvioDetalle.codigoProducto = (row("tbty5prod").ToString)
             EmenvioDetalle.descripcion = (row("producto").ToString)
             EmenvioDetalle.unidadMedida = Convert.ToInt32(row("ygcodu"))
-            EmenvioDetalle.cantidad = (row("tbcmin"))
-            EmenvioDetalle.precioUnitario = (row("tbpbas"))
+            EmenvioDetalle.cantidad = Math.Round((row("tbcmin")), 2)
+            EmenvioDetalle.precioUnitario = Math.Round((row("tbpbas")), 2)
             EmenvioDetalle.montoDescuento = Math.Round((row("tbdesc")), 2)
-            EmenvioDetalle.subTotal = (row("tbtotdesc"))
+            EmenvioDetalle.subTotal = Math.Round((row("tbtotdesc")), 2)
             EmenvioDetalle.numeroSerie = "0"
             EmenvioDetalle.numeroImei = "0"
 
-            PrecioTot = PrecioTot + (row("tbtotdesc")) 'total
+            PrecioTot = PrecioTot + Math.Round((row("tbtotdesc")), 2) 'total
             'CodProducto = (row("tbty5prod").ToString) 'cod producto
             'Cantidad = (row("tbcmin").ToString) ' cantidad
             'PrecioU = (row("tbpbas").ToString) ' precio u 
