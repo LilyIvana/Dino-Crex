@@ -178,6 +178,8 @@ Public Class F0_Venta2
         swTipoVenta.IsReadOnly = True
         txtEstado.ReadOnly = True
 
+        cbCambioDolar.ReadOnly = True
+
         CbTipoDoc.ReadOnly = True
         TbEmail.ReadOnly = True
 
@@ -194,6 +196,7 @@ Public Class F0_Venta2
         btnBitacora.Enabled = False
         SwDescuentoProveedor.Enabled = False
         'btnEliminar.Enabled = True
+
 
         If grVentas.GetValue("taest") = 1 Then
             btnEliminar.Enabled = True
@@ -468,6 +471,7 @@ Public Class F0_Venta2
             End If
             If tMonto.Rows(0).Item("tgMontTare") > 0 Then
                 chbTarjeta.Checked = True
+                chbTarjeta.Enabled = False
                 lbNroTarjeta.Visible = True
                 tbNroTarjeta1.Visible = True
                 tbNroTarjeta2.Visible = True
@@ -485,6 +489,7 @@ Public Class F0_Venta2
             End If
             If tMonto.Rows(0).Item("tgMontQR") > 0 Then
                 chbQR.Checked = True
+                chbQR.Enabled = False
             Else
                 chbQR.Checked = False
                 chbQR.Enabled = False
@@ -841,6 +846,7 @@ Public Class F0_Venta2
             .Visible = True
             .Caption = "TOTAL"
             .FormatString = "0.00"
+            .AggregateFunction = AggregateFunction.Sum
         End With
         With grVentas
             .DefaultFilterRowComparison = FilterConditionOperator.Contains
@@ -848,7 +854,9 @@ Public Class F0_Venta2
             .FilterRowUpdateMode = FilterRowUpdateMode.WhenValueChanges
             .GroupByBoxVisible = False
             'diseño de la grilla
-
+            .TotalRow = InheritableBoolean.True
+            .TotalRowFormatStyle.BackColor = Color.Gold
+            .TotalRowPosition = TotalRowPosition.BottomFixed
         End With
 
         If (dt.Rows.Count <= 0) Then
@@ -4672,8 +4680,8 @@ salirIf:
             EmenvioDetalle.precioUnitario = Math.Round((row("tbpbas")), 2)
             EmenvioDetalle.montoDescuento = 0
             EmenvioDetalle.subTotal = Math.Round((row("tbtotdesc")), 2)
-            EmenvioDetalle.numeroSerie = "0"
-            EmenvioDetalle.numeroImei = "0"
+            EmenvioDetalle.numeroSerie = ""
+            EmenvioDetalle.numeroImei = ""
 
             PrecioTot = PrecioTot + Math.Round((row("tbtotdesc")), 2) 'total
             'CodProducto = (row("tbty5prod").ToString) 'cod producto
@@ -4713,6 +4721,7 @@ salirIf:
         End If
         If swTipoVenta.Value = False Then
             CodMetPago = 6
+            NroTarjeta = ""
         End If
         Dim dtmax = L_fnObtenerMaxFact(gs_NroCaja, Convert.ToInt32(Now.Date.Year))
         If dtmax.Rows.Count = 0 Then
