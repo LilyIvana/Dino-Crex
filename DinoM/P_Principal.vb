@@ -1180,6 +1180,11 @@ Public Class P_Principal
         frm.Show()
     End Sub
 
+    Private Sub btResCierreCaja_Click(sender As Object, e As EventArgs) Handles btResCierreCaja.Click
+        Dim frm As New F1_ExcelCierresCaja
+        frm.Show()
+    End Sub
+
 
 
 

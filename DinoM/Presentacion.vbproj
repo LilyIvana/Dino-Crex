@@ -443,6 +443,12 @@
     <Compile Include="F1_ExcelMixto.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="F1_ExcelCierresCaja.Designer.vb">
+      <DependentUpon>F1_ExcelCierresCaja.vb</DependentUpon>
+    </Compile>
+    <Compile Include="F1_ExcelCierresCaja.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="F1_IngresosEgresos.Designer.vb">
       <DependentUpon>F1_IngresosEgresos.vb</DependentUpon>
     </Compile>
@@ -1312,6 +1318,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="F1_ExcelMixto.resx">
       <DependentUpon>F1_ExcelMixto.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="F1_ExcelCierresCaja.resx">
+      <DependentUpon>F1_ExcelCierresCaja.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="F1_IngresosEgresos.resx">
       <DependentUpon>F1_IngresosEgresos.vb</DependentUpon>
