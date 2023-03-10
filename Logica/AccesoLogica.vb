@@ -6124,7 +6124,7 @@ Public Class AccesoLogica
     End Function
 
     Public Shared Function L_fnGrabarCaja(ByRef _ccnumi As String, _fecha As String, _TotalGral As Decimal, _Credito As Decimal,
-                                          _Tarjeta As Decimal, _ContadoBs As Decimal, _Depositos As Decimal, _Efectivo As Decimal,
+                                          _Tarjeta As Decimal, _QR As Decimal, _ContadoBs As Decimal, _Depositos As Decimal, _Efectivo As Decimal,
                                           _Diferencia As Decimal, _Pagos As Decimal, _Turno As String, _MInicial As Decimal,
                                           _Ingresos As Decimal, _Egresos As Decimal, _Estado As Integer, _TipoCambio As Decimal,
                                           _Obs As String, _TCC0011 As DataTable, _TCC0012 As DataTable, _NroCaja As Integer) As Boolean
@@ -6138,6 +6138,7 @@ Public Class AccesoLogica
         _listParam.Add(New Datos.DParametro("@TotalGral", _TotalGral))
         _listParam.Add(New Datos.DParametro("@Credito", _Credito))
         _listParam.Add(New Datos.DParametro("@Tarjeta", _Tarjeta))
+        _listParam.Add(New Datos.DParametro("@QR", _QR))
         _listParam.Add(New Datos.DParametro("@ContadoBs", _ContadoBs))
         _listParam.Add(New Datos.DParametro("@Depositos", _Depositos))
         _listParam.Add(New Datos.DParametro("@Efectivo", _Efectivo))
@@ -6166,7 +6167,7 @@ Public Class AccesoLogica
         Return _resultado
     End Function
     Public Shared Function L_fnModificarCaja(ByRef _ccnumi As String, _fecha As String, _TotalGral As Decimal, _Credito As Decimal,
-                                          _Tarjeta As Decimal, _ContadoBs As Decimal, _Depositos As Decimal, _Efectivo As Decimal,
+                                          _Tarjeta As Decimal, _QR As Decimal, _ContadoBs As Decimal, _Depositos As Decimal, _Efectivo As Decimal,
                                           _Diferencia As Decimal, _Pagos As Decimal, _Turno As String, _MInicial As Decimal,
                                           _Ingresos As Decimal, _Egresos As Decimal, _TipoCambio As Decimal, _Obs As String,
                                           _TCC0011 As DataTable, _TCC0012 As DataTable, _TCC0013 As DataTable, _NroCaja As Integer) As Boolean
@@ -6180,6 +6181,7 @@ Public Class AccesoLogica
         _listParam.Add(New Datos.DParametro("@TotalGral", _TotalGral))
         _listParam.Add(New Datos.DParametro("@Credito", _Credito))
         _listParam.Add(New Datos.DParametro("@Tarjeta", _Tarjeta))
+        _listParam.Add(New Datos.DParametro("@QR", _QR))
         _listParam.Add(New Datos.DParametro("@ContadoBs", _ContadoBs))
         _listParam.Add(New Datos.DParametro("@Depositos", _Depositos))
         _listParam.Add(New Datos.DParametro("@Efectivo", _Efectivo))

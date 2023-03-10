@@ -73,6 +73,7 @@ Public Class F0_CierreCaja
             tbTEfectivo.Value = 0
             tbTDeposito.Value = 0
             tbTTarjeta.Value = 0
+            tbTQR.Value = 0
             tbTDiferencia.Value = 0
             tbTCredito.Value = 0
 
@@ -341,6 +342,14 @@ Public Class F0_CierreCaja
                 .AggregateFunction = AggregateFunction.Sum
                 .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far
             End With
+            With Dgv_VentasPagos.RootTable.Columns("qr")
+                .Caption = "QR"
+                .Width = 120
+                .Visible = True
+                .FormatString = "0.00"
+                .AggregateFunction = AggregateFunction.Sum
+                .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far
+            End With
             With Dgv_VentasPagos.RootTable.Columns("pagos")
                 .Caption = "PAGOS"
                 .Width = 120
@@ -432,6 +441,14 @@ Public Class F0_CierreCaja
 
             With Dgv_VentasPagos.RootTable.Columns("tarjeta")
                 .Caption = "TARJETA"
+                .Width = 120
+                .Visible = True
+                .FormatString = "0.00"
+                .AggregateFunction = AggregateFunction.Sum
+                .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far
+            End With
+            With Dgv_VentasPagos.RootTable.Columns("qr")
+                .Caption = "QR"
                 .Width = 120
                 .Visible = True
                 .FormatString = "0.00"
@@ -544,6 +561,7 @@ Public Class F0_CierreCaja
             tbMontoI.IsInputReadOnly = True
             tbTCredito.IsInputReadOnly = True
             tbTTarjeta.IsInputReadOnly = True
+            tbTQR.IsInputReadOnly = True
             tbTDeposito.IsInputReadOnly = True
             tbTContado.IsInputReadOnly = True
             tbTotalGral.IsInputReadOnly = True
@@ -583,7 +601,7 @@ Public Class F0_CierreCaja
             'tbTotalGral.Value = ToTalGral - tbTDeposito.Value
 
             'tbTDiferencia.Value = tbTEfectivo.Value - tbTContado.Value
-            tbTDiferencia.Value = (tbTEfectivo.Value + tbTDeposito.Value + tbTTarjeta.Value) - tbTotalGral.Value
+            tbTDiferencia.Value = (tbTEfectivo.Value + tbTDeposito.Value + tbTTarjeta.Value + tbTQR.Value) - tbTotalGral.Value
         Catch ex As Exception
             MostrarMensajeError(ex.Message)
         End Try
@@ -615,7 +633,7 @@ Public Class F0_CierreCaja
         Try
             Dim numi As String = ""
             Dim res As Boolean = L_fnGrabarCaja(numi, tbFecha.Value.ToString("yyyy/MM/dd"), tbTotalGral.Value, tbTCredito.Value,
-                                                tbTTarjeta.Value, tbTContado.Value, tbTDeposito.Value, tbTEfectivo.Value,
+                                                tbTTarjeta.Value, tbTQR.Value, tbTContado.Value, tbTDeposito.Value, tbTEfectivo.Value,
                                                 tbTDiferencia.Value, tbTPagos.Value, cbTurno.Text, tbMontoInicial.Value, tbTIngresos.Value, tbTEgresos.Value, IIf(swEstado.Value = True, 1, 0), Tb_TipoCambio.Value, tbObservacion.Text, CType(Dgv_Cortes.DataSource, DataTable), CType(Dgv_Depositos.DataSource, DataTable), gs_NroCaja)
             If res Then
 
@@ -652,9 +670,9 @@ Public Class F0_CierreCaja
             If (bandera = True) Then
                 Dim dv As DataView = New DataView(Dgv_VentasPagos.DataSource)
                 Dim dtventas As DataTable = dv.ToTable(True, "tanumi", "tipocambio")
-                Dim TContado As Double = tbTContado.Value - tbTTarjeta.Value
+                Dim TContado As Double = tbTContado.Value - tbTTarjeta.Value - tbTQR.Value
                 Dim res As Boolean = L_fnModificarCaja(TbCodigo.Text, tbFecha.Value.ToString("yyyy/MM/dd"), tbTotalGral.Value, tbTCredito.Value,
-                                                    tbTTarjeta.Value, TContado, tbTDeposito.Value, tbTEfectivo.Value,
+                                                    tbTTarjeta.Value, tbTQR.Value, TContado, tbTDeposito.Value, tbTEfectivo.Value,
                                                     tbTDiferencia.Value, tbTPagos.Value, cbTurno.Text, tbMontoInicial.Value, tbTIngresos.Value, tbTEgresos.Value, Tb_TipoCambio.Value, tbObservacion.Text, CType(Dgv_Cortes.DataSource, DataTable), CType(Dgv_Depositos.DataSource, DataTable), dtventas, gs_NroCaja)
                 If res Then
 
@@ -714,6 +732,11 @@ Public Class F0_CierreCaja
                 .FormatString = "0.00"
             End With
             With Dgv_Buscador.RootTable.Columns("ccTarjeta")
+                .Width = 130
+                .Visible = False
+                .FormatString = "0.00"
+            End With
+            With Dgv_Buscador.RootTable.Columns("ccQR")
                 .Width = 130
                 .Visible = False
                 .FormatString = "0.00"
@@ -857,8 +880,9 @@ Public Class F0_CierreCaja
                 'Montos del Detalle de Ventas y/o pagos
                 tbTCredito.Value = .GetValue("ccCredito")
                 tbTTarjeta.Value = .GetValue("ccTarjeta")
+                tbTQR.Value = .GetValue("ccQR")
                 tbTDeposito.Value = .GetValue("ccDepositos")
-                tbTContado.Value = .GetValue("ccContadoBs") + .GetValue("ccTarjeta")
+                tbTContado.Value = .GetValue("ccContadoBs") + .GetValue("ccTarjeta") + .GetValue("ccQR")
                 tbTotalGral.Value = .GetValue("ccTotalGral")
                 tbTEfectivo.Value = .GetValue("ccEfectivoBs")
                 tbTDiferencia.Value = .GetValue("ccDiferencia")
@@ -949,6 +973,7 @@ Public Class F0_CierreCaja
             objrep.SetParameterValue("tipocambio", Tb_TipoCambio.Text)
             objrep.SetParameterValue("usuario", L_Usuario)
             objrep.SetParameterValue("NroCaja", lbNroCaja.Text)
+            objrep.SetParameterValue("Observacion", tbObservacion.Text)
 
             'Totales
             objrep.SetParameterValue("MInicial", tbMontoI.Text)
@@ -960,6 +985,7 @@ Public Class F0_CierreCaja
             objrep.SetParameterValue("TotalCortes", tbTEfectivo.Text)
             objrep.SetParameterValue("TotalDepositos", tbTDeposito.Text)
             objrep.SetParameterValue("TotalTarjeta", tbTTarjeta.Text)
+            objrep.SetParameterValue("TotalQR", tbTQR.Text)
             objrep.SetParameterValue("Diferencia", tbTDiferencia.Text)
 
             P_Global.Visualizador.CrGeneral.ReportSource = objrep
@@ -1053,6 +1079,7 @@ Public Class F0_CierreCaja
                         Tb_TipoCambio.Text = (CType(Dgv_VentasPagos.DataSource, DataTable).Rows(0).Item("tipocambio"))
                         tbTCredito.Text = Dgv_VentasPagos.GetTotal(Dgv_VentasPagos.RootTable.Columns("credito"), AggregateFunction.Sum)
                         tbTTarjeta.Text = Dgv_VentasPagos.GetTotal(Dgv_VentasPagos.RootTable.Columns("tarjeta"), AggregateFunction.Sum)
+                        tbTQR.Text = Dgv_VentasPagos.GetTotal(Dgv_VentasPagos.RootTable.Columns("qr"), AggregateFunction.Sum)
                         tbTContado.Text = Dgv_VentasPagos.GetTotal(Dgv_VentasPagos.RootTable.Columns("totalbs"), AggregateFunction.Sum) - tbTCredito.Text
                         tbTPagos.Text = Dgv_VentasPagos.GetTotal(Dgv_VentasPagos.RootTable.Columns("pagos"), AggregateFunction.Sum)
 
@@ -1346,6 +1373,8 @@ Public Class F0_CierreCaja
             Timer1.Enabled = False
         End If
     End Sub
+
+
 
 
 
