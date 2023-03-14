@@ -1911,7 +1911,18 @@ Public Class F0_Venta2
             If (P_fnValidarFactura()) Then
                 'Validar para facturar
                 'P_prImprimirFacturar(numi, True, True) '_Codigo de a tabla TV001
-                F0_VentasSupermercado.P_prImprimirFacturaNueva(numi, True, True)
+
+                Dim ef = New Efecto
+                ef.tipo = 2
+                ef.Context = "MENSAJE PRINCIPAL".ToUpper
+                ef.Header = "¿desea imprimir la Factura?".ToUpper
+                ef.ShowDialog()
+                Dim bandera As Boolean = False
+                bandera = ef.band
+                If (bandera = True) Then
+                    F0_VentasSupermercado.P_prImprimirFacturaNueva(numi, True, True)
+                End If
+
             Else
                 'Volver todo al estada anterior
                 ToastNotification.Show(Me, "No es posible facturar, vuelva a ingresar he intente nuevamente!!!".ToUpper,
@@ -3452,7 +3463,7 @@ salirIf:
                     P_PonerTotal(rowIndex)
                 Else
                     Dim stock As Double = grdetalle.GetValue("stock")
-                    If (grdetalle.GetValue("tbcmin") > 0) Then
+                    If (grdetalle.GetValue("tbcmin") >= 0) Then
                         If (grdetalle.GetValue("tbcmin") <= stock) Then
 
                             Dim rowIndex As Integer = grdetalle.Row
@@ -4676,14 +4687,14 @@ salirIf:
             EmenvioDetalle.codigoProducto = (row("tbty5prod").ToString)
             EmenvioDetalle.descripcion = (row("producto").ToString)
             EmenvioDetalle.unidadMedida = Convert.ToInt32(row("ygcodu"))
-            EmenvioDetalle.cantidad = Math.Round((row("tbcmin")), 2)
-            EmenvioDetalle.precioUnitario = Math.Round((row("tbpbas")), 2)
+            EmenvioDetalle.cantidad = Format((row("tbcmin")), "#.#0")
+            EmenvioDetalle.precioUnitario = Format((row("tbpbas")), "#.#0")
             EmenvioDetalle.montoDescuento = 0
-            EmenvioDetalle.subTotal = Math.Round((row("tbtotdesc")), 2)
+            EmenvioDetalle.subTotal = Format((row("tbtotdesc")), "#.#0")
             EmenvioDetalle.numeroSerie = ""
             EmenvioDetalle.numeroImei = ""
 
-            PrecioTot = PrecioTot + Math.Round((row("tbtotdesc")), 2) 'total
+            PrecioTot = PrecioTot + Format((row("tbtotdesc")), "#.#0") 'total
             'CodProducto = (row("tbty5prod").ToString) 'cod producto
             'Cantidad = (row("tbcmin").ToString) ' cantidad
             'PrecioU = (row("tbpbas").ToString) ' precio u 
@@ -4745,10 +4756,10 @@ salirIf:
         Emenvio.codigoDocumentoSector = 1 '-------------------
         Emenvio.codigoMoneda = 1 'falta
         Emenvio.tipoCambio = 1 'CDbl(cbCambioDolar.Text) '--------------------
-        Emenvio.descuentoAdicional = Math.Round(tbMdesc.Value, 2) '-------------------
-        Emenvio.montoTotal = Math.Round((PrecioTot - Emenvio.descuentoAdicional), 2)
-        Emenvio.montoTotalSujetoIva = Math.Round((PrecioTot - Emenvio.descuentoAdicional), 2)
-        Emenvio.montoTotalMoneda = Math.Round((PrecioTot - Emenvio.descuentoAdicional), 2)
+        Emenvio.descuentoAdicional = Format(tbMdesc.Value, "#.#0") '-------------------
+        Emenvio.montoTotal = Format((PrecioTot - Emenvio.descuentoAdicional), "#.#0")
+        Emenvio.montoTotalSujetoIva = Format((PrecioTot - Emenvio.descuentoAdicional), "#.#0")
+        Emenvio.montoTotalMoneda = Format((PrecioTot - Emenvio.descuentoAdicional), "#.#0")
         Emenvio.montoGiftCard = 0 '----------------
         Emenvio.codigoExcepcion = 0 '---------------
         Emenvio.usuario = gs_user

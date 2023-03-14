@@ -1596,7 +1596,17 @@ Public Class F0_VentasSupermercado
         If (res) Then
             If (P_fnValidarFactura()) Then
                 'Validar para facturar
-                P_prImprimirFacturaNueva(numi, True, True) '_Codigo de a tabla TV001
+
+                Dim ef = New Efecto
+                ef.tipo = 2
+                ef.Context = "MENSAJE PRINCIPAL".ToUpper
+                ef.Header = "¿desea imprimir la Factura?".ToUpper
+                ef.ShowDialog()
+                Dim bandera As Boolean = False
+                bandera = ef.band
+                If (bandera = True) Then
+                    P_prImprimirFacturaNueva(numi, True, True) '_Codigo de a tabla TV001
+                End If
 
             Else
                 'Volver todo al estada anterior
@@ -2563,7 +2573,7 @@ Public Class F0_VentasSupermercado
             End If
             Dim ef = New Efecto
             ef.tipo = 6
-            ef.TotalVenta = Math.Round(tbTotal.Value, 2)
+            ef.TotalVenta = Format(tbTotal.Value, "#.#0")
             ef.Nit = lbNit.Text
             ef.RazonSocial = lbCliente.Text
 
@@ -3176,9 +3186,9 @@ Public Class F0_VentasSupermercado
                 'CType(grdetalle.DataSource, DataTable).Rows(pos).Item("tbptot2") = grdetalle.GetValue("tbpcos") * Cantidad
 
                 CType(grdetalle.DataSource, DataTable).Rows(pos).Item("tbcmin") = Cantidad
-                CType(grdetalle.DataSource, DataTable).Rows(pos).Item("tbptot") = fila(0).Item("tbpbas") * Cantidad
-                CType(grdetalle.DataSource, DataTable).Rows(pos).Item("tbtotdesc") = fila(0).Item("tbpbas") * Cantidad
-                CType(grdetalle.DataSource, DataTable).Rows(pos).Item("tbptot2") = fila(0).Item("tbpcos") * Cantidad
+                CType(grdetalle.DataSource, DataTable).Rows(pos).Item("tbptot") = Format((fila(0).Item("tbpbas") * Cantidad), "#.#0")
+                CType(grdetalle.DataSource, DataTable).Rows(pos).Item("tbtotdesc") = Format((fila(0).Item("tbpbas") * Cantidad), "#.#0")
+                CType(grdetalle.DataSource, DataTable).Rows(pos).Item("tbptot2") = Format((fila(0).Item("tbpcos") * Cantidad), "#.#0")
 
 
                 'CalcularDescuentos(grdetalle.GetValue("tbty5prod"), Cantidad, grdetalle.GetValue("tbpbas"), pos)
@@ -3192,9 +3202,9 @@ Public Class F0_VentasSupermercado
                 _fnObtenerFilaDetalle(pos, lin)
 
                 CType(grdetalle.DataSource, DataTable).Rows(pos).Item("tbcmin") = fila(0).Item("tbcmin")
-                CType(grdetalle.DataSource, DataTable).Rows(pos).Item("tbptot") = fila(0).Item("tbpbas") * fila(0).Item("tbcmin")
-                CType(grdetalle.DataSource, DataTable).Rows(pos).Item("tbtotdesc") = fila(0).Item("tbpbas") * fila(0).Item("tbcmin")
-                CType(grdetalle.DataSource, DataTable).Rows(pos).Item("tbptot2") = fila(0).Item("tbpcos") * fila(0).Item("tbcmin")
+                CType(grdetalle.DataSource, DataTable).Rows(pos).Item("tbptot") = Format((fila(0).Item("tbpbas") * fila(0).Item("tbcmin")), "#.#0")
+                CType(grdetalle.DataSource, DataTable).Rows(pos).Item("tbtotdesc") = Format((fila(0).Item("tbpbas") * fila(0).Item("tbcmin")), "#.#0")
+                CType(grdetalle.DataSource, DataTable).Rows(pos).Item("tbptot2") = Format((fila(0).Item("tbpcos") * fila(0).Item("tbcmin")), "#.#0")
 
 
                 CalcularDescuentos(fila(0).Item("tbty5prod"), Cantidad, fila(0).Item("tbpbas"), pos)
@@ -3623,14 +3633,15 @@ Public Class F0_VentasSupermercado
             EmenvioDetalle.codigoProducto = (row("tbty5prod").ToString)
             EmenvioDetalle.descripcion = (row("producto").ToString)
             EmenvioDetalle.unidadMedida = Convert.ToInt32(row("ygcodu"))
-            EmenvioDetalle.cantidad = Math.Round((row("tbcmin")), 2)
-            EmenvioDetalle.precioUnitario = Math.Round((row("tbpbas")), 2)
-            EmenvioDetalle.montoDescuento = Math.Round((row("tbdesc")), 2)
+            EmenvioDetalle.cantidad = Format((row("tbcmin")), "#.#0")
+            EmenvioDetalle.precioUnitario = Format((row("tbpbas")), "#.#0")
+            EmenvioDetalle.montoDescuento = Format((row("tbdesc")), "#.#0")
+            EmenvioDetalle.subTotal = Format((row("tbtotdesc")), "#.#0")
             EmenvioDetalle.subTotal = Math.Round((row("tbtotdesc")), 2)
             EmenvioDetalle.numeroSerie = ""
             EmenvioDetalle.numeroImei = ""
 
-            PrecioTot = PrecioTot + Math.Round((row("tbtotdesc")), 2) 'total
+            PrecioTot = PrecioTot + Format((row("tbtotdesc")), "#.#0") 'total
             'CodProducto = (row("tbty5prod").ToString) 'cod producto
             'Cantidad = (row("tbcmin").ToString) ' cantidad
             'PrecioU = (row("tbpbas").ToString) ' precio u 
@@ -3691,9 +3702,9 @@ Public Class F0_VentasSupermercado
         Emenvio.codigoMoneda = 1 'falta
         Emenvio.tipoCambio = 1 'CDbl(cbCambioDolar.Text) '--------------------
         Emenvio.descuentoAdicional = 0 '-------------------
-        Emenvio.montoTotal = Math.Round((PrecioTot - Emenvio.descuentoAdicional), 2)
-        Emenvio.montoTotalSujetoIva = Math.Round((PrecioTot - Emenvio.descuentoAdicional), 2)
-        Emenvio.montoTotalMoneda = Math.Round((PrecioTot - Emenvio.descuentoAdicional), 2)
+        Emenvio.montoTotal = Format((PrecioTot - Emenvio.descuentoAdicional), "#.#0")
+        Emenvio.montoTotalSujetoIva = Format((PrecioTot - Emenvio.descuentoAdicional), "#.#0")
+        Emenvio.montoTotalMoneda = Format((PrecioTot - Emenvio.descuentoAdicional), "#.#0")
         Emenvio.montoGiftCard = 0 '----------------
         Emenvio.codigoExcepcion = 0 '---------------
         Emenvio.usuario = gs_user
