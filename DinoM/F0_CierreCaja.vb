@@ -797,8 +797,9 @@ Public Class F0_CierreCaja
                 .FormatString = "0.00"
             End With
             With Dgv_Buscador.RootTable.Columns("ccObs")
-                .Width = 130
-                .Visible = False
+                .Width = 200
+                .Caption = "OBSERVACIÓN"
+                .Visible = True
             End With
             With Dgv_Buscador.RootTable.Columns("ccEstado")
                 .Width = 130

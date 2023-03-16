@@ -1185,6 +1185,11 @@ Public Class P_Principal
         frm.Show()
     End Sub
 
+    Private Sub btConfDescuentosCajeros_Click(sender As Object, e As EventArgs) Handles btConfDescuentosCajeros.Click
+        Dim frm As New DescuentosCajeros
+        frm.Show()
+    End Sub
+
 
 
 

@@ -736,6 +736,7 @@ Public Class F0_MCompras
             .Visible = True
             .Caption = "TOTAL"
             .FormatString = "0.00"
+            .AggregateFunction = AggregateFunction.Sum
         End With
         With grCompra.RootTable.Columns("caemision")
             .Width = 80
@@ -774,6 +775,9 @@ Public Class F0_MCompras
             .GroupByBoxVisible = False
             'diseño de la grilla
             .VisualStyle = VisualStyle.Office2007
+            .TotalRow = InheritableBoolean.True
+            .TotalRowFormatStyle.BackColor = Color.Gold
+            .TotalRowPosition = TotalRowPosition.BottomFixed
         End With
 
         If (dt.Rows.Count <= 0) Then

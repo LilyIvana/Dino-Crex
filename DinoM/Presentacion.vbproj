@@ -257,6 +257,12 @@
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="CustomersRow.vb" />
+    <Compile Include="Descuentos\DescuentosCajeros.Designer.vb">
+      <DependentUpon>DescuentosCajeros.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Descuentos\DescuentosCajeros.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Descuentos\Descuentos.Designer.vb">
       <DependentUpon>Descuentos.vb</DependentUpon>
     </Compile>
@@ -1225,6 +1231,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Control\UCImg.resx">
       <DependentUpon>UCImg.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Descuentos\DescuentosCajeros.resx">
+      <DependentUpon>DescuentosCajeros.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Descuentos\Descuentos.resx">
       <DependentUpon>Descuentos.vb</DependentUpon>

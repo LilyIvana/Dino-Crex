@@ -139,9 +139,17 @@ Public Class F1_ExcelCierresCaja
                 .Visible = True
                 .Caption = "TURNO"
             End With
+            With JGrM_Buscador.RootTable.Columns("Inicial")
+                .Width = 100
+                .Caption = "MONTO INICIAL"
+                .Visible = True
+                .FormatString = "0.00"
+                .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far
+                .AggregateFunction = AggregateFunction.Sum
+            End With
             With JGrM_Buscador.RootTable.Columns("Contado")
                 .Width = 120
-                .Caption = "CONTADO"
+                .Caption = "CONTADO BS."
                 .Visible = True
                 .FormatString = "0.00"
                 .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far
@@ -181,13 +189,36 @@ Public Class F1_ExcelCierresCaja
             End With
             With JGrM_Buscador.RootTable.Columns("Total")
                 .Width = 120
-                .Caption = "TOTAL"
+                .Caption = "TOTAL BS."
                 .Visible = True
                 .FormatString = "0.00"
                 .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far
                 .AggregateFunction = AggregateFunction.Sum
             End With
-
+            With JGrM_Buscador.RootTable.Columns("Cortes")
+                .Width = 120
+                .Caption = "TOTAL CORTES BS."
+                .Visible = True
+                .FormatString = "0.00"
+                .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far
+                .AggregateFunction = AggregateFunction.Sum
+            End With
+            With JGrM_Buscador.RootTable.Columns("Depositos")
+                .Width = 120
+                .Caption = "DEPÓSITOS"
+                .Visible = True
+                .FormatString = "0.00"
+                .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far
+                .AggregateFunction = AggregateFunction.Sum
+            End With
+            With JGrM_Buscador.RootTable.Columns("Diferencia")
+                .Width = 120
+                .Caption = "DIFERENCIA"
+                .Visible = True
+                .FormatString = "0.00"
+                .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far
+                .AggregateFunction = AggregateFunction.Sum
+            End With
             With JGrM_Buscador
                 .DefaultFilterRowComparison = FilterConditionOperator.Contains
                 .FilterMode = FilterMode.Automatic

@@ -637,16 +637,16 @@ Public Class F1_Clientes
         'a.ydimg,
         'a.ydfact, a.ydhact, a.yduact
 
-        listEstCeldas.Add(New Modelo.Celda("ydnumi", True, "Código".ToUpper, 80))
-        listEstCeldas.Add(New Modelo.Celda("ydcod", False, "Codigo".ToUpper, 80))
-        listEstCeldas.Add(New Modelo.Celda("ydrazonsocial", True, "Razon Social".ToUpper, 180))
+        listEstCeldas.Add(New Modelo.Celda("ydnumi", True, "Cód. Original".ToUpper, 80))
+        listEstCeldas.Add(New Modelo.Celda("ydcod", True, "Cod. Cliente".ToUpper, 90))
+        listEstCeldas.Add(New Modelo.Celda("ydrazonsocial", True, "Razón Social".ToUpper, 180))
         listEstCeldas.Add(New Modelo.Celda("yddesc", True, "Nombres".ToUpper, 250))
         listEstCeldas.Add(New Modelo.Celda("ydzona", False))
         listEstCeldas.Add(New Modelo.Celda("yddct", False))
         listEstCeldas.Add(New Modelo.Celda("yddctnum", True, "N. Documento".ToUpper, 150))
-        listEstCeldas.Add(New Modelo.Celda("yddirec", True, "Direccion".ToUpper, 180))
-        listEstCeldas.Add(New Modelo.Celda("ydtelf1", False))
-        listEstCeldas.Add(New Modelo.Celda("ydtelf2", False))
+        listEstCeldas.Add(New Modelo.Celda("yddirec", True, "Dirección".ToUpper, 180))
+        listEstCeldas.Add(New Modelo.Celda("ydtelf1", True, "Teléfono".ToUpper, 100))
+        listEstCeldas.Add(New Modelo.Celda("ydtelf2", True, "Contacto".ToUpper, 100))
         listEstCeldas.Add(New Modelo.Celda("ydcat", False))
         listEstCeldas.Add(New Modelo.Celda("ydest", False))
         listEstCeldas.Add(New Modelo.Celda("ydlat", False))
