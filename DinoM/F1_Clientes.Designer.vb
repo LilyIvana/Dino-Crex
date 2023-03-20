@@ -57,6 +57,7 @@ Partial Class F1_Clientes
         Me.SuperTabItem1 = New DevComponents.DotNetBar.SuperTabItem()
         Me.SuperTabControlPanel3 = New DevComponents.DotNetBar.SuperTabControlPanel()
         Me.Panel2 = New System.Windows.Forms.Panel()
+        Me.UsImg = New DinoM.UCImg()
         Me.BtAdicionar = New DevComponents.DotNetBar.ButtonX()
         Me.LabelX15 = New DevComponents.DotNetBar.LabelX()
         Me.SuperTabItem3 = New DevComponents.DotNetBar.SuperTabItem()
@@ -95,7 +96,7 @@ Partial Class F1_Clientes
         Me.cbZona = New Janus.Windows.GridEX.EditControls.MultiColumnCombo()
         Me.cbTipoDoc = New Janus.Windows.GridEX.EditControls.MultiColumnCombo()
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
-        Me.UsImg = New DinoM.UCImg()
+        Me.btExcel = New DevComponents.DotNetBar.ButtonX()
         CType(Me.SuperTabPrincipal, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuperTabPrincipal.SuspendLayout()
         Me.SuperTabControlPanelRegistro.SuspendLayout()
@@ -234,8 +235,12 @@ Partial Class F1_Clientes
         '
         'PanelToolBar2
         '
-        Me.PanelToolBar2.Location = New System.Drawing.Point(1242, 0)
+        Me.PanelToolBar2.Controls.Add(Me.btExcel)
+        Me.PanelToolBar2.Location = New System.Drawing.Point(1162, 0)
         Me.PanelToolBar2.Margin = New System.Windows.Forms.Padding(4)
+        Me.PanelToolBar2.Size = New System.Drawing.Size(160, 72)
+        Me.PanelToolBar2.Controls.SetChildIndex(Me.btExcel, 0)
+        Me.PanelToolBar2.Controls.SetChildIndex(Me.btnImprimir, 0)
         '
         'MPanelSup
         '
@@ -313,6 +318,7 @@ Partial Class F1_Clientes
         '
         'btnImprimir
         '
+        Me.btnImprimir.Size = New System.Drawing.Size(85, 72)
         Me.btnImprimir.Visible = False
         '
         'btnUltimo
@@ -840,6 +846,16 @@ Partial Class F1_Clientes
         Me.Panel2.Name = "Panel2"
         Me.Panel2.Size = New System.Drawing.Size(430, 286)
         Me.Panel2.TabIndex = 223
+        '
+        'UsImg
+        '
+        Me.UsImg.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
+        Me.UsImg.BackColor = System.Drawing.Color.Transparent
+        Me.UsImg.Location = New System.Drawing.Point(100, 14)
+        Me.UsImg.Margin = New System.Windows.Forms.Padding(4)
+        Me.UsImg.Name = "UsImg"
+        Me.UsImg.Size = New System.Drawing.Size(310, 257)
+        Me.UsImg.TabIndex = 222
         '
         'BtAdicionar
         '
@@ -1458,15 +1474,23 @@ Partial Class F1_Clientes
         Me.Timer1.Enabled = True
         Me.Timer1.Interval = 500
         '
-        'UsImg
+        'btExcel
         '
-        Me.UsImg.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
-        Me.UsImg.BackColor = System.Drawing.Color.Transparent
-        Me.UsImg.Location = New System.Drawing.Point(100, 14)
-        Me.UsImg.Margin = New System.Windows.Forms.Padding(4)
-        Me.UsImg.Name = "UsImg"
-        Me.UsImg.Size = New System.Drawing.Size(310, 257)
-        Me.UsImg.TabIndex = 222
+        Me.btExcel.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
+        Me.btExcel.ColorTable = DevComponents.DotNetBar.eButtonColor.Flat
+        Me.btExcel.Dock = System.Windows.Forms.DockStyle.Right
+        Me.btExcel.Font = New System.Drawing.Font("Arial", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btExcel.Image = Global.DinoM.My.Resources.Resources.sheets
+        Me.btExcel.ImageFixedSize = New System.Drawing.Size(45, 50)
+        Me.btExcel.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top
+        Me.btExcel.Location = New System.Drawing.Point(85, 0)
+        Me.btExcel.Name = "btExcel"
+        Me.btExcel.Padding = New System.Windows.Forms.Padding(0, 0, 0, 20)
+        Me.btExcel.Size = New System.Drawing.Size(75, 72)
+        Me.btExcel.Style = DevComponents.DotNetBar.eDotNetBarStyle.OfficeMobile2014
+        Me.btExcel.TabIndex = 12
+        Me.btExcel.Text = "EXPORTAR"
+        Me.btExcel.TextColor = System.Drawing.Color.White
         '
         'F1_Clientes
         '
@@ -1587,4 +1611,5 @@ Partial Class F1_Clientes
     Friend WithEvents TbLCred As DevComponents.DotNetBar.Controls.TextBoxX
     Friend WithEvents LabelX14 As DevComponents.DotNetBar.LabelX
     Friend WithEvents Timer1 As Timer
+    Friend WithEvents btExcel As DevComponents.DotNetBar.ButtonX
 End Class
