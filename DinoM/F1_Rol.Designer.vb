@@ -160,6 +160,9 @@ Partial Class F1_Rol
         'btnSalir
         '
         '
+        'btnGrabar
+        '
+        '
         'PanelToolBar2
         '
         Me.PanelToolBar2.Location = New System.Drawing.Point(1238, 0)

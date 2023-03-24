@@ -467,6 +467,12 @@
     <Compile Include="F1_ExcelVenta.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="F1_PesajeProductos.Designer.vb">
+      <DependentUpon>F1_PesajeProductos.vb</DependentUpon>
+    </Compile>
+    <Compile Include="F1_PesajeProductos.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="F1_Proveedor.Designer.vb">
       <DependentUpon>F1_Proveedor.vb</DependentUpon>
     </Compile>
@@ -755,6 +761,18 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>R_CierreCaja.rpt</DependentUpon>
       <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reporte\R_StickerCodigoBarras2.vb">
+      <DependentUpon>R_StickerCodigoBarras2.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Reporte\R_StickerCodigoBarras.vb">
+      <DependentUpon>R_StickerCodigoBarras.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
     </Compile>
     <Compile Include="Reporte\R_CodigoBarras.vb">
       <AutoGen>True</AutoGen>
@@ -1337,6 +1355,9 @@
     <EmbeddedResource Include="F1_ExcelVenta.resx">
       <DependentUpon>F1_ExcelVenta.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="F1_PesajeProductos.resx">
+      <DependentUpon>F1_PesajeProductos.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="F1_Proveedor.resx">
       <DependentUpon>F1_Proveedor.vb</DependentUpon>
     </EmbeddedResource>
@@ -1475,6 +1496,14 @@
     <EmbeddedResource Include="Reporte\R_CierreCaja.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>R_CierreCaja.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reporte\R_StickerCodigoBarras2.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>R_StickerCodigoBarras2.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reporte\R_StickerCodigoBarras.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>R_StickerCodigoBarras.vb</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Reporte\R_CodigoBarras.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
@@ -2068,6 +2097,7 @@
     <None Include="Resources\trash.png" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\pesaje.png" />
     <None Include="Resources\VENT_PAGOS.png" />
     <None Include="Resources\pie-chart1.png" />
     <None Include="Resources\pie-chart.png" />
@@ -2115,7 +2145,34 @@
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <COMReference Include="ACTIVEBARCODELib">
+      <Guid>{0BFA85A1-F9B8-11CF-8939-444553540000}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="AxACTIVEBARCODELib">
+      <Guid>{0BFA85A1-F9B8-11CF-8939-444553540000}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>aximp</WrapperTool>
+      <Isolated>False</Isolated>
+    </COMReference>
+    <COMReference Include="stdole">
+      <Guid>{00020430-0000-0000-C000-000000000046}</Guid>
+      <VersionMajor>2</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -490,6 +490,7 @@ Public Class F1_Clientes
                                       img, 2000,
                                       eToastGlowColor.Green,
                                       eToastPosition.TopCenter)
+            PanelNavegacion.Enabled = True
             _PMInhabilitar()
             _PMPrimerRegistro()
         Else
@@ -650,6 +651,7 @@ Public Class F1_Clientes
         listEstCeldas.Add(New Modelo.Celda("ydcat", False))
         listEstCeldas.Add(New Modelo.Celda("ydest", False))
         listEstCeldas.Add(New Modelo.Celda("ydlat", True, "Latitud".ToUpper, 90, Format("0.00000")))
+
         listEstCeldas.Add(New Modelo.Celda("ydlongi", True, "Longitud".ToUpper, 90, Format("0.00000")))
         listEstCeldas.Add(New Modelo.Celda("ydprconsu", False))
         listEstCeldas.Add(New Modelo.Celda("ydobs", True, "Observacion".ToUpper, 180))

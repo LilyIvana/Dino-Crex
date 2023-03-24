@@ -71,16 +71,10 @@ Public Class Pr_SAldosPorAlmacenLinea
     End Sub
     Public Sub _prInterpretarDatos(ByRef _dt As DataTable)
         If (CheckTodosAlmacen.Checked And checkTodosGrupos.Checked And CheckMayorCero.Checked) Then
-
             _dt = L_fnTodosAlmacenTodosLineasMayorCero()
-
-
         End If
         If (CheckTodosAlmacen.Checked And checkTodosGrupos.Checked And CheckTodos.Checked) Then
-
             _dt = L_fnTodosAlmacenTodosLineas()
-
-
         End If
         If (checkUnaAlmacen.Checked And checkTodosGrupos.Checked And CheckTodos.Checked) Then
             _dt = L_fnUnaAlmacenTodosLineas(cbAlmacen.Value)
@@ -91,7 +85,6 @@ Public Class Pr_SAldosPorAlmacenLinea
         End If
         If (checkUnaGrupo.Checked And CheckTodosAlmacen.Checked) Then
             _dt = L_fnTodosAlmacenUnaLineas(cbGrupos.Value)
-
         End If
         If (checkUnaAlmacen.Checked And checkUnaGrupo.Checked And CheckTodos.Checked) Then
             _dt = L_fnUnaAlmacenUnaLineas(cbGrupos.Value, cbAlmacen.Value)

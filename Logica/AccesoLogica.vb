@@ -6585,4 +6585,116 @@ Public Class AccesoLogica
 
     End Function
 #End Region
+#Region "Pesaje de Productos"
+    Public Shared Function L_fnGrabarPesajeProducto(ByRef _pcnumi As String, _pcfecha As String, _pccodPro As String,
+                                          _pcprecio As Double, _pcpesoreal As Double, _pcfvenc As String, _pcpeso As Double,
+                                          _pctotal As Double, _pccbarra As String, _pccbarraimp As String) As Boolean
+        Dim _resultado As Boolean
+
+        Dim _Tabla As DataTable
+        Dim _listParam As New List(Of Datos.DParametro)
+
+        _listParam.Add(New Datos.DParametro("@tipo", 1))
+        _listParam.Add(New Datos.DParametro("@pcnumi", _pcnumi))
+        _listParam.Add(New Datos.DParametro("@pcfecha", _pcfecha))
+        _listParam.Add(New Datos.DParametro("@pccodPro", _pccodPro))
+        _listParam.Add(New Datos.DParametro("@pcprecio", _pcprecio))
+        _listParam.Add(New Datos.DParametro("@pcpesoreal", _pcpesoreal))
+        _listParam.Add(New Datos.DParametro("@pcfvenc", _pcfvenc))
+        _listParam.Add(New Datos.DParametro("@pcpeso", _pcpeso))
+        _listParam.Add(New Datos.DParametro("@pctotal", _pctotal))
+        _listParam.Add(New Datos.DParametro("@pccbarra", _pccbarra))
+        _listParam.Add(New Datos.DParametro("@pccbarraimp", _pccbarraimp))
+        _listParam.Add(New Datos.DParametro("@pcuact", L_Usuario))
+
+        _Tabla = D_ProcedimientoConParam("sp_Mam_TPesaje001", _listParam)
+
+        If _Tabla.Rows.Count > 0 Then
+            _pcnumi = _Tabla.Rows(0).Item(0)
+            _resultado = True
+        Else
+            _resultado = False
+        End If
+
+        Return _resultado
+    End Function
+    Public Shared Function L_fnModificarPesajeProducto(ByRef _pcnumi As String, _pcfecha As String, _pccodPro As String,
+                                          _pcprecio As Double, _pcpesoreal As Double, _pcfvenc As String, _pcpeso As Double,
+                                          _pctotal As Double, _pccbarra As String, _pccbarraimp As String) As Boolean
+        Dim _resultado As Boolean
+
+        Dim _Tabla As DataTable
+        Dim _listParam As New List(Of Datos.DParametro)
+
+        _listParam.Add(New Datos.DParametro("@tipo", 2))
+        _listParam.Add(New Datos.DParametro("@pcnumi", _pcnumi))
+        _listParam.Add(New Datos.DParametro("@pcfecha", _pcfecha))
+        _listParam.Add(New Datos.DParametro("@pccodPro", _pccodPro))
+        _listParam.Add(New Datos.DParametro("@pcprecio", _pcprecio))
+        _listParam.Add(New Datos.DParametro("@pcpesoreal", _pcpesoreal))
+        _listParam.Add(New Datos.DParametro("@pcfvenc", _pcfvenc))
+        _listParam.Add(New Datos.DParametro("@pcpeso", _pcpeso))
+        _listParam.Add(New Datos.DParametro("@pctotal", _pctotal))
+        _listParam.Add(New Datos.DParametro("@pccbarra", _pccbarra))
+        _listParam.Add(New Datos.DParametro("@pccbarraimp", _pccbarraimp))
+        _listParam.Add(New Datos.DParametro("@pcuact", L_Usuario))
+
+        _Tabla = D_ProcedimientoConParam("sp_Mam_TPesaje001", _listParam)
+
+        If _Tabla.Rows.Count > 0 Then
+            _pcnumi = _Tabla.Rows(0).Item(0)
+            _resultado = True
+        Else
+            _resultado = False
+        End If
+
+        Return _resultado
+    End Function
+    Public Shared Function L_fnGeneralPesajeProductos() As DataTable
+        Dim _Tabla As DataTable
+
+        Dim _listParam As New List(Of Datos.DParametro)
+
+        _listParam.Add(New Datos.DParametro("@tipo", 3))
+        _listParam.Add(New Datos.DParametro("@pcuact", L_Usuario))
+        _Tabla = D_ProcedimientoConParam("sp_Mam_TPesaje001", _listParam)
+
+        Return _Tabla
+    End Function
+    Public Shared Function L_fnEliminarPesajeProducto(numi As String, ByRef mensaje As String) As Boolean
+        Dim _resultado As Boolean
+        If L_fnbValidarEliminacion(numi, "TPesaje001", "pcnumi", mensaje) = True Then
+            Dim _Tabla As DataTable
+            Dim _listParam As New List(Of Datos.DParametro)
+
+            _listParam.Add(New Datos.DParametro("@tipo", -1))
+            _listParam.Add(New Datos.DParametro("@pcnumi", numi))
+            _listParam.Add(New Datos.DParametro("@pcuact", L_Usuario))
+
+            _Tabla = D_ProcedimientoConParam("sp_Mam_TPesaje001", _listParam)
+
+            If _Tabla.Rows.Count > 0 Then
+                _resultado = True
+            Else
+                _resultado = False
+            End If
+        Else
+            _resultado = False
+        End If
+        Return _resultado
+    End Function
+    Public Shared Function L_fnCodigoBarraUnProducto(pcnumi As String) As DataTable
+
+        Dim _Tabla As DataTable
+
+        Dim _listParam As New List(Of Datos.DParametro)
+
+        _listParam.Add(New Datos.DParametro("@tipo", 4))
+        _listParam.Add(New Datos.DParametro("@pcnumi", pcnumi))
+        _listParam.Add(New Datos.DParametro("@pcuact", L_Usuario))
+        _Tabla = D_ProcedimientoConParam("sp_Mam_TPesaje001", _listParam)
+
+        Return _Tabla
+    End Function
+#End Region
 End Class

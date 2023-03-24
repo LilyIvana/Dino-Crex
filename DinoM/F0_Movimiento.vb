@@ -715,6 +715,12 @@ Public Class F0_Movimiento
             cbAlmacenOrigen.Focus()
             Return False
         End If
+        If (tbObservacion.Text = String.Empty) Then
+            Dim img As Bitmap = New Bitmap(My.Resources.mensaje, 50, 50)
+            ToastNotification.Show(Me, "Por Favor debe colocar una Observación".ToUpper, img, 2500, eToastGlowColor.Red, eToastPosition.BottomCenter)
+            tbObservacion.Focus()
+            Return False
+        End If
         If (cbConcepto.SelectedIndex >= 0) Then
             If (cbConcepto.Value = 6) Then
                 If (cbDepositoDestino.SelectedIndex < 0) Then
