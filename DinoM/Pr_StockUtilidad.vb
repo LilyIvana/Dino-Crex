@@ -96,10 +96,6 @@ Public Class Pr_StockUtilidad
     End Sub
 
 
-
-
-
-
     Private Sub _prCargarComboLibreriaSucursal(mCombo As Janus.Windows.GridEX.EditControls.MultiColumnCombo)
         Dim dt As New DataTable
         dt = L_fnListarSucursales()
