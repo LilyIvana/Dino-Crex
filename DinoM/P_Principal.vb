@@ -1191,10 +1191,10 @@ Public Class P_Principal
     End Sub
 
     Private Sub btConfPesaje_Click(sender As Object, e As EventArgs) Handles btConfPesaje.Click
-        'Dim frm As New F1_PesajeProductos
-        'frm._nameButton = btConfPesaje.Name
-        'frm._modulo = FP_Configuracion
-        Dim frm As New F1_SaldosExcel
+        Dim frm As New F1_PesajeProductos
+        frm._nameButton = btConfPesaje.Name
+        frm._modulo = FP_Configuracion
+
         frm.Show()
     End Sub
 
