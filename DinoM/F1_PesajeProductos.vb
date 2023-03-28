@@ -130,7 +130,7 @@ Public Class F1_PesajeProductos
         tbDescPro.Clear()
         tbPrecio.Text = 0
         tbPesoReal.Value = 0
-        dtFechaVenc.Value = Now.Date
+        dtFechaVenc.Value = DateAdd(DateInterval.Day, 15, Now.Date)
         tbPesoSistema.Value = 0
         tbTotal.Value = 0
         tbCodBarraSist.Clear()
@@ -245,6 +245,16 @@ Public Class F1_PesajeProductos
         Else
             tbPesoReal.BackColor = Color.White
             MEP.SetError(tbPesoReal, "")
+        End If
+
+        If dtFechaVenc.Value <= Now.Date Then
+            dtFechaVenc.BackColor = Color.Red
+            AddHandler dtFechaVenc.KeyDown, AddressOf TextBox_KeyDown
+            MEP.SetError(dtFechaVenc, "La Fecha de Vencimiento no puede ser menor o igual a la fecha Actual!".ToUpper)
+            _ok = False
+        Else
+            dtFechaVenc.BackColor = Color.White
+            MEP.SetError(dtFechaVenc, "")
         End If
 
         MHighlighterFocus.UpdateHighlights()
@@ -557,7 +567,7 @@ Public Class F1_PesajeProductos
             P_Global.Visualizador.Close()
         End If
         P_Global.Visualizador = New Visualizador
-        Dim objrep As New R_StickerCodigoBarras
+        Dim objrep As New R_StickerCodigoBarras2
 
         objrep.SetDataSource(dt)
         objrep.SetParameterValue("CodBarra", tbCodBarraImp.Text)
@@ -612,12 +622,13 @@ Public Class F1_PesajeProductos
 
 
             Dim listEstCeldas As New List(Of Modelo.Celda)
-            listEstCeldas.Add(New Modelo.Celda("yfnumi,", True, "Cód. Dynasys", 100))
-            listEstCeldas.Add(New Modelo.Celda("yfcprod", True, "Cód. Delta", 100))
+            listEstCeldas.Add(New Modelo.Celda("yfnumi,", True, "Cód. Dynasys", 90))
+            listEstCeldas.Add(New Modelo.Celda("yfcprod", True, "Cód. Delta", 90))
+            listEstCeldas.Add(New Modelo.Celda("yfcbarra", True, "Cód. Barra", 110))
             listEstCeldas.Add(New Modelo.Celda("yfcdprod1", True, "Descripción", 280))
             listEstCeldas.Add(New Modelo.Celda("yfcdprod2", False, "", 50))
             listEstCeldas.Add(New Modelo.Celda("yfgr1", False, "", 50))
-            listEstCeldas.Add(New Modelo.Celda("grupo1", True, "Proveedor".ToUpper, 120))
+            listEstCeldas.Add(New Modelo.Celda("grupo1", True, "Proveedor", 120))
             listEstCeldas.Add(New Modelo.Celda("yfgr2", False, "", 50))
             listEstCeldas.Add(New Modelo.Celda("grupo2", False, "", 50))
             listEstCeldas.Add(New Modelo.Celda("yfgr3", False, "", 50))
@@ -628,7 +639,7 @@ Public Class F1_PesajeProductos
             listEstCeldas.Add(New Modelo.Celda("UnidMin", True, "Unidad", 50))
             listEstCeldas.Add(New Modelo.Celda("yhprecio", False, "Precio Costo", 100))
             listEstCeldas.Add(New Modelo.Celda("venta", True, "Precio Venta", 100))
-            listEstCeldas.Add(New Modelo.Celda("stock", True, "Stock".ToUpper, 100))
+            listEstCeldas.Add(New Modelo.Celda("stock", True, "Stock", 100))
 
             Dim ef = New Efecto
             ef.tipo = 3
@@ -636,7 +647,7 @@ Public Class F1_PesajeProductos
             ef.SeleclCol = 1
             ef.listEstCeldas = listEstCeldas
             ef.alto = 50
-            ef.ancho = 350
+            ef.ancho = 250
             ef.Context = "Seleccione Producto".ToUpper
             ef.ShowDialog()
             Dim bandera As Boolean = False

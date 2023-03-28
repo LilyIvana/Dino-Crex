@@ -394,6 +394,11 @@ Public Class F1_Productos
         Dim dtNumi = L_fnConsultarNumi()
         tbCodigo.Text = dtNumi.Rows(0).Item("newNumi")
 
+        'Para generar el Codigo de Barras de los productos por peso
+        If tbDescDet.Text = "CB" Then
+            tbCodBarra.Text = GenerarCBarraPeso(tbCodigo.Text, "")
+        End If
+
         'Dim succes = Homologar(tokenSifac)
         'If succes = 200 Then
         res = L_fnGrabarProducto(tbCodigo.Text, tbCodProd.Text, tbCodBarra.Text, tbDescPro.Text,
@@ -421,6 +426,7 @@ Public Class F1_Productos
                                       )
             tbCodigo.Focus()
             Limpiar = True
+            btnImprimir.Visible = False
         Else
             Dim img As Bitmap = New Bitmap(My.Resources.cancel, 50, 50)
             ToastNotification.Show(Me, "El producto no pudo ser insertado".ToUpper, img, 2000, eToastGlowColor.Red, eToastPosition.BottomCenter)
@@ -432,6 +438,10 @@ Public Class F1_Productos
 
     Public Overrides Function _PMOModificarRegistro() As Boolean
         Dim res As Boolean
+        If tbDescDet.Text = "CB" Then
+            tbCodBarra.Text = GenerarCBarraPeso(tbCodigo.Text, "")
+        End If
+
 
         Dim nameImage As String = JGrM_Buscador.GetValue("yfimg")
         If (Modificado = False) Then
@@ -469,7 +479,29 @@ Public Class F1_Productos
         _PMInhabilitar()
         _PMPrimerRegistro()
         PanelNavegacion.Enabled = True
+        btnImprimir.Visible = False
         Return res
+    End Function
+    Public Function GenerarCBarraPeso(CodPro As String, CBarraPeso As String) As String
+
+        Dim LenCod As Integer = Len(CodPro)
+        Dim CodProducto As String
+
+
+        Select Case LenCod
+            Case 1
+                CodProducto = "0000" & CodPro
+            Case 2
+                CodProducto = "000" & CodPro
+
+                CodProducto = "00" & CodPro
+            Case 4
+                CodProducto = "0" & CodPro
+            Case 5
+                CodProducto = CodPro
+        End Select
+        CBarraPeso = 20 & CodProducto
+        Return CBarraPeso
     End Function
 
     Private Function quitarUltimaFilaVacia(tabla As DataTable) As DataTable
@@ -614,6 +646,22 @@ Public Class F1_Productos
                     tbCodBarra.BackColor = Color.White
                     MEP.SetError(tbCodBarra, "")
                 End If
+            Else
+                tbCodBarra.BackColor = Color.White
+                MEP.SetError(tbCodBarra, "")
+            End If
+        Else
+            tbCodBarra.BackColor = Color.White
+            MEP.SetError(tbCodBarra, "")
+        End If
+
+        If tbDescDet.Text <> "CB" Then
+            Dim DosPrimerosDigitos As String = Mid(tbCodBarra.Text, 1, 2)
+            If DosPrimerosDigitos = "20" Then
+
+                tbCodBarra.BackColor = Color.Red
+                MEP.SetError(tbCodBarra, "No puede colocar códigos de barras que empiecen con 20!".ToUpper)
+                _ok = False
             Else
                 tbCodBarra.BackColor = Color.White
                 MEP.SetError(tbCodBarra, "")
@@ -1126,6 +1174,7 @@ Public Class F1_Productos
             _PMInhabilitar()
             _PMPrimerRegistro()
             PanelNavegacion.Enabled = True
+            btnImprimir.Visible = False
         Else
             '  Public _modulo As SideNavItem
             _modulo.Select()
@@ -1496,4 +1545,5 @@ Public Class F1_Productos
     Private Sub TbPrecioPsifac_KeyPress(sender As Object, e As KeyPressEventArgs)
         g_prValidarTextBox(1, e)
     End Sub
+
 End Class

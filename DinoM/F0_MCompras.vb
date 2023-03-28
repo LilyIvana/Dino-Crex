@@ -814,6 +814,11 @@ Public Class F0_MCompras
             .Caption = "COD. PRODUCTO"
             .Visible = True
         End With
+        With grProductos.RootTable.Columns("yfcbarra")
+            .Width = 120
+            .Caption = "COD. BARRA"
+            .Visible = True
+        End With
 
         With grProductos.RootTable.Columns("yfcdprod1")
             .Width = 350
