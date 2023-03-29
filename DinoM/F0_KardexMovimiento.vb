@@ -285,7 +285,7 @@ Public Class F0_KardexMovimiento
 
         'dar formato a las columnas
         With Dgj1Datos.RootTable.Columns(0)
-            .Caption = "Dcto"
+            .Caption = "CÓDIGO"
             .Key = "id"
             .Width = 70
             .HeaderAlignment = Janus.Windows.GridEX.TextAlignment.Center
@@ -456,7 +456,7 @@ Public Class F0_KardexMovimiento
             .FormatString = "0.00"
         End With
         With Dgj1Datos.RootTable.Columns(16)
-            .Caption = "Saldo"
+            .Caption = "SALDO"
             .Key = "saldo"
             .Width = 80
             .HeaderAlignment = Janus.Windows.GridEX.TextAlignment.Center
