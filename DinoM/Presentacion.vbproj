@@ -600,6 +600,7 @@
     <Compile Include="modelosApi\ConnSiat.vb" />
     <Compile Include="modelosApi\DBApi.vb" />
     <Compile Include="modelosApi\EmisorEnvio.vb" />
+    <Compile Include="modelosApi\ListarFacturas.vb" />
     <Compile Include="modelosApi\EmisorResp.vb" />
     <Compile Include="modelosApi\HomologEnvio.vb" />
     <Compile Include="modelosApi\HomologResp.vb" />

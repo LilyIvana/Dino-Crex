@@ -23,6 +23,7 @@ Imports DinoM.RespMetodosPago
 Imports DinoM.EmisorResp
 Imports DinoM.RespTipoDoc
 Imports DinoM.NitResp
+Imports DinoM.ListarFacturas
 Imports System.Xml
 
 Public Class F0_VentasSupermercado
@@ -54,6 +55,7 @@ Public Class F0_VentasSupermercado
 
     'Token SIFAC
     Public tokenObtenido
+    Public nFactIgual As Boolean
     Public dtDetalle As DataTable
     Public dt As DataTable
 
@@ -101,6 +103,7 @@ Public Class F0_VentasSupermercado
         _CargarBanner()
 
         Programa = P_Principal.btnVentaRapida.Text
+
     End Sub
     Private Sub _CargarBanner()
         Dim ubicacion As String
@@ -602,9 +605,10 @@ Public Class F0_VentasSupermercado
         If _ValidarCampos() = False Then
             Exit Sub
         End If
-        Dim Succes As Integer = Emisor(tokenObtenido)
+        Dim Succes As Integer = Emisor(tokenObtenido, True)
         If Succes = 200 Then
             _GuardarNuevo()
+
         End If
 
     End Sub
@@ -3708,7 +3712,7 @@ Public Class F0_VentasSupermercado
     End Function
 
 
-    Public Function Emisor(tokenObtenido)
+    Public Function Emisor(tokenObtenido, nFactIgual)
 
         Dim api = New DBApi()
         Dim Emenvio = New EmisorEnvio.Emisor()
@@ -3780,12 +3784,34 @@ Public Class F0_VentasSupermercado
 
 
         Dim dtmax = L_fnObtenerMaxFact(gs_NroCaja, Convert.ToInt32(Now.Date.Year))
-        If dtmax.Rows.Count = 0 Then
-            NumFactura = 1
+        If nFactIgual = True Then
+            If dtmax.Rows.Count = 0 Then
+                NumFactura = 1
+            Else
+                Dim maxNFac As Integer = dtmax.Rows(0).Item("fvanfac")
+                NumFactura = maxNFac + 1
+            End If
         Else
-            Dim maxNFac As Integer = dtmax.Rows(0).Item("fvanfac")
-            NumFactura = maxNFac + 1
+            If dtmax.Rows.Count = 0 Then
+                NumFactura = 1
+            Else
+                Dim maxNFac As Integer = dtmax.Rows(0).Item("fvanfac")
+                NumFactura = maxNFac + 2
+            End If
+            'Dim dt = ListarFacturas(tokenObtenido, gs_NroCaja.ToString, (Now.Date.ToString("yyyy/MM/dd")))
+            Dim dt = ListarFacturas(tokenObtenido, gs_NroCaja.ToString, (Now.Date.ToString("yyyy-MM-dd")))
+            If dt.Count > 0 Then
+                Dim Conteo As Integer = dt.Count
+                Dim NAutorizacion = dt(Conteo - 1).cuf
+
+                F0_AnularFactura.AnularFactura(tokenObtenido, NAutorizacion, 3)
+            End If
+
+
         End If
+
+
+
 
         Emenvio.numeroFactura = NumFactura
         Emenvio.nombreRazonSocial = lbCliente.Text.ToString()
@@ -3859,7 +3885,7 @@ Public Class F0_VentasSupermercado
             notifi.Header = "Error de solicitud - Código: " + codigo.ToString() & vbCrLf & " " & vbCrLf & details & vbCrLf & siat & vbCrLf & " " & vbCrLf & "La factura no pudo enviarse al Siat".ToUpper
             notifi.ShowDialog()
             'MsgBox("Error de solicitud: " + codigo.ToString() & vbCrLf & " " & vbCrLf & details & vbCrLf & siat & vbCrLf & " " & vbCrLf & "La factura no pudo enviarse al Siat")
-        ElseIf codigo = 401 Or codigo = 404 Or codigo = 405 Or codigo = 422 Then
+        ElseIf codigo = 401 Or codigo = 404 Or codigo = 405 Then
             Dim details = JsonConvert.SerializeObject(resultError.errors.details)
             Dim notifi = New notifi
 
@@ -3868,6 +3894,35 @@ Public Class F0_VentasSupermercado
             notifi.Header = "Error de solicitud - Código: " + codigo.ToString() & vbCrLf & " " & vbCrLf & details & vbCrLf & " " & vbCrLf & "La factura no pudo enviarse al Siat".ToUpper
             notifi.ShowDialog()
             'MsgBox("Error de solicitud: " + codigo.ToString() & vbCrLf & " " & vbCrLf & details & vbCrLf & " " & vbCrLf & "La factura no pudo enviarse al Siat")
+        ElseIf codigo = 422 Then
+            Dim details = JsonConvert.SerializeObject(resultError.errors.details)
+
+            Dim Mensaje = Replace(details, """", "")
+            Dim Mensaje1 = Replace(Mensaje, "[", "")
+            Dim Mensaje2 = Replace(Mensaje1, "]", "")
+
+            Dim Mensaje3 = Split(Mensaje2, ".")
+
+            Dim MensajeInicial = Mensaje3(0)
+            Dim NroFactUlt = Mensaje3(2).Trim
+
+
+
+            If MensajeInicial = "La Factura No" Then
+                Dim Succes As Integer = Emisor(tokenObtenido, False)
+                If Succes = 200 Then
+                    _GuardarNuevo()
+
+                End If
+            Else
+                Dim notifi = New notifi
+
+                notifi.tipo = 2
+                notifi.Context = "SIFAC".ToUpper
+                notifi.Header = "Error de solicitud - Código: " + codigo.ToString() & vbCrLf & " " & vbCrLf & details & vbCrLf & " " & vbCrLf & "La factura no pudo enviarse al Siat".ToUpper
+                notifi.ShowDialog()
+            End If
+
         End If
 
         Return codigo
@@ -3955,6 +4010,57 @@ Public Class F0_VentasSupermercado
 
     End Function
 
+    Public Function ListarFacturas(tokenObtenido As String, NPventa As String, fecha As String) As List(Of ListarFacturas.Data)
+        Dim pagina = "1"
+        Dim cantpag = "1000"
+        Dim api = New DBApi()
 
+        'Dim url = gb_url + "/api/v2/facturas-emitidas/1/471110/1/100"
+        Dim url = gb_url + "/api/v2/facturas/" + NPventa + "/471110/" + fecha + "/" + fecha + "/1/1000"
+
+
+        Dim headers = New List(Of Parametro) From {
+            New Parametro("Authorization", "Bearer " + tokenObtenido),
+            New Parametro("Content-Type", "Accept:application/json; charset=utf-8")
+        }
+
+        Dim parametros = New List(Of Parametro)
+
+        Dim response = api.MGet(url, headers, parametros)
+
+        Dim result = JsonConvert.DeserializeObject(Of RespListarFacturas)(response)
+        Dim resultError = JsonConvert.DeserializeObject(Of ListarFacturasError)(response)
+
+        Dim codigo = result.meta.code
+        Dim dt = result.data
+
+
+        If codigo = 200 Then
+            'Dim dt = result.data
+
+            'Dim conteo = dt.Count
+
+        ElseIf codigo = 406 Or codigo = 409 Or codigo = 500 Then
+
+            Dim details = JsonConvert.SerializeObject(resultError.errors.details)
+            Dim notifi = New notifi
+
+            notifi.tipo = 2
+            notifi.Context = "SIFAC".ToUpper
+            notifi.Header = "Error de solicitud - Código: " + codigo.ToString() & vbCrLf & " " & vbCrLf & details & vbCrLf & vbCrLf & " " & vbCrLf & "Espere".ToUpper
+            notifi.ShowDialog()
+            'MsgBox("Error de solicitud: " + codigo.ToString() & vbCrLf & " " & vbCrLf & details & vbCrLf & siat & vbCrLf & " " & vbCrLf & "La factura no pudo enviarse al Siat")
+        ElseIf codigo = 400 Or codigo = 401 Or codigo = 404 Or codigo = 405 Or codigo = 422 Then
+            Dim details = JsonConvert.SerializeObject(resultError.errors.details)
+            Dim notifi = New notifi
+
+            notifi.tipo = 2
+            notifi.Context = "SIFAC".ToUpper
+            notifi.Header = "Error de solicitud - Código: " + codigo.ToString() & vbCrLf & " " & vbCrLf & details & vbCrLf & " " & vbCrLf & "Espere".ToUpper
+            notifi.ShowDialog()
+            'MsgBox("Error de solicitud: " + codigo.ToString() & vbCrLf & " " & vbCrLf & details & vbCrLf & " " & vbCrLf & "La factura no pudo enviarse al Siat")
+        End If
+        Return dt
+    End Function
 
 End Class

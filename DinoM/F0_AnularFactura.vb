@@ -19,6 +19,7 @@ Public Class F0_AnularFactura
     Dim _DuracionSms As Integer = 5
     Dim NroFactura As String
     Dim NroAutorizacion As String
+    Dim MotivoAnulacion As Integer
     Public _nameButton As String
     Public _tab As SuperTabItem
     Public Programa As String
@@ -357,7 +358,7 @@ Public Class F0_AnularFactura
 
             If (MessageBox.Show("Esta seguro de ANULAR la Factura " + Tb2NroFactura.Text + " y la Venta " + Tb1Codigo.Text + "?", "PREGUNTA", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = Windows.Forms.DialogResult.Yes) Then
 
-                Dim Succes As Integer = AnularFactura(tokenSifac)
+                Dim Succes As Integer = AnularFactura(tokenSifac, NroAutorizacion, CbMotivoA.Value)
                 If Succes = 200 Then
                     'Primero modifica factura correspondiente a la venta
                     L_Modificar_Factura("fvanumi = " + Tb1Codigo.Text + " and fvanfac = " + NroFactura + " and fvaautoriz = '" + NroAutorizacion + "'", "", "", "", IIf(Sb1Estado.Value, "1", "0"))
@@ -485,14 +486,14 @@ Public Class F0_AnularFactura
         Return ""
     End Function
 
-    Public Function AnularFactura(tokenObtenido)
+    Public Function AnularFactura(tokenObtenido, NroAutorizacion, MotivoAnulacion)
         Try
 
             Dim api = New DBApi()
 
             Dim Aenvio = New AnulacionEnvio()
             Aenvio.cuf = NroAutorizacion
-            Aenvio.codigoMotivo = CbMotivoA.Value
+            Aenvio.codigoMotivo = MotivoAnulacion
 
             Dim url = gb_url + "/api/v2/anular"
 
