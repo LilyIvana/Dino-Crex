@@ -1897,6 +1897,25 @@ Public Class AccesoLogica
         End If
         Return _resultado
     End Function
+
+    Public Shared Function L_fnInsertarFacturaAnuladaSifac(fecha As String, ncaja As Integer, nfact As Integer,
+                                                           autoriz As String, estado As String) As DataTable
+
+        Dim _Tabla As DataTable
+        Dim _listParam As New List(Of Datos.DParametro)
+
+        _listParam.Add(New Datos.DParametro("@tipo", 25))
+        _listParam.Add(New Datos.DParametro("@tafdoc", fecha))
+        _listParam.Add(New Datos.DParametro("@taNrocaja", ncaja))
+        _listParam.Add(New Datos.DParametro("@nrofact", nfact))
+        _listParam.Add(New Datos.DParametro("@nroautoriz", autoriz))
+        _listParam.Add(New Datos.DParametro("@estado", estado))
+        _listParam.Add(New Datos.DParametro("@tauact", L_Usuario))
+
+        _Tabla = D_ProcedimientoConParam("sp_Mam_TV001", _listParam)
+
+        Return _Tabla
+    End Function
     Public Shared Function L_fnMostrarMontos(tanumi As Integer) As DataTable
         Dim _Tabla As DataTable
         Dim _listParam As New List(Of Datos.DParametro)

@@ -20,6 +20,7 @@ Public Class F0_AnularFactura
     Dim NroFactura As String
     Dim NroAutorizacion As String
     Dim MotivoAnulacion As Integer
+    Dim MostrarMensajeAnulacion As Boolean
     Public _nameButton As String
     Public _tab As SuperTabItem
     Public Programa As String
@@ -358,7 +359,7 @@ Public Class F0_AnularFactura
 
             If (MessageBox.Show("Esta seguro de ANULAR la Factura " + Tb2NroFactura.Text + " y la Venta " + Tb1Codigo.Text + "?", "PREGUNTA", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = Windows.Forms.DialogResult.Yes) Then
 
-                Dim Succes As Integer = AnularFactura(tokenSifac, NroAutorizacion, CbMotivoA.Value)
+                Dim Succes As Integer = AnularFactura(tokenSifac, NroAutorizacion, CbMotivoA.Value, True)
                 If Succes = 200 Then
                     'Primero modifica factura correspondiente a la venta
                     L_Modificar_Factura("fvanumi = " + Tb1Codigo.Text + " and fvanfac = " + NroFactura + " and fvaautoriz = '" + NroAutorizacion + "'", "", "", "", IIf(Sb1Estado.Value, "1", "0"))
@@ -486,7 +487,7 @@ Public Class F0_AnularFactura
         Return ""
     End Function
 
-    Public Function AnularFactura(tokenObtenido, NroAutorizacion, MotivoAnulacion)
+    Public Function AnularFactura(tokenObtenido, NroAutorizacion, MotivoAnulacion, MostrarMensajeAnulacion)
         Try
 
             Dim api = New DBApi()
@@ -510,39 +511,41 @@ Public Class F0_AnularFactura
 
             Dim codigo = result.meta.code
 
-            If codigo = 200 Then
-                Dim details = result.data.details
-                Dim notifi = New notifi
+            If MostrarMensajeAnulacion = True Then
+                If codigo = 200 Then
+                    Dim details = result.data.details
+                    Dim notifi = New notifi
 
-                notifi.tipo = 2
-                notifi.Context = "SIFAC".ToUpper
-                notifi.Header = "Proceso Exitoso - Código: " + codigo.ToString() & vbCrLf & " " & vbCrLf & details & vbCrLf & " " & vbCrLf & "Factura Anulada".ToUpper
-                notifi.ShowDialog()
+                    notifi.tipo = 2
+                    notifi.Context = "SIFAC".ToUpper
+                    notifi.Header = "Proceso Exitoso - Código: " + codigo.ToString() & vbCrLf & " " & vbCrLf & details & vbCrLf & " " & vbCrLf & "Factura Anulada".ToUpper
+                    notifi.ShowDialog()
 
-            ElseIf codigo = 400 Or codigo = 401 Or codigo = 404 Or codigo = 405 Or codigo = 422 Then
-                Dim details = JsonConvert.SerializeObject(resultError.errors.details)
-                Dim notifi = New notifi
+                ElseIf codigo = 400 Or codigo = 401 Or codigo = 404 Or codigo = 405 Or codigo = 422 Then
+                    Dim details = JsonConvert.SerializeObject(resultError.errors.details)
+                    Dim notifi = New notifi
 
-                notifi.tipo = 2
-                notifi.Context = "SIFAC".ToUpper
-                notifi.Header = "Error de solicitud - Código: " + codigo.ToString() & vbCrLf & " " & vbCrLf & details & vbCrLf & " " & vbCrLf & "La factura no pudo anularse".ToUpper
-                notifi.ShowDialog()
+                    notifi.tipo = 2
+                    notifi.Context = "SIFAC".ToUpper
+                    notifi.Header = "Error de solicitud - Código: " + codigo.ToString() & vbCrLf & " " & vbCrLf & details & vbCrLf & " " & vbCrLf & "La factura no pudo anularse".ToUpper
+                    notifi.ShowDialog()
 
-            ElseIf codigo = 406 Or codigo = 409 Or codigo = 500 Then
+                ElseIf codigo = 406 Or codigo = 409 Or codigo = 500 Then
 
-                Dim details = JsonConvert.SerializeObject(resultError.errors.details)
-                Dim siat = JsonConvert.SerializeObject(resultError.errors.siat)
-                Dim notifi = New notifi
+                    Dim details = JsonConvert.SerializeObject(resultError.errors.details)
+                    Dim siat = JsonConvert.SerializeObject(resultError.errors.siat)
+                    Dim notifi = New notifi
 
-                notifi.tipo = 2
-                notifi.Context = "SIFAC".ToUpper
-                notifi.Header = "Error de solicitud - Código: " + codigo.ToString() & vbCrLf & " " & vbCrLf & details & vbCrLf & siat & vbCrLf & " " & vbCrLf & "La factura no pudo anularse".ToUpper
-                notifi.ShowDialog()
+                    notifi.tipo = 2
+                    notifi.Context = "SIFAC".ToUpper
+                    notifi.Header = "Error de solicitud - Código: " + codigo.ToString() & vbCrLf & " " & vbCrLf & details & vbCrLf & siat & vbCrLf & " " & vbCrLf & "La factura no pudo anularse".ToUpper
+                    notifi.ShowDialog()
 
+                End If
             End If
 
-            Return codigo
 
+            Return codigo
 
         Catch ex As Exception
             MostrarMensajeError(ex.Message)

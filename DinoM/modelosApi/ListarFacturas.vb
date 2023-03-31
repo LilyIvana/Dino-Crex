@@ -20,8 +20,6 @@
         Public Property sucursal As String
         Public Property puntoVenta As String
         Public Property razonSosial As String
-
-
         Public Property Ci As String
         Public Property usuario As String
         Public Property montoTotal As String
