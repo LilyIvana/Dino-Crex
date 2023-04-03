@@ -284,6 +284,13 @@ Public Class F1_ExcelVenta
                 .Visible = True
                 .Caption = "COD. PROVEEDOR"
             End With
+            With JGrM_Buscador.RootTable.Columns("OBSERVACION")
+                .Width = 120
+                .Visible = True
+                .Caption = "OBSERVACIÓN"
+            End With
+
+
 
             With JGrM_Buscador
                 .DefaultFilterRowComparison = FilterConditionOperator.Contains

@@ -2763,15 +2763,15 @@ Public Class F0_Venta2
                 listEstCeldas.Add(New Modelo.Celda("ydcod", True, "COD. CLI", 100))
                 listEstCeldas.Add(New Modelo.Celda("ydrazonsocial", True, "RAZÓN SOCIAL", 180))
                 listEstCeldas.Add(New Modelo.Celda("yddesc", True, "NOMBRE", 280))
-                listEstCeldas.Add(New Modelo.Celda("yddctnum", True, "N. Documento".ToUpper, 150))
+                listEstCeldas.Add(New Modelo.Celda("yddctnum", False, "N. Documento".ToUpper, 150))
                 listEstCeldas.Add(New Modelo.Celda("yddirec", True, "DIRECCIÓN", 220))
-                listEstCeldas.Add(New Modelo.Celda("ydtelf1", True, "Teléfono".ToUpper, 200))
-                listEstCeldas.Add(New Modelo.Celda("ydfnac", True, "F.Nacimiento".ToUpper, 150, "MM/dd,YYYY"))
+                listEstCeldas.Add(New Modelo.Celda("ydtelf1", True, "Teléfono".ToUpper, 100))
+                listEstCeldas.Add(New Modelo.Celda("ydfnac", False, "F.Nacimiento".ToUpper, 150, "MM/dd,YYYY"))
                 listEstCeldas.Add(New Modelo.Celda("ydnumivend,", False, "ID", 50))
                 listEstCeldas.Add(New Modelo.Celda("vendedor,", False, "ID", 50))
                 listEstCeldas.Add(New Modelo.Celda("yddias", False, "CRED", 50))
                 listEstCeldas.Add(New Modelo.Celda("ydnomfac", False, "Nombre Factura", 50))
-                listEstCeldas.Add(New Modelo.Celda("ydnit", False, "Nit/CI", 50))
+                listEstCeldas.Add(New Modelo.Celda("ydnit", True, "NIT/CI", 90))
                 listEstCeldas.Add(New Modelo.Celda("email", False, "Email", 50))
                 listEstCeldas.Add(New Modelo.Celda("yddct", False, "Tipodoc", 50))
                 Dim ef = New Efecto
@@ -5073,9 +5073,6 @@ salirIf:
             chbTarjeta.Enabled = True
             tbMontoQR.Value = 0
         End If
-
-
-
 
 
     End Sub
