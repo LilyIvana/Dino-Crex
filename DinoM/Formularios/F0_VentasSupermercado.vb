@@ -605,10 +605,9 @@ Public Class F0_VentasSupermercado
         If _ValidarCampos() = False Then
             Exit Sub
         End If
-        Dim Succes As Integer = Emisor(tokenObtenido, True)
+        Dim Succes As Integer = Emisor(tokenObtenido)
         If Succes = 200 Then
             _GuardarNuevo()
-
         End If
 
     End Sub
@@ -3712,7 +3711,7 @@ Public Class F0_VentasSupermercado
     End Function
 
 
-    Public Function Emisor(tokenObtenido, nFactIgual)
+    Public Function Emisor(tokenObtenido)
 
         Dim api = New DBApi()
         Dim Emenvio = New EmisorEnvio.Emisor()
@@ -3772,42 +3771,12 @@ Public Class F0_VentasSupermercado
 
 
         Dim dtmax = L_fnObtenerMaxFact(gs_NroCaja, Convert.ToInt32(Now.Date.Year))
-        If nFactIgual = True Then
-            If dtmax.Rows.Count = 0 Then
-                NumFactura = 1
-            Else
-                Dim maxNFac As Integer = dtmax.Rows(0).Item("fvanfac")
-                NumFactura = maxNFac + 1
-            End If
+        If dtmax.Rows.Count = 0 Then
+            NumFactura = 1
         Else
-            If dtmax.Rows.Count = 0 Then
-                Dim maxNFac As Integer = 0
-                NumFactura = maxNFac + 2
-            Else
-                Dim maxNFac As Integer = dtmax.Rows(0).Item("fvanfac")
-                NumFactura = maxNFac + 2
-            End If
-
-            Dim FechaI = Date.Today.AddDays(-1).ToString("yyyy-MM-dd")
-            Dim FechaF = (Now.Date.ToString("yyyy-MM-dd"))
-
-
-            Dim dt = ListarFacturas(tokenObtenido, gs_NroCaja.ToString, FechaI, FechaF)
-            If dt.Count > 0 Then
-                Dim Conteo As Integer = dt.Count
-                Dim NAutorizacion = dt(Conteo - 1).cuf
-                Dim NroFactAnulada = dt(Conteo - 1).numeroFactura
-
-                Dim Succes As Integer = F0_AnularFactura.AnularFactura(tokenObtenido, NAutorizacion, 3, False)
-                If Succes = 200 Then
-                    L_fnInsertarFacturaAnuladaSifac((Now.Date.ToString("yyyy-MM-dd")), gs_NroCaja, NroFactAnulada, NAutorizacion, "ANULADA")
-                Else
-                    L_fnInsertarFacturaAnuladaSifac((Now.Date.ToString("yyyy-MM-dd")), gs_NroCaja, NroFactAnulada, NAutorizacion, "NO ANULADA")
-                End If
-            End If
-
+            Dim maxNFac As Integer = dtmax.Rows(0).Item("fvanfac")
+            NumFactura = maxNFac + 1
         End If
-
 
         Emenvio.numeroFactura = NumFactura
         Emenvio.nombreRazonSocial = lbCliente.Text.ToString()
@@ -3840,7 +3809,6 @@ Public Class F0_VentasSupermercado
         }
 
         Dim parametros = New List(Of Parametro)
-
         Dim response = api.Post(url, headers, parametros, Emenvio)
 
         Dim result = JsonConvert.DeserializeObject(Of RespEmisor)(response)
@@ -3869,9 +3837,8 @@ Public Class F0_VentasSupermercado
             notifi.Context = "SIFAC".ToUpper
             notifi.Header = "Proceso Exitoso - Código: " + codigo.ToString() & vbCrLf & " " & vbCrLf & details & vbCrLf & " " & vbCrLf & "Factura enviada al Siat".ToUpper
             notifi.ShowDialog()
-            'MsgBox("Proceso Exitoso: " + codigo.ToString() & vbCrLf & " " & vbCrLf & details & vbCrLf & " " & vbCrLf & "Factura enviada al Siat")
-        ElseIf codigo = 400 Or codigo = 500 Then
 
+        ElseIf codigo = 400 Or codigo = 500 Then
             Dim details = JsonConvert.SerializeObject(resultError.errors.details)
             Dim siat = JsonConvert.SerializeObject(resultError.errors.siat)
             Dim notifi = New notifi
@@ -3880,7 +3847,7 @@ Public Class F0_VentasSupermercado
             notifi.Context = "SIFAC".ToUpper
             notifi.Header = "Error de solicitud - Código: " + codigo.ToString() & vbCrLf & " " & vbCrLf & details & vbCrLf & siat & vbCrLf & " " & vbCrLf & "La factura no pudo enviarse al Siat".ToUpper
             notifi.ShowDialog()
-            'MsgBox("Error de solicitud: " + codigo.ToString() & vbCrLf & " " & vbCrLf & details & vbCrLf & siat & vbCrLf & " " & vbCrLf & "La factura no pudo enviarse al Siat")
+
         ElseIf codigo = 401 Or codigo = 404 Or codigo = 405 Then
             Dim details = JsonConvert.SerializeObject(resultError.errors.details)
             Dim notifi = New notifi
@@ -3889,24 +3856,98 @@ Public Class F0_VentasSupermercado
             notifi.Context = "SIFAC".ToUpper
             notifi.Header = "Error de solicitud - Código: " + codigo.ToString() & vbCrLf & " " & vbCrLf & details & vbCrLf & " " & vbCrLf & "La factura no pudo enviarse al Siat".ToUpper
             notifi.ShowDialog()
-            'MsgBox("Error de solicitud: " + codigo.ToString() & vbCrLf & " " & vbCrLf & details & vbCrLf & " " & vbCrLf & "La factura no pudo enviarse al Siat")
+
         ElseIf codigo = 422 Then
             Dim details = JsonConvert.SerializeObject(resultError.errors.details)
 
             Dim Mensaje = Replace(details, """", "")
             Dim Mensaje1 = Replace(Mensaje, "[", "")
             Dim Mensaje2 = Replace(Mensaje1, "]", "")
-
             Dim Mensaje3 = Split(Mensaje2, ".")
 
             Dim MensajeInicial = Mensaje3(0)
             Dim NroFactUlt = Mensaje3(2).Trim
 
             If MensajeInicial = "La Factura No" Then
-                Dim Succes As Integer = Emisor(tokenObtenido, False)
-                If Succes = 200 Then
-                    _GuardarNuevo()
+                'Dim Succes As Integer = Emisor(tokenObtenido, False)
+                'If Succes = 200 Then
+                '    _GuardarNuevo()
+                'End If
+
+                If dtmax.Rows.Count = 0 Then
+                    Dim maxNFac As Integer = 0
+                    NumFactura = maxNFac + 2
+                Else
+                    Dim maxNFac As Integer = dtmax.Rows(0).Item("fvanfac")
+                    NumFactura = maxNFac + 2
                 End If
+
+                Dim FechaI = Date.Today.AddDays(-1).ToString("yyyy-MM-dd")
+                Dim FechaF = (Now.Date.ToString("yyyy-MM-dd"))
+
+                Dim dt = ListarFacturas(tokenObtenido, gs_NroCaja.ToString, FechaI, FechaF)
+                If dt.Count > 0 Then
+                    Dim Conteo As Integer = dt.Count
+                    Dim NAutorizacion = dt(Conteo - 1).cuf
+                    Dim NroFactAnulada = dt(Conteo - 1).numeroFactura
+
+                    Dim Succes As Integer = F0_AnularFactura.AnularFactura(tokenObtenido, NAutorizacion, 3, False)
+                    If Succes = 200 Then
+                        L_fnInsertarFacturaAnuladaSifac((Now.Date.ToString("yyyy-MM-dd")), gs_NroCaja, NroFactAnulada, NAutorizacion, "ANULADA")
+                    Else
+                        L_fnInsertarFacturaAnuladaSifac((Now.Date.ToString("yyyy-MM-dd")), gs_NroCaja, NroFactAnulada, NAutorizacion, "NO ANULADA")
+                    End If
+                Else
+                    L_fnInsertarFacturaAnuladaSifac((Now.Date.ToString("yyyy-MM-dd")), gs_NroCaja, (NumFactura - 1), 0, "NO ANULADA")
+                End If
+
+                Emenvio.numeroFactura = NumFactura
+
+                Dim json2 = JsonConvert.SerializeObject(Emenvio)
+                Dim url2 = gb_url + "/api/v2/emision"
+
+                Dim headers2 = New List(Of Parametro) From {
+                    New Parametro("Authorization", "Bearer " + tokenObtenido),
+                    New Parametro("Content-Type", "Accept:application/json; charset=utf-8")
+                }
+
+                Dim parametros2 = New List(Of Parametro)
+                Dim response2 = api.Post(url2, headers2, parametros2, Emenvio)
+                Dim result2 = JsonConvert.DeserializeObject(Of RespEmisor)(response2)
+                Dim resultError2 = JsonConvert.DeserializeObject(Of Resp400)(response2)
+
+                codigo = result2.meta.code
+                Dim xml2 As String
+                If codigo = 200 Then
+                    Dim details2 = result2.data.details
+                    xml2 = result2.data.dataXml
+                    Dim doc As XmlDocument = New XmlDocument()
+                    doc.LoadXml(xml2)
+                    Dim nodo = doc.DocumentElement("cabecera")
+                    gb_cufSifac = nodo.ChildNodes.Item(5).InnerText 'extrae dato CUF de xml sifac
+
+                    NroFact = result2.data.numeroFactura
+                    QrUrl = result2.data.qrUrl
+                    FactUrl = result2.data.facturaUrl
+                    SegundaLeyenda = result2.data.leyenda
+                    TerceraLeyenda = result2.data.terceraLeyenda
+                    Cudf = result2.data.cufd
+
+                    Dim notifi = New notifi
+
+                    notifi.tipo = 2
+                    notifi.Context = "SIFAC".ToUpper
+                    notifi.Header = "Proceso Exitoso - Código: " + codigo.ToString() & vbCrLf & " " & vbCrLf & details2 & vbCrLf & " " & vbCrLf & "Factura enviada al Siat".ToUpper
+                    notifi.ShowDialog()
+                Else
+                    Dim notifi = New notifi
+
+                    notifi.tipo = 2
+                    notifi.Context = "ADMINISTRACION".ToUpper
+                    notifi.Header = "Ocurrió algún inconveniente, comunicarse con el Administrador del Sistema.".ToUpper
+                    notifi.ShowDialog()
+                End If
+
             Else
                 Dim notifi = New notifi
 
