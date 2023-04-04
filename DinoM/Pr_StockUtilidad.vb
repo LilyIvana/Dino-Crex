@@ -99,7 +99,7 @@ Public Class Pr_StockUtilidad
 
 
 
-    Private Sub _prCargarComboLibreriaSucursal(mCombo As Janus.Windows.GridEX.EditControls.MultiColumnCombo)
+    Public Sub _prCargarComboLibreriaSucursal(mCombo As Janus.Windows.GridEX.EditControls.MultiColumnCombo)
         Dim dt As New DataTable
         dt = L_fnListarSucursales()
         With mCombo
@@ -114,11 +114,12 @@ Public Class Pr_StockUtilidad
             .Refresh()
         End With
         If (dt.Rows.Count > 0) Then
+            'mCombo.SelectedIndex = 0
             tbAlmacen.SelectedIndex = 0
         End If
     End Sub
 
-    Private Sub _prCargarComboLibreriaPrecioVenta(mCombo As Janus.Windows.GridEX.EditControls.MultiColumnCombo)
+    Public Sub _prCargarComboLibreriaPrecioVenta(mCombo As Janus.Windows.GridEX.EditControls.MultiColumnCombo)
         Dim dt As New DataTable
         dt = L_prListarPrecioVenta()
         With mCombo
@@ -133,6 +134,7 @@ Public Class Pr_StockUtilidad
             .Refresh()
         End With
         If (dt.Rows.Count > 0) Then
+            'mCombo.SelectedIndex = 0
             tbcatprecio.SelectedIndex = 0
         End If
     End Sub

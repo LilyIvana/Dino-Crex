@@ -20,8 +20,9 @@ Public Class F1_SaldosExcel
 #End Region
 #Region "Metodos Privados"
     Private Sub _prIniciarTodo()
-        Me.Text = "VENTAS DETALLADAS POR PRODUCTOS PARA EXPORTAR"
-        tbFechaI.Value = Now.Date
+        Me.Text = "SALDOS VALORADOS PARA EXPORTAR A EXCEL"
+        _prCargarComboLibreriaSucursal(tbAlmacen)
+        _prCargarComboLibreriaPrecioVenta(tbcatprecio)
         tbFechaF.Value = Now.Date
 
         Dim blah As New Bitmap(New Bitmap(My.Resources.producto), 20, 20)
@@ -30,7 +31,44 @@ Public Class F1_SaldosExcel
 
         btnImprimir.Visible = False
     End Sub
+    Public Sub _prCargarComboLibreriaSucursal(mCombo As Janus.Windows.GridEX.EditControls.MultiColumnCombo)
+        Dim dt As New DataTable
+        dt = L_fnListarSucursales()
+        With mCombo
+            .DropDownList.Columns.Clear()
+            .DropDownList.Columns.Add("aanumi").Width = 60
+            .DropDownList.Columns("aanumi").Caption = "COD"
+            .DropDownList.Columns.Add("aabdes").Width = 500
+            .DropDownList.Columns("aabdes").Caption = "SUCURSAL"
+            .ValueMember = "aanumi"
+            .DisplayMember = "aabdes"
+            .DataSource = dt
+            .Refresh()
+        End With
+        If (dt.Rows.Count > 0) Then
+            mCombo.SelectedIndex = 0
+        End If
+    End Sub
 
+    Public Sub _prCargarComboLibreriaPrecioVenta(mCombo As Janus.Windows.GridEX.EditControls.MultiColumnCombo)
+        Dim dt As New DataTable
+        dt = L_prListarCatPrecios()
+        With mCombo
+            .DropDownList.Columns.Clear()
+            .DropDownList.Columns.Add("ygnumi").Width = 60
+            .DropDownList.Columns("ygnumi").Caption = "COD"
+            .DropDownList.Columns.Add("ygdesc").Width = 500
+            .DropDownList.Columns("ygdesc").Caption = "SUCURSAL"
+            .ValueMember = "ygnumi"
+            .DisplayMember = "ygdesc"
+            .DataSource = dt
+            .Refresh()
+        End With
+        If (dt.Rows.Count > 0) Then
+            mCombo.SelectedIndex = 0
+
+        End If
+    End Sub
 
     Private Sub _prAsignarPermisos()
 
@@ -88,29 +126,32 @@ Public Class F1_SaldosExcel
     End Sub
 
     Private Sub _prCrearCarpetaReportes()
-        Dim rutaDestino As String = RutaGlobal + "\Reporte\Reporte Productos\"
+        Dim rutaDestino As String = RutaGlobal + "\Reporte\Reporte SaldoProductos\"
 
-        If System.IO.Directory.Exists(RutaGlobal + "\Reporte\Reporte Productos\") = False Then
+        If System.IO.Directory.Exists(RutaGlobal + "\Reporte\Reporte SaldoProductos\") = False Then
             If System.IO.Directory.Exists(RutaGlobal + "\Reporte") = False Then
                 System.IO.Directory.CreateDirectory(RutaGlobal + "\Reporte")
-                If System.IO.Directory.Exists(RutaGlobal + "\Reporte\Reporte Productos") = False Then
-                    System.IO.Directory.CreateDirectory(RutaGlobal + "\Reporte\Reporte Productos")
+                If System.IO.Directory.Exists(RutaGlobal + "\Reporte\Reporte SaldoProductos") = False Then
+                    System.IO.Directory.CreateDirectory(RutaGlobal + "\Reporte\Reporte SaldoProductos")
                 End If
             Else
-                If System.IO.Directory.Exists(RutaGlobal + "\Reporte\Reporte Productos") = False Then
-                    System.IO.Directory.CreateDirectory(RutaGlobal + "\Reporte\Reporte Productos")
+                If System.IO.Directory.Exists(RutaGlobal + "\Reporte\Reporte SaldoProductos") = False Then
+                    System.IO.Directory.CreateDirectory(RutaGlobal + "\Reporte\Reporte SaldoProductos")
 
                 End If
             End If
         End If
     End Sub
-    Private Sub _prCargarVenta()
-        Dim fechaDesde As DateTime = tbFechaI.Value.ToString("yyyy/MM/dd")
-        Dim fechaHasta As DateTime = tbFechaF.Value.ToString("yyyy/MM/dd")
-        Dim dt As DataTable = L_prReporteUtilidadal(1, 1099, fechaDesde)
+    Private Sub _prCargarDatos()
+        Dim _dt As New DataTable
+        _prInterpretarDatos(_dt)
 
-        If dt.Rows.Count > 0 Then
-            JGrM_Buscador.DataSource = dt
+
+
+        'Dim dt As DataTable = L_prReporteUtilidadal(1, 1099, fechaHasta)
+
+        If _dt.Rows.Count > 0 Then
+            JGrM_Buscador.DataSource = _dt
             JGrM_Buscador.RetrieveStructure()
             JGrM_Buscador.AlternatingColors = True
 
@@ -303,6 +344,26 @@ Public Class F1_SaldosExcel
         End If
 
     End Sub
+    Public Sub _prInterpretarDatos(ByRef _dt As DataTable)
+
+        If (tbAlmacen.SelectedIndex >= 0 And tbcatprecio.SelectedIndex >= 0 And Checktodos.Checked And CheckBox1.Checked = False) Then
+            _dt = L_prReporteUtilidad(tbAlmacen.Value, tbcatprecio.Value)
+        End If
+
+        If (tbAlmacen.SelectedIndex >= 0 And tbcatprecio.SelectedIndex >= 0 And checkMayorCero.Checked And CheckBox1.Checked = False) Then
+                _dt = L_prReporteUtilidadStockMayorCero(tbAlmacen.Value, tbcatprecio.Value)
+            End If
+
+            If (tbAlmacen.SelectedIndex >= 0 And tbcatprecio.SelectedIndex >= 0 And Checktodos.Checked And CheckBox1.Checked) Then
+            _dt = L_prReporteUtilidadal(tbAlmacen.Value, tbcatprecio.Value, tbFechaF.Value.ToString("dd/MM/yyyy"))
+        End If
+
+            If (tbAlmacen.SelectedIndex >= 0 And tbcatprecio.SelectedIndex >= 0 And checkMayorCero.Checked And CheckBox1.Checked) Then
+            _dt = L_prReporteUtilidadmayor(tbAlmacen.Value, tbcatprecio.Value, tbFechaF.Value.ToString("dd/MM/yyyy"))
+        End If
+
+
+    End Sub
 #End Region
 
     Private Sub F1_Productos_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -339,7 +400,7 @@ Public Class F1_SaldosExcel
                 Dim _escritor As StreamWriter
                 Dim _fila As Integer = JGrM_Buscador.GetRows.Length
                 Dim _columna As Integer = JGrM_Buscador.RootTable.Columns.Count
-                Dim _archivo As String = _ubicacion & "\VentaProductos_" & Now.Date.Day &
+                Dim _archivo As String = _ubicacion & "\SaldoProductos_" & Now.Date.Day &
                     "." & Now.Date.Month & "." & Now.Date.Year & "_" & Now.Hour & "." & Now.Minute & "." & Now.Second & ".csv"
                 Dim _linea As String = ""
                 Dim _filadata = 0, columndata As Int32 = 0
@@ -407,9 +468,6 @@ Public Class F1_SaldosExcel
     End Function
 
 
-
-
-
     Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
         _Inter = _Inter + 1
         If _Inter = 1 Then
@@ -422,22 +480,30 @@ Public Class F1_SaldosExcel
     End Sub
 
     Private Sub btnGenerar_Click(sender As Object, e As EventArgs) Handles btnGenerar.Click
-        _prCargarVenta()
+        _prCargarDatos()
     End Sub
 
     Private Sub btnExportarExcel_Click(sender As Object, e As EventArgs) Handles btnExportarExcel.Click
         _prCrearCarpetaReportes()
         Dim img As Bitmap = New Bitmap(My.Resources.checked, 50, 50)
-        If (P_ExportarExcel(RutaGlobal + "\Reporte\Reporte Productos")) Then
-            ToastNotification.Show(Me, "EXPORTACIÓN DE VENTA-PRODUCTOS EXITOSA..!!!",
+        If (P_ExportarExcel(RutaGlobal + "\Reporte\Reporte SaldoProductos")) Then
+            ToastNotification.Show(Me, "EXPORTACIÓN DE SALDO DE PRODUCTOS EXITOSA..!!!",
                                        img, 2000,
                                        eToastGlowColor.Green,
                                        eToastPosition.BottomCenter)
         Else
-            ToastNotification.Show(Me, "FALLÓ LA EXPORTACIÓN DE VENTA-PRODUCTOS..!!!",
+            ToastNotification.Show(Me, "FALLÓ LA EXPORTACIÓN DE SALDO DE PRODUCTOS..!!!",
                                        My.Resources.WARNING, 2000,
                                        eToastGlowColor.Red,
                                        eToastPosition.BottomLeft)
+        End If
+    End Sub
+
+    Private Sub CheckBox1_CheckedChanged(sender As Object, e As EventArgs) Handles CheckBox1.CheckedChanged
+        If (CheckBox1.Checked = True) Then
+            tbFechaF.Enabled = True
+        Else
+            tbFechaF.Enabled = False
         End If
     End Sub
 End Class
