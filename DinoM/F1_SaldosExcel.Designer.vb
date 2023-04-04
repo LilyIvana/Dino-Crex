@@ -25,24 +25,24 @@ Partial Class F1_SaldosExcel
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(F1_SaldosExcel))
-        Dim tbcatprecio_DesignTimeLayout As Janus.Windows.GridEX.GridEXLayout = New Janus.Windows.GridEX.GridEXLayout()
         Dim tbAlmacen_DesignTimeLayout As Janus.Windows.GridEX.GridEXLayout = New Janus.Windows.GridEX.GridEXLayout()
+        Dim tbcatprecio_DesignTimeLayout As Janus.Windows.GridEX.GridEXLayout = New Janus.Windows.GridEX.GridEXLayout()
         Me.btExcel = New DevComponents.DotNetBar.ButtonX()
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         Me.GroupPanel2 = New DevComponents.DotNetBar.Controls.GroupPanel()
         Me.Panel1 = New System.Windows.Forms.Panel()
-        Me.btnExportarExcel = New DevComponents.DotNetBar.ButtonX()
-        Me.btnGenerar = New DevComponents.DotNetBar.ButtonX()
-        Me.tbFechaF = New DevComponents.Editors.DateTimeAdv.DateTimeInput()
-        Me.LabelX2 = New DevComponents.DotNetBar.LabelX()
-        Me.tbcatprecio = New Janus.Windows.GridEX.EditControls.MultiColumnCombo()
-        Me.tbAlmacen = New Janus.Windows.GridEX.EditControls.MultiColumnCombo()
-        Me.LabelX3 = New DevComponents.DotNetBar.LabelX()
-        Me.CheckBox1 = New System.Windows.Forms.CheckBox()
-        Me.LabelX1 = New DevComponents.DotNetBar.LabelX()
         Me.Panel2 = New System.Windows.Forms.Panel()
         Me.checkMayorCero = New DevComponents.DotNetBar.Controls.CheckBoxX()
         Me.Checktodos = New DevComponents.DotNetBar.Controls.CheckBoxX()
+        Me.LabelX1 = New DevComponents.DotNetBar.LabelX()
+        Me.cbFechaAl = New System.Windows.Forms.CheckBox()
+        Me.tbAlmacen = New Janus.Windows.GridEX.EditControls.MultiColumnCombo()
+        Me.LabelX3 = New DevComponents.DotNetBar.LabelX()
+        Me.LabelX2 = New DevComponents.DotNetBar.LabelX()
+        Me.tbcatprecio = New Janus.Windows.GridEX.EditControls.MultiColumnCombo()
+        Me.btnExportarExcel = New DevComponents.DotNetBar.ButtonX()
+        Me.btnGenerar = New DevComponents.DotNetBar.ButtonX()
+        Me.tbFechaF = New DevComponents.Editors.DateTimeAdv.DateTimeInput()
         CType(Me.SuperTabPrincipal, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuperTabPrincipal.SuspendLayout()
         Me.SuperTabControlPanelRegistro.SuspendLayout()
@@ -61,10 +61,10 @@ Partial Class F1_SaldosExcel
         CType(Me.MEP, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupPanel2.SuspendLayout()
         Me.Panel1.SuspendLayout()
-        CType(Me.tbFechaF, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.tbcatprecio, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.tbAlmacen, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel2.SuspendLayout()
+        CType(Me.tbAlmacen, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.tbcatprecio, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.tbFechaF, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'SuperTabPrincipal
@@ -323,7 +323,7 @@ Partial Class F1_SaldosExcel
         Me.Panel1.AutoScroll = True
         Me.Panel1.Controls.Add(Me.Panel2)
         Me.Panel1.Controls.Add(Me.LabelX1)
-        Me.Panel1.Controls.Add(Me.CheckBox1)
+        Me.Panel1.Controls.Add(Me.cbFechaAl)
         Me.Panel1.Controls.Add(Me.tbAlmacen)
         Me.Panel1.Controls.Add(Me.LabelX3)
         Me.Panel1.Controls.Add(Me.LabelX2)
@@ -336,6 +336,139 @@ Partial Class F1_SaldosExcel
         Me.Panel1.Name = "Panel1"
         Me.Panel1.Size = New System.Drawing.Size(1316, 77)
         Me.Panel1.TabIndex = 227
+        '
+        'Panel2
+        '
+        Me.Panel2.Controls.Add(Me.checkMayorCero)
+        Me.Panel2.Controls.Add(Me.Checktodos)
+        Me.Panel2.Location = New System.Drawing.Point(391, 28)
+        Me.Panel2.Name = "Panel2"
+        Me.Panel2.Size = New System.Drawing.Size(180, 30)
+        Me.Panel2.TabIndex = 259
+        '
+        'checkMayorCero
+        '
+        '
+        '
+        '
+        Me.checkMayorCero.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.checkMayorCero.CheckBoxStyle = DevComponents.DotNetBar.eCheckBoxStyle.RadioButton
+        Me.checkMayorCero.Location = New System.Drawing.Point(2, 2)
+        Me.checkMayorCero.Name = "checkMayorCero"
+        Me.checkMayorCero.Size = New System.Drawing.Size(89, 23)
+        Me.checkMayorCero.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+        Me.checkMayorCero.TabIndex = 252
+        Me.checkMayorCero.Text = "Mayor a O"
+        '
+        'Checktodos
+        '
+        '
+        '
+        '
+        Me.Checktodos.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.Checktodos.CheckBoxStyle = DevComponents.DotNetBar.eCheckBoxStyle.RadioButton
+        Me.Checktodos.Checked = True
+        Me.Checktodos.CheckState = System.Windows.Forms.CheckState.Checked
+        Me.Checktodos.CheckValue = "Y"
+        Me.Checktodos.Location = New System.Drawing.Point(123, 2)
+        Me.Checktodos.Name = "Checktodos"
+        Me.Checktodos.Size = New System.Drawing.Size(54, 23)
+        Me.Checktodos.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+        Me.Checktodos.TabIndex = 252
+        Me.Checktodos.Text = "Todos"
+        '
+        'LabelX1
+        '
+        Me.LabelX1.BackColor = System.Drawing.Color.Transparent
+        '
+        '
+        '
+        Me.LabelX1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.LabelX1.Font = New System.Drawing.Font("Georgia", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LabelX1.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(85, Byte), Integer), CType(CType(139, Byte), Integer))
+        Me.LabelX1.Location = New System.Drawing.Point(391, 6)
+        Me.LabelX1.Name = "LabelX1"
+        Me.LabelX1.SingleLineColor = System.Drawing.SystemColors.Control
+        Me.LabelX1.Size = New System.Drawing.Size(74, 23)
+        Me.LabelX1.TabIndex = 258
+        Me.LabelX1.Text = "Stock:"
+        '
+        'cbFechaAl
+        '
+        Me.cbFechaAl.AutoSize = True
+        Me.cbFechaAl.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(85, Byte), Integer), CType(CType(139, Byte), Integer))
+        Me.cbFechaAl.Location = New System.Drawing.Point(603, 33)
+        Me.cbFechaAl.Name = "cbFechaAl"
+        Me.cbFechaAl.Size = New System.Drawing.Size(48, 20)
+        Me.cbFechaAl.TabIndex = 257
+        Me.cbFechaAl.Text = "Al:"
+        Me.cbFechaAl.UseVisualStyleBackColor = True
+        '
+        'tbAlmacen
+        '
+        Me.tbAlmacen.BackColor = System.Drawing.Color.White
+        tbAlmacen_DesignTimeLayout.LayoutString = resources.GetString("tbAlmacen_DesignTimeLayout.LayoutString")
+        Me.tbAlmacen.DesignTimeLayout = tbAlmacen_DesignTimeLayout
+        Me.tbAlmacen.DisabledBackColor = System.Drawing.Color.White
+        Me.tbAlmacen.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.tbAlmacen.Location = New System.Drawing.Point(191, 33)
+        Me.tbAlmacen.Name = "tbAlmacen"
+        Me.tbAlmacen.Office2007ColorScheme = Janus.Windows.GridEX.Office2007ColorScheme.Custom
+        Me.tbAlmacen.Office2007CustomColor = System.Drawing.Color.DodgerBlue
+        Me.tbAlmacen.SelectedIndex = -1
+        Me.tbAlmacen.SelectedItem = Nothing
+        Me.tbAlmacen.Size = New System.Drawing.Size(164, 22)
+        Me.tbAlmacen.TabIndex = 254
+        Me.tbAlmacen.VisualStyle = Janus.Windows.GridEX.VisualStyle.Office2007
+        '
+        'LabelX3
+        '
+        Me.LabelX3.BackColor = System.Drawing.Color.Transparent
+        '
+        '
+        '
+        Me.LabelX3.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.LabelX3.Font = New System.Drawing.Font("Georgia", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LabelX3.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(85, Byte), Integer), CType(CType(139, Byte), Integer))
+        Me.LabelX3.Location = New System.Drawing.Point(191, 4)
+        Me.LabelX3.Name = "LabelX3"
+        Me.LabelX3.SingleLineColor = System.Drawing.SystemColors.Control
+        Me.LabelX3.Size = New System.Drawing.Size(74, 23)
+        Me.LabelX3.TabIndex = 253
+        Me.LabelX3.Text = "Almacen:"
+        '
+        'LabelX2
+        '
+        Me.LabelX2.BackColor = System.Drawing.Color.Transparent
+        '
+        '
+        '
+        Me.LabelX2.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.LabelX2.Font = New System.Drawing.Font("Georgia", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LabelX2.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(85, Byte), Integer), CType(CType(139, Byte), Integer))
+        Me.LabelX2.Location = New System.Drawing.Point(10, 4)
+        Me.LabelX2.Name = "LabelX2"
+        Me.LabelX2.SingleLineColor = System.Drawing.SystemColors.Control
+        Me.LabelX2.Size = New System.Drawing.Size(120, 23)
+        Me.LabelX2.TabIndex = 252
+        Me.LabelX2.Text = "Categoria Precio:"
+        '
+        'tbcatprecio
+        '
+        Me.tbcatprecio.BackColor = System.Drawing.Color.White
+        tbcatprecio_DesignTimeLayout.LayoutString = resources.GetString("tbcatprecio_DesignTimeLayout.LayoutString")
+        Me.tbcatprecio.DesignTimeLayout = tbcatprecio_DesignTimeLayout
+        Me.tbcatprecio.DisabledBackColor = System.Drawing.Color.White
+        Me.tbcatprecio.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.tbcatprecio.Location = New System.Drawing.Point(9, 33)
+        Me.tbcatprecio.Name = "tbcatprecio"
+        Me.tbcatprecio.Office2007ColorScheme = Janus.Windows.GridEX.Office2007ColorScheme.Custom
+        Me.tbcatprecio.Office2007CustomColor = System.Drawing.Color.DodgerBlue
+        Me.tbcatprecio.SelectedIndex = -1
+        Me.tbcatprecio.SelectedItem = Nothing
+        Me.tbcatprecio.Size = New System.Drawing.Size(164, 22)
+        Me.tbcatprecio.TabIndex = 251
+        Me.tbcatprecio.VisualStyle = Janus.Windows.GridEX.VisualStyle.Office2007
         '
         'btnExportarExcel
         '
@@ -413,139 +546,6 @@ Partial Class F1_SaldosExcel
         Me.tbFechaF.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
         Me.tbFechaF.TabIndex = 238
         '
-        'LabelX2
-        '
-        Me.LabelX2.BackColor = System.Drawing.Color.Transparent
-        '
-        '
-        '
-        Me.LabelX2.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.LabelX2.Font = New System.Drawing.Font("Georgia", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelX2.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(85, Byte), Integer), CType(CType(139, Byte), Integer))
-        Me.LabelX2.Location = New System.Drawing.Point(10, 4)
-        Me.LabelX2.Name = "LabelX2"
-        Me.LabelX2.SingleLineColor = System.Drawing.SystemColors.Control
-        Me.LabelX2.Size = New System.Drawing.Size(120, 23)
-        Me.LabelX2.TabIndex = 252
-        Me.LabelX2.Text = "Categoria Precio:"
-        '
-        'tbcatprecio
-        '
-        Me.tbcatprecio.BackColor = System.Drawing.Color.White
-        tbcatprecio_DesignTimeLayout.LayoutString = resources.GetString("tbcatprecio_DesignTimeLayout.LayoutString")
-        Me.tbcatprecio.DesignTimeLayout = tbcatprecio_DesignTimeLayout
-        Me.tbcatprecio.DisabledBackColor = System.Drawing.Color.White
-        Me.tbcatprecio.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.tbcatprecio.Location = New System.Drawing.Point(9, 33)
-        Me.tbcatprecio.Name = "tbcatprecio"
-        Me.tbcatprecio.Office2007ColorScheme = Janus.Windows.GridEX.Office2007ColorScheme.Custom
-        Me.tbcatprecio.Office2007CustomColor = System.Drawing.Color.DodgerBlue
-        Me.tbcatprecio.SelectedIndex = -1
-        Me.tbcatprecio.SelectedItem = Nothing
-        Me.tbcatprecio.Size = New System.Drawing.Size(164, 22)
-        Me.tbcatprecio.TabIndex = 251
-        Me.tbcatprecio.VisualStyle = Janus.Windows.GridEX.VisualStyle.Office2007
-        '
-        'tbAlmacen
-        '
-        Me.tbAlmacen.BackColor = System.Drawing.Color.White
-        tbAlmacen_DesignTimeLayout.LayoutString = resources.GetString("tbAlmacen_DesignTimeLayout.LayoutString")
-        Me.tbAlmacen.DesignTimeLayout = tbAlmacen_DesignTimeLayout
-        Me.tbAlmacen.DisabledBackColor = System.Drawing.Color.White
-        Me.tbAlmacen.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.tbAlmacen.Location = New System.Drawing.Point(191, 33)
-        Me.tbAlmacen.Name = "tbAlmacen"
-        Me.tbAlmacen.Office2007ColorScheme = Janus.Windows.GridEX.Office2007ColorScheme.Custom
-        Me.tbAlmacen.Office2007CustomColor = System.Drawing.Color.DodgerBlue
-        Me.tbAlmacen.SelectedIndex = -1
-        Me.tbAlmacen.SelectedItem = Nothing
-        Me.tbAlmacen.Size = New System.Drawing.Size(164, 22)
-        Me.tbAlmacen.TabIndex = 254
-        Me.tbAlmacen.VisualStyle = Janus.Windows.GridEX.VisualStyle.Office2007
-        '
-        'LabelX3
-        '
-        Me.LabelX3.BackColor = System.Drawing.Color.Transparent
-        '
-        '
-        '
-        Me.LabelX3.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.LabelX3.Font = New System.Drawing.Font("Georgia", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelX3.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(85, Byte), Integer), CType(CType(139, Byte), Integer))
-        Me.LabelX3.Location = New System.Drawing.Point(191, 4)
-        Me.LabelX3.Name = "LabelX3"
-        Me.LabelX3.SingleLineColor = System.Drawing.SystemColors.Control
-        Me.LabelX3.Size = New System.Drawing.Size(74, 23)
-        Me.LabelX3.TabIndex = 253
-        Me.LabelX3.Text = "Almacen:"
-        '
-        'CheckBox1
-        '
-        Me.CheckBox1.AutoSize = True
-        Me.CheckBox1.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(85, Byte), Integer), CType(CType(139, Byte), Integer))
-        Me.CheckBox1.Location = New System.Drawing.Point(603, 33)
-        Me.CheckBox1.Name = "CheckBox1"
-        Me.CheckBox1.Size = New System.Drawing.Size(48, 20)
-        Me.CheckBox1.TabIndex = 257
-        Me.CheckBox1.Text = "Al:"
-        Me.CheckBox1.UseVisualStyleBackColor = True
-        '
-        'LabelX1
-        '
-        Me.LabelX1.BackColor = System.Drawing.Color.Transparent
-        '
-        '
-        '
-        Me.LabelX1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.LabelX1.Font = New System.Drawing.Font("Georgia", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelX1.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(85, Byte), Integer), CType(CType(139, Byte), Integer))
-        Me.LabelX1.Location = New System.Drawing.Point(391, 6)
-        Me.LabelX1.Name = "LabelX1"
-        Me.LabelX1.SingleLineColor = System.Drawing.SystemColors.Control
-        Me.LabelX1.Size = New System.Drawing.Size(74, 23)
-        Me.LabelX1.TabIndex = 258
-        Me.LabelX1.Text = "Stock:"
-        '
-        'Panel2
-        '
-        Me.Panel2.Controls.Add(Me.checkMayorCero)
-        Me.Panel2.Controls.Add(Me.Checktodos)
-        Me.Panel2.Location = New System.Drawing.Point(391, 28)
-        Me.Panel2.Name = "Panel2"
-        Me.Panel2.Size = New System.Drawing.Size(180, 30)
-        Me.Panel2.TabIndex = 259
-        '
-        'checkMayorCero
-        '
-        '
-        '
-        '
-        Me.checkMayorCero.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.checkMayorCero.CheckBoxStyle = DevComponents.DotNetBar.eCheckBoxStyle.RadioButton
-        Me.checkMayorCero.Location = New System.Drawing.Point(2, 2)
-        Me.checkMayorCero.Name = "checkMayorCero"
-        Me.checkMayorCero.Size = New System.Drawing.Size(89, 23)
-        Me.checkMayorCero.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-        Me.checkMayorCero.TabIndex = 252
-        Me.checkMayorCero.Text = "Mayor a O"
-        '
-        'Checktodos
-        '
-        '
-        '
-        '
-        Me.Checktodos.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.Checktodos.CheckBoxStyle = DevComponents.DotNetBar.eCheckBoxStyle.RadioButton
-        Me.Checktodos.Checked = True
-        Me.Checktodos.CheckState = System.Windows.Forms.CheckState.Checked
-        Me.Checktodos.CheckValue = "Y"
-        Me.Checktodos.Location = New System.Drawing.Point(123, 2)
-        Me.Checktodos.Name = "Checktodos"
-        Me.Checktodos.Size = New System.Drawing.Size(54, 23)
-        Me.Checktodos.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-        Me.Checktodos.TabIndex = 252
-        Me.Checktodos.Text = "Todos"
-        '
         'F1_SaldosExcel
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -576,10 +576,10 @@ Partial Class F1_SaldosExcel
         Me.GroupPanel2.ResumeLayout(False)
         Me.Panel1.ResumeLayout(False)
         Me.Panel1.PerformLayout()
-        CType(Me.tbFechaF, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.tbcatprecio, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.tbAlmacen, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Panel2.ResumeLayout(False)
+        CType(Me.tbAlmacen, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.tbcatprecio, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.tbFechaF, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -594,7 +594,7 @@ Partial Class F1_SaldosExcel
     Friend WithEvents tbcatprecio As Janus.Windows.GridEX.EditControls.MultiColumnCombo
     Friend WithEvents tbAlmacen As Janus.Windows.GridEX.EditControls.MultiColumnCombo
     Friend WithEvents LabelX3 As DevComponents.DotNetBar.LabelX
-    Friend WithEvents CheckBox1 As CheckBox
+    Friend WithEvents cbFechaAl As CheckBox
     Friend WithEvents LabelX1 As DevComponents.DotNetBar.LabelX
     Friend WithEvents Panel2 As Panel
     Friend WithEvents checkMayorCero As DevComponents.DotNetBar.Controls.CheckBoxX

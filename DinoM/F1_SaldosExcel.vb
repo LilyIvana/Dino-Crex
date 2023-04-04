@@ -144,11 +144,30 @@ Public Class F1_SaldosExcel
     End Sub
     Private Sub _prCargarDatos()
         Dim _dt As New DataTable
-        _prInterpretarDatos(_dt)
 
 
+        If (tbAlmacen.SelectedIndex >= 0 And tbcatprecio.SelectedIndex >= 0 And Checktodos.Checked And cbFechaAl.Checked = False) Then
+            _dt = L_prReporteUtilidadNueva(tbAlmacen.Value, tbcatprecio.Value)
+        End If
 
-        'Dim dt As DataTable = L_prReporteUtilidadal(1, 1099, fechaHasta)
+
+        If (tbAlmacen.SelectedIndex >= 0 And tbcatprecio.SelectedIndex >= 0 And checkMayorCero.Checked And cbFechaAl.Checked = False) Then
+            _dt = L_prReporteUtilidadStockMayorCeroNuevo(tbAlmacen.Value, tbcatprecio.Value)
+        End If
+
+
+        If (tbAlmacen.SelectedIndex >= 0 And tbcatprecio.SelectedIndex >= 0 And Checktodos.Checked And cbFechaAl.Checked) Then
+            _dt = L_prReporteUtilidadAlNueva(tbAlmacen.Value, tbcatprecio.Value, tbFechaF.Value.ToString("yyyy/MM/dd"))
+        End If
+
+
+        If (tbAlmacen.SelectedIndex >= 0 And tbcatprecio.SelectedIndex >= 0 And checkMayorCero.Checked And cbFechaAl.Checked) Then
+            _dt = L_prReporteUtilidadmayorNuevo(tbAlmacen.Value, tbcatprecio.Value, tbFechaF.Value.ToString("yyyy/MM/dd"))
+        End If
+
+        Dim fechaHasta As Date = tbFechaF.Value.ToString("yyyy/MM/dd")
+
+        'Dim dt As DataTable = L_prReporteUtilidadaNuevo(1, 1099, fechaHasta)
 
         If _dt.Rows.Count > 0 Then
             JGrM_Buscador.DataSource = _dt
@@ -346,19 +365,19 @@ Public Class F1_SaldosExcel
     End Sub
     Public Sub _prInterpretarDatos(ByRef _dt As DataTable)
 
-        If (tbAlmacen.SelectedIndex >= 0 And tbcatprecio.SelectedIndex >= 0 And Checktodos.Checked And CheckBox1.Checked = False) Then
+        If (tbAlmacen.SelectedIndex >= 0 And tbcatprecio.SelectedIndex >= 0 And Checktodos.Checked And cbFechaAl.Checked = False) Then
             _dt = L_prReporteUtilidad(tbAlmacen.Value, tbcatprecio.Value)
         End If
 
-        If (tbAlmacen.SelectedIndex >= 0 And tbcatprecio.SelectedIndex >= 0 And checkMayorCero.Checked And CheckBox1.Checked = False) Then
-                _dt = L_prReporteUtilidadStockMayorCero(tbAlmacen.Value, tbcatprecio.Value)
-            End If
+        If (tbAlmacen.SelectedIndex >= 0 And tbcatprecio.SelectedIndex >= 0 And checkMayorCero.Checked And cbFechaAl.Checked = False) Then
+            _dt = L_prReporteUtilidadStockMayorCero(tbAlmacen.Value, tbcatprecio.Value)
+        End If
 
-            If (tbAlmacen.SelectedIndex >= 0 And tbcatprecio.SelectedIndex >= 0 And Checktodos.Checked And CheckBox1.Checked) Then
+        If (tbAlmacen.SelectedIndex >= 0 And tbcatprecio.SelectedIndex >= 0 And Checktodos.Checked And cbFechaAl.Checked) Then
             _dt = L_prReporteUtilidadal(tbAlmacen.Value, tbcatprecio.Value, tbFechaF.Value.ToString("dd/MM/yyyy"))
         End If
 
-            If (tbAlmacen.SelectedIndex >= 0 And tbcatprecio.SelectedIndex >= 0 And checkMayorCero.Checked And CheckBox1.Checked) Then
+        If (tbAlmacen.SelectedIndex >= 0 And tbcatprecio.SelectedIndex >= 0 And checkMayorCero.Checked And cbFechaAl.Checked) Then
             _dt = L_prReporteUtilidadmayor(tbAlmacen.Value, tbcatprecio.Value, tbFechaF.Value.ToString("dd/MM/yyyy"))
         End If
 
@@ -499,8 +518,8 @@ Public Class F1_SaldosExcel
         End If
     End Sub
 
-    Private Sub CheckBox1_CheckedChanged(sender As Object, e As EventArgs) Handles CheckBox1.CheckedChanged
-        If (CheckBox1.Checked = True) Then
+    Private Sub cbFechaAl_CheckedChanged(sender As Object, e As EventArgs) Handles cbFechaAl.CheckedChanged
+        If (cbFechaAl.Checked = True) Then
             tbFechaF.Enabled = True
         Else
             tbFechaF.Enabled = False

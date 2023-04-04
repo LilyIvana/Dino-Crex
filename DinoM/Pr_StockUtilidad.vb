@@ -26,31 +26,44 @@ Public Class Pr_StockUtilidad
         If swConsolidado.Value = False Then
             'tbAlmacen.Value = 1
             If Checktodos.Checked Then
-                _dt = L_prReporteUtilidadConsolidado(tbAlmacen.Value, tbcatprecio.Value, date1.Value.ToString("dd/MM/yyyy"), 0)
+                '_dt = L_prReporteUtilidadConsolidado(tbAlmacen.Value, tbcatprecio.Value, date1.Value.ToString("yyyy/MM/dd"), 0)
+                _dt = L_prReporteUtilidadConsolidadoNuevo(tbAlmacen.Value, tbcatprecio.Value, date1.Value.ToString("yyyy/MM/dd"), 0)
+
             Else
-                _dt = L_prReporteUtilidadConsolidado(tbAlmacen.Value, tbcatprecio.Value, date1.Value.ToString("dd/MM/yyyy"), 1)
+                '_dt = L_prReporteUtilidadConsolidado(tbAlmacen.Value, tbcatprecio.Value, date1.Value.ToString("yyyy/MM/dd"), 1)
+                _dt = L_prReporteUtilidadConsolidadoNuevo(tbAlmacen.Value, tbcatprecio.Value, date1.Value.ToString("yyyy/MM/dd"), 1)
             End If
 
         Else
+            'If (tbAlmacen.SelectedIndex >= 0 And tbcatprecio.SelectedIndex >= 0 And Checktodos.Checked And CheckBox1.Checked = False) Then
+            '    _dt = L_prReporteUtilidad(tbAlmacen.Value, tbcatprecio.Value)
+            'End If
             If (tbAlmacen.SelectedIndex >= 0 And tbcatprecio.SelectedIndex >= 0 And Checktodos.Checked And CheckBox1.Checked = False) Then
-                _dt = L_prReporteUtilidad(tbAlmacen.Value, tbcatprecio.Value)
+                _dt = L_prReporteUtilidadNueva(tbAlmacen.Value, tbcatprecio.Value)
             End If
 
+            'If (tbAlmacen.SelectedIndex >= 0 And tbcatprecio.SelectedIndex >= 0 And checkMayorCero.Checked And CheckBox1.Checked = False) Then
+            '    _dt = L_prReporteUtilidadStockMayorCero(tbAlmacen.Value, tbcatprecio.Value)
+            'End If
             If (tbAlmacen.SelectedIndex >= 0 And tbcatprecio.SelectedIndex >= 0 And checkMayorCero.Checked And CheckBox1.Checked = False) Then
-                _dt = L_prReporteUtilidadStockMayorCero(tbAlmacen.Value, tbcatprecio.Value)
+                _dt = L_prReporteUtilidadStockMayorCeroNuevo(tbAlmacen.Value, tbcatprecio.Value)
             End If
 
+            'If (tbAlmacen.SelectedIndex >= 0 And tbcatprecio.SelectedIndex >= 0 And Checktodos.Checked And CheckBox1.Checked) Then
+            '    _dt = L_prReporteUtilidadal(tbAlmacen.Value, tbcatprecio.Value, date1.Value.ToString("yyyy/MM/dd"))
+            'End If
             If (tbAlmacen.SelectedIndex >= 0 And tbcatprecio.SelectedIndex >= 0 And Checktodos.Checked And CheckBox1.Checked) Then
-                _dt = L_prReporteUtilidadal(tbAlmacen.Value, tbcatprecio.Value, date1.Value.ToString("dd/MM/yyyy"))
-            End If
-
-            If (tbAlmacen.SelectedIndex >= 0 And tbcatprecio.SelectedIndex >= 0 And checkMayorCero.Checked And CheckBox1.Checked) Then
-                _dt = L_prReporteUtilidadmayor(tbAlmacen.Value, tbcatprecio.Value, date1.Value.ToString("dd/MM/yyyy"))
+                _dt = L_prReporteUtilidadAlNueva(tbAlmacen.Value, tbcatprecio.Value, date1.Value.ToString("yyyy/MM/dd"))
             End If
 
             'If (tbAlmacen.SelectedIndex >= 0 And tbcatprecio.SelectedIndex >= 0 And checkMayorCero.Checked And CheckBox1.Checked) Then
-            '    _dt = L_prReporteUtilidadConsolidado(tbAlmacen.Value, tbcatprecio.Value, date1.Text)
+            '    _dt = L_prReporteUtilidadmayor(tbAlmacen.Value, tbcatprecio.Value, date1.Value.ToString("yyyy/MM/dd"))
             'End If
+            If (tbAlmacen.SelectedIndex >= 0 And tbcatprecio.SelectedIndex >= 0 And checkMayorCero.Checked And CheckBox1.Checked) Then
+                _dt = L_prReporteUtilidadmayorNuevo(tbAlmacen.Value, tbcatprecio.Value, date1.Value.ToString("yyyy/MM/dd"))
+            End If
+
+
         End If
 
     End Sub
