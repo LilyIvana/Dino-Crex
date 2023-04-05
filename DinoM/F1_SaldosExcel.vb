@@ -157,7 +157,9 @@ Public Class F1_SaldosExcel
 
 
         If (tbAlmacen.SelectedIndex >= 0 And tbcatprecio.SelectedIndex >= 0 And Checktodos.Checked And cbFechaAl.Checked) Then
-            _dt = L_prReporteUtilidadAlNueva(tbAlmacen.Value, tbcatprecio.Value, tbFechaF.Value.ToString("yyyy/MM/dd"))
+            '_dt = L_prReporteUtilidadAlNueva(tbAlmacen.Value, tbcatprecio.Value, tbFechaF.Value.ToString("yyyy/MM/dd"))
+            _dt = L_prReporteUtilidadNuevo(tbAlmacen.Value, tbcatprecio.Value, tbFechaF.Value.ToString("yyyy/MM/dd"))
+
         End If
 
 

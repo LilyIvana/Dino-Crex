@@ -4370,6 +4370,22 @@ Public Class AccesoLogica
 
         Return _Tabla
     End Function
+    Public Shared Function L_fnActualizarSaldoNuevo(_Almacen As Integer, _CodProducto As String, _Cantidad As Double,
+                                                    Lote As String, FechaVenc As Date) As DataTable
+        Dim _Tabla As DataTable
+        Dim _listParam As New List(Of Datos.DParametro)
+        _listParam.Add(New Datos.DParametro("@tipo", 46))
+        _listParam.Add(New Datos.DParametro("@ibuact", L_Usuario))
+        _listParam.Add(New Datos.DParametro("@producto", _CodProducto))
+        _listParam.Add(New Datos.DParametro("@almacen", _Almacen))
+        _listParam.Add(New Datos.DParametro("@cantidad", _Cantidad))
+        _listParam.Add(New Datos.DParametro("@cblote", Lote))
+        _listParam.Add(New Datos.DParametro("@cbfechavenc", FechaVenc))
+
+        _Tabla = D_ProcedimientoConParam("sp_Mam_TI002", _listParam)
+
+        Return _Tabla
+    End Function
 
     Public Shared Function L_fnStockActual() As DataTable
         Dim _Tabla As DataTable
@@ -6801,7 +6817,7 @@ Public Class AccesoLogica
 
         Return _Tabla
     End Function
-    Public Shared Function L_prReporteUtilidadaNuevo(_codAlmacen As Integer, _codCat As Integer, _date1 As String) As DataTable
+    Public Shared Function L_prReporteUtilidadNuevo(_codAlmacen As Integer, _codCat As Integer, _date1 As String) As DataTable
         Dim _Tabla As DataTable
 
         Dim _listParam As New List(Of Datos.DParametro)

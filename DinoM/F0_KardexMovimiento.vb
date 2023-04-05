@@ -272,8 +272,30 @@ Public Class F0_KardexMovimiento
                 End If
             End If
         End If
-    End Sub
 
+
+    End Sub
+    Private Sub ActualizarSaldosDesiguales()
+        If (cbAlmacen.SelectedIndex < 0) Then
+            Return
+
+        End If
+        If (Dt1Kardex.Rows.Count > 0) Then
+
+            Dim saldoAct As Double = IIf(tbsaldo.Text = String.Empty, 0, tbsaldo.Text)
+            Dim SaldoTabla As Double = IIf(IsDBNull(Dt1Kardex.Rows(Dt1Kardex.Rows.Count - 1).Item("saldo")), 0, Dt1Kardex.Rows(Dt1Kardex.Rows.Count - 1).Item("saldo"))
+            Dim Lote As String = Dt1Kardex.Rows(Dt1Kardex.Rows.Count - 1).Item("Lote")
+            Dim FechaVenc As String = Dt1Kardex.Rows(Dt1Kardex.Rows.Count - 1).Item("FechaVenc")
+            If (saldoAct = SaldoTabla) Then
+                Return
+            End If
+            If (Now.Date.ToString("yyyy/MM/dd").Equals(tbFechaF.Value.ToString("yyyy/MM/dd")) And tblote.Text = String.Empty) Then
+                L_fnActualizarSaldoNuevo(cbAlmacen.Value, tbCodigo.Text, Dt1Kardex.Rows(Dt1Kardex.Rows.Count - 1).Item("saldo").ToString, Lote, FechaVenc)
+                tbsaldo.Text = Dt1Kardex.Rows(Dt1Kardex.Rows.Count - 1).Item("saldo").ToString
+
+            End If
+        End If
+    End Sub
     Private Sub P_ArmarGrillaDatos()
         Dt1Kardex = New DataTable
         Dt2KardexTotal = New DataTable
