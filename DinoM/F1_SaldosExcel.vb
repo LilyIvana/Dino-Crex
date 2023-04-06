@@ -70,60 +70,7 @@ Public Class F1_SaldosExcel
         End If
     End Sub
 
-    Private Sub _prAsignarPermisos()
 
-        Dim dtRolUsu As DataTable = L_prRolDetalleGeneral(gi_userRol, _nameButton)
-
-        Dim show As Boolean = dtRolUsu.Rows(0).Item("ycshow")
-        Dim add As Boolean = dtRolUsu.Rows(0).Item("ycadd")
-        Dim modif As Boolean = dtRolUsu.Rows(0).Item("ycmod")
-        Dim del As Boolean = dtRolUsu.Rows(0).Item("ycdel")
-
-        If add = False Then
-            btnNuevo.Visible = False
-        End If
-        If modif = False Then
-            btnModificar.Visible = False
-        End If
-        If del = False Then
-            btnEliminar.Visible = False
-        End If
-    End Sub
-    Private Sub _prCrearCarpetaTemporal()
-
-        If System.IO.Directory.Exists(RutaTemporal) = False Then
-            System.IO.Directory.CreateDirectory(RutaTemporal)
-        Else
-            Try
-                My.Computer.FileSystem.DeleteDirectory(RutaTemporal, FileIO.DeleteDirectoryOption.DeleteAllContents)
-                My.Computer.FileSystem.CreateDirectory(RutaTemporal)
-                'My.Computer.FileSystem.DeleteDirectory(RutaTemporal, FileIO.UIOption.AllDialogs, FileIO.RecycleOption.SendToRecycleBin)
-                'System.IO.Directory.CreateDirectory(RutaTemporal)
-
-            Catch ex As Exception
-
-            End Try
-
-        End If
-
-    End Sub
-    Private Sub _prCrearCarpetaImagenes()
-        Dim rutaDestino As String = RutaGlobal + "\Imagenes\Imagenes ProductoDino\"
-
-        If System.IO.Directory.Exists(RutaGlobal + "\Imagenes\Imagenes ProductoDino\") = False Then
-            If System.IO.Directory.Exists(RutaGlobal + "\Imagenes") = False Then
-                System.IO.Directory.CreateDirectory(RutaGlobal + "\Imagenes")
-                If System.IO.Directory.Exists(RutaGlobal + "\Imagenes\Imagenes ProductoDino") = False Then
-                    System.IO.Directory.CreateDirectory(RutaGlobal + "\Imagenes\Imagenes ProductoDino")
-                End If
-            Else
-                If System.IO.Directory.Exists(RutaGlobal + "\Imagenes\Imagenes ProductoDino") = False Then
-                    System.IO.Directory.CreateDirectory(RutaGlobal + "\Imagenes\Imagenes ProductoDino")
-
-                End If
-            End If
-        End If
-    End Sub
 
     Private Sub _prCrearCarpetaReportes()
         Dim rutaDestino As String = RutaGlobal + "\Reporte\Reporte SaldoProductos\"
