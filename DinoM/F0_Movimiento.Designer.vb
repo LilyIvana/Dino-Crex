@@ -456,7 +456,7 @@ Partial Class F0_Movimiento
         Me.lbDepositoDestino.SingleLineColor = System.Drawing.SystemColors.Control
         Me.lbDepositoDestino.Size = New System.Drawing.Size(104, 16)
         Me.lbDepositoDestino.TabIndex = 236
-        Me.lbDepositoDestino.Text = "Deposito Salida:"
+        Me.lbDepositoDestino.Text = "Depósito Salida:"
         Me.lbDepositoDestino.Visible = False
         '
         'cbAlmacenOrigen
@@ -489,7 +489,7 @@ Partial Class F0_Movimiento
         Me.lbDepositoOrigen.SingleLineColor = System.Drawing.SystemColors.Control
         Me.lbDepositoOrigen.Size = New System.Drawing.Size(62, 16)
         Me.lbDepositoOrigen.TabIndex = 234
-        Me.lbDepositoOrigen.Text = "Deposito:"
+        Me.lbDepositoOrigen.Text = "Depósito:"
         '
         'tbFecha
         '
@@ -571,7 +571,7 @@ Partial Class F0_Movimiento
         Me.LabelX4.SingleLineColor = System.Drawing.SystemColors.Control
         Me.LabelX4.Size = New System.Drawing.Size(84, 16)
         Me.LabelX4.TabIndex = 231
-        Me.LabelX4.Text = "Observacion:"
+        Me.LabelX4.Text = "Observación:"
         '
         'cbConcepto
         '

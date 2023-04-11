@@ -336,6 +336,8 @@ Public Class F0_Venta2
         tbTotalDo.Text = "0.00"
         chbTarjeta.Checked = False
         chbQR.Checked = False
+        chbTarjeta.Enabled = True
+        chbQR.Enabled = True
         tbNroTarjeta1.Text = ""
         tbNroTarjeta3.Text = ""
         lbNroTarjeta.Visible = False
@@ -928,12 +930,12 @@ Public Class F0_Venta2
     Private Sub ArmarGrillaProducto(dtname As DataTable, visualizarGrupo As Boolean)
         With grProductos.RootTable.Columns("yfnumi")
             .Width = 130
-            .Caption = "Código"
-            .Visible = False
+            .Caption = "Cód. Dynasys"
+            .Visible = True
         End With
         With grProductos.RootTable.Columns("yfcprod")
             .Width = 80
-            .Caption = "Código"
+            .Caption = "Cód.Delta"
             .Visible = True
         End With
         With grProductos.RootTable.Columns("yfcbarra")
@@ -971,7 +973,8 @@ Public Class F0_Venta2
             .Caption = "CATEGORIA"
             .Width = 120
             .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Near
-            .Visible = visualizarGrupo
+            '.Visible = visualizarGrupo
+            .Visible = False
             .WordWrap = True
             .MaxLines = 20
         End With
@@ -989,7 +992,8 @@ Public Class F0_Venta2
                 .Width = 120
                 .Caption = dtname.Rows(0).Item("Grupo 2").ToString
                 .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Near
-                .Visible = visualizarGrupo
+                '.Visible = visualizarGrupo
+                .Visible = False
                 .WordWrap = True
                 .MaxLines = 20
             End With

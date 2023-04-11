@@ -1375,8 +1375,8 @@ salirIf:
                 If (CType(cbAlmacenOrigen.DataSource, DataTable).Rows.Count > 1) Then
                     lbDepositoDestino.Visible = True
                     cbDepositoDestino.Visible = True
-                    lbDepositoOrigen.Text = "Deposito Origen"
-                    lbDepositoDestino.Text = "Deposito Destino"
+                    lbDepositoOrigen.Text = "Depósito Origen"
+                    lbDepositoDestino.Text = "Depósito Destino"
                     cbDepositoDestino.SelectedIndex = 1
                     If (Not _fnAccesible()) Then
                         btnModificar.Enabled = False
@@ -1384,7 +1384,7 @@ salirIf:
                 Else
                     lbDepositoDestino.Visible = False
                     cbDepositoDestino.Visible = False
-                    lbDepositoOrigen.Text = "Deposito:"
+                    lbDepositoOrigen.Text = "Depósito:"
                     If (Not _fnAccesible()) Then
                         btnModificar.Enabled = True
                     End If
@@ -1393,7 +1393,7 @@ salirIf:
                 btnModificar.Enabled = True
                 lbDepositoDestino.Visible = False
                 cbDepositoDestino.Visible = False
-                lbDepositoOrigen.Text = "Deposito:"
+                lbDepositoOrigen.Text = "Depósito:"
 
             End If
             If (_fnAccesible() And tbCodigo.Text = String.Empty) Then
