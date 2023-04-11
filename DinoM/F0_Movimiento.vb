@@ -350,7 +350,7 @@ Public Class F0_Movimiento
             .Caption = "CONCEPTO"
         End With
         With grmovimiento.RootTable.Columns("ibobs")
-            .Width = 900
+            .Width = 800
             .Visible = True
             .Caption = "observacion".ToUpper
         End With
@@ -386,9 +386,10 @@ Public Class F0_Movimiento
             .Visible = False
         End With
         With grmovimiento.RootTable.Columns("ibuact")
-            .Width = 50
+            .Width = 100
+            .Caption = "USUARIO"
             .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Near
-            .Visible = False
+            .Visible = True
         End With
 
         With grmovimiento.RootTable.Columns("ibdepdest")

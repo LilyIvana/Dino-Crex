@@ -60,7 +60,7 @@ Public Class Pr_StockMinimo
         _prCargarComboLibreriaSucursal(cbAlmacen)
         _prCargarComboGrupos(cbGrupos)
         _PMIniciarTodo()
-        Me.Text = "SALDOS DE PRODUCTOS"
+        Me.Text = "SALDOS MENORES AL STOCK MIN."
         MReportViewer.ToolPanelView = CrystalDecisions.Windows.Forms.ToolPanelViewType.None
         _IniciarComponentes()
         bandera = True
@@ -126,8 +126,14 @@ Public Class Pr_StockMinimo
         Dim _dt As New DataTable
         _prInterpretarDatos(_dt)
         If (_dt.Rows.Count > 0) Then
+            Dim objrep
 
-            Dim objrep As New R_StockMinimo
+            If CheckTodosAlmacen.Checked Then
+                objrep = New R_StockMinimoTodosAlmacenes
+            Else
+                objrep = New R_StockMinimo
+            End If
+
             objrep.SetDataSource(_dt)
 
             objrep.SetParameterValue("usuario", L_Usuario)
@@ -135,8 +141,6 @@ Public Class Pr_StockMinimo
             MReportViewer.ReportSource = objrep
             MReportViewer.Show()
             MReportViewer.BringToFront()
-
-
 
         Else
             ToastNotification.Show(Me, "NO HAY DATOS PARA LOS PARAMETROS SELECCIONADOS..!!!",

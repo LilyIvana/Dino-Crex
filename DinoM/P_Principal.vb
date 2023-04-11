@@ -948,9 +948,6 @@ Public Class P_Principal
         'tab3.Icon = ico
     End Sub
 
-    Private Sub FP_INVENTARIO_Click(sender As Object, e As EventArgs) Handles FP_INVENTARIO.Click
-
-    End Sub
 
     Private Sub btlvSaldoMinimo_Click(sender As Object, e As EventArgs) Handles btlvSaldoMinimo.Click
         SideNav1.IsMenuExpanded = False
@@ -963,7 +960,7 @@ Public Class P_Principal
         tab3.AttachedControl.Controls.Add(panel)
         frm.Show()
 
-        tab3.Text = "SALDO PRODUCTO MINIMO"
+        tab3.Text = "SALDOS MENORES AL STOCK MIN."
         Dim blah As New Bitmap(New Bitmap(My.Resources.check_mark), 20, 20)
         Dim ico As Icon = Icon.FromHandle(blah.GetHicon())
         tab3.Icon = ico
@@ -1201,6 +1198,10 @@ Public Class P_Principal
     Private Sub btSaldosValoradosExcel_Click(sender As Object, e As EventArgs) Handles btSaldosValoradosExcel.Click
         Dim frm As New F1_SaldosExcel
         frm.Show()
+    End Sub
+
+    Private Sub SideNavItem1_Click(sender As Object, e As EventArgs)
+
     End Sub
 
 

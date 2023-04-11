@@ -205,7 +205,7 @@ Partial Class F1_SaldosExcel
         '
         '
         Me.GroupPanelBuscador.StyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.GroupPanelBuscador.Text = "VENTAS"
+        Me.GroupPanelBuscador.Text = "DATOS"
         '
         'JGrM_Buscador
         '
@@ -509,6 +509,7 @@ Partial Class F1_SaldosExcel
         Me.tbFechaF.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.tbFechaF.ButtonDropDown.Shortcut = DevComponents.DotNetBar.eShortcut.AltDown
         Me.tbFechaF.ButtonDropDown.Visible = True
+        Me.tbFechaF.Enabled = False
         Me.tbFechaF.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.tbFechaF.IsPopupCalendarOpen = False
         Me.tbFechaF.Location = New System.Drawing.Point(657, 31)
@@ -553,7 +554,7 @@ Partial Class F1_SaldosExcel
         Me.ClientSize = New System.Drawing.Size(1354, 661)
         Me.Location = New System.Drawing.Point(0, 0)
         Me.Name = "F1_SaldosExcel"
-        Me.Text = "VENTAS PRODUCTOS PARA EXPORTAR"
+        Me.Text = "SALDOS VALORADOS PARA EXPORTAR A EXCEL"
         Me.Controls.SetChildIndex(Me.SuperTabPrincipal, 0)
         CType(Me.SuperTabPrincipal, System.ComponentModel.ISupportInitialize).EndInit()
         Me.SuperTabPrincipal.ResumeLayout(False)

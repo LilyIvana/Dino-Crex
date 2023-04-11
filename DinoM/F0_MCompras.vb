@@ -697,9 +697,10 @@ Public Class F0_MCompras
             .Visible = False
         End With
         With grCompra.RootTable.Columns("cauact")
-            .Width = 50
+            .Width = 100
             .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Near
-            .Visible = False
+            .Visible = True
+            .Caption = "USUARIO"
         End With
         With grCompra.RootTable.Columns("casubtot")
             .Width = 100

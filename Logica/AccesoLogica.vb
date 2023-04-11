@@ -6831,4 +6831,44 @@ Public Class AccesoLogica
 
         Return _Tabla
     End Function
+    Public Shared Function L_prReporteUtilidadmayorNuevo2(_codAlmacen As Integer, _codCat As Integer, _date1 As String) As DataTable
+        Dim _Tabla As DataTable
+
+        Dim _listParam As New List(Of Datos.DParametro)
+
+        _listParam.Add(New Datos.DParametro("@tipo", 7))
+        _listParam.Add(New Datos.DParametro("@uact", L_Usuario))
+        _listParam.Add(New Datos.DParametro("@almacen", _codAlmacen))
+        _listParam.Add(New Datos.DParametro("@catPrecio", _codCat))
+        _listParam.Add(New Datos.DParametro("@fechaF", _date1))
+        _Tabla = D_ProcedimientoConParam("Mam_ReporteSaldos", _listParam)
+
+        Return _Tabla
+    End Function
+    Public Shared Function L_prReporteUtilidadStockMayorCeroNuevo2(_codAlmacen As Integer, _codCat As Integer) As DataTable
+        Dim _Tabla As DataTable
+
+        Dim _listParam As New List(Of Datos.DParametro)
+
+        _listParam.Add(New Datos.DParametro("@tipo", 8))
+        _listParam.Add(New Datos.DParametro("@uact", L_Usuario))
+        _listParam.Add(New Datos.DParametro("@almacen", _codAlmacen))
+        _listParam.Add(New Datos.DParametro("@catPrecio", _codCat))
+        _Tabla = D_ProcedimientoConParam("Mam_ReporteSaldos", _listParam)
+
+        Return _Tabla
+    End Function
+    Public Shared Function L_prReporteUtilidadNueva2(_codAlmacen As Integer, _codCat As Integer) As DataTable
+        Dim _Tabla As DataTable
+
+        Dim _listParam As New List(Of Datos.DParametro)
+
+        _listParam.Add(New Datos.DParametro("@tipo", 9))
+        _listParam.Add(New Datos.DParametro("@uact", L_Usuario))
+        _listParam.Add(New Datos.DParametro("@almacen", _codAlmacen))
+        _listParam.Add(New Datos.DParametro("@catPrecio", _codCat))
+        _Tabla = D_ProcedimientoConParam("Mam_ReporteSaldos", _listParam)
+
+        Return _Tabla
+    End Function
 End Class
