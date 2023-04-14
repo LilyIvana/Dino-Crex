@@ -164,6 +164,9 @@ Partial Class F1_PesajeProductos
         'btnSalir
         '
         '
+        'btnGrabar
+        '
+        '
         'PanelToolBar2
         '
         Me.PanelToolBar2.Controls.Add(Me.btExcel)

@@ -430,13 +430,13 @@ Partial Class F0_Movimiento
         cbDepositoDestino_DesignTimeLayout.LayoutString = resources.GetString("cbDepositoDestino_DesignTimeLayout.LayoutString")
         Me.cbDepositoDestino.DesignTimeLayout = cbDepositoDestino_DesignTimeLayout
         Me.cbDepositoDestino.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.cbDepositoDestino.Location = New System.Drawing.Point(387, 81)
+        Me.cbDepositoDestino.Location = New System.Drawing.Point(401, 81)
         Me.cbDepositoDestino.Name = "cbDepositoDestino"
         Me.cbDepositoDestino.Office2007ColorScheme = Janus.Windows.GridEX.Office2007ColorScheme.Custom
         Me.cbDepositoDestino.Office2007CustomColor = System.Drawing.Color.DodgerBlue
         Me.cbDepositoDestino.SelectedIndex = -1
         Me.cbDepositoDestino.SelectedItem = Nothing
-        Me.cbDepositoDestino.Size = New System.Drawing.Size(176, 22)
+        Me.cbDepositoDestino.Size = New System.Drawing.Size(235, 22)
         Me.cbDepositoDestino.TabIndex = 235
         Me.cbDepositoDestino.Visible = False
         Me.cbDepositoDestino.VisualStyle = Janus.Windows.GridEX.VisualStyle.Office2007
@@ -451,7 +451,7 @@ Partial Class F0_Movimiento
         Me.lbDepositoDestino.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.lbDepositoDestino.Font = New System.Drawing.Font("Georgia", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lbDepositoDestino.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(85, Byte), Integer), CType(CType(139, Byte), Integer))
-        Me.lbDepositoDestino.Location = New System.Drawing.Point(387, 62)
+        Me.lbDepositoDestino.Location = New System.Drawing.Point(401, 62)
         Me.lbDepositoDestino.Name = "lbDepositoDestino"
         Me.lbDepositoDestino.SingleLineColor = System.Drawing.SystemColors.Control
         Me.lbDepositoDestino.Size = New System.Drawing.Size(104, 16)
@@ -464,13 +464,13 @@ Partial Class F0_Movimiento
         cbAlmacenOrigen_DesignTimeLayout.LayoutString = resources.GetString("cbAlmacenOrigen_DesignTimeLayout.LayoutString")
         Me.cbAlmacenOrigen.DesignTimeLayout = cbAlmacenOrigen_DesignTimeLayout
         Me.cbAlmacenOrigen.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.cbAlmacenOrigen.Location = New System.Drawing.Point(387, 34)
+        Me.cbAlmacenOrigen.Location = New System.Drawing.Point(401, 34)
         Me.cbAlmacenOrigen.Name = "cbAlmacenOrigen"
         Me.cbAlmacenOrigen.Office2007ColorScheme = Janus.Windows.GridEX.Office2007ColorScheme.Custom
         Me.cbAlmacenOrigen.Office2007CustomColor = System.Drawing.Color.DodgerBlue
         Me.cbAlmacenOrigen.SelectedIndex = -1
         Me.cbAlmacenOrigen.SelectedItem = Nothing
-        Me.cbAlmacenOrigen.Size = New System.Drawing.Size(176, 22)
+        Me.cbAlmacenOrigen.Size = New System.Drawing.Size(235, 22)
         Me.cbAlmacenOrigen.TabIndex = 4
         Me.cbAlmacenOrigen.VisualStyle = Janus.Windows.GridEX.VisualStyle.Office2007
         '
@@ -484,7 +484,7 @@ Partial Class F0_Movimiento
         Me.lbDepositoOrigen.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.lbDepositoOrigen.Font = New System.Drawing.Font("Georgia", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lbDepositoOrigen.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(85, Byte), Integer), CType(CType(139, Byte), Integer))
-        Me.lbDepositoOrigen.Location = New System.Drawing.Point(387, 15)
+        Me.lbDepositoOrigen.Location = New System.Drawing.Point(401, 15)
         Me.lbDepositoOrigen.Name = "lbDepositoOrigen"
         Me.lbDepositoOrigen.SingleLineColor = System.Drawing.SystemColors.Control
         Me.lbDepositoOrigen.Size = New System.Drawing.Size(62, 16)
@@ -584,7 +584,7 @@ Partial Class F0_Movimiento
         Me.cbConcepto.Office2007CustomColor = System.Drawing.Color.DodgerBlue
         Me.cbConcepto.SelectedIndex = -1
         Me.cbConcepto.SelectedItem = Nothing
-        Me.cbConcepto.Size = New System.Drawing.Size(176, 22)
+        Me.cbConcepto.Size = New System.Drawing.Size(260, 22)
         Me.cbConcepto.TabIndex = 2
         Me.cbConcepto.VisualStyle = Janus.Windows.GridEX.VisualStyle.Office2007
         '

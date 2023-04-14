@@ -567,7 +567,7 @@ Public Class F1_PesajeProductos
             P_Global.Visualizador.Close()
         End If
         P_Global.Visualizador = New Visualizador
-        Dim objrep As New R_StickerCodigoBarras2
+        Dim objrep As New R_StickerCodigoBarras4
 
         objrep.SetDataSource(dt)
         objrep.SetParameterValue("CodBarra", tbCodBarraImp.Text)
