@@ -769,6 +769,12 @@
       <DependentUpon>R_CierreCaja.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Reporte\R_StickerCodigoBarras5.vb">
+      <DependentUpon>R_StickerCodigoBarras5.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Include="Reporte\R_StickerCodigoBarras4.vb">
       <DependentUpon>R_StickerCodigoBarras4.rpt</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -1524,6 +1530,10 @@
     <EmbeddedResource Include="Reporte\R_CierreCaja.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>R_CierreCaja.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reporte\R_StickerCodigoBarras5.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>R_StickerCodigoBarras5.vb</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Reporte\R_StickerCodigoBarras4.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
