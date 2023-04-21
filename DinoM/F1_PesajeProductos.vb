@@ -124,19 +124,24 @@ Public Class F1_PesajeProductos
     End Sub
 
     Public Overrides Sub _PMOLimpiar()
+        _PMOMostrarRegistro(JGrM_Buscador.RowCount - 1)
+
+        '_PMOMostrarRegistro(0)
+
         tbCodigo.Clear()
         dtFecha.Value = Now.Date
-        tbCodProd.Clear()
-        tbDescPro.Clear()
-        tbPrecio.Text = 0
+        'tbCodProd.Clear()
+        'tbDescPro.Clear()
+        'tbPrecio.Text = 0
         tbPesoReal.Value = 0
-        dtFechaVenc.Value = DateAdd(DateInterval.Day, 15, Now.Date)
+        dtFechaVenc.Value = DateAdd(DateInterval.Day, 5, Now.Date)
         tbPesoSistema.Value = 0
         tbTotal.Value = 0
         tbCodBarraSist.Clear()
         tbCodBarraImp.Clear()
 
         tbCodProd.Focus()
+
 
     End Sub
 
@@ -263,35 +268,84 @@ Public Class F1_PesajeProductos
 
     Public Overrides Function _PMOGetTablaBuscador() As DataTable
         Dim dtBuscador As DataTable = L_fnGeneralPesajeProductos()
+
+
+        JGrM_Buscador.DataSource = dtBuscador
+        JGrM_Buscador.RetrieveStructure()
+        JGrM_Buscador.AlternatingColors = True
+        With JGrM_Buscador.RootTable.Columns("pcpeso")
+            .Width = 90
+            .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far
+            .Visible = True
+            .Caption = "Peso Sistema"
+            .FormatString = "0.00"
+            .AggregateFunction = AggregateFunction.Sum
+
+        End With
+
+
+        With JGrM_Buscador
+            '.DefaultFilterRowComparison = FilterConditionOperator.Contains
+            '.FilterMode = FilterMode.Automatic
+            '.FilterRowUpdateMode = FilterRowUpdateMode.WhenValueChanges
+            '.GroupByBoxVisible = False
+            ''diseño de la grilla
+            '.VisualStyle = VisualStyle.Office2007
+            '.TotalRow = InheritableBoolean.True
+            '.TotalRowFormatStyle.BackColor = Color.Gold
+            '.TotalRowPosition = TotalRowPosition.BottomFixed
+
+
+            .DefaultFilterRowComparison = FilterConditionOperator.Contains
+            .FilterMode = FilterMode.Automatic
+            .FilterRowUpdateMode = FilterRowUpdateMode.WhenValueChanges
+            .GroupByBoxVisible = False
+            'diseño de la grilla
+            .VisualStyle = VisualStyle.Office2007
+            .TotalRow = InheritableBoolean.True
+            .TotalRowFormatStyle.BackColor = Color.Gold
+            .TotalRowPosition = TotalRowPosition.BottomFixed
+
+
+        End With
+
+
+
         Return dtBuscador
+
+
+
     End Function
 
     Public Overrides Function _PMOGetListEstructuraBuscador() As List(Of Modelo.Celda)
         Dim listEstCeldas As New List(Of Modelo.Celda)
 
         listEstCeldas.Add(New Modelo.Celda("pcnumi", True, "Código".ToUpper, 80))
-        listEstCeldas.Add(New Modelo.Celda("pcfecha", True, "F. Ingreso".ToUpper, 100, "dd/MM/yyyy"))
+        listEstCeldas.Add(New Modelo.Celda("pcfecha", True, "F. Ingreso".ToUpper, 90, "dd/MM/yyyy"))
         listEstCeldas.Add(New Modelo.Celda("pccodPro", True, "Cod.Producto".ToUpper, 100))
-        listEstCeldas.Add(New Modelo.Celda("yfcdprod1", True, "Descripción".ToUpper, 250))
+        listEstCeldas.Add(New Modelo.Celda("yfcdprod1", True, "Descripción".ToUpper, 390))
         listEstCeldas.Add(New Modelo.Celda("pcprecio", True, "Precio Bs./KG".ToUpper, 100, "0.00"))
         listEstCeldas.Add(New Modelo.Celda("pcpesoreal", True, "Peso Real".ToUpper, 120, "0.000"))
-        listEstCeldas.Add(New Modelo.Celda("pcfvenc", True, "F. Vencimiento".ToUpper, 100, "dd/MM/yyyy"))
-        listEstCeldas.Add(New Modelo.Celda("pcpeso", True, "Peso Sistema".ToUpper, 100, "0.00"))
+        listEstCeldas.Add(New Modelo.Celda("pcfvenc", True, "F. Vencimiento".ToUpper, 90, "dd/MM/yyyy"))
+        listEstCeldas.Add(New Modelo.Celda("pcpeso", True, "Peso Sistema".ToUpper, 90, "0.00"))
+
         listEstCeldas.Add(New Modelo.Celda("pctotal", True, "Total Bs.".ToUpper, 100, "0.00"))
         listEstCeldas.Add(New Modelo.Celda("pccbarra", False, "Cod. Barras".ToUpper, 100))
-        listEstCeldas.Add(New Modelo.Celda("pccbarraimp", True, "Cod. Barras Impresión".ToUpper, 150))
+        listEstCeldas.Add(New Modelo.Celda("pccbarraimp", True, "Cod. Barras Impresión".ToUpper, 120))
         '' listEstCeldas.Add(New Modelo.Celda("yfvsup", True, "Conversión".ToUpper, 100, Format("0.00")))
         listEstCeldas.Add(New Modelo.Celda("pcfact", False))
         listEstCeldas.Add(New Modelo.Celda("pchact", False))
         listEstCeldas.Add(New Modelo.Celda("pcuact", False))
 
 
+
         Return listEstCeldas
+
     End Function
 
     Public Overrides Sub _PMOMostrarRegistro(_N As Integer)
-        JGrM_Buscador.Row = _MPos
-
+        'JGrM_Buscador.Row = _MPos
+        JGrM_Buscador.Row = _N
         Dim dt As DataTable = CType(JGrM_Buscador.DataSource, DataTable)
         Try
             tbCodigo.Text = JGrM_Buscador.GetValue("pcnumi").ToString
@@ -318,7 +372,7 @@ Public Class F1_PesajeProductos
 
         End With
 
-
+        '_PMOMostrarRegistro(JGrM_Buscador.RowCount - 1)
         LblPaginacion.Text = Str(_MPos + 1) + "/" + JGrM_Buscador.RowCount.ToString
     End Sub
 
@@ -674,50 +728,53 @@ Public Class F1_PesajeProductos
 
     Private Sub tbPesoReal_ValueChanged(sender As Object, e As EventArgs) Handles tbPesoReal.ValueChanged
         If _fnAccesible() Then
+
             tbPesoSistema.Value = Format(tbPesoReal.Value, "#.#0")
-            tbTotal.Value = Format((tbPesoSistema.Value * tbPrecio.Text), "#.#0")
-            Dim pesoGr As Integer = (tbPesoSistema.Value * 1000)
+                tbTotal.Value = Format((tbPesoSistema.Value * tbPrecio.Text), "#.#0")
+                Dim pesoGr As Integer = (tbPesoSistema.Value * 1000)
 
 
-            Dim LenCod As Integer = Len(tbCodProd.Text)
-            Dim LenPeso As Integer = Len(pesoGr.ToString)
+                Dim LenCod As Integer = Len(tbCodProd.Text)
+                Dim LenPeso As Integer = Len(pesoGr.ToString)
 
-            Dim CodProducto As String
-            Dim barra1 As String
-            Dim barra2 As String
-            Select Case LenCod
-                Case 1
-                    CodProducto = "0000" & tbCodProd.Text
-                Case 2
-                    CodProducto = "000" & tbCodProd.Text
+                Dim CodProducto As String
+                Dim barra1 As String
+                Dim barra2 As String
+                Select Case LenCod
+                    Case 1
+                        CodProducto = "0000" & tbCodProd.Text
+                    Case 2
+                        CodProducto = "000" & tbCodProd.Text
 
-                    CodProducto = "00" & tbCodProd.Text
-                Case 4
-                    CodProducto = "0" & tbCodProd.Text
-                Case 5
-                    CodProducto = tbCodProd.Text
-            End Select
+                        CodProducto = "00" & tbCodProd.Text
+                    Case 4
+                        CodProducto = "0" & tbCodProd.Text
+                    Case 5
+                        CodProducto = tbCodProd.Text
+                End Select
 
-            barra1 = 20 & CodProducto
+                barra1 = 20 & CodProducto
 
-            Select Case LenPeso
-                Case 2
-                    barra2 = "000" & pesoGr.ToString
-                Case 3
-                    barra2 = "00" & pesoGr.ToString
-                Case 4
-                    barra2 = "0" & pesoGr.ToString
-                Case 5
-                    barra2 = pesoGr.ToString
-            End Select
+                Select Case LenPeso
+                    Case 2
+                        barra2 = "000" & pesoGr.ToString
+                    Case 3
+                        barra2 = "00" & pesoGr.ToString
+                    Case 4
+                        barra2 = "0" & pesoGr.ToString
+                    Case 5
+                        barra2 = pesoGr.ToString
+                End Select
 
 
-            tbCodBarraImp.Text = barra1 & barra2
-            tbCodBarraSist.Text = barra1
+                tbCodBarraImp.Text = barra1 & barra2
+                tbCodBarraSist.Text = barra1
+            End If
 
-            'Dim aux = Replace(tbPesoSistema.Text, ".", "")
-            'tbCodBarraSist.Text = aux
-        End If
+
+        'Dim aux = Replace(tbPesoSistema.Text, ".", "")
+        'tbCodBarraSist.Text = aux
+
     End Sub
 
 

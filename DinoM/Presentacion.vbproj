@@ -431,6 +431,12 @@
     <Compile Include="F1_Bancos.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="F1_PreciosProdExcel.Designer.vb">
+      <DependentUpon>F1_PreciosProdExcel.vb</DependentUpon>
+    </Compile>
+    <Compile Include="F1_PreciosProdExcel.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="F1_DescuentoProd.Designer.vb">
       <DependentUpon>F1_DescuentoProd.vb</DependentUpon>
     </Compile>
@@ -1367,6 +1373,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="F1_Bancos.resx">
       <DependentUpon>F1_Bancos.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="F1_PreciosProdExcel.resx">
+      <DependentUpon>F1_PreciosProdExcel.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="F1_DescuentoProd.resx">
       <DependentUpon>F1_DescuentoProd.vb</DependentUpon>

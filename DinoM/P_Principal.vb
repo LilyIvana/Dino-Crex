@@ -1200,9 +1200,12 @@ Public Class P_Principal
         frm.Show()
     End Sub
 
-    Private Sub SideNavItem1_Click(sender As Object, e As EventArgs)
-
+    Private Sub btPreciosProdExcel_Click(sender As Object, e As EventArgs) Handles btPreciosProdExcel.Click
+        Dim frm As New F1_PreciosProdExcel
+        frm.Show()
     End Sub
+
+
 
 
 
