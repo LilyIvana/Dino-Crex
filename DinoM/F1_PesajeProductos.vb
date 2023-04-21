@@ -126,13 +126,16 @@ Public Class F1_PesajeProductos
     Public Overrides Sub _PMOLimpiar()
         _PMOMostrarRegistro(JGrM_Buscador.RowCount - 1)
 
-        '_PMOMostrarRegistro(0)
 
         tbCodigo.Clear()
         dtFecha.Value = Now.Date
-        'tbCodProd.Clear()
-        'tbDescPro.Clear()
-        'tbPrecio.Text = 0
+        If Limpiar = False Then
+            tbCodProd.Clear()
+            tbDescPro.Clear()
+            tbPrecio.Text = 0
+        End If
+
+
         tbPesoReal.Value = 0
         dtFechaVenc.Value = DateAdd(DateInterval.Day, 5, Now.Date)
         tbPesoSistema.Value = 0
@@ -161,7 +164,7 @@ Public Class F1_PesajeProductos
                                       eToastGlowColor.Green,
                                       eToastPosition.TopCenter
                                       )
-            ImprimirCodigoBarras()
+            ImprimirCodigoBarras(tbCodigo.Text)
             tbCodigo.Focus()
             Limpiar = True
         Else
@@ -186,6 +189,8 @@ Public Class F1_PesajeProductos
                                       img, 2000,
                                       eToastGlowColor.Green,
                                       eToastPosition.TopCenter)
+
+            ImprimirCodigoBarras(tbCodigo.Text)
 
         Else
             Dim img As Bitmap = New Bitmap(My.Resources.cancel, 50, 50)
@@ -592,8 +597,7 @@ Public Class F1_PesajeProductos
         P_GenerarReporte()
     End Sub
     Private Sub P_GenerarReporte()
-        ImprimirCodigoBarras()
-
+        ImprimirCodigoBarras(tbCodigo.Text)
     End Sub
     Private Sub codigoBarrasImprimir()
         Dim dt As DataTable
@@ -627,10 +631,10 @@ Public Class F1_PesajeProductos
         P_Global.Visualizador.BringToFront() 'Comentar
     End Sub
 
-    Private Sub ImprimirCodigoBarras()
+    Private Sub ImprimirCodigoBarras(CodigoPro As String)
         Dim dt As DataTable
 
-        dt = L_fnCodigoBarraUnProducto(tbCodigo.Text)
+        dt = L_fnCodigoBarraUnProducto(CodigoPro)
 
         Dim bcode As New Barcode128
         bcode.BarHeight = 50

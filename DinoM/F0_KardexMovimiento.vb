@@ -128,7 +128,8 @@ Public Class F0_KardexMovimiento
             Dim listEstCeldas As New List(Of Modelo.Celda)
             listEstCeldas.Add(New Modelo.Celda("yfnumi", True, "COD. DYN", 80))
             listEstCeldas.Add(New Modelo.Celda("yfcprod", True, "COD. DELTA", 90))
-            listEstCeldas.Add(New Modelo.Celda("producto", True, "PRODUCTO", 380))
+            listEstCeldas.Add(New Modelo.Celda("yfcbarra", True, "COD. BARRAS", 110))
+            listEstCeldas.Add(New Modelo.Celda("producto", True, "PRODUCTO", 400))
             listEstCeldas.Add(New Modelo.Celda("descripcioncorta", False, "DESC. CORTA".ToUpper, 150))
             listEstCeldas.Add(New Modelo.Celda("stock", True, "StockGeneral".ToUpper, 100))
             Dim ef = New Efecto
@@ -137,7 +138,7 @@ Public Class F0_KardexMovimiento
             ef.SeleclCol = 2
             ef.listEstCeldas = listEstCeldas
             ef.alto = 50
-            ef.ancho = 350
+            ef.ancho = 250
             ef.Context = "Seleccione PRODUCTO".ToUpper
             ef.ShowDialog()
             Dim bandera As Boolean = False
