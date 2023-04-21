@@ -34,7 +34,7 @@ Public Class F1_PesajeProductos
 
         _prAsignarPermisos()
         _PMIniciarTodo()
-
+        _prCargarPesaje()
         Dim blah As New Bitmap(New Bitmap(My.Resources.producto), 20, 20)
         Dim ico As Icon = Icon.FromHandle(blah.GetHicon())
         Me.Icon = ico
@@ -198,8 +198,6 @@ Public Class F1_PesajeProductos
         Return res
     End Function
 
-
-
     Public Overrides Sub _PMOEliminarRegistro()
 
         Dim ef = New Efecto
@@ -252,7 +250,7 @@ Public Class F1_PesajeProductos
             MEP.SetError(tbPesoReal, "")
         End If
 
-        If dtFechaVenc.Value <= Now.Date Then
+        If dtFechaVenc.Value <= dtFecha.Value Then
             dtFechaVenc.BackColor = Color.Red
             AddHandler dtFechaVenc.KeyDown, AddressOf TextBox_KeyDown
             MEP.SetError(dtFechaVenc, "La Fecha de Vencimiento no puede ser menor o igual a la fecha Actual!".ToUpper)
@@ -269,75 +267,27 @@ Public Class F1_PesajeProductos
     Public Overrides Function _PMOGetTablaBuscador() As DataTable
         Dim dtBuscador As DataTable = L_fnGeneralPesajeProductos()
 
-
-        JGrM_Buscador.DataSource = dtBuscador
-        JGrM_Buscador.RetrieveStructure()
-        JGrM_Buscador.AlternatingColors = True
-        With JGrM_Buscador.RootTable.Columns("pcpeso")
-            .Width = 90
-            .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far
-            .Visible = True
-            .Caption = "Peso Sistema"
-            .FormatString = "0.00"
-            .AggregateFunction = AggregateFunction.Sum
-
-        End With
-
-
-        With JGrM_Buscador
-            '.DefaultFilterRowComparison = FilterConditionOperator.Contains
-            '.FilterMode = FilterMode.Automatic
-            '.FilterRowUpdateMode = FilterRowUpdateMode.WhenValueChanges
-            '.GroupByBoxVisible = False
-            ''diseño de la grilla
-            '.VisualStyle = VisualStyle.Office2007
-            '.TotalRow = InheritableBoolean.True
-            '.TotalRowFormatStyle.BackColor = Color.Gold
-            '.TotalRowPosition = TotalRowPosition.BottomFixed
-
-
-            .DefaultFilterRowComparison = FilterConditionOperator.Contains
-            .FilterMode = FilterMode.Automatic
-            .FilterRowUpdateMode = FilterRowUpdateMode.WhenValueChanges
-            .GroupByBoxVisible = False
-            'diseño de la grilla
-            .VisualStyle = VisualStyle.Office2007
-            .TotalRow = InheritableBoolean.True
-            .TotalRowFormatStyle.BackColor = Color.Gold
-            .TotalRowPosition = TotalRowPosition.BottomFixed
-
-
-        End With
-
-
-
         Return dtBuscador
-
-
-
     End Function
 
     Public Overrides Function _PMOGetListEstructuraBuscador() As List(Of Modelo.Celda)
         Dim listEstCeldas As New List(Of Modelo.Celda)
 
         listEstCeldas.Add(New Modelo.Celda("pcnumi", True, "Código".ToUpper, 80))
-        listEstCeldas.Add(New Modelo.Celda("pcfecha", True, "F. Ingreso".ToUpper, 90, "dd/MM/yyyy"))
-        listEstCeldas.Add(New Modelo.Celda("pccodPro", True, "Cod.Producto".ToUpper, 100))
+        listEstCeldas.Add(New Modelo.Celda("pcfecha", True, "F. Ingreso".ToUpper, 80, "dd/MM/yyyy"))
+        listEstCeldas.Add(New Modelo.Celda("pccodPro", True, "Cod.Producto".ToUpper, 90))
         listEstCeldas.Add(New Modelo.Celda("yfcdprod1", True, "Descripción".ToUpper, 390))
-        listEstCeldas.Add(New Modelo.Celda("pcprecio", True, "Precio Bs./KG".ToUpper, 100, "0.00"))
-        listEstCeldas.Add(New Modelo.Celda("pcpesoreal", True, "Peso Real".ToUpper, 120, "0.000"))
-        listEstCeldas.Add(New Modelo.Celda("pcfvenc", True, "F. Vencimiento".ToUpper, 90, "dd/MM/yyyy"))
+        listEstCeldas.Add(New Modelo.Celda("pcprecio", True, "Precio Bs./KG".ToUpper, 90, "0.00"))
+        listEstCeldas.Add(New Modelo.Celda("pcpesoreal", True, "Peso Real".ToUpper, 90, "0.000"))
+        listEstCeldas.Add(New Modelo.Celda("pcfvenc", True, "F. Vencimiento".ToUpper, 80, "dd/MM/yyyy"))
         listEstCeldas.Add(New Modelo.Celda("pcpeso", True, "Peso Sistema".ToUpper, 90, "0.00"))
-
-        listEstCeldas.Add(New Modelo.Celda("pctotal", True, "Total Bs.".ToUpper, 100, "0.00"))
+        listEstCeldas.Add(New Modelo.Celda("pctotal", True, "Total Bs.".ToUpper, 90, "0.00"))
         listEstCeldas.Add(New Modelo.Celda("pccbarra", False, "Cod. Barras".ToUpper, 100))
         listEstCeldas.Add(New Modelo.Celda("pccbarraimp", True, "Cod. Barras Impresión".ToUpper, 120))
-        '' listEstCeldas.Add(New Modelo.Celda("yfvsup", True, "Conversión".ToUpper, 100, Format("0.00")))
+
         listEstCeldas.Add(New Modelo.Celda("pcfact", False))
         listEstCeldas.Add(New Modelo.Celda("pchact", False))
-        listEstCeldas.Add(New Modelo.Celda("pcuact", False))
-
-
+        listEstCeldas.Add(New Modelo.Celda("pcuact", True, "Usuario".ToUpper, 100))
 
         Return listEstCeldas
 
@@ -381,7 +331,114 @@ Public Class F1_PesajeProductos
     Private Sub F1_Productos_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         _prIniciarTodo()
     End Sub
+    Private Sub _prCargarPesaje()
+        Dim dt As New DataTable
+        dt = L_fnGeneralPesajeProductos()
 
+        JGrM_Buscador.DataSource = dt
+        JGrM_Buscador.RetrieveStructure()
+        JGrM_Buscador.AlternatingColors = True
+
+        With JGrM_Buscador.RootTable.Columns("pcnumi")
+            .Width = 80
+            .Visible = True
+            .Caption = "Código".ToUpper
+        End With
+        With JGrM_Buscador.RootTable.Columns("pcfecha")
+            .Width = 80
+            .Visible = True
+            .Caption = "F. Ingreso".ToUpper
+            .FormatString = "dd/MM/yyyy"
+        End With
+        With JGrM_Buscador.RootTable.Columns("pccodPro")
+            .Width = 90
+            .Visible = True
+            .Caption = "Cod.Producto".ToUpper
+        End With
+        With JGrM_Buscador.RootTable.Columns("yfcdprod1")
+            .Width = 390
+            .Visible = True
+            .Caption = "Descripción".ToUpper
+        End With
+        With JGrM_Buscador.RootTable.Columns("pcprecio")
+            .Width = 90
+            .Visible = True
+            .Caption = "Precio Bs./KG".ToUpper
+            .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far
+            .FormatString = "0.00"
+        End With
+        With JGrM_Buscador.RootTable.Columns("pcpesoreal")
+            .Width = 90
+            .Visible = True
+            .Caption = "Peso Real".ToUpper
+            .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far
+            .FormatString = "0.000"
+        End With
+        With JGrM_Buscador.RootTable.Columns("pcfvenc")
+            .Width = 80
+            .Visible = True
+            .Caption = "F. Vencimiento".ToUpper
+            .FormatString = "dd/MM/yyyy"
+        End With
+        With JGrM_Buscador.RootTable.Columns("pcpeso")
+            .Width = 90
+            .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far
+            .Visible = True
+            .Caption = "Peso Sistema".ToUpper
+            .FormatString = "0.00"
+            .AggregateFunction = AggregateFunction.Sum
+        End With
+        With JGrM_Buscador.RootTable.Columns("pctotal")
+            .Width = 90
+            .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far
+            .Visible = True
+            .Caption = "Total Bs.".ToUpper
+            .FormatString = "0.00"
+        End With
+        With JGrM_Buscador.RootTable.Columns("pccbarra")
+            .Visible = False
+        End With
+        With JGrM_Buscador.RootTable.Columns("pccbarraimp")
+            .Width = 120
+            .Visible = True
+            .Caption = "Cod. Barras Impresión".ToUpper
+        End With
+        With JGrM_Buscador.RootTable.Columns("pcfact")
+            .Visible = False
+        End With
+        With JGrM_Buscador.RootTable.Columns("pchact")
+            .Visible = False
+        End With
+        With JGrM_Buscador.RootTable.Columns("pcuact")
+            .Width = 100
+            .Visible = True
+            .Caption = "Usuario".ToUpper
+        End With
+        With JGrM_Buscador
+            '.DefaultFilterRowComparison = FilterConditionOperator.Contains
+            '.FilterMode = FilterMode.Automatic
+            '.FilterRowUpdateMode = FilterRowUpdateMode.WhenValueChanges
+            '.GroupByBoxVisible = False
+            ''diseño de la grilla
+            '.VisualStyle = VisualStyle.Office2007
+            '.TotalRow = InheritableBoolean.True
+            '.TotalRowFormatStyle.BackColor = Color.Gold
+            '.TotalRowPosition = TotalRowPosition.BottomFixed
+
+
+            .DefaultFilterRowComparison = FilterConditionOperator.Contains
+            .FilterMode = FilterMode.Automatic
+            .FilterRowUpdateMode = FilterRowUpdateMode.WhenValueChanges
+            .GroupByBoxVisible = False
+            'diseño de la grilla
+            .VisualStyle = VisualStyle.Office2007
+            .TotalRow = InheritableBoolean.True
+            .TotalRowFormatStyle.BackColor = Color.Gold
+            .TotalRowPosition = TotalRowPosition.BottomFixed
+
+        End With
+
+    End Sub
     Private Sub ButtonX2_Click(sender As Object, e As EventArgs) Handles btExcel.Click
         _prCrearCarpetaReportes()
         Dim img As Bitmap = New Bitmap(My.Resources.checked, 50, 50)
@@ -523,6 +580,7 @@ Public Class F1_PesajeProductos
             _PMInhabilitar()
             _PMPrimerRegistro()
             PanelNavegacion.Enabled = True
+            _prCargarPesaje()
         Else
             '  Public _modulo As SideNavItem
             _modulo.Select()
@@ -594,27 +652,6 @@ Public Class F1_PesajeProductos
             dt.Rows(i).Item("img") = Bin.GetBuffer
             pbCodB.Image = img
         Next
-
-
-        'For i As Integer = 0 To dt.Rows.Count - 1
-        '    Dim codigo As String = dt.Rows(i).Item("pccbarraimp").ToString
-        '    Dim bm As Bitmap = Nothing
-        '    Dim bm1 As Bitmap = Nothing
-        '    bm = Codigos.codigo128("A" & codigo & "B", False, 20)
-        '    'bm1 = AxBarcode1.Picture
-        '    If Not IsNothing(bm) Then
-        '        Dim Bin As New MemoryStream
-        '        Dim Bin1 As New MemoryStream
-
-        '        bm.Save(Bin, Imaging.ImageFormat.Png)
-        '        'bm1.Save(Bin1, Imaging.ImageFormat.Png)
-
-        '        dt.Rows(i).Item("img") = Bin.GetBuffer
-
-        '        'dt.Rows(i).Item("img") = Bin1.GetBuffer
-        '    End If
-        'Next
-
 
 
         If Not IsNothing(P_Global.Visualizador) Then
