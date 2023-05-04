@@ -1072,7 +1072,8 @@ Public Class F0_MCompras
             Dim cant As Double = grdetalle.GetValue("cbcmin")
 
             If (pos >= 0) Then
-
+                CType(grdetalle.DataSource, DataTable).Rows(pos).Item("cbptot") = grdetalle.GetValue("cbptot")
+                grdetalle.SetValue("cbptot", grdetalle.GetValue("cbptot"))
 
                 CType(grdetalle.DataSource, DataTable).Rows(pos).Item("cbpcost") = grdetalle.GetValue("cbptot") / grdetalle.GetValue("cbcmin")
                 grdetalle.SetValue("cbpcost", grdetalle.GetValue("cbptot") / grdetalle.GetValue("cbcmin"))
@@ -1432,6 +1433,7 @@ Public Class F0_MCompras
         objrep.SetDataSource(dt)
 
         objrep.SetParameterValue("Literal", _Literal)
+        objrep.SetParameterValue("Emision", IIf(swEmision.Value = True, "NRO. FACTURA:", "NRO. DOCUMENTO:"))
 
         P_Global.Visualizador.CrGeneral.ReportSource = objrep 'Comentar
         P_Global.Visualizador.ShowDialog() 'Comentar
@@ -1664,6 +1666,8 @@ salirIf:
                     CType(grdetalle.DataSource, DataTable).Rows(pos).Item("cbpcost") = grProductos.GetValue("yhprecio")
                     CType(grdetalle.DataSource, DataTable).Rows(pos).Item("cbptot") = grProductos.GetValue("yhprecio")
                     CType(grdetalle.DataSource, DataTable).Rows(pos).Item("cbcmin") = 1
+                    CType(grdetalle.DataSource, DataTable).Rows(pos).Item("cbtotal") = grProductos.GetValue("yhprecio")
+                    CType(grdetalle.DataSource, DataTable).Rows(pos).Item("cbpcostoun") = grProductos.GetValue("yhprecio")
 
                     Dim PrecioVenta As Double = IIf(IsDBNull(grProductos.GetValue("venta")), 0, grProductos.GetValue("venta"))
                     If (PrecioVenta > 0) Then
@@ -1734,7 +1738,7 @@ salirIf:
 
 
                 Else
-                    If (grdetalle.GetValue("cbpcost") > 0) Then
+                    If (grdetalle.GetValue("cbpcost") >= 0) Then
                         Dim rowIndex As Integer = grdetalle.Row
                         P_PonerTotal(rowIndex)
                     Else
