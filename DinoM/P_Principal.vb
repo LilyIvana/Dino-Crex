@@ -630,7 +630,7 @@ Public Class P_Principal
     Private Sub btVentReporteAtendidas_Click(sender As Object, e As EventArgs) Handles btVentReporteAtendidas.Click
         'SideNav1.IsMenuExpanded = False
         'Ventana.Select()
-        Dim frm As New Pr_VentasAtendidas
+        Dim frm As New Pr_VentasAtendidas2
         'Dim tab3 As SuperTabItem = superTabControl3.CreateTab(frm.Text)
         'frm._tab = tab3
 

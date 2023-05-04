@@ -745,6 +745,12 @@
     <Compile Include="Pr_ReporteVentasCajeras.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Pr_VentasAtendidas2.Designer.vb">
+      <DependentUpon>Pr_VentasAtendidas2.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Pr_VentasAtendidas2.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Pr_VentasVsCostos.Designer.vb">
       <DependentUpon>Pr_VentasVsCostos.vb</DependentUpon>
     </Compile>
@@ -1147,6 +1153,18 @@
       <SubType>Component</SubType>
       <DesignTime>True</DesignTime>
     </Compile>
+    <Compile Include="Reporte\R_VentasAtendidasVendedorAlmacen2.vb">
+      <DependentUpon>R_VentasAtendidasVendedorAlmacen2.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Reporte\R_VentasAtendidasVendedorAlmacenRS2.vb">
+      <DependentUpon>R_VentasAtendidasVendedorAlmacenRS2.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Include="Reporte\R_VentasAtendidasVendedorAlmacenRS.vb">
       <DependentUpon>R_VentasAtendidasVendedorAlmacenRS.rpt</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -1522,6 +1540,9 @@
     <EmbeddedResource Include="Pr_ReporteVentasCajeras.resx">
       <DependentUpon>Pr_ReporteVentasCajeras.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Pr_VentasAtendidas2.resx">
+      <DependentUpon>Pr_VentasAtendidas2.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Pr_VentasVsCostos.resx">
       <DependentUpon>Pr_VentasVsCostos.vb</DependentUpon>
     </EmbeddedResource>
@@ -1786,6 +1807,14 @@
     <EmbeddedResource Include="Reporte\R_VentasAtendidasAlmacenVendedorRS.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>R_VentasAtendidasAlmacenVendedorRS.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reporte\R_VentasAtendidasVendedorAlmacen2.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>R_VentasAtendidasVendedorAlmacen2.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reporte\R_VentasAtendidasVendedorAlmacenRS2.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>R_VentasAtendidasVendedorAlmacenRS2.vb</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Reporte\R_VentasAtendidasVendedorAlmacenRS.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>

@@ -4641,6 +4641,21 @@ Public Class AccesoLogica
         _Tabla = D_ProcedimientoConParam("Sp_Mam_ReporteVentas", _listParam)
         Return _Tabla
     End Function
+    Public Shared Function L_BuscarVentasAtendidas2(fechaI As String, fechaF As String, idAlmacen As Integer,
+                                                    idVendedor As Integer, idCliente As Integer, nrocaja As Integer) As DataTable
+        Dim _Tabla As DataTable
+        Dim _listParam As New List(Of Datos.DParametro)
+        _listParam.Add(New Datos.DParametro("@tipo", 12))
+        _listParam.Add(New Datos.DParametro("@fechaI", fechaI))
+        _listParam.Add(New Datos.DParametro("@fechaF", fechaF))
+        _listParam.Add(New Datos.DParametro("@Vendedor", idVendedor))
+        _listParam.Add(New Datos.DParametro("@Cliente", idCliente))
+        _listParam.Add(New Datos.DParametro("@almacen", idAlmacen))
+        _listParam.Add(New Datos.DParametro("@nroCaja", nrocaja))
+        _listParam.Add(New Datos.DParametro("@uact", L_Usuario))
+        _Tabla = D_ProcedimientoConParam("Sp_Mam_ReporteVentas", _listParam)
+        Return _Tabla
+    End Function
 #End Region
 #Region "REPORTES VS VENTAS"
 
