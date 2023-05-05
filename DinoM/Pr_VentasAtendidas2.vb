@@ -38,8 +38,8 @@ Public Class Pr_VentasAtendidas2
         Dim idCliente As Integer = 0
         Dim idAlmacen As Integer = 0
         Dim nrocaja As Integer = 0
-        If CheckTodosAlmacen.Checked = False And CheckUnaALmacen.Checked = True And tbCodAlmacen.Text <> String.Empty Then
-            idAlmacen = tbCodAlmacen.Text
+        If CheckTodosAlmacen.Checked = False And CheckUnaALmacen.Checked = True And tbAlmacen.Text <> String.Empty Then
+            idAlmacen = tbAlmacen.Value
         End If
         If CheckTodosVendedor.Checked = False And checkUnaVendedor.Checked = True And tbCodigoVendedor.Text <> String.Empty Then
             idVendedor = tbCodigoVendedor.Text
@@ -285,6 +285,9 @@ Public Class Pr_VentasAtendidas2
                 listEstCeldas.Add(New Modelo.Celda("yddias", False, "CRED", 50))
                 listEstCeldas.Add(New Modelo.Celda("ydnomfac", False, "Nombre Factura", 50))
                 listEstCeldas.Add(New Modelo.Celda("ydnit", False, "Nit/CI", 50))
+                listEstCeldas.Add(New Modelo.Celda("email", False, "EMAIL", 50))
+                listEstCeldas.Add(New Modelo.Celda("yddct", False, "", 50))
+
                 Dim ef = New Efecto
                 ef.tipo = 3
                 ef.dt = dt

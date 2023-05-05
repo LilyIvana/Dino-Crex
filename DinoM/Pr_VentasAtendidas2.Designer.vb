@@ -286,6 +286,7 @@ Partial Class Pr_VentasAtendidas2
         Me.swTipoVenta.Size = New System.Drawing.Size(160, 22)
         Me.swTipoVenta.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
         Me.swTipoVenta.TabIndex = 6
+        Me.swTipoVenta.Visible = False
         '
         'GroupBox2
         '
