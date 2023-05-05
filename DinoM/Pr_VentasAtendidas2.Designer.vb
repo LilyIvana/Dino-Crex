@@ -24,13 +24,18 @@ Partial Class Pr_VentasAtendidas2
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Pr_VentasAtendidas2))
-        Dim tbAlmacen_DesignTimeLayout As Janus.Windows.GridEX.GridEXLayout = New Janus.Windows.GridEX.GridEXLayout()
         Dim cbNroCaja_DesignTimeLayout As Janus.Windows.GridEX.GridEXLayout = New Janus.Windows.GridEX.GridEXLayout()
+        Dim tbAlmacen_DesignTimeLayout As Janus.Windows.GridEX.GridEXLayout = New Janus.Windows.GridEX.GridEXLayout()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.swMostrar = New DevComponents.DotNetBar.Controls.SwitchButton()
         Me.swIce = New DevComponents.DotNetBar.Controls.SwitchButton()
         Me.swTipoVenta = New DevComponents.DotNetBar.Controls.SwitchButton()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
+        Me.cbNroCaja = New Janus.Windows.GridEX.EditControls.MultiColumnCombo()
+        Me.CheckTodosNCaja = New DevComponents.DotNetBar.Controls.CheckBoxX()
+        Me.CheckUnNCaja = New DevComponents.DotNetBar.Controls.CheckBoxX()
+        Me.tbNroCaja = New DevComponents.DotNetBar.Controls.TextBoxX()
+        Me.LabelX6 = New DevComponents.DotNetBar.LabelX()
         Me.tbCliente = New DevComponents.DotNetBar.Controls.TextBoxX()
         Me.ckTodosCliente = New DevComponents.DotNetBar.Controls.CheckBoxX()
         Me.ckUnoCliente = New DevComponents.DotNetBar.Controls.CheckBoxX()
@@ -51,11 +56,6 @@ Partial Class Pr_VentasAtendidas2
         Me.LabelX4 = New DevComponents.DotNetBar.LabelX()
         Me.tbFechaI = New DevComponents.Editors.DateTimeAdv.DateTimeInput()
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
-        Me.cbNroCaja = New Janus.Windows.GridEX.EditControls.MultiColumnCombo()
-        Me.CheckTodosNCaja = New DevComponents.DotNetBar.Controls.CheckBoxX()
-        Me.CheckUnNCaja = New DevComponents.DotNetBar.Controls.CheckBoxX()
-        Me.tbNroCaja = New DevComponents.DotNetBar.Controls.TextBoxX()
-        Me.LabelX6 = New DevComponents.DotNetBar.LabelX()
         CType(Me.SuperTabPrincipal, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuperTabPrincipal.SuspendLayout()
         Me.SuperTabControlPanelRegistro.SuspendLayout()
@@ -72,10 +72,10 @@ Partial Class Pr_VentasAtendidas2
         CType(Me.MPicture, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
+        CType(Me.cbNroCaja, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.tbAlmacen, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.tbFechaF, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.tbFechaI, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.cbNroCaja, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'SuperTabPrincipal
@@ -322,6 +322,81 @@ Partial Class Pr_VentasAtendidas2
         Me.GroupBox2.TabIndex = 1
         Me.GroupBox2.TabStop = False
         Me.GroupBox2.Text = "Datos"
+        '
+        'cbNroCaja
+        '
+        Me.cbNroCaja.BackColor = System.Drawing.Color.Gainsboro
+        cbNroCaja_DesignTimeLayout.LayoutString = resources.GetString("cbNroCaja_DesignTimeLayout.LayoutString")
+        Me.cbNroCaja.DesignTimeLayout = cbNroCaja_DesignTimeLayout
+        Me.cbNroCaja.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cbNroCaja.Location = New System.Drawing.Point(72, 273)
+        Me.cbNroCaja.Name = "cbNroCaja"
+        Me.cbNroCaja.Office2007ColorScheme = Janus.Windows.GridEX.Office2007ColorScheme.Custom
+        Me.cbNroCaja.Office2007CustomColor = System.Drawing.Color.DodgerBlue
+        Me.cbNroCaja.SelectedIndex = -1
+        Me.cbNroCaja.SelectedItem = Nothing
+        Me.cbNroCaja.Size = New System.Drawing.Size(164, 22)
+        Me.cbNroCaja.TabIndex = 257
+        Me.cbNroCaja.VisualStyle = Janus.Windows.GridEX.VisualStyle.Office2007
+        '
+        'CheckTodosNCaja
+        '
+        '
+        '
+        '
+        Me.CheckTodosNCaja.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.CheckTodosNCaja.Location = New System.Drawing.Point(294, 275)
+        Me.CheckTodosNCaja.Name = "CheckTodosNCaja"
+        Me.CheckTodosNCaja.Size = New System.Drawing.Size(55, 23)
+        Me.CheckTodosNCaja.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+        Me.CheckTodosNCaja.TabIndex = 256
+        Me.CheckTodosNCaja.Text = "Todos"
+        '
+        'CheckUnNCaja
+        '
+        '
+        '
+        '
+        Me.CheckUnNCaja.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.CheckUnNCaja.Location = New System.Drawing.Point(244, 275)
+        Me.CheckUnNCaja.Name = "CheckUnNCaja"
+        Me.CheckUnNCaja.Size = New System.Drawing.Size(44, 23)
+        Me.CheckUnNCaja.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+        Me.CheckUnNCaja.TabIndex = 253
+        Me.CheckUnNCaja.Text = "Una"
+        '
+        'tbNroCaja
+        '
+        '
+        '
+        '
+        Me.tbNroCaja.Border.Class = "TextBoxBorder"
+        Me.tbNroCaja.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.tbNroCaja.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.tbNroCaja.ForeColor = System.Drawing.Color.FromArgb(CType(CType(45, Byte), Integer), CType(CType(59, Byte), Integer), CType(CType(66, Byte), Integer))
+        Me.tbNroCaja.Location = New System.Drawing.Point(42, 273)
+        Me.tbNroCaja.Name = "tbNroCaja"
+        Me.tbNroCaja.PreventEnterBeep = True
+        Me.tbNroCaja.Size = New System.Drawing.Size(22, 22)
+        Me.tbNroCaja.TabIndex = 255
+        Me.tbNroCaja.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+        Me.tbNroCaja.Visible = False
+        '
+        'LabelX6
+        '
+        Me.LabelX6.BackColor = System.Drawing.Color.Transparent
+        '
+        '
+        '
+        Me.LabelX6.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.LabelX6.Font = New System.Drawing.Font("Georgia", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LabelX6.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(85, Byte), Integer), CType(CType(139, Byte), Integer))
+        Me.LabelX6.Location = New System.Drawing.Point(7, 249)
+        Me.LabelX6.Name = "LabelX6"
+        Me.LabelX6.SingleLineColor = System.Drawing.SystemColors.Control
+        Me.LabelX6.Size = New System.Drawing.Size(74, 23)
+        Me.LabelX6.TabIndex = 254
+        Me.LabelX6.Text = "Nro Caja:"
         '
         'tbCliente
         '
@@ -677,81 +752,6 @@ Partial Class Pr_VentasAtendidas2
         Me.Timer1.Enabled = True
         Me.Timer1.Interval = 500
         '
-        'cbNroCaja
-        '
-        Me.cbNroCaja.BackColor = System.Drawing.Color.Gainsboro
-        cbNroCaja_DesignTimeLayout.LayoutString = resources.GetString("cbNroCaja_DesignTimeLayout.LayoutString")
-        Me.cbNroCaja.DesignTimeLayout = cbNroCaja_DesignTimeLayout
-        Me.cbNroCaja.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.cbNroCaja.Location = New System.Drawing.Point(72, 273)
-        Me.cbNroCaja.Name = "cbNroCaja"
-        Me.cbNroCaja.Office2007ColorScheme = Janus.Windows.GridEX.Office2007ColorScheme.Custom
-        Me.cbNroCaja.Office2007CustomColor = System.Drawing.Color.DodgerBlue
-        Me.cbNroCaja.SelectedIndex = -1
-        Me.cbNroCaja.SelectedItem = Nothing
-        Me.cbNroCaja.Size = New System.Drawing.Size(164, 22)
-        Me.cbNroCaja.TabIndex = 257
-        Me.cbNroCaja.VisualStyle = Janus.Windows.GridEX.VisualStyle.Office2007
-        '
-        'CheckTodosNCaja
-        '
-        '
-        '
-        '
-        Me.CheckTodosNCaja.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.CheckTodosNCaja.Location = New System.Drawing.Point(294, 275)
-        Me.CheckTodosNCaja.Name = "CheckTodosNCaja"
-        Me.CheckTodosNCaja.Size = New System.Drawing.Size(55, 23)
-        Me.CheckTodosNCaja.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-        Me.CheckTodosNCaja.TabIndex = 256
-        Me.CheckTodosNCaja.Text = "Todos"
-        '
-        'CheckUnNCaja
-        '
-        '
-        '
-        '
-        Me.CheckUnNCaja.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.CheckUnNCaja.Location = New System.Drawing.Point(244, 275)
-        Me.CheckUnNCaja.Name = "CheckUnNCaja"
-        Me.CheckUnNCaja.Size = New System.Drawing.Size(44, 23)
-        Me.CheckUnNCaja.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-        Me.CheckUnNCaja.TabIndex = 253
-        Me.CheckUnNCaja.Text = "Una"
-        '
-        'tbNroCaja
-        '
-        '
-        '
-        '
-        Me.tbNroCaja.Border.Class = "TextBoxBorder"
-        Me.tbNroCaja.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.tbNroCaja.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.tbNroCaja.ForeColor = System.Drawing.Color.FromArgb(CType(CType(45, Byte), Integer), CType(CType(59, Byte), Integer), CType(CType(66, Byte), Integer))
-        Me.tbNroCaja.Location = New System.Drawing.Point(42, 273)
-        Me.tbNroCaja.Name = "tbNroCaja"
-        Me.tbNroCaja.PreventEnterBeep = True
-        Me.tbNroCaja.Size = New System.Drawing.Size(22, 22)
-        Me.tbNroCaja.TabIndex = 255
-        Me.tbNroCaja.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
-        Me.tbNroCaja.Visible = False
-        '
-        'LabelX6
-        '
-        Me.LabelX6.BackColor = System.Drawing.Color.Transparent
-        '
-        '
-        '
-        Me.LabelX6.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.LabelX6.Font = New System.Drawing.Font("Georgia", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelX6.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(85, Byte), Integer), CType(CType(139, Byte), Integer))
-        Me.LabelX6.Location = New System.Drawing.Point(7, 249)
-        Me.LabelX6.Name = "LabelX6"
-        Me.LabelX6.SingleLineColor = System.Drawing.SystemColors.Control
-        Me.LabelX6.Size = New System.Drawing.Size(74, 23)
-        Me.LabelX6.TabIndex = 254
-        Me.LabelX6.Text = "Nro Caja:"
-        '
         'Pr_VentasAtendidas2
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -779,10 +779,10 @@ Partial Class Pr_VentasAtendidas2
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox2.ResumeLayout(False)
         Me.GroupBox2.PerformLayout()
+        CType(Me.cbNroCaja, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.tbAlmacen, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.tbFechaF, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.tbFechaI, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.cbNroCaja, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub

@@ -22,6 +22,7 @@ Public Class Pr_VentasAtendidas2
         CheckTodosVendedor.CheckValue = True
         CheckTodosAlmacen.CheckValue = True
         ckTodosCliente.CheckValue = True
+        CheckTodosNCaja.CheckValue = True
         If (gb_FacturaIncluirICE) Then
             swIce.Visible = True
         Else
@@ -45,6 +46,9 @@ Public Class Pr_VentasAtendidas2
         End If
         If ckTodosCliente.Checked = False And ckUnoCliente.Checked = True And tbCodigoCliente.Text <> String.Empty Then
             idCliente = tbCodigoCliente.Text
+        End If
+        If CheckTodosNCaja.Checked = False And CheckUnNCaja.Checked = True And cbNroCaja.Text <> String.Empty Then
+            nrocaja = cbNroCaja.Text
         End If
 
         'Obtiene las ventas con y sin factura
@@ -179,6 +183,29 @@ Public Class Pr_VentasAtendidas2
         End With
     End Sub
 
+    Private Sub _prCargarComboNroCaja(mCombo As Janus.Windows.GridEX.EditControls.MultiColumnCombo)
+        Dim dt As New DataTable
+        dt.Columns.Add("NroCaja")
+        dt.Rows.Add("1")
+        dt.Rows.Add("2")
+        dt.Rows.Add("3")
+        dt.Rows.Add("4")
+        dt.Rows.Add("5")
+        dt.Rows.Add("6")
+        dt.Rows.Add("7")
+
+
+        With mCombo
+            .DropDownList.Columns.Clear()
+            .DropDownList.Columns.Add("NroCaja").Width = 150
+            .DropDownList.Columns("NroCaja").Caption = "NRO CAJA"
+            .ValueMember = "NroCaja"
+            .DisplayMember = "NroCaja"
+            .DataSource = dt
+            .Refresh()
+        End With
+    End Sub
+
     Private Sub tbVendedor_KeyDown_1(sender As Object, e As KeyEventArgs) Handles tbVendedor.KeyDown
         If (checkUnaVendedor.Checked) Then
             If e.KeyData = Keys.Control + Keys.Enter Then
@@ -276,6 +303,33 @@ Public Class Pr_VentasAtendidas2
                     tbCliente.Text = Row.Cells("yddesc").Value
                 End If
             End If
+        End If
+    End Sub
+
+    Private Sub CheckUnNCaja_CheckValueChanged(sender As Object, e As EventArgs) Handles CheckUnNCaja.CheckValueChanged
+        If (CheckUnNCaja.Checked) Then
+            CheckTodosNCaja.CheckValue = False
+            cbNroCaja.Enabled = True
+            cbNroCaja.BackColor = Color.White
+            cbNroCaja.Focus()
+            cbNroCaja.ReadOnly = False
+            _prCargarComboNroCaja(cbNroCaja)
+            If (CType(cbNroCaja.DataSource, DataTable).Rows.Count > 0) Then
+                cbNroCaja.SelectedIndex = 0
+            End If
+        End If
+    End Sub
+
+    Private Sub CheckTodosNCaja_CheckValueChanged(sender As Object, e As EventArgs) Handles CheckTodosNCaja.CheckValueChanged
+        If (CheckTodosNCaja.Checked) Then
+            CheckUnNCaja.CheckValue = False
+            cbNroCaja.Enabled = True
+            cbNroCaja.BackColor = Color.Gainsboro
+            cbNroCaja.ReadOnly = True
+            _prCargarComboNroCaja(cbNroCaja)
+            CType(cbNroCaja.DataSource, DataTable).Rows.Clear()
+            cbNroCaja.SelectedIndex = -1
+
         End If
     End Sub
 End Class
