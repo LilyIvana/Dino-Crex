@@ -549,6 +549,7 @@ Partial Class F0_Movimiento
         Me.tbObservacion.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.tbObservacion.ForeColor = System.Drawing.Color.Black
         Me.tbObservacion.Location = New System.Drawing.Point(118, 105)
+        Me.tbObservacion.MaxLength = 300
         Me.tbObservacion.Multiline = True
         Me.tbObservacion.Name = "tbObservacion"
         Me.tbObservacion.PreventEnterBeep = True

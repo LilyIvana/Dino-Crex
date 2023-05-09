@@ -2879,14 +2879,27 @@ Public Class F0_Venta2
     Private Sub grdetalle_EditingCell(sender As Object, e As EditingCellEventArgs) Handles grdetalle.EditingCell
         If (_fnAccesible()) Then
             'Habilitar solo las columnas de Precio, %, Monto y Observación
-            'If (e.Column.Index = grdetalle.RootTable.Columns("yfcbarra").Index Or
-            If (e.Column.Index = grdetalle.RootTable.Columns("tbcmin").Index Or
-                e.Column.Index = grdetalle.RootTable.Columns("tbporc").Index Or
-                e.Column.Index = grdetalle.RootTable.Columns("tbpbas").Index) Then
-                ''e.Column.Index = grdetalle.RootTable.Columns("tbdesc").Index
-                e.Cancel = False
+            ''If (e.Column.Index = grdetalle.RootTable.Columns("yfcbarra").Index Or
+            'If (e.Column.Index = grdetalle.RootTable.Columns("tbcmin").Index) Then
+            '    ''e.Column.Index = grdetalle.RootTable.Columns("tbdesc").Index
+            '    e.Cancel = False
+            'Else
+            '    e.Cancel = True
+            'End If
+
+            If gs_NroCaja = 7 Then
+                If (e.Column.Index = grdetalle.RootTable.Columns("tbcmin").Index Or
+                    e.Column.Index = grdetalle.RootTable.Columns("tbpbas").Index) Then
+                    e.Cancel = False
+                Else
+                    e.Cancel = True
+                End If
             Else
-                e.Cancel = True
+                If (e.Column.Index = grdetalle.RootTable.Columns("tbcmin").Index) Then
+                    e.Cancel = False
+                Else
+                    e.Cancel = True
+                End If
             End If
         Else
             e.Cancel = True

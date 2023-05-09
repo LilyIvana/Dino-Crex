@@ -37,7 +37,7 @@ Public Class F0_Movimiento
         'Me.Icon = ico
         _prAsignarPermisos()
         Me.Text = "MOVIMIENTO PRODUCTOS"
-        tbObservacion.MaxLength = 100
+        tbObservacion.MaxLength = 300
     End Sub
     Public Sub _prValidarLote()
         Dim dt As DataTable = L_fnPorcUtilidad()
