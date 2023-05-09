@@ -635,12 +635,37 @@ Public Class F1_Productos
             tbCodBarra.BackColor = Color.White
             MEP.SetError(tbCodBarra, "")
         End If
+        If tbDescDet.Text <> "CB" Then
+            Dim DosPrimerosDigitos As String = Mid(tbCodBarra.Text, 1, 2)
+            If DosPrimerosDigitos = "20" Then
+
+                tbCodBarra.BackColor = Color.Red
+                'MEP.SetError(tbCodBarra, "No puede colocar códigos de barras que empiecen con 20!".ToUpper)
+                ToastNotification.Show(Me, "No puede colocar códigos de barras que empiecen con 20!".ToUpper,
+                                      My.Resources.WARNING, 2000,
+                                      eToastGlowColor.Red,
+                                      eToastPosition.TopCenter
+                                      )
+                _ok = False
+            Else
+                tbCodBarra.BackColor = Color.White
+                MEP.SetError(tbCodBarra, "")
+            End If
+        Else
+            tbCodBarra.BackColor = Color.White
+            MEP.SetError(tbCodBarra, "")
+        End If
         If tbCodBarra.Text <> String.Empty Then
             If CodBarras <> tbCodBarra.Text Then
                 Dim dt = L_fnValidarCodBarras(tbCodBarra.Text)
                 If dt.Rows.Count > 0 Then
                     tbCodBarra.BackColor = Color.Red
-                    MEP.SetError(tbCodBarra, "Este código de barras ya existe en otro producto!".ToUpper)
+                    'MEP.SetError(tbCodBarra, "Este código de barras ya existe en otro producto!".ToUpper)
+                    ToastNotification.Show(Me, "Este código de barras ya existe en otro producto!".ToUpper,
+                                      My.Resources.WARNING, 2000,
+                                      eToastGlowColor.Red,
+                                      eToastPosition.TopCenter
+                                      )
                     _ok = False
                 Else
                     tbCodBarra.BackColor = Color.White
@@ -655,21 +680,7 @@ Public Class F1_Productos
             MEP.SetError(tbCodBarra, "")
         End If
 
-        If tbDescDet.Text <> "CB" Then
-            Dim DosPrimerosDigitos As String = Mid(tbCodBarra.Text, 1, 2)
-            If DosPrimerosDigitos = "20" Then
 
-                tbCodBarra.BackColor = Color.Red
-                MEP.SetError(tbCodBarra, "No puede colocar códigos de barras que empiecen con 20!".ToUpper)
-                _ok = False
-            Else
-                tbCodBarra.BackColor = Color.White
-                MEP.SetError(tbCodBarra, "")
-            End If
-        Else
-            tbCodBarra.BackColor = Color.White
-            MEP.SetError(tbCodBarra, "")
-        End If
 
         ''Sifac
         If CbAeconomica.SelectedIndex < 0 Then
