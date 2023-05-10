@@ -3992,6 +3992,20 @@ Public Class AccesoLogica
 
         Return _Tabla
     End Function
+
+    Public Shared Function L_prMovimientoListarUnProducto(_deposito As Integer, _CodPro As Integer) As DataTable
+        Dim _Tabla As DataTable
+
+        Dim _listParam As New List(Of Datos.DParametro)
+
+        _listParam.Add(New Datos.DParametro("@tipo", 6))
+        _listParam.Add(New Datos.DParametro("@ibuact", L_Usuario))
+        _listParam.Add(New Datos.DParametro("@almacen", _deposito))
+        _listParam.Add(New Datos.DParametro("@producto", _CodPro))
+        _Tabla = D_ProcedimientoConParam("sp_Marco_TI002", _listParam)
+
+        Return _Tabla
+    End Function
     Public Shared Function L_prMovimientoListarProductosConLote(_deposito As Integer) As DataTable
         Dim _Tabla As DataTable
 

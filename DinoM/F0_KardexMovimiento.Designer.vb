@@ -104,7 +104,7 @@ Partial Class F0_KardexMovimiento
         '
         'PanelInferior
         '
-        Me.PanelInferior.Location = New System.Drawing.Point(0, 672)
+        Me.PanelInferior.Location = New System.Drawing.Point(0, 662)
         Me.PanelInferior.Margin = New System.Windows.Forms.Padding(4)
         Me.PanelInferior.Size = New System.Drawing.Size(1344, 39)
         Me.PanelInferior.Style.Alignment = System.Drawing.StringAlignment.Center
@@ -157,7 +157,7 @@ Partial Class F0_KardexMovimiento
         'PanelPrincipal
         '
         Me.PanelPrincipal.Margin = New System.Windows.Forms.Padding(4)
-        Me.PanelPrincipal.Size = New System.Drawing.Size(1344, 711)
+        Me.PanelPrincipal.Size = New System.Drawing.Size(1344, 701)
         Me.PanelPrincipal.Controls.SetChildIndex(Me.PanelInferior, 0)
         Me.PanelPrincipal.Controls.SetChildIndex(Me.PanelUsuario, 0)
         Me.PanelPrincipal.Controls.SetChildIndex(Me.PanelSuperior, 0)
@@ -190,17 +190,17 @@ Partial Class F0_KardexMovimiento
         Me.PanelContent.Controls.Add(Me.GroupPanelKardex)
         Me.PanelContent.Controls.Add(Me.GroupPanelDatos)
         Me.PanelContent.Margin = New System.Windows.Forms.Padding(4)
-        Me.PanelContent.Size = New System.Drawing.Size(1311, 600)
+        Me.PanelContent.Size = New System.Drawing.Size(1311, 590)
         '
         'Panel1
         '
         Me.Panel1.Margin = New System.Windows.Forms.Padding(4)
-        Me.Panel1.Size = New System.Drawing.Size(1344, 600)
+        Me.Panel1.Size = New System.Drawing.Size(1344, 590)
         '
         'MSuperTabControlPanel1
         '
         Me.MSuperTabControlPanel1.Margin = New System.Windows.Forms.Padding(4)
-        Me.MSuperTabControlPanel1.Size = New System.Drawing.Size(1311, 600)
+        Me.MSuperTabControlPanel1.Size = New System.Drawing.Size(1311, 590)
         '
         'MSuperTabItem1
         '
@@ -222,7 +222,7 @@ Partial Class F0_KardexMovimiento
         Me.MSuperTabControl.ControlBox.Name = ""
         Me.MSuperTabControl.ControlBox.SubItems.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.MSuperTabControl.ControlBox.MenuBox, Me.MSuperTabControl.ControlBox.CloseBox})
         Me.MSuperTabControl.Margin = New System.Windows.Forms.Padding(4)
-        Me.MSuperTabControl.Size = New System.Drawing.Size(1344, 600)
+        Me.MSuperTabControl.Size = New System.Drawing.Size(1344, 590)
         Me.MSuperTabControl.Controls.SetChildIndex(Me.MSuperTabControlPanel1, 0)
         '
         'PictureBox1
@@ -668,7 +668,7 @@ Partial Class F0_KardexMovimiento
         Me.GroupPanelKardex.Font = New System.Drawing.Font("Georgia", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GroupPanelKardex.Location = New System.Drawing.Point(0, 217)
         Me.GroupPanelKardex.Name = "GroupPanelKardex"
-        Me.GroupPanelKardex.Size = New System.Drawing.Size(1311, 383)
+        Me.GroupPanelKardex.Size = New System.Drawing.Size(1311, 373)
         '
         '
         '
@@ -716,7 +716,7 @@ Partial Class F0_KardexMovimiento
         Me.Dgj1Datos.SelectedFormatStyle.BackColor = System.Drawing.Color.DodgerBlue
         Me.Dgj1Datos.SelectedFormatStyle.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Dgj1Datos.SelectedFormatStyle.ForeColor = System.Drawing.Color.White
-        Me.Dgj1Datos.Size = New System.Drawing.Size(1305, 360)
+        Me.Dgj1Datos.Size = New System.Drawing.Size(1305, 350)
         Me.Dgj1Datos.TabIndex = 0
         Me.Dgj1Datos.VisualStyle = Janus.Windows.GridEX.VisualStyle.Office2007
         '
@@ -750,7 +750,7 @@ Partial Class F0_KardexMovimiento
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1344, 711)
+        Me.ClientSize = New System.Drawing.Size(1344, 701)
         Me.Location = New System.Drawing.Point(0, 0)
         Me.Margin = New System.Windows.Forms.Padding(4)
         Me.Name = "F0_KardexMovimiento"

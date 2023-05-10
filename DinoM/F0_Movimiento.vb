@@ -204,6 +204,13 @@ Public Class F0_Movimiento
             cbDepositoDestino.Value = IIf(IsDBNull(.GetValue("ibdepdest")), 0, .GetValue("ibdepdest"))
         End With
 
+        If (cbConcepto.Value = 6) Then ''''Movimiento 6=Traspaso Salida
+            btnModificar.Enabled = False
+        Else
+            btnModificar.Enabled = True
+        End If
+
+
         _prCargarDetalleVenta(tbCodigo.Text)
         LblPaginacion.Text = Str(grmovimiento.Row + 1) + "/" + grmovimiento.RowCount.ToString
 
@@ -613,6 +620,8 @@ Public Class F0_Movimiento
         fc.FormatStyle.ForeColor = Color.Tan
         grproducto.RootTable.FormatConditions.Add(fc)
     End Sub
+
+
     Private Sub _prAddDetalleVenta()
         'If grdetalle.RowCount > 0 Then
         '    Return
@@ -749,6 +758,51 @@ Public Class F0_Movimiento
                 Return False
             End If
         End If
+
+        ''Para validar nuevamente Stock
+        If cbConcepto.Value = 2 Or cbConcepto.Value = 6 Then 'Conceptos 2=Salida y 6=Traspaso Salida 
+
+            For i = 0 To CType(grdetalle.DataSource, DataTable).Rows.Count - 1
+                Dim CodPro As Integer = CType(grdetalle.DataSource, DataTable).Rows(i).Item("iccprod")
+                Dim dt = L_prMovimientoListarUnProducto(cbAlmacenOrigen.Value, CodPro)
+                If dt.Rows.Count > 0 Then
+
+
+                    Dim stock As Double = dt.Rows(0).Item("stock")
+                    If (CType(grdetalle.DataSource, DataTable).Rows(i).Item("estado") >= 0 And CType(grdetalle.DataSource, DataTable).Rows(i).Item("iccant") > stock) Then
+                        Dim img As Bitmap = New Bitmap(My.Resources.mensaje, 50, 50)
+                        ToastNotification.Show(Me, "La cantidad que se quiere sacar en el Producto: ".ToUpper + CodPro.ToString +
+                        " es mayor a la que existe en el stock solo puede Sacar : ".ToUpper + Str(stock).Trim,
+                          img,
+                          5000,
+                          eToastGlowColor.Blue,
+                          eToastPosition.TopCenter)
+
+
+                        'Dim fc As GridEXFormatCondition
+                        'fc = New GridEXFormatCondition(grdetalle.RootTable.Columns("iccant"), ConditionOperator.GreaterThan, stock)
+                        'fc.FormatStyle.ForeColor = Color.Red
+                        'grdetalle.RootTable.FormatConditions.Add(fc)
+
+                        Return False
+
+                    Else
+                        'Dim fc As GridEXFormatCondition
+                        'fc = New GridEXFormatCondition(grdetalle.RootTable.Columns("iccant"), ConditionOperator.LessThanOrEqualTo, stock)
+                        'fc.FormatStyle.ForeColor = Color.Black
+                        'grdetalle.RootTable.FormatConditions.Add(fc)
+
+                    End If
+                End If
+            Next
+
+
+
+        End If
+
+
+
+
         Return True
     End Function
 

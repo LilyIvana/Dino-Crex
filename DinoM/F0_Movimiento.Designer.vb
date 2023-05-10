@@ -239,8 +239,8 @@ Partial Class F0_Movimiento
         Me.MSuperTabControl.SelectedTabIndex = 1
         Me.MSuperTabControl.Size = New System.Drawing.Size(1352, 580)
         Me.MSuperTabControl.Tabs.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.SuperTabItem2})
-        Me.MSuperTabControl.Controls.SetChildIndex(Me.SuperTabControlPanel2, 0)
         Me.MSuperTabControl.Controls.SetChildIndex(Me.MSuperTabControlPanel1, 0)
+        Me.MSuperTabControl.Controls.SetChildIndex(Me.SuperTabControlPanel2, 0)
         '
         'PictureBox1
         '
@@ -670,7 +670,7 @@ Partial Class F0_Movimiento
         Me.SuperTabControlPanel2.Dock = System.Windows.Forms.DockStyle.Fill
         Me.SuperTabControlPanel2.Location = New System.Drawing.Point(0, 0)
         Me.SuperTabControlPanel2.Name = "SuperTabControlPanel2"
-        Me.SuperTabControlPanel2.Size = New System.Drawing.Size(951, 450)
+        Me.SuperTabControlPanel2.Size = New System.Drawing.Size(1319, 580)
         Me.SuperTabControlPanel2.TabIndex = 0
         Me.SuperTabControlPanel2.TabItem = Me.SuperTabItem2
         '
@@ -685,7 +685,7 @@ Partial Class F0_Movimiento
         Me.GroupPanel4.Font = New System.Drawing.Font("Georgia", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GroupPanel4.Location = New System.Drawing.Point(0, 0)
         Me.GroupPanel4.Name = "GroupPanel4"
-        Me.GroupPanel4.Size = New System.Drawing.Size(951, 450)
+        Me.GroupPanel4.Size = New System.Drawing.Size(1319, 580)
         '
         '
         '
@@ -738,7 +738,7 @@ Partial Class F0_Movimiento
         Me.grmovimiento.SelectedFormatStyle.BackColor = System.Drawing.Color.DodgerBlue
         Me.grmovimiento.SelectedFormatStyle.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.grmovimiento.SelectedFormatStyle.ForeColor = System.Drawing.Color.White
-        Me.grmovimiento.Size = New System.Drawing.Size(945, 427)
+        Me.grmovimiento.Size = New System.Drawing.Size(1313, 557)
         Me.grmovimiento.TabIndex = 0
         Me.grmovimiento.VisualStyle = Janus.Windows.GridEX.VisualStyle.Office2007
         '
