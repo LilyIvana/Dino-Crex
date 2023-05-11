@@ -20,6 +20,8 @@ Public Class F0_Movimiento
     Public _modulo As SideNavItem
     Dim Table_producto As DataTable
     Dim FilaSelectLote As DataRow = Nothing
+    Public Modificar As Boolean
+
 #End Region
 #Region "Metodos Privados"
     Private Sub _IniciarTodo()
@@ -760,46 +762,46 @@ Public Class F0_Movimiento
         End If
 
         ''Para validar nuevamente Stock
-        If cbConcepto.Value = 2 Or cbConcepto.Value = 6 Then 'Conceptos 2=Salida y 6=Traspaso Salida 
+        If Modificar = False Then
 
-            For i = 0 To CType(grdetalle.DataSource, DataTable).Rows.Count - 1
-                Dim CodPro As Integer = CType(grdetalle.DataSource, DataTable).Rows(i).Item("iccprod")
-                Dim dt = L_prMovimientoListarUnProducto(cbAlmacenOrigen.Value, CodPro)
-                If dt.Rows.Count > 0 Then
+            If cbConcepto.Value = 2 Or cbConcepto.Value = 6 Then 'Conceptos 2=Salida y 6=Traspaso Salida 
 
-
-                    Dim stock As Double = dt.Rows(0).Item("stock")
-                    If (CType(grdetalle.DataSource, DataTable).Rows(i).Item("estado") >= 0 And CType(grdetalle.DataSource, DataTable).Rows(i).Item("iccant") > stock) Then
-                        Dim img As Bitmap = New Bitmap(My.Resources.mensaje, 50, 50)
-                        ToastNotification.Show(Me, "La cantidad que se quiere sacar en el Producto: ".ToUpper + CodPro.ToString +
-                        " es mayor a la que existe en el stock solo puede Sacar : ".ToUpper + Str(stock).Trim,
-                          img,
-                          5000,
-                          eToastGlowColor.Blue,
-                          eToastPosition.TopCenter)
+                For i = 0 To CType(grdetalle.DataSource, DataTable).Rows.Count - 1
+                    Dim CodPro As Integer = CType(grdetalle.DataSource, DataTable).Rows(i).Item("iccprod")
+                    Dim dt = L_prMovimientoListarUnProducto(cbAlmacenOrigen.Value, CodPro)
+                    If dt.Rows.Count > 0 Then
 
 
-                        'Dim fc As GridEXFormatCondition
-                        'fc = New GridEXFormatCondition(grdetalle.RootTable.Columns("iccant"), ConditionOperator.GreaterThan, stock)
-                        'fc.FormatStyle.ForeColor = Color.Red
-                        'grdetalle.RootTable.FormatConditions.Add(fc)
+                        Dim stock As Double = dt.Rows(0).Item("stock")
+                        If (CType(grdetalle.DataSource, DataTable).Rows(i).Item("estado") >= 0 And CType(grdetalle.DataSource, DataTable).Rows(i).Item("iccant") > stock) Then
+                            Dim img As Bitmap = New Bitmap(My.Resources.mensaje, 50, 50)
+                            ToastNotification.Show(Me, "La cantidad que se quiere sacar en el Producto: ".ToUpper + CodPro.ToString +
+                            " es mayor a la que existe en el stock solo puede Sacar : ".ToUpper + Str(stock).Trim,
+                              img,
+                              5000,
+                              eToastGlowColor.Blue,
+                              eToastPosition.TopCenter)
 
-                        Return False
 
-                    Else
-                        'Dim fc As GridEXFormatCondition
-                        'fc = New GridEXFormatCondition(grdetalle.RootTable.Columns("iccant"), ConditionOperator.LessThanOrEqualTo, stock)
-                        'fc.FormatStyle.ForeColor = Color.Black
-                        'grdetalle.RootTable.FormatConditions.Add(fc)
+                            'Dim fc As GridEXFormatCondition
+                            'fc = New GridEXFormatCondition(grdetalle.RootTable.Columns("iccant"), ConditionOperator.GreaterThan, stock)
+                            'fc.FormatStyle.ForeColor = Color.Red
+                            'grdetalle.RootTable.FormatConditions.Add(fc)
 
+                            Return False
+
+                        Else
+                            'Dim fc As GridEXFormatCondition
+                            'fc = New GridEXFormatCondition(grdetalle.RootTable.Columns("iccant"), ConditionOperator.LessThanOrEqualTo, stock)
+                            'fc.FormatStyle.ForeColor = Color.Black
+                            'grdetalle.RootTable.FormatConditions.Add(fc)
+
+                        End If
                     End If
-                End If
-            Next
+                Next
 
-
-
+            End If
         End If
-
 
 
 
@@ -864,7 +866,7 @@ Public Class F0_Movimiento
         If res Then
 
             _prCargarVenta()
-
+            Modificar = False
             _prSalir()
 
             Dim img As Bitmap = New Bitmap(My.Resources.checked, 50, 50)
@@ -923,23 +925,32 @@ Public Class F0_Movimiento
 
             Dim existe As Boolean = _fnExisteProducto(grproducto.GetValue("yfnumi"))
             If ((pos >= 0) And (Not existe)) Then
-                CType(grdetalle.DataSource, DataTable).Rows(pos).Item("iccprod") = grproducto.GetValue("yfnumi")
-                CType(grdetalle.DataSource, DataTable).Rows(pos).Item("producto") = grproducto.GetValue("yfcdprod1")
-                CType(grdetalle.DataSource, DataTable).Rows(pos).Item("stock") = grproducto.GetValue("stock")
-                CType(grdetalle.DataSource, DataTable).Rows(pos).Item("Laboratorio") = grproducto.GetValue("Laboratorio")
-                CType(grdetalle.DataSource, DataTable).Rows(pos).Item("Presentacion") = grproducto.GetValue("Presentacion")
-                CType(grdetalle.DataSource, DataTable).Rows(pos).Item("yfcprod") = grproducto.GetValue("yfcprod")
-                CType(grdetalle.DataSource, DataTable).Rows(pos).Item("iccant") = 1
+                If (cbConcepto.Value = 2 Or cbConcepto.Value = 6) And grproducto.GetValue("stock") = 0 Then
+                    Dim img As Bitmap = New Bitmap(My.Resources.mensaje, 50, 50)
+                    ToastNotification.Show(Me, "No puede elegir un producto que tiene stock 0".ToUpper, img, 2000, eToastGlowColor.Red, eToastPosition.BottomCenter)
 
-                ''    _DesHabilitarProductos()
+                Else
 
-                _prAddDetalleVenta()
+                    CType(grdetalle.DataSource, DataTable).Rows(pos).Item("iccprod") = grproducto.GetValue("yfnumi")
+                    CType(grdetalle.DataSource, DataTable).Rows(pos).Item("producto") = grproducto.GetValue("yfcdprod1")
+                    CType(grdetalle.DataSource, DataTable).Rows(pos).Item("stock") = grproducto.GetValue("stock")
+                    CType(grdetalle.DataSource, DataTable).Rows(pos).Item("Laboratorio") = grproducto.GetValue("Laboratorio")
+                    CType(grdetalle.DataSource, DataTable).Rows(pos).Item("Presentacion") = grproducto.GetValue("Presentacion")
+                    CType(grdetalle.DataSource, DataTable).Rows(pos).Item("yfcprod") = grproducto.GetValue("yfcprod")
+                    CType(grdetalle.DataSource, DataTable).Rows(pos).Item("iccant") = 1
 
-                _prCargarProductos()
-                'grproducto.RemoveFilters()
-                grproducto.Focus()
-                grproducto.MoveTo(grproducto.FilterRow)
-                grproducto.Col = 1
+                    ''    _DesHabilitarProductos()
+
+                    _prAddDetalleVenta()
+
+                    _prCargarProductos()
+                    'grproducto.RemoveFilters()
+                    grproducto.Focus()
+                    grproducto.MoveTo(grproducto.FilterRow)
+                    grproducto.Col = 1
+
+                End If
+
             Else
                 If (existe) Then
                     Dim img As Bitmap = New Bitmap(My.Resources.mensaje, 50, 50)
@@ -1051,6 +1062,8 @@ Public Class F0_Movimiento
         btnEliminar.Enabled = False
         btnGrabar.Enabled = True
         PanelInferior.Enabled = False
+
+        Modificar = False
     End Sub
 
     Private Sub btnSalir_Click(sender As Object, e As EventArgs) Handles btnSalir.Click
@@ -1089,15 +1102,15 @@ Public Class F0_Movimiento
             c = grdetalle.Col
             f = grdetalle.Row
 
-            If (grdetalle.Col = grdetalle.RootTable.Columns("iccant").Index) Then
-                If (grdetalle.GetValue("producto") <> String.Empty) Then
-                    _prAddDetalleVenta()
-                    _HabilitarProductos()
-                Else
-                    ToastNotification.Show(Me, "Seleccione un Producto Por Favor", My.Resources.WARNING, 3000, eToastGlowColor.Red, eToastPosition.TopCenter)
-                End If
+            'If (grdetalle.Col = grdetalle.RootTable.Columns("iccant").Index) Then
+            '    If (grdetalle.GetValue("producto") <> String.Empty) Then
+            '        _prAddDetalleVenta()
+            '        _HabilitarProductos()
+            '    Else
+            '        ToastNotification.Show(Me, "Seleccione un Producto Por Favor", My.Resources.WARNING, 3000, eToastGlowColor.Red, eToastPosition.TopCenter)
+            '    End If
 
-            End If
+            'End If
             If (grdetalle.Col = grdetalle.RootTable.Columns("producto").Index) Then
                 If (grdetalle.GetValue("producto") <> String.Empty) Then
                     _prAddDetalleVenta()
@@ -1321,6 +1334,8 @@ salirIf:
 
             PanelInferior.Enabled = False
             _prCargarIconELiminar()
+
+            Modificar = True
         End If
     End Sub
 
