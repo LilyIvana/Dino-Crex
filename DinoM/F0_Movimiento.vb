@@ -30,6 +30,7 @@ Public Class F0_Movimiento
         _prValidarLote()
         'Me.WindowState = FormWindowState.Maximized
         _prCargarComboLibreriaConcepto(cbConcepto)
+        _prCargarComboLibreriaMotivo(cbMotivo, 10, 1)
         _prCargarComboLibreriaDeposito(cbAlmacenOrigen)
         _prCargarComboLibreriaDeposito(cbDepositoDestino)
         _prCargarVenta()
@@ -60,7 +61,7 @@ Public Class F0_Movimiento
             .DropDownList.Columns.Clear()
             .DropDownList.Columns.Add("aanumi").Width = 60
             .DropDownList.Columns("aanumi").Caption = "COD"
-            .DropDownList.Columns.Add("aabdes").Width = 500
+            .DropDownList.Columns.Add("aabdes").Width = 300
             .DropDownList.Columns("aabdes").Caption = "SUCURSAL"
             .ValueMember = "aanumi"
             .DisplayMember = "aabdes"
@@ -79,6 +80,21 @@ Public Class F0_Movimiento
             .DropDownList.Columns("cpdesc").Caption = "CONCEPTO"
             .ValueMember = "cpnumi"
             .DisplayMember = "cpdesc"
+            .DataSource = dt
+            .Refresh()
+        End With
+    End Sub
+    Private Sub _prCargarComboLibreriaMotivo(mCombo As Janus.Windows.GridEX.EditControls.MultiColumnCombo, cod1 As String, cod2 As String)
+        Dim dt As New DataTable
+        dt = L_prLibreriaClienteLGeneral(cod1, cod2)
+        With mCombo
+            .DropDownList.Columns.Clear()
+            .DropDownList.Columns.Add("yccod3").Width = 70
+            .DropDownList.Columns("yccod3").Caption = "COD"
+            .DropDownList.Columns.Add("ycdes3").Width = 400
+            .DropDownList.Columns("ycdes3").Caption = "DESCRIPCION"
+            .ValueMember = "yccod3"
+            .DisplayMember = "ycdes3"
             .DataSource = dt
             .Refresh()
         End With
@@ -106,11 +122,20 @@ Public Class F0_Movimiento
     Private Sub _prInhabiliitar()
 
         cbConcepto.ReadOnly = True
+        cbMotivo.ReadOnly = True
         tbObservacion.ReadOnly = True
         tbFecha.IsInputReadOnly = True
+        tbFecha.Enabled = False
         cbAlmacenOrigen.ReadOnly = True
         ''''''''''
-        btnModificar.Enabled = True
+
+        If (cbConcepto.Value = 6) Then ''''Movimiento 6=Traspaso Salida
+            btnModificar.Enabled = False
+        Else
+            btnModificar.Enabled = True
+        End If
+
+        'btnModificar.Enabled = True
         btnGrabar.Enabled = False
         btnNuevo.Enabled = True
         btnEliminar.Enabled = True
@@ -130,6 +155,7 @@ Public Class F0_Movimiento
         'cbConcepto.ReadOnly = False
         tbObservacion.ReadOnly = False
         tbFecha.IsInputReadOnly = False
+        tbFecha.Enabled = True
         cbAlmacenOrigen.ReadOnly = False
         grmovimiento.Enabled = False
         ''  tbCliente.ReadOnly = False  por que solo podra seleccionar Cliente
@@ -137,9 +163,11 @@ Public Class F0_Movimiento
         If (tbCodigo.Text.Length > 0) Then
             cbAlmacenOrigen.ReadOnly = True
             cbConcepto.ReadOnly = True
+            cbMotivo.ReadOnly = True
         Else
             cbAlmacenOrigen.ReadOnly = False
             cbConcepto.ReadOnly = False
+            cbMotivo.ReadOnly = False
 
         End If
         btnGrabar.Enabled = True
@@ -180,8 +208,10 @@ Public Class F0_Movimiento
         End If
         If (CType(cbConcepto.DataSource, DataTable).Rows.Count > 0) Then
             cbConcepto.SelectedIndex = 0
-
         End If
+
+        cbMotivo.SelectedIndex = -1
+
         _prAddDetalleVenta()
         cbConcepto.Focus()
         FilaSelectLote = Nothing
@@ -208,6 +238,13 @@ Public Class F0_Movimiento
 
         If (cbConcepto.Value = 6) Then ''''Movimiento 6=Traspaso Salida
             btnModificar.Enabled = False
+            Dim dtMotivo = L_fnMotivoTraspaso(tbCodigo.Text)
+            If dtMotivo.Rows.Count > 0 Then
+                cbMotivo.Value = dtMotivo.Rows(0).Item("idmotivo")
+            Else
+                cbMotivo.SelectedIndex = -1
+            End If
+
         Else
             btnModificar.Enabled = True
         End If
@@ -310,9 +347,8 @@ Public Class F0_Movimiento
                 .FormatString = "yyyy/MM/dd"
                 .Visible = False
             End With
-
-
         End If
+
         With grdetalle.RootTable.Columns("stock")
             .Width = 120
             .Caption = "stock".ToUpper
@@ -719,7 +755,12 @@ Public Class F0_Movimiento
             ToastNotification.Show(Me, "Por Favor Seleccione un Concepto".ToUpper, img, 2000, eToastGlowColor.Red, eToastPosition.BottomCenter)
             cbConcepto.Focus()
             Return False
-
+        End If
+        If (cbMotivo.SelectedIndex < 0) Then
+            Dim img As Bitmap = New Bitmap(My.Resources.mensaje, 50, 50)
+            ToastNotification.Show(Me, "Por Favor Seleccione un Motivo".ToUpper, img, 2000, eToastGlowColor.Red, eToastPosition.BottomCenter)
+            cbMotivo.Focus()
+            Return False
         End If
         If (cbAlmacenOrigen.SelectedIndex < 0) Then
             Dim img As Bitmap = New Bitmap(My.Resources.mensaje, 50, 50)
@@ -737,7 +778,7 @@ Public Class F0_Movimiento
             If (cbConcepto.Value = 6) Then
                 If (cbDepositoDestino.SelectedIndex < 0) Then
                     Dim img As Bitmap = New Bitmap(My.Resources.mensaje, 50, 50)
-                    ToastNotification.Show(Me, "Por Favor Seleccione un Deposito Desitno".ToUpper, img, 2000, eToastGlowColor.Red, eToastPosition.BottomCenter)
+                    ToastNotification.Show(Me, "Por Favor Seleccione un Deposito Destino".ToUpper, img, 2000, eToastGlowColor.Red, eToastPosition.BottomCenter)
                     cbDepositoDestino.Focus()
                     Return False
                 End If
@@ -810,11 +851,11 @@ Public Class F0_Movimiento
 
     Sub _prGuardarTraspaso()
         Dim numi As String = ""
-        Dim res As Boolean = L_prMovimientoChoferGrabar(numi, tbFecha.Value.ToString("yyyy/MM/dd"), cbConcepto.Value, tbObservacion.Text, cbAlmacenOrigen.Value, cbDepositoDestino.Value, 0, CType(grdetalle.DataSource, DataTable))
+        Dim res As Boolean = L_prMovimientoChoferGrabar(numi, tbFecha.Value.ToString("yyyy/MM/dd"), cbConcepto.Value, tbObservacion.Text, cbAlmacenOrigen.Value, cbDepositoDestino.Value, 0, CType(grdetalle.DataSource, DataTable), cbMotivo.Value)
         If res Then
 
             Dim numDestino As String = ""
-            Dim resDestino As Boolean = L_prMovimientoChoferGrabar(numDestino, tbFecha.Value.ToString("yyyy/MM/dd"), 5, tbObservacion.Text, cbDepositoDestino.Value, cbAlmacenOrigen.Value, numi, CType(grdetalle.DataSource, DataTable))
+            Dim resDestino As Boolean = L_prMovimientoChoferGrabar(numDestino, tbFecha.Value.ToString("yyyy/MM/dd"), 5, tbObservacion.Text, cbDepositoDestino.Value, cbAlmacenOrigen.Value, numi, CType(grdetalle.DataSource, DataTable), cbMotivo.Value)
             If resDestino Then
 
                 _prCargarVenta()
@@ -826,6 +867,9 @@ Public Class F0_Movimiento
                                           eToastGlowColor.Green,
                                           eToastPosition.TopCenter
                                           )
+            Else
+                Dim img As Bitmap = New Bitmap(My.Resources.cancel, 50, 50)
+                ToastNotification.Show(Me, "El Traspaso de Ingreso no pudo ser insertado".ToUpper, img, 2000, eToastGlowColor.Red, eToastPosition.BottomCenter)
             End If
 
         Else
@@ -842,7 +886,7 @@ Public Class F0_Movimiento
 
         End If
         Dim numi As String = ""
-        Dim res As Boolean = L_prMovimientoChoferGrabar(numi, tbFecha.Value.ToString("yyyy/MM/dd"), cbConcepto.Value, tbObservacion.Text, cbAlmacenOrigen.Value, 0, 0, CType(grdetalle.DataSource, DataTable))
+        Dim res As Boolean = L_prMovimientoChoferGrabar(numi, tbFecha.Value.ToString("yyyy/MM/dd"), cbConcepto.Value, tbObservacion.Text, cbAlmacenOrigen.Value, 0, 0, CType(grdetalle.DataSource, DataTable), 0)
         If res Then
 
             _prCargarVenta()
@@ -927,7 +971,7 @@ Public Class F0_Movimiento
             If ((pos >= 0) And (Not existe)) Then
                 If (cbConcepto.Value = 2 Or cbConcepto.Value = 6) And grproducto.GetValue("stock") = 0 Then
                     Dim img As Bitmap = New Bitmap(My.Resources.mensaje, 50, 50)
-                    ToastNotification.Show(Me, "No puede elegir un producto que tiene stock 0".ToUpper, img, 2000, eToastGlowColor.Red, eToastPosition.BottomCenter)
+                    ToastNotification.Show(Me, "No puede elegir un producto que tiene stock 0".ToUpper, img, 2500, eToastGlowColor.Red, eToastPosition.BottomCenter)
 
                 Else
 
@@ -1447,9 +1491,14 @@ salirIf:
                     lbDepositoOrigen.Text = "Depósito Origen"
                     lbDepositoDestino.Text = "Depósito Destino"
                     cbDepositoDestino.SelectedIndex = 1
-                    If (Not _fnAccesible()) Then
-                        btnModificar.Enabled = False
-                    End If
+                    'If (Not _fnAccesible()) Then
+                    '    btnModificar.Enabled = False
+                    'End If
+                    btnModificar.Enabled = False
+                    lbMotivo.Visible = True
+                    cbMotivo.Visible = True
+
+
                 Else
                     lbDepositoDestino.Visible = False
                     cbDepositoDestino.Visible = False
@@ -1457,12 +1506,17 @@ salirIf:
                     If (Not _fnAccesible()) Then
                         btnModificar.Enabled = True
                     End If
+                    lbMotivo.Visible = False
+                    cbMotivo.Visible = False
                 End If
             Else
                 btnModificar.Enabled = True
                 lbDepositoDestino.Visible = False
                 cbDepositoDestino.Visible = False
                 lbDepositoOrigen.Text = "Depósito:"
+
+                lbMotivo.Visible = False
+                cbMotivo.Visible = False
 
             End If
             If (_fnAccesible() And tbCodigo.Text = String.Empty) Then
@@ -1526,6 +1580,18 @@ salirIf:
 
     Private Sub swMostrar_ValueChanged(sender As Object, e As EventArgs) Handles swMostrar.ValueChanged
         _prCargarVenta()
+    End Sub
+
+    Private Sub cbMotivo_ValueChanged(sender As Object, e As EventArgs) Handles cbMotivo.ValueChanged
+        If btnGrabar.Enabled = True Then
+            If (cbConcepto.Value = 6) Then ''''Movimiento 6=Traspaso Salida
+                If cbMotivo.Text <> String.Empty Then
+                    tbObservacion.Text = cbMotivo.Text
+                End If
+
+            End If
+        End If
+
     End Sub
 #End Region
 End Class

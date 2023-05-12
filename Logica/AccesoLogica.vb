@@ -4061,7 +4061,9 @@ Public Class AccesoLogica
     End Function
 
 
-    Public Shared Function L_prMovimientoChoferGrabar(ByRef _ibid As String, _ibfdoc As String, _ibconcep As Integer, _ibobs As String, _almacen As Integer, _depositoDestino As Integer, _ibidOrigen As Integer, _detalle As DataTable) As Boolean
+    Public Shared Function L_prMovimientoChoferGrabar(ByRef _ibid As String, _ibfdoc As String, _ibconcep As Integer,
+                                                      _ibobs As String, _almacen As Integer, _depositoDestino As Integer,
+                                                      _ibidOrigen As Integer, _detalle As DataTable, _motivo As Integer) As Boolean
         Dim _resultado As Boolean
         Dim _Tabla As DataTable
         Dim _listParam As New List(Of Datos.DParametro)
@@ -4075,6 +4077,8 @@ Public Class AccesoLogica
         _listParam.Add(New Datos.DParametro("@ibdepdest", _depositoDestino))
         _listParam.Add(New Datos.DParametro("@ibiddc", 0))
         _listParam.Add(New Datos.DParametro("@ibidOrigen", _ibidOrigen))
+        _listParam.Add(New Datos.DParametro("@motivo", _motivo))
+
 
         _listParam.Add(New Datos.DParametro("@TI0021", "", _detalle))
         _listParam.Add(New Datos.DParametro("@ibuact", L_Usuario))
@@ -4419,7 +4423,16 @@ Public Class AccesoLogica
 
         Return _Tabla
     End Function
+    Public Shared Function L_fnMotivoTraspaso(_CodMovimiento As String) As DataTable
+        Dim _Tabla As DataTable
+        Dim _listParam As New List(Of Datos.DParametro)
+        _listParam.Add(New Datos.DParametro("@tipo", 47))
+        _listParam.Add(New Datos.DParametro("@ibid", _CodMovimiento))
+        _listParam.Add(New Datos.DParametro("@ibuact", L_Usuario))
+        _Tabla = D_ProcedimientoConParam("sp_Mam_TI002", _listParam)
 
+        Return _Tabla
+    End Function
 #End Region
 
 #Region "ROLES CORRECTO"
