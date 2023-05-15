@@ -28,6 +28,7 @@ Public Class F0_Movimiento
         MSuperTabControl.SelectedTabIndex = 0
         '' L_prAbrirConexion(gs_Ip, gs_UsuarioSql, gs_ClaveSql, gs_NombreBD)
         _prValidarLote()
+        btnGrabar.Enabled = False ''Para controlar que no cambie el motivo según lo seleccionado
         'Me.WindowState = FormWindowState.Maximized
         _prCargarComboLibreriaConcepto(cbConcepto)
         _prCargarComboLibreriaMotivo(cbMotivo, 10, 1)
@@ -35,6 +36,8 @@ Public Class F0_Movimiento
         _prCargarComboLibreriaDeposito(cbDepositoDestino)
         _prCargarVenta()
         _prInhabiliitar()
+
+
         'Dim blah As New Bitmap(New Bitmap(My.Resources.compra), 20, 20)
         'Dim ico As Icon = Icon.FromHandle(blah.GetHicon())
         'Me.Icon = ico
@@ -120,6 +123,11 @@ Public Class F0_Movimiento
         End If
     End Sub
     Private Sub _prInhabiliitar()
+        btnGrabar.Enabled = False
+        btnNuevo.Enabled = True
+        btnEliminar.Enabled = True
+        grmovimiento.Enabled = True
+
 
         cbConcepto.ReadOnly = True
         cbMotivo.ReadOnly = True
@@ -127,6 +135,7 @@ Public Class F0_Movimiento
         tbFecha.IsInputReadOnly = True
         tbFecha.Enabled = False
         cbAlmacenOrigen.ReadOnly = True
+        cbDepositoDestino.ReadOnly = True
         ''''''''''
 
         If (cbConcepto.Value = 6) Then ''''Movimiento 6=Traspaso Salida
@@ -136,10 +145,7 @@ Public Class F0_Movimiento
         End If
 
         'btnModificar.Enabled = True
-        btnGrabar.Enabled = False
-        btnNuevo.Enabled = True
-        btnEliminar.Enabled = True
-        grmovimiento.Enabled = True
+
 
         grdetalle.RootTable.Columns("img").Visible = False
 
@@ -157,6 +163,7 @@ Public Class F0_Movimiento
         tbFecha.IsInputReadOnly = False
         tbFecha.Enabled = True
         cbAlmacenOrigen.ReadOnly = False
+        cbDepositoDestino.ReadOnly = False
         grmovimiento.Enabled = False
         ''  tbCliente.ReadOnly = False  por que solo podra seleccionar Cliente
         ''  tbVendedor.ReadOnly = False
@@ -756,12 +763,15 @@ Public Class F0_Movimiento
             cbConcepto.Focus()
             Return False
         End If
-        If (cbMotivo.SelectedIndex < 0) Then
-            Dim img As Bitmap = New Bitmap(My.Resources.mensaje, 50, 50)
-            ToastNotification.Show(Me, "Por Favor Seleccione un Motivo".ToUpper, img, 2000, eToastGlowColor.Red, eToastPosition.BottomCenter)
-            cbMotivo.Focus()
-            Return False
+        If cbConcepto.Value = 6 Then ''Concepto Traspaso
+            If (cbMotivo.SelectedIndex < 0) Then
+                Dim img As Bitmap = New Bitmap(My.Resources.mensaje, 50, 50)
+                ToastNotification.Show(Me, "Por Favor Seleccione un Motivo".ToUpper, img, 2000, eToastGlowColor.Red, eToastPosition.BottomCenter)
+                cbMotivo.Focus()
+                Return False
+            End If
         End If
+
         If (cbAlmacenOrigen.SelectedIndex < 0) Then
             Dim img As Bitmap = New Bitmap(My.Resources.mensaje, 50, 50)
             ToastNotification.Show(Me, "Por Favor Seleccione un Deposito".ToUpper, img, 2000, eToastGlowColor.Red, eToastPosition.BottomCenter)
@@ -868,8 +878,10 @@ Public Class F0_Movimiento
                                           eToastPosition.TopCenter
                                           )
             Else
+                L_prMovimientoEliminar(numi)
                 Dim img As Bitmap = New Bitmap(My.Resources.cancel, 50, 50)
-                ToastNotification.Show(Me, "El Traspaso de Ingreso no pudo ser insertado".ToUpper, img, 2000, eToastGlowColor.Red, eToastPosition.BottomCenter)
+                ToastNotification.Show(Me, "El Traspaso no pudo ser insertado, intente grabar nuevamente".ToUpper, img, 3500, eToastGlowColor.Red, eToastPosition.BottomCenter)
+
             End If
 
         Else
