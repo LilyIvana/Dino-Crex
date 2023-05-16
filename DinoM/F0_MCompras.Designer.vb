@@ -1217,7 +1217,7 @@ Partial Class F0_MCompras
         Me.LabelX7.SingleLineColor = System.Drawing.SystemColors.Control
         Me.LabelX7.Size = New System.Drawing.Size(85, 23)
         Me.LabelX7.TabIndex = 235
-        Me.LabelX7.Text = "Sucursal:"
+        Me.LabelX7.Text = "Almacen:"
         '
         'lbCredito
         '
@@ -1608,12 +1608,12 @@ Partial Class F0_MCompras
         Me.cmOpcionesDetalle.ImageScalingSize = New System.Drawing.Size(24, 24)
         Me.cmOpcionesDetalle.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.INSERTARFILAToolStripMenuItem})
         Me.cmOpcionesDetalle.Name = "ContextMenuStrip1"
-        Me.cmOpcionesDetalle.Size = New System.Drawing.Size(181, 48)
+        Me.cmOpcionesDetalle.Size = New System.Drawing.Size(151, 26)
         '
         'INSERTARFILAToolStripMenuItem
         '
         Me.INSERTARFILAToolStripMenuItem.Name = "INSERTARFILAToolStripMenuItem"
-        Me.INSERTARFILAToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.INSERTARFILAToolStripMenuItem.Size = New System.Drawing.Size(150, 22)
         Me.INSERTARFILAToolStripMenuItem.Text = "INSERTAR FILA"
         '
         'F0_MCompras

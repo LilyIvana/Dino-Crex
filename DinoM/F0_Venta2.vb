@@ -140,7 +140,7 @@ Public Class F0_Venta2
             .DropDownList.Columns.Add("aanumi").Width = 60
             .DropDownList.Columns("aanumi").Caption = "COD"
             .DropDownList.Columns.Add("aabdes").Width = 500
-            .DropDownList.Columns("aabdes").Caption = "SUCURSAL"
+            .DropDownList.Columns("aabdes").Caption = "ALMACÉN"
             .ValueMember = "aanumi"
             .DisplayMember = "aabdes"
             .DataSource = dt

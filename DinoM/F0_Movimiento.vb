@@ -65,7 +65,7 @@ Public Class F0_Movimiento
             .DropDownList.Columns.Add("aanumi").Width = 60
             .DropDownList.Columns("aanumi").Caption = "COD"
             .DropDownList.Columns.Add("aabdes").Width = 300
-            .DropDownList.Columns("aabdes").Caption = "SUCURSAL"
+            .DropDownList.Columns("aabdes").Caption = "ALMACÉN"
             .ValueMember = "aanumi"
             .DisplayMember = "aabdes"
             .DataSource = dt
@@ -95,7 +95,7 @@ Public Class F0_Movimiento
             .DropDownList.Columns.Add("yccod3").Width = 70
             .DropDownList.Columns("yccod3").Caption = "COD"
             .DropDownList.Columns.Add("ycdes3").Width = 400
-            .DropDownList.Columns("ycdes3").Caption = "DESCRIPCION"
+            .DropDownList.Columns("ycdes3").Caption = "DESCRIPCIÓN"
             .ValueMember = "yccod3"
             .DisplayMember = "ycdes3"
             .DataSource = dt
@@ -774,7 +774,7 @@ Public Class F0_Movimiento
 
         If (cbAlmacenOrigen.SelectedIndex < 0) Then
             Dim img As Bitmap = New Bitmap(My.Resources.mensaje, 50, 50)
-            ToastNotification.Show(Me, "Por Favor Seleccione un Deposito".ToUpper, img, 2000, eToastGlowColor.Red, eToastPosition.BottomCenter)
+            ToastNotification.Show(Me, "Por Favor Seleccione un Almacén".ToUpper, img, 2000, eToastGlowColor.Red, eToastPosition.BottomCenter)
             cbAlmacenOrigen.Focus()
             Return False
         End If
@@ -788,7 +788,7 @@ Public Class F0_Movimiento
             If (cbConcepto.Value = 6) Then
                 If (cbDepositoDestino.SelectedIndex < 0) Then
                     Dim img As Bitmap = New Bitmap(My.Resources.mensaje, 50, 50)
-                    ToastNotification.Show(Me, "Por Favor Seleccione un Deposito Destino".ToUpper, img, 2000, eToastGlowColor.Red, eToastPosition.BottomCenter)
+                    ToastNotification.Show(Me, "Por Favor Seleccione un Almacén Destino".ToUpper, img, 2000, eToastGlowColor.Red, eToastPosition.BottomCenter)
                     cbDepositoDestino.Focus()
                     Return False
                 End If
@@ -1500,8 +1500,8 @@ salirIf:
                 If (CType(cbAlmacenOrigen.DataSource, DataTable).Rows.Count > 1) Then
                     lbDepositoDestino.Visible = True
                     cbDepositoDestino.Visible = True
-                    lbDepositoOrigen.Text = "Depósito Origen"
-                    lbDepositoDestino.Text = "Depósito Destino"
+                    lbDepositoOrigen.Text = "Almacén Origen"
+                    lbDepositoDestino.Text = "Almacén Destino"
                     cbDepositoDestino.SelectedIndex = 1
                     'If (Not _fnAccesible()) Then
                     '    btnModificar.Enabled = False
@@ -1514,7 +1514,7 @@ salirIf:
                 Else
                     lbDepositoDestino.Visible = False
                     cbDepositoDestino.Visible = False
-                    lbDepositoOrigen.Text = "Depósito:"
+                    lbDepositoOrigen.Text = "Almacén:"
                     If (Not _fnAccesible()) Then
                         btnModificar.Enabled = True
                     End If
@@ -1525,7 +1525,7 @@ salirIf:
                 btnModificar.Enabled = True
                 lbDepositoDestino.Visible = False
                 cbDepositoDestino.Visible = False
-                lbDepositoOrigen.Text = "Depósito:"
+                lbDepositoOrigen.Text = "Almacén:"
 
                 lbMotivo.Visible = False
                 cbMotivo.Visible = False

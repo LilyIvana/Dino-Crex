@@ -88,7 +88,7 @@ Public Class F0_MCompras
             .DropDownList.Columns.Add("aanumi").Width = 60
             .DropDownList.Columns("aanumi").Caption = "COD"
             .DropDownList.Columns.Add("aabdes").Width = 500
-            .DropDownList.Columns("aabdes").Caption = "SUCURSAL"
+            .DropDownList.Columns("aabdes").Caption = "ALMACÉN"
             .ValueMember = "aanumi"
             .DisplayMember = "aabdes"
             .DataSource = dt
@@ -1170,7 +1170,7 @@ Public Class F0_MCompras
         If (cbSucursal.SelectedIndex < 0) Then
 
             Dim img As Bitmap = New Bitmap(My.Resources.mensaje, 50, 50)
-            ToastNotification.Show(Me, "Por Favor Seleccione una Sucursal".ToUpper, img, 2000, eToastGlowColor.Red, eToastPosition.BottomCenter)
+            ToastNotification.Show(Me, "Por Favor Seleccione un Almacén".ToUpper, img, 2000, eToastGlowColor.Red, eToastPosition.BottomCenter)
             tbProveedor.Focus()
             Return False
         End If
