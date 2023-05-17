@@ -84,7 +84,7 @@ Public Class F1_MontoPagar
         Dim diferencia As Double = tbMontoBs.Value - TotalVenta
         If (diferencia >= 0) Then
             txtMontoPagado1.Text = TotalVenta.ToString
-            txtCambio1.Text = Format(diferencia, "#.#0").ToString
+            txtCambio1.Text = Format(diferencia, "####0.00").ToString
 
         Else
             txtMontoPagado1.Text = "0.00"
@@ -479,11 +479,11 @@ Public Class F1_MontoPagar
     End Sub
 
     Private Sub tbNit_KeyPress(sender As Object, e As KeyPressEventArgs) Handles tbNit.KeyPress
-        If Not IsNumeric(e.KeyChar) And Not Char.IsControl(e.KeyChar) Then
-            e.Handled = True
-            ToastNotification.Show(Me, "Solo puede digitar números".ToUpper, My.Resources.WARNING, 1200, eToastGlowColor.Red, eToastPosition.TopCenter)
+        'If Not IsNumeric(e.KeyChar) And Not Char.IsControl(e.KeyChar) Then
+        '    e.Handled = True
+        '    ToastNotification.Show(Me, "Solo puede digitar números".ToUpper, My.Resources.WARNING, 1200, eToastGlowColor.Red, eToastPosition.TopCenter)
 
-        End If
+        'End If
     End Sub
 
     Private Sub tbRazonSocial_KeyPress(sender As Object, e As KeyPressEventArgs) Handles tbRazonSocial.KeyPress

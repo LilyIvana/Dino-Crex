@@ -2512,7 +2512,7 @@ Public Class F0_VentasSupermercado
     End Sub
 
     Private Sub tbProducto_KeyDown(sender As Object, e As KeyEventArgs) Handles tbProducto.KeyDown
-        If e.KeyData = Keys.Control + Keys.C Then
+        If e.KeyData = Keys.Control + Keys.E Then
 
             Dim dt As DataTable
             'dt = L_fnListarClientes()
@@ -2526,19 +2526,21 @@ Public Class F0_VentasSupermercado
             listEstCeldas.Add(New Modelo.Celda("yddctnum", True, "N. Documento".ToUpper, 150))
             listEstCeldas.Add(New Modelo.Celda("yddirec", True, "DIRECCIÓN", 220))
             listEstCeldas.Add(New Modelo.Celda("ydtelf1", True, "Teléfono".ToUpper, 200))
-            listEstCeldas.Add(New Modelo.Celda("ydfnac", True, "F.Nacimiento".ToUpper, 150, "MM/dd,YYYY"))
+            listEstCeldas.Add(New Modelo.Celda("ydfnac", False, "F.Nacimiento".ToUpper, 150, "MM/dd,YYYY"))
             listEstCeldas.Add(New Modelo.Celda("ydnumivend,", False, "ID", 50))
             listEstCeldas.Add(New Modelo.Celda("vendedor,", False, "ID", 50))
             listEstCeldas.Add(New Modelo.Celda("yddias", False, "CRED", 50))
             listEstCeldas.Add(New Modelo.Celda("ydnomfac", False, "Nombre Factura", 50))
             listEstCeldas.Add(New Modelo.Celda("ydnit", False, "Nit/CI", 50))
+            listEstCeldas.Add(New Modelo.Celda("email", False, "EMAIL", 50))
+            listEstCeldas.Add(New Modelo.Celda("yddct", False, "NRO. TIPO DOC.", 50))
             Dim ef = New Efecto
             ef.tipo = 3
             ef.dt = dt
             ef.SeleclCol = 2
             ef.listEstCeldas = listEstCeldas
             ef.alto = 50
-            ef.ancho = 350
+            ef.ancho = 200
             ef.Context = "Seleccione Cliente".ToUpper
             ef.ShowDialog()
             Dim bandera As Boolean = False

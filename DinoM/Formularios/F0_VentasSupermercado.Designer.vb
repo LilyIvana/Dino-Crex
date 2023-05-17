@@ -73,6 +73,7 @@ Partial Class F0_VentasSupermercado
         Me.PictureBox2 = New System.Windows.Forms.PictureBox()
         Me.QrFactura = New Gma.QrCodeNet.Encoding.Windows.Forms.QrCodeImgControl()
         Me.TimerImagenes = New System.Windows.Forms.Timer(Me.components)
+        Me.Label11 = New System.Windows.Forms.Label()
         Me.PanelImagen.SuspendLayout()
         Me.PanelRight.SuspendLayout()
         Me.PanelC.SuspendLayout()
@@ -531,6 +532,7 @@ Partial Class F0_VentasSupermercado
         '
         Me.Panel1.BackColor = System.Drawing.Color.Azure
         Me.Panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.Panel1.Controls.Add(Me.Label11)
         Me.Panel1.Controls.Add(Me.TbEmailS)
         Me.Panel1.Controls.Add(Me.CbTDoc)
         Me.Panel1.Controls.Add(Me.Label10)
@@ -563,7 +565,7 @@ Partial Class F0_VentasSupermercado
         Me.TbEmailS.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.TbEmailS.Font = New System.Drawing.Font("Georgia", 5.0!, System.Drawing.FontStyle.Bold)
         Me.TbEmailS.ForeColor = System.Drawing.Color.FromArgb(CType(CType(45, Byte), Integer), CType(CType(59, Byte), Integer), CType(CType(66, Byte), Integer))
-        Me.TbEmailS.Location = New System.Drawing.Point(44, 34)
+        Me.TbEmailS.Location = New System.Drawing.Point(133, 5)
         Me.TbEmailS.Name = "TbEmailS"
         Me.TbEmailS.PreventEnterBeep = True
         Me.TbEmailS.Size = New System.Drawing.Size(37, 15)
@@ -577,7 +579,7 @@ Partial Class F0_VentasSupermercado
         CbTDoc_DesignTimeLayout.LayoutString = resources.GetString("CbTDoc_DesignTimeLayout.LayoutString")
         Me.CbTDoc.DesignTimeLayout = CbTDoc_DesignTimeLayout
         Me.CbTDoc.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.CbTDoc.Location = New System.Drawing.Point(12, 33)
+        Me.CbTDoc.Location = New System.Drawing.Point(102, 3)
         Me.CbTDoc.Name = "CbTDoc"
         Me.CbTDoc.Office2007ColorScheme = Janus.Windows.GridEX.Office2007ColorScheme.Custom
         Me.CbTDoc.Office2007CustomColor = System.Drawing.Color.DodgerBlue
@@ -592,7 +594,7 @@ Partial Class F0_VentasSupermercado
         '
         Me.Label10.AutoSize = True
         Me.Label10.Font = New System.Drawing.Font("Calibri", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label10.Location = New System.Drawing.Point(449, 37)
+        Me.Label10.Location = New System.Drawing.Point(449, 19)
         Me.Label10.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label10.Name = "Label10"
         Me.Label10.Size = New System.Drawing.Size(144, 14)
@@ -603,7 +605,7 @@ Partial Class F0_VentasSupermercado
         '
         Me.Label6.AutoSize = True
         Me.Label6.Font = New System.Drawing.Font("Calibri", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label6.Location = New System.Drawing.Point(449, 23)
+        Me.Label6.Location = New System.Drawing.Point(449, 5)
         Me.Label6.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(117, 14)
@@ -614,7 +616,7 @@ Partial Class F0_VentasSupermercado
         '
         Me.Label3.AutoSize = True
         Me.Label3.Font = New System.Drawing.Font("Calibri", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label3.Location = New System.Drawing.Point(449, 8)
+        Me.Label3.Location = New System.Drawing.Point(9, 36)
         Me.Label3.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(166, 14)
@@ -783,6 +785,17 @@ Partial Class F0_VentasSupermercado
         '
         Me.TimerImagenes.Interval = 10000
         '
+        'Label11
+        '
+        Me.Label11.AutoSize = True
+        Me.Label11.Font = New System.Drawing.Font("Calibri", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label11.Location = New System.Drawing.Point(449, 36)
+        Me.Label11.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.Label11.Name = "Label11"
+        Me.Label11.Size = New System.Drawing.Size(115, 14)
+        Me.Label11.TabIndex = 421
+        Me.Label11.Text = "Tecla Ctrl + E: Clientes"
+        '
         'F0_VentasSupermercado
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -871,4 +884,5 @@ Partial Class F0_VentasSupermercado
     Public WithEvents CbTDoc As Janus.Windows.GridEX.EditControls.MultiColumnCombo
     Friend WithEvents Label1Conn As Label
     Friend WithEvents TbEmailS As DevComponents.DotNetBar.Controls.TextBoxX
+    Friend WithEvents Label11 As Label
 End Class

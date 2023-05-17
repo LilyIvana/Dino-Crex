@@ -654,6 +654,7 @@ Partial Class F1_MontoPagar
         'tbNit
         '
         Me.tbNit.AcceptsTab = True
+        Me.tbNit.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
         Me.tbNit.Cursor = System.Windows.Forms.Cursors.Default
         Me.tbNit.Font = New System.Drawing.Font("Calibri", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.tbNit.Location = New System.Drawing.Point(124, 16)
@@ -676,7 +677,7 @@ Partial Class F1_MontoPagar
         Me.LabelX3.SingleLineColor = System.Drawing.SystemColors.Control
         Me.LabelX3.Size = New System.Drawing.Size(65, 18)
         Me.LabelX3.TabIndex = 367
-        Me.LabelX3.Text = "Nit:"
+        Me.LabelX3.Text = "CI/Nit:"
         '
         'LabelX4
         '
