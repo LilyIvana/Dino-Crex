@@ -125,7 +125,7 @@ Public Class F0_Precios
             End With
             With grprecio.RootTable.Columns("yfcdprod1")
                 .Caption = "PRODUCTO"
-                .Width = 390
+                .Width = 370
                 .Visible = True
             End With
             With grprecio.RootTable.Columns("Laboratorio")
@@ -211,29 +211,25 @@ Public Class F0_Precios
 
         With grcategoria.RootTable.Columns("ygdesc")
             .Caption = "DESCRIPCION"
-            .Width = 200
+            .Width = 185
             .Visible = True
-
 
         End With
         With grcategoria.RootTable.Columns("ygpcv")
             .Width = 50
             .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Near
             .Visible = False
-
-
-
         End With
 
         With grcategoria.RootTable.Columns("estado")
-            .Width = 80
+            .Width = 70
             .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Near
             .Visible = True
             .Caption = "ESTADO"
 
         End With
         With grcategoria.RootTable.Columns("ygmer")
-            .Width = 80
+            .Width = 70
             .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far
             '.CellStyle.TextAlignment = Janus.Windows.GridEX.format
             .Visible = True
@@ -244,8 +240,6 @@ Public Class F0_Precios
             .Width = 50
             .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Near
             .Visible = False
-
-
 
         End With
         With grcategoria.RootTable.Columns("yghact")

@@ -54,6 +54,7 @@ Partial Class F0_VentasSupermercado
         Me.tbTotal = New DevComponents.Editors.DoubleInput()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.Label11 = New System.Windows.Forms.Label()
         Me.TbEmailS = New DevComponents.DotNetBar.Controls.TextBoxX()
         Me.CbTDoc = New Janus.Windows.GridEX.EditControls.MultiColumnCombo()
         Me.Label10 = New System.Windows.Forms.Label()
@@ -73,7 +74,6 @@ Partial Class F0_VentasSupermercado
         Me.PictureBox2 = New System.Windows.Forms.PictureBox()
         Me.QrFactura = New Gma.QrCodeNet.Encoding.Windows.Forms.QrCodeImgControl()
         Me.TimerImagenes = New System.Windows.Forms.Timer(Me.components)
-        Me.Label11 = New System.Windows.Forms.Label()
         Me.PanelImagen.SuspendLayout()
         Me.PanelRight.SuspendLayout()
         Me.PanelC.SuspendLayout()
@@ -555,6 +555,17 @@ Partial Class F0_VentasSupermercado
         Me.Panel1.Size = New System.Drawing.Size(619, 56)
         Me.Panel1.TabIndex = 9
         '
+        'Label11
+        '
+        Me.Label11.AutoSize = True
+        Me.Label11.Font = New System.Drawing.Font("Calibri", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label11.Location = New System.Drawing.Point(449, 36)
+        Me.Label11.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.Label11.Name = "Label11"
+        Me.Label11.Size = New System.Drawing.Size(115, 14)
+        Me.Label11.TabIndex = 421
+        Me.Label11.Text = "Tecla Ctrl + E: Clientes"
+        '
         'TbEmailS
         '
         Me.TbEmailS.BackColor = System.Drawing.Color.White
@@ -784,17 +795,6 @@ Partial Class F0_VentasSupermercado
         'TimerImagenes
         '
         Me.TimerImagenes.Interval = 10000
-        '
-        'Label11
-        '
-        Me.Label11.AutoSize = True
-        Me.Label11.Font = New System.Drawing.Font("Calibri", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label11.Location = New System.Drawing.Point(449, 36)
-        Me.Label11.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
-        Me.Label11.Name = "Label11"
-        Me.Label11.Size = New System.Drawing.Size(115, 14)
-        Me.Label11.TabIndex = 421
-        Me.Label11.Text = "Tecla Ctrl + E: Clientes"
         '
         'F0_VentasSupermercado
         '

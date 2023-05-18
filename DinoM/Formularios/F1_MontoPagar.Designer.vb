@@ -569,7 +569,7 @@ Partial Class F1_MontoPagar
         Me.LabelX1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.LabelX1.Font = New System.Drawing.Font("Calibri", 7.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.LabelX1.ForeColor = System.Drawing.Color.White
-        Me.LabelX1.Location = New System.Drawing.Point(425, 20)
+        Me.LabelX1.Location = New System.Drawing.Point(294, 18)
         Me.LabelX1.Name = "LabelX1"
         Me.LabelX1.SingleLineColor = System.Drawing.SystemColors.Control
         Me.LabelX1.Size = New System.Drawing.Size(58, 18)
@@ -660,7 +660,7 @@ Partial Class F1_MontoPagar
         Me.tbNit.Location = New System.Drawing.Point(124, 16)
         Me.tbNit.Margin = New System.Windows.Forms.Padding(2)
         Me.tbNit.Name = "tbNit"
-        Me.tbNit.Size = New System.Drawing.Size(294, 24)
+        Me.tbNit.Size = New System.Drawing.Size(165, 24)
         Me.tbNit.TabIndex = 0
         '
         'LabelX3
