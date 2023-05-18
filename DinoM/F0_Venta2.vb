@@ -2759,8 +2759,8 @@ Public Class F0_Venta2
             If e.KeyData = Keys.Control + Keys.Enter Then
 
                 Dim dt As DataTable
-                'dt = L_fnListarClientes()
-                dt = L_fnListarClientesVenta()
+                'dt = L_fnListarClientesVenta()
+                dt = L_fnListarClientesVentaPrecioPDV()
 
                 Dim listEstCeldas As New List(Of Modelo.Celda)
                 listEstCeldas.Add(New Modelo.Celda("ydnumi,", True, "ID", 50))

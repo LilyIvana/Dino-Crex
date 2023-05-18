@@ -309,6 +309,7 @@ Public Class F0_VentasSupermercado
             _CodCliente = _tabla11.Rows(0).Item("ydnumi") 'Codigo
 
             _CodEmpleado = _tabla11.Rows(0).Item("ydnumivend") 'Codigo
+            lbNombreCliente.Text = _tabla11.Rows(0).Item("yddesc")
         Else
             Dim dt As DataTable
             dt = L_fnListarClientes()
@@ -318,6 +319,7 @@ Public Class F0_VentasSupermercado
                 _CodCliente = fila(0).ItemArray(0)
 
                 _CodEmpleado = fila(0).ItemArray(8)
+                lbNombreCliente.Text = fila(0).ItemArray(3)
             End If
         End If
     End Sub
@@ -2515,8 +2517,9 @@ Public Class F0_VentasSupermercado
         If e.KeyData = Keys.Control + Keys.E Then
 
             Dim dt As DataTable
-            'dt = L_fnListarClientes()
-            dt = L_fnListarClientesVenta()
+
+            'dt = L_fnListarClientesVenta()
+            dt = L_fnListarClientesVentaPrecioEspecial()
 
             Dim listEstCeldas As New List(Of Modelo.Celda)
             listEstCeldas.Add(New Modelo.Celda("ydnumi,", True, "ID", 50))
@@ -2552,7 +2555,7 @@ Public Class F0_VentasSupermercado
                 lbCliente.Text = Row.Cells("ydrazonsocial").Value
                 _dias = Row.Cells("yddias").Value
                 lbNit.Text = Row.Cells("ydnit").Value
-
+                lbNombreCliente.Text = Row.Cells("yddesc").Value
                 Dim numiVendedor As Integer = IIf(IsDBNull(Row.Cells("ydnumivend").Value), 0, Row.Cells("ydnumivend").Value)
 
                 Table_Producto = Nothing

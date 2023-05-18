@@ -74,6 +74,8 @@ Partial Class F0_VentasSupermercado
         Me.PictureBox2 = New System.Windows.Forms.PictureBox()
         Me.QrFactura = New Gma.QrCodeNet.Encoding.Windows.Forms.QrCodeImgControl()
         Me.TimerImagenes = New System.Windows.Forms.Timer(Me.components)
+        Me.Label12 = New System.Windows.Forms.Label()
+        Me.lbNombreCliente = New System.Windows.Forms.Label()
         Me.PanelImagen.SuspendLayout()
         Me.PanelRight.SuspendLayout()
         Me.PanelC.SuspendLayout()
@@ -532,6 +534,8 @@ Partial Class F0_VentasSupermercado
         '
         Me.Panel1.BackColor = System.Drawing.Color.Azure
         Me.Panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.Panel1.Controls.Add(Me.lbNombreCliente)
+        Me.Panel1.Controls.Add(Me.Label12)
         Me.Panel1.Controls.Add(Me.Label11)
         Me.Panel1.Controls.Add(Me.TbEmailS)
         Me.Panel1.Controls.Add(Me.CbTDoc)
@@ -562,9 +566,9 @@ Partial Class F0_VentasSupermercado
         Me.Label11.Location = New System.Drawing.Point(449, 36)
         Me.Label11.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label11.Name = "Label11"
-        Me.Label11.Size = New System.Drawing.Size(115, 14)
+        Me.Label11.Size = New System.Drawing.Size(169, 14)
         Me.Label11.TabIndex = 421
-        Me.Label11.Text = "Tecla Ctrl + E: Clientes"
+        Me.Label11.Text = "Tecla Ctrl + E: Clientes Exclusivos"
         '
         'TbEmailS
         '
@@ -796,6 +800,28 @@ Partial Class F0_VentasSupermercado
         '
         Me.TimerImagenes.Interval = 10000
         '
+        'Label12
+        '
+        Me.Label12.AutoSize = True
+        Me.Label12.Font = New System.Drawing.Font("Calibri", 7.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label12.Location = New System.Drawing.Point(225, 3)
+        Me.Label12.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.Label12.Name = "Label12"
+        Me.Label12.Size = New System.Drawing.Size(44, 13)
+        Me.Label12.TabIndex = 422
+        Me.Label12.Text = "Cliente:"
+        '
+        'lbNombreCliente
+        '
+        Me.lbNombreCliente.AutoSize = True
+        Me.lbNombreCliente.Font = New System.Drawing.Font("Calibri", 7.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lbNombreCliente.Location = New System.Drawing.Point(275, 3)
+        Me.lbNombreCliente.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.lbNombreCliente.Name = "lbNombreCliente"
+        Me.lbNombreCliente.Size = New System.Drawing.Size(0, 13)
+        Me.lbNombreCliente.TabIndex = 423
+        Me.lbNombreCliente.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        '
         'F0_VentasSupermercado
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -885,4 +911,6 @@ Partial Class F0_VentasSupermercado
     Friend WithEvents Label1Conn As Label
     Friend WithEvents TbEmailS As DevComponents.DotNetBar.Controls.TextBoxX
     Friend WithEvents Label11 As Label
+    Friend WithEvents lbNombreCliente As Label
+    Friend WithEvents Label12 As Label
 End Class
