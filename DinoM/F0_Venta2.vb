@@ -228,6 +228,7 @@ Public Class F0_Venta2
         End If
 
         tbNit.ReadOnly = True
+        tbComplemento.ReadOnly = True
         TbNombre1.ReadOnly = True
         TbNombre2.ReadOnly = True
         cbSucursal.ReadOnly = True
@@ -250,6 +251,7 @@ Public Class F0_Venta2
         btnGrabar.Enabled = True
 
         tbNit.ReadOnly = False
+        tbComplemento.ReadOnly = False
         TbNombre1.ReadOnly = False
         TbNombre2.ReadOnly = False
         CbTipoDoc.ReadOnly = False
@@ -365,6 +367,7 @@ Public Class F0_Venta2
         'tbCliente.Focus()
 
         tbNit.Clear()
+        tbComplemento.Clear()
         TbNombre1.Clear()
         TbNombre2.Clear()
         tbNit.Select()
@@ -415,9 +418,10 @@ Public Class F0_Venta2
                 btnEliminar.Enabled = False
             End If
             'If (gb_FacturaEmite) Then
-            Dim dt As DataTable = L_fnObtenerTabla("TFV001" + " inner join ts001 on tfv001.fvanitcli=ts001.sanit", "fvanitcli, fvadescli1, fvadescli2, fvaautoriz, fvanfac, fvaccont, fvafec,ts001.sacorreo,ts001.satipdoc ", "fvanumi=" + tbCodigo.Text.Trim)
+            Dim dt As DataTable = L_fnObtenerTabla("TFV001" + " inner join ts001 on tfv001.fvanitcli=ts001.sanit AND tfv001.fvadescli2=ts001.sacomplemento", "fvanitcli, fvadescli1, fvadescli2, fvaautoriz, fvanfac, fvaccont, fvafec,ts001.sacorreo,ts001.satipdoc ", "fvanumi=" + tbCodigo.Text.Trim)
             If (dt.Rows.Count = 1) Then
                 tbNit.Text = dt.Rows(0).Item("fvanitcli").ToString
+                tbComplemento.Text = dt.Rows(0).Item("fvadescli2").ToString
                 TbNombre1.Text = dt.Rows(0).Item("fvadescli1").ToString
                 TbNombre2.Text = dt.Rows(0).Item("fvadescli2").ToString
                 TbEmail.Text = dt.Rows(0).Item("sacorreo").ToString
@@ -1937,7 +1941,7 @@ Public Class F0_Venta2
             End If
 
             If (Not tbNit.Text.Trim.Equals("0")) Then
-                L_Grabar_Nit(tbNit.Text.Trim, TbNombre1.Text.Trim, Convert.ToString(_CodCliente), CbTipoDoc.Value, TbEmail.Text, "")
+                L_Grabar_Nit(tbNit.Text.Trim, TbNombre1.Text.Trim, Convert.ToString(_CodCliente), CbTipoDoc.Value, TbEmail.Text, tbComplemento.Text)
             Else
                 L_Grabar_Nit(tbNit.Text, "S/N", "", "", "", "")
             End If
@@ -1969,7 +1973,7 @@ Public Class F0_Venta2
                         tbNit.Text.Trim,
                         "A-" + _CodCliente.ToString,
                         TbNombre1.Text,
-                        "",
+                        tbComplemento.Text,
                         CStr(Format(a, "####0.00")),
                         CStr(Format(b, "####0.00")),
                         CStr(Format(c, "####0.00")),
@@ -2778,6 +2782,8 @@ Public Class F0_Venta2
                 listEstCeldas.Add(New Modelo.Celda("ydnit", True, "NIT/CI", 90))
                 listEstCeldas.Add(New Modelo.Celda("email", False, "Email", 50))
                 listEstCeldas.Add(New Modelo.Celda("yddct", False, "Tipodoc", 50))
+                listEstCeldas.Add(New Modelo.Celda("ydobs", False, "Complemento", 50))
+
                 Dim ef = New Efecto
                 ef.tipo = 3
                 ef.dt = dt
@@ -2799,6 +2805,7 @@ Public Class F0_Venta2
                     TbNombre1.Text = Row.Cells("ydnomfac").Value
                     TbEmail.Text = Row.Cells("email").Value
                     CbTipoDoc.Value = Row.Cells("yddct").Value.ToString
+                    tbComplemento.Text = Row.Cells("ydobs").Value
 
                     Dim numiVendedor As Integer = IIf(IsDBNull(Row.Cells("ydnumivend").Value), 0, Row.Cells("ydnumivend").Value)
                     If (numiVendedor > 0) Then
@@ -4765,7 +4772,7 @@ salirIf:
         Emenvio.nombreRazonSocial = TbNombre1.Text.ToString()
         Emenvio.codigoTipoDocumentoIdentidad = TDoc
         Emenvio.numeroDocumento = tbNit.Text.ToString()
-        Emenvio.complemento = "" '---------------------------------
+        Emenvio.complemento = tbComplemento.Text '---------------------------------
         Emenvio.codigoCliente = "A-" + _CodCliente.ToString
         Emenvio.codigoMetodoPago = CodMetPago
         Emenvio.numeroTarjeta = NroTarjeta

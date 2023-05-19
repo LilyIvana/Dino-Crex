@@ -3011,16 +3011,16 @@ Public Class AccesoLogica
         Correo = ""
         TipoDoc = ""
         Complem = ""
-        L_Validar_Nit(_Nit, _Nom01, _Nom02, Correo, TipoDoc, "", Complem)
+        L_Validar_Nit(_Nit, _Nom01, _Nom02, Correo, TipoDoc, "", _Complemento)
 
         If _Nom01 = "" Then
             Sql = "'" + _Nit + "', '" + _Nom1 + "', '" + _Nom2 + "', '" + _TipoDoc + "','" + _Correo + "','" + _Complemento + "'"
             _Err = D_Insertar_Datos("TS001", Sql)
         Else
-            If (_Nom1 <> _Nom01 Or _Correo <> Correo Or _TipoDoc <> TipoDoc) Then
+            If (_Nom1 <> _Nom01 Or _Correo <> Correo Or _TipoDoc <> TipoDoc Or _Complemento <> Complem) Then
                 Sql = "sanom1 = '" + _Nom1 + "' " + " , satipdoc = '" + _TipoDoc + "' " + " , sacorreo = '" + _Correo + "' " +
                        ", sanom2 = '" + _Nom2 + "' " + " , sacomplemento = '" + _Complemento + "' "
-                _Err = D_Modificar_Datos("TS001", Sql, "sanit = '" + _Nit + "'")
+                _Err = D_Modificar_Datos("TS001", Sql, "sanit = '" + _Nit + "'" + " And sacomplemento = '" + _Complemento + "'")
             End If
         End If
 
@@ -3046,7 +3046,7 @@ Public Class AccesoLogica
                                     ByRef _Complemento As String)
         Dim _Tabla As DataTable
 
-        _Tabla = D_Datos_Tabla("*", "TS001", "sanit = '" + _Nit + "'")
+        _Tabla = D_Datos_Tabla("*", "TS001", "sanit = '" + _Nit + "'" + " And sacomplemento = '" + _Complemento + "'")
 
         If _Tabla.Rows.Count > 0 Then
             _Nom1 = _Tabla.Rows(0).Item(2)

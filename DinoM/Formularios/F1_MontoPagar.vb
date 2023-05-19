@@ -247,7 +247,7 @@ Public Class F1_MontoPagar
         correo = ""
         tipoDoc = ""
         id = ""
-        complemento = ""
+        complemento = tbComplemento.Text.Trim
         If (tbNit.Text.Trim <> String.Empty) Then
             L_Validar_Nit(tbNit.Text.Trim, nom1, nom2, correo, tipoDoc, id, complemento) ''falta validar
             If nom1 = "" Then

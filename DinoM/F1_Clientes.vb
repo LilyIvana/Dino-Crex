@@ -441,7 +441,7 @@ Public Class F1_Clientes
                                                tbNdoc.Text, tbDireccion.Text, tbTelf1.Text, tbTelf2.Text, cbCatPrec.Value, IIf(swEstado.Value = True, 1, 0),
                                                _latitud, _longitud, tbObs.Text, tbFnac.Value.ToString("yyyy/MM/dd"), tbNombFac.Text, _Tipo, tbNit.Text, Tbdias.Text,
                                                TbLCred.Text, tbFIngr.Value.ToString("yyyy/MM/dd"), tbUltVenta.Value.ToString("yyyy/MM/dd"), nameImg, cbVisita.Value,
-                                               "", "")
+                                               "", cbTipoDoc.Value)
 
 
         If res Then
@@ -654,11 +654,12 @@ Public Class F1_Clientes
 
         listEstCeldas.Add(New Modelo.Celda("ydlongi", True, "Longitud".ToUpper, 90, Format("0.00000")))
         listEstCeldas.Add(New Modelo.Celda("ydprconsu", False))
-        listEstCeldas.Add(New Modelo.Celda("ydobs", True, "Observacion".ToUpper, 180))
+
         listEstCeldas.Add(New Modelo.Celda("ydfnac", False, "Fecha Nacimiento".ToUpper, 150))
         listEstCeldas.Add(New Modelo.Celda("ydnomfac", True, "NombreFactura".ToUpper, 200))
         listEstCeldas.Add(New Modelo.Celda("ydtip", False))
         listEstCeldas.Add(New Modelo.Celda("ydnit", True, "Nit".ToUpper, 120))
+        listEstCeldas.Add(New Modelo.Celda("ydobs", True, "Complemento".ToUpper, 100))
         listEstCeldas.Add(New Modelo.Celda("ydfecing", True, "Fecha Ingreso".ToUpper, 150))
         listEstCeldas.Add(New Modelo.Celda("ydultvent", False))
         listEstCeldas.Add(New Modelo.Celda("ydimg", False))
@@ -865,7 +866,7 @@ Public Class F1_Clientes
         If btnGrabar.Enabled = True Then
             _PMInhabilitar()
             _PMPrimerRegistro()
-
+            PanelNavegacion.Enabled = True
         Else
             '  Public _modulo As SideNavItem
             _modulo.Select()

@@ -501,12 +501,12 @@ Partial Class F1_Clientes
         Me.LabelX6.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.LabelX6.Font = New System.Drawing.Font("Georgia", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.LabelX6.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(85, Byte), Integer), CType(CType(139, Byte), Integer))
-        Me.LabelX6.Location = New System.Drawing.Point(13, 247)
+        Me.LabelX6.Location = New System.Drawing.Point(14, 220)
         Me.LabelX6.Name = "LabelX6"
         Me.LabelX6.SingleLineColor = System.Drawing.SystemColors.Control
-        Me.LabelX6.Size = New System.Drawing.Size(148, 23)
+        Me.LabelX6.Size = New System.Drawing.Size(100, 23)
         Me.LabelX6.TabIndex = 233
-        Me.LabelX6.Text = "Observación:"
+        Me.LabelX6.Text = "Complemento:"
         '
         'tbObs
         '
@@ -517,11 +517,11 @@ Partial Class F1_Clientes
         Me.tbObs.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.tbObs.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.tbObs.ForeColor = System.Drawing.Color.FromArgb(CType(CType(45, Byte), Integer), CType(CType(59, Byte), Integer), CType(CType(66, Byte), Integer))
-        Me.tbObs.Location = New System.Drawing.Point(172, 253)
+        Me.tbObs.Location = New System.Drawing.Point(149, 220)
         Me.tbObs.Multiline = True
         Me.tbObs.Name = "tbObs"
         Me.tbObs.PreventEnterBeep = True
-        Me.tbObs.Size = New System.Drawing.Size(204, 52)
+        Me.tbObs.Size = New System.Drawing.Size(126, 22)
         Me.tbObs.TabIndex = 8
         '
         'Panel1
@@ -535,14 +535,14 @@ Partial Class F1_Clientes
         Me.Panel1.Controls.Add(Me.tbTelf2)
         Me.Panel1.Controls.Add(Me.tbTelf1)
         Me.Panel1.Controls.Add(Me.LabelX1)
-        Me.Panel1.Controls.Add(Me.LabelX6)
         Me.Panel1.Controls.Add(Me.tbDireccion)
-        Me.Panel1.Controls.Add(Me.tbObs)
         Me.Panel1.Controls.Add(Me.LabelX10)
         Me.Panel1.Controls.Add(Me.LabelX3)
         Me.Panel1.Controls.Add(Me.LabelX5)
         Me.Panel1.Controls.Add(Me.tbNombre)
         Me.Panel1.Controls.Add(Me.tbCodCliente)
+        Me.Panel1.Controls.Add(Me.swEstado)
+        Me.Panel1.Controls.Add(Me.LabelX9)
         Me.Panel1.Controls.Add(Me.LabelX4)
         Me.Panel1.Controls.Add(Me.LabelX2)
         Me.Panel1.Controls.Add(Me.tbCodigoOriginal)
@@ -1022,16 +1022,16 @@ Partial Class F1_Clientes
         Me.Panel4.Controls.Add(Me.LabelX17)
         Me.Panel4.Controls.Add(Me.cbVisita)
         Me.Panel4.Controls.Add(Me.LabelX16)
+        Me.Panel4.Controls.Add(Me.LabelX6)
         Me.Panel4.Controls.Add(Me.tbUltVenta)
         Me.Panel4.Controls.Add(Me.LabelX13)
+        Me.Panel4.Controls.Add(Me.tbObs)
         Me.Panel4.Controls.Add(Me.tbFIngr)
         Me.Panel4.Controls.Add(Me.tbFnac)
         Me.Panel4.Controls.Add(Me.tbNit)
         Me.Panel4.Controls.Add(Me.LabelX12)
         Me.Panel4.Controls.Add(Me.tbNombFac)
         Me.Panel4.Controls.Add(Me.LabelX11)
-        Me.Panel4.Controls.Add(Me.swEstado)
-        Me.Panel4.Controls.Add(Me.LabelX9)
         Me.Panel4.Controls.Add(Me.LabelX8)
         Me.Panel4.Controls.Add(Me.cbCatPrec)
         Me.Panel4.Controls.Add(Me.tbNdoc)
@@ -1237,7 +1237,7 @@ Partial Class F1_Clientes
         Me.tbNit.Location = New System.Drawing.Point(149, 191)
         Me.tbNit.Name = "tbNit"
         Me.tbNit.PreventEnterBeep = True
-        Me.tbNit.Size = New System.Drawing.Size(166, 22)
+        Me.tbNit.Size = New System.Drawing.Size(126, 22)
         Me.tbNit.TabIndex = 11
         '
         'LabelX12
@@ -1295,7 +1295,7 @@ Partial Class F1_Clientes
         '
         Me.swEstado.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.swEstado.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.swEstado.Location = New System.Drawing.Point(148, 221)
+        Me.swEstado.Location = New System.Drawing.Point(172, 256)
         Me.swEstado.Name = "swEstado"
         Me.swEstado.OffBackColor = System.Drawing.SystemColors.ActiveCaptionText
         Me.swEstado.OffText = "PASIVO"
@@ -1319,7 +1319,7 @@ Partial Class F1_Clientes
         Me.LabelX9.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.LabelX9.Font = New System.Drawing.Font("Georgia", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.LabelX9.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(85, Byte), Integer), CType(CType(139, Byte), Integer))
-        Me.LabelX9.Location = New System.Drawing.Point(14, 218)
+        Me.LabelX9.Location = New System.Drawing.Point(13, 255)
         Me.LabelX9.Name = "LabelX9"
         Me.LabelX9.SingleLineColor = System.Drawing.SystemColors.Control
         Me.LabelX9.Size = New System.Drawing.Size(79, 23)

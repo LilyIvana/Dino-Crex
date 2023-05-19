@@ -264,6 +264,7 @@ Partial Class F_CiNitNuevo
         '
         Me.tbComplementoCi.Border.Class = "TextBoxBorder"
         Me.tbComplementoCi.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.tbComplementoCi.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
         Me.tbComplementoCi.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.tbComplementoCi.Location = New System.Drawing.Point(213, 151)
         Me.tbComplementoCi.Name = "tbComplementoCi"

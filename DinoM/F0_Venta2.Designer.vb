@@ -87,6 +87,10 @@ Partial Class F0_Venta2
         Me.tbPdesc = New DevComponents.Editors.DoubleInput()
         Me.LabelX9 = New DevComponents.DotNetBar.LabelX()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.tbNroTarjeta3 = New DevComponents.DotNetBar.Controls.TextBoxX()
+        Me.tbNroTarjeta2 = New DevComponents.DotNetBar.Controls.TextBoxX()
+        Me.tbMontoQR = New DevComponents.Editors.DoubleInput()
+        Me.chbQR = New DevComponents.DotNetBar.Controls.CheckBoxX()
         Me.lbEjemplo = New DevComponents.DotNetBar.LabelX()
         Me.tbNroTarjeta1 = New DevComponents.DotNetBar.Controls.TextBoxX()
         Me.lbNroTarjeta = New DevComponents.DotNetBar.LabelX()
@@ -129,10 +133,8 @@ Partial Class F0_Venta2
         Me.CbTipoDoc = New Janus.Windows.GridEX.EditControls.MultiColumnCombo()
         Me.LabelX25 = New DevComponents.DotNetBar.LabelX()
         Me.Label1Conn = New System.Windows.Forms.Label()
-        Me.tbMontoQR = New DevComponents.Editors.DoubleInput()
-        Me.chbQR = New DevComponents.DotNetBar.Controls.CheckBoxX()
-        Me.tbNroTarjeta3 = New DevComponents.DotNetBar.Controls.TextBoxX()
-        Me.tbNroTarjeta2 = New DevComponents.DotNetBar.Controls.TextBoxX()
+        Me.tbComplemento = New System.Windows.Forms.TextBox()
+        Me.LabelX26 = New DevComponents.DotNetBar.LabelX()
         Me.PanelSuperior.SuspendLayout()
         Me.PanelInferior.SuspendLayout()
         CType(Me.BubbleBarUsuario, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -165,6 +167,7 @@ Partial Class F0_Venta2
         CType(Me.tbPrueba, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.tbPdesc, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox1.SuspendLayout()
+        CType(Me.tbMontoQR, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.tbMontoTarej, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.tbMontoBs, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.tbMontoDolar, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -184,11 +187,12 @@ Partial Class F0_Venta2
         Me.PanelFacturaYCobranza.SuspendLayout()
         Me.PanelEncabezado.SuspendLayout()
         CType(Me.CbTipoDoc, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.tbMontoQR, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'PanelSuperior
         '
+        Me.PanelSuperior.Controls.Add(Me.tbComplemento)
+        Me.PanelSuperior.Controls.Add(Me.LabelX26)
         Me.PanelSuperior.Controls.Add(Me.SwDescuentoProveedor)
         Me.PanelSuperior.Controls.Add(Me.LabelX3)
         Me.PanelSuperior.Controls.Add(Me.tbNit)
@@ -218,6 +222,8 @@ Partial Class F0_Venta2
         Me.PanelSuperior.Controls.SetChildIndex(Me.tbNit, 0)
         Me.PanelSuperior.Controls.SetChildIndex(Me.LabelX3, 0)
         Me.PanelSuperior.Controls.SetChildIndex(Me.SwDescuentoProveedor, 0)
+        Me.PanelSuperior.Controls.SetChildIndex(Me.LabelX26, 0)
+        Me.PanelSuperior.Controls.SetChildIndex(Me.tbComplemento, 0)
         '
         'PanelInferior
         '
@@ -759,6 +765,7 @@ Partial Class F0_Venta2
         Me.cbSucursal.SelectedItem = Nothing
         Me.cbSucursal.Size = New System.Drawing.Size(140, 22)
         Me.cbSucursal.TabIndex = 270
+        Me.cbSucursal.Visible = False
         Me.cbSucursal.VisualStyle = Janus.Windows.GridEX.VisualStyle.Office2007
         '
         'tbFechaVenta
@@ -981,10 +988,10 @@ Partial Class F0_Venta2
         Me.tbNit.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.tbNit.Font = New System.Drawing.Font("Georgia", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.tbNit.ForeColor = System.Drawing.Color.FromArgb(CType(CType(45, Byte), Integer), CType(CType(59, Byte), Integer), CType(CType(66, Byte), Integer))
-        Me.tbNit.Location = New System.Drawing.Point(556, 12)
+        Me.tbNit.Location = New System.Drawing.Point(532, 12)
         Me.tbNit.Name = "tbNit"
         Me.tbNit.PreventEnterBeep = True
-        Me.tbNit.Size = New System.Drawing.Size(278, 21)
+        Me.tbNit.Size = New System.Drawing.Size(140, 21)
         Me.tbNit.TabIndex = 1
         '
         'LabelX3
@@ -996,7 +1003,7 @@ Partial Class F0_Venta2
         Me.LabelX3.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.LabelX3.Font = New System.Drawing.Font("Georgia", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.LabelX3.ForeColor = System.Drawing.Color.White
-        Me.LabelX3.Location = New System.Drawing.Point(438, 10)
+        Me.LabelX3.Location = New System.Drawing.Point(414, 10)
         Me.LabelX3.Name = "LabelX3"
         Me.LabelX3.SingleLineColor = System.Drawing.SystemColors.Control
         Me.LabelX3.Size = New System.Drawing.Size(60, 23)
@@ -1532,6 +1539,79 @@ Partial Class F0_Venta2
         Me.GroupBox1.TabIndex = 361
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Efectivo:"
+        '
+        'tbNroTarjeta3
+        '
+        Me.tbNroTarjeta3.BackColor = System.Drawing.Color.White
+        '
+        '
+        '
+        Me.tbNroTarjeta3.Border.Class = "TextBoxBorder"
+        Me.tbNroTarjeta3.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.tbNroTarjeta3.Font = New System.Drawing.Font("Georgia", 11.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.tbNroTarjeta3.ForeColor = System.Drawing.Color.Black
+        Me.tbNroTarjeta3.Location = New System.Drawing.Point(238, 74)
+        Me.tbNroTarjeta3.MaxLength = 4
+        Me.tbNroTarjeta3.Name = "tbNroTarjeta3"
+        Me.tbNroTarjeta3.PreventEnterBeep = True
+        Me.tbNroTarjeta3.Size = New System.Drawing.Size(55, 24)
+        Me.tbNroTarjeta3.TabIndex = 384
+        Me.tbNroTarjeta3.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+        '
+        'tbNroTarjeta2
+        '
+        Me.tbNroTarjeta2.BackColor = System.Drawing.Color.White
+        '
+        '
+        '
+        Me.tbNroTarjeta2.Border.Class = "TextBoxBorder"
+        Me.tbNroTarjeta2.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.tbNroTarjeta2.Enabled = False
+        Me.tbNroTarjeta2.Font = New System.Drawing.Font("Georgia", 11.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.tbNroTarjeta2.ForeColor = System.Drawing.Color.Black
+        Me.tbNroTarjeta2.Location = New System.Drawing.Point(150, 74)
+        Me.tbNroTarjeta2.MaxLength = 8
+        Me.tbNroTarjeta2.Name = "tbNroTarjeta2"
+        Me.tbNroTarjeta2.PreventEnterBeep = True
+        Me.tbNroTarjeta2.ReadOnly = True
+        Me.tbNroTarjeta2.Size = New System.Drawing.Size(86, 24)
+        Me.tbNroTarjeta2.TabIndex = 385
+        Me.tbNroTarjeta2.Text = "00000000"
+        Me.tbNroTarjeta2.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+        '
+        'tbMontoQR
+        '
+        '
+        '
+        '
+        Me.tbMontoQR.BackgroundStyle.Class = "DateTimeInputBackground"
+        Me.tbMontoQR.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.tbMontoQR.ButtonFreeText.Shortcut = DevComponents.DotNetBar.eShortcut.F2
+        Me.tbMontoQR.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.tbMontoQR.ForeColor = System.Drawing.Color.Black
+        Me.tbMontoQR.Increment = 1.0R
+        Me.tbMontoQR.Location = New System.Drawing.Point(300, 45)
+        Me.tbMontoQR.MinValue = 0R
+        Me.tbMontoQR.Name = "tbMontoQR"
+        Me.tbMontoQR.Size = New System.Drawing.Size(110, 26)
+        Me.tbMontoQR.TabIndex = 382
+        Me.tbMontoQR.WatermarkAlignment = DevComponents.Editors.eTextAlignment.Right
+        '
+        'chbQR
+        '
+        Me.chbQR.BackColor = System.Drawing.Color.Transparent
+        '
+        '
+        '
+        Me.chbQR.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.chbQR.Font = New System.Drawing.Font("Calibri", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.chbQR.Location = New System.Drawing.Point(222, 45)
+        Me.chbQR.Name = "chbQR"
+        Me.chbQR.Size = New System.Drawing.Size(60, 25)
+        Me.chbQR.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+        Me.chbQR.TabIndex = 383
+        Me.chbQR.Text = "QR:"
+        Me.chbQR.TextColor = System.Drawing.Color.White
         '
         'lbEjemplo
         '
@@ -2260,13 +2340,13 @@ Partial Class F0_Venta2
         CbTipoDoc_DesignTimeLayout.LayoutString = resources.GetString("CbTipoDoc_DesignTimeLayout.LayoutString")
         Me.CbTipoDoc.DesignTimeLayout = CbTipoDoc_DesignTimeLayout
         Me.CbTipoDoc.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.CbTipoDoc.Location = New System.Drawing.Point(556, 39)
+        Me.CbTipoDoc.Location = New System.Drawing.Point(532, 39)
         Me.CbTipoDoc.Name = "CbTipoDoc"
         Me.CbTipoDoc.Office2007ColorScheme = Janus.Windows.GridEX.Office2007ColorScheme.Custom
         Me.CbTipoDoc.Office2007CustomColor = System.Drawing.Color.DodgerBlue
         Me.CbTipoDoc.SelectedIndex = -1
         Me.CbTipoDoc.SelectedItem = Nothing
-        Me.CbTipoDoc.Size = New System.Drawing.Size(278, 22)
+        Me.CbTipoDoc.Size = New System.Drawing.Size(329, 22)
         Me.CbTipoDoc.TabIndex = 418
         Me.CbTipoDoc.VisualStyle = Janus.Windows.GridEX.VisualStyle.Office2007
         '
@@ -2279,7 +2359,7 @@ Partial Class F0_Venta2
         Me.LabelX25.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.LabelX25.Font = New System.Drawing.Font("Georgia", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.LabelX25.ForeColor = System.Drawing.Color.White
-        Me.LabelX25.Location = New System.Drawing.Point(438, 38)
+        Me.LabelX25.Location = New System.Drawing.Point(414, 38)
         Me.LabelX25.Name = "LabelX25"
         Me.LabelX25.SingleLineColor = System.Drawing.SystemColors.Control
         Me.LabelX25.Size = New System.Drawing.Size(112, 23)
@@ -2300,78 +2380,33 @@ Partial Class F0_Venta2
         Me.Label1Conn.Text = "."
         Me.Label1Conn.Visible = False
         '
-        'tbMontoQR
+        'tbComplemento
+        '
+        Me.tbComplemento.AcceptsTab = True
+        Me.tbComplemento.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
+        Me.tbComplemento.Cursor = System.Windows.Forms.Cursors.Default
+        Me.tbComplemento.Font = New System.Drawing.Font("Calibri", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.tbComplemento.Location = New System.Drawing.Point(779, 12)
+        Me.tbComplemento.Margin = New System.Windows.Forms.Padding(2)
+        Me.tbComplemento.Name = "tbComplemento"
+        Me.tbComplemento.Size = New System.Drawing.Size(82, 24)
+        Me.tbComplemento.TabIndex = 427
+        '
+        'LabelX26
+        '
+        Me.LabelX26.BackColor = System.Drawing.Color.Transparent
         '
         '
         '
-        '
-        Me.tbMontoQR.BackgroundStyle.Class = "DateTimeInputBackground"
-        Me.tbMontoQR.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.tbMontoQR.ButtonFreeText.Shortcut = DevComponents.DotNetBar.eShortcut.F2
-        Me.tbMontoQR.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.tbMontoQR.ForeColor = System.Drawing.Color.Black
-        Me.tbMontoQR.Increment = 1.0R
-        Me.tbMontoQR.Location = New System.Drawing.Point(300, 45)
-        Me.tbMontoQR.MinValue = 0R
-        Me.tbMontoQR.Name = "tbMontoQR"
-        Me.tbMontoQR.Size = New System.Drawing.Size(110, 26)
-        Me.tbMontoQR.TabIndex = 382
-        Me.tbMontoQR.WatermarkAlignment = DevComponents.Editors.eTextAlignment.Right
-        '
-        'chbQR
-        '
-        Me.chbQR.BackColor = System.Drawing.Color.Transparent
-        '
-        '
-        '
-        Me.chbQR.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.chbQR.Font = New System.Drawing.Font("Calibri", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.chbQR.Location = New System.Drawing.Point(222, 45)
-        Me.chbQR.Name = "chbQR"
-        Me.chbQR.Size = New System.Drawing.Size(60, 25)
-        Me.chbQR.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-        Me.chbQR.TabIndex = 383
-        Me.chbQR.Text = "QR:"
-        Me.chbQR.TextColor = System.Drawing.Color.White
-        '
-        'tbNroTarjeta3
-        '
-        Me.tbNroTarjeta3.BackColor = System.Drawing.Color.White
-        '
-        '
-        '
-        Me.tbNroTarjeta3.Border.Class = "TextBoxBorder"
-        Me.tbNroTarjeta3.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.tbNroTarjeta3.Font = New System.Drawing.Font("Georgia", 11.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.tbNroTarjeta3.ForeColor = System.Drawing.Color.Black
-        Me.tbNroTarjeta3.Location = New System.Drawing.Point(238, 74)
-        Me.tbNroTarjeta3.MaxLength = 4
-        Me.tbNroTarjeta3.Name = "tbNroTarjeta3"
-        Me.tbNroTarjeta3.PreventEnterBeep = True
-        Me.tbNroTarjeta3.Size = New System.Drawing.Size(55, 24)
-        Me.tbNroTarjeta3.TabIndex = 384
-        Me.tbNroTarjeta3.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
-        '
-        'tbNroTarjeta2
-        '
-        Me.tbNroTarjeta2.BackColor = System.Drawing.Color.White
-        '
-        '
-        '
-        Me.tbNroTarjeta2.Border.Class = "TextBoxBorder"
-        Me.tbNroTarjeta2.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.tbNroTarjeta2.Enabled = False
-        Me.tbNroTarjeta2.Font = New System.Drawing.Font("Georgia", 11.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.tbNroTarjeta2.ForeColor = System.Drawing.Color.Black
-        Me.tbNroTarjeta2.Location = New System.Drawing.Point(150, 74)
-        Me.tbNroTarjeta2.MaxLength = 8
-        Me.tbNroTarjeta2.Name = "tbNroTarjeta2"
-        Me.tbNroTarjeta2.PreventEnterBeep = True
-        Me.tbNroTarjeta2.ReadOnly = True
-        Me.tbNroTarjeta2.Size = New System.Drawing.Size(86, 24)
-        Me.tbNroTarjeta2.TabIndex = 385
-        Me.tbNroTarjeta2.Text = "00000000"
-        Me.tbNroTarjeta2.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+        Me.LabelX26.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.LabelX26.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LabelX26.ForeColor = System.Drawing.Color.White
+        Me.LabelX26.Location = New System.Drawing.Point(677, 15)
+        Me.LabelX26.Name = "LabelX26"
+        Me.LabelX26.SingleLineColor = System.Drawing.SystemColors.Control
+        Me.LabelX26.Size = New System.Drawing.Size(97, 18)
+        Me.LabelX26.TabIndex = 428
+        Me.LabelX26.Text = "Complemento:"
         '
         'F0_Venta2
         '
@@ -2421,6 +2456,7 @@ Partial Class F0_Venta2
         CType(Me.tbPrueba, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.tbPdesc, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox1.ResumeLayout(False)
+        CType(Me.tbMontoQR, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.tbMontoTarej, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.tbMontoBs, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.tbMontoDolar, System.ComponentModel.ISupportInitialize).EndInit()
@@ -2440,7 +2476,6 @@ Partial Class F0_Venta2
         Me.PanelFacturaYCobranza.ResumeLayout(False)
         Me.PanelEncabezado.ResumeLayout(False)
         CType(Me.CbTipoDoc, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.tbMontoQR, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -2551,4 +2586,6 @@ Partial Class F0_Venta2
     Friend WithEvents chbQR As DevComponents.DotNetBar.Controls.CheckBoxX
     Friend WithEvents tbNroTarjeta3 As DevComponents.DotNetBar.Controls.TextBoxX
     Friend WithEvents tbNroTarjeta2 As DevComponents.DotNetBar.Controls.TextBoxX
+    Friend WithEvents tbComplemento As TextBox
+    Friend WithEvents LabelX26 As DevComponents.DotNetBar.LabelX
 End Class
