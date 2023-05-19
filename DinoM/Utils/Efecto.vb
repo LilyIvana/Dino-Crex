@@ -33,6 +33,7 @@ Public Class Efecto
     Public IdNit As String
     Public nroTarjeta As String
     Public CExc As Integer
+    Public ComplementoCi As String = ""
 
     Public Conversion As Double = 0
     Public CantidadPrevia As Double = 0
@@ -126,6 +127,7 @@ Public Class Efecto
             IdNit = frmAyuda.IdNit
             nroTarjeta = (frmAyuda.tbNroTarjeta1.Text & frmAyuda.tbNroTarjeta2.Text & frmAyuda.tbNroTarjeta3.Text)
             CExc = frmAyuda.CExcep
+            ComplementoCi = frmAyuda.tbComplemento.Text
 
             band = True
             Me.Close()

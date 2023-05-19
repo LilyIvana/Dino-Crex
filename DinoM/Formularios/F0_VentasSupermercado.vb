@@ -51,7 +51,7 @@ Public Class F0_VentasSupermercado
     Dim dtDescuentos As DataTable = Nothing
     Public Programa As String
 
-    Public IdNit As String
+
 
     'Token SIFAC
     Public tokenObtenido
@@ -77,7 +77,8 @@ Public Class F0_VentasSupermercado
     Public NroTarjeta As String
 
     Public CodExcepcion As Integer
-
+    Public IdNit As String
+    Public ComplementoCI As String
 
 
 
@@ -1623,9 +1624,9 @@ Public Class F0_VentasSupermercado
             End If
 
             If (Not lbNit.Text.Trim.Equals("0")) Then
-                L_Grabar_Nit(lbNit.Text.Trim, lbCliente.Text.Trim, "", CbTDoc.Value, TbEmailS.Text)
+                L_Grabar_Nit(lbNit.Text.Trim, lbCliente.Text.Trim, "", CbTDoc.Value, TbEmailS.Text, ComplementoCI)
             Else
-                L_Grabar_Nit(lbNit.Text, "S/N", "", "", "")
+                L_Grabar_Nit(lbNit.Text, "S/N", "", "", "", "")
             End If
         End If
 
@@ -1647,6 +1648,7 @@ Public Class F0_VentasSupermercado
         Dim _Hora As String = Now.Hour.ToString("D2") + ":" + Now.Minute.ToString("D2")
         Dim Anhio As Integer = Now.Date.Year
         'Grabado de Cabesera Factura
+
         L_Grabar_Factura(numi,
                         Now.Date.ToString("yyyy/MM/dd"),
                         NroFact,
@@ -1655,7 +1657,7 @@ Public Class F0_VentasSupermercado
                         lbNit.Text.Trim,
                         "B-" + IdNit,
                         lbCliente.Text,
-                        "",
+                        ComplementoCI,
                         CStr(Format(a, "####0.00")),
                         CStr(Format(b, "####0.00")),
                         CStr(Format(c, "####0.00")),
@@ -2614,6 +2616,7 @@ Public Class F0_VentasSupermercado
                 IdNit = ef.IdNit
                 NroTarjeta = ef.nroTarjeta
                 CodExcepcion = ef.CExc
+                ComplementoCI = ef.ComplementoCi
 
                 _prGuardar()
             Else
@@ -3787,7 +3790,7 @@ Public Class F0_VentasSupermercado
         Emenvio.nombreRazonSocial = lbCliente.Text.ToString()
         Emenvio.codigoTipoDocumentoIdentidad = TDoc
         Emenvio.numeroDocumento = lbNit.Text.ToString()
-        Emenvio.complemento = "" '---------------------------------
+        Emenvio.complemento = ComplementoCI '---------------------------------
         Emenvio.codigoCliente = "B-" + IdNit
         Emenvio.codigoMetodoPago = CodMetPago
         Emenvio.numeroTarjeta = NTarjeta '---------------------
@@ -3871,9 +3874,11 @@ Public Class F0_VentasSupermercado
             Dim Mensaje3 = Split(Mensaje2, ".")
 
             Dim MensajeInicial = Mensaje3(0)
-            Dim NroFactUlt = Mensaje3(2).Trim
+
 
             If MensajeInicial = "La Factura No" Then
+                Dim NroFactUlt = Mensaje3(2).Trim
+
                 'Dim Succes As Integer = Emisor(tokenObtenido, False)
                 'If Succes = 200 Then
                 '    _GuardarNuevo()

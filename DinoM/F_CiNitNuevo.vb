@@ -15,7 +15,7 @@ Public Class F_CiNitNuevo
     Public TipoDoc As String = ""
     Public Cliente As Boolean = False
     Public NuevoCli As Boolean = False
-
+    Public Complemento As String = ""
 
 
 
@@ -115,15 +115,17 @@ Public Class F_CiNitNuevo
         If (_prValidar()) Then
 
 
-            Dim res As Boolean = L_Grabar_NitPrimero(tbNit.Text, tbRazonSocial.Text, "", CbTDoc.Value, TbEmailN.Text)
+            Dim res As Boolean = L_Grabar_NitPrimero(tbNit.Text, tbRazonSocial.Text, "", CbTDoc.Value,
+                                                     TbEmailN.Text, tbComplementoCi.Text)
 
             If res Then
-                ToastNotification.Show(Me, "Los datos se grabarono con éxito.".ToUpper, My.Resources.GRABACION_EXITOSA, 5000, eToastGlowColor.Green, eToastPosition.TopCenter)
+                ToastNotification.Show(Me, "Los datos se grabaron con éxito.".ToUpper, My.Resources.GRABACION_EXITOSA, 5000, eToastGlowColor.Green, eToastPosition.TopCenter)
                 Cliente = True
                 Razonsocial = tbRazonSocial.Text
                 Nit = tbNit.Text
                 Correo = TbEmailN.Text
                 NuevoCli = True
+                Complemento = tbComplementoCi.Text
                 'F1_MontoPagar.NuevoCliente = NuevoCli
                 Me.Close()
             End If

@@ -1937,9 +1937,9 @@ Public Class F0_Venta2
             End If
 
             If (Not tbNit.Text.Trim.Equals("0")) Then
-                L_Grabar_Nit(tbNit.Text.Trim, TbNombre1.Text.Trim, Convert.ToString(_CodCliente), CbTipoDoc.Value, TbEmail.Text)
+                L_Grabar_Nit(tbNit.Text.Trim, TbNombre1.Text.Trim, Convert.ToString(_CodCliente), CbTipoDoc.Value, TbEmail.Text, "")
             Else
-                L_Grabar_Nit(tbNit.Text, "S/N", "", "", "")
+                L_Grabar_Nit(tbNit.Text, "S/N", "", "", "", "")
             End If
         End If
 

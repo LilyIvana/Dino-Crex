@@ -42,6 +42,8 @@ Partial Class F_CiNitNuevo
         Me.LabelX1 = New DevComponents.DotNetBar.LabelX()
         Me.CbTDoc = New Janus.Windows.GridEX.EditControls.MultiColumnCombo()
         Me.LabelX2 = New DevComponents.DotNetBar.LabelX()
+        Me.tbComplementoCi = New DevComponents.DotNetBar.Controls.TextBoxX()
+        Me.LabelX3 = New DevComponents.DotNetBar.LabelX()
         Me.Panel1.SuspendLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.MEP, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -85,7 +87,7 @@ Partial Class F_CiNitNuevo
         Me.tbRazonSocial.Border.Class = "TextBoxBorder"
         Me.tbRazonSocial.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.tbRazonSocial.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.tbRazonSocial.Location = New System.Drawing.Point(214, 152)
+        Me.tbRazonSocial.Location = New System.Drawing.Point(214, 185)
         Me.tbRazonSocial.Name = "tbRazonSocial"
         Me.tbRazonSocial.PreventEnterBeep = True
         Me.tbRazonSocial.Size = New System.Drawing.Size(296, 22)
@@ -99,7 +101,7 @@ Partial Class F_CiNitNuevo
         '
         Me.LabelX19.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.LabelX19.Font = New System.Drawing.Font("Arial", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelX19.Location = New System.Drawing.Point(92, 149)
+        Me.LabelX19.Location = New System.Drawing.Point(92, 182)
         Me.LabelX19.Name = "LabelX19"
         Me.LabelX19.Size = New System.Drawing.Size(99, 23)
         Me.LabelX19.TabIndex = 152
@@ -153,7 +155,7 @@ Partial Class F_CiNitNuevo
         Me.btnguardar.Image = Global.DinoM.My.Resources.Resources.save
         Me.btnguardar.ImageFixedSize = New System.Drawing.Size(20, 20)
         Me.btnguardar.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top
-        Me.btnguardar.Location = New System.Drawing.Point(161, 243)
+        Me.btnguardar.Location = New System.Drawing.Point(159, 262)
         Me.btnguardar.Name = "btnguardar"
         Me.btnguardar.RightToLeft = System.Windows.Forms.RightToLeft.Yes
         Me.btnguardar.Shape = New DevComponents.DotNetBar.RoundRectangleShapeDescriptor(2)
@@ -174,7 +176,7 @@ Partial Class F_CiNitNuevo
         Me.btnsalir.Image = Global.DinoM.My.Resources.Resources.atras
         Me.btnsalir.ImageFixedSize = New System.Drawing.Size(20, 20)
         Me.btnsalir.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top
-        Me.btnsalir.Location = New System.Drawing.Point(283, 243)
+        Me.btnsalir.Location = New System.Drawing.Point(281, 262)
         Me.btnsalir.Name = "btnsalir"
         Me.btnsalir.RightToLeft = System.Windows.Forms.RightToLeft.Yes
         Me.btnsalir.Size = New System.Drawing.Size(101, 42)
@@ -204,7 +206,7 @@ Partial Class F_CiNitNuevo
         Me.TbEmailN.Border.Class = "TextBoxBorder"
         Me.TbEmailN.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.TbEmailN.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TbEmailN.Location = New System.Drawing.Point(214, 182)
+        Me.TbEmailN.Location = New System.Drawing.Point(214, 215)
         Me.TbEmailN.Name = "TbEmailN"
         Me.TbEmailN.PreventEnterBeep = True
         Me.TbEmailN.Size = New System.Drawing.Size(296, 22)
@@ -218,7 +220,7 @@ Partial Class F_CiNitNuevo
         '
         Me.LabelX1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.LabelX1.Font = New System.Drawing.Font("Arial", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelX1.Location = New System.Drawing.Point(93, 182)
+        Me.LabelX1.Location = New System.Drawing.Point(93, 215)
         Me.LabelX1.Name = "LabelX1"
         Me.LabelX1.Size = New System.Drawing.Size(69, 23)
         Me.LabelX1.TabIndex = 165
@@ -255,10 +257,40 @@ Partial Class F_CiNitNuevo
         Me.LabelX2.TabIndex = 423
         Me.LabelX2.Text = "TIPO DOCUMENTO:"
         '
+        'tbComplementoCi
+        '
+        '
+        '
+        '
+        Me.tbComplementoCi.Border.Class = "TextBoxBorder"
+        Me.tbComplementoCi.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.tbComplementoCi.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.tbComplementoCi.Location = New System.Drawing.Point(213, 151)
+        Me.tbComplementoCi.Name = "tbComplementoCi"
+        Me.tbComplementoCi.PreventEnterBeep = True
+        Me.tbComplementoCi.Size = New System.Drawing.Size(296, 22)
+        Me.tbComplementoCi.TabIndex = 424
+        '
+        'LabelX3
+        '
+        Me.LabelX3.BackColor = System.Drawing.SystemColors.Control
+        '
+        '
+        '
+        Me.LabelX3.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.LabelX3.Font = New System.Drawing.Font("Arial", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LabelX3.Location = New System.Drawing.Point(91, 148)
+        Me.LabelX3.Name = "LabelX3"
+        Me.LabelX3.Size = New System.Drawing.Size(99, 23)
+        Me.LabelX3.TabIndex = 425
+        Me.LabelX3.Text = "COMPLEMENTO:"
+        '
         'F_CiNitNuevo
         '
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None
         Me.ClientSize = New System.Drawing.Size(555, 333)
+        Me.Controls.Add(Me.tbComplementoCi)
+        Me.Controls.Add(Me.LabelX3)
         Me.Controls.Add(Me.LabelX2)
         Me.Controls.Add(Me.CbTDoc)
         Me.Controls.Add(Me.TbEmailN)
@@ -298,4 +330,6 @@ Partial Class F_CiNitNuevo
     Friend WithEvents LabelX1 As DevComponents.DotNetBar.LabelX
     Public WithEvents CbTDoc As Janus.Windows.GridEX.EditControls.MultiColumnCombo
     Friend WithEvents LabelX2 As DevComponents.DotNetBar.LabelX
+    Friend WithEvents tbComplementoCi As DevComponents.DotNetBar.Controls.TextBoxX
+    Friend WithEvents LabelX3 As DevComponents.DotNetBar.LabelX
 End Class

@@ -53,6 +53,8 @@ Partial Class F1_MontoPagar
         Me.tbMontoDolar = New DevComponents.Editors.DoubleInput()
         Me.LabelX6 = New DevComponents.DotNetBar.LabelX()
         Me.GroupBox3 = New System.Windows.Forms.GroupBox()
+        Me.tbComplemento = New System.Windows.Forms.TextBox()
+        Me.LabelX2 = New DevComponents.DotNetBar.LabelX()
         Me.LabelX1 = New DevComponents.DotNetBar.LabelX()
         Me.LabelX27 = New DevComponents.DotNetBar.LabelX()
         Me.TbEmail = New DevComponents.DotNetBar.Controls.TextBoxX()
@@ -62,8 +64,6 @@ Partial Class F1_MontoPagar
         Me.tbNit = New System.Windows.Forms.TextBox()
         Me.LabelX3 = New DevComponents.DotNetBar.LabelX()
         Me.LabelX4 = New DevComponents.DotNetBar.LabelX()
-        Me.TextBox1 = New System.Windows.Forms.TextBox()
-        Me.LabelX2 = New DevComponents.DotNetBar.LabelX()
         Me.GroupBox2.SuspendLayout()
         Me.GroupBox1.SuspendLayout()
         CType(Me.tbMontoQR, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -543,7 +543,7 @@ Partial Class F1_MontoPagar
         '
         Me.GroupBox3.BackColor = System.Drawing.Color.Transparent
         Me.GroupBox3.BackgroundImage = Global.DinoM.My.Resources.Resources.fondo1
-        Me.GroupBox3.Controls.Add(Me.TextBox1)
+        Me.GroupBox3.Controls.Add(Me.tbComplemento)
         Me.GroupBox3.Controls.Add(Me.LabelX2)
         Me.GroupBox3.Controls.Add(Me.LabelX1)
         Me.GroupBox3.Controls.Add(Me.LabelX27)
@@ -563,6 +563,34 @@ Partial Class F1_MontoPagar
         Me.GroupBox3.TabIndex = 365
         Me.GroupBox3.TabStop = False
         Me.GroupBox3.Text = "Datos de Factura"
+        '
+        'tbComplemento
+        '
+        Me.tbComplemento.AcceptsTab = True
+        Me.tbComplemento.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
+        Me.tbComplemento.Cursor = System.Windows.Forms.Cursors.Default
+        Me.tbComplemento.Font = New System.Drawing.Font("Calibri", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.tbComplemento.Location = New System.Drawing.Point(397, 17)
+        Me.tbComplemento.Margin = New System.Windows.Forms.Padding(2)
+        Me.tbComplemento.Name = "tbComplemento"
+        Me.tbComplemento.Size = New System.Drawing.Size(82, 24)
+        Me.tbComplemento.TabIndex = 425
+        '
+        'LabelX2
+        '
+        Me.LabelX2.BackColor = System.Drawing.Color.Transparent
+        '
+        '
+        '
+        Me.LabelX2.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.LabelX2.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LabelX2.ForeColor = System.Drawing.Color.White
+        Me.LabelX2.Location = New System.Drawing.Point(295, 20)
+        Me.LabelX2.Name = "LabelX2"
+        Me.LabelX2.SingleLineColor = System.Drawing.SystemColors.Control
+        Me.LabelX2.Size = New System.Drawing.Size(97, 18)
+        Me.LabelX2.TabIndex = 426
+        Me.LabelX2.Text = "Complemento:"
         '
         'LabelX1
         '
@@ -699,36 +727,6 @@ Partial Class F1_MontoPagar
         Me.LabelX4.TabIndex = 366
         Me.LabelX4.Text = "Razón Social:"
         '
-        'TextBox1
-        '
-        Me.TextBox1.AcceptsTab = True
-        Me.TextBox1.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
-        Me.TextBox1.Cursor = System.Windows.Forms.Cursors.Default
-        Me.TextBox1.Font = New System.Drawing.Font("Calibri", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TextBox1.Location = New System.Drawing.Point(397, 17)
-        Me.TextBox1.Margin = New System.Windows.Forms.Padding(2)
-        Me.TextBox1.Name = "TextBox1"
-        Me.TextBox1.Size = New System.Drawing.Size(82, 24)
-        Me.TextBox1.TabIndex = 425
-        Me.TextBox1.Visible = False
-        '
-        'LabelX2
-        '
-        Me.LabelX2.BackColor = System.Drawing.Color.Transparent
-        '
-        '
-        '
-        Me.LabelX2.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.LabelX2.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelX2.ForeColor = System.Drawing.Color.White
-        Me.LabelX2.Location = New System.Drawing.Point(295, 20)
-        Me.LabelX2.Name = "LabelX2"
-        Me.LabelX2.SingleLineColor = System.Drawing.SystemColors.Control
-        Me.LabelX2.Size = New System.Drawing.Size(97, 18)
-        Me.LabelX2.TabIndex = 426
-        Me.LabelX2.Text = "Complemento:"
-        Me.LabelX2.Visible = False
-        '
         'F1_MontoPagar
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -794,6 +792,6 @@ Partial Class F1_MontoPagar
     Friend WithEvents chbQR As DevComponents.DotNetBar.Controls.CheckBoxX
     Friend WithEvents tbNroTarjeta3 As DevComponents.DotNetBar.Controls.TextBoxX
     Friend WithEvents tbNroTarjeta2 As DevComponents.DotNetBar.Controls.TextBoxX
-    Friend WithEvents TextBox1 As TextBox
+    Friend WithEvents tbComplemento As TextBox
     Friend WithEvents LabelX2 As DevComponents.DotNetBar.LabelX
 End Class

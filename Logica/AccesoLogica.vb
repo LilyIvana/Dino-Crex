@@ -3001,35 +3001,38 @@ Public Class AccesoLogica
         Return _Tabla
     End Function
 
-    Public Shared Sub L_Grabar_Nit(_Nit As String, _Nom1 As String, _Nom2 As String, _TipoDoc As String, _Correo As String)
+    Public Shared Sub L_Grabar_Nit(_Nit As String, _Nom1 As String, _Nom2 As String, _TipoDoc As String,
+                                   _Correo As String, _Complemento As String)
         Dim _Err As Boolean
-        Dim _Nom01, _Nom02, Correo, TipoDoc As String
+        Dim _Nom01, _Nom02, Correo, TipoDoc, Complem As String
         Dim Sql As String
         _Nom01 = ""
         _Nom02 = ""
         Correo = ""
         TipoDoc = ""
-        L_Validar_Nit(_Nit, _Nom01, _Nom02, Correo, TipoDoc, "")
+        Complem = ""
+        L_Validar_Nit(_Nit, _Nom01, _Nom02, Correo, TipoDoc, "", Complem)
 
         If _Nom01 = "" Then
-            Sql = "'" + _Nit + "', '" + _Nom1 + "', '" + _Nom2 + "', '" + _TipoDoc + "','" + _Correo + "'"
+            Sql = "'" + _Nit + "', '" + _Nom1 + "', '" + _Nom2 + "', '" + _TipoDoc + "','" + _Correo + "','" + _Complemento + "'"
             _Err = D_Insertar_Datos("TS001", Sql)
         Else
             If (_Nom1 <> _Nom01 Or _Correo <> Correo Or _TipoDoc <> TipoDoc) Then
                 Sql = "sanom1 = '" + _Nom1 + "' " + " , satipdoc = '" + _TipoDoc + "' " + " , sacorreo = '" + _Correo + "' " +
-                       ", sanom2 = '" + _Nom2 + "' "
+                       ", sanom2 = '" + _Nom2 + "' " + " , sacomplemento = '" + _Complemento + "' "
                 _Err = D_Modificar_Datos("TS001", Sql, "sanit = '" + _Nit + "'")
             End If
         End If
 
     End Sub
 
-    Public Shared Function L_Grabar_NitPrimero(_Nit As String, _Nom1 As String, _Nom2 As String, _TipoDoc As String, _Correo As String) As Boolean
+    Public Shared Function L_Grabar_NitPrimero(_Nit As String, _Nom1 As String, _Nom2 As String, _TipoDoc As String,
+                                               _Correo As String, _Complemento As String) As Boolean
         Dim _Err As Boolean
         Dim resultado As Boolean
         Dim Sql As String
 
-        Sql = "'" + _Nit + "', '" + _Nom1 + "', '" + _Nom2 + "', '" + _TipoDoc + "','" + _Correo + "'"
+        Sql = "'" + _Nit + "', '" + _Nom1 + "', '" + _Nom2 + "', '" + _TipoDoc + "','" + _Correo + "','" + _Complemento + "'"
         _Err = D_Insertar_Datos("TS001", Sql)
         If _Err = False Then
             resultado = True
@@ -3038,7 +3041,9 @@ Public Class AccesoLogica
         End If
         Return resultado
     End Function
-    Public Shared Sub L_Validar_Nit(_Nit As String, ByRef _Nom1 As String, ByRef _Nom2 As String, ByRef _Correo As String, ByRef _TipoDoc As String, ByRef _Id As String)
+    Public Shared Sub L_Validar_Nit(_Nit As String, ByRef _Nom1 As String, ByRef _Nom2 As String,
+                                    ByRef _Correo As String, ByRef _TipoDoc As String, ByRef _Id As String,
+                                    ByRef _Complemento As String)
         Dim _Tabla As DataTable
 
         _Tabla = D_Datos_Tabla("*", "TS001", "sanit = '" + _Nit + "'")
@@ -3049,6 +3054,7 @@ Public Class AccesoLogica
             _Correo = _Tabla.Rows(0).Item(5)
             _TipoDoc = _Tabla.Rows(0).Item(4)
             _Id = _Tabla.Rows(0).Item(0)
+            _Complemento = _Tabla.Rows(0).Item(6)
         End If
     End Sub
 

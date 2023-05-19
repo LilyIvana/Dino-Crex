@@ -54,6 +54,8 @@ Partial Class F0_VentasSupermercado
         Me.tbTotal = New DevComponents.Editors.DoubleInput()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.lbNombreCliente = New System.Windows.Forms.Label()
+        Me.Label12 = New System.Windows.Forms.Label()
         Me.Label11 = New System.Windows.Forms.Label()
         Me.TbEmailS = New DevComponents.DotNetBar.Controls.TextBoxX()
         Me.CbTDoc = New Janus.Windows.GridEX.EditControls.MultiColumnCombo()
@@ -74,8 +76,6 @@ Partial Class F0_VentasSupermercado
         Me.PictureBox2 = New System.Windows.Forms.PictureBox()
         Me.QrFactura = New Gma.QrCodeNet.Encoding.Windows.Forms.QrCodeImgControl()
         Me.TimerImagenes = New System.Windows.Forms.Timer(Me.components)
-        Me.Label12 = New System.Windows.Forms.Label()
-        Me.lbNombreCliente = New System.Windows.Forms.Label()
         Me.PanelImagen.SuspendLayout()
         Me.PanelRight.SuspendLayout()
         Me.PanelC.SuspendLayout()
@@ -559,6 +559,28 @@ Partial Class F0_VentasSupermercado
         Me.Panel1.Size = New System.Drawing.Size(619, 56)
         Me.Panel1.TabIndex = 9
         '
+        'lbNombreCliente
+        '
+        Me.lbNombreCliente.AutoSize = True
+        Me.lbNombreCliente.Font = New System.Drawing.Font("Calibri", 7.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lbNombreCliente.Location = New System.Drawing.Point(275, 3)
+        Me.lbNombreCliente.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.lbNombreCliente.Name = "lbNombreCliente"
+        Me.lbNombreCliente.Size = New System.Drawing.Size(0, 13)
+        Me.lbNombreCliente.TabIndex = 423
+        Me.lbNombreCliente.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        '
+        'Label12
+        '
+        Me.Label12.AutoSize = True
+        Me.Label12.Font = New System.Drawing.Font("Calibri", 7.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label12.Location = New System.Drawing.Point(225, 3)
+        Me.Label12.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.Label12.Name = "Label12"
+        Me.Label12.Size = New System.Drawing.Size(44, 13)
+        Me.Label12.TabIndex = 422
+        Me.Label12.Text = "Cliente:"
+        '
         'Label11
         '
         Me.Label11.AutoSize = True
@@ -799,28 +821,6 @@ Partial Class F0_VentasSupermercado
         'TimerImagenes
         '
         Me.TimerImagenes.Interval = 10000
-        '
-        'Label12
-        '
-        Me.Label12.AutoSize = True
-        Me.Label12.Font = New System.Drawing.Font("Calibri", 7.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label12.Location = New System.Drawing.Point(225, 3)
-        Me.Label12.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
-        Me.Label12.Name = "Label12"
-        Me.Label12.Size = New System.Drawing.Size(44, 13)
-        Me.Label12.TabIndex = 422
-        Me.Label12.Text = "Cliente:"
-        '
-        'lbNombreCliente
-        '
-        Me.lbNombreCliente.AutoSize = True
-        Me.lbNombreCliente.Font = New System.Drawing.Font("Calibri", 7.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lbNombreCliente.Location = New System.Drawing.Point(275, 3)
-        Me.lbNombreCliente.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
-        Me.lbNombreCliente.Name = "lbNombreCliente"
-        Me.lbNombreCliente.Size = New System.Drawing.Size(0, 13)
-        Me.lbNombreCliente.TabIndex = 423
-        Me.lbNombreCliente.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         '
         'F0_VentasSupermercado
         '

@@ -29,6 +29,7 @@ Public Class F1_MontoPagar
     Public email As String = ""
     Public IdNit As String = ""
 
+
     Public CExcep As Integer
     Public NuevoCliente As Boolean = False
 
@@ -240,18 +241,19 @@ Public Class F1_MontoPagar
     End Sub
 
     Private Sub tbNit_Validating(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles tbNit.Validating
-        Dim nom1, nom2, correo, tipoDoc, id As String
+        Dim nom1, nom2, correo, tipoDoc, id, complemento As String
         nom1 = ""
         nom2 = ""
         correo = ""
         tipoDoc = ""
         id = ""
+        complemento = ""
         If (tbNit.Text.Trim <> String.Empty) Then
-            L_Validar_Nit(tbNit.Text.Trim, nom1, nom2, correo, tipoDoc, id) ''falta validar
+            L_Validar_Nit(tbNit.Text.Trim, nom1, nom2, correo, tipoDoc, id, complemento) ''falta validar
             If nom1 = "" Then
                 CiNitNuevo()
                 'tbRazonSocial.Focus()
-                L_Validar_Nit(tbNit.Text.Trim, nom1, nom2, correo, tipoDoc, id)
+                L_Validar_Nit(tbNit.Text.Trim, nom1, nom2, correo, tipoDoc, id, complemento)
                 IdNit = id
 
             Else
@@ -259,6 +261,7 @@ Public Class F1_MontoPagar
                 TbEmail.Text = correo
                 CbTipoDoc.Value = tipoDoc
                 IdNit = id
+                tbComplemento.Text = complemento
             End If
         End If
     End Sub
@@ -287,6 +290,7 @@ Public Class F1_MontoPagar
             TbEmail.Text = frm.Correo
             CbTipoDoc.Value = frm.CbTDoc.Value
             NuevoCliente = frm.NuevoCli
+            tbComplemento.Text = frm.Complemento
             'dt = L_fnObtenerClientesporRazonSocialNit(frm.Razonsocial, frm.Nit)
             'If (dt.Rows.Count > 0) Then
 
