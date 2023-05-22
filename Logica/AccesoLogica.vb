@@ -1710,11 +1710,13 @@ Public Class AccesoLogica
     End Function
 
 
-    Public Shared Function L_fnGrabarVenta(ByRef _tanumi As String, _taidCorelativo As String, _tafdoc As String, _taven As Integer, _tatven As Integer, _tafvcr As String, _taclpr As Integer,
-                                           _tamon As Integer, _taobs As String,
-                                           _tadesc As Double, _taice As Double,
-                                           _tatotal As Double, detalle As DataTable, _almacen As Integer, _taprforma As Integer, Monto As DataTable, _NroCaja As Integer,
-                                           _programa As String, _Nit As String, _Rsocial As String, _Correo As String, _TipoDoc As String, _actualizar As Integer) As Boolean
+    Public Shared Function L_fnGrabarVenta(ByRef _tanumi As String, _taidCorelativo As String, _tafdoc As String,
+                                           _taven As Integer, _tatven As Integer, _tafvcr As String, _taclpr As Integer,
+                                           _tamon As Integer, _taobs As String, _tadesc As Double, _taice As Double,
+                                           _tatotal As Double, detalle As DataTable, _almacen As Integer, _taprforma As Integer,
+                                           Monto As DataTable, _NroCaja As Integer, _programa As String, _Nit As String,
+                                           _Rsocial As String, _Correo As String, _TipoDoc As String, _actualizar As Integer,
+                                           _Complemento As String) As Boolean
         Dim _Tabla As DataTable
         Dim _resultado As Boolean
         Dim _listParam As New List(Of Datos.DParametro)
@@ -1744,6 +1746,8 @@ Public Class AccesoLogica
         _listParam.Add(New Datos.DParametro("@tipoDoc", _TipoDoc))
         _listParam.Add(New Datos.DParametro("@Rsocial", _Rsocial))
         _listParam.Add(New Datos.DParametro("@actualizar", _actualizar))
+        _listParam.Add(New Datos.DParametro("@complemento", _Complemento))
+
         _listParam.Add(New Datos.DParametro("@TV0011", "", detalle))
         _listParam.Add(New Datos.DParametro("@TV0014", "", Monto))
         _Tabla = D_ProcedimientoConParam("sp_Mam_TV001", _listParam)
@@ -3017,7 +3021,7 @@ Public Class AccesoLogica
             Sql = "'" + _Nit + "', '" + _Nom1 + "', '" + _Nom2 + "', '" + _TipoDoc + "','" + _Correo + "','" + _Complemento + "'"
             _Err = D_Insertar_Datos("TS001", Sql)
         Else
-            If (_Nom1 <> _Nom01 Or _Correo <> Correo Or _TipoDoc <> TipoDoc Or _Complemento <> Complem) Then
+            If (_Nom1 <> _Nom01 Or _Correo <> Correo Or _TipoDoc <> TipoDoc) Then
                 Sql = "sanom1 = '" + _Nom1 + "' " + " , satipdoc = '" + _TipoDoc + "' " + " , sacorreo = '" + _Correo + "' " +
                        ", sanom2 = '" + _Nom2 + "' " + " , sacomplemento = '" + _Complemento + "' "
                 _Err = D_Modificar_Datos("TS001", Sql, "sanit = '" + _Nit + "'" + " And sacomplemento = '" + _Complemento + "'")

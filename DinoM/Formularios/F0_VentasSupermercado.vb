@@ -1411,7 +1411,7 @@ Public Class F0_VentasSupermercado
             Dim dtDetalle As DataTable = CType(grdetalle.DataSource, DataTable)
             Dim res As Boolean = L_fnGrabarVenta(numi, "", Now.Date.ToString("yyyy/MM/dd"), Vendedor, 1, Now.Date.ToString("yyyy/MM/dd"), _CodCliente, 1, "",
                                                  tbDescuento.Value, 0, Str(tbTotal.Value), dtDetalle, Sucursal, 0, tabla, gs_NroCaja, Programa,
-                                                 lbNit.Text, lbCliente.Text, TbEmailS.Text, CbTDoc.Value, 0)
+                                                 lbNit.Text, lbCliente.Text, TbEmailS.Text, CbTDoc.Value, 0, "")
             If res Then
                 'res = P_fnGrabarFacturarTFV001(numi)
                 'Emite factura

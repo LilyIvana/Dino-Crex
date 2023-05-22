@@ -1493,6 +1493,13 @@ Public Class F0_Venta2
                 Return False
             End If
 
+            If (TbNombre1.Text = String.Empty) Then
+                Dim img As Bitmap = New Bitmap(My.Resources.mensaje, 50, 50)
+                ToastNotification.Show(Me, "Por Favor ponga la razón social del cliente.".ToUpper, img, 2000, eToastGlowColor.Red, eToastPosition.BottomCenter)
+                TbNombre1.Focus()
+                Return False
+            End If
+
             Dim code = VerifConexion(tokenObtenido)
             If (code = 200) Then
                 If (CbTipoDoc.Value = 5) Then ''El tipo de Doc. es Nit
@@ -1733,7 +1740,7 @@ Public Class F0_Venta2
             Dim res As Boolean = L_fnGrabarVenta(numi, "", tbFechaVenta.Value.ToString("yyyy/MM/dd"), _CodEmpleado, IIf(swTipoVenta.Value = True, 1, 0), IIf(swTipoVenta.Value = True,
                                                 Now.Date.ToString("yyyy/MM/dd"), tbFechaVenc.Value.ToString("yyyy/MM/dd")), _CodCliente, IIf(swMoneda.Value = True, 1, 0),
                                                 tbObservacion.Text, tbMdesc.Value, tbIce.Value, tbTotalBs.Text, dtDetalle, cbSucursal.Value, 0, tabla, gs_NroCaja, Programa,
-                                                tbNit.Text, TbNombre1.Text, TbEmail.Text, CbTipoDoc.Value, 1)
+                                                tbNit.Text, TbNombre1.Text, TbEmail.Text, CbTipoDoc.Value, 1, tbComplemento.Text)
             If res Then
                 'res = P_fnGrabarFacturarTFV001(numi)
                 'Emite factura
@@ -4022,6 +4029,7 @@ salirIf:
         '    End If
 
         'End If
+
     End Sub
     Private Sub btnImprimir_Click(sender As Object, e As EventArgs) Handles btnImprimir.Click
         Try
@@ -5119,6 +5127,30 @@ salirIf:
 
     Private Sub tbNroTarjeta3_KeyPress(sender As Object, e As KeyPressEventArgs) Handles tbNroTarjeta3.KeyPress
         g_prValidarTextBox(1, e)
+    End Sub
+
+
+    Private Sub tbNit_KeyDown(sender As Object, e As KeyEventArgs) Handles tbNit.KeyDown
+        If (e.KeyData = Keys.Enter) Then
+            If btnGrabar.Enabled = True Then
+
+                Dim nom1, nom2, correo, tipoDoc As String
+                nom1 = ""
+                nom2 = ""
+                correo = ""
+                tipoDoc = ""
+                If (tbNit.Text.Trim <> String.Empty) Then
+                    L_Validar_Nit(tbNit.Text.Trim, nom1, nom2, correo, tipoDoc, "", tbComplemento.Text)
+
+                    TbNombre1.Text = nom1
+                    TbNombre2.Text = nom2
+                    TbEmail.Text = correo
+                    CbTipoDoc.Value = tipoDoc
+
+                End If
+
+            End If
+        End If
     End Sub
 
 
