@@ -311,6 +311,8 @@ Public Class F0_VentasSupermercado
 
             _CodEmpleado = _tabla11.Rows(0).Item("ydnumivend") 'Codigo
             lbNombreCliente.Text = _tabla11.Rows(0).Item("yddesc")
+
+            TbEmailS.Clear()
         Else
             Dim dt As DataTable
             dt = L_fnListarClientes()
@@ -321,6 +323,7 @@ Public Class F0_VentasSupermercado
 
                 _CodEmpleado = fila(0).ItemArray(8)
                 lbNombreCliente.Text = fila(0).ItemArray(3)
+                TbEmailS.Clear()
             End If
         End If
     End Sub
@@ -1397,6 +1400,7 @@ Public Class F0_VentasSupermercado
     Public Sub _GuardarNuevo()
         Try
             Dim numi As String = ""
+            Dim actualizar As Integer
             Dim tabla As DataTable = L_fnMostrarMontos2(0)
             Dim factura = gb_FacturaEmite
             _prInsertarMontoNuevo(tabla)
@@ -1407,11 +1411,17 @@ Public Class F0_VentasSupermercado
             Dim dtUsuario = L_BuscarPoUsuario(L_Usuario)
             Dim Vendedor As Integer = dtUsuario.Rows(0).Item("yd_numiVend")
 
+            If _CodCliente = 2 Then '2 corresponde a Código de Cliente Varios
+                actualizar = 0
+            Else
+                actualizar = 1
+            End If
+
             'Dim dtDetalle As DataTable = rearmarDetalle()
             Dim dtDetalle As DataTable = CType(grdetalle.DataSource, DataTable)
             Dim res As Boolean = L_fnGrabarVenta(numi, "", Now.Date.ToString("yyyy/MM/dd"), Vendedor, 1, Now.Date.ToString("yyyy/MM/dd"), _CodCliente, 1, "",
                                                  tbDescuento.Value, 0, Str(tbTotal.Value), dtDetalle, Sucursal, 0, tabla, gs_NroCaja, Programa,
-                                                 lbNit.Text, lbCliente.Text, TbEmailS.Text, CbTDoc.Value, 0, "")
+                                                 lbNit.Text, lbCliente.Text, TbEmailS.Text, CbTDoc.Value, actualizar, ComplementoCI)
             If res Then
                 'res = P_fnGrabarFacturarTFV001(numi)
                 'Emite factura
@@ -2554,10 +2564,14 @@ Public Class F0_VentasSupermercado
                 Dim Row As Janus.Windows.GridEX.GridEXRow = ef.Row
 
                 _CodCliente = Row.Cells("ydnumi").Value
-                lbCliente.Text = Row.Cells("ydrazonsocial").Value
+                'lbCliente.Text = Row.Cells("ydrazonsocial").Value
+                lbCliente.Text = Row.Cells("ydnomfac").Value
                 _dias = Row.Cells("yddias").Value
                 lbNit.Text = Row.Cells("ydnit").Value
                 lbNombreCliente.Text = Row.Cells("yddesc").Value
+                CbTDoc.Value = Row.Cells("yddct").Value
+                TbEmailS.Text = Row.Cells("email").Value
+
                 Dim numiVendedor As Integer = IIf(IsDBNull(Row.Cells("ydnumivend").Value), 0, Row.Cells("ydnumivend").Value)
 
                 Table_Producto = Nothing
@@ -2586,6 +2600,8 @@ Public Class F0_VentasSupermercado
             ef.TotalVenta = Format(tbTotal.Value, "#.#0")
             ef.Nit = lbNit.Text
             ef.RazonSocial = lbCliente.Text
+            ef.Email = TbEmailS.Text
+            Dim TipoDoc As String = CbTDoc.Value
 
             With ef.Tdoc
                 .DropDownList.Columns.Clear()
@@ -2598,6 +2614,9 @@ Public Class F0_VentasSupermercado
                 .DataSource = CbTDoc.DataSource
                 .Refresh()
             End With
+
+            ef.AuxTipoDoc = TipoDoc
+
 
             ef.ShowDialog()
             Dim bandera As Boolean = False

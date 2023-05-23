@@ -269,6 +269,7 @@ Public Class F1_MontoPagar
         Dim frm As New F_CiNitNuevo
         Dim dt As DataTable
         frm.tbNit.Text = tbNit.Text
+        frm.tbComplementoCi.Text = tbComplemento.Text
         With frm.CbTDoc
             .DropDownList.Columns.Clear()
             .DropDownList.Columns.Add("codigoClasificador").Width = 70
@@ -284,7 +285,7 @@ Public Class F1_MontoPagar
         frm.ShowDialog()
 
 
-        If (frm.Cliente = True) Then '
+        If (frm.Cliente = True) Then
 
             tbRazonSocial.Text = frm.Razonsocial
             TbEmail.Text = frm.Correo

@@ -29,6 +29,7 @@ Public Class Efecto
     Public Nit As String = ""
     Public RazonSocial As String = ""
     Public Tdoc As New MultiColumnCombo
+    Public AuxTipoDoc As String
     Public Email As String = ""
     Public IdNit As String
     Public nroTarjeta As String
@@ -98,6 +99,8 @@ Public Class Efecto
         frmAyuda.TotalVenta = TotalVenta
         frmAyuda.Nit = Nit
         frmAyuda.RazonSocial = RazonSocial
+
+
         With frmAyuda.CbTipoDoc
             .DropDownList.Columns.Clear()
             .DropDownList.Columns.Add("codigoClasificador").Width = 70
@@ -111,6 +114,9 @@ Public Class Efecto
         End With
 
         frmAyuda.TbEmail.Text = Email
+        frmAyuda.CbTipoDoc.Value = AuxTipoDoc
+
+        'Dim aux2 = frmAyuda.CbTipoDoc.Value
 
         frmAyuda.ShowDialog()
         If frmAyuda.Bandera = True Then

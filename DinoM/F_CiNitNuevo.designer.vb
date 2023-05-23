@@ -269,6 +269,7 @@ Partial Class F_CiNitNuevo
         Me.tbComplementoCi.Location = New System.Drawing.Point(213, 151)
         Me.tbComplementoCi.Name = "tbComplementoCi"
         Me.tbComplementoCi.PreventEnterBeep = True
+        Me.tbComplementoCi.ReadOnly = True
         Me.tbComplementoCi.Size = New System.Drawing.Size(296, 22)
         Me.tbComplementoCi.TabIndex = 424
         '
