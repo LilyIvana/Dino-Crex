@@ -1205,6 +1205,13 @@ Public Class P_Principal
         frm.Show()
     End Sub
 
+    Private Sub btConfActPrecios_Click(sender As Object, e As EventArgs) Handles btConfActPrecios.Click
+        Dim frm As New F0_ActualizarPrecios
+        frm._nameButton = btConfActPrecios.Name
+        frm._modulo = FP_Configuracion
+        frm.Show()
+    End Sub
+
 
 
 

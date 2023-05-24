@@ -17,7 +17,7 @@ Imports System.Drawing.Text
 Imports System.Reflection
 Imports System.Runtime.InteropServices
 
-Public Class F0_Precios
+Public Class F0_ActualizarPrecios
     Dim _Inter As Integer = 0
 
     Dim RutaGlobal As String = gs_CarpetaRaiz
@@ -31,7 +31,7 @@ Public Class F0_Precios
     Private Sub _IniciarTodo()
 
         'Me.WindowState = FormWindowState.Maximized
-        _prCargarTablaCategorias()
+
         _prCargarComboLibreria(cbAlmacen)
 
         _prAsignarPermisos()
@@ -64,63 +64,27 @@ Public Class F0_Precios
     End Sub
     Public Sub _prCargarTablaPrecios(bandera As Boolean) ''Bandera = true si es que haiq cargar denuevo la tabla de Precio Bandera =false si solo cargar datos al Janus con el precio antepuesto
         If (cbAlmacen.SelectedIndex >= 0) Then
-            Dim productos As DataTable = L_fnListarProductos()
-            If (bandera = True) Then
-                _prCargarPrecios()
-            End If
-            Dim categorias As DataTable = L_fnListarCategorias()
+            'Dim productos As DataTable = L_fnListarProductos()
+            Dim productos As DataTable = L_fnListarProductosParaActualizarPrecios()
 
-            For Each fila As DataRow In categorias.Rows
-                productos.Columns.Add("estado_" + fila.Item("ygcod").ToString.Trim)
-                productos.Columns.Add(fila.Item("ygnumi").ToString.Trim)
-            Next
-            For j As Integer = 0 To productos.Rows.Count - 1 Step 1
-                Dim idprod As Integer = productos.Rows(j).Item("yfnumi")
-                Dim result As DataRow() = precio.Select("yhprod=" + Str(idprod))
-                For i As Integer = 0 To result.Length - 1 Step 1
-                    Dim rowIndex As Integer = precio.Rows.IndexOf(result(i))
-                    Dim columnprecio As String = result(i).Item("yhcatpre")
-                    Dim columnestado As String = "estado_" + result(i).Item("ygcod")
-                    productos.Rows(j).Item(columnprecio) = Math.Round(result(i).Item("yhprecio"), 2)
-                    productos.Rows(j).Item(columnestado) = Str(result(i).Item("estado")) + "_" + Str(rowIndex).Trim
-
-                Next
-            Next
 
             grprecio.BoundMode = Janus.Data.BoundMode.Bound
             grprecio.DataSource = productos
             grprecio.RetrieveStructure()
-            For Each fc As DataRow In categorias.Rows
 
-                Dim columnprecio As String = fc.Item("ygnumi").ToString.Trim
-                Dim columnestado As String = "estado_" + fc.Item("ygcod").ToString.Trim
-                With grprecio.RootTable.Columns(columnestado)
-                    .Caption = ""
-                    .Width = 150
-                    .Visible = False
-                    .FormatString = "0"
-                End With
-
-                With grprecio.RootTable.Columns(columnprecio)
-                    .Caption = fc.Item("ygcod").ToString
-                    .Width = 80
-                    .HeaderAlignment = Janus.Windows.GridEX.TextAlignment.Center
-                    .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far
-                    .Visible = True
-                    .FormatString = "0.00"
-                End With
-
-            Next
-
-            'a.yfcprod ,a.yfnumi ,a.yfcdprod1,gr3.ycdes3 as Laboratorio,gr4.ycdes3 as Presentacion 
+            With grprecio.RootTable.Columns("yfnumi")
+                .Caption = "COD DYN"
+                .Width = 100
+                .Visible = True
+            End With
             With grprecio.RootTable.Columns("yfcprod")
                 .Caption = "COD DELTA"
                 .Width = 100
                 .Visible = True
             End With
-            With grprecio.RootTable.Columns("yfnumi")
-                .Caption = "COD DYN"
-                .Width = 100
+            With grprecio.RootTable.Columns("yfcbarra")
+                .Caption = "COD. BARRAS"
+                .Width = 150
                 .Visible = True
             End With
             With grprecio.RootTable.Columns("yfcdprod1")
@@ -128,15 +92,11 @@ Public Class F0_Precios
                 .Width = 370
                 .Visible = True
             End With
-            With grprecio.RootTable.Columns("Laboratorio")
-                .Caption = "PROCEDENCIA"
-                .Width = 150
-                .Visible = False
-            End With
-            With grprecio.RootTable.Columns("Presentacion")
-                .Caption = "Presentacion"
+
+            With grprecio.RootTable.Columns("yfbactPrecio")
+                .Caption = "ACTUALIZA PRECIO?"
                 .Width = 120
-                .Visible = False
+                .Visible = True
             End With
             'Habilitar Filtradores
             With grprecio
@@ -173,103 +133,22 @@ Public Class F0_Precios
     End Sub
     Private Sub _prInhabiliitar()
 
-        GPanelAddCategoria.Visible = False
+
         btnModificar.Enabled = True
         btnGrabar.Enabled = False
         _prCargarTablaPrecios(True)
 
-        grcategoria.ContextMenuStrip = Nothing
+
     End Sub
     Private Sub _prhabilitar()
-        grcategoria.ContextMenuStrip = msModulos
-        GPanelAddCategoria.Visible = True
-        tbDescripcion.Focus()
+
         btnGrabar.Enabled = True
     End Sub
 
-    Private Sub _prCargarTablaCategorias()
-        Dim dt As New DataTable
-        dt = L_fnGeneralCategorias()
-        grcategoria.DataSource = dt
-        grcategoria.RetrieveStructure()
-        grcategoria.AlternatingColors = True
 
-        'dar formato a las columnas
-        'a.ygnumi, a.ygcod, a.ygdesc, a.ygpcv, a.ygfact, a.yghact, a.yguact
-        With grcategoria.RootTable.Columns("ygnumi")
-            .Width = 100
-            .Caption = "CODIGO"
-            .Visible = False
-
-        End With
-
-        With grcategoria.RootTable.Columns("ygcod")
-            .Width = 80
-            .Visible = True
-            .Caption = "CODIGO"
-        End With
-
-        With grcategoria.RootTable.Columns("ygdesc")
-            .Caption = "DESCRIPCION"
-            .Width = 185
-            .Visible = True
-
-        End With
-        With grcategoria.RootTable.Columns("ygpcv")
-            .Width = 50
-            .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Near
-            .Visible = False
-        End With
-
-        With grcategoria.RootTable.Columns("estado")
-            .Width = 70
-            .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Near
-            .Visible = True
-            .Caption = "ESTADO"
-
-        End With
-        With grcategoria.RootTable.Columns("ygmer")
-            .Width = 70
-            .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far
-            '.CellStyle.TextAlignment = Janus.Windows.GridEX.format
-            .Visible = True
-            .FormatString = "0.00"
-            .Caption = "MARGEN"
-        End With
-        With grcategoria.RootTable.Columns("ygfact")
-            .Width = 50
-            .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Near
-            .Visible = False
-
-        End With
-        With grcategoria.RootTable.Columns("yghact")
-            .Width = 50
-            .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Near
-            .Visible = False
-
-
-
-        End With
-        With grcategoria.RootTable.Columns("yguact")
-            .Width = 50
-            .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Near
-            .Visible = False
-
-
-
-        End With
-        With grcategoria
-            .GroupByBoxVisible = False
-            'diseño de la grilla
-            .VisualStyle = VisualStyle.Office2007
-
-        End With
-
-
-    End Sub
 
     Public Function _fnAccesible()
-        Return GPanelAddCategoria.Visible = True
+        Return btnGrabar.Enabled = True
     End Function
 
     Private Function _FSiguienteLetra(palabra As String) As String
@@ -322,62 +201,16 @@ Public Class F0_Precios
 
 
     Public Sub _prLimpiar()
-        tbDescripcion.Clear()
-        swEstado.Value = True
-        tbDescripcion.Focus()
+
     End Sub
     Public Function _prValidarCategoria() As Boolean
         Dim _ok As Boolean = True
         MEP.Clear()
 
-        If tbDescripcion.Text = String.Empty Then
-            tbDescripcion.BackColor = Color.Red
-            MEP.SetError(tbDescripcion, "ingrese una descripcion!".ToUpper)
-            _ok = False
-            AddHandler tbDescripcion.KeyDown, AddressOf TextBox_KeyDown
-        Else
-            tbDescripcion.BackColor = Color.White
-            MEP.SetError(tbDescripcion, "")
-        End If
-
-
-
         MHighlighterFocus.UpdateHighlights()
         Return _ok
     End Function
 
-    Private Sub _prGrabarCategorias()
-        If (_prValidarCategoria()) Then
-            Dim letra As String
-            If (swEstado.Value = True) Then
-                letra = _fnObtenerSiguienteString()
-            Else
-                letra = _fnObtenerSiguienteInt()
-
-            End If
-
-            Dim grabar As Boolean = L_fnGrabarCategorias("", letra, tbDescripcion.Text, IIf(swEstado.Value = True, 1, 0), TbMargen.Text)
-            If (grabar) Then
-                Dim img As Bitmap = New Bitmap(My.Resources.checked, 50, 50)
-                ToastNotification.Show(Me, "categoria Grabado con Exito.".ToUpper,
-                                          img, 2000,
-                                          eToastGlowColor.Green,
-                                          eToastPosition.TopCenter
-                                          )
-                _prLimpiar()
-
-                _prCargarTablaCategorias()
-
-                _prCargarDatosTablaPrecios()
-
-
-            Else
-                Dim img As Bitmap = New Bitmap(My.Resources.cancel, 50, 50)
-                ToastNotification.Show(Me, "La categoria no pudo ser insertado".ToUpper, img, 2000, eToastGlowColor.Red, eToastPosition.BottomCenter)
-            End If
-        End If
-
-    End Sub
 
     Public Sub _prCargarDatosTablaPrecios()
         Dim result() As DataRow = precio.Select("estado > 1")
@@ -400,56 +233,8 @@ Public Class F0_Precios
         _prCargarTablaPrecios(False)
     End Sub
 
-    Public Function _fnObtenerSiguienteString() As String
 
-        If (grcategoria.RowCount > 0) Then
-            Dim b As Boolean = False
-            Dim length As Integer = grcategoria.RowCount - 1
-            While (length >= 0 And b = False)
-                Dim data As String = CType(grcategoria.DataSource, DataTable).Rows(length).Item("ygcod")
-                If (Not IsNumeric(data)) Then
-                    b = True
-                Else
-                    length -= 1
-                End If
-            End While
-            If (b = False) Then
-                Return _FSiguienteLetra(" ")
-            Else
-                Return _FSiguienteLetra(CType(grcategoria.DataSource, DataTable).Rows(length).Item("ygcod"))
 
-            End If
-        Else
-            Return _FSiguienteLetra(" ")
-
-        End If
-
-    End Function
-
-    Public Function _fnObtenerSiguienteInt() As String
-        If (grcategoria.RowCount > 0) Then
-            Dim b As Boolean = False
-            Dim length As Integer = grcategoria.RowCount - 1
-            While (length >= 0 And b = False)
-                Dim data As String = CType(grcategoria.DataSource, DataTable).Rows(length).Item("ygcod")
-                If (IsNumeric(data)) Then
-                    b = True
-                Else
-                    length -= 1
-                End If
-            End While
-            If (b = False) Then
-                Return _fnSiguienteNumero(0)
-            Else
-                Return _fnSiguienteNumero(CType(grcategoria.DataSource, DataTable).Rows(length).Item("ygcod"))
-
-            End If
-        Else
-            Return _fnSiguienteNumero(0)
-
-        End If
-
-    End Function
     Public Function _fnSiguienteNumero(num As Integer)
         Return num + 1
     End Function
@@ -476,11 +261,7 @@ Public Class F0_Precios
             Me.Close()
         End If
     End Sub
-    Private Sub btnAgregar_Click(sender As Object, e As EventArgs) Handles btnAgregar.Click
-        _prGrabarCategorias()
 
-
-    End Sub
     Private Sub TextBox_KeyDown(sender As Object, e As KeyEventArgs)
         Dim tb As TextBoxX = CType(sender, TextBoxX)
         If tb.Text = String.Empty Then
@@ -538,8 +319,8 @@ Public Class F0_Precios
             'Deshabilitar la columna de Productos y solo habilitar la de los precios
             If (e.Column.Index = grprecio.RootTable.Columns("yfcdprod1").Index Or
                e.Column.Index = grprecio.RootTable.Columns("yfcprod").Index Or
-               e.Column.Index = grprecio.RootTable.Columns("yfnumi").Index Or
-               e.Column.Index = grprecio.RootTable.Columns("Laboratorio").Index) Then 'Or e.Column.Index = grprecio.RootTable.Columns("73").Index
+                e.Column.Index = grprecio.RootTable.Columns("yfnumi").Index Or
+                e.Column.Index = grprecio.RootTable.Columns("yfcbarra").Index) Then
                 e.Cancel = True
             Else
                 e.Cancel = False
@@ -580,46 +361,6 @@ Public Class F0_Precios
     End Sub
 #End Region
 
-    Private Sub SELECCIONARTODOSDELToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles SELECCIONARTODOSDELToolStripMenuItem.Click
-        Dim img As Bitmap
-        If (grcategoria.RowCount > 0) Then
-            If (grcategoria.Row > 1) Then
-                Dim pos As Integer = grcategoria.Row
-                Dim dt As DataTable = CType(grcategoria.DataSource, DataTable)
-                Dim mensajeError As String = ""
-                Dim res As Boolean = L_fnEliminarCategoria(dt.Rows(pos).Item("ygnumi"), mensajeError)
-                If res Then
-
-
-                    img = New Bitmap(My.Resources.checked, 50, 50)
-
-                    ToastNotification.Show(Me, "Código de Categoria ".ToUpper + Str(dt.Rows(pos).Item("ygnumi")) + " eliminado con Exito.".ToUpper,
-                                              img, 2000,
-                                              eToastGlowColor.Green,
-                                              eToastPosition.TopCenter)
-
-                    _prLimpiar()
-
-                    _prCargarTablaCategorias()
-
-                    _prCargarDatosTablaPrecios()
-
-
-                Else
-                    img = New Bitmap(My.Resources.cancel, 50, 50)
-                    ToastNotification.Show(Me, mensajeError, img, 2000, eToastGlowColor.Red, eToastPosition.BottomCenter)
-                End If
-
-            Else
-                img = New Bitmap(My.Resources.cancel, 50, 50)
-                ToastNotification.Show(Me, "CODIGO DE CATEGORIA DEL SISTEMA NO PUEDE SER ELIMINADA", img, 2000, eToastGlowColor.Red, eToastPosition.BottomCenter)
-            End If
-        End If
-    End Sub
-
-    Private Sub grcategoria_FormattingRow(sender As Object, e As RowLoadEventArgs) Handles grcategoria.FormattingRow
-
-    End Sub
     Public Function P_ExportarExcel(_ruta As String) As Boolean
         Dim _ubicacion As String
         'Dim _directorio As New FolderBrowserDialog

@@ -1283,6 +1283,18 @@ Public Class AccesoLogica
 
         Return _resultado
     End Function
+    Public Shared Function L_fnListarProductosParaActualizarPrecios() As DataTable
+        Dim _Tabla As DataTable
+
+        Dim _listParam As New List(Of Datos.DParametro)
+
+        _listParam.Add(New Datos.DParametro("@tipo", 14))
+        _listParam.Add(New Datos.DParametro("@yguact", L_Usuario))
+        _Tabla = D_ProcedimientoConParam("sp_Mam_TY006", _listParam)
+
+        Return _Tabla
+    End Function
+
 #End Region
 
 #Region "TZ001 Zonas"

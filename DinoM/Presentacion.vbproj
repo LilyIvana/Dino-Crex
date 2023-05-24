@@ -377,6 +377,12 @@
     <Compile Include="F0_Libreria.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="F0_ActualizarPrecios.Designer.vb">
+      <DependentUpon>F0_ActualizarPrecios.vb</DependentUpon>
+    </Compile>
+    <Compile Include="F0_ActualizarPrecios.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="F0_Precios.Designer.vb">
       <DependentUpon>F0_Precios.vb</DependentUpon>
     </Compile>
@@ -1365,6 +1371,9 @@
     <EmbeddedResource Include="F0_Libreria.resx">
       <DependentUpon>F0_Libreria.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="F0_ActualizarPrecios.resx">
+      <DependentUpon>F0_ActualizarPrecios.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="F0_Precios.resx">
       <DependentUpon>F0_Precios.vb</DependentUpon>
     </EmbeddedResource>
@@ -2185,6 +2194,7 @@
     <None Include="Resources\trash.png" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\precio1.png" />
     <None Include="Resources\pesaje.png" />
     <None Include="Resources\VENT_PAGOS.png" />
     <None Include="Resources\pie-chart1.png" />
