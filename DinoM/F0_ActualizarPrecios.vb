@@ -59,10 +59,8 @@ Public Class F0_ActualizarPrecios
             btnEliminar.Visible = False
         End If
     End Sub
-    Public Sub _prCargarPrecios()
-        precio = L_fnListarProductosConPrecios(cbAlmacen.Value)
-    End Sub
-    Public Sub _prCargarTablaPrecios(bandera As Boolean) ''Bandera = true si es que haiq cargar denuevo la tabla de Precio Bandera =false si solo cargar datos al Janus con el precio antepuesto
+
+    Public Sub _prCargarTabla(bandera As Boolean) ''Bandera = true si es que haiq cargar denuevo la tabla de Precio Bandera =false si solo cargar datos al Janus con el precio antepuesto
         If (cbAlmacen.SelectedIndex >= 0) Then
             'Dim productos As DataTable = L_fnListarProductos()
             Dim productos As DataTable = L_fnListarProductosParaActualizarPrecios()
@@ -89,14 +87,19 @@ Public Class F0_ActualizarPrecios
             End With
             With grprecio.RootTable.Columns("yfcdprod1")
                 .Caption = "PRODUCTO"
-                .Width = 370
+                .Width = 450
                 .Visible = True
             End With
 
             With grprecio.RootTable.Columns("yfbactPrecio")
                 .Caption = "ACTUALIZA PRECIO?"
-                .Width = 120
+                .Width = 150
                 .Visible = True
+            End With
+            With grprecio.RootTable.Columns("estado")
+                .Caption = "ESTADO"
+                .Width = 120
+                .Visible = False
             End With
             'Habilitar Filtradores
             With grprecio
@@ -136,7 +139,7 @@ Public Class F0_ActualizarPrecios
 
         btnModificar.Enabled = True
         btnGrabar.Enabled = False
-        _prCargarTablaPrecios(True)
+        _prCargarTabla(True)
 
 
     End Sub
@@ -151,89 +154,10 @@ Public Class F0_ActualizarPrecios
         Return btnGrabar.Enabled = True
     End Function
 
-    Private Function _FSiguienteLetra(palabra As String) As String
-        Dim alfabeto As New List(Of String)
-        alfabeto.Add("A")
-        alfabeto.Add("B")
-        alfabeto.Add("C")
-        alfabeto.Add("D")
-        alfabeto.Add("E")
-        alfabeto.Add("F")
-        alfabeto.Add("G")
-        alfabeto.Add("H")
-        alfabeto.Add("I")
-        alfabeto.Add("J")
-        alfabeto.Add("K")
-        alfabeto.Add("L")
-        alfabeto.Add("M")
-        alfabeto.Add("N")
-        alfabeto.Add("O")
-        alfabeto.Add("P")
-        alfabeto.Add("Q")
-        alfabeto.Add("R")
-        alfabeto.Add("S")
-        alfabeto.Add("T")
-        alfabeto.Add("U")
-        alfabeto.Add("V")
-        alfabeto.Add("W")
-        alfabeto.Add("X")
-        alfabeto.Add("Y")
-        alfabeto.Add("Z")
-        Dim letra As String
-        If palabra.Length = 1 Then
-            letra = palabra(0)
-            '26 letras en el alphabeto
-            If alfabeto.IndexOf(letra) = 25 Then
-                palabra = "AA"
-            Else
-                palabra = alfabeto(alfabeto.IndexOf(letra) + 1)
-            End If
-        Else
-            letra = palabra(1)
-            If alfabeto.IndexOf(letra) = 25 Then
-                palabra = ""
-            Else
-                palabra = palabra(0) + alfabeto(alfabeto.IndexOf(letra) + 1)
-            End If
-        End If
-        Return palabra
-    End Function
-
 
     Public Sub _prLimpiar()
 
     End Sub
-    Public Function _prValidarCategoria() As Boolean
-        Dim _ok As Boolean = True
-        MEP.Clear()
-
-        MHighlighterFocus.UpdateHighlights()
-        Return _ok
-    End Function
-
-
-    Public Sub _prCargarDatosTablaPrecios()
-        Dim result() As DataRow = precio.Select("estado > 1")
-        _prCargarPrecios()
-        For i As Integer = 0 To result.Length - 1 Step 1
-            Dim r As DataRow = result.GetValue(i)
-            Dim dr() As DataRow
-            dr = precio.Select("yhprod=" + Str(r.Item("yhprod")) + "and yhcatpre=" + Str(r.Item("yhcatpre")))
-            If dr Is Nothing Then
-                'No se encontró la fila. Crear nueva fila
-
-            Else
-                'Fila encontrada
-                dr.GetValue(0).Item("yhprecio") = r.Item("yhprecio")
-                dr.GetValue(0).Item("estado") = r.Item("estado")
-
-            End If
-
-        Next
-        _prCargarTablaPrecios(False)
-    End Sub
-
-
 
     Public Function _fnSiguienteNumero(num As Integer)
         Return num + 1
@@ -273,38 +197,23 @@ Public Class F0_ActualizarPrecios
     End Sub
     Private Sub grprecio_CellEdited(sender As Object, e As ColumnActionEventArgs) Handles grprecio.CellEdited
         If (_fnAccesible()) Then
-            If (e.Column.Index = grprecio.RootTable.Columns("1099").Index) Then
-                If (Not IsNumeric(grprecio.GetValue("1099")) Or grprecio.GetValue("1099").ToString = String.Empty) Then
-                    grprecio.SetValue("1099", 0)
-                End If
-            End If
-            If (e.Column.Index = grprecio.RootTable.Columns("70").Index) Then
-                If (Not IsNumeric(grprecio.GetValue("70")) Or grprecio.GetValue("70").ToString = String.Empty) Then
-                    grprecio.SetValue("70", 0)
-                End If
-            End If
-            If (e.Column.Index = grprecio.RootTable.Columns("1100").Index) Then
-                If (Not IsNumeric(grprecio.GetValue("1100")) Or grprecio.GetValue("1100").ToString = String.Empty) Then
-                    grprecio.SetValue("1100", 0)
-                End If
-            End If
 
+            ''Habilitar solo las columnas de Precio, %, Monto y Observación
+            'If (e.Column.Index > 1) Then
+            '    Dim data As String = grprecio.GetValue(e.Column.Index - 1).ToString.Trim 'En esta columna obtengo un protocolo que me indica el estado del precio 0= no insertado 1= ya insertado , a la ves con un '-' me indica la posicion de ese dato en el Datatable que envio para grabarlo que esta en 'precio' Ejemplo:1-15 -> estado=1 posicion=15
+            '    Dim estado As String = data.Substring(0, 1).Trim
+            '    Dim pos As String = data.Substring(2, data.Length - 2)
+            '    If (estado = 1 Or estado = 2) Then
+            '        precio.Rows(pos).Item("estado") = 2
+            '        precio.Rows(pos).Item("yhprecio") = grprecio.GetValue(e.Column.Index)
+            '    Else
+            '        If (estado = 0 Or estado = 3) Then
+            '            precio.Rows(pos).Item("estado") = 3
+            '            precio.Rows(pos).Item("yhprecio") = grprecio.GetValue(e.Column.Index)
+            '        End If
+            '    End If
+            'End If
 
-            'Habilitar solo las columnas de Precio, %, Monto y Observación
-            If (e.Column.Index > 1) Then
-                Dim data As String = grprecio.GetValue(e.Column.Index - 1).ToString.Trim 'En esta columna obtengo un protocolo que me indica el estado del precio 0= no insertado 1= ya insertado , a la ves con un '-' me indica la posicion de ese dato en el Datatable que envio para grabarlo que esta en 'precio' Ejemplo:1-15 -> estado=1 posicion=15
-                Dim estado As String = data.Substring(0, 1).Trim
-                Dim pos As String = data.Substring(2, data.Length - 2)
-                If (estado = 1 Or estado = 2) Then
-                    precio.Rows(pos).Item("estado") = 2
-                    precio.Rows(pos).Item("yhprecio") = grprecio.GetValue(e.Column.Index)
-                Else
-                    If (estado = 0 Or estado = 3) Then
-                        precio.Rows(pos).Item("estado") = 3
-                        precio.Rows(pos).Item("yhprecio") = grprecio.GetValue(e.Column.Index)
-                    End If
-                End If
-            End If
 
         End If
     End Sub
@@ -331,17 +240,17 @@ Public Class F0_ActualizarPrecios
     End Sub
     Private Sub btnGrabar_Click(sender As Object, e As EventArgs) Handles btnGrabar.Click
 
-        Dim grabar As Boolean = L_fnGrabarPrecios("", cbAlmacen.Value, precio)
+        Dim grabar As Boolean = L_fnActualizarProductoTY0052("", CType(grprecio.DataSource, DataTable))
         If (grabar) Then
             Dim img As Bitmap = New Bitmap(My.Resources.checked, 50, 50)
-            ToastNotification.Show(Me, "categoria Grabado con Exito.".ToUpper,
+            ToastNotification.Show(Me, "Producto Actualizado con éxito".ToUpper,
                                       img, 2000,
                                       eToastGlowColor.Green,
                                       eToastPosition.TopCenter
                                       )
             _prLimpiar()
 
-            _prCargarTablaPrecios(True)
+            _prCargarTabla(True)
             _prInhabiliitar()
 
         Else
@@ -353,7 +262,7 @@ Public Class F0_ActualizarPrecios
 
     Private Sub cbAlmacen_ValueChanged(sender As Object, e As EventArgs) Handles cbAlmacen.ValueChanged
 
-        _prCargarTablaPrecios(True) ''Si el selecciona otra sucursal cambia sus precio por sucursales
+        _prCargarTabla(True) ''Si el selecciona otra sucursal cambia sus precio por sucursales
     End Sub
 
     Private Sub btnEliminar_Click(sender As Object, e As EventArgs) Handles btnEliminar.Click
@@ -482,5 +391,26 @@ Public Class F0_ActualizarPrecios
             Me.Opacity = 100
             Timer1.Enabled = False
         End If
+    End Sub
+
+    Private Sub grprecio_CellValueChanged(sender As Object, e As ColumnActionEventArgs) Handles grprecio.CellValueChanged
+        Dim lin As Integer = grprecio.GetValue("yfnumi")
+        Dim pos As Integer = -1
+        _fnObtenerFilaDetalle(pos, lin)
+
+        Dim estado As Integer = CType(grprecio.DataSource, DataTable).Rows(pos).Item("estado")
+        If (estado = 1) Then
+            CType(grprecio.DataSource, DataTable).Rows(pos).Item("estado") = 2
+        End If
+    End Sub
+    Public Sub _fnObtenerFilaDetalle(ByRef pos As Integer, numi As Integer)
+        For i As Integer = 0 To CType(grprecio.DataSource, DataTable).Rows.Count - 1 Step 1
+            Dim _numi As Integer = CType(grprecio.DataSource, DataTable).Rows(i).Item("yfnumi")
+            If (_numi = numi) Then
+                pos = i
+                Return
+            End If
+        Next
+
     End Sub
 End Class

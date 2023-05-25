@@ -247,9 +247,9 @@ Partial Class F0_ActualizarPrecios
         Me.GroupPanel4.DisabledBackColor = System.Drawing.Color.Empty
         Me.GroupPanel4.Dock = System.Windows.Forms.DockStyle.Fill
         Me.GroupPanel4.Font = New System.Drawing.Font("Georgia", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.GroupPanel4.Location = New System.Drawing.Point(0, 73)
+        Me.GroupPanel4.Location = New System.Drawing.Point(0, 52)
         Me.GroupPanel4.Name = "GroupPanel4"
-        Me.GroupPanel4.Size = New System.Drawing.Size(1329, 477)
+        Me.GroupPanel4.Size = New System.Drawing.Size(1329, 498)
         '
         '
         '
@@ -288,7 +288,7 @@ Partial Class F0_ActualizarPrecios
         Me.Panel5.Dock = System.Windows.Forms.DockStyle.Fill
         Me.Panel5.Location = New System.Drawing.Point(0, 0)
         Me.Panel5.Name = "Panel5"
-        Me.Panel5.Size = New System.Drawing.Size(1323, 454)
+        Me.Panel5.Size = New System.Drawing.Size(1323, 475)
         Me.Panel5.TabIndex = 0
         '
         'grprecio
@@ -300,7 +300,7 @@ Partial Class F0_ActualizarPrecios
         Me.grprecio.Name = "grprecio"
         Me.grprecio.Office2007ColorScheme = Janus.Windows.GridEX.Office2007ColorScheme.Custom
         Me.grprecio.Office2007CustomColor = System.Drawing.Color.DodgerBlue
-        Me.grprecio.Size = New System.Drawing.Size(1323, 454)
+        Me.grprecio.Size = New System.Drawing.Size(1323, 475)
         Me.grprecio.TabIndex = 0
         Me.grprecio.VisualStyle = Janus.Windows.GridEX.VisualStyle.Office2007
         '
@@ -314,7 +314,7 @@ Partial Class F0_ActualizarPrecios
         Me.GroupPanel3.Font = New System.Drawing.Font("Georgia", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GroupPanel3.Location = New System.Drawing.Point(0, 0)
         Me.GroupPanel3.Name = "GroupPanel3"
-        Me.GroupPanel3.Size = New System.Drawing.Size(1329, 73)
+        Me.GroupPanel3.Size = New System.Drawing.Size(1329, 52)
         '
         '
         '
@@ -345,6 +345,7 @@ Partial Class F0_ActualizarPrecios
         Me.GroupPanel3.StyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.GroupPanel3.TabIndex = 0
         Me.GroupPanel3.Text = "ALMACENES"
+        Me.GroupPanel3.Visible = False
         '
         'Panel4
         '
@@ -354,7 +355,7 @@ Partial Class F0_ActualizarPrecios
         Me.Panel4.Dock = System.Windows.Forms.DockStyle.Fill
         Me.Panel4.Location = New System.Drawing.Point(0, 0)
         Me.Panel4.Name = "Panel4"
-        Me.Panel4.Size = New System.Drawing.Size(1323, 50)
+        Me.Panel4.Size = New System.Drawing.Size(1323, 29)
         Me.Panel4.TabIndex = 0
         '
         'TableLayoutPanel1
@@ -368,8 +369,8 @@ Partial Class F0_ActualizarPrecios
         Me.TableLayoutPanel1.Location = New System.Drawing.Point(0, 0)
         Me.TableLayoutPanel1.Name = "TableLayoutPanel1"
         Me.TableLayoutPanel1.RowCount = 1
-        Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
-        Me.TableLayoutPanel1.Size = New System.Drawing.Size(1323, 50)
+        Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle())
+        Me.TableLayoutPanel1.Size = New System.Drawing.Size(1323, 29)
         Me.TableLayoutPanel1.TabIndex = 236
         '
         'Panel6
@@ -380,8 +381,7 @@ Partial Class F0_ActualizarPrecios
         Me.Panel6.Dock = System.Windows.Forms.DockStyle.Fill
         Me.Panel6.Location = New System.Drawing.Point(399, 3)
         Me.Panel6.Name = "Panel6"
-        Me.Panel6.Padding = New System.Windows.Forms.Padding(0, 20, 0, 0)
-        Me.Panel6.Size = New System.Drawing.Size(523, 44)
+        Me.Panel6.Size = New System.Drawing.Size(523, 58)
         Me.Panel6.TabIndex = 34
         '
         'cbAlmacen
@@ -392,7 +392,7 @@ Partial Class F0_ActualizarPrecios
         Me.cbAlmacen.DesignTimeLayout = cbAlmacen_DesignTimeLayout
         Me.cbAlmacen.Dock = System.Windows.Forms.DockStyle.Fill
         Me.cbAlmacen.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.cbAlmacen.Location = New System.Drawing.Point(61, 20)
+        Me.cbAlmacen.Location = New System.Drawing.Point(61, 0)
         Me.cbAlmacen.Name = "cbAlmacen"
         Me.cbAlmacen.Office2007ColorScheme = Janus.Windows.GridEX.Office2007ColorScheme.Custom
         Me.cbAlmacen.Office2007CustomColor = System.Drawing.Color.DodgerBlue
@@ -413,7 +413,7 @@ Partial Class F0_ActualizarPrecios
         Me.lbgrupo2.Dock = System.Windows.Forms.DockStyle.Left
         Me.lbgrupo2.Font = New System.Drawing.Font("Georgia", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lbgrupo2.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(85, Byte), Integer), CType(CType(139, Byte), Integer))
-        Me.lbgrupo2.Location = New System.Drawing.Point(0, 20)
+        Me.lbgrupo2.Location = New System.Drawing.Point(0, 0)
         Me.lbgrupo2.Name = "lbgrupo2"
         Me.lbgrupo2.PaddingTop = 4
         Me.lbgrupo2.SingleLineColor = System.Drawing.SystemColors.Control
