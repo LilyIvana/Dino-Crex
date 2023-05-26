@@ -92,7 +92,7 @@ Public Class F0_ActualizarPrecios
             End With
 
             With grprecio.RootTable.Columns("yfbactPrecio")
-                .Caption = "ACTUALIZA PRECIO?"
+                .Caption = "ACTUALIZA PRECIO PDV?"
                 .Width = 150
                 .Visible = True
             End With

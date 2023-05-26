@@ -452,7 +452,7 @@ Public Class P_Principal
         'SideNav1.IsMenuExpanded = False
         'Ventana.Select()
         Dim frm As New F0_MCompras
-        frm._nameButton = btConfCliente.Name
+        frm._nameButton = btComCompra.Name
         Dim tab3 As SuperTabItem = superTabControl3.CreateTab(frm.Text)
         frm._tab = tab3
         frm._modulo = FP_COMPRAS
@@ -471,7 +471,7 @@ Public Class P_Principal
         SideNav1.IsMenuExpanded = False
         Ventana.Select()
         Dim frm As New F0_Venta2
-        frm._nameButton = btConfCliente.Name
+        frm._nameButton = btInvVentas.Name
         frm._modulo = FP_INVENTARIO
         Dim tab3 As SuperTabItem = superTabControl3.CreateTab(frm.Text)
         frm._tab = tab3
@@ -488,7 +488,7 @@ Public Class P_Principal
         'SideNav1.IsMenuExpanded = False
         'Ventana.Select()
         Dim frm As New F1_Dosificacion
-        frm._nameButton = btZonas.Name
+        frm._nameButton = btConfDosificacion.Name
         frm._modulo = FP_Configuracion
         'Dim tab3 As SuperTabItem = superTabControl3.CreateTab(frm.Text)
         'frm._tab = tab3
@@ -732,7 +732,7 @@ Public Class P_Principal
         'SideNav1.IsMenuExpanded = False
         'Ventana.Select()
         Dim frm As New F0_PagosCredito
-        frm._nameButton = btInvMovimiento.Name
+        frm._nameButton = btnCredPago.Name
         frm._modulo = FP_CREDITOS
         'Dim tab3 As SuperTabItem = superTabControl3.CreateTab(frm.Text)
         'frm._tab = tab3
@@ -799,7 +799,7 @@ Public Class P_Principal
         'SideNav1.IsMenuExpanded = False
         'Ventana.Select()
         Dim frm As New F0_PagosCreditoCompraUlt
-        frm._nameButton = btInvMovimiento.Name
+        frm._nameButton = btComPagosCredito.Name
         frm._modulo = FP_COMPRAS
         'Dim tab3 As SuperTabItem = superTabControl3.CreateTab(frm.Text)
         'frm._tab = tab3
@@ -970,7 +970,7 @@ Public Class P_Principal
         SideNav1.IsMenuExpanded = False
         Ventana.Select()
         Dim frm As New F0_Cobrar_Cliente
-        frm._nameButton = btInvMovimiento.Name
+        frm._nameButton = btnCredPagoCliente.Name
         frm._modulo = FP_CREDITOS
         Dim tab3 As SuperTabItem = superTabControl3.CreateTab(frm.Text)
         frm._tab = tab3
@@ -986,7 +986,7 @@ Public Class P_Principal
         SideNav1.IsMenuExpanded = False
         Ventana.Select()
         Dim frm As New F0_Cobrar_Vendedor
-        frm._nameButton = btInvMovimiento.Name
+        frm._nameButton = btnCredPagoClienteVendedor.Name
         frm._modulo = FP_CREDITOS
         Dim tab3 As SuperTabItem = superTabControl3.CreateTab(frm.Text)
         frm._tab = tab3
