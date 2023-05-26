@@ -758,6 +758,13 @@ Public Class F1_PesajeProductos
                 tbDescPro.Text = Row.Cells("yfcdprod1").Value
                 tbPrecio.Text = Row.Cells("venta").Value
 
+                tbPesoReal.Value = 0
+                dtFechaVenc.Value = DateAdd(DateInterval.Day, 5, Now.Date)
+                tbPesoSistema.Value = 0
+                tbTotal.Value = 0
+                tbCodBarraSist.Clear()
+                tbCodBarraImp.Clear()
+                
                 tbPesoReal.Focus()
             End If
 
