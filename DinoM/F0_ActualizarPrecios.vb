@@ -35,7 +35,7 @@ Public Class F0_ActualizarPrecios
         _prCargarComboLibreria(cbAlmacen)
 
         _prAsignarPermisos()
-        Me.Text = "PRECIOS"
+        Me.Text = "ACTUALIZAR CONDICIÓN DE PRODUCTOS, PRECIOS PDV Y ESPECIAL"
         Dim blah As New Bitmap(New Bitmap(My.Resources.precio), 20, 20)
         Dim ico As Icon = Icon.FromHandle(blah.GetHicon())
         Me.Icon = ico
@@ -136,28 +136,18 @@ Public Class F0_ActualizarPrecios
     End Sub
     Private Sub _prInhabiliitar()
 
-
         btnModificar.Enabled = True
         btnGrabar.Enabled = False
         _prCargarTabla(True)
 
-
     End Sub
     Private Sub _prhabilitar()
-
         btnGrabar.Enabled = True
     End Sub
-
-
 
     Public Function _fnAccesible()
         Return btnGrabar.Enabled = True
     End Function
-
-
-    Public Sub _prLimpiar()
-
-    End Sub
 
     Public Function _fnSiguienteNumero(num As Integer)
         Return num + 1
@@ -186,15 +176,7 @@ Public Class F0_ActualizarPrecios
         End If
     End Sub
 
-    Private Sub TextBox_KeyDown(sender As Object, e As KeyEventArgs)
-        Dim tb As TextBoxX = CType(sender, TextBoxX)
-        If tb.Text = String.Empty Then
 
-        Else
-            tb.BackColor = Color.White
-            MEP.SetError(tb, "")
-        End If
-    End Sub
     Private Sub grprecio_CellEdited(sender As Object, e As ColumnActionEventArgs) Handles grprecio.CellEdited
         If (_fnAccesible()) Then
 
@@ -243,31 +225,27 @@ Public Class F0_ActualizarPrecios
         Dim grabar As Boolean = L_fnActualizarProductoTY0052("", CType(grprecio.DataSource, DataTable))
         If (grabar) Then
             Dim img As Bitmap = New Bitmap(My.Resources.checked, 50, 50)
-            ToastNotification.Show(Me, "Producto Actualizado con éxito".ToUpper,
+            ToastNotification.Show(Me, "Condición de Productos Actualizados con éxito".ToUpper,
                                       img, 2000,
                                       eToastGlowColor.Green,
                                       eToastPosition.TopCenter
                                       )
-            _prLimpiar()
 
             _prCargarTabla(True)
             _prInhabiliitar()
 
         Else
             Dim img As Bitmap = New Bitmap(My.Resources.cancel, 50, 50)
-            ToastNotification.Show(Me, "La categoria no pudo ser insertado".ToUpper, img, 2000, eToastGlowColor.Red, eToastPosition.BottomCenter)
+            ToastNotification.Show(Me, "La Condición de Productos no pudo ser insertado".ToUpper, img, 2000, eToastGlowColor.Red, eToastPosition.BottomCenter)
         End If
 
     End Sub
 
     Private Sub cbAlmacen_ValueChanged(sender As Object, e As EventArgs) Handles cbAlmacen.ValueChanged
-
         _prCargarTabla(True) ''Si el selecciona otra sucursal cambia sus precio por sucursales
     End Sub
 
-    Private Sub btnEliminar_Click(sender As Object, e As EventArgs) Handles btnEliminar.Click
 
-    End Sub
 #End Region
 
     Public Function P_ExportarExcel(_ruta As String) As Boolean
@@ -282,7 +260,7 @@ Public Class F0_ActualizarPrecios
                 Dim _escritor As StreamWriter
                 Dim _fila As Integer = grprecio.GetRows.Length
                 Dim _columna As Integer = grprecio.RootTable.Columns.Count
-                Dim _archivo As String = _ubicacion & "\ListaDePrecios_" & Now.Date.Day &
+                Dim _archivo As String = _ubicacion & "\ListaDeProd_" & Now.Date.Day &
                     "." & Now.Date.Month & "." & Now.Date.Year & "_" & Now.Hour & "." & Now.Minute & "." & Now.Second & ".csv"
                 Dim _linea As String = ""
                 Dim _filadata = 0, columndata As Int32 = 0
@@ -412,5 +390,23 @@ Public Class F0_ActualizarPrecios
             End If
         Next
 
+    End Sub
+
+    Private Sub btActPrecios_Click(sender As Object, e As EventArgs) Handles btActPrecios.Click
+        Dim grabar As Boolean = L_fnActualizarPreciosEnLote()
+        If (grabar) Then
+            Dim img As Bitmap = New Bitmap(My.Resources.checked, 50, 50)
+            ToastNotification.Show(Me, "Precio PDV y Especial actualizados con éxito".ToUpper,
+                                      img, 2000,
+                                      eToastGlowColor.Green,
+                                      eToastPosition.TopCenter
+                                      )
+
+
+        Else
+            Dim img As Bitmap = New Bitmap(My.Resources.cancel, 50, 50)
+            ToastNotification.Show(Me, "Precio PDV y Especial no pudieron ser actualizados".ToUpper,
+                                   img, 2000, eToastGlowColor.Red, eToastPosition.BottomCenter)
+        End If
     End Sub
 End Class

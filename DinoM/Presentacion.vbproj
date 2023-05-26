@@ -2207,6 +2207,7 @@
     <None Include="Resources\rp_estadoCuentas.png" />
     <None Include="Resources\14.png" />
     <None Include="Resources\add.png" />
+    <None Include="Resources\actualizado.png" />
     <Content Include="Resources\atras1.png" />
     <None Include="Resources\buscar.png" />
     <None Include="Resources\BUSQUEDA1.png" />
@@ -2215,6 +2216,9 @@
     <None Include="Resources\creditopagos.png" />
     <None Include="Resources\cuentas.png" />
     <None Include="Resources\codigobarra.png" />
+    <None Include="Resources\descuentos.png" />
+    <None Include="Resources\descuentos %281%29.png" />
+    <None Include="Resources\descuentos2.png" />
     <Content Include="Resources\dinases.png" />
     <None Include="Resources\MapaClientes.png" />
     <None Include="Resources\ventasCostos.png" />

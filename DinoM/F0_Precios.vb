@@ -62,7 +62,7 @@ Public Class F0_Precios
     Public Sub _prCargarPrecios()
         precio = L_fnListarProductosConPrecios(cbAlmacen.Value)
     End Sub
-    Public Sub _prCargarTablaPrecios(bandera As Boolean) ''Bandera = true si es que haiq cargar denuevo la tabla de Precio Bandera =false si solo cargar datos al Janus con el precio antepuesto
+    Public Sub _prCargarTablaPrecios(bandera As Boolean) ''Bandera = true si es que hay que cargar de nuevo la tabla de Precio Bandera =false si solo cargar datos al Janus con el precio antepuesto
         If (cbAlmacen.SelectedIndex >= 0) Then
             Dim productos As DataTable = L_fnListarProductos()
             If (bandera = True) Then
@@ -741,5 +741,16 @@ Public Class F0_Precios
             Me.Opacity = 100
             Timer1.Enabled = False
         End If
+    End Sub
+
+    Private Sub btActualizar_Click(sender As Object, e As EventArgs) Handles btActualizar.Click
+        _prCargarTablaPrecios(True)
+
+        Dim img As Bitmap = New Bitmap(My.Resources.checked, 50, 50)
+        ToastNotification.Show(Me, "Precios Actualizados con éxito.".ToUpper,
+                                  img, 2000,
+                                  eToastGlowColor.Green,
+                                  eToastPosition.TopCenter
+                                  )
     End Sub
 End Class
