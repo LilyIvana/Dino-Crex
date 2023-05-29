@@ -344,7 +344,8 @@ Public Class F0_Usuarios
         Tb_Nombre.ReadOnly = False
         TextBoxX1.ReadOnly = False
         JMC_Categoria.ReadOnly = False
-        Tb_Estado.IsReadOnly = True
+        Tb_Estado.IsReadOnly = False
+
         tbTodasSucursales.IsReadOnly = False
         Tb_DiasPedidos.Enabled = True
         Tb_Cajero.Enabled = True

@@ -71,40 +71,49 @@ Public Class Login
 
     Private Sub btnIngresar_Click_1(sender As Object, e As EventArgs) Handles btnIngresar.Click
         If tbUsuario.Text = "" Then
-            ToastNotification.Show(Me, "No Puede Dejar Nombre en Blanco..!!!".ToUpper, My.Resources.WARNING, 1000, eToastGlowColor.Red, eToastPosition.BottomLeft)
+            ToastNotification.Show(Me, "No Puede Dejar Nombre en Blanco..!!!".ToUpper, My.Resources.WARNING, 1000, eToastGlowColor.Red, eToastPosition.BottomCenter)
             Exit Sub
         End If
         If tbPassword.Text = "" Then
-            ToastNotification.Show(Me, "No Puede Dejar Password en Blanco..!!!".ToUpper, My.Resources.WARNING, 1000, eToastGlowColor.Red, eToastPosition.BottomLeft)
+            ToastNotification.Show(Me, "No Puede Dejar Password en Blanco..!!!".ToUpper, My.Resources.WARNING, 1000, eToastGlowColor.Red, eToastPosition.BottomCenter)
             Exit Sub
         End If
         Dim dtUsuario As DataTable = L_Validar_Usuario(tbUsuario.Text, tbPassword.Text)
         If dtUsuario.Rows.Count = 0 Then
-            ToastNotification.Show(Me, "Codigo de Usuario y Password Incorrecto..!!!".ToUpper, My.Resources.WARNING, 1000, eToastGlowColor.Red, eToastPosition.BottomLeft)
+            ToastNotification.Show(Me, "Codigo de Usuario y Password Incorrecto..!!!".ToUpper, My.Resources.WARNING, 1000, eToastGlowColor.Red, eToastPosition.BottomCenter)
         Else
+            If dtUsuario.Rows(0).Item("ydest") = True Then
 
+                gs_user = tbUsuario.Text
+                gi_userNumi = dtUsuario.Rows(0).Item("ydnumi")
+                gi_userRol = dtUsuario.Rows(0).Item("ydrol")
+                gi_userSuc = dtUsuario.Rows(0).Item("ydsuc")
+                'gb_userTodasSuc = IIf(dtUsuario.Rows(0).Item("ydall") = 1, True, False)
+                P_Principal.lbUsuario.Text = gs_user
+                _prDesvenecerPantalla()
 
-            gs_user = tbUsuario.Text
-            gi_userNumi = dtUsuario.Rows(0).Item("ydnumi")
-            gi_userRol = dtUsuario.Rows(0).Item("ydrol")
-            gi_userSuc = dtUsuario.Rows(0).Item("ydsuc")
-            'gb_userTodasSuc = IIf(dtUsuario.Rows(0).Item("ydall") = 1, True, False)
-            P_Principal.lbUsuario.Text = gs_user
-            _prDesvenecerPantalla()
+                Try
+                    Dim dt As DataTable = L_VerConfiguracion()
+                    gi_Ver_Servicios = dt.Rows(0).Item("VerServicios")
+                Catch ex As Exception
 
-            Try
-                Dim dt As DataTable = L_VerConfiguracion()
-                gi_Ver_Servicios = dt.Rows(0).Item("VerServicios")
-            Catch ex As Exception
+                End Try
 
-            End Try
+                If dtUsuario.Rows(0).Item("ydfontsize") = 1 Then
+                    Dim frm As New NroCaja
+                    frm.ShowDialog()
+                End If
 
-            If dtUsuario.Rows(0).Item("ydfontsize") = 1 Then
-                Dim frm As New NroCaja
-                frm.ShowDialog()
+                Close()
+            Else
+                ToastNotification.Show(Me, "Usted ya no tiene permiso para acceder al sistema!!!".ToUpper, My.Resources.WARNING, 2000, eToastGlowColor.Red, eToastPosition.BottomCenter)
+                Exit Sub
+                Close()
+
             End If
 
-            Close()
+
+
 
         End If
     End Sub

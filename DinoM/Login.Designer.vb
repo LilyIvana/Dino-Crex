@@ -67,7 +67,7 @@ Partial Class Login
         Me.Panel2.Location = New System.Drawing.Point(0, 0)
         Me.Panel2.Name = "Panel2"
         Me.Panel2.Padding = New System.Windows.Forms.Padding(3)
-        Me.Panel2.Size = New System.Drawing.Size(364, 407)
+        Me.Panel2.Size = New System.Drawing.Size(433, 407)
         Me.Panel2.TabIndex = 16
         '
         'Panel1
@@ -86,7 +86,7 @@ Partial Class Login
         Me.Panel1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.Panel1.Location = New System.Drawing.Point(3, 3)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(358, 401)
+        Me.Panel1.Size = New System.Drawing.Size(427, 401)
         Me.Panel1.TabIndex = 16
         '
         'Label3
@@ -94,7 +94,7 @@ Partial Class Login
         Me.Label3.AutoSize = True
         Me.Label3.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label3.ForeColor = System.Drawing.Color.DodgerBlue
-        Me.Label3.Location = New System.Drawing.Point(69, 200)
+        Me.Label3.Location = New System.Drawing.Point(108, 200)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(228, 24)
         Me.Label3.TabIndex = 0
@@ -108,7 +108,7 @@ Partial Class Login
         Me.Panel3.Dock = System.Windows.Forms.DockStyle.Top
         Me.Panel3.Location = New System.Drawing.Point(0, 0)
         Me.Panel3.Name = "Panel3"
-        Me.Panel3.Size = New System.Drawing.Size(358, 68)
+        Me.Panel3.Size = New System.Drawing.Size(427, 68)
         Me.Panel3.TabIndex = 16
         '
         'PictureBox2
@@ -126,7 +126,7 @@ Partial Class Login
         'PictureBox1
         '
         Me.PictureBox1.ImageLocation = ""
-        Me.PictureBox1.Location = New System.Drawing.Point(97, 85)
+        Me.PictureBox1.Location = New System.Drawing.Point(136, 85)
         Me.PictureBox1.Name = "PictureBox1"
         Me.PictureBox1.Size = New System.Drawing.Size(166, 112)
         Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
@@ -138,7 +138,7 @@ Partial Class Login
         Me.Label1.AutoSize = True
         Me.Label1.Font = New System.Drawing.Font("Georgia", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label1.ForeColor = System.Drawing.Color.DodgerBlue
-        Me.Label1.Location = New System.Drawing.Point(17, 253)
+        Me.Label1.Location = New System.Drawing.Point(56, 253)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(82, 16)
         Me.Label1.TabIndex = 15
@@ -147,7 +147,7 @@ Partial Class Login
         'PictureBox4
         '
         Me.PictureBox4.Image = CType(resources.GetObject("PictureBox4.Image"), System.Drawing.Image)
-        Me.PictureBox4.Location = New System.Drawing.Point(292, 252)
+        Me.PictureBox4.Location = New System.Drawing.Point(331, 252)
         Me.PictureBox4.Name = "PictureBox4"
         Me.PictureBox4.Size = New System.Drawing.Size(24, 23)
         Me.PictureBox4.TabIndex = 14
@@ -158,7 +158,7 @@ Partial Class Login
         Me.Label2.AutoSize = True
         Me.Label2.Font = New System.Drawing.Font("Georgia", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label2.ForeColor = System.Drawing.Color.DodgerBlue
-        Me.Label2.Location = New System.Drawing.Point(17, 298)
+        Me.Label2.Location = New System.Drawing.Point(56, 298)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(95, 16)
         Me.Label2.TabIndex = 4
@@ -167,7 +167,7 @@ Partial Class Login
         'PictureBox3
         '
         Me.PictureBox3.Image = CType(resources.GetObject("PictureBox3.Image"), System.Drawing.Image)
-        Me.PictureBox3.Location = New System.Drawing.Point(293, 297)
+        Me.PictureBox3.Location = New System.Drawing.Point(332, 297)
         Me.PictureBox3.Name = "PictureBox3"
         Me.PictureBox3.Size = New System.Drawing.Size(25, 23)
         Me.PictureBox3.TabIndex = 13
@@ -181,7 +181,7 @@ Partial Class Login
         Me.tbUsuario.Border.Class = "TextBoxBorder"
         Me.tbUsuario.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.tbUsuario.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.tbUsuario.Location = New System.Drawing.Point(118, 250)
+        Me.tbUsuario.Location = New System.Drawing.Point(157, 250)
         Me.tbUsuario.Multiline = True
         Me.tbUsuario.Name = "tbUsuario"
         Me.tbUsuario.PreventEnterBeep = True
@@ -196,7 +196,7 @@ Partial Class Login
         Me.tbPassword.Border.Class = "TextBoxBorder"
         Me.tbPassword.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.tbPassword.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.tbPassword.Location = New System.Drawing.Point(120, 295)
+        Me.tbPassword.Location = New System.Drawing.Point(159, 295)
         Me.tbPassword.Multiline = True
         Me.tbPassword.Name = "tbPassword"
         Me.tbPassword.PasswordChar = Global.Microsoft.VisualBasic.ChrW(42)
@@ -215,7 +215,7 @@ Partial Class Login
         Me.btnIngresar.Font = New System.Drawing.Font("Arial", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnIngresar.ForeColor = System.Drawing.SystemColors.ControlLightLight
         Me.btnIngresar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnIngresar.Location = New System.Drawing.Point(120, 339)
+        Me.btnIngresar.Location = New System.Drawing.Point(159, 339)
         Me.btnIngresar.Name = "btnIngresar"
         Me.btnIngresar.Size = New System.Drawing.Size(137, 37)
         Me.btnIngresar.TabIndex = 2
@@ -229,7 +229,7 @@ Partial Class Login
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
         Me.BackColor = System.Drawing.Color.WhiteSmoke
-        Me.ClientSize = New System.Drawing.Size(364, 407)
+        Me.ClientSize = New System.Drawing.Size(433, 407)
         Me.Controls.Add(Me.Panel2)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
         Me.Name = "Login"
