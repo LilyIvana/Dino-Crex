@@ -64,7 +64,7 @@ Partial Class Descuentos
         Me.Panel2.Location = New System.Drawing.Point(0, 61)
         Me.Panel2.Margin = New System.Windows.Forms.Padding(2)
         Me.Panel2.Name = "Panel2"
-        Me.Panel2.Size = New System.Drawing.Size(954, 360)
+        Me.Panel2.Size = New System.Drawing.Size(1284, 620)
         Me.Panel2.TabIndex = 0
         '
         'GroupPanel2
@@ -77,7 +77,7 @@ Partial Class Descuentos
         Me.GroupPanel2.Location = New System.Drawing.Point(0, 0)
         Me.GroupPanel2.Margin = New System.Windows.Forms.Padding(2)
         Me.GroupPanel2.Name = "GroupPanel2"
-        Me.GroupPanel2.Size = New System.Drawing.Size(518, 360)
+        Me.GroupPanel2.Size = New System.Drawing.Size(864, 620)
         '
         '
         '
@@ -113,13 +113,14 @@ Partial Class Descuentos
         Me.grProducto.AllowEdit = Janus.Windows.GridEX.InheritableBoolean.[False]
         Me.grProducto.ColumnAutoResize = True
         Me.grProducto.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.grProducto.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.grProducto.HideSelection = Janus.Windows.GridEX.HideSelection.Highlight
         Me.grProducto.Location = New System.Drawing.Point(0, 0)
         Me.grProducto.Margin = New System.Windows.Forms.Padding(2)
         Me.grProducto.Name = "grProducto"
         Me.grProducto.Office2007ColorScheme = Janus.Windows.GridEX.Office2007ColorScheme.Custom
         Me.grProducto.Office2007CustomColor = System.Drawing.Color.DodgerBlue
-        Me.grProducto.Size = New System.Drawing.Size(512, 334)
+        Me.grProducto.Size = New System.Drawing.Size(858, 594)
         Me.grProducto.TabIndex = 0
         '
         'GroupPanel1
@@ -131,10 +132,10 @@ Partial Class Descuentos
         Me.GroupPanel1.DisabledBackColor = System.Drawing.Color.Empty
         Me.GroupPanel1.Dock = System.Windows.Forms.DockStyle.Right
         Me.GroupPanel1.Font = New System.Drawing.Font("Calibri", 10.2!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.GroupPanel1.Location = New System.Drawing.Point(518, 0)
+        Me.GroupPanel1.Location = New System.Drawing.Point(864, 0)
         Me.GroupPanel1.Margin = New System.Windows.Forms.Padding(2)
         Me.GroupPanel1.Name = "GroupPanel1"
-        Me.GroupPanel1.Size = New System.Drawing.Size(436, 360)
+        Me.GroupPanel1.Size = New System.Drawing.Size(420, 620)
         '
         '
         '
@@ -176,7 +177,7 @@ Partial Class Descuentos
         Me.grdetalle.Location = New System.Drawing.Point(0, 188)
         Me.grdetalle.Margin = New System.Windows.Forms.Padding(2)
         Me.grdetalle.Name = "grdetalle"
-        Me.grdetalle.Size = New System.Drawing.Size(430, 144)
+        Me.grdetalle.Size = New System.Drawing.Size(414, 404)
         Me.grdetalle.TabIndex = 1
         '
         'MenuEliminar
@@ -208,7 +209,7 @@ Partial Class Descuentos
         Me.Panel3.Location = New System.Drawing.Point(0, 0)
         Me.Panel3.Margin = New System.Windows.Forms.Padding(2)
         Me.Panel3.Name = "Panel3"
-        Me.Panel3.Size = New System.Drawing.Size(430, 188)
+        Me.Panel3.Size = New System.Drawing.Size(414, 188)
         Me.Panel3.TabIndex = 0
         '
         'lbProducto
@@ -218,14 +219,15 @@ Partial Class Descuentos
         '
         '
         Me.lbProducto.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.lbProducto.Font = New System.Drawing.Font("Georgia", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lbProducto.Font = New System.Drawing.Font("Georgia", 8.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lbProducto.ForeColor = System.Drawing.Color.Black
-        Me.lbProducto.Location = New System.Drawing.Point(20, 3)
+        Me.lbProducto.Location = New System.Drawing.Point(13, 3)
         Me.lbProducto.Name = "lbProducto"
         Me.lbProducto.SingleLineColor = System.Drawing.SystemColors.Control
-        Me.lbProducto.Size = New System.Drawing.Size(392, 56)
+        Me.lbProducto.Size = New System.Drawing.Size(391, 56)
         Me.lbProducto.TabIndex = 231
         Me.lbProducto.TextAlignment = System.Drawing.StringAlignment.Center
+        Me.lbProducto.WordWrap = True
         '
         'tbPrecio
         '
@@ -366,7 +368,7 @@ Partial Class Descuentos
         Me.Panel1.Location = New System.Drawing.Point(0, 0)
         Me.Panel1.Margin = New System.Windows.Forms.Padding(2)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(954, 61)
+        Me.Panel1.Size = New System.Drawing.Size(1284, 61)
         Me.Panel1.TabIndex = 0
         '
         'ButtonX1
@@ -390,7 +392,7 @@ Partial Class Descuentos
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(954, 421)
+        Me.ClientSize = New System.Drawing.Size(1284, 681)
         Me.Controls.Add(Me.Panel2)
         Me.Controls.Add(Me.Panel1)
         Me.Margin = New System.Windows.Forms.Padding(2)

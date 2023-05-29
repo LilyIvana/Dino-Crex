@@ -20,7 +20,7 @@ Public Class F1_PreciosProdExcel
 #End Region
 #Region "Metodos Privados"
     Private Sub _prIniciarTodo()
-        Me.Text = "PRECIOS DE PRODUCTOS PARA EXPORTAR"
+        Me.Text = "PRECIOS DE PRODUCTOS PARA EXPORTAR CAJEROS"
 
 
         Dim blah As New Bitmap(New Bitmap(My.Resources.producto), 20, 20)
@@ -136,14 +136,21 @@ Public Class F1_PreciosProdExcel
             With JGrM_Buscador.RootTable.Columns("PrecioPDV")
                 .Width = 120
                 .Caption = "PRECIO PDV"
-                .Visible = False
+                .Visible = True
+                .FormatString = "0.00"
+                .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far
+            End With
+            With JGrM_Buscador.RootTable.Columns("PrecioEspecial")
+                .Width = 120
+                .Caption = "PRECIO ESPECIAL"
+                .Visible = True
                 .FormatString = "0.00"
                 .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far
             End With
             With JGrM_Buscador.RootTable.Columns("PrecioVenta")
                 .Width = 120
-                .Caption = "PRECIO VENTA"
-                .Visible = False
+                .Caption = "PRECIO WHOLESALE"
+                .Visible = True
                 .FormatString = "0.00"
                 .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far
             End With
@@ -161,7 +168,7 @@ Public Class F1_PreciosProdExcel
             End With
             With JGrM_Buscador.RootTable.Columns("PrecioDescto")
                 .Width = 120
-                .Caption = "PRECIO"
+                .Caption = "PRECIO DESCTO"
                 .Visible = True
                 .FormatString = "0.00"
                 .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far

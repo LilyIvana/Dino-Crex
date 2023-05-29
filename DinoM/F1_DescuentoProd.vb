@@ -135,9 +135,16 @@ Public Class F1_DescuentoProd
                 .FormatString = "0.00"
                 .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far
             End With
+            With JGrM_Buscador.RootTable.Columns("PrecioEspecial")
+                .Width = 120
+                .Caption = "PRECIO ESPECIAL"
+                .Visible = True
+                .FormatString = "0.00"
+                .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far
+            End With
             With JGrM_Buscador.RootTable.Columns("PrecioVenta")
                 .Width = 120
-                .Caption = "PRECIO VENTA"
+                .Caption = "PRECIO WHOLESALE"
                 .Visible = True
                 .FormatString = "0.00"
                 .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far
@@ -343,4 +350,5 @@ Public Class F1_DescuentoProd
                                        eToastPosition.BottomLeft)
         End If
     End Sub
+
 End Class

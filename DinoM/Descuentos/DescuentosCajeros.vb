@@ -66,14 +66,14 @@ Public Class DescuentosCajeros
         End With
         With grProducto.RootTable.Columns("CodigoBarra")
             .Caption = "Cod.Barra"
-            .Width = 50
+            .Width = 70
             .WordWrap = True
             .MaxLines = 3
             .Visible = True
         End With
         With grProducto.RootTable.Columns("NombreProducto")
             .Caption = "Productos"
-            .Width = 250
+            .Width = 230
             .Visible = True
             .WordWrap = True
             .MaxLines = 3
@@ -85,11 +85,24 @@ Public Class DescuentosCajeros
             .FormatString = "0.00"
         End With
         With grProducto.RootTable.Columns("PrecioVenta")
-            .Caption = "Precio Venta"
+            .Caption = "Precio Wholesale"
             .Width = 60
             .Visible = True
             .FormatString = "0.00"
         End With
+        With grProducto.RootTable.Columns("PrecioEspecial")
+            .Caption = "Precio Especial"
+            .Width = 60
+            .Visible = True
+            .FormatString = "0.00"
+        End With
+        With grProducto.RootTable.Columns("PrecioPDV")
+            .Caption = "Precio PDV"
+            .Width = 50
+            .Visible = True
+            .FormatString = "0.00"
+        End With
+
         With grProducto
             .GroupByBoxVisible = False
             .DefaultFilterRowComparison = FilterConditionOperator.Contains
