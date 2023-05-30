@@ -46,6 +46,7 @@ Public Class F0_Usuarios
         GroupPanel1.Style.TextColor = Color.White
         JGr_Buscador.Focus()
 
+        swActivos.Value = True
     End Sub
     Public Sub _MaxLengthTextBox()
         Tb_Nombre.MaxLength = 10
@@ -234,7 +235,14 @@ Public Class F0_Usuarios
 
     Private Sub _PCargarBuscador()
         _Dsencabezado = New DataSet
-        _Dsencabezado = L_Usuario_General2(0)
+
+        If swActivos.Value = False Then
+            _Dsencabezado = L_Usuario_General2(0)
+        Else
+            _Dsencabezado = L_Usuario_General4(0)
+        End If
+
+
 
         JGr_Buscador.BoundMode = BoundMode.Bound
         JGr_Buscador.DataSource = _Dsencabezado.Tables(0) ' _Dsencabezado.Tables(0) ' dt
@@ -539,23 +547,33 @@ Public Class F0_Usuarios
         Dim bandera As Boolean = False
         bandera = ef.band
         If (bandera = True) Then
-            Dim t As String = Tb_Id.Text
-            L_Usuario_Borrar(Tb_Id.Text)
+            If Tb_Cajero.Value = True Then
+                Dim img1 As Bitmap = New Bitmap(My.Resources.WARNING, 50, 50)
 
-            _PInhabilitar()
-            _PFiltrar()
-            _PCargarBuscador()
+                ToastNotification.Show(Me, "No se puede eliminar este usuario.".ToUpper,
+                                              img1, 2000,
+                                              eToastGlowColor.Green,
+                                              eToastPosition.TopCenter)
+            Else
 
-            Dim img As Bitmap = New Bitmap(My.Resources.checked, 50, 50)
+                Dim t As String = Tb_Id.Text
+                L_Usuario_Borrar(Tb_Id.Text)
 
-            ToastNotification.Show(Me, "Código de Usuario ".ToUpper + t + " eliminado con Exito.".ToUpper,
-                                          img, 2000,
-                                          eToastGlowColor.Green,
-                                          eToastPosition.TopCenter)
+                _PInhabilitar()
+                _PFiltrar()
+                _PCargarBuscador()
 
-            'Else
-            '    Dim img As Bitmap = New Bitmap(My.Resources.cancel, 50, 50)
-            '    ToastNotification.Show(Me, mensajeError, img, 2000, eToastGlowColor.Red, eToastPosition.BottomCenter)
+                Dim img As Bitmap = New Bitmap(My.Resources.checked, 50, 50)
+
+                ToastNotification.Show(Me, "Código de Usuario ".ToUpper + t + " eliminado con Exito.".ToUpper,
+                                              img, 2000,
+                                              eToastGlowColor.Green,
+                                              eToastPosition.TopCenter)
+
+                'Else
+                '    Dim img As Bitmap = New Bitmap(My.Resources.cancel, 50, 50)
+                '    ToastNotification.Show(Me, mensajeError, img, 2000, eToastGlowColor.Red, eToastPosition.BottomCenter)
+            End If
         Else
             _PInhabilitar()
         End If
@@ -716,5 +734,9 @@ Public Class F0_Usuarios
             Me.Opacity = 100
             Timer1.Enabled = False
         End If
+    End Sub
+
+    Private Sub swActivos_ValueChanged(sender As Object, e As EventArgs) Handles swActivos.ValueChanged
+        _PCargarBuscador()
     End Sub
 End Class

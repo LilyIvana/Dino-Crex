@@ -33,6 +33,7 @@ Partial Class F0_Usuarios
         Me.Tb_Nombre = New DevComponents.DotNetBar.Controls.TextBoxX()
         Me.Tb_Id = New DevComponents.DotNetBar.Controls.TextBoxX()
         Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.Tb_Cajero = New DevComponents.DotNetBar.Controls.SwitchButton()
         Me.btnSearch = New DevComponents.DotNetBar.ButtonX()
         Me.tbVendedor = New DevComponents.DotNetBar.Controls.TextBoxX()
         Me.LabelX10 = New DevComponents.DotNetBar.LabelX()
@@ -50,7 +51,7 @@ Partial Class F0_Usuarios
         Me.GroupPanel1 = New DevComponents.DotNetBar.Controls.GroupPanel()
         Me.JGr_Buscador = New Janus.Windows.GridEX.GridEX()
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
-        Me.Tb_Cajero = New DevComponents.DotNetBar.Controls.SwitchButton()
+        Me.swActivos = New DevComponents.DotNetBar.Controls.SwitchButton()
         CType(Me.SuperTabPrincipal, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuperTabPrincipal.SuspendLayout()
         Me.SuperTabControlPanelRegistro.SuspendLayout()
@@ -110,6 +111,7 @@ Partial Class F0_Usuarios
         '
         'PanelSuperior
         '
+        Me.PanelSuperior.Controls.Add(Me.swActivos)
         Me.PanelSuperior.Size = New System.Drawing.Size(1330, 72)
         Me.PanelSuperior.Style.Alignment = System.Drawing.StringAlignment.Center
         Me.PanelSuperior.Style.BackColor1.Color = System.Drawing.Color.Yellow
@@ -124,6 +126,10 @@ Partial Class F0_Usuarios
         Me.PanelSuperior.StyleMouseOver.BackColor1.Color = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(45, Byte), Integer), CType(CType(150, Byte), Integer))
         Me.PanelSuperior.StyleMouseOver.BackColor2.Color = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(45, Byte), Integer), CType(CType(150, Byte), Integer))
         Me.PanelSuperior.StyleMouseOver.BackgroundImage = CType(resources.GetObject("PanelSuperior.StyleMouseOver.BackgroundImage"), System.Drawing.Image)
+        Me.PanelSuperior.Controls.SetChildIndex(Me.PanelToolBar1, 0)
+        Me.PanelSuperior.Controls.SetChildIndex(Me.PanelToolBar2, 0)
+        Me.PanelSuperior.Controls.SetChildIndex(Me.MRlAccion, 0)
+        Me.PanelSuperior.Controls.SetChildIndex(Me.swActivos, 0)
         '
         'PanelInferior
         '
@@ -345,6 +351,26 @@ Partial Class F0_Usuarios
         Me.Panel1.Name = "Panel1"
         Me.Panel1.Size = New System.Drawing.Size(1330, 175)
         Me.Panel1.TabIndex = 44
+        '
+        'Tb_Cajero
+        '
+        '
+        '
+        '
+        Me.Tb_Cajero.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.Tb_Cajero.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Tb_Cajero.Location = New System.Drawing.Point(553, 46)
+        Me.Tb_Cajero.Name = "Tb_Cajero"
+        Me.Tb_Cajero.OffBackColor = System.Drawing.Color.DodgerBlue
+        Me.Tb_Cajero.OffText = "NO"
+        Me.Tb_Cajero.OffTextColor = System.Drawing.Color.White
+        Me.Tb_Cajero.OnBackColor = System.Drawing.Color.Gold
+        Me.Tb_Cajero.OnText = "SI"
+        Me.Tb_Cajero.Size = New System.Drawing.Size(100, 22)
+        Me.Tb_Cajero.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+        Me.Tb_Cajero.TabIndex = 240
+        Me.Tb_Cajero.ValueFalse = "0"
+        Me.Tb_Cajero.ValueTrue = "1"
         '
         'btnSearch
         '
@@ -642,25 +668,27 @@ Partial Class F0_Usuarios
         Me.Timer1.Enabled = True
         Me.Timer1.Interval = 500
         '
-        'Tb_Cajero
+        'swActivos
         '
         '
         '
         '
-        Me.Tb_Cajero.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.Tb_Cajero.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Tb_Cajero.Location = New System.Drawing.Point(553, 46)
-        Me.Tb_Cajero.Name = "Tb_Cajero"
-        Me.Tb_Cajero.OffBackColor = System.Drawing.Color.DodgerBlue
-        Me.Tb_Cajero.OffText = "NO"
-        Me.Tb_Cajero.OffTextColor = System.Drawing.Color.White
-        Me.Tb_Cajero.OnBackColor = System.Drawing.Color.Gold
-        Me.Tb_Cajero.OnText = "SI"
-        Me.Tb_Cajero.Size = New System.Drawing.Size(100, 22)
-        Me.Tb_Cajero.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-        Me.Tb_Cajero.TabIndex = 240
-        Me.Tb_Cajero.ValueFalse = "0"
-        Me.Tb_Cajero.ValueTrue = "1"
+        Me.swActivos.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.swActivos.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.swActivos.Location = New System.Drawing.Point(487, 24)
+        Me.swActivos.Name = "swActivos"
+        Me.swActivos.OffBackColor = System.Drawing.Color.DodgerBlue
+        Me.swActivos.OffText = "TODOS"
+        Me.swActivos.OffTextColor = System.Drawing.Color.White
+        Me.swActivos.OnBackColor = System.Drawing.Color.Gold
+        Me.swActivos.OnText = "SOLO ACTIVOS"
+        Me.swActivos.Size = New System.Drawing.Size(160, 22)
+        Me.swActivos.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+        Me.swActivos.TabIndex = 241
+        Me.swActivos.Value = True
+        Me.swActivos.ValueFalse = "0"
+        Me.swActivos.ValueObject = "1"
+        Me.swActivos.ValueTrue = "1"
         '
         'F0_Usuarios
         '
@@ -722,4 +750,5 @@ Partial Class F0_Usuarios
     Friend WithEvents tbVendedor As DevComponents.DotNetBar.Controls.TextBoxX
     Friend WithEvents Timer1 As Timer
     Friend WithEvents Tb_Cajero As DevComponents.DotNetBar.Controls.SwitchButton
+    Friend WithEvents swActivos As DevComponents.DotNetBar.Controls.SwitchButton
 End Class

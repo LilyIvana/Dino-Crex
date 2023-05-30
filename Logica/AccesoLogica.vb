@@ -317,6 +317,20 @@ Public Class AccesoLogica
         _Ds.Tables.Add(_Tabla)
         Return _Ds
     End Function
+    Public Shared Function L_Usuario_General4(_Modo As Integer, Optional _Cadena As String = "") As DataSet
+        Dim _Tabla As DataTable
+        Dim _Ds As New DataSet
+        Dim _Where As String
+        If _Modo = 0 Then
+            _Where = "ZY003.ydnumi=ZY003.ydnumi and ZY002.ybnumi=ZY003.ydrol and TA001.aanumi=ZY003.ydsuc and ZY003.ydest=1 "
+        Else
+            _Where = "ZY003.ydnumi=ZY003.ydnumi and ZY002.ybnumi=ZY003.ydrol and TA001.aanumi=ZY003.ydsuc " + _Cadena
+        End If
+
+        _Tabla = D_Datos_Tabla("ZY003.ydnumi,ZY003.yduser,ZY003.ydpass,ZY003.ydest,ZY003.ydcant,ZY003.ydfontsize,ZY002.ybnumi,ZY002.ybrol,ZY003.ydsuc,ZY003.ydall,TA001.aabdes,ZY003.ydfact,ZY003.ybhact,ZY003.ybuact,ZY003.yd_numiVend", "ZY003,ZY002,TA001", _Where + " order by ydnumi")
+        _Ds.Tables.Add(_Tabla)
+        Return _Ds
+    End Function
     Public Shared Sub L_Usuario_Grabar(ByRef _numi As String, _user As String, _pass As String, _rol As String, _estado As String, _cantDias As String, _tamFuente As String, _suc As String, _allSuc As String, _numiVend As String)
         Dim _Actualizacion As String
         Dim _Err As Boolean

@@ -107,6 +107,7 @@ Public Class Login
                 Close()
             Else
                 ToastNotification.Show(Me, "Usted ya no tiene permiso para acceder al sistema!!!".ToUpper, My.Resources.WARNING, 2000, eToastGlowColor.Red, eToastPosition.BottomCenter)
+                tbPassword.Focus()
                 Exit Sub
                 Close()
 
