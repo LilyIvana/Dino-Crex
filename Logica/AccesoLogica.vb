@@ -4314,6 +4314,7 @@ Public Class AccesoLogica
 
         Dim _listParam As New List(Of Datos.DParametro)
 
+
         _listParam.Add(New Datos.DParametro("@tipo", 8))
         _listParam.Add(New Datos.DParametro("@ibuact", L_Usuario))
         _listParam.Add(New Datos.DParametro("@almacen", _almacen))
@@ -4522,6 +4523,16 @@ Public Class AccesoLogica
         Dim _listParam As New List(Of Datos.DParametro)
         _listParam.Add(New Datos.DParametro("@tipo", 47))
         _listParam.Add(New Datos.DParametro("@ibid", _CodMovimiento))
+        _listParam.Add(New Datos.DParametro("@ibuact", L_Usuario))
+        _Tabla = D_ProcedimientoConParam("sp_Mam_TI002", _listParam)
+
+        Return _Tabla
+    End Function
+    Public Shared Function L_fnVerificacionStockProducto(_CodPro As String) As DataTable
+        Dim _Tabla As DataTable
+        Dim _listParam As New List(Of Datos.DParametro)
+        _listParam.Add(New Datos.DParametro("@tipo", 48))
+        _listParam.Add(New Datos.DParametro("@producto", _CodPro))
         _listParam.Add(New Datos.DParametro("@ibuact", L_Usuario))
         _Tabla = D_ProcedimientoConParam("sp_Mam_TI002", _listParam)
 

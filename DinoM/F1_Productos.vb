@@ -443,6 +443,7 @@ Public Class F1_Productos
         End If
 
 
+
         Dim nameImage As String = JGrM_Buscador.GetValue("yfimg")
         If (Modificado = False) Then
             res = L_fnModificarProducto(tbCodigo.Text, tbCodProd.Text, tbCodBarra.Text, tbDescPro.Text, tbDescCort.Text, cbgrupo1.Value, cbgrupo2.Value, cbgrupo3.Value,
@@ -1557,4 +1558,18 @@ Public Class F1_Productos
         g_prValidarTextBox(1, e)
     End Sub
 
+
+    Private Sub swEstado_ValueChanged(sender As Object, e As EventArgs) Handles swEstado.ValueChanged
+        If swEstado.Value = False Then
+            Dim dt = L_fnVerificacionStockProducto(tbCodigo.Text)
+            If dt.Rows.Count > 0 Then
+                If dt.Rows(0).Item("stock") > 0 Then
+                    Dim img As Bitmap = New Bitmap(My.Resources.cancel, 50, 50)
+                    ToastNotification.Show(Me, "El producto no puede ponerse como pasivo porque aún existe stock".ToUpper,
+                                           img, 3000, eToastGlowColor.Red, eToastPosition.BottomCenter)
+                    swEstado.Value = True
+                End If
+            End If
+        End If
+    End Sub
 End Class
