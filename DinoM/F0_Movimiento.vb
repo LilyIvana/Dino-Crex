@@ -1382,6 +1382,18 @@ salirIf:
 
     Private Sub btnModificar_Click(sender As Object, e As EventArgs) Handles btnModificar.Click
         If (grmovimiento.RowCount > 0) Then
+            If gi_userRol <> 1 Then
+                Dim Diferencia As Integer = DateDiff(DateInterval.Day, tbFecha.Value, Now.Date)
+                If Diferencia > 7 Then
+                    Dim img As Bitmap = New Bitmap(My.Resources.WARNING, 50, 50)
+                    ToastNotification.Show(Me, "No se puede modificar este registro".ToUpper,
+                                           img, 2500, eToastGlowColor.Red, eToastPosition.TopCenter)
+
+                    Exit Sub
+                End If
+            End If
+
+
             _prhabilitar()
             btnNuevo.Enabled = False
             btnModificar.Enabled = False
