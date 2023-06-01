@@ -150,6 +150,9 @@ Public Class F0_Precios
                 .VisualStyle = VisualStyle.Office2007
                 .SelectionMode = SelectionMode.SingleSelection
                 .AlternatingColors = True
+
+                .RecordNavigator = True
+                .RecordNavigatorText = "Productos-Precios"
             End With
         End If
     End Sub

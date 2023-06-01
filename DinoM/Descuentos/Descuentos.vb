@@ -111,6 +111,8 @@ Public Class Descuentos
 
             'diseño de la grilla
             .VisualStyle = VisualStyle.Office2007
+            .RecordNavigator = True
+            .RecordNavigatorText = "Productos"
         End With
 
 
@@ -335,5 +337,9 @@ Public Class Descuentos
             _prCargarDescuentos(grProducto.GetValue("ProductoId"))
 
         End If
+    End Sub
+
+    Private Sub btActualizar_Click(sender As Object, e As EventArgs) Handles btActualizar.Click
+        _prCargarProductos()
     End Sub
 End Class

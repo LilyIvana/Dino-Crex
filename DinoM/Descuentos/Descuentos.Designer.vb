@@ -42,6 +42,7 @@ Partial Class Descuentos
         Me.btnNuevo = New DevComponents.DotNetBar.ButtonX()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.ButtonX1 = New DevComponents.DotNetBar.ButtonX()
+        Me.btActualizar = New DevComponents.DotNetBar.ButtonX()
         Me.Panel2.SuspendLayout()
         Me.GroupPanel2.SuspendLayout()
         CType(Me.grProducto, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -363,6 +364,7 @@ Partial Class Descuentos
         'Panel1
         '
         Me.Panel1.BackgroundImage = Global.DinoM.My.Resources.Resources.fondo1
+        Me.Panel1.Controls.Add(Me.btActualizar)
         Me.Panel1.Controls.Add(Me.ButtonX1)
         Me.Panel1.Dock = System.Windows.Forms.DockStyle.Top
         Me.Panel1.Location = New System.Drawing.Point(0, 0)
@@ -387,6 +389,25 @@ Partial Class Descuentos
         Me.ButtonX1.TabIndex = 5
         Me.ButtonX1.Text = "Salir"
         Me.ButtonX1.TextColor = System.Drawing.Color.White
+        '
+        'btActualizar
+        '
+        Me.btActualizar.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
+        Me.btActualizar.BackColor = System.Drawing.Color.Transparent
+        Me.btActualizar.ColorTable = DevComponents.DotNetBar.eButtonColor.Flat
+        Me.btActualizar.Dock = System.Windows.Forms.DockStyle.Right
+        Me.btActualizar.Font = New System.Drawing.Font("Arial", 8.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btActualizar.Image = Global.DinoM.My.Resources.Resources.reload_5
+        Me.btActualizar.ImageFixedSize = New System.Drawing.Size(40, 42)
+        Me.btActualizar.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top
+        Me.btActualizar.Location = New System.Drawing.Point(1209, 0)
+        Me.btActualizar.Name = "btActualizar"
+        Me.btActualizar.Padding = New System.Windows.Forms.Padding(0, 0, 0, 20)
+        Me.btActualizar.Size = New System.Drawing.Size(75, 61)
+        Me.btActualizar.Style = DevComponents.DotNetBar.eDotNetBarStyle.OfficeMobile2014
+        Me.btActualizar.TabIndex = 15
+        Me.btActualizar.Text = "ACTUALIZAR"
+        Me.btActualizar.TextColor = System.Drawing.Color.White
         '
         'Descuentos
         '
@@ -434,4 +455,5 @@ Partial Class Descuentos
     Friend WithEvents ButtonX1 As DevComponents.DotNetBar.ButtonX
     Friend WithEvents MenuEliminar As ContextMenuStrip
     Friend WithEvents EliminarToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents btActualizar As DevComponents.DotNetBar.ButtonX
 End Class
