@@ -91,7 +91,7 @@ Public Class Descuentos
             .FormatString = "0.00"
         End With
         With grProducto.RootTable.Columns("PrecioEspecial")
-            .Caption = "Precio Especial"
+            .Caption = "Precio Preferencial"
             .Width = 60
             .Visible = True
             .FormatString = "0.00"

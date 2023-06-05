@@ -137,7 +137,7 @@ Public Class F1_DescuentoProd
             End With
             With JGrM_Buscador.RootTable.Columns("PrecioEspecial")
                 .Width = 120
-                .Caption = "PRECIO ESPECIAL"
+                .Caption = "PRECIO PREFERENCIAL"
                 .Visible = True
                 .FormatString = "0.00"
                 .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far

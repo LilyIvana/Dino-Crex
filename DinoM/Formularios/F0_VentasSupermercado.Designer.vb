@@ -584,13 +584,13 @@ Partial Class F0_VentasSupermercado
         'Label11
         '
         Me.Label11.AutoSize = True
-        Me.Label11.Font = New System.Drawing.Font("Calibri", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label11.Location = New System.Drawing.Point(449, 36)
+        Me.Label11.Font = New System.Drawing.Font("Calibri", 8.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label11.Location = New System.Drawing.Point(445, 36)
         Me.Label11.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label11.Name = "Label11"
-        Me.Label11.Size = New System.Drawing.Size(169, 14)
+        Me.Label11.Size = New System.Drawing.Size(175, 13)
         Me.Label11.TabIndex = 421
-        Me.Label11.Text = "Tecla Ctrl + E: Clientes Exclusivos"
+        Me.Label11.Text = "Tecla Ctrl + E: Clientes Preferenciales"
         '
         'TbEmailS
         '
@@ -630,22 +630,22 @@ Partial Class F0_VentasSupermercado
         'Label10
         '
         Me.Label10.AutoSize = True
-        Me.Label10.Font = New System.Drawing.Font("Calibri", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label10.Location = New System.Drawing.Point(449, 19)
+        Me.Label10.Font = New System.Drawing.Font("Calibri", 8.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label10.Location = New System.Drawing.Point(445, 20)
         Me.Label10.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label10.Name = "Label10"
-        Me.Label10.Size = New System.Drawing.Size(144, 14)
+        Me.Label10.Size = New System.Drawing.Size(135, 13)
         Me.Label10.TabIndex = 13
         Me.Label10.Text = "Tecla Ctrl + Enter: Productos"
         '
         'Label6
         '
         Me.Label6.AutoSize = True
-        Me.Label6.Font = New System.Drawing.Font("Calibri", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label6.Location = New System.Drawing.Point(449, 5)
+        Me.Label6.Font = New System.Drawing.Font("Calibri", 8.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label6.Location = New System.Drawing.Point(445, 5)
         Me.Label6.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(117, 14)
+        Me.Label6.Size = New System.Drawing.Size(106, 13)
         Me.Label6.TabIndex = 12
         Me.Label6.Text = "Tecla Ctrl + S: Facturar"
         '
