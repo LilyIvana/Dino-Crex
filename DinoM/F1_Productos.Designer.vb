@@ -43,7 +43,7 @@ Partial Class F1_Productos
         Me.btUniMaxima = New DevComponents.DotNetBar.ButtonX()
         Me.btUniVenta = New DevComponents.DotNetBar.ButtonX()
         Me.cbUnidMaxima = New Janus.Windows.GridEX.EditControls.MultiColumnCombo()
-        Me.tbConversion = New DevComponents.Editors.DoubleInput()
+        Me.tbConversion1 = New DevComponents.Editors.DoubleInput()
         Me.LabelX7 = New DevComponents.DotNetBar.LabelX()
         Me.LabelX6 = New DevComponents.DotNetBar.LabelX()
         Me.lbgrupo1 = New DevComponents.DotNetBar.LabelX()
@@ -90,6 +90,7 @@ Partial Class F1_Productos
         Me.SuperTabControl_Imagenes_DetalleProducto = New DevComponents.DotNetBar.SuperTabControl()
         Me.SuperTabControlPanel1 = New DevComponents.DotNetBar.SuperTabControlPanel()
         Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.UsImg = New DinoM.UCImg()
         Me.SuperTabItem_Imagenes = New DevComponents.DotNetBar.SuperTabItem()
         Me.SuperTabControlPanel3 = New DevComponents.DotNetBar.SuperTabControlPanel()
         Me.GroupPanel4 = New DevComponents.DotNetBar.Controls.GroupPanel()
@@ -109,7 +110,8 @@ Partial Class F1_Productos
         Me.btExcel = New DevComponents.DotNetBar.ButtonX()
         Me.TableLayoutPanel1 = New System.Windows.Forms.TableLayoutPanel()
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
-        Me.UsImg = New DinoM.UCImg()
+        Me.tbConversion2 = New DevComponents.Editors.DoubleInput()
+        Me.LabelX18 = New DevComponents.DotNetBar.LabelX()
         CType(Me.SuperTabPrincipal, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuperTabPrincipal.SuspendLayout()
         Me.SuperTabControlPanelRegistro.SuspendLayout()
@@ -130,7 +132,7 @@ Partial Class F1_Productos
         Me.Panel4.SuspendLayout()
         CType(Me.cbUniVenta, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.cbUnidMaxima, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.tbConversion, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.tbConversion1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.cbgrupo1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.cbgrupo2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.cbgrupo3, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -156,6 +158,7 @@ Partial Class F1_Productos
         Me.SuperTabControlPanel2.SuspendLayout()
         CType(Me.dgjDetalleProducto, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TableLayoutPanel1.SuspendLayout()
+        CType(Me.tbConversion2, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'SuperTabPrincipal
@@ -367,12 +370,14 @@ Partial Class F1_Productos
         '
         Me.Panel4.AutoScroll = True
         Me.Panel4.AutoSize = True
+        Me.Panel4.Controls.Add(Me.tbConversion2)
+        Me.Panel4.Controls.Add(Me.LabelX18)
         Me.Panel4.Controls.Add(Me.cbUniVenta)
         Me.Panel4.Controls.Add(Me.LabelX5)
         Me.Panel4.Controls.Add(Me.btUniMaxima)
         Me.Panel4.Controls.Add(Me.btUniVenta)
         Me.Panel4.Controls.Add(Me.cbUnidMaxima)
-        Me.Panel4.Controls.Add(Me.tbConversion)
+        Me.Panel4.Controls.Add(Me.tbConversion1)
         Me.Panel4.Controls.Add(Me.LabelX7)
         Me.Panel4.Controls.Add(Me.LabelX6)
         Me.Panel4.Dock = System.Windows.Forms.DockStyle.Fill
@@ -454,22 +459,22 @@ Partial Class F1_Productos
         Me.cbUnidMaxima.TabIndex = 2
         Me.cbUnidMaxima.VisualStyle = Janus.Windows.GridEX.VisualStyle.Office2007
         '
-        'tbConversion
+        'tbConversion1
         '
         '
         '
         '
-        Me.tbConversion.BackgroundStyle.Class = "DateTimeInputBackground"
-        Me.tbConversion.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.tbConversion.ButtonFreeText.Shortcut = DevComponents.DotNetBar.eShortcut.F2
-        Me.tbConversion.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.tbConversion.Increment = 1.0R
-        Me.tbConversion.Location = New System.Drawing.Point(91, 47)
-        Me.tbConversion.MinValue = 0R
-        Me.tbConversion.Name = "tbConversion"
-        Me.tbConversion.Size = New System.Drawing.Size(89, 22)
-        Me.tbConversion.TabIndex = 1
-        Me.tbConversion.WatermarkAlignment = DevComponents.Editors.eTextAlignment.Right
+        Me.tbConversion1.BackgroundStyle.Class = "DateTimeInputBackground"
+        Me.tbConversion1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.tbConversion1.ButtonFreeText.Shortcut = DevComponents.DotNetBar.eShortcut.F2
+        Me.tbConversion1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.tbConversion1.Increment = 1.0R
+        Me.tbConversion1.Location = New System.Drawing.Point(118, 47)
+        Me.tbConversion1.MinValue = 0R
+        Me.tbConversion1.Name = "tbConversion1"
+        Me.tbConversion1.Size = New System.Drawing.Size(69, 22)
+        Me.tbConversion1.TabIndex = 1
+        Me.tbConversion1.WatermarkAlignment = DevComponents.Editors.eTextAlignment.Right
         '
         'LabelX7
         '
@@ -483,10 +488,9 @@ Partial Class F1_Productos
         Me.LabelX7.Location = New System.Drawing.Point(7, 47)
         Me.LabelX7.Name = "LabelX7"
         Me.LabelX7.SingleLineColor = System.Drawing.SystemColors.Control
-        Me.LabelX7.Size = New System.Drawing.Size(79, 23)
+        Me.LabelX7.Size = New System.Drawing.Size(105, 23)
         Me.LabelX7.TabIndex = 32
-        Me.LabelX7.Text = "Conversion:"
-        Me.LabelX7.TextAlignment = System.Drawing.StringAlignment.Far
+        Me.LabelX7.Text = "Conversión Un.:"
         '
         'LabelX6
         '
@@ -1313,6 +1317,16 @@ Partial Class F1_Productos
         Me.Panel1.Size = New System.Drawing.Size(428, 290)
         Me.Panel1.TabIndex = 223
         '
+        'UsImg
+        '
+        Me.UsImg.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
+        Me.UsImg.BackColor = System.Drawing.Color.Transparent
+        Me.UsImg.Location = New System.Drawing.Point(108, 6)
+        Me.UsImg.Margin = New System.Windows.Forms.Padding(4)
+        Me.UsImg.Name = "UsImg"
+        Me.UsImg.Size = New System.Drawing.Size(290, 270)
+        Me.UsImg.TabIndex = 222
+        '
         'SuperTabItem_Imagenes
         '
         Me.SuperTabItem_Imagenes.AttachedControl = Me.SuperTabControlPanel1
@@ -1597,15 +1611,38 @@ Partial Class F1_Productos
         Me.Timer1.Enabled = True
         Me.Timer1.Interval = 500
         '
-        'UsImg
+        'tbConversion2
         '
-        Me.UsImg.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
-        Me.UsImg.BackColor = System.Drawing.Color.Transparent
-        Me.UsImg.Location = New System.Drawing.Point(108, 6)
-        Me.UsImg.Margin = New System.Windows.Forms.Padding(4)
-        Me.UsImg.Name = "UsImg"
-        Me.UsImg.Size = New System.Drawing.Size(290, 270)
-        Me.UsImg.TabIndex = 222
+        '
+        '
+        '
+        Me.tbConversion2.BackgroundStyle.Class = "DateTimeInputBackground"
+        Me.tbConversion2.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.tbConversion2.ButtonFreeText.Shortcut = DevComponents.DotNetBar.eShortcut.F2
+        Me.tbConversion2.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.tbConversion2.Increment = 1.0R
+        Me.tbConversion2.Location = New System.Drawing.Point(300, 47)
+        Me.tbConversion2.MinValue = 0R
+        Me.tbConversion2.Name = "tbConversion2"
+        Me.tbConversion2.Size = New System.Drawing.Size(69, 22)
+        Me.tbConversion2.TabIndex = 210
+        Me.tbConversion2.WatermarkAlignment = DevComponents.Editors.eTextAlignment.Right
+        '
+        'LabelX18
+        '
+        Me.LabelX18.BackColor = System.Drawing.Color.Transparent
+        '
+        '
+        '
+        Me.LabelX18.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.LabelX18.Font = New System.Drawing.Font("Georgia", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LabelX18.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(85, Byte), Integer), CType(CType(139, Byte), Integer))
+        Me.LabelX18.Location = New System.Drawing.Point(195, 46)
+        Me.LabelX18.Name = "LabelX18"
+        Me.LabelX18.SingleLineColor = System.Drawing.SystemColors.Control
+        Me.LabelX18.Size = New System.Drawing.Size(100, 23)
+        Me.LabelX18.TabIndex = 211
+        Me.LabelX18.Text = "Conversión 2:"
         '
         'F1_Productos
         '
@@ -1640,7 +1677,7 @@ Partial Class F1_Productos
         Me.Panel4.PerformLayout()
         CType(Me.cbUniVenta, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.cbUnidMaxima, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.tbConversion, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.tbConversion1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.cbgrupo1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.cbgrupo2, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.cbgrupo3, System.ComponentModel.ISupportInitialize).EndInit()
@@ -1670,6 +1707,7 @@ Partial Class F1_Productos
         Me.SuperTabControlPanel2.ResumeLayout(False)
         CType(Me.dgjDetalleProducto, System.ComponentModel.ISupportInitialize).EndInit()
         Me.TableLayoutPanel1.ResumeLayout(False)
+        CType(Me.tbConversion2, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -1679,7 +1717,7 @@ Partial Class F1_Productos
     Friend WithEvents LabelX5 As DevComponents.DotNetBar.LabelX
     Friend WithEvents cbUniVenta As Janus.Windows.GridEX.EditControls.MultiColumnCombo
     Friend WithEvents LabelX7 As DevComponents.DotNetBar.LabelX
-    Friend WithEvents tbConversion As DevComponents.Editors.DoubleInput
+    Friend WithEvents tbConversion1 As DevComponents.Editors.DoubleInput
     Friend WithEvents btUniVenta As DevComponents.DotNetBar.ButtonX
     Friend WithEvents btUniMaxima As DevComponents.DotNetBar.ButtonX
     Friend WithEvents btgrupo4 As DevComponents.DotNetBar.ButtonX
@@ -1747,4 +1785,6 @@ Partial Class F1_Productos
     Friend WithEvents LabelX14 As DevComponents.DotNetBar.LabelX
     Friend WithEvents LabelX15 As DevComponents.DotNetBar.LabelX
     Friend WithEvents GroupPanel4 As DevComponents.DotNetBar.Controls.GroupPanel
+    Friend WithEvents tbConversion2 As DevComponents.Editors.DoubleInput
+    Friend WithEvents LabelX18 As DevComponents.DotNetBar.LabelX
 End Class
