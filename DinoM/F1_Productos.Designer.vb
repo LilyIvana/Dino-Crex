@@ -38,6 +38,8 @@ Partial Class F1_Productos
         Dim CbAeconomica_DesignTimeLayout As Janus.Windows.GridEX.GridEXLayout = New Janus.Windows.GridEX.GridEXLayout()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.Panel4 = New System.Windows.Forms.Panel()
+        Me.tbConversion2 = New DevComponents.Editors.DoubleInput()
+        Me.LabelX18 = New DevComponents.DotNetBar.LabelX()
         Me.cbUniVenta = New Janus.Windows.GridEX.EditControls.MultiColumnCombo()
         Me.LabelX5 = New DevComponents.DotNetBar.LabelX()
         Me.btUniMaxima = New DevComponents.DotNetBar.ButtonX()
@@ -110,8 +112,6 @@ Partial Class F1_Productos
         Me.btExcel = New DevComponents.DotNetBar.ButtonX()
         Me.TableLayoutPanel1 = New System.Windows.Forms.TableLayoutPanel()
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
-        Me.tbConversion2 = New DevComponents.Editors.DoubleInput()
-        Me.LabelX18 = New DevComponents.DotNetBar.LabelX()
         CType(Me.SuperTabPrincipal, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuperTabPrincipal.SuspendLayout()
         Me.SuperTabControlPanelRegistro.SuspendLayout()
@@ -130,6 +130,7 @@ Partial Class F1_Productos
         CType(Me.MEP, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox1.SuspendLayout()
         Me.Panel4.SuspendLayout()
+        CType(Me.tbConversion2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.cbUniVenta, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.cbUnidMaxima, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.tbConversion1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -158,7 +159,6 @@ Partial Class F1_Productos
         Me.SuperTabControlPanel2.SuspendLayout()
         CType(Me.dgjDetalleProducto, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TableLayoutPanel1.SuspendLayout()
-        CType(Me.tbConversion2, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'SuperTabPrincipal
@@ -241,9 +241,6 @@ Partial Class F1_Productos
         Me.BubbleBarUsuario.SelectedTabColors.BorderColor = System.Drawing.Color.Black
         '
         'btnSalir
-        '
-        '
-        'btnGrabar
         '
         '
         'btnEliminar
@@ -386,6 +383,39 @@ Partial Class F1_Productos
         Me.Panel4.Size = New System.Drawing.Size(406, 75)
         Me.Panel4.TabIndex = 210
         '
+        'tbConversion2
+        '
+        '
+        '
+        '
+        Me.tbConversion2.BackgroundStyle.Class = "DateTimeInputBackground"
+        Me.tbConversion2.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.tbConversion2.ButtonFreeText.Shortcut = DevComponents.DotNetBar.eShortcut.F2
+        Me.tbConversion2.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.tbConversion2.Increment = 1.0R
+        Me.tbConversion2.Location = New System.Drawing.Point(332, 44)
+        Me.tbConversion2.MinValue = 0R
+        Me.tbConversion2.Name = "tbConversion2"
+        Me.tbConversion2.Size = New System.Drawing.Size(69, 22)
+        Me.tbConversion2.TabIndex = 210
+        Me.tbConversion2.WatermarkAlignment = DevComponents.Editors.eTextAlignment.Right
+        '
+        'LabelX18
+        '
+        Me.LabelX18.BackColor = System.Drawing.Color.Transparent
+        '
+        '
+        '
+        Me.LabelX18.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.LabelX18.Font = New System.Drawing.Font("Georgia", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LabelX18.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(85, Byte), Integer), CType(CType(139, Byte), Integer))
+        Me.LabelX18.Location = New System.Drawing.Point(208, 43)
+        Me.LabelX18.Name = "LabelX18"
+        Me.LabelX18.SingleLineColor = System.Drawing.SystemColors.Control
+        Me.LabelX18.Size = New System.Drawing.Size(121, 23)
+        Me.LabelX18.TabIndex = 211
+        Me.LabelX18.Text = "Conversión CJ-DS:"
+        '
         'cbUniVenta
         '
         cbUniVenta_DesignTimeLayout.LayoutString = resources.GetString("cbUniVenta_DesignTimeLayout.LayoutString")
@@ -411,7 +441,7 @@ Partial Class F1_Productos
         Me.LabelX5.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.LabelX5.Font = New System.Drawing.Font("Georgia", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.LabelX5.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(85, Byte), Integer), CType(CType(139, Byte), Integer))
-        Me.LabelX5.Location = New System.Drawing.Point(7, 14)
+        Me.LabelX5.Location = New System.Drawing.Point(4, 14)
         Me.LabelX5.Name = "LabelX5"
         Me.LabelX5.SingleLineColor = System.Drawing.SystemColors.Control
         Me.LabelX5.Size = New System.Drawing.Size(81, 16)
@@ -469,7 +499,7 @@ Partial Class F1_Productos
         Me.tbConversion1.ButtonFreeText.Shortcut = DevComponents.DotNetBar.eShortcut.F2
         Me.tbConversion1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.tbConversion1.Increment = 1.0R
-        Me.tbConversion1.Location = New System.Drawing.Point(118, 47)
+        Me.tbConversion1.Location = New System.Drawing.Point(132, 44)
         Me.tbConversion1.MinValue = 0R
         Me.tbConversion1.Name = "tbConversion1"
         Me.tbConversion1.Size = New System.Drawing.Size(69, 22)
@@ -485,12 +515,12 @@ Partial Class F1_Productos
         Me.LabelX7.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.LabelX7.Font = New System.Drawing.Font("Georgia", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.LabelX7.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(85, Byte), Integer), CType(CType(139, Byte), Integer))
-        Me.LabelX7.Location = New System.Drawing.Point(7, 47)
+        Me.LabelX7.Location = New System.Drawing.Point(5, 43)
         Me.LabelX7.Name = "LabelX7"
         Me.LabelX7.SingleLineColor = System.Drawing.SystemColors.Control
-        Me.LabelX7.Size = New System.Drawing.Size(105, 23)
+        Me.LabelX7.Size = New System.Drawing.Size(121, 23)
         Me.LabelX7.TabIndex = 32
-        Me.LabelX7.Text = "Conversión Un.:"
+        Me.LabelX7.Text = "Conversión DS-UN:"
         '
         'LabelX6
         '
@@ -739,7 +769,7 @@ Partial Class F1_Productos
         Me.LabelX8.SingleLineColor = System.Drawing.SystemColors.Control
         Me.LabelX8.Size = New System.Drawing.Size(117, 23)
         Me.LabelX8.TabIndex = 213
-        Me.LabelX8.Text = "GRUPO DESCT.º:"
+        Me.LabelX8.Text = "Grupo Desct.º:"
         '
         'LabelX11
         '
@@ -1611,39 +1641,6 @@ Partial Class F1_Productos
         Me.Timer1.Enabled = True
         Me.Timer1.Interval = 500
         '
-        'tbConversion2
-        '
-        '
-        '
-        '
-        Me.tbConversion2.BackgroundStyle.Class = "DateTimeInputBackground"
-        Me.tbConversion2.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.tbConversion2.ButtonFreeText.Shortcut = DevComponents.DotNetBar.eShortcut.F2
-        Me.tbConversion2.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.tbConversion2.Increment = 1.0R
-        Me.tbConversion2.Location = New System.Drawing.Point(300, 47)
-        Me.tbConversion2.MinValue = 0R
-        Me.tbConversion2.Name = "tbConversion2"
-        Me.tbConversion2.Size = New System.Drawing.Size(69, 22)
-        Me.tbConversion2.TabIndex = 210
-        Me.tbConversion2.WatermarkAlignment = DevComponents.Editors.eTextAlignment.Right
-        '
-        'LabelX18
-        '
-        Me.LabelX18.BackColor = System.Drawing.Color.Transparent
-        '
-        '
-        '
-        Me.LabelX18.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.LabelX18.Font = New System.Drawing.Font("Georgia", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelX18.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(85, Byte), Integer), CType(CType(139, Byte), Integer))
-        Me.LabelX18.Location = New System.Drawing.Point(195, 46)
-        Me.LabelX18.Name = "LabelX18"
-        Me.LabelX18.SingleLineColor = System.Drawing.SystemColors.Control
-        Me.LabelX18.Size = New System.Drawing.Size(100, 23)
-        Me.LabelX18.TabIndex = 211
-        Me.LabelX18.Text = "Conversión 2:"
-        '
         'F1_Productos
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -1675,6 +1672,7 @@ Partial Class F1_Productos
         Me.GroupBox1.PerformLayout()
         Me.Panel4.ResumeLayout(False)
         Me.Panel4.PerformLayout()
+        CType(Me.tbConversion2, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.cbUniVenta, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.cbUnidMaxima, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.tbConversion1, System.ComponentModel.ISupportInitialize).EndInit()
@@ -1707,7 +1705,6 @@ Partial Class F1_Productos
         Me.SuperTabControlPanel2.ResumeLayout(False)
         CType(Me.dgjDetalleProducto, System.ComponentModel.ISupportInitialize).EndInit()
         Me.TableLayoutPanel1.ResumeLayout(False)
-        CType(Me.tbConversion2, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
