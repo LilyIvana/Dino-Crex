@@ -933,22 +933,22 @@ Public Class F0_Venta2
 
     Private Sub ArmarGrillaProducto(dtname As DataTable, visualizarGrupo As Boolean)
         With grProductos.RootTable.Columns("yfnumi")
-            .Width = 130
+            .Width = 85
             .Caption = "Cód. Dynasys"
             .Visible = True
         End With
         With grProductos.RootTable.Columns("yfcprod")
-            .Width = 80
+            .Width = 100
             .Caption = "Cód.Delta"
             .Visible = True
         End With
         With grProductos.RootTable.Columns("yfcbarra")
-            .Width = 80
+            .Width = 90
             .Caption = "Cod. Barra"
             .Visible = gb_CodigoBarra
         End With
         With grProductos.RootTable.Columns("yfcdprod1")
-            .Width = IIf(visualizarGrupo, 300, 360)
+            .Width = IIf(visualizarGrupo, 360, 360)
             .Visible = True
             .Caption = "Descripción"
             .WordWrap = True
@@ -1010,7 +1010,7 @@ Public Class F0_Venta2
             End With
             With grProductos.RootTable.Columns("grupo4")
                 .Width = 120
-                .Caption = dtname.Rows(0).Item("Grupo 4").ToString
+                .Caption = dtname.Rows(0).Item("Grupo 4").ToString.ToLowerInvariant
                 .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Near
                 .Visible = visualizarGrupo
                 .WordWrap = True
@@ -1110,8 +1110,8 @@ Public Class F0_Venta2
             .Visible = False
         End With
         With grProductos.RootTable.Columns("grupoDesc")
-            .Width = 130
-            .Visible = True
+            .Width = 100
+            .Visible = False
             .Caption = "Grupo Desc."
         End With
         With grProductos.RootTable.Columns("ygcodsin")
@@ -1739,7 +1739,7 @@ Public Class F0_Venta2
             Dim dtDetalle As DataTable = CType(grdetalle.DataSource, DataTable)
             Dim res As Boolean = L_fnGrabarVenta(numi, "", tbFechaVenta.Value.ToString("yyyy/MM/dd"), _CodEmpleado, IIf(swTipoVenta.Value = True, 1, 0), IIf(swTipoVenta.Value = True,
                                                 Now.Date.ToString("yyyy/MM/dd"), tbFechaVenc.Value.ToString("yyyy/MM/dd")), _CodCliente, IIf(swMoneda.Value = True, 1, 0),
-                                                tbObservacion.Text, tbMdesc.Value, tbIce.Value, tbTotalBs.Text, dtDetalle, cbSucursal.Value, 0, tabla, gs_NroCaja, Programa,
+                                                tbObservacion.Text.Trim, tbMdesc.Value, tbIce.Value, tbTotalBs.Text, dtDetalle, cbSucursal.Value, 0, tabla, gs_NroCaja, Programa,
                                                 tbNit.Text, TbNombre1.Text, TbEmail.Text, CbTipoDoc.Value, 1, tbComplemento.Text)
             If res Then
                 'res = P_fnGrabarFacturarTFV001(numi)

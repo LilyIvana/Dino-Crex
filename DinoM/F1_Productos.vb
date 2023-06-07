@@ -261,9 +261,11 @@ Public Class F1_Productos
     Public Overrides Sub _PMOHabilitar()
         tbCodBarra.ReadOnly = False
         tbCodProd.ReadOnly = False
+        tbPrefijo.ReadOnly = False
         tbDescPro.ReadOnly = False
         tbDescDet.ReadOnly = False
         tbDescCort.ReadOnly = False
+
         cbgrupo1.ReadOnly = False
         cbgrupo2.ReadOnly = False
         cbgrupo3.ReadOnly = False
@@ -297,8 +299,10 @@ Public Class F1_Productos
         tbCodBarra.ReadOnly = True
         tbCodProd.ReadOnly = True
         tbDescPro.ReadOnly = True
+        tbPrefijo.ReadOnly = True
         tbDescCort.ReadOnly = True
         tbDescDet.ReadOnly = True
+
         cbgrupo1.ReadOnly = True
         cbgrupo2.ReadOnly = True
         cbgrupo3.ReadOnly = True
@@ -332,8 +336,10 @@ Public Class F1_Productos
         tbCodBarra.Clear()
         tbCodProd.Clear()
         tbDescPro.Clear()
+        tbPrefijo.Clear()
         tbDescDet.Clear()
         tbDescCort.Clear()
+
 
         CbAeconomica.SelectedIndex = -1
         CbUmedida.SelectedIndex = -1
@@ -381,6 +387,8 @@ Public Class F1_Productos
 
     Public Overrides Sub _PMOLimpiarErrores()
         MEP.Clear()
+        tbCodBarra.BackColor = Color.White
+        tbPrefijo.BackColor = Color.White
         tbDescPro.BackColor = Color.White
         tbDescDet.BackColor = Color.White
         tbDescCort.BackColor = Color.White
@@ -404,15 +412,15 @@ Public Class F1_Productos
 
         'Dim succes = Homologar(tokenSifac)
         'If succes = 200 Then
-        res = L_fnGrabarProducto(tbCodigo.Text, tbCodProd.Text, tbCodBarra.Text, tbDescPro.Text,
-                                                tbDescCort.Text, cbgrupo1.Value, cbgrupo2.Value, cbgrupo3.Value,
+        res = L_fnGrabarProducto(tbCodigo.Text, tbCodProd.Text.Trim, tbCodBarra.Text.Trim, tbDescPro.Text.Trim,
+                                                tbDescCort.Text.Trim, cbgrupo1.Value, cbgrupo2.Value, cbgrupo3.Value,
                                                 cbgrupo4.Value, cbUMed.Value, cbUniVenta.Value, cbUnidMaxima.Value,
                                                 tbConversion1.Text,
                                                 IIf(tbStockMinimo.Text = String.Empty, 0, tbStockMinimo.Text),
                                                 IIf(swEstado.Value = True, 1, 0), nameImg,
                                                 quitarUltimaFilaVacia(CType(dgjDetalleProducto.DataSource, DataTable).DefaultView.ToTable(False, "yfanumi", "yfayfnumi", "yfasim", "yfadesc", "estado")),
                                                 tbDescDet.Text, cbgrupo5.Value, CbAeconomica.Value, CbUmedida.Value,
-                                                CbProdServ.Value, TbPrecioPsifac.Text, tbConversion2.Text)
+                                                CbProdServ.Value, TbPrecioPsifac.Text, tbPrefijo.Text.Trim, tbConversion2.Text)
 
         'Else
         '    res = False
@@ -450,22 +458,22 @@ Public Class F1_Productos
 
         Dim nameImage As String = JGrM_Buscador.GetValue("yfimg")
         If (Modificado = False) Then
-            res = L_fnModificarProducto(tbCodigo.Text, tbCodProd.Text, tbCodBarra.Text, tbDescPro.Text, tbDescCort.Text,
+            res = L_fnModificarProducto(tbCodigo.Text, tbCodProd.Text.Trim, tbCodBarra.Text.Trim, tbDescPro.Text.Trim, tbDescCort.Text.Trim,
                                         cbgrupo1.Value, cbgrupo2.Value, cbgrupo3.Value, cbgrupo4.Value, cbUMed.Value,
                                         cbUniVenta.Value, cbUnidMaxima.Value, tbConversion1.Text,
                                         IIf(tbStockMinimo.Text = String.Empty, 0, tbStockMinimo.Text),
                                         IIf(swEstado.Value = True, 1, 0), nameImage,
                                         quitarUltimaFilaVacia(CType(dgjDetalleProducto.DataSource, DataTable).DefaultView.ToTable(False, "yfanumi", "yfayfnumi", "yfasim", "yfadesc", "estado")),
                                         tbDescDet.Text, cbgrupo5.Value, CbAeconomica.Value, CbUmedida.Value, CbProdServ.Value,
-                                        TbPrecioPsifac.Text, tbConversion2.Text)
+                                        TbPrecioPsifac.Text, tbPrefijo.Text.Trim, tbConversion2.Text)
         Else
-            res = L_fnModificarProducto(tbCodigo.Text, tbCodProd.Text, tbCodBarra.Text, tbDescPro.Text, tbDescCort.Text,
+            res = L_fnModificarProducto(tbCodigo.Text, tbCodProd.Text.Trim, tbCodBarra.Text.Trim, tbDescPro.Text.Trim, tbDescCort.Text.Trim,
                                         cbgrupo1.Value, cbgrupo2.Value, cbgrupo3.Value, cbgrupo4.Value, cbUMed.Value,
                                         cbUniVenta.Value, cbUnidMaxima.Value, tbConversion1.Text,
                                         tbStockMinimo.Text, IIf(swEstado.Value = True, 1, 0), nameImg,
                                         quitarUltimaFilaVacia(CType(dgjDetalleProducto.DataSource, DataTable).DefaultView.ToTable(False, "yfanumi", "yfayfnumi", "yfasim", "yfadesc", "estado")),
                                         tbDescDet.Text, cbgrupo5.Value, CbAeconomica.Value, CbUmedida.Value, CbProdServ.Value,
-                                        TbPrecioPsifac.Text, tbConversion2.Text)
+                                        TbPrecioPsifac.Text, tbPrefijo.Text.Trim, tbConversion2.Text)
         End If
         If res Then
 
@@ -727,9 +735,6 @@ Public Class F1_Productos
         End If
 
 
-
-
-
         MHighlighterFocus.UpdateHighlights()
         Return _ok
     End Function
@@ -743,11 +748,12 @@ Public Class F1_Productos
         Dim listEstCeldas As New List(Of Modelo.Celda)
         'a.yfnumi, a.yfcprod, a.yfcbarra, a.yfcdprod1, a.yfcdprod2, a.yfgr1, a.yfgr2, a.yfgr3, a.yfgr4,
         'a.yfMed, a.yfumin, a.yfusup, a.yfmstk, a.yfclot, a.yfsmin, a.yfap, a.yfimg, a.yffact, a.yfhact, a.yfuact
-        listEstCeldas.Add(New Modelo.Celda("yfnumi", True, "Código".ToUpper, 80))
-        listEstCeldas.Add(New Modelo.Celda("yfcprod", True, "Cod.Producto".ToUpper, 100))
+        listEstCeldas.Add(New Modelo.Celda("yfnumi", True, "Cod. Dynasys".ToUpper, 80))
+        listEstCeldas.Add(New Modelo.Celda("yfcprod", True, "Cod. Delta".ToUpper, 100))
         listEstCeldas.Add(New Modelo.Celda("yfcdprod2", True, "Cod. Proveedor".ToUpper, 140))
         listEstCeldas.Add(New Modelo.Celda("yfcbarra", True, "Cod.Barra".ToUpper, 140))
-        listEstCeldas.Add(New Modelo.Celda("yfcdprod1", True, "Descripcion Producto".ToUpper, 250))
+        listEstCeldas.Add(New Modelo.Celda("yfcampo1", True, "Prefijo".ToUpper, 100))
+        listEstCeldas.Add(New Modelo.Celda("yfcdprod1", True, "Descripción Producto".ToUpper, 250))
         listEstCeldas.Add(New Modelo.Celda("yfgr1", False))
         listEstCeldas.Add(New Modelo.Celda("yfgr2", False))
         listEstCeldas.Add(New Modelo.Celda("yfgr3", False))
@@ -777,8 +783,8 @@ Public Class F1_Productos
         listEstCeldas.Add(New Modelo.Celda("grupo5", True, "CATEGORÍA".ToUpper, 200))
         listEstCeldas.Add(New Modelo.Celda("Umedida", True, "GRUPO DESCT.".ToUpper, 150))
         listEstCeldas.Add(New Modelo.Celda("UnidMin", True, "UniVenta".ToUpper, 100))
-        listEstCeldas.Add(New Modelo.Celda("Umax", True, "UniMaxima".ToUpper, 100))
-        listEstCeldas.Add(New Modelo.Celda("yfdetprod", False, "Descripcion".ToUpper, 150))
+        listEstCeldas.Add(New Modelo.Celda("Umax", True, "UniMáxima".ToUpper, 100))
+        listEstCeldas.Add(New Modelo.Celda("yfdetprod", True, "Descripción Detallada".ToUpper, 150))
         listEstCeldas.Add(New Modelo.Celda("Estado", True, "Estado".ToUpper, 100))
 
         Return listEstCeldas
@@ -798,6 +804,7 @@ Public Class F1_Productos
             tbCodigo.Text = .GetValue("yfnumi").ToString
             tbCodProd.Text = .GetValue("yfcprod").ToString
             tbCodBarra.Text = .GetValue("yfcbarra").ToString
+            tbPrefijo.Text = .GetValue("yfcampo1").ToString
             tbDescPro.Text = .GetValue("yfcdprod1").ToString
             tbDescCort.Text = .GetValue("yfcdprod2").ToString
             tbDescDet.Text = .GetValue("yfdetprod").ToString

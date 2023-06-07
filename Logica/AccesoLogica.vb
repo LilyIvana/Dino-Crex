@@ -497,8 +497,8 @@ Public Class AccesoLogica
                                               _yfgr3 As Integer, _yfgr4 As Integer, _yfMed As Integer, _yfumin As Integer,
                                               _yfusup As Integer, _yfvsup As Double, _yfsmin As Integer, _yfap As Integer,
                                               _yfimg As String, TY0051 As DataTable, _yfdetpro As String, _yfgr5 As String,
-                                               _ycodact As String, _ycodu As Integer, _ycodprosin As String, _ypreciosif As Double,
-                                              _yfconv2 As Double) As Boolean
+                                              _ycodact As String, _ycodu As Integer, _ycodprosin As String, _ypreciosif As Double,
+                                              _yfprefijo As String, _yfconv2 As Double) As Boolean
         Dim _resultado As Boolean
         '@yfnumi ,@yfcprod ,@yfcbarra ,@yfcdprod1 ,@yfcdprod2 ,
         '			@yfgr1 ,@yfgr2 ,@yfgr3 ,@yfgr4 ,@yfMed ,@yfumin ,@yfusup ,@yfvsup ,
@@ -529,6 +529,7 @@ Public Class AccesoLogica
         _listParam.Add(New Datos.DParametro("@yfuact", L_Usuario))
         _listParam.Add(New Datos.DParametro("@yfdetpro", _yfdetpro))
         _listParam.Add(New Datos.DParametro("@yfgr5", _yfgr5))
+        _listParam.Add(New Datos.DParametro("@yfcampo1", _yfprefijo))
         _listParam.Add(New Datos.DParametro("@yfcampo2", _yfconv2))
 
         _listParam.Add(New Datos.DParametro("@ycodact", _ycodact))
@@ -553,8 +554,8 @@ Public Class AccesoLogica
                                                  _yfcdprod2 As String, _yfgr1 As Integer, _yfgr2 As Integer, _yfgr3 As Integer, _yfgr4 As Integer,
                                                  _yfMed As Integer, _yfumin As Integer, _yfusup As Integer, _yfvsup As Double, _yfsmin As Integer,
                                                  _yfap As Integer, _yfimg As String, TY0051 As DataTable, _yfdetpro As String, _yfgr5 As String,
-                                                  _ycodact As String, _ycodu As Integer, _ycodprosin As String, _ypreciosif As Double,
-                                                 _yfconv2 As Double) As Boolean
+                                                 _ycodact As String, _ycodu As Integer, _ycodprosin As String, _ypreciosif As Double,
+                                                 _yfprefijo As String, _yfconv2 As Double) As Boolean
         Dim _resultado As Boolean
 
         Dim _Tabla As DataTable
@@ -584,6 +585,7 @@ Public Class AccesoLogica
         _listParam.Add(New Datos.DParametro("@yfuact", L_Usuario))
         _listParam.Add(New Datos.DParametro("@yfdetpro", _yfdetpro))
         _listParam.Add(New Datos.DParametro("@yfgr5", _yfgr5))
+        _listParam.Add(New Datos.DParametro("@yfcampo1", _yfprefijo))
         _listParam.Add(New Datos.DParametro("@yfcampo2", _yfconv2))
 
         _listParam.Add(New Datos.DParametro("@ycodact", _ycodact))
