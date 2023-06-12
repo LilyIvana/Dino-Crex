@@ -106,6 +106,7 @@ Public Class F0_MCompras
         swTipoVenta.IsReadOnly = True
 
         tbNitProv.ReadOnly = True
+        tbRazonSocial.ReadOnly = True
         swEmision.IsReadOnly = True
         swConsigna.IsReadOnly = True
         swRetencion.IsReadOnly = True
@@ -155,6 +156,7 @@ Public Class F0_MCompras
 
 
         tbNitProv.ReadOnly = False
+        tbRazonSocial.ReadOnly = False
         swEmision.IsReadOnly = False
         swConsigna.IsReadOnly = False
         swRetencion.IsReadOnly = False
@@ -187,6 +189,7 @@ Public Class F0_MCompras
         tbCodigo.Clear()
         tbProveedor.Clear()
         tbNitProv.Clear()
+        tbRazonSocial.Clear()
         tbObservacion.Clear()
         If (CType(cbSucursal.DataSource, DataTable).Rows.Count > 0) Then
             cbSucursal.SelectedIndex = 0
@@ -272,10 +275,7 @@ Public Class F0_MCompras
         End If
     End Sub
     Public Sub _prMostrarRegistro(_N As Integer)
-        '' grVentas.Row = _N
-        'a.canumi ,a.caalm ,a.cafdoc ,a.caty4prov ,proveedor .yddesc as proveedor ,a.catven ,a.cafvcr ,
-        'a.camon ,IIF(camon=1,'Boliviano','Dolar') as moneda,a.caest ,a.caobs ,
-        'a.cadesc ,a.cafact ,a.cahact ,a.cauact,(Sum(b.cbptot)-a.cadesc ) as total
+
         With grCompra
             tbCodigo.Text = .GetValue("canumi")
             tbFechaVenta.Value = .GetValue("cafdoc")
@@ -284,10 +284,10 @@ Public Class F0_MCompras
             tbProveedor.Text = .GetValue("proveedor")
             cbSucursal.Value = .GetValue("caalm")
             tbObservacion.Text = .GetValue("caobs")
-            tbCodProv.Text = .GetValue("caty4prov").ToString + "-" + .GetValue("ydcod").ToString
+            tbCodProv.Text = .GetValue("caty4prov").ToString
             swEmision.Value = .GetValue("caemision")
             tbNFactura.Text = .GetValue("canumemis")
-            tbNitProv.Text = .GetValue("yddctnum")
+            'tbNitProv.Text = .GetValue("yddctnum")
             swConsigna.Value = .GetValue("caconsigna")
             swRetencion.Value = .GetValue("caretenc")
             swMoneda.Value = .GetValue("camon")
@@ -600,6 +600,9 @@ Public Class F0_MCompras
             tbCodControl.Text = dtC.Rows(0).Item("fcaccont")
             tbNDui.Text = dtC.Rows(0).Item("fcandui")
             tbSACF.Text = tbtotal.Text - dtC.Rows(0).Item("fcanscf")
+
+            tbNitProv.Text = dtC.Rows(0).Item("fcanit")
+            tbRazonSocial.Text = dtC.Rows(0).Item("fcarsocial")
         End If
 
     End Sub
@@ -631,7 +634,7 @@ Public Class F0_MCompras
             .Width = 160
             .Visible = False
         End With
-        With grCompra.RootTable.Columns("ydcod")
+        With grCompra.RootTable.Columns("yccod3")
             .Width = 160
             .Visible = False
         End With
@@ -639,11 +642,6 @@ Public Class F0_MCompras
             .Width = 220
             .Visible = True
             .Caption = "proveedor".ToUpper
-        End With
-        With grCompra.RootTable.Columns("yddctnum")
-            .Width = 100
-            .Visible = False
-            .Caption = "Ci/Nit".ToUpper
         End With
 
         With grCompra.RootTable.Columns("catven")
@@ -657,11 +655,6 @@ Public Class F0_MCompras
             .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Near
             .Visible = False
         End With
-        '     a.canumi ,a.caalm ,a.cafdoc ,a.caty4prov ,proveedor .yddesc as proveedor ,a.catven ,a.cafvcr ,
-        'a.camon ,IIF(camon=1,'Boliviano','Dolar') as moneda,a.caest ,a.caobs ,
-        'a.cadesc ,a.cafact ,a.cahact ,a.cauact,(Sum(b.cbptot)-a.cadesc ) as total
-
-
 
         With grCompra.RootTable.Columns("camon")
             .Width = 50
@@ -1492,20 +1485,19 @@ Public Class F0_MCompras
 
                     Dim dt As DataTable
 
-                    dt = L_fnListarProveedores()
-                    '              a.ydnumi, a.ydcod, a.yddesc, a.yddctnum, a.yddirec
-                    ',a.ydtelf1 ,a.ydfnac 
+                    'dt = L_fnListarProveedores()
+                    dt = L_fnListarProveedoresNueva()
+
                     If dt.Rows.Count = 0 Then
                         Throw New Exception("Lista de proveedores vacia")
                     End If
                     Dim listEstCeldas As New List(Of Modelo.Celda)
-                    listEstCeldas.Add(New Modelo.Celda("ydnumi,", True, "COD ORIG.", 90))
-                    listEstCeldas.Add(New Modelo.Celda("ydcod", True, "COD PROV.", 90))
-                    listEstCeldas.Add(New Modelo.Celda("yddesc", True, "NOMBRE", 280))
-                    listEstCeldas.Add(New Modelo.Celda("yddctnum", True, "N. Documento".ToUpper, 150))
-                    listEstCeldas.Add(New Modelo.Celda("yddirec", True, "DIRECCION", 220))
-                    listEstCeldas.Add(New Modelo.Celda("ydtelf1", True, "Telefono".ToUpper, 200))
-                    listEstCeldas.Add(New Modelo.Celda("ydfnac", False, "F.Nacimiento".ToUpper, 150, "MM/dd,YYYY"))
+
+                    listEstCeldas.Add(New Modelo.Celda("yccod1", False, "DIRECCION", 90))
+                    listEstCeldas.Add(New Modelo.Celda("yccod2", False, "DIRECCION", 90))
+                    listEstCeldas.Add(New Modelo.Celda("yccod3,", True, "CÓDIGO", 90))
+                    listEstCeldas.Add(New Modelo.Celda("ycdes3", True, "PROVEEDOR", 280))
+
                     Dim ef = New Efecto
                     ef.tipo = 3
                     ef.dt = dt
@@ -1520,12 +1512,16 @@ Public Class F0_MCompras
                     If (bandera = True) Then
                         Dim Row As Janus.Windows.GridEX.GridEXRow = ef.Row
 
-                        _CodProveedor = Row.Cells("ydnumi").Value
-                        tbProveedor.Text = Row.Cells("yddesc").Value
-                        'tbCodProv.Text = (Row.Cells("ydnumi").Value + " ' - '" + Row.Cells("ydcod").Value).ToString
-                        tbCodProv.Text = Row.Cells("ydnumi").Text + "-" + Row.Cells("ydcod").Text
-                        tbNitProv.Text = Row.Cells("yddctnum").Value
-                        tbObservacion.Focus()
+                        '_CodProveedor = Row.Cells("ydnumi").Value
+                        'tbProveedor.Text = Row.Cells("yddesc").Value
+                        'tbCodProv.Text = Row.Cells("ydnumi").Text + "-" + Row.Cells("ydcod").Text
+                        'tbNitProv.Text = Row.Cells("yddctnum").Value
+                        'tbObservacion.Focus()
+
+                        _CodProveedor = Row.Cells("yccod3").Value
+                        tbProveedor.Text = Row.Cells("ycdes3").Value
+                        tbCodProv.Text = Row.Cells("yccod3").Text
+                        tbNitProv.Focus()
                     End If
                 End If
             End If

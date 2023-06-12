@@ -198,6 +198,7 @@ Public Class F1_ExcelVenta
                 .Visible = True
                 .FormatString = "0.00"
                 .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far
+                .AggregateFunction = AggregateFunction.Sum
             End With
             With JGrM_Buscador.RootTable.Columns("PrecioBase")
                 .Width = 120
