@@ -2175,6 +2175,18 @@ Public Class AccesoLogica
 
         Return _Tabla
     End Function
+    Public Shared Function L_fnListarProductosCompraNueva(_almacen As String, _catCosto As String, _codProv As Integer) As DataTable
+        Dim _Tabla As DataTable
+        Dim _listParam As New List(Of Datos.DParametro)
+        _listParam.Add(New Datos.DParametro("@tipo", 6))
+        _listParam.Add(New Datos.DParametro("@almacen", _almacen))
+        _listParam.Add(New Datos.DParametro("@CatCosto", _catCosto))
+        _listParam.Add(New Datos.DParametro("@yfgr1", _codProv))
+        _listParam.Add(New Datos.DParametro("@cauact", L_Usuario))
+        _Tabla = D_ProcedimientoConParam("sp_Marco_TC001", _listParam)
+
+        Return _Tabla
+    End Function
     Public Shared Function L_fnListarProveedores() As DataTable
         Dim _Tabla As DataTable
 

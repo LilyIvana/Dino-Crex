@@ -938,6 +938,7 @@ Partial Class F1_Productos
         Me.tbDescPro.Multiline = True
         Me.tbDescPro.Name = "tbDescPro"
         Me.tbDescPro.PreventEnterBeep = True
+        Me.tbDescPro.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
         Me.tbDescPro.Size = New System.Drawing.Size(243, 43)
         Me.tbDescPro.TabIndex = 4
         '
@@ -1155,6 +1156,7 @@ Partial Class F1_Productos
         Me.tbDescDet.Multiline = True
         Me.tbDescDet.Name = "tbDescDet"
         Me.tbDescDet.PreventEnterBeep = True
+        Me.tbDescDet.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
         Me.tbDescDet.Size = New System.Drawing.Size(243, 52)
         Me.tbDescDet.TabIndex = 5
         '

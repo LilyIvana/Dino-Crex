@@ -145,11 +145,11 @@ Public Class F0_MCompras
         tbObservacion.ReadOnly = False
         tbFechaVenta.IsInputReadOnly = False
         tbFechaVenc.IsInputReadOnly = False
-        If (tbCodigo.Text.Length > 0) Then
-            cbSucursal.ReadOnly = True
-        Else
-            cbSucursal.ReadOnly = False
-        End If
+        'If (tbCodigo.Text.Length > 0) Then
+        '    cbSucursal.ReadOnly = True
+        'Else
+        '    cbSucursal.ReadOnly = False
+        'End If
 
         swTipoVenta.IsReadOnly = False
         btnGrabar.Enabled = True
@@ -634,7 +634,7 @@ Public Class F0_MCompras
             .Width = 160
             .Visible = False
         End With
-        With grCompra.RootTable.Columns("yccod3")
+        With grCompra.RootTable.Columns("ydcod")
             .Width = 160
             .Visible = False
         End With
@@ -643,7 +643,11 @@ Public Class F0_MCompras
             .Visible = True
             .Caption = "proveedor".ToUpper
         End With
-
+        With grCompra.RootTable.Columns("yddctnum")
+            .Width = 100
+            .Visible = False
+            .Caption = "Ci/Nit".ToUpper
+        End With
         With grCompra.RootTable.Columns("catven")
             .Width = 50
             .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Near
@@ -786,7 +790,9 @@ Public Class F0_MCompras
             Return
         End If
 
-        dt = L_fnListarProductosCompra(cbSucursal.Value, 73)
+        'dt = L_fnListarProductosCompra(cbSucursal.Value, 73)
+        dt = L_fnListarProductosCompraNueva(cbSucursal.Value, 73, Convert.ToInt64(tbCodProv.Text))
+
 
         ''1=Almacen  73=Cat Precio Costo
         grProductos.DataSource = dt
@@ -1485,18 +1491,22 @@ Public Class F0_MCompras
 
                     Dim dt As DataTable
 
-                    'dt = L_fnListarProveedores()
-                    dt = L_fnListarProveedoresNueva()
+                    dt = L_fnListarProveedores()
+                    'dt = L_fnListarProveedoresNueva()
 
                     If dt.Rows.Count = 0 Then
                         Throw New Exception("Lista de proveedores vacia")
                     End If
                     Dim listEstCeldas As New List(Of Modelo.Celda)
 
-                    listEstCeldas.Add(New Modelo.Celda("yccod1", False, "DIRECCION", 90))
-                    listEstCeldas.Add(New Modelo.Celda("yccod2", False, "DIRECCION", 90))
-                    listEstCeldas.Add(New Modelo.Celda("yccod3,", True, "CÓDIGO", 90))
-                    listEstCeldas.Add(New Modelo.Celda("ycdes3", True, "PROVEEDOR", 280))
+                    listEstCeldas.Add(New Modelo.Celda("ydnumi,", True, "COD SISTEMA.", 90))
+                    listEstCeldas.Add(New Modelo.Celda("ydcod", True, "COD PROV.", 90))
+                    listEstCeldas.Add(New Modelo.Celda("yddesc", True, "NOMBRE", 280))
+                    listEstCeldas.Add(New Modelo.Celda("yddctnum", True, "N. Documento".ToUpper, 150))
+                    listEstCeldas.Add(New Modelo.Celda("yddirec", True, "DIRECCION", 220))
+                    listEstCeldas.Add(New Modelo.Celda("ydtelf1", True, "Telefono".ToUpper, 200))
+                    listEstCeldas.Add(New Modelo.Celda("ydfnac", False, "F.Nacimiento".ToUpper, 150, "MM/dd,YYYY"))
+
 
                     Dim ef = New Efecto
                     ef.tipo = 3
@@ -1512,16 +1522,16 @@ Public Class F0_MCompras
                     If (bandera = True) Then
                         Dim Row As Janus.Windows.GridEX.GridEXRow = ef.Row
 
-                        '_CodProveedor = Row.Cells("ydnumi").Value
-                        'tbProveedor.Text = Row.Cells("yddesc").Value
-                        'tbCodProv.Text = Row.Cells("ydnumi").Text + "-" + Row.Cells("ydcod").Text
-                        'tbNitProv.Text = Row.Cells("yddctnum").Value
-                        'tbObservacion.Focus()
-
-                        _CodProveedor = Row.Cells("yccod3").Value
-                        tbProveedor.Text = Row.Cells("ycdes3").Value
-                        tbCodProv.Text = Row.Cells("yccod3").Text
+                        _CodProveedor = Row.Cells("ydnumi").Value
+                        tbProveedor.Text = Row.Cells("yddesc").Value
+                        tbCodProv.Text = Row.Cells("ydnumi").Text
+                        tbNitProv.Text = Row.Cells("yddctnum").Value
                         tbNitProv.Focus()
+
+                        '_CodProveedor = Row.Cells("yccod3").Value
+                        'tbProveedor.Text = Row.Cells("ycdes3").Value
+                        'tbCodProv.Text = Row.Cells("yccod3").Text
+                        'tbNitProv.Focus()
                     End If
                 End If
             End If
