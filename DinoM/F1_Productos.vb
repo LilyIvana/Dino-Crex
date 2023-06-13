@@ -142,7 +142,7 @@ Public Class F1_Productos
         cbgrupo2.MaxLength = 40
         cbgrupo3.MaxLength = 40
         cbgrupo4.MaxLength = 40
-        cbUMed.MaxLength = 10
+        cbUMed.MaxLength = 40
         cbUniVenta.MaxLength = 2
         cbUnidMaxima.MaxLength = 2
     End Sub

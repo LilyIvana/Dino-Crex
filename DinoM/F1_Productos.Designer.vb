@@ -92,6 +92,10 @@ Partial Class F1_Productos
         Me.cbgrupo5 = New Janus.Windows.GridEX.EditControls.MultiColumnCombo()
         Me.GroupPanel3 = New DevComponents.DotNetBar.Controls.GroupPanel()
         Me.SuperTabControl_Imagenes_DetalleProducto = New DevComponents.DotNetBar.SuperTabControl()
+        Me.SuperTabControlPanel1 = New DevComponents.DotNetBar.SuperTabControlPanel()
+        Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.UsImg = New DinoM.UCImg()
+        Me.SuperTabItem_Imagenes = New DevComponents.DotNetBar.SuperTabItem()
         Me.SuperTabControlPanel3 = New DevComponents.DotNetBar.SuperTabControlPanel()
         Me.GroupPanel4 = New DevComponents.DotNetBar.Controls.GroupPanel()
         Me.Panel5 = New System.Windows.Forms.Panel()
@@ -107,13 +111,9 @@ Partial Class F1_Productos
         Me.SuperTabControlPanel2 = New DevComponents.DotNetBar.SuperTabControlPanel()
         Me.dgjDetalleProducto = New Janus.Windows.GridEX.GridEX()
         Me.SuperTabItem_DetalleProducto = New DevComponents.DotNetBar.SuperTabItem()
-        Me.SuperTabControlPanel1 = New DevComponents.DotNetBar.SuperTabControlPanel()
-        Me.Panel1 = New System.Windows.Forms.Panel()
-        Me.SuperTabItem_Imagenes = New DevComponents.DotNetBar.SuperTabItem()
         Me.btExcel = New DevComponents.DotNetBar.ButtonX()
         Me.TableLayoutPanel1 = New System.Windows.Forms.TableLayoutPanel()
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
-        Me.UsImg = New DinoM.UCImg()
         CType(Me.SuperTabPrincipal, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuperTabPrincipal.SuspendLayout()
         Me.SuperTabControlPanelRegistro.SuspendLayout()
@@ -150,6 +150,8 @@ Partial Class F1_Productos
         Me.GroupPanel3.SuspendLayout()
         CType(Me.SuperTabControl_Imagenes_DetalleProducto, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuperTabControl_Imagenes_DetalleProducto.SuspendLayout()
+        Me.SuperTabControlPanel1.SuspendLayout()
+        Me.Panel1.SuspendLayout()
         Me.SuperTabControlPanel3.SuspendLayout()
         Me.GroupPanel4.SuspendLayout()
         Me.Panel5.SuspendLayout()
@@ -158,8 +160,6 @@ Partial Class F1_Productos
         CType(Me.CbAeconomica, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuperTabControlPanel2.SuspendLayout()
         CType(Me.dgjDetalleProducto, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.SuperTabControlPanel1.SuspendLayout()
-        Me.Panel1.SuspendLayout()
         Me.TableLayoutPanel1.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -747,7 +747,7 @@ Partial Class F1_Productos
         Me.cbUMed.DesignTimeLayout = cbUMed_DesignTimeLayout
         Me.cbUMed.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cbUMed.Location = New System.Drawing.Point(159, 162)
-        Me.cbUMed.MaxLength = 10
+        Me.cbUMed.MaxLength = 40
         Me.cbUMed.Name = "cbUMed"
         Me.cbUMed.Office2007ColorScheme = Janus.Windows.GridEX.Office2007ColorScheme.Custom
         Me.cbUMed.Office2007CustomColor = System.Drawing.Color.DodgerBlue
@@ -934,7 +934,7 @@ Partial Class F1_Productos
         Me.tbDescPro.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.tbDescPro.ForeColor = System.Drawing.Color.FromArgb(CType(CType(45, Byte), Integer), CType(CType(59, Byte), Integer), CType(CType(66, Byte), Integer))
         Me.tbDescPro.Location = New System.Drawing.Point(157, 160)
-        Me.tbDescPro.MaxLength = 50
+        Me.tbDescPro.MaxLength = 100
         Me.tbDescPro.Multiline = True
         Me.tbDescPro.Name = "tbDescPro"
         Me.tbDescPro.PreventEnterBeep = True
@@ -1345,9 +1345,9 @@ Partial Class F1_Productos
         Me.SuperTabControl_Imagenes_DetalleProducto.ControlBox.MenuBox.Name = ""
         Me.SuperTabControl_Imagenes_DetalleProducto.ControlBox.Name = ""
         Me.SuperTabControl_Imagenes_DetalleProducto.ControlBox.SubItems.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.SuperTabControl_Imagenes_DetalleProducto.ControlBox.MenuBox, Me.SuperTabControl_Imagenes_DetalleProducto.ControlBox.CloseBox})
+        Me.SuperTabControl_Imagenes_DetalleProducto.Controls.Add(Me.SuperTabControlPanel1)
         Me.SuperTabControl_Imagenes_DetalleProducto.Controls.Add(Me.SuperTabControlPanel3)
         Me.SuperTabControl_Imagenes_DetalleProducto.Controls.Add(Me.SuperTabControlPanel2)
-        Me.SuperTabControl_Imagenes_DetalleProducto.Controls.Add(Me.SuperTabControlPanel1)
         Me.SuperTabControl_Imagenes_DetalleProducto.Dock = System.Windows.Forms.DockStyle.Fill
         Me.SuperTabControl_Imagenes_DetalleProducto.Location = New System.Drawing.Point(0, 0)
         Me.SuperTabControl_Imagenes_DetalleProducto.Name = "SuperTabControl_Imagenes_DetalleProducto"
@@ -1359,6 +1359,47 @@ Partial Class F1_Productos
         Me.SuperTabControl_Imagenes_DetalleProducto.TabIndex = 224
         Me.SuperTabControl_Imagenes_DetalleProducto.Tabs.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.SuperTabItem_Imagenes, Me.SuperTabItem_DetalleProducto, Me.SuperTabItem1})
         Me.SuperTabControl_Imagenes_DetalleProducto.Text = "SuperTabControl1"
+        '
+        'SuperTabControlPanel1
+        '
+        Me.SuperTabControlPanel1.Controls.Add(Me.Panel1)
+        Me.SuperTabControlPanel1.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.SuperTabControlPanel1.Location = New System.Drawing.Point(0, 27)
+        Me.SuperTabControlPanel1.Name = "SuperTabControlPanel1"
+        Me.SuperTabControlPanel1.Size = New System.Drawing.Size(428, 290)
+        Me.SuperTabControlPanel1.TabIndex = 1
+        Me.SuperTabControlPanel1.TabItem = Me.SuperTabItem_Imagenes
+        '
+        'Panel1
+        '
+        Me.Panel1.AutoScroll = True
+        Me.Panel1.AutoSize = True
+        Me.Panel1.BackColor = System.Drawing.Color.Transparent
+        Me.Panel1.Controls.Add(Me.UsImg)
+        Me.Panel1.Controls.Add(Me.BtAdicionar)
+        Me.Panel1.Controls.Add(Me.LabelX11)
+        Me.Panel1.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.Panel1.Location = New System.Drawing.Point(0, 0)
+        Me.Panel1.Name = "Panel1"
+        Me.Panel1.Size = New System.Drawing.Size(428, 290)
+        Me.Panel1.TabIndex = 223
+        '
+        'UsImg
+        '
+        Me.UsImg.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
+        Me.UsImg.BackColor = System.Drawing.Color.Transparent
+        Me.UsImg.Location = New System.Drawing.Point(108, 6)
+        Me.UsImg.Margin = New System.Windows.Forms.Padding(4)
+        Me.UsImg.Name = "UsImg"
+        Me.UsImg.Size = New System.Drawing.Size(290, 270)
+        Me.UsImg.TabIndex = 222
+        '
+        'SuperTabItem_Imagenes
+        '
+        Me.SuperTabItem_Imagenes.AttachedControl = Me.SuperTabControlPanel1
+        Me.SuperTabItem_Imagenes.GlobalItem = False
+        Me.SuperTabItem_Imagenes.Name = "SuperTabItem_Imagenes"
+        Me.SuperTabItem_Imagenes.Text = "IMAGENES"
         '
         'SuperTabControlPanel3
         '
@@ -1597,37 +1638,6 @@ Partial Class F1_Productos
         Me.SuperTabItem_DetalleProducto.Name = "SuperTabItem_DetalleProducto"
         Me.SuperTabItem_DetalleProducto.Text = "DETALLE PRODUCTO"
         '
-        'SuperTabControlPanel1
-        '
-        Me.SuperTabControlPanel1.Controls.Add(Me.Panel1)
-        Me.SuperTabControlPanel1.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.SuperTabControlPanel1.Location = New System.Drawing.Point(0, 27)
-        Me.SuperTabControlPanel1.Name = "SuperTabControlPanel1"
-        Me.SuperTabControlPanel1.Size = New System.Drawing.Size(428, 290)
-        Me.SuperTabControlPanel1.TabIndex = 1
-        Me.SuperTabControlPanel1.TabItem = Me.SuperTabItem_Imagenes
-        '
-        'Panel1
-        '
-        Me.Panel1.AutoScroll = True
-        Me.Panel1.AutoSize = True
-        Me.Panel1.BackColor = System.Drawing.Color.Transparent
-        Me.Panel1.Controls.Add(Me.UsImg)
-        Me.Panel1.Controls.Add(Me.BtAdicionar)
-        Me.Panel1.Controls.Add(Me.LabelX11)
-        Me.Panel1.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.Panel1.Location = New System.Drawing.Point(0, 0)
-        Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(428, 290)
-        Me.Panel1.TabIndex = 223
-        '
-        'SuperTabItem_Imagenes
-        '
-        Me.SuperTabItem_Imagenes.AttachedControl = Me.SuperTabControlPanel1
-        Me.SuperTabItem_Imagenes.GlobalItem = False
-        Me.SuperTabItem_Imagenes.Name = "SuperTabItem_Imagenes"
-        Me.SuperTabItem_Imagenes.Text = "IMAGENES"
-        '
         'btExcel
         '
         Me.btExcel.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
@@ -1668,16 +1678,6 @@ Partial Class F1_Productos
         '
         Me.Timer1.Enabled = True
         Me.Timer1.Interval = 500
-        '
-        'UsImg
-        '
-        Me.UsImg.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
-        Me.UsImg.BackColor = System.Drawing.Color.Transparent
-        Me.UsImg.Location = New System.Drawing.Point(108, 6)
-        Me.UsImg.Margin = New System.Windows.Forms.Padding(4)
-        Me.UsImg.Name = "UsImg"
-        Me.UsImg.Size = New System.Drawing.Size(290, 270)
-        Me.UsImg.TabIndex = 222
         '
         'F1_Productos
         '
@@ -1730,6 +1730,9 @@ Partial Class F1_Productos
         Me.GroupPanel3.ResumeLayout(False)
         CType(Me.SuperTabControl_Imagenes_DetalleProducto, System.ComponentModel.ISupportInitialize).EndInit()
         Me.SuperTabControl_Imagenes_DetalleProducto.ResumeLayout(False)
+        Me.SuperTabControlPanel1.ResumeLayout(False)
+        Me.SuperTabControlPanel1.PerformLayout()
+        Me.Panel1.ResumeLayout(False)
         Me.SuperTabControlPanel3.ResumeLayout(False)
         Me.GroupPanel4.ResumeLayout(False)
         Me.Panel5.ResumeLayout(False)
@@ -1739,9 +1742,6 @@ Partial Class F1_Productos
         CType(Me.CbAeconomica, System.ComponentModel.ISupportInitialize).EndInit()
         Me.SuperTabControlPanel2.ResumeLayout(False)
         CType(Me.dgjDetalleProducto, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.SuperTabControlPanel1.ResumeLayout(False)
-        Me.SuperTabControlPanel1.PerformLayout()
-        Me.Panel1.ResumeLayout(False)
         Me.TableLayoutPanel1.ResumeLayout(False)
         Me.ResumeLayout(False)
 
