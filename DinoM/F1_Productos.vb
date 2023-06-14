@@ -766,10 +766,10 @@ Public Class F1_Productos
         listEstCeldas.Add(New Modelo.Celda("yfcampo2", True, "Conversión CJ-DS".ToUpper, 100, Format("0.00")))
         listEstCeldas.Add(New Modelo.Celda("yfmstk", False))
         listEstCeldas.Add(New Modelo.Celda("yfclot", False))
-        listEstCeldas.Add(New Modelo.Celda("ygcodact", False))
-        listEstCeldas.Add(New Modelo.Celda("ygcodu", False))
-        listEstCeldas.Add(New Modelo.Celda("ygcodsin", False))
-        listEstCeldas.Add(New Modelo.Celda("ygprecio", False))
+        listEstCeldas.Add(New Modelo.Celda("ygcodact", True, "Cod. Actividad Económica".ToUpper, 70))
+        listEstCeldas.Add(New Modelo.Celda("ygcodu", True, "Cod. Unidad Medida".ToUpper, 70))
+        listEstCeldas.Add(New Modelo.Celda("ygcodsin", True, "Código SIN".ToUpper, 70))
+        listEstCeldas.Add(New Modelo.Celda("ygprecio", True, "Precio Prod.".ToUpper, 70, Format("0.00")))
         listEstCeldas.Add(New Modelo.Celda("yfsmin", True, "Stock Mínimo".ToUpper, 100))
         listEstCeldas.Add(New Modelo.Celda("yfap", False))
         listEstCeldas.Add(New Modelo.Celda("yfimg", False))
@@ -960,11 +960,13 @@ Public Class F1_Productos
     End Sub
 
     Private Sub cbgrupo1_ValueChanged(sender As Object, e As EventArgs) Handles cbgrupo1.ValueChanged
-        If cbgrupo1.SelectedIndex < 0 And cbgrupo1.Text <> String.Empty Then
-            btgrupo1.Visible = True
-        Else
-            btgrupo1.Visible = False
-        End If
+        ''Ya no se debe permitir agregar por aqui a la libreria de proveedor, debe ser agregado por el módulo de Proveedores
+
+        'If cbgrupo1.SelectedIndex < 0 And cbgrupo1.Text <> String.Empty Then
+        '    btgrupo1.Visible = True
+        'Else
+        '    btgrupo1.Visible = False
+        'End If
     End Sub
 
     Private Sub cbgrupo2_ValueChanged(sender As Object, e As EventArgs) Handles cbgrupo2.ValueChanged
@@ -1593,5 +1595,7 @@ Public Class F1_Productos
         End If
     End Sub
 
-
+    Private Sub CbProdServ_ValueChanged(sender As Object, e As EventArgs) Handles CbProdServ.ValueChanged
+        tbCodSin.Text = CbProdServ.Value
+    End Sub
 End Class

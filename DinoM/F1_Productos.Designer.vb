@@ -94,7 +94,6 @@ Partial Class F1_Productos
         Me.SuperTabControl_Imagenes_DetalleProducto = New DevComponents.DotNetBar.SuperTabControl()
         Me.SuperTabControlPanel1 = New DevComponents.DotNetBar.SuperTabControlPanel()
         Me.Panel1 = New System.Windows.Forms.Panel()
-        Me.UsImg = New DinoM.UCImg()
         Me.SuperTabItem_Imagenes = New DevComponents.DotNetBar.SuperTabItem()
         Me.SuperTabControlPanel3 = New DevComponents.DotNetBar.SuperTabControlPanel()
         Me.GroupPanel4 = New DevComponents.DotNetBar.Controls.GroupPanel()
@@ -114,6 +113,8 @@ Partial Class F1_Productos
         Me.btExcel = New DevComponents.DotNetBar.ButtonX()
         Me.TableLayoutPanel1 = New System.Windows.Forms.TableLayoutPanel()
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
+        Me.UsImg = New DinoM.UCImg()
+        Me.tbCodSin = New DevComponents.DotNetBar.Controls.TextBoxX()
         CType(Me.SuperTabPrincipal, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuperTabPrincipal.SuspendLayout()
         Me.SuperTabControlPanelRegistro.SuspendLayout()
@@ -1347,9 +1348,9 @@ Partial Class F1_Productos
         Me.SuperTabControl_Imagenes_DetalleProducto.ControlBox.MenuBox.Name = ""
         Me.SuperTabControl_Imagenes_DetalleProducto.ControlBox.Name = ""
         Me.SuperTabControl_Imagenes_DetalleProducto.ControlBox.SubItems.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.SuperTabControl_Imagenes_DetalleProducto.ControlBox.MenuBox, Me.SuperTabControl_Imagenes_DetalleProducto.ControlBox.CloseBox})
-        Me.SuperTabControl_Imagenes_DetalleProducto.Controls.Add(Me.SuperTabControlPanel1)
         Me.SuperTabControl_Imagenes_DetalleProducto.Controls.Add(Me.SuperTabControlPanel3)
         Me.SuperTabControl_Imagenes_DetalleProducto.Controls.Add(Me.SuperTabControlPanel2)
+        Me.SuperTabControl_Imagenes_DetalleProducto.Controls.Add(Me.SuperTabControlPanel1)
         Me.SuperTabControl_Imagenes_DetalleProducto.Dock = System.Windows.Forms.DockStyle.Fill
         Me.SuperTabControl_Imagenes_DetalleProducto.Location = New System.Drawing.Point(0, 0)
         Me.SuperTabControl_Imagenes_DetalleProducto.Name = "SuperTabControl_Imagenes_DetalleProducto"
@@ -1385,16 +1386,6 @@ Partial Class F1_Productos
         Me.Panel1.Name = "Panel1"
         Me.Panel1.Size = New System.Drawing.Size(428, 290)
         Me.Panel1.TabIndex = 223
-        '
-        'UsImg
-        '
-        Me.UsImg.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
-        Me.UsImg.BackColor = System.Drawing.Color.Transparent
-        Me.UsImg.Location = New System.Drawing.Point(108, 6)
-        Me.UsImg.Margin = New System.Windows.Forms.Padding(4)
-        Me.UsImg.Name = "UsImg"
-        Me.UsImg.Size = New System.Drawing.Size(290, 270)
-        Me.UsImg.TabIndex = 222
         '
         'SuperTabItem_Imagenes
         '
@@ -1458,6 +1449,7 @@ Partial Class F1_Productos
         '
         Me.Panel5.AutoScroll = True
         Me.Panel5.BackColor = System.Drawing.Color.Transparent
+        Me.Panel5.Controls.Add(Me.tbCodSin)
         Me.Panel5.Controls.Add(Me.CbProdServ)
         Me.Panel5.Controls.Add(Me.CbUmedida)
         Me.Panel5.Controls.Add(Me.CbAeconomica)
@@ -1572,7 +1564,7 @@ Partial Class F1_Productos
         Me.LabelX16.Location = New System.Drawing.Point(8, 133)
         Me.LabelX16.Name = "LabelX16"
         Me.LabelX16.SingleLineColor = System.Drawing.SystemColors.Control
-        Me.LabelX16.Size = New System.Drawing.Size(165, 23)
+        Me.LabelX16.Size = New System.Drawing.Size(80, 23)
         Me.LabelX16.TabIndex = 444
         Me.LabelX16.Text = "Código SIN:"
         '
@@ -1680,6 +1672,33 @@ Partial Class F1_Productos
         '
         Me.Timer1.Enabled = True
         Me.Timer1.Interval = 500
+        '
+        'UsImg
+        '
+        Me.UsImg.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
+        Me.UsImg.BackColor = System.Drawing.Color.Transparent
+        Me.UsImg.Location = New System.Drawing.Point(108, 6)
+        Me.UsImg.Margin = New System.Windows.Forms.Padding(4)
+        Me.UsImg.Name = "UsImg"
+        Me.UsImg.Size = New System.Drawing.Size(290, 270)
+        Me.UsImg.TabIndex = 222
+        '
+        'tbCodSin
+        '
+        '
+        '
+        '
+        Me.tbCodSin.Border.Class = "TextBoxBorder"
+        Me.tbCodSin.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.tbCodSin.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.tbCodSin.ForeColor = System.Drawing.Color.FromArgb(CType(CType(45, Byte), Integer), CType(CType(59, Byte), Integer), CType(CType(66, Byte), Integer))
+        Me.tbCodSin.Location = New System.Drawing.Point(94, 134)
+        Me.tbCodSin.Name = "tbCodSin"
+        Me.tbCodSin.PreventEnterBeep = True
+        Me.tbCodSin.ReadOnly = True
+        Me.tbCodSin.Size = New System.Drawing.Size(90, 21)
+        Me.tbCodSin.TabIndex = 450
+        Me.tbCodSin.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         '
         'F1_Productos
         '
@@ -1826,4 +1845,5 @@ Partial Class F1_Productos
     Friend WithEvents LabelX18 As DevComponents.DotNetBar.LabelX
     Friend WithEvents LabelX19 As DevComponents.DotNetBar.LabelX
     Friend WithEvents tbPrefijo As DevComponents.DotNetBar.Controls.TextBoxX
+    Friend WithEvents tbCodSin As DevComponents.DotNetBar.Controls.TextBoxX
 End Class

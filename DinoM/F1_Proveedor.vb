@@ -390,6 +390,7 @@ Public Class F1_Proveedor
                                       eToastGlowColor.Green,
                                       eToastPosition.TopCenter
                                       )
+            PanelNavegacion.Enabled = True
             tbNombre.Focus()
 
         Else
@@ -427,6 +428,7 @@ Public Class F1_Proveedor
                                       img, 2000,
                                       eToastGlowColor.Green,
                                       eToastPosition.TopCenter)
+            PanelNavegacion.Enabled = True
             _PMInhabilitar()
             _PMPrimerRegistro()
         Else
@@ -469,7 +471,7 @@ Public Class F1_Proveedor
         bandera = ef.band
         If (bandera = True) Then
             Dim mensajeError As String = ""
-            Dim res As Boolean = L_fnEliminarClientes(tbCodigoOriginal.Text, mensajeError)
+            Dim res As Boolean = L_fnEliminarProveedores(tbCodigoOriginal.Text, mensajeError)
             If res Then
                 _PrEliminarImage()
 
@@ -732,15 +734,12 @@ Public Class F1_Proveedor
         End If
     End Sub
 
-    Private Sub btnEliminar_Click(sender As Object, e As EventArgs) Handles btnEliminar.Click
-
-    End Sub
 
     Private Sub btnSalir_Click(sender As Object, e As EventArgs) Handles btnSalir.Click
         If btnGrabar.Enabled = True Then
             _PMInhabilitar()
             _PMPrimerRegistro()
-
+            PanelNavegacion.Enabled = True
         Else
             '  Public _modulo As SideNavItem
             '_modulo.Select()
@@ -780,4 +779,6 @@ Public Class F1_Proveedor
             Timer1.Enabled = False
         End If
     End Sub
+
+
 End Class

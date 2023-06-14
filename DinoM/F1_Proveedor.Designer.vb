@@ -205,9 +205,6 @@ Partial Class F1_Proveedor
         '
         Me.btnGrabar.TabIndex = 0
         '
-        'btnEliminar
-        '
-        '
         'PanelToolBar2
         '
         Me.PanelToolBar2.Location = New System.Drawing.Point(1232, 0)

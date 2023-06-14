@@ -1433,6 +1433,8 @@ Public Class F0_MCompras
 
         objrep.SetParameterValue("Literal", _Literal)
         objrep.SetParameterValue("Emision", IIf(swEmision.Value = True, "NRO. FACTURA:", "NRO. DOCUMENTO:"))
+        objrep.SetParameterValue("Nit", tbNitProv.Text)
+        objrep.SetParameterValue("RazonSocial", tbRazonSocial.Text)
 
         P_Global.Visualizador.CrGeneral.ReportSource = objrep 'Comentar
         P_Global.Visualizador.ShowDialog() 'Comentar
