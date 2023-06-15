@@ -1598,4 +1598,5 @@ Public Class F1_Productos
     Private Sub CbProdServ_ValueChanged(sender As Object, e As EventArgs) Handles CbProdServ.ValueChanged
         tbCodSin.Text = CbProdServ.Value
     End Sub
+
 End Class

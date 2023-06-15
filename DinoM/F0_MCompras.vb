@@ -348,6 +348,9 @@ Public Class F0_MCompras
             tbNDui.Visible = False
             lbSACF.Visible = False
             tbSACF.Visible = False
+
+            tbNitProv.Text = ""
+            tbRazonSocial.Text = ""
         End If
 
         If swMoneda.Value = True Then
@@ -409,20 +412,19 @@ Public Class F0_MCompras
             .Visible = False
         End With
         With grdetalle.RootTable.Columns("cbty5prod")
-            .Width = 90
-            .Visible = False
+            .Width = 80
+            .Caption = "COD. DYNASYS"
+            .Visible = True
         End With
         With grdetalle.RootTable.Columns("yfcprod")
-            .Width = 100
-            .Caption = "COD. PROD."
-
+            .Width = 90
+            .Caption = "COD. DELTA"
             .Visible = True
         End With
         With grdetalle.RootTable.Columns("producto")
             .Caption = "PRODUCTOS"
             .Width = 280
             .Visible = True
-
         End With
         With grdetalle.RootTable.Columns("cbest")
             .Width = 50
@@ -595,6 +597,9 @@ Public Class F0_MCompras
             tbCodControl.Text = ""
             tbNDui.Text = ""
             tbSACF.Text = ""
+
+            tbNitProv.Text = ""
+            tbRazonSocial.Text = ""
         Else
             tbNAutorizacion.Text = dtC.Rows(0).Item("fcaautoriz")
             tbCodControl.Text = dtC.Rows(0).Item("fcaccont")
@@ -1149,6 +1154,8 @@ Public Class F0_MCompras
 
     End Sub
     Public Function _ValidarCampos() As Boolean
+
+
         If (_CodProveedor <= 0) Then
             Dim img As Bitmap = New Bitmap(My.Resources.mensaje, 50, 50)
             ToastNotification.Show(Me, "Por Favor Seleccione un Proveedor con Ctrl+Enter".ToUpper, img, 2000, eToastGlowColor.Red, eToastPosition.BottomCenter)
@@ -1174,6 +1181,19 @@ Public Class F0_MCompras
             Return False
         End If
         If swEmision.Value = True Then
+            If (tbNitProv.Text = String.Empty Or tbNitProv.Text = "0") Then
+                Dim img As Bitmap = New Bitmap(My.Resources.mensaje, 50, 50)
+                ToastNotification.Show(Me, "Por favor debe llenar el Nit".ToUpper, img, 3000, eToastGlowColor.Red, eToastPosition.BottomCenter)
+                tbNitProv.Focus()
+                Return False
+            End If
+            If (tbRazonSocial.Text = String.Empty) Then
+                Dim img As Bitmap = New Bitmap(My.Resources.mensaje, 50, 50)
+                ToastNotification.Show(Me, "Por favor debe llenar la Razón Social".ToUpper, img, 3000, eToastGlowColor.Red, eToastPosition.BottomCenter)
+                tbRazonSocial.Focus()
+                Return False
+            End If
+
             If (tbNFactura.Text = String.Empty) Then
                 Dim img As Bitmap = New Bitmap(My.Resources.mensaje, 50, 50)
                 ToastNotification.Show(Me, "Por favor debe llenar el ".ToUpper + lbNFactura.Text.ToUpper, img, 3000, eToastGlowColor.Red, eToastPosition.BottomCenter)
@@ -1219,6 +1239,24 @@ Public Class F0_MCompras
             End If
         Next
 
+        If (swEmision.Value = False) Then
+
+            Dim ef = New Efecto
+            ef.tipo = 2
+            ef.Context = "Mensaje Principal".ToUpper
+            ef.Header = "¿esta seguro que ésta compra será con Recibo?".ToUpper
+            ef.ShowDialog()
+            Dim bandera As Boolean = False
+            bandera = ef.band
+            If (bandera = True) Then
+                Return True
+            Else
+                Return False
+            End If
+
+        End If
+
+
         Return True
     End Function
 
@@ -1242,10 +1280,15 @@ Public Class F0_MCompras
                                           eToastPosition.TopCenter
                                           )
 
+                If Not (tbNitProv.Text = String.Empty Or tbNitProv.Text = "0") Then
+                    L_Grabar_NitCompra(tbNitProv.Text.Trim, tbRazonSocial.Text.Trim, Convert.ToInt64(tbCodProv.Text))
+                End If
+
+
                 _prCargarCompra()
-                _Limpiar()
-            Else
-                Dim img As Bitmap = New Bitmap(My.Resources.cancel, 50, 50)
+                    _Limpiar()
+                Else
+                    Dim img As Bitmap = New Bitmap(My.Resources.cancel, 50, 50)
                 ToastNotification.Show(Me, "La Compra no pudo ser insertado".ToUpper, img, 2000, eToastGlowColor.Red, eToastPosition.BottomCenter)
 
             End If
@@ -1278,7 +1321,7 @@ Public Class F0_MCompras
         If swEmision.Value = True Then
             ffec = tbFechaVenta.Value.ToString("yyyy/MM/dd")
             fnit = tbNitProv.Text
-            frsocial = tbProveedor.Text
+            frsocial = tbRazonSocial.Text
             fnro = tbNFactura.Text
             If tbNDui.Text = String.Empty Then
                 tbNDui.Text = 0
@@ -1360,8 +1403,13 @@ Public Class F0_MCompras
                                       eToastGlowColor.Green,
                                       eToastPosition.TopCenter
                                       )
-            _prCargarCompra()
 
+            If Not (tbNitProv.Text = String.Empty Or tbNitProv.Text = "0") Then
+                L_Grabar_NitCompra(tbNitProv.Text.Trim, tbRazonSocial.Text.Trim, Convert.ToInt64(tbCodProv.Text))
+            End If
+
+
+            _prCargarCompra()
             _prSalir()
 
 
@@ -2415,6 +2463,24 @@ salirIf:
 
             tbtotal.Value = (tbSubtotalC.Value - (tbMdesc.Value + tbDescPro.Value)) + tbIce.Value
 
+        End If
+    End Sub
+
+    Private Sub tbNitProv_KeyDown(sender As Object, e As KeyEventArgs) Handles tbNitProv.KeyDown
+        If (e.KeyData = Keys.Enter) Then
+            If btnGrabar.Enabled = True Then
+
+                Dim nom1 As String
+
+                nom1 = ""
+
+                If (tbNitProv.Text.Trim <> String.Empty) Then
+                    L_Validar_NitCompra(tbNitProv.Text.Trim, nom1, tbCodProv.Text)
+                    tbRazonSocial.Text = nom1
+
+                End If
+
+            End If
         End If
     End Sub
 #End Region

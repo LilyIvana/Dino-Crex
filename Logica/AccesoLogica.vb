@@ -3186,6 +3186,39 @@ Public Class AccesoLogica
         Return res
     End Function
 
+    Public Shared Sub L_Grabar_NitCompra(_Nit As String, _Nom1 As String, _CodProv As String)
+        Dim _Err As Boolean
+        Dim _Nom01 As String
+        Dim _CodProv01 As Integer
+        Dim Sql As String
+        _Nom01 = ""
+        _CodProv01 = 0
+
+        L_Validar_NitCompra(_Nit, _Nom01, _CodProv)
+
+        If _Nom01 = "" Then
+            Sql = "'" + _Nit + "', '" + _Nom1 + "', " + _CodProv + ""
+            _Err = D_Insertar_Datos("TS004", Sql)
+        Else
+            If (_Nom1 <> _Nom01) Then
+                Sql = "sdnom1 = '" + _Nom1 + "' " + " , sdcodprov = " + _CodProv + ""
+                _Err = D_Modificar_Datos("TS004", Sql, "sdnit = '" + _Nit + "'" + " And sdcodprov = " + _CodProv + "")
+            End If
+        End If
+
+
+    End Sub
+    Public Shared Sub L_Validar_NitCompra(_Nit As String, ByRef _Nom1 As String, ByRef _CodProv As String)
+        Dim _Tabla As DataTable
+
+        _Tabla = D_Datos_Tabla("*", "TS004", "sdnit = '" + _Nit + "'" + " And sdcodprov = " + _CodProv + "")
+
+        If _Tabla.Rows.Count > 0 Then
+            _Nom1 = _Tabla.Rows(0).Item(2)
+            _CodProv = _Tabla.Rows(0).Item(3)
+
+        End If
+    End Sub
     Public Shared Function L_Dosificacion(_cia As String, _alm As String, _fecha As String) As DataSet
         Dim _Tabla As DataTable
         Dim _Ds As New DataSet

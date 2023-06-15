@@ -49,6 +49,8 @@ Partial Class F0_MCompras
         Me.PanelContentSup = New System.Windows.Forms.Panel()
         Me.GroupPanel1 = New DevComponents.DotNetBar.Controls.GroupPanel()
         Me.Panel2 = New System.Windows.Forms.Panel()
+        Me.LabelX18 = New DevComponents.DotNetBar.LabelX()
+        Me.tbRazonSocial = New DevComponents.DotNetBar.Controls.TextBoxX()
         Me.lbTipoCambio = New DevComponents.DotNetBar.LabelX()
         Me.tbTipoCambio = New DevComponents.Editors.DoubleInput()
         Me.LabelX14 = New DevComponents.DotNetBar.LabelX()
@@ -98,8 +100,6 @@ Partial Class F0_MCompras
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         Me.cmOpcionesDetalle = New System.Windows.Forms.ContextMenuStrip(Me.components)
         Me.INSERTARFILAToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.tbRazonSocial = New DevComponents.DotNetBar.Controls.TextBoxX()
-        Me.LabelX18 = New DevComponents.DotNetBar.LabelX()
         Me.PanelSuperior.SuspendLayout()
         Me.PanelInferior.SuspendLayout()
         CType(Me.BubbleBarUsuario, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -273,8 +273,8 @@ Partial Class F0_MCompras
         Me.MSuperTabControl.Controls.Add(Me.SuperTabControlPanel2)
         Me.MSuperTabControl.SelectedTabIndex = 1
         Me.MSuperTabControl.Tabs.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.BUSCADOR})
-        Me.MSuperTabControl.Controls.SetChildIndex(Me.MSuperTabControlPanel1, 0)
         Me.MSuperTabControl.Controls.SetChildIndex(Me.SuperTabControlPanel2, 0)
+        Me.MSuperTabControl.Controls.SetChildIndex(Me.MSuperTabControlPanel1, 0)
         '
         'PanelDetalle
         '
@@ -750,6 +750,38 @@ Partial Class F0_MCompras
         Me.Panel2.Name = "Panel2"
         Me.Panel2.Size = New System.Drawing.Size(1311, 207)
         Me.Panel2.TabIndex = 234
+        '
+        'LabelX18
+        '
+        Me.LabelX18.BackColor = System.Drawing.Color.Transparent
+        '
+        '
+        '
+        Me.LabelX18.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.LabelX18.Font = New System.Drawing.Font("Georgia", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LabelX18.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(85, Byte), Integer), CType(CType(139, Byte), Integer))
+        Me.LabelX18.Location = New System.Drawing.Point(13, 80)
+        Me.LabelX18.Name = "LabelX18"
+        Me.LabelX18.SingleLineColor = System.Drawing.SystemColors.Control
+        Me.LabelX18.Size = New System.Drawing.Size(105, 22)
+        Me.LabelX18.TabIndex = 677
+        Me.LabelX18.Text = "Razón Social:"
+        '
+        'tbRazonSocial
+        '
+        Me.tbRazonSocial.BackColor = System.Drawing.Color.White
+        '
+        '
+        '
+        Me.tbRazonSocial.Border.Class = "TextBoxBorder"
+        Me.tbRazonSocial.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.tbRazonSocial.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.tbRazonSocial.ForeColor = System.Drawing.Color.FromArgb(CType(CType(45, Byte), Integer), CType(CType(59, Byte), Integer), CType(CType(66, Byte), Integer))
+        Me.tbRazonSocial.Location = New System.Drawing.Point(130, 80)
+        Me.tbRazonSocial.Name = "tbRazonSocial"
+        Me.tbRazonSocial.PreventEnterBeep = True
+        Me.tbRazonSocial.Size = New System.Drawing.Size(265, 22)
+        Me.tbRazonSocial.TabIndex = 355
         '
         'lbTipoCambio
         '
@@ -1620,38 +1652,6 @@ Partial Class F0_MCompras
         Me.INSERTARFILAToolStripMenuItem.Name = "INSERTARFILAToolStripMenuItem"
         Me.INSERTARFILAToolStripMenuItem.Size = New System.Drawing.Size(150, 22)
         Me.INSERTARFILAToolStripMenuItem.Text = "INSERTAR FILA"
-        '
-        'tbRazonSocial
-        '
-        Me.tbRazonSocial.BackColor = System.Drawing.Color.White
-        '
-        '
-        '
-        Me.tbRazonSocial.Border.Class = "TextBoxBorder"
-        Me.tbRazonSocial.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.tbRazonSocial.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.tbRazonSocial.ForeColor = System.Drawing.Color.FromArgb(CType(CType(45, Byte), Integer), CType(CType(59, Byte), Integer), CType(CType(66, Byte), Integer))
-        Me.tbRazonSocial.Location = New System.Drawing.Point(130, 80)
-        Me.tbRazonSocial.Name = "tbRazonSocial"
-        Me.tbRazonSocial.PreventEnterBeep = True
-        Me.tbRazonSocial.Size = New System.Drawing.Size(265, 22)
-        Me.tbRazonSocial.TabIndex = 355
-        '
-        'LabelX18
-        '
-        Me.LabelX18.BackColor = System.Drawing.Color.Transparent
-        '
-        '
-        '
-        Me.LabelX18.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.LabelX18.Font = New System.Drawing.Font("Georgia", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelX18.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(85, Byte), Integer), CType(CType(139, Byte), Integer))
-        Me.LabelX18.Location = New System.Drawing.Point(13, 80)
-        Me.LabelX18.Name = "LabelX18"
-        Me.LabelX18.SingleLineColor = System.Drawing.SystemColors.Control
-        Me.LabelX18.Size = New System.Drawing.Size(105, 22)
-        Me.LabelX18.TabIndex = 677
-        Me.LabelX18.Text = "Razón Social:"
         '
         'F0_MCompras
         '
