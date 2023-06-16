@@ -634,7 +634,12 @@ Public Class F0_MCompras
             .Visible = True
             .Caption = "FECHA"
         End With
-
+        With grCompra.RootTable.Columns("canumemis")
+            .Width = 100
+            .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far
+            .Visible = True
+            .Caption = "Nro. Fact/Doc".ToUpper
+        End With
         With grCompra.RootTable.Columns("caty4prov")
             .Width = 160
             .Visible = False
@@ -644,7 +649,7 @@ Public Class F0_MCompras
             .Visible = False
         End With
         With grCompra.RootTable.Columns("proveedor")
-            .Width = 220
+            .Width = 180
             .Visible = True
             .Caption = "proveedor".ToUpper
         End With
@@ -653,6 +658,17 @@ Public Class F0_MCompras
             .Visible = False
             .Caption = "Ci/Nit".ToUpper
         End With
+        With grCompra.RootTable.Columns("Nit")
+            .Width = 100
+            .Visible = True
+            .Caption = "Nit".ToUpper
+        End With
+        With grCompra.RootTable.Columns("rSocial")
+            .Width = 140
+            .Visible = True
+            .Caption = "Razón Social".ToUpper
+        End With
+
         With grCompra.RootTable.Columns("catven")
             .Width = 50
             .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Near
@@ -673,7 +689,7 @@ Public Class F0_MCompras
         With grCompra.RootTable.Columns("moneda")
             .Width = 100
             .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Near
-            .Visible = True
+            .Visible = False
             .Caption = "MONEDA"
         End With
         With grCompra.RootTable.Columns("caobs")
@@ -748,12 +764,7 @@ Public Class F0_MCompras
             .Caption = "Emision"
 
         End With
-        With grCompra.RootTable.Columns("canumemis")
-            .Width = 120
-            .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far
-            .Visible = False
-            .Caption = "Nro. Emision"
-        End With
+
         With grCompra.RootTable.Columns("caconsigna")
             .Width = 120
             .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far
