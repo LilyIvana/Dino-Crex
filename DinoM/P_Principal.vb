@@ -1212,6 +1212,13 @@ Public Class P_Principal
         frm.Show()
     End Sub
 
+    Private Sub btConfVerificarPCosto_Click(sender As Object, e As EventArgs) Handles btConfVerificarPCosto.Click
+        Dim frm As New F0_VerificarPrecioCompra
+        frm._nameButton = btConfVerificarPCosto.Name
+        frm._modulo = FP_Configuracion
+        frm.Show()
+    End Sub
+
 
 
 

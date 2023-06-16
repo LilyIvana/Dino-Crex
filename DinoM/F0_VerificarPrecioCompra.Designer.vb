@@ -33,15 +33,15 @@ Partial Class F0_VerificarPrecioCompra
         Me.Panel4 = New System.Windows.Forms.Panel()
         Me.TableLayoutPanel1 = New System.Windows.Forms.TableLayoutPanel()
         Me.Panel6 = New System.Windows.Forms.Panel()
+        Me.btnSearch = New DevComponents.DotNetBar.ButtonX()
+        Me.lbCtrlEnter = New DevComponents.DotNetBar.LabelX()
+        Me.tbProveedor = New DevComponents.DotNetBar.Controls.TextBoxX()
+        Me.LabelX1 = New DevComponents.DotNetBar.LabelX()
+        Me.LabelX2 = New DevComponents.DotNetBar.LabelX()
+        Me.tbCodCompra = New DevComponents.DotNetBar.Controls.TextBoxX()
         Me.cbAlmacen = New Janus.Windows.GridEX.EditControls.MultiColumnCombo()
         Me.lbgrupo2 = New DevComponents.DotNetBar.LabelX()
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
-        Me.btActPrecios = New DevComponents.DotNetBar.ButtonX()
-        Me.LabelX2 = New DevComponents.DotNetBar.LabelX()
-        Me.tbCodProv = New DevComponents.DotNetBar.Controls.TextBoxX()
-        Me.tbProveedor = New DevComponents.DotNetBar.Controls.TextBoxX()
-        Me.LabelX1 = New DevComponents.DotNetBar.LabelX()
-        Me.lbCtrlEnter = New DevComponents.DotNetBar.LabelX()
         Me.PanelSuperior.SuspendLayout()
         Me.PanelInferior.SuspendLayout()
         CType(Me.BubbleBarUsuario, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -150,12 +150,9 @@ Partial Class F0_VerificarPrecioCompra
         '
         'PanelToolBar2
         '
-        Me.PanelToolBar2.Controls.Add(Me.btActPrecios)
         Me.PanelToolBar2.Location = New System.Drawing.Point(1184, 0)
         Me.PanelToolBar2.Margin = New System.Windows.Forms.Padding(4)
         Me.PanelToolBar2.Size = New System.Drawing.Size(160, 72)
-        Me.PanelToolBar2.Controls.SetChildIndex(Me.btActPrecios, 0)
-        Me.PanelToolBar2.Controls.SetChildIndex(Me.btnImprimir, 0)
         '
         'PanelPrincipal
         '
@@ -169,7 +166,7 @@ Partial Class F0_VerificarPrecioCompra
         'btnImprimir
         '
         Me.btnImprimir.Image = Global.DinoM.My.Resources.Resources.sheets
-        Me.btnImprimir.Size = New System.Drawing.Size(85, 72)
+        Me.btnImprimir.Size = New System.Drawing.Size(160, 72)
         Me.btnImprimir.Text = "EXPORTAR"
         Me.btnImprimir.Visible = False
         '
@@ -256,9 +253,9 @@ Partial Class F0_VerificarPrecioCompra
         Me.GroupPanel4.DisabledBackColor = System.Drawing.Color.Empty
         Me.GroupPanel4.Dock = System.Windows.Forms.DockStyle.Fill
         Me.GroupPanel4.Font = New System.Drawing.Font("Georgia", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.GroupPanel4.Location = New System.Drawing.Point(0, 92)
+        Me.GroupPanel4.Location = New System.Drawing.Point(0, 100)
         Me.GroupPanel4.Name = "GroupPanel4"
-        Me.GroupPanel4.Size = New System.Drawing.Size(1311, 458)
+        Me.GroupPanel4.Size = New System.Drawing.Size(1311, 450)
         '
         '
         '
@@ -297,7 +294,7 @@ Partial Class F0_VerificarPrecioCompra
         Me.Panel5.Dock = System.Windows.Forms.DockStyle.Fill
         Me.Panel5.Location = New System.Drawing.Point(0, 0)
         Me.Panel5.Name = "Panel5"
-        Me.Panel5.Size = New System.Drawing.Size(1305, 435)
+        Me.Panel5.Size = New System.Drawing.Size(1305, 427)
         Me.Panel5.TabIndex = 0
         '
         'grprecio
@@ -309,7 +306,7 @@ Partial Class F0_VerificarPrecioCompra
         Me.grprecio.Name = "grprecio"
         Me.grprecio.Office2007ColorScheme = Janus.Windows.GridEX.Office2007ColorScheme.Custom
         Me.grprecio.Office2007CustomColor = System.Drawing.Color.DodgerBlue
-        Me.grprecio.Size = New System.Drawing.Size(1305, 435)
+        Me.grprecio.Size = New System.Drawing.Size(1305, 427)
         Me.grprecio.TabIndex = 0
         Me.grprecio.VisualStyle = Janus.Windows.GridEX.VisualStyle.Office2007
         '
@@ -323,7 +320,7 @@ Partial Class F0_VerificarPrecioCompra
         Me.GroupPanel3.Font = New System.Drawing.Font("Georgia", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GroupPanel3.Location = New System.Drawing.Point(0, 0)
         Me.GroupPanel3.Name = "GroupPanel3"
-        Me.GroupPanel3.Size = New System.Drawing.Size(1311, 92)
+        Me.GroupPanel3.Size = New System.Drawing.Size(1311, 100)
         '
         '
         '
@@ -354,7 +351,6 @@ Partial Class F0_VerificarPrecioCompra
         Me.GroupPanel3.StyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.GroupPanel3.TabIndex = 0
         Me.GroupPanel3.Text = "SELECCIONAR   COMPRA"
-        Me.GroupPanel3.Visible = False
         '
         'Panel4
         '
@@ -364,7 +360,7 @@ Partial Class F0_VerificarPrecioCompra
         Me.Panel4.Dock = System.Windows.Forms.DockStyle.Fill
         Me.Panel4.Location = New System.Drawing.Point(0, 0)
         Me.Panel4.Name = "Panel4"
-        Me.Panel4.Size = New System.Drawing.Size(1305, 69)
+        Me.Panel4.Size = New System.Drawing.Size(1305, 77)
         Me.Panel4.TabIndex = 0
         '
         'TableLayoutPanel1
@@ -379,24 +375,120 @@ Partial Class F0_VerificarPrecioCompra
         Me.TableLayoutPanel1.Name = "TableLayoutPanel1"
         Me.TableLayoutPanel1.RowCount = 1
         Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle())
-        Me.TableLayoutPanel1.Size = New System.Drawing.Size(1305, 69)
+        Me.TableLayoutPanel1.Size = New System.Drawing.Size(1305, 77)
         Me.TableLayoutPanel1.TabIndex = 236
         '
         'Panel6
         '
         Me.Panel6.AutoScroll = True
+        Me.Panel6.Controls.Add(Me.btnSearch)
         Me.Panel6.Controls.Add(Me.lbCtrlEnter)
         Me.Panel6.Controls.Add(Me.tbProveedor)
         Me.Panel6.Controls.Add(Me.LabelX1)
         Me.Panel6.Controls.Add(Me.LabelX2)
-        Me.Panel6.Controls.Add(Me.tbCodProv)
+        Me.Panel6.Controls.Add(Me.tbCodCompra)
         Me.Panel6.Controls.Add(Me.cbAlmacen)
         Me.Panel6.Controls.Add(Me.lbgrupo2)
         Me.Panel6.Dock = System.Windows.Forms.DockStyle.Fill
         Me.Panel6.Location = New System.Drawing.Point(3, 3)
         Me.Panel6.Name = "Panel6"
-        Me.Panel6.Size = New System.Drawing.Size(1299, 63)
+        Me.Panel6.Size = New System.Drawing.Size(1299, 71)
         Me.Panel6.TabIndex = 34
+        '
+        'btnSearch
+        '
+        Me.btnSearch.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
+        Me.btnSearch.BackColor = System.Drawing.Color.Transparent
+        Me.btnSearch.ColorTable = DevComponents.DotNetBar.eButtonColor.Flat
+        Me.btnSearch.Image = Global.DinoM.My.Resources.Resources.search
+        Me.btnSearch.ImageFixedSize = New System.Drawing.Size(24, 22)
+        Me.btnSearch.Location = New System.Drawing.Point(189, 14)
+        Me.btnSearch.Name = "btnSearch"
+        Me.btnSearch.Size = New System.Drawing.Size(27, 25)
+        Me.btnSearch.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+        Me.btnSearch.TabIndex = 687
+        '
+        'lbCtrlEnter
+        '
+        Me.lbCtrlEnter.BackColor = System.Drawing.Color.Transparent
+        '
+        '
+        '
+        Me.lbCtrlEnter.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.lbCtrlEnter.Font = New System.Drawing.Font("Georgia", 7.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lbCtrlEnter.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(85, Byte), Integer), CType(CType(139, Byte), Integer))
+        Me.lbCtrlEnter.Location = New System.Drawing.Point(119, 3)
+        Me.lbCtrlEnter.Name = "lbCtrlEnter"
+        Me.lbCtrlEnter.SingleLineColor = System.Drawing.SystemColors.Control
+        Me.lbCtrlEnter.Size = New System.Drawing.Size(160, 11)
+        Me.lbCtrlEnter.TabIndex = 675
+        Me.lbCtrlEnter.Text = "Ctrl+Enter o Click en la lupa"
+        '
+        'tbProveedor
+        '
+        Me.tbProveedor.BackColor = System.Drawing.Color.White
+        '
+        '
+        '
+        Me.tbProveedor.Border.Class = "TextBoxBorder"
+        Me.tbProveedor.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.tbProveedor.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.tbProveedor.ForeColor = System.Drawing.Color.FromArgb(CType(CType(45, Byte), Integer), CType(CType(59, Byte), Integer), CType(CType(66, Byte), Integer))
+        Me.tbProveedor.Location = New System.Drawing.Point(119, 41)
+        Me.tbProveedor.Name = "tbProveedor"
+        Me.tbProveedor.PreventEnterBeep = True
+        Me.tbProveedor.ReadOnly = True
+        Me.tbProveedor.Size = New System.Drawing.Size(200, 22)
+        Me.tbProveedor.TabIndex = 673
+        '
+        'LabelX1
+        '
+        Me.LabelX1.BackColor = System.Drawing.Color.Transparent
+        '
+        '
+        '
+        Me.LabelX1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.LabelX1.Font = New System.Drawing.Font("Georgia", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LabelX1.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(85, Byte), Integer), CType(CType(139, Byte), Integer))
+        Me.LabelX1.Location = New System.Drawing.Point(6, 39)
+        Me.LabelX1.Name = "LabelX1"
+        Me.LabelX1.SingleLineColor = System.Drawing.SystemColors.Control
+        Me.LabelX1.Size = New System.Drawing.Size(75, 23)
+        Me.LabelX1.TabIndex = 674
+        Me.LabelX1.Text = "Proveedor:"
+        '
+        'LabelX2
+        '
+        Me.LabelX2.BackColor = System.Drawing.Color.Transparent
+        '
+        '
+        '
+        Me.LabelX2.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.LabelX2.Font = New System.Drawing.Font("Georgia", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LabelX2.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(85, Byte), Integer), CType(CType(139, Byte), Integer))
+        Me.LabelX2.Location = New System.Drawing.Point(6, 13)
+        Me.LabelX2.Name = "LabelX2"
+        Me.LabelX2.SingleLineColor = System.Drawing.SystemColors.Control
+        Me.LabelX2.Size = New System.Drawing.Size(105, 23)
+        Me.LabelX2.TabIndex = 226
+        Me.LabelX2.Text = "Código Compra:"
+        '
+        'tbCodCompra
+        '
+        '
+        '
+        '
+        Me.tbCodCompra.Border.Class = "TextBoxBorder"
+        Me.tbCodCompra.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.tbCodCompra.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.tbCodCompra.ForeColor = System.Drawing.Color.FromArgb(CType(CType(45, Byte), Integer), CType(CType(59, Byte), Integer), CType(CType(66, Byte), Integer))
+        Me.tbCodCompra.Location = New System.Drawing.Point(119, 16)
+        Me.tbCodCompra.Name = "tbCodCompra"
+        Me.tbCodCompra.PreventEnterBeep = True
+        Me.tbCodCompra.ReadOnly = True
+        Me.tbCodCompra.Size = New System.Drawing.Size(63, 22)
+        Me.tbCodCompra.TabIndex = 672
+        Me.tbCodCompra.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         '
         'cbAlmacen
         '
@@ -406,7 +498,7 @@ Partial Class F0_VerificarPrecioCompra
         cbAlmacen_DesignTimeLayout.LayoutString = resources.GetString("cbAlmacen_DesignTimeLayout.LayoutString")
         Me.cbAlmacen.DesignTimeLayout = cbAlmacen_DesignTimeLayout
         Me.cbAlmacen.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.cbAlmacen.Location = New System.Drawing.Point(713, 8)
+        Me.cbAlmacen.Location = New System.Drawing.Point(713, 12)
         Me.cbAlmacen.Name = "cbAlmacen"
         Me.cbAlmacen.Office2007ColorScheme = Janus.Windows.GridEX.Office2007ColorScheme.Custom
         Me.cbAlmacen.Office2007CustomColor = System.Drawing.Color.DodgerBlue
@@ -428,7 +520,7 @@ Partial Class F0_VerificarPrecioCompra
         Me.lbgrupo2.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.lbgrupo2.Font = New System.Drawing.Font("Georgia", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lbgrupo2.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(85, Byte), Integer), CType(CType(139, Byte), Integer))
-        Me.lbgrupo2.Location = New System.Drawing.Point(636, 8)
+        Me.lbgrupo2.Location = New System.Drawing.Point(636, 12)
         Me.lbgrupo2.Name = "lbgrupo2"
         Me.lbgrupo2.PaddingTop = 4
         Me.lbgrupo2.SingleLineColor = System.Drawing.SystemColors.Control
@@ -441,104 +533,6 @@ Partial Class F0_VerificarPrecioCompra
         '
         Me.Timer1.Enabled = True
         Me.Timer1.Interval = 500
-        '
-        'btActPrecios
-        '
-        Me.btActPrecios.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
-        Me.btActPrecios.ColorTable = DevComponents.DotNetBar.eButtonColor.Flat
-        Me.btActPrecios.Dock = System.Windows.Forms.DockStyle.Right
-        Me.btActPrecios.Font = New System.Drawing.Font("Arial", 7.5!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btActPrecios.Image = Global.DinoM.My.Resources.Resources.precio1
-        Me.btActPrecios.ImageFixedSize = New System.Drawing.Size(35, 35)
-        Me.btActPrecios.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top
-        Me.btActPrecios.Location = New System.Drawing.Point(85, 0)
-        Me.btActPrecios.Name = "btActPrecios"
-        Me.btActPrecios.Padding = New System.Windows.Forms.Padding(0, 0, 0, 20)
-        Me.btActPrecios.Size = New System.Drawing.Size(75, 72)
-        Me.btActPrecios.Style = DevComponents.DotNetBar.eDotNetBarStyle.OfficeMobile2014
-        Me.btActPrecios.TabIndex = 13
-        Me.btActPrecios.Text = "ACTUALIZAR PRECIOS"
-        Me.btActPrecios.TextColor = System.Drawing.Color.White
-        '
-        'LabelX2
-        '
-        Me.LabelX2.BackColor = System.Drawing.Color.Transparent
-        '
-        '
-        '
-        Me.LabelX2.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.LabelX2.Font = New System.Drawing.Font("Georgia", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelX2.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(85, Byte), Integer), CType(CType(139, Byte), Integer))
-        Me.LabelX2.Location = New System.Drawing.Point(6, 7)
-        Me.LabelX2.Name = "LabelX2"
-        Me.LabelX2.SingleLineColor = System.Drawing.SystemColors.Control
-        Me.LabelX2.Size = New System.Drawing.Size(105, 23)
-        Me.LabelX2.TabIndex = 226
-        Me.LabelX2.Text = "Código Compra:"
-        '
-        'tbCodProv
-        '
-        '
-        '
-        '
-        Me.tbCodProv.Border.Class = "TextBoxBorder"
-        Me.tbCodProv.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.tbCodProv.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.tbCodProv.ForeColor = System.Drawing.Color.FromArgb(CType(CType(45, Byte), Integer), CType(CType(59, Byte), Integer), CType(CType(66, Byte), Integer))
-        Me.tbCodProv.Location = New System.Drawing.Point(119, 10)
-        Me.tbCodProv.Name = "tbCodProv"
-        Me.tbCodProv.PreventEnterBeep = True
-        Me.tbCodProv.Size = New System.Drawing.Size(63, 22)
-        Me.tbCodProv.TabIndex = 672
-        Me.tbCodProv.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
-        '
-        'tbProveedor
-        '
-        Me.tbProveedor.BackColor = System.Drawing.Color.White
-        '
-        '
-        '
-        Me.tbProveedor.Border.Class = "TextBoxBorder"
-        Me.tbProveedor.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.tbProveedor.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.tbProveedor.ForeColor = System.Drawing.Color.FromArgb(CType(CType(45, Byte), Integer), CType(CType(59, Byte), Integer), CType(CType(66, Byte), Integer))
-        Me.tbProveedor.Location = New System.Drawing.Point(119, 35)
-        Me.tbProveedor.Name = "tbProveedor"
-        Me.tbProveedor.PreventEnterBeep = True
-        Me.tbProveedor.Size = New System.Drawing.Size(200, 22)
-        Me.tbProveedor.TabIndex = 673
-        '
-        'LabelX1
-        '
-        Me.LabelX1.BackColor = System.Drawing.Color.Transparent
-        '
-        '
-        '
-        Me.LabelX1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.LabelX1.Font = New System.Drawing.Font("Georgia", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelX1.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(85, Byte), Integer), CType(CType(139, Byte), Integer))
-        Me.LabelX1.Location = New System.Drawing.Point(6, 33)
-        Me.LabelX1.Name = "LabelX1"
-        Me.LabelX1.SingleLineColor = System.Drawing.SystemColors.Control
-        Me.LabelX1.Size = New System.Drawing.Size(75, 23)
-        Me.LabelX1.TabIndex = 674
-        Me.LabelX1.Text = "Proveedor:"
-        '
-        'lbCtrlEnter
-        '
-        Me.lbCtrlEnter.BackColor = System.Drawing.Color.Transparent
-        '
-        '
-        '
-        Me.lbCtrlEnter.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.lbCtrlEnter.Font = New System.Drawing.Font("Georgia", 7.5!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lbCtrlEnter.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(85, Byte), Integer), CType(CType(139, Byte), Integer))
-        Me.lbCtrlEnter.Location = New System.Drawing.Point(188, 15)
-        Me.lbCtrlEnter.Name = "lbCtrlEnter"
-        Me.lbCtrlEnter.SingleLineColor = System.Drawing.SystemColors.Control
-        Me.lbCtrlEnter.Size = New System.Drawing.Size(65, 10)
-        Me.lbCtrlEnter.TabIndex = 675
-        Me.lbCtrlEnter.Text = "Ctrl+Enter"
         '
         'F0_VerificarPrecioCompra
         '
@@ -592,10 +586,10 @@ Partial Class F0_VerificarPrecioCompra
     Friend WithEvents Panel6 As System.Windows.Forms.Panel
     Friend WithEvents TableLayoutPanel1 As System.Windows.Forms.TableLayoutPanel
     Friend WithEvents Timer1 As Timer
-    Friend WithEvents btActPrecios As DevComponents.DotNetBar.ButtonX
     Friend WithEvents LabelX2 As DevComponents.DotNetBar.LabelX
-    Friend WithEvents tbCodProv As DevComponents.DotNetBar.Controls.TextBoxX
+    Friend WithEvents tbCodCompra As DevComponents.DotNetBar.Controls.TextBoxX
     Friend WithEvents tbProveedor As DevComponents.DotNetBar.Controls.TextBoxX
     Friend WithEvents LabelX1 As DevComponents.DotNetBar.LabelX
     Friend WithEvents lbCtrlEnter As DevComponents.DotNetBar.LabelX
+    Friend WithEvents btnSearch As DevComponents.DotNetBar.ButtonX
 End Class

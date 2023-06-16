@@ -35,12 +35,14 @@ Public Class ModeloAyuda
         'grJBuscador.Row = grJBuscador.FilterRow.RowIndex
         'grJBuscador.Col = 1
         Columna = 2
+
     End Sub
     Public Sub _prSeleccionar()
         If (Columna >= 0) Then
             grJBuscador.Select()
             ''  grJBuscador.Focus()
             grJBuscador.MoveTo(grJBuscador.FilterRow)
+
             grJBuscador.Col = Columna
         End If
     End Sub

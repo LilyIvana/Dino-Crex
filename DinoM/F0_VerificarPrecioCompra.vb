@@ -60,18 +60,27 @@ Public Class F0_VerificarPrecioCompra
         End If
     End Sub
 
-    Public Sub _prCargarTabla(bandera As Boolean) ''Bandera = true si es que haiq cargar denuevo la tabla de Precio Bandera =false si solo cargar datos al Janus con el precio antepuesto
+    Public Sub _prCargarTabla(bandera As Boolean, almacen As String, CodCompra As String) ''Bandera = true si es que haiq cargar denuevo la tabla de Precio Bandera =false si solo cargar datos al Janus con el precio antepuesto
         If (cbAlmacen.SelectedIndex >= 0) Then
-            'Dim productos As DataTable = L_fnListarProductos()
-            Dim productos As DataTable = L_fnListarProductosParaActualizarPrecios()
+
+            Dim productos As DataTable = L_fnMostrarDetalleCompraSinActualizarPrecios(almacen, CodCompra)
 
 
             grprecio.BoundMode = Janus.Data.BoundMode.Bound
             grprecio.DataSource = productos
             grprecio.RetrieveStructure()
 
-            With grprecio.RootTable.Columns("yfnumi")
-                .Caption = "COD DYN"
+
+            With grprecio.RootTable.Columns("cbnumi")
+                .Width = 100
+                .Visible = False
+            End With
+            With grprecio.RootTable.Columns("cbtv1numi")
+                .Width = 100
+                .Visible = False
+            End With
+            With grprecio.RootTable.Columns("cbty5prod")
+                .Caption = "COD DYNASYS"
                 .Width = 100
                 .Visible = True
             End With
@@ -82,25 +91,40 @@ Public Class F0_VerificarPrecioCompra
             End With
             With grprecio.RootTable.Columns("yfcbarra")
                 .Caption = "COD. BARRAS"
-                .Width = 150
+                .Width = 120
                 .Visible = True
             End With
-            With grprecio.RootTable.Columns("yfcdprod1")
+            With grprecio.RootTable.Columns("producto")
                 .Caption = "PRODUCTO"
                 .Width = 450
                 .Visible = True
             End With
-
-            With grprecio.RootTable.Columns("yfbactPrecio")
-                .Caption = "ACTUALIZA PRECIO PDV?"
-                .Width = 150
-                .Visible = True
-            End With
-            With grprecio.RootTable.Columns("estado")
-                .Caption = "ESTADO"
-                .Width = 120
+            With grprecio.RootTable.Columns("cbumin")
+                .Width = 100
                 .Visible = False
             End With
+            With grprecio.RootTable.Columns("unidad")
+                .Width = 100
+                .Visible = False
+            End With
+            With grprecio.RootTable.Columns("PrecioAntiguo")
+                .Caption = "PRECIO ANTIGUO"
+                .Width = 150
+                .FormatString = "0.00"
+                .Visible = True
+            End With
+            With grprecio.RootTable.Columns("PrecioNuevo")
+                .Caption = "PRECIO NUEVO"
+                .Width = 150
+                .FormatString = "0.00"
+                .Visible = True
+            End With
+            With grprecio.RootTable.Columns("cbaest")
+                .Caption = "ACTUALIZA PRECIO COSTO?"
+                .Width = 180
+                .Visible = True
+            End With
+
             'Habilitar Filtradores
             With grprecio
                 .GroupByBoxVisible = False
@@ -115,7 +139,7 @@ Public Class F0_VerificarPrecioCompra
                 .AlternatingColors = True
 
                 .RecordNavigator = True
-                .RecordNavigatorText = "Productos"
+                .RecordNavigatorText = "Productos-Precios Costo"
             End With
         End If
     End Sub
@@ -141,7 +165,10 @@ Public Class F0_VerificarPrecioCompra
 
         btnModificar.Enabled = True
         btnGrabar.Enabled = False
-        _prCargarTabla(True)
+        tbCodCompra.Clear()
+        tbProveedor.Clear()
+        _prCargarTabla(False, cbAlmacen.Value, -1)
+
 
     End Sub
     Private Sub _prhabilitar()
@@ -167,6 +194,7 @@ Public Class F0_VerificarPrecioCompra
     Private Sub btnModificar_Click(sender As Object, e As EventArgs) Handles btnModificar.Click
         _prhabilitar()
         btnModificar.Enabled = False
+        tbCodCompra.Focus()
 
     End Sub
 
@@ -225,27 +253,23 @@ Public Class F0_VerificarPrecioCompra
     End Sub
     Private Sub btnGrabar_Click(sender As Object, e As EventArgs) Handles btnGrabar.Click
 
-        Dim grabar As Boolean = L_fnActualizarProductoTY0052("", CType(grprecio.DataSource, DataTable))
+        Dim grabar As Boolean = L_fnActualizarTC0011a(tbCodCompra.Text, CType(grprecio.DataSource, DataTable))
         If (grabar) Then
             Dim img As Bitmap = New Bitmap(My.Resources.checked, 50, 50)
-            ToastNotification.Show(Me, "Condición de Productos Actualizados con éxito".ToUpper,
+            ToastNotification.Show(Me, "Precios de Costo actualizados con éxito".ToUpper,
                                       img, 2000,
                                       eToastGlowColor.Green,
                                       eToastPosition.TopCenter
                                       )
 
-            _prCargarTabla(True)
+            _prCargarTabla(True, cbAlmacen.Value, tbCodCompra.Text)
             _prInhabiliitar()
 
         Else
             Dim img As Bitmap = New Bitmap(My.Resources.cancel, 50, 50)
-            ToastNotification.Show(Me, "La Condición de Productos no pudo ser insertado".ToUpper, img, 2000, eToastGlowColor.Red, eToastPosition.BottomCenter)
+            ToastNotification.Show(Me, "Precios de Costo no pudieron ser actualizados".ToUpper, img, 2000, eToastGlowColor.Red, eToastPosition.BottomCenter)
         End If
 
-    End Sub
-
-    Private Sub cbAlmacen_ValueChanged(sender As Object, e As EventArgs) Handles cbAlmacen.ValueChanged
-        _prCargarTabla(True) ''Si el selecciona otra sucursal cambia sus precio por sucursales
     End Sub
 
 
@@ -395,21 +419,77 @@ Public Class F0_VerificarPrecioCompra
 
     End Sub
 
-    Private Sub btActPrecios_Click(sender As Object, e As EventArgs) Handles btActPrecios.Click
-        Dim grabar As Boolean = L_fnActualizarPreciosEnLote()
-        If (grabar) Then
-            Dim img As Bitmap = New Bitmap(My.Resources.checked, 50, 50)
-            ToastNotification.Show(Me, "Precio PDV y Especial actualizados con éxito".ToUpper,
-                                      img, 2000,
-                                      eToastGlowColor.Green,
-                                      eToastPosition.TopCenter
-                                      )
 
-
-        Else
-            Dim img As Bitmap = New Bitmap(My.Resources.cancel, 50, 50)
-            ToastNotification.Show(Me, "Precio PDV y Especial no pudieron ser actualizados".ToUpper,
-                                   img, 2000, eToastGlowColor.Red, eToastPosition.BottomCenter)
-        End If
+    Private Sub btnSearch_Click(sender As Object, e As EventArgs) Handles btnSearch.Click
+        Buscador()
     End Sub
+
+    Private Sub Buscador()
+        Try
+            If (_fnAccesible()) Then
+
+                Dim dt As DataTable
+
+                dt = L_fnMostrarComprasSinActualizarPrecios()
+
+                Dim listEstCeldas As New List(Of Modelo.Celda)
+                listEstCeldas.Add(New Modelo.Celda("canumi,", True, "Cód. Compra", 120))
+                listEstCeldas.Add(New Modelo.Celda("caalm", False, "", 50))
+                listEstCeldas.Add(New Modelo.Celda("cafdoc", True, "Fecha", 100))
+                listEstCeldas.Add(New Modelo.Celda("caty4prov", False, "", 50))
+                listEstCeldas.Add(New Modelo.Celda("proveedor", True, "Proveedor", 250))
+
+                Dim ef = New Efecto
+                ef.tipo = 3
+                ef.dt = dt
+                ef.SeleclCol = 1
+                ef.listEstCeldas = listEstCeldas
+                ef.alto = 50
+                ef.ancho = 200
+                ef.Context = "Seleccione Compra".ToUpper
+                ef.SeleclCol = 1
+                ef.ShowDialog()
+                Dim bandera As Boolean = False
+                bandera = ef.band
+                If (bandera = True) Then
+                    Dim Row As Janus.Windows.GridEX.GridEXRow = ef.Row
+                    If (IsNothing(Row)) Then
+                        tbCodCompra.Focus()
+                        Return
+                    End If
+
+                    tbCodCompra.Text = Row.Cells("canumi").Value
+                    tbProveedor.Text = Row.Cells("proveedor").Value
+
+                    _prCargarTabla(True, cbAlmacen.Value, tbCodCompra.Text)
+
+                End If
+
+            End If
+        Catch ex As Exception
+            MostrarMensajeError(ex.Message)
+        End Try
+    End Sub
+    Private Sub MostrarMensajeError(mensaje As String)
+        ToastNotification.Show(Me,
+                               mensaje.ToUpper,
+                               My.Resources.WARNING,
+                               5000,
+                               eToastGlowColor.Red,
+                               eToastPosition.TopCenter)
+
+    End Sub
+    Private Sub tbCodCompra_KeyDown(sender As Object, e As KeyEventArgs) Handles tbCodCompra.KeyDown
+        Try
+            If (_fnAccesible()) Then
+                If e.KeyData = Keys.Control + Keys.Enter Then
+                    Buscador()
+                End If
+            End If
+        Catch ex As Exception
+            MostrarMensajeError(ex.Message)
+        End Try
+    End Sub
+
+
 End Class
