@@ -121,7 +121,7 @@ Public Class F0_VerificarPrecioCompra
             End With
             With grprecio.RootTable.Columns("cbaest")
                 .Caption = "ACTUALIZA PRECIO COSTO?"
-                .Width = 180
+                .Width = 210
                 .Visible = True
             End With
 
@@ -239,10 +239,13 @@ Public Class F0_VerificarPrecioCompra
         End If
         If (_fnAccesible() And IsNothing(grprecio.DataSource) = False) Then
             'Deshabilitar la columna de Productos y solo habilitar la de los precios
-            If (e.Column.Index = grprecio.RootTable.Columns("yfcdprod1").Index Or
-               e.Column.Index = grprecio.RootTable.Columns("yfcprod").Index Or
-                e.Column.Index = grprecio.RootTable.Columns("yfnumi").Index Or
-                e.Column.Index = grprecio.RootTable.Columns("yfcbarra").Index) Then
+            If (e.Column.Index = grprecio.RootTable.Columns("cbtv1numi").Index Or
+                e.Column.Index = grprecio.RootTable.Columns("cbty5prod").Index Or
+                e.Column.Index = grprecio.RootTable.Columns("yfcprod").Index Or
+                e.Column.Index = grprecio.RootTable.Columns("yfcbarra").Index Or
+                e.Column.Index = grprecio.RootTable.Columns("producto").Index Or
+                e.Column.Index = grprecio.RootTable.Columns("PrecioAntiguo").Index Or
+                e.Column.Index = grprecio.RootTable.Columns("PrecioNuevo").Index) Then
                 e.Cancel = True
             Else
                 e.Cancel = False
@@ -399,18 +402,18 @@ Public Class F0_VerificarPrecioCompra
     End Sub
 
     Private Sub grprecio_CellValueChanged(sender As Object, e As ColumnActionEventArgs) Handles grprecio.CellValueChanged
-        Dim lin As Integer = grprecio.GetValue("yfnumi")
-        Dim pos As Integer = -1
-        _fnObtenerFilaDetalle(pos, lin)
+        'Dim lin As Integer = grprecio.GetValue("cbty5prod")
+        'Dim pos As Integer = -1
+        '_fnObtenerFilaDetalle(pos, lin)
 
-        Dim estado As Integer = CType(grprecio.DataSource, DataTable).Rows(pos).Item("estado")
-        If (estado = 1) Then
-            CType(grprecio.DataSource, DataTable).Rows(pos).Item("estado") = 2
-        End If
+        'Dim estado As Integer = CType(grprecio.DataSource, DataTable).Rows(pos).Item("estado")
+        'If (estado = 1) Then
+        '    CType(grprecio.DataSource, DataTable).Rows(pos).Item("estado") = 2
+        'End If
     End Sub
     Public Sub _fnObtenerFilaDetalle(ByRef pos As Integer, numi As Integer)
         For i As Integer = 0 To CType(grprecio.DataSource, DataTable).Rows.Count - 1 Step 1
-            Dim _numi As Integer = CType(grprecio.DataSource, DataTable).Rows(i).Item("yfnumi")
+            Dim _numi As Integer = CType(grprecio.DataSource, DataTable).Rows(i).Item("cbty5prod")
             If (_numi = numi) Then
                 pos = i
                 Return

@@ -362,8 +362,8 @@ Public Class F0_Precios
             Dim grabar As Boolean = L_fnGrabarCategorias("", letra, tbDescripcion.Text, IIf(swEstado.Value = True, 1, 0), TbMargen.Text)
             If (grabar) Then
                 Dim img As Bitmap = New Bitmap(My.Resources.checked, 50, 50)
-                ToastNotification.Show(Me, "categoria Grabado con Exito.".ToUpper,
-                                          img, 2000,
+                ToastNotification.Show(Me, "Categoria Grabado con éxito.".ToUpper,
+                                          img, 2500,
                                           eToastGlowColor.Green,
                                           eToastPosition.TopCenter
                                           )
@@ -376,7 +376,7 @@ Public Class F0_Precios
 
             Else
                 Dim img As Bitmap = New Bitmap(My.Resources.cancel, 50, 50)
-                ToastNotification.Show(Me, "La categoria no pudo ser insertado".ToUpper, img, 2000, eToastGlowColor.Red, eToastPosition.BottomCenter)
+                ToastNotification.Show(Me, "La categoria no pudo ser insertada".ToUpper, img, 2500, eToastGlowColor.Red, eToastPosition.BottomCenter)
             End If
         End If
 
@@ -510,7 +510,11 @@ Public Class F0_Precios
                     grprecio.SetValue("1100", 0)
                 End If
             End If
-
+            If (e.Column.Index = grprecio.RootTable.Columns("1101").Index) Then
+                If (Not IsNumeric(grprecio.GetValue("1101")) Or grprecio.GetValue("1101").ToString = String.Empty) Then
+                    grprecio.SetValue("1101", 0)
+                End If
+            End If
 
             'Habilitar solo las columnas de Precio, %, Monto y Observación
             If (e.Column.Index > 1) Then
@@ -556,8 +560,8 @@ Public Class F0_Precios
         Dim grabar As Boolean = L_fnGrabarPrecios("", cbAlmacen.Value, precio)
         If (grabar) Then
             Dim img As Bitmap = New Bitmap(My.Resources.checked, 50, 50)
-            ToastNotification.Show(Me, "categoria Grabado con Exito.".ToUpper,
-                                      img, 2000,
+            ToastNotification.Show(Me, "Precios actualizados con éxito.".ToUpper,
+                                      img, 3000,
                                       eToastGlowColor.Green,
                                       eToastPosition.TopCenter
                                       )
@@ -568,7 +572,7 @@ Public Class F0_Precios
 
         Else
             Dim img As Bitmap = New Bitmap(My.Resources.cancel, 50, 50)
-            ToastNotification.Show(Me, "La categoria no pudo ser insertado".ToUpper, img, 2000, eToastGlowColor.Red, eToastPosition.BottomCenter)
+            ToastNotification.Show(Me, "Los precios no pudieron ser actualizados".ToUpper, img, 2000, eToastGlowColor.Red, eToastPosition.BottomCenter)
         End If
 
     End Sub
