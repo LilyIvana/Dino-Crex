@@ -35,7 +35,7 @@ Public Class F0_VerificarPrecioCompra
         _prCargarComboLibreria(cbAlmacen)
 
         _prAsignarPermisos()
-        Me.Text = "VERIFICACIÓN Y ACTUALIZACIÓN DE PRECIOS DE COSTO DE LAS COMPRAS"
+        Me.Text = "VERIFICACIÓN Y ACTUALIZACIÓN DE PRECIOS DE COSTO SEGÚN COMPRAS INGRESADAS"
         Dim blah As New Bitmap(New Bitmap(My.Resources.precio), 20, 20)
         Dim ico As Icon = Icon.FromHandle(blah.GetHicon())
         Me.Icon = ico

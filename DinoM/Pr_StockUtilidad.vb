@@ -75,6 +75,20 @@ Public Class Pr_StockUtilidad
         '    _prObtenerKardexGeneral(_dt)
         'End If
 
+
+        If swEstado.Value = True Then
+
+            Dim row As DataRow() = _dt.Select("yfap=1")
+            _dt = _dt.Clone
+            For Each ldrRow As DataRow In row
+                _dt.ImportRow(ldrRow)
+            Next
+        Else
+            _dt = _dt.Copy
+        End If
+
+
+
         If (_dt.Rows.Count > 0) Then
 
             Dim objrep As New R_StockActualUtilidad

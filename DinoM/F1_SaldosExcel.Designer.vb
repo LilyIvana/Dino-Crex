@@ -43,6 +43,8 @@ Partial Class F1_SaldosExcel
         Me.btnExportarExcel = New DevComponents.DotNetBar.ButtonX()
         Me.btnGenerar = New DevComponents.DotNetBar.ButtonX()
         Me.tbFechaF = New DevComponents.Editors.DateTimeAdv.DateTimeInput()
+        Me.swEstado = New DevComponents.DotNetBar.Controls.SwitchButton()
+        Me.LabelX4 = New DevComponents.DotNetBar.LabelX()
         CType(Me.SuperTabPrincipal, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuperTabPrincipal.SuspendLayout()
         Me.SuperTabControlPanelRegistro.SuspendLayout()
@@ -321,6 +323,8 @@ Partial Class F1_SaldosExcel
         'Panel1
         '
         Me.Panel1.AutoScroll = True
+        Me.Panel1.Controls.Add(Me.LabelX4)
+        Me.Panel1.Controls.Add(Me.swEstado)
         Me.Panel1.Controls.Add(Me.Panel2)
         Me.Panel1.Controls.Add(Me.LabelX1)
         Me.Panel1.Controls.Add(Me.cbFechaAl)
@@ -341,7 +345,7 @@ Partial Class F1_SaldosExcel
         '
         Me.Panel2.Controls.Add(Me.checkMayorCero)
         Me.Panel2.Controls.Add(Me.Checktodos)
-        Me.Panel2.Location = New System.Drawing.Point(391, 28)
+        Me.Panel2.Location = New System.Drawing.Point(589, 29)
         Me.Panel2.Name = "Panel2"
         Me.Panel2.Size = New System.Drawing.Size(180, 30)
         Me.Panel2.TabIndex = 259
@@ -386,7 +390,7 @@ Partial Class F1_SaldosExcel
         Me.LabelX1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.LabelX1.Font = New System.Drawing.Font("Georgia", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.LabelX1.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(85, Byte), Integer), CType(CType(139, Byte), Integer))
-        Me.LabelX1.Location = New System.Drawing.Point(391, 6)
+        Me.LabelX1.Location = New System.Drawing.Point(588, 4)
         Me.LabelX1.Name = "LabelX1"
         Me.LabelX1.SingleLineColor = System.Drawing.SystemColors.Control
         Me.LabelX1.Size = New System.Drawing.Size(74, 23)
@@ -397,7 +401,7 @@ Partial Class F1_SaldosExcel
         '
         Me.cbFechaAl.AutoSize = True
         Me.cbFechaAl.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(85, Byte), Integer), CType(CType(139, Byte), Integer))
-        Me.cbFechaAl.Location = New System.Drawing.Point(603, 33)
+        Me.cbFechaAl.Location = New System.Drawing.Point(805, 34)
         Me.cbFechaAl.Name = "cbFechaAl"
         Me.cbFechaAl.Size = New System.Drawing.Size(48, 20)
         Me.cbFechaAl.TabIndex = 257
@@ -417,7 +421,7 @@ Partial Class F1_SaldosExcel
         Me.tbAlmacen.Office2007CustomColor = System.Drawing.Color.DodgerBlue
         Me.tbAlmacen.SelectedIndex = -1
         Me.tbAlmacen.SelectedItem = Nothing
-        Me.tbAlmacen.Size = New System.Drawing.Size(164, 22)
+        Me.tbAlmacen.Size = New System.Drawing.Size(194, 22)
         Me.tbAlmacen.TabIndex = 254
         Me.tbAlmacen.VisualStyle = Janus.Windows.GridEX.VisualStyle.Office2007
         '
@@ -478,7 +482,7 @@ Partial Class F1_SaldosExcel
         Me.btnExportarExcel.Image = Global.DinoM.My.Resources.Resources.sheets
         Me.btnExportarExcel.ImageFixedSize = New System.Drawing.Size(35, 40)
         Me.btnExportarExcel.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top
-        Me.btnExportarExcel.Location = New System.Drawing.Point(947, 6)
+        Me.btnExportarExcel.Location = New System.Drawing.Point(1085, 6)
         Me.btnExportarExcel.Name = "btnExportarExcel"
         Me.btnExportarExcel.Size = New System.Drawing.Size(65, 65)
         Me.btnExportarExcel.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
@@ -493,7 +497,7 @@ Partial Class F1_SaldosExcel
         Me.btnGenerar.Image = Global.DinoM.My.Resources.Resources.ventasCostos
         Me.btnGenerar.ImageFixedSize = New System.Drawing.Size(40, 40)
         Me.btnGenerar.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top
-        Me.btnGenerar.Location = New System.Drawing.Point(863, 6)
+        Me.btnGenerar.Location = New System.Drawing.Point(1001, 6)
         Me.btnGenerar.Name = "btnGenerar"
         Me.btnGenerar.Size = New System.Drawing.Size(65, 65)
         Me.btnGenerar.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
@@ -512,7 +516,7 @@ Partial Class F1_SaldosExcel
         Me.tbFechaF.Enabled = False
         Me.tbFechaF.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.tbFechaF.IsPopupCalendarOpen = False
-        Me.tbFechaF.Location = New System.Drawing.Point(657, 31)
+        Me.tbFechaF.Location = New System.Drawing.Point(859, 32)
         '
         '
         '
@@ -546,6 +550,41 @@ Partial Class F1_SaldosExcel
         Me.tbFechaF.Size = New System.Drawing.Size(120, 22)
         Me.tbFechaF.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
         Me.tbFechaF.TabIndex = 238
+        '
+        'swEstado
+        '
+        '
+        '
+        '
+        Me.swEstado.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.swEstado.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.swEstado.Location = New System.Drawing.Point(408, 33)
+        Me.swEstado.Name = "swEstado"
+        Me.swEstado.OffBackColor = System.Drawing.Color.Gold
+        Me.swEstado.OffText = "TODOS"
+        Me.swEstado.OnBackColor = System.Drawing.Color.LimeGreen
+        Me.swEstado.OnText = "ACTIVOS"
+        Me.swEstado.Size = New System.Drawing.Size(140, 22)
+        Me.swEstado.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+        Me.swEstado.TabIndex = 368
+        Me.swEstado.Value = True
+        Me.swEstado.ValueObject = "Y"
+        '
+        'LabelX4
+        '
+        Me.LabelX4.BackColor = System.Drawing.Color.Transparent
+        '
+        '
+        '
+        Me.LabelX4.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.LabelX4.Font = New System.Drawing.Font("Georgia", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LabelX4.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(85, Byte), Integer), CType(CType(139, Byte), Integer))
+        Me.LabelX4.Location = New System.Drawing.Point(408, 4)
+        Me.LabelX4.Name = "LabelX4"
+        Me.LabelX4.SingleLineColor = System.Drawing.SystemColors.Control
+        Me.LabelX4.Size = New System.Drawing.Size(174, 23)
+        Me.LabelX4.TabIndex = 369
+        Me.LabelX4.Text = "Estado de los Productos:"
         '
         'F1_SaldosExcel
         '
@@ -600,4 +639,6 @@ Partial Class F1_SaldosExcel
     Friend WithEvents Panel2 As Panel
     Friend WithEvents checkMayorCero As DevComponents.DotNetBar.Controls.CheckBoxX
     Friend WithEvents Checktodos As DevComponents.DotNetBar.Controls.CheckBoxX
+    Friend WithEvents swEstado As DevComponents.DotNetBar.Controls.SwitchButton
+    Friend WithEvents LabelX4 As DevComponents.DotNetBar.LabelX
 End Class

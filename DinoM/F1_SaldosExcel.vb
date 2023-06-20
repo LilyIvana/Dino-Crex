@@ -114,9 +114,21 @@ Public Class F1_SaldosExcel
             _dt = L_prReporteUtilidadmayorNuevo2(tbAlmacen.Value, tbcatprecio.Value, tbFechaF.Value.ToString("yyyy/MM/dd"))
         End If
 
+        Dim table As DataTable
+        If swEstado.Value = True Then
+            table = _dt.Clone
+            Dim row As DataRow() = _dt.Select("yfap=1")
 
-        If _dt.Rows.Count > 0 Then
-            JGrM_Buscador.DataSource = _dt
+            For Each ldrRow As DataRow In row
+                table.ImportRow(ldrRow)
+            Next
+        Else
+            table = _dt.Copy
+        End If
+
+
+        If table.Rows.Count > 0 Then
+            JGrM_Buscador.DataSource = table
             JGrM_Buscador.RetrieveStructure()
             JGrM_Buscador.AlternatingColors = True
 
