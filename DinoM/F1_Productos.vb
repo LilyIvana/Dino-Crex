@@ -341,8 +341,8 @@ Public Class F1_Productos
         tbDescCort.Clear()
 
 
-        CbAeconomica.SelectedIndex = -1
-        CbUmedida.SelectedIndex = -1
+        CbAeconomica.SelectedIndex = 0 ''Por defecto que carque la primera actividad económica
+        CbUmedida.SelectedIndex = 56 ''Por defecto que carque la unidad (bienes)
         CbProdServ.SelectedIndex = -1
         TbPrecioPsifac.Clear()
 
@@ -358,9 +358,14 @@ Public Class F1_Productos
             swEstado.Value = True
             tbConversion1.Value = 1
             tbConversion2.Value = 1
-
             tbStockMinimo.Value = 0
+
         End If
+
+        tbConversion1.Value = 1
+        tbConversion2.Value = 1
+        tbStockMinimo.Value = 0
+
         tbCodProd.Focus()
         UsImg.pbImage.Image = My.Resources.pantalla
 

@@ -88,7 +88,6 @@ Public Class Pr_StockUtilidad
         End If
 
 
-
         If (_dt.Rows.Count > 0) Then
 
             Dim objrep As New R_StockActualUtilidad
@@ -100,8 +99,6 @@ Public Class Pr_StockUtilidad
             MReportViewer.ReportSource = objrep
             MReportViewer.Show()
             MReportViewer.BringToFront()
-
-
 
         Else
             ToastNotification.Show(Me, "NO HAY DATOS PARA LOS PARAMETROS SELECCIONADOS..!!!",
