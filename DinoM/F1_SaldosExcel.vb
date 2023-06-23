@@ -366,8 +366,12 @@ Public Class F1_SaldosExcel
     Private Sub cbFechaAl_CheckedChanged(sender As Object, e As EventArgs) Handles cbFechaAl.CheckedChanged
         If (cbFechaAl.Checked = True) Then
             tbFechaF.Enabled = True
+            swEstado.Value = False
         Else
             tbFechaF.Enabled = False
+            tbFechaF.Value = Now.Date
+            swEstado.Value = True
+
         End If
     End Sub
 End Class

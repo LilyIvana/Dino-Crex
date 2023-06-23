@@ -203,8 +203,11 @@ Public Class Pr_StockUtilidad
     Private Sub CheckBox1_CheckedChanged(sender As Object, e As EventArgs) Handles CheckBox1.CheckedChanged
         If (CheckBox1.Checked = True) Then
             date1.Enabled = True
+            swEstado.Value = False
         Else
             date1.Enabled = False
+            date1.Value = Now.Date
+            swEstado.Value = True
         End If
 
     End Sub
