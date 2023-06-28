@@ -44,6 +44,7 @@ Partial Class F0_VentasSupermercado
         Me.CmDetalle = New System.Windows.Forms.ContextMenuStrip(Me.components)
         Me.ModificarCantidadMenu = New System.Windows.Forms.ToolStripMenuItem()
         Me.EliminarProductoMenu = New System.Windows.Forms.ToolStripMenuItem()
+        Me.TimerImagenes = New System.Windows.Forms.Timer(Me.components)
         Me.PanelDatos = New System.Windows.Forms.Panel()
         Me.grdetalle = New Janus.Windows.GridEX.GridEX()
         Me.PanelButtom = New System.Windows.Forms.Panel()
@@ -54,6 +55,7 @@ Partial Class F0_VentasSupermercado
         Me.tbTotal = New DevComponents.Editors.DoubleInput()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.swEstadoFacturas = New DevComponents.DotNetBar.Controls.SwitchButton()
         Me.lbNombreCliente = New System.Windows.Forms.Label()
         Me.Label12 = New System.Windows.Forms.Label()
         Me.Label11 = New System.Windows.Forms.Label()
@@ -75,7 +77,6 @@ Partial Class F0_VentasSupermercado
         Me.PanelTop = New System.Windows.Forms.Panel()
         Me.PictureBox2 = New System.Windows.Forms.PictureBox()
         Me.QrFactura = New Gma.QrCodeNet.Encoding.Windows.Forms.QrCodeImgControl()
-        Me.TimerImagenes = New System.Windows.Forms.Timer(Me.components)
         Me.PanelImagen.SuspendLayout()
         Me.PanelRight.SuspendLayout()
         Me.PanelC.SuspendLayout()
@@ -385,6 +386,10 @@ Partial Class F0_VentasSupermercado
         Me.EliminarProductoMenu.Size = New System.Drawing.Size(190, 36)
         Me.EliminarProductoMenu.Text = "Eliminar Producto"
         '
+        'TimerImagenes
+        '
+        Me.TimerImagenes.Interval = 10000
+        '
         'PanelDatos
         '
         Me.PanelDatos.BackgroundImage = Global.DinoM.My.Resources.Resources.fondo1
@@ -452,15 +457,14 @@ Partial Class F0_VentasSupermercado
         '
         Me.Label1Conn.AutoSize = True
         Me.Label1Conn.BackColor = System.Drawing.Color.Green
-        Me.Label1Conn.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label1Conn.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.5!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label1Conn.ForeColor = System.Drawing.Color.White
         Me.Label1Conn.Location = New System.Drawing.Point(229, 97)
         Me.Label1Conn.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label1Conn.Name = "Label1Conn"
-        Me.Label1Conn.Size = New System.Drawing.Size(13, 17)
+        Me.Label1Conn.Size = New System.Drawing.Size(11, 15)
         Me.Label1Conn.TabIndex = 415
         Me.Label1Conn.Text = "."
-        Me.Label1Conn.Visible = False
         '
         'tbDescuento
         '
@@ -534,6 +538,7 @@ Partial Class F0_VentasSupermercado
         '
         Me.Panel1.BackColor = System.Drawing.Color.Azure
         Me.Panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.Panel1.Controls.Add(Me.swEstadoFacturas)
         Me.Panel1.Controls.Add(Me.lbNombreCliente)
         Me.Panel1.Controls.Add(Me.Label12)
         Me.Panel1.Controls.Add(Me.Label11)
@@ -558,6 +563,27 @@ Partial Class F0_VentasSupermercado
         Me.Panel1.Name = "Panel1"
         Me.Panel1.Size = New System.Drawing.Size(619, 56)
         Me.Panel1.TabIndex = 9
+        '
+        'swEstadoFacturas
+        '
+        '
+        '
+        '
+        Me.swEstadoFacturas.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.swEstadoFacturas.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.swEstadoFacturas.Location = New System.Drawing.Point(227, 27)
+        Me.swEstadoFacturas.Name = "swEstadoFacturas"
+        Me.swEstadoFacturas.OffBackColor = System.Drawing.Color.Red
+        Me.swEstadoFacturas.OffText = "FACTURAS OFFLINE"
+        Me.swEstadoFacturas.OffTextColor = System.Drawing.Color.White
+        Me.swEstadoFacturas.OnBackColor = System.Drawing.Color.Green
+        Me.swEstadoFacturas.OnText = "FACTURAS ONLINE"
+        Me.swEstadoFacturas.OnTextColor = System.Drawing.Color.White
+        Me.swEstadoFacturas.Size = New System.Drawing.Size(200, 22)
+        Me.swEstadoFacturas.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+        Me.swEstadoFacturas.TabIndex = 5
+        Me.swEstadoFacturas.Value = True
+        Me.swEstadoFacturas.ValueObject = "Y"
         '
         'lbNombreCliente
         '
@@ -818,10 +844,6 @@ Partial Class F0_VentasSupermercado
         Me.QrFactura.Text = "QrCodeImgControl1"
         Me.QrFactura.Visible = False
         '
-        'TimerImagenes
-        '
-        Me.TimerImagenes.Interval = 10000
-        '
         'F0_VentasSupermercado
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -831,7 +853,7 @@ Partial Class F0_VentasSupermercado
         Me.Controls.Add(Me.PanelDatos)
         Me.Margin = New System.Windows.Forms.Padding(2)
         Me.Name = "F0_VentasSupermercado"
-        Me.Text = "Ventas"
+        Me.Text = "Venta Rápida"
         Me.WindowState = System.Windows.Forms.FormWindowState.Maximized
         Me.PanelImagen.ResumeLayout(False)
         Me.PanelRight.ResumeLayout(False)
@@ -913,4 +935,5 @@ Partial Class F0_VentasSupermercado
     Friend WithEvents Label11 As Label
     Friend WithEvents lbNombreCliente As Label
     Friend WithEvents Label12 As Label
+    Friend WithEvents swEstadoFacturas As DevComponents.DotNetBar.Controls.SwitchButton
 End Class

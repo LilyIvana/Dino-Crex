@@ -172,7 +172,7 @@ Module P_Global
     Public gb_email As String = ""
     Public gb_password As String = ""
     Public gb_url As String = ""
-
+    Public gb_OnOff As Integer = 1 '1 manda a facturar online, 2 manda a facturar offline
 
 #End Region
 

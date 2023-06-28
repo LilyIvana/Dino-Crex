@@ -1500,15 +1500,17 @@ Public Class F0_Venta2
                 Return False
             End If
 
-            Dim code = VerifConexion(tokenObtenido)
-            If (code = 200) Then
-                If (CbTipoDoc.Value = 5) Then ''El tipo de Doc. es Nit
-                    Dim tokenSifac As String = F0_Venta2.ObtToken()
-                    Dim Succes As Integer = VerificarNit(tokenSifac)
-                    If Succes <> 200 Then
-                        Return False
-                    End If
+            If gb_OnOff = 1 And CbTipoDoc.Value = 5 Then
+                Dim code = VerifConexion(tokenObtenido)
+                If (code = True) Then
+                    If (CbTipoDoc.Value = 5) Then ''El tipo de Doc. es Nit
+                        Dim tokenSifac As String = F0_Venta2.ObtToken()
+                        Dim Succes As Integer = VerificarNit(tokenSifac)
+                        If Succes <> 200 Then
+                            Return False
+                        End If
 
+                    End If
                 End If
             End If
 
@@ -4326,7 +4328,13 @@ salirIf:
             'MetPago(tokenObtenido)
             CodTipoDocumento(tokenObtenido)
             'code = VerifConexion(tokenObtenido)
-            'If (code = 200) Then Label1Conn.Text = "Conectado con Siat" Else Label1Conn.Text = "No conectado con Siat"
+            'If (code = True) Then
+            '    Label1Conn.Text = "ONLINE SIAT"
+            '    Label1Conn.BackColor = Color.Green
+            'Else
+            '    Label1Conn.Text = "OFFLINE SIAT"
+            '    Label1Conn.BackColor = Color.Red
+            'End If
             Me.WindowState = FormWindowState.Normal
         Else
             Me.Opacity = 100
@@ -4627,7 +4635,8 @@ salirIf:
         Dim result = JsonConvert.DeserializeObject(Of SiatConn)(response)
 
         Dim Codigoconn As String
-        Codigoconn = result.meta.code
+        'Codigoconn = result.meta.code
+        Codigoconn = result.data
         'Dim json = JsonConvert.SerializeObject(result)
         'MsgBox(json)
         Return Codigoconn
@@ -4794,6 +4803,7 @@ salirIf:
         Emenvio.montoTotalMoneda = Format((PrecioTot - Emenvio.descuentoAdicional), "#.#0")
         Emenvio.montoGiftCard = 0 '----------------
         Emenvio.codigoExcepcion = 0 '---------------
+        Emenvio.tipoEmision = gb_OnOff  '1 emite online, 2 emite offline
         Emenvio.usuario = gs_user
         Emenvio.email = email
         Emenvio.actividadEconomica = 471110 'falta

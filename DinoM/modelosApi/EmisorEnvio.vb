@@ -31,6 +31,7 @@
         Public Property montoGiftCard As Double
         Public Property descuentoAdicional As Double
         Public Property codigoExcepcion As Integer
+        Public Property tipoEmision As Integer
         Public Property usuario As String
         Public Property email As String
         Public Property actividadEconomica As Integer

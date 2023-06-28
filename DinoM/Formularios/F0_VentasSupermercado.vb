@@ -80,6 +80,7 @@ Public Class F0_VentasSupermercado
     Public IdNit As String
     Public ComplementoCI As String
 
+    Public SwFacturaClick As Boolean = False
 
 
 #Region "Metodos Privados"
@@ -104,6 +105,15 @@ Public Class F0_VentasSupermercado
         _CargarBanner()
 
         Programa = P_Principal.btnVentaRapida.Text
+
+        ''Aqui verifico si el parámetro para facturar esta en 1 o 2
+        swEstadoFacturas.Value = IIf(gb_OnOff = 1, "True", "False")
+        If gi_userRol = 1 Then
+            swEstadoFacturas.Visible = True
+        Else
+            swEstadoFacturas.Visible = False
+        End If
+
 
     End Sub
     Private Sub _CargarBanner()
@@ -2521,8 +2531,14 @@ Public Class F0_VentasSupermercado
 
         'MetPago(tokenObtenido)
         CodTipoDocumento(tokenObtenido)
-        'code = VerifConexion(tokenObtenido)
-        'If (code = 200) Then Label1Conn.Text = "Conectado con Siat" Else Label1Conn.Text = "No conectado con Siat"
+        Dim code = VerifConexion(tokenObtenido)
+        If (code = True) Then
+            Label1Conn.Text = "ONLINE SIAT"
+            Label1Conn.BackColor = Color.Green
+        Else
+            Label1Conn.Text = "OFFLINE SIAT"
+            Label1Conn.BackColor = Color.Red
+        End If
     End Sub
 
     Private Sub tbProducto_KeyDown(sender As Object, e As KeyEventArgs) Handles tbProducto.KeyDown
@@ -3614,7 +3630,14 @@ Public Class F0_VentasSupermercado
             contador = 0
         End If
 
-
+        Dim code = VerifConexion(tokenObtenido)
+        If (code = True) Then
+            Label1Conn.Text = "ONLINE SIAT"
+            Label1Conn.BackColor = Color.Green
+        Else
+            Label1Conn.Text = "OFFLINE SIAT"
+            Label1Conn.BackColor = Color.Red
+        End If
 
     End Sub
 
@@ -3634,6 +3657,7 @@ Public Class F0_VentasSupermercado
     'Funciones de conexion con sifac para facturacion
 
     Public Shared Function ObtToken()
+
         Dim api = New DBApi()
 
         Dim Lenvio = New LoginEnvio()
@@ -3679,7 +3703,8 @@ Public Class F0_VentasSupermercado
         Dim result = JsonConvert.DeserializeObject(Of SiatConn)(response)
 
         Dim Codigoconn As String
-        Codigoconn = result.meta.code
+        'Codigoconn = result.meta.code
+        Codigoconn = result.data
         'Dim json = JsonConvert.SerializeObject(result)
         'MsgBox(json)
         Return Codigoconn
@@ -3823,6 +3848,7 @@ Public Class F0_VentasSupermercado
         Emenvio.montoTotalMoneda = Format((PrecioTot - Emenvio.descuentoAdicional), "#.#0")
         Emenvio.montoGiftCard = 0 '----------------
         Emenvio.codigoExcepcion = 0 '---------------
+        Emenvio.tipoEmision = gb_OnOff  '1 emite online, 2 emite offline
         Emenvio.usuario = gs_user
         Emenvio.email = email
         Emenvio.actividadEconomica = 471110 'Actividad económica una sola para todos los productos
@@ -4124,4 +4150,23 @@ Public Class F0_VentasSupermercado
         Return dt
     End Function
 
+
+
+
+
+    Private Sub swEstadoFacturas_ValueChanged(sender As Object, e As EventArgs) Handles swEstadoFacturas.ValueChanged
+        If SwFacturaClick = True Then
+            If swEstadoFacturas.Value = True Then
+                L_ModificarParametrosFact(1) ''Se modifica para que facture Online
+                gb_OnOff = 1
+            Else
+                L_ModificarParametrosFact(2) ''Se modifica para que facture Offline
+                gb_OnOff = 2
+            End If
+        End If
+    End Sub
+
+    Private Sub swEstadoFacturas_Click(sender As Object, e As EventArgs) Handles swEstadoFacturas.Click
+        SwFacturaClick = True
+    End Sub
 End Class

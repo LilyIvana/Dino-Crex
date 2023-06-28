@@ -2370,12 +2370,12 @@ Partial Class F0_Venta2
         '
         Me.Label1Conn.AutoSize = True
         Me.Label1Conn.BackColor = System.Drawing.Color.Green
-        Me.Label1Conn.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label1Conn.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.5!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label1Conn.ForeColor = System.Drawing.Color.White
         Me.Label1Conn.Location = New System.Drawing.Point(652, 9)
         Me.Label1Conn.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label1Conn.Name = "Label1Conn"
-        Me.Label1Conn.Size = New System.Drawing.Size(14, 20)
+        Me.Label1Conn.Size = New System.Drawing.Size(11, 15)
         Me.Label1Conn.TabIndex = 414
         Me.Label1Conn.Text = "."
         Me.Label1Conn.Visible = False

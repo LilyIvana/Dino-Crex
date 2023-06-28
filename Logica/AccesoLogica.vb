@@ -30,6 +30,16 @@ Public Class AccesoLogica
         _Error = D_Modificar_Datos("TC000", Sql, _where)
         Return Not _Error
     End Function
+
+    Public Shared Sub L_ModificarParametrosFact(_onoff As String)
+        Dim _Err As Boolean
+        Dim Sql, _where As String
+
+        Sql = "OnOff = " + _onoff
+
+        _where = "estado =1 "
+        _Err = D_Modificar_Datos("ParametrosFact", Sql, _where)
+    End Sub
     Public Shared Function L_fnConfParametrosFacturacion() As DataTable
         Dim _Tabla As DataTable
         Dim _Where, _campos As String
