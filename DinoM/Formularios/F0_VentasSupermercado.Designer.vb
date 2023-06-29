@@ -388,7 +388,7 @@ Partial Class F0_VentasSupermercado
         '
         'TimerImagenes
         '
-        Me.TimerImagenes.Interval = 10000
+        Me.TimerImagenes.Interval = 20000
         '
         'PanelDatos
         '
@@ -599,7 +599,7 @@ Partial Class F0_VentasSupermercado
         'Label12
         '
         Me.Label12.AutoSize = True
-        Me.Label12.Font = New System.Drawing.Font("Calibri", 7.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label12.Font = New System.Drawing.Font("Calibri", 8.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label12.Location = New System.Drawing.Point(225, 3)
         Me.Label12.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label12.Name = "Label12"
@@ -678,22 +678,22 @@ Partial Class F0_VentasSupermercado
         'Label3
         '
         Me.Label3.AutoSize = True
-        Me.Label3.Font = New System.Drawing.Font("Calibri", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label3.Font = New System.Drawing.Font("Calibri", 8.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label3.Location = New System.Drawing.Point(9, 36)
         Me.Label3.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(166, 14)
+        Me.Label3.Size = New System.Drawing.Size(154, 13)
         Me.Label3.TabIndex = 11
         Me.Label3.Text = "Tecla Ctrl +C: Modificar Cantidad"
         '
         'lbUsuario
         '
         Me.lbUsuario.AutoSize = True
-        Me.lbUsuario.Font = New System.Drawing.Font("Calibri", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lbUsuario.Font = New System.Drawing.Font("Calibri", 8.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lbUsuario.Location = New System.Drawing.Point(68, 20)
         Me.lbUsuario.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.lbUsuario.Name = "lbUsuario"
-        Me.lbUsuario.Size = New System.Drawing.Size(154, 14)
+        Me.lbUsuario.Size = New System.Drawing.Size(146, 13)
         Me.lbUsuario.TabIndex = 10
         Me.lbUsuario.Text = "Marco Antonio Mamani Chura"
         Me.lbUsuario.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -701,11 +701,11 @@ Partial Class F0_VentasSupermercado
         'Label8
         '
         Me.Label8.AutoSize = True
-        Me.Label8.Font = New System.Drawing.Font("Calibri", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label8.Font = New System.Drawing.Font("Calibri", 8.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label8.Location = New System.Drawing.Point(9, 20)
         Me.Label8.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label8.Name = "Label8"
-        Me.Label8.Size = New System.Drawing.Size(48, 14)
+        Me.Label8.Size = New System.Drawing.Size(45, 13)
         Me.Label8.TabIndex = 9
         Me.Label8.Text = "Usuario:"
         '
@@ -724,11 +724,11 @@ Partial Class F0_VentasSupermercado
         'Label5
         '
         Me.Label5.AutoSize = True
-        Me.Label5.Font = New System.Drawing.Font("Calibri", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label5.Font = New System.Drawing.Font("Calibri", 8.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label5.Location = New System.Drawing.Point(9, 5)
         Me.Label5.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(55, 14)
+        Me.Label5.Size = New System.Drawing.Size(51, 13)
         Me.Label5.TabIndex = 7
         Me.Label5.Text = "Nro. Caja:"
         '
@@ -798,7 +798,7 @@ Partial Class F0_VentasSupermercado
         'Label4
         '
         Me.Label4.AutoSize = True
-        Me.Label4.Font = New System.Drawing.Font("Calibri", 7.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label4.Font = New System.Drawing.Font("Calibri", 8.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label4.Location = New System.Drawing.Point(225, 6)
         Me.Label4.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label4.Name = "Label4"

@@ -3651,7 +3651,26 @@ Public Class F0_VentasSupermercado
         Return tabla
     End Function
 
+    Private Sub swEstadoFacturas_ValueChanged(sender As Object, e As EventArgs) Handles swEstadoFacturas.ValueChanged
+        If SwFacturaClick = True Then
+            If swEstadoFacturas.Value = True Then
+                L_ModificarParametrosFact(1) ''Se modifica para que facture Online
+                gb_OnOff = 1
+                ToastNotification.Show(Me, "Las facturas se emitirán online".ToUpper,
+                                       My.Resources.OK, 3200, eToastGlowColor.Red, eToastPosition.TopCenter)
 
+            Else
+                L_ModificarParametrosFact(2) ''Se modifica para que facture Offline
+                gb_OnOff = 2
+                ToastNotification.Show(Me, "Las facturas se emitirán offline".ToUpper,
+                                     My.Resources.OK, 3200, eToastGlowColor.Red, eToastPosition.TopCenter)
+            End If
+        End If
+    End Sub
+
+    Private Sub swEstadoFacturas_Click(sender As Object, e As EventArgs) Handles swEstadoFacturas.Click
+        SwFacturaClick = True
+    End Sub
 
 
     'Funciones de conexion con sifac para facturacion
@@ -4154,19 +4173,5 @@ Public Class F0_VentasSupermercado
 
 
 
-    Private Sub swEstadoFacturas_ValueChanged(sender As Object, e As EventArgs) Handles swEstadoFacturas.ValueChanged
-        If SwFacturaClick = True Then
-            If swEstadoFacturas.Value = True Then
-                L_ModificarParametrosFact(1) ''Se modifica para que facture Online
-                gb_OnOff = 1
-            Else
-                L_ModificarParametrosFact(2) ''Se modifica para que facture Offline
-                gb_OnOff = 2
-            End If
-        End If
-    End Sub
 
-    Private Sub swEstadoFacturas_Click(sender As Object, e As EventArgs) Handles swEstadoFacturas.Click
-        SwFacturaClick = True
-    End Sub
 End Class
