@@ -35,7 +35,10 @@ Public Class AccesoLogica
         Dim _Err As Boolean
         Dim Sql, _where As String
 
-        Sql = "OnOff = " + _onoff
+        Sql = "OnOff = " + _onoff + ", fact = '" + Now.Date.ToString("yyyy/MM/dd") + "' , " +
+             "hact = '" + Now.Hour.ToString("D2") + ":" + Now.Minute.ToString("D2") + "' , " +
+             "uact = '" + L_Usuario + "' "
+
 
         _where = "estado =1 "
         _Err = D_Modificar_Datos("ParametrosFact", Sql, _where)
