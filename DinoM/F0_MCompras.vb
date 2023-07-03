@@ -580,12 +580,17 @@ Public Class F0_MCompras
         With grdetalle
             .GroupByBoxVisible = False
             'diseño de la grilla
+            .DefaultFilterRowComparison = FilterConditionOperator.Contains
+            .FilterRowUpdateMode = FilterRowUpdateMode.WhenValueChanges
+            .FilterMode = FilterMode.Automatic
             .VisualStyle = VisualStyle.Office2007
 
             .TotalRow = InheritableBoolean.True
             .TotalRowFormatStyle.BackColor = Color.Gold
             .TotalRowPosition = TotalRowPosition.BottomFixed
 
+            .RecordNavigator = True
+            .RecordNavigatorText = "Productos"
         End With
     End Sub
     Private Sub _prCargarFacturacion(_numi As String)

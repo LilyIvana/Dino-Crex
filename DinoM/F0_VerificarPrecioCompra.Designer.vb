@@ -150,9 +150,8 @@ Partial Class F0_VerificarPrecioCompra
         '
         'PanelToolBar2
         '
-        Me.PanelToolBar2.Location = New System.Drawing.Point(1184, 0)
+        Me.PanelToolBar2.Location = New System.Drawing.Point(1264, 0)
         Me.PanelToolBar2.Margin = New System.Windows.Forms.Padding(4)
-        Me.PanelToolBar2.Size = New System.Drawing.Size(160, 72)
         '
         'PanelPrincipal
         '
@@ -166,9 +165,7 @@ Partial Class F0_VerificarPrecioCompra
         'btnImprimir
         '
         Me.btnImprimir.Image = Global.DinoM.My.Resources.Resources.sheets
-        Me.btnImprimir.Size = New System.Drawing.Size(160, 72)
         Me.btnImprimir.Text = "EXPORTAR"
-        Me.btnImprimir.Visible = False
         '
         'btnUltimo
         '
@@ -190,7 +187,7 @@ Partial Class F0_VerificarPrecioCompra
         '
         Me.MRlAccion.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.MRlAccion.Margin = New System.Windows.Forms.Padding(4)
-        Me.MRlAccion.Size = New System.Drawing.Size(808, 72)
+        Me.MRlAccion.Size = New System.Drawing.Size(888, 72)
         '
         'PanelContent
         '
@@ -230,7 +227,7 @@ Partial Class F0_VerificarPrecioCompra
         '
         'PictureBox1
         '
-        Me.PictureBox1.Location = New System.Drawing.Point(991, 0)
+        Me.PictureBox1.Location = New System.Drawing.Point(1071, 0)
         Me.PictureBox1.Margin = New System.Windows.Forms.Padding(4)
         '
         'PanelPrecios
@@ -285,7 +282,7 @@ Partial Class F0_VerificarPrecioCompra
         '
         Me.GroupPanel4.StyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.GroupPanel4.TabIndex = 1
-        Me.GroupPanel4.Text = "DETALLE DE LA COMPRA CON SUS RESPECTIVOS PRECIOS COSTO"
+        Me.GroupPanel4.Text = "DETALLE DE LA COMPRA CON SUS RESPECTIVOS PRECIOS DE COSTO"
         '
         'Panel5
         '

@@ -169,7 +169,11 @@ Public Class F0_VerificarPrecioCompra
         tbProveedor.Clear()
         _prCargarTabla(False, cbAlmacen.Value, -1)
 
-
+        If btnGrabar.Enabled = True Then
+            btnImprimir.Visible = True
+        Else
+            btnImprimir.Visible = False
+        End If
     End Sub
     Private Sub _prhabilitar()
         btnGrabar.Enabled = True
@@ -190,11 +194,18 @@ Public Class F0_VerificarPrecioCompra
     Private Sub F0_Precios_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         _IniciarTodo()
         _prInhabiliitar()
+
     End Sub
     Private Sub btnModificar_Click(sender As Object, e As EventArgs) Handles btnModificar.Click
         _prhabilitar()
         btnModificar.Enabled = False
         tbCodCompra.Focus()
+
+        If btnGrabar.Enabled = True Then
+            btnImprimir.Visible = True
+        Else
+            btnImprimir.Visible = False
+        End If
 
     End Sub
 
@@ -290,7 +301,7 @@ Public Class F0_VerificarPrecioCompra
                 Dim _escritor As StreamWriter
                 Dim _fila As Integer = grprecio.GetRows.Length
                 Dim _columna As Integer = grprecio.RootTable.Columns.Count
-                Dim _archivo As String = _ubicacion & "\ListaDeProd_" & Now.Date.Day &
+                Dim _archivo As String = _ubicacion & "\ListaDePreciosCosto_" & Now.Date.Day &
                     "." & Now.Date.Month & "." & Now.Date.Year & "_" & Now.Hour & "." & Now.Minute & "." & Now.Second & ".csv"
                 Dim _linea As String = ""
                 Dim _filadata = 0, columndata As Int32 = 0
@@ -358,17 +369,17 @@ Public Class F0_VerificarPrecioCompra
     End Function
     Private Sub _prCrearCarpetaReportes()
 
-        Dim rutaDestino As String = RutaGlobal + "\Reporte\Reporte Precios\"
+        Dim rutaDestino As String = RutaGlobal + "\Reporte\Reporte PreciosCosto\"
 
-        If System.IO.Directory.Exists(RutaGlobal + "\Reporte\Reporte Precios\") = False Then
+        If System.IO.Directory.Exists(RutaGlobal + "\Reporte\Reporte PreciosCosto\") = False Then
             If System.IO.Directory.Exists(RutaGlobal + "\Reporte") = False Then
-                System.IO.Directory.CreateDirectory(RutaGlobal + "\Reporte")
-                If System.IO.Directory.Exists(RutaGlobal + "\Reporte\Reporte Precios") = False Then
-                    System.IO.Directory.CreateDirectory(RutaGlobal + "\Reporte\Reporte Precios")
+                System.IO.Directory.CreateDirectory(RutaGlobal + "\PreciosCosto")
+                If System.IO.Directory.Exists(RutaGlobal + "\Reporte\Reporte PreciosCosto") = False Then
+                    System.IO.Directory.CreateDirectory(RutaGlobal + "\Reporte\Reporte PreciosCosto")
                 End If
             Else
-                If System.IO.Directory.Exists(RutaGlobal + "\Reporte\Reporte Precios") = False Then
-                    System.IO.Directory.CreateDirectory(RutaGlobal + "\Reporte\Reporte Precios")
+                If System.IO.Directory.Exists(RutaGlobal + "\Reporte\Reporte PreciosCosto") = False Then
+                    System.IO.Directory.CreateDirectory(RutaGlobal + "\Reporte\Reporte PreciosCosto")
 
                 End If
             End If
@@ -377,13 +388,13 @@ Public Class F0_VerificarPrecioCompra
     Private Sub btnImprimir_Click(sender As Object, e As EventArgs) Handles btnImprimir.Click
         _prCrearCarpetaReportes()
         Dim img As Bitmap = New Bitmap(My.Resources.checked, 50, 50)
-        If (P_ExportarExcel(RutaGlobal + "\Reporte\Reporte Productos")) Then
-            ToastNotification.Show(Me, "EXPORTACIÓN DE LISTA DE PRODUCTOS EXITOSA..!!!",
+        If (P_ExportarExcel(RutaGlobal + "\Reporte\Reporte PreciosCosto")) Then
+            ToastNotification.Show(Me, "EXPORTACIÓN DE LISTA DE PRECIOS DE COSTO EXITOSA..!!!",
                                        img, 2000,
                                        eToastGlowColor.Green,
                                        eToastPosition.BottomCenter)
         Else
-            ToastNotification.Show(Me, "FALLO AL EXPORTACIÓN DE LISTA DE PRODUCTOS..!!!",
+            ToastNotification.Show(Me, "FALLÓ LA EXPORTACIÓN DE LISTA DE PRECIOS DE COSTO..!!!",
                                        My.Resources.WARNING, 2000,
                                        eToastGlowColor.Red,
                                        eToastPosition.BottomLeft)
@@ -438,9 +449,10 @@ Public Class F0_VerificarPrecioCompra
                 Dim listEstCeldas As New List(Of Modelo.Celda)
                 listEstCeldas.Add(New Modelo.Celda("canumi,", True, "Cód. Compra", 120))
                 listEstCeldas.Add(New Modelo.Celda("caalm", False, "", 50))
+                listEstCeldas.Add(New Modelo.Celda("canumemis", True, "Nro. Factura", 100))
                 listEstCeldas.Add(New Modelo.Celda("cafdoc", True, "Fecha", 100))
                 listEstCeldas.Add(New Modelo.Celda("caty4prov", False, "", 50))
-                listEstCeldas.Add(New Modelo.Celda("proveedor", True, "Proveedor", 250))
+                listEstCeldas.Add(New Modelo.Celda("proveedor", True, "Proveedor", 350))
 
                 Dim ef = New Efecto
                 ef.tipo = 3

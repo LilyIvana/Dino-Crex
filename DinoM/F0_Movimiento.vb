@@ -363,10 +363,18 @@ Public Class F0_Movimiento
         End With
         With grdetalle
             .GroupByBoxVisible = False
+
+            .DefaultFilterRowComparison = FilterConditionOperator.Contains
+            .FilterRowUpdateMode = FilterRowUpdateMode.WhenValueChanges
+            .FilterMode = FilterMode.Automatic
+
             'diseño de la grilla
             .VisualStyle = VisualStyle.Office2007
             .BoundMode = Janus.Data.BoundMode.Bound
             .RowHeaders = InheritableBoolean.True
+
+            .RecordNavigator = True
+            .RecordNavigatorText = "Productos"
         End With
     End Sub
 
