@@ -29,6 +29,7 @@ Partial Class F0_MCompras
         Me.GroupPanel4 = New DevComponents.DotNetBar.Controls.GroupPanel()
         Me.Panel5 = New System.Windows.Forms.Panel()
         Me.grdetalle = New Janus.Windows.GridEX.GridEX()
+        Me.grdetalle2 = New Janus.Windows.GridEX.GridEX()
         Me.GPanelProductos = New DevComponents.DotNetBar.Controls.GroupPanel()
         Me.Panel7 = New System.Windows.Forms.Panel()
         Me.grProductos = New Janus.Windows.GridEX.GridEX()
@@ -100,6 +101,7 @@ Partial Class F0_MCompras
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         Me.cmOpcionesDetalle = New System.Windows.Forms.ContextMenuStrip(Me.components)
         Me.INSERTARFILAToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.btnExportar = New DevComponents.DotNetBar.ButtonX()
         Me.PanelSuperior.SuspendLayout()
         Me.PanelInferior.SuspendLayout()
         CType(Me.BubbleBarUsuario, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -120,6 +122,7 @@ Partial Class F0_MCompras
         Me.GroupPanel4.SuspendLayout()
         Me.Panel5.SuspendLayout()
         CType(Me.grdetalle, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.grdetalle2, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GPanelProductos.SuspendLayout()
         Me.Panel7.SuspendLayout()
         CType(Me.grProductos, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -166,6 +169,7 @@ Partial Class F0_MCompras
         '
         'PanelInferior
         '
+        Me.PanelInferior.Location = New System.Drawing.Point(0, 662)
         Me.PanelInferior.Style.Alignment = System.Drawing.StringAlignment.Center
         Me.PanelInferior.Style.BackColor1.Color = System.Drawing.Color.Transparent
         Me.PanelInferior.Style.BackColor2.Color = System.Drawing.Color.Transparent
@@ -222,6 +226,18 @@ Partial Class F0_MCompras
         'btnNuevo
         '
         Me.btnNuevo.TabIndex = 2
+        '
+        'PanelToolBar2
+        '
+        Me.PanelToolBar2.Controls.Add(Me.btnExportar)
+        Me.PanelToolBar2.Location = New System.Drawing.Point(1190, 0)
+        Me.PanelToolBar2.Size = New System.Drawing.Size(160, 72)
+        Me.PanelToolBar2.Controls.SetChildIndex(Me.btnExportar, 0)
+        Me.PanelToolBar2.Controls.SetChildIndex(Me.btnImprimir, 0)
+        '
+        'PanelPrincipal
+        '
+        Me.PanelPrincipal.Size = New System.Drawing.Size(1350, 701)
         Me.PanelPrincipal.Controls.SetChildIndex(Me.PanelInferior, 0)
         Me.PanelPrincipal.Controls.SetChildIndex(Me.PanelUsuario, 0)
         Me.PanelPrincipal.Controls.SetChildIndex(Me.PanelSuperior, 0)
@@ -229,6 +245,7 @@ Partial Class F0_MCompras
         '
         'btnImprimir
         '
+        Me.btnImprimir.Size = New System.Drawing.Size(85, 72)
         '
         'btnUltimo
         '
@@ -248,12 +265,22 @@ Partial Class F0_MCompras
         '
         '
         Me.MRlAccion.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.MRlAccion.Size = New System.Drawing.Size(814, 72)
         '
         'PanelContent
         '
         Me.PanelContent.Controls.Add(Me.PanelDetalle)
         Me.PanelContent.Controls.Add(Me.PanelTotal)
         Me.PanelContent.Controls.Add(Me.PanelContentSup)
+        Me.PanelContent.Size = New System.Drawing.Size(1317, 590)
+        '
+        'Panel1
+        '
+        Me.Panel1.Size = New System.Drawing.Size(1350, 590)
+        '
+        'MSuperTabControlPanel1
+        '
+        Me.MSuperTabControlPanel1.Size = New System.Drawing.Size(1317, 590)
         '
         'MSuperTabControl
         '
@@ -272,9 +299,14 @@ Partial Class F0_MCompras
         Me.MSuperTabControl.ControlBox.SubItems.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.MSuperTabControl.ControlBox.MenuBox, Me.MSuperTabControl.ControlBox.CloseBox})
         Me.MSuperTabControl.Controls.Add(Me.SuperTabControlPanel2)
         Me.MSuperTabControl.SelectedTabIndex = 1
+        Me.MSuperTabControl.Size = New System.Drawing.Size(1350, 590)
         Me.MSuperTabControl.Tabs.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.BUSCADOR})
         Me.MSuperTabControl.Controls.SetChildIndex(Me.SuperTabControlPanel2, 0)
         Me.MSuperTabControl.Controls.SetChildIndex(Me.MSuperTabControlPanel1, 0)
+        '
+        'PictureBox1
+        '
+        Me.PictureBox1.Location = New System.Drawing.Point(997, 0)
         '
         'PanelDetalle
         '
@@ -284,7 +316,7 @@ Partial Class F0_MCompras
         Me.PanelDetalle.Dock = System.Windows.Forms.DockStyle.Fill
         Me.PanelDetalle.Location = New System.Drawing.Point(0, 230)
         Me.PanelDetalle.Name = "PanelDetalle"
-        Me.PanelDetalle.Size = New System.Drawing.Size(1317, 337)
+        Me.PanelDetalle.Size = New System.Drawing.Size(1317, 309)
         Me.PanelDetalle.TabIndex = 3
         '
         'GroupPanel4
@@ -297,7 +329,7 @@ Partial Class F0_MCompras
         Me.GroupPanel4.Font = New System.Drawing.Font("Georgia", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GroupPanel4.Location = New System.Drawing.Point(0, 0)
         Me.GroupPanel4.Name = "GroupPanel4"
-        Me.GroupPanel4.Size = New System.Drawing.Size(1317, 186)
+        Me.GroupPanel4.Size = New System.Drawing.Size(1317, 158)
         '
         '
         '
@@ -334,10 +366,11 @@ Partial Class F0_MCompras
         '
         Me.Panel5.BackColor = System.Drawing.Color.White
         Me.Panel5.Controls.Add(Me.grdetalle)
+        Me.Panel5.Controls.Add(Me.grdetalle2)
         Me.Panel5.Dock = System.Windows.Forms.DockStyle.Fill
         Me.Panel5.Location = New System.Drawing.Point(0, 0)
         Me.Panel5.Name = "Panel5"
-        Me.Panel5.Size = New System.Drawing.Size(1311, 163)
+        Me.Panel5.Size = New System.Drawing.Size(1311, 135)
         Me.Panel5.TabIndex = 0
         '
         'grdetalle
@@ -350,9 +383,24 @@ Partial Class F0_MCompras
         Me.grdetalle.Name = "grdetalle"
         Me.grdetalle.Office2007ColorScheme = Janus.Windows.GridEX.Office2007ColorScheme.Custom
         Me.grdetalle.Office2007CustomColor = System.Drawing.Color.DodgerBlue
-        Me.grdetalle.Size = New System.Drawing.Size(1311, 163)
+        Me.grdetalle.Size = New System.Drawing.Size(1311, 135)
         Me.grdetalle.TabIndex = 3
         Me.grdetalle.VisualStyle = Janus.Windows.GridEX.VisualStyle.Office2007
+        '
+        'grdetalle2
+        '
+        Me.grdetalle2.BackColor = System.Drawing.Color.GhostWhite
+        Me.grdetalle2.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.grdetalle2.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.grdetalle2.HeaderFormatStyle.Font = New System.Drawing.Font("Georgia", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.grdetalle2.Location = New System.Drawing.Point(0, 0)
+        Me.grdetalle2.Name = "grdetalle2"
+        Me.grdetalle2.Office2007ColorScheme = Janus.Windows.GridEX.Office2007ColorScheme.Custom
+        Me.grdetalle2.Office2007CustomColor = System.Drawing.Color.DodgerBlue
+        Me.grdetalle2.Size = New System.Drawing.Size(1311, 135)
+        Me.grdetalle2.TabIndex = 4
+        Me.grdetalle2.Visible = False
+        Me.grdetalle2.VisualStyle = Janus.Windows.GridEX.VisualStyle.Office2007
         '
         'GPanelProductos
         '
@@ -362,7 +410,7 @@ Partial Class F0_MCompras
         Me.GPanelProductos.DisabledBackColor = System.Drawing.Color.Empty
         Me.GPanelProductos.Dock = System.Windows.Forms.DockStyle.Bottom
         Me.GPanelProductos.Font = New System.Drawing.Font("Georgia", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.GPanelProductos.Location = New System.Drawing.Point(0, 186)
+        Me.GPanelProductos.Location = New System.Drawing.Point(0, 158)
         Me.GPanelProductos.Name = "GPanelProductos"
         Me.GPanelProductos.Size = New System.Drawing.Size(1317, 151)
         '
@@ -430,7 +478,7 @@ Partial Class F0_MCompras
         Me.PanelTotal.BackgroundImage = Global.DinoM.My.Resources.Resources.fondo1
         Me.PanelTotal.Controls.Add(Me.Panel4)
         Me.PanelTotal.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.PanelTotal.Location = New System.Drawing.Point(0, 567)
+        Me.PanelTotal.Location = New System.Drawing.Point(0, 539)
         Me.PanelTotal.Name = "PanelTotal"
         Me.PanelTotal.Size = New System.Drawing.Size(1317, 51)
         Me.PanelTotal.TabIndex = 3
@@ -1653,11 +1701,29 @@ Partial Class F0_MCompras
         Me.INSERTARFILAToolStripMenuItem.Size = New System.Drawing.Size(150, 22)
         Me.INSERTARFILAToolStripMenuItem.Text = "INSERTAR FILA"
         '
+        'btnExportar
+        '
+        Me.btnExportar.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
+        Me.btnExportar.ColorTable = DevComponents.DotNetBar.eButtonColor.Flat
+        Me.btnExportar.Dock = System.Windows.Forms.DockStyle.Right
+        Me.btnExportar.Font = New System.Drawing.Font("Arial", 8.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnExportar.Image = Global.DinoM.My.Resources.Resources.sheets
+        Me.btnExportar.ImageFixedSize = New System.Drawing.Size(45, 47)
+        Me.btnExportar.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top
+        Me.btnExportar.Location = New System.Drawing.Point(85, 0)
+        Me.btnExportar.Name = "btnExportar"
+        Me.btnExportar.Padding = New System.Windows.Forms.Padding(0, 0, 0, 20)
+        Me.btnExportar.Size = New System.Drawing.Size(75, 72)
+        Me.btnExportar.Style = DevComponents.DotNetBar.eDotNetBarStyle.OfficeMobile2014
+        Me.btnExportar.TabIndex = 15
+        Me.btnExportar.Text = "EXPORTAR"
+        Me.btnExportar.TextColor = System.Drawing.Color.White
+        '
         'F0_MCompras
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1350, 729)
+        Me.ClientSize = New System.Drawing.Size(1350, 701)
         Me.Location = New System.Drawing.Point(0, 0)
         Me.Name = "F0_MCompras"
         Me.Text = "F0_MCompras"
@@ -1684,6 +1750,7 @@ Partial Class F0_MCompras
         Me.GroupPanel4.ResumeLayout(False)
         Me.Panel5.ResumeLayout(False)
         CType(Me.grdetalle, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.grdetalle2, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GPanelProductos.ResumeLayout(False)
         Me.Panel7.ResumeLayout(False)
         CType(Me.grProductos, System.ComponentModel.ISupportInitialize).EndInit()
@@ -1789,4 +1856,6 @@ Partial Class F0_MCompras
     Friend WithEvents LabelX15 As DevComponents.DotNetBar.LabelX
     Friend WithEvents LabelX18 As DevComponents.DotNetBar.LabelX
     Friend WithEvents tbRazonSocial As DevComponents.DotNetBar.Controls.TextBoxX
+    Friend WithEvents grdetalle2 As Janus.Windows.GridEX.GridEX
+    Friend WithEvents btnExportar As DevComponents.DotNetBar.ButtonX
 End Class

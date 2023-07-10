@@ -725,6 +725,9 @@ Public Class F0_Venta2
             .GroupByBoxVisible = False
             'diseño de la grilla
             .VisualStyle = VisualStyle.Office2007
+
+            .RecordNavigator = True
+            .RecordNavigatorText = "Productos"
         End With
     End Sub
 

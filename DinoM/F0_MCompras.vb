@@ -23,6 +23,9 @@ Public Class F0_MCompras
     Dim _estadoPor As Integer ''En esta variable me dira si sera visible o no las columnas de porcentaje de utilidad y precio de venta
     Dim Lote As Boolean = False
     Public _detalleCompras As DataTable 'Almacena el detalle para insertar a la tabla TPA001 del BDDiconDinoEco
+
+    Dim RutaGlobal As String = gs_CarpetaRaiz
+
 #End Region
 
 #Region "Metodos Privados"
@@ -309,6 +312,7 @@ Public Class F0_MCompras
         End With
 
         _prCargarDetalleVenta(tbCodigo.Text)
+        _prCargarDetalleVenta2(tbCodigo.Text)
         tbMdesc.Value = grCompra.GetValue("cadesc")
         If swRetencion.Value = False Then
 
@@ -578,6 +582,268 @@ Public Class F0_MCompras
             .Visible = False
         End With
         With grdetalle
+            .GroupByBoxVisible = False
+            'diseño de la grilla
+            .DefaultFilterRowComparison = FilterConditionOperator.Contains
+            .FilterRowUpdateMode = FilterRowUpdateMode.WhenValueChanges
+            .FilterMode = FilterMode.Automatic
+            .VisualStyle = VisualStyle.Office2007
+
+            .TotalRow = InheritableBoolean.True
+            .TotalRowFormatStyle.BackColor = Color.Gold
+            .TotalRowPosition = TotalRowPosition.BottomFixed
+
+            .RecordNavigator = True
+            .RecordNavigatorText = "Productos"
+        End With
+    End Sub
+    Private Sub _prCargarDetalleVenta2(_numi As String)
+        Dim dt As New DataTable
+        dt = L_fnDetalleCompra2(_numi)
+        grdetalle2.DataSource = dt
+        grdetalle2.RetrieveStructure()
+        grdetalle2.AlternatingColors = True
+        '      a.cbnumi ,a.cbtv1numi ,a.cbty5prod ,b.yfcdprod1 as producto,a.cbest ,a.cbcmin 
+        ',a.cbumin ,Umin .ycdes3 as unidad,a.cbpcost,a.cblote ,a.cbfechavenc ,a.cbptot 
+        ',a.cbutven ,a.cbprven   ,a.cbobs ,
+        'a.cbfact ,a.cbhact ,a.cbuact,1 as estado,Cast(null as Image) as img,a.cbpcost as costo,a.cbprven as venta
+        If (Lote = True) Then
+            With grdetalle2.RootTable.Columns("cblote")
+                .Width = 150
+                .Caption = "LOTE"
+                .Visible = True
+                .MaxLength = 50
+            End With
+            With grdetalle2.RootTable.Columns("cbfechavenc")
+                .Width = 120
+                .Caption = "FECHA VENC."
+                .Visible = True
+                .FormatString = "dd/MM/yyyy"
+            End With
+        Else
+            With grdetalle2.RootTable.Columns("cblote")
+                .Width = 150
+                .Caption = "LOTE"
+                .Visible = False
+                .MaxLength = 50
+            End With
+            With grdetalle2.RootTable.Columns("cbfechavenc")
+                .Width = 120
+                .Caption = "FECHA VENC."
+                .Visible = False
+                .FormatString = "dd/MM/yyyy"
+            End With
+        End If
+
+
+        With grdetalle2.RootTable.Columns("cbnumi")
+            .Width = 100
+            .Caption = "CODIGO"
+            .Visible = False
+        End With
+
+        With grdetalle2.RootTable.Columns("cbtv1numi")
+            .Width = 100
+            .Caption = "COD. COMPRA"
+            .Visible = True
+        End With
+        With grdetalle2.RootTable.Columns("caty4prov")
+            .Width = 90
+            .Visible = False
+        End With
+        With grdetalle2.RootTable.Columns("proveedor")
+            .Width = 120
+            .Caption = "PROVEEDOR"
+            .Visible = True
+        End With
+        With grdetalle2.RootTable.Columns("FechaCompra")
+            .Width = 100
+            .Caption = "FECHA COMPRA"
+            .Visible = True
+        End With
+        With grdetalle2.RootTable.Columns("canumemis")
+            .Width = 100
+            .Caption = "NRO. FACT/DOC"
+            .Visible = True
+        End With
+        With grdetalle2.RootTable.Columns("cbty5prod")
+            .Width = 80
+            .Caption = "COD. DYNASYS"
+            .Visible = True
+        End With
+        With grdetalle2.RootTable.Columns("yfcprod")
+            .Width = 90
+            .Caption = "COD. DELTA"
+            .Visible = True
+        End With
+        With grdetalle2.RootTable.Columns("yfcbarra")
+            .Width = 100
+            .Caption = "COD. BARRAS"
+            .Visible = True
+        End With
+        With grdetalle2.RootTable.Columns("producto")
+            .Caption = "PRODUCTOS"
+            .Width = 280
+            .Visible = True
+        End With
+        With grdetalle2.RootTable.Columns("cbest")
+            .Width = 50
+            .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far
+            .Visible = False
+        End With
+
+        With grdetalle2.RootTable.Columns("cbcmin")
+            .Width = 120
+            .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far
+            .Visible = True
+            .FormatString = "0.00"
+            .Caption = "Cantidad Un.".ToUpper
+        End With
+        With grdetalle2.RootTable.Columns("cbumin")
+            .Width = 50
+            .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far
+            .Visible = False
+        End With
+        With grdetalle2.RootTable.Columns("unidad")
+            .Width = 80
+            .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far
+            .Visible = True
+            .Caption = "Unidad".ToUpper
+        End With
+        With grdetalle2.RootTable.Columns("cbpcost")
+            .Width = 110
+            .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far
+            .Visible = True
+            .FormatString = "0.00"
+            .Caption = "Precio Un.".ToUpper
+        End With
+        If (_estadoPor = 1) Then
+            With grdetalle2.RootTable.Columns("cbutven")
+                .Width = 110
+                .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far
+                .Visible = True
+                .FormatString = "0.00"
+                .Caption = "Utilidad (%)".ToUpper
+            End With
+            With grdetalle2.RootTable.Columns("cbprven")
+                .Width = 120
+                .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far
+                .Visible = True
+                .FormatString = "0.00"
+                .Caption = "Precio Venta".ToUpper
+            End With
+        Else
+            With grdetalle2.RootTable.Columns("cbutven")
+                .Width = 120
+                .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far
+                .Visible = False
+                .FormatString = "0.00"
+                .Caption = "Utilidad.".ToUpper
+            End With
+            With grdetalle2.RootTable.Columns("cbprven")
+                .Width = 120
+                .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far
+                .Visible = False
+                .FormatString = "0.00"
+                .Caption = "Precio Venta.".ToUpper
+            End With
+        End If
+
+        With grdetalle2.RootTable.Columns("cbptot")
+            .Width = 100
+            .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far
+            .Visible = True
+            .FormatString = "0.00"
+            .Caption = "Sub Total".ToUpper
+            '.AggregateFunction = AggregateFunction.Sum
+        End With
+        With grdetalle2.RootTable.Columns("cbdesc")
+            .Width = 130
+            .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far
+            .Visible = True
+            .FormatString = "0.00"
+            .Caption = "Descuento Un.".ToUpper
+            '.AggregateFunction = AggregateFunction.Sum
+        End With
+        With grdetalle2.RootTable.Columns("cbdescpro")
+            .Width = 130
+            .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far
+            .Visible = True
+            .FormatString = "0.00"
+            .Caption = "Descuento Pro.".ToUpper
+            '.AggregateFunction = AggregateFunction.Sum
+        End With
+        With grdetalle2.RootTable.Columns("cbice")
+            .Width = 100
+            .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far
+            .Visible = True
+            .Caption = "ICE".ToUpper
+            '.AggregateFunction = AggregateFunction.Sum            '
+            .FormatString = "0.00"
+        End With
+        With grdetalle2.RootTable.Columns("cbtotal")
+            .Width = 100
+            .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far
+            .Visible = True
+            .FormatString = "0.00"
+            .Caption = "Total".ToUpper
+            '.AggregateFunction = AggregateFunction.Sum
+        End With
+        With grdetalle2.RootTable.Columns("cbpcostoun")
+            .Width = 120
+            .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far
+            .Visible = True
+            .FormatString = "0.00"
+            .Caption = "P.Costo Un.".ToUpper
+        End With
+        With grdetalle2.RootTable.Columns("cbobs")
+            .Width = 50
+            .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Near
+            .Visible = False
+        End With
+        With grdetalle2.RootTable.Columns("cbfact")
+            .Width = 50
+            .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Near
+            .Visible = False
+        End With
+        With grdetalle2.RootTable.Columns("cbhact")
+            .Width = 50
+            .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Near
+            .Visible = False
+        End With
+        With grdetalle2.RootTable.Columns("cbuact")
+            .Width = 50
+            .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Near
+            .Visible = False
+        End With
+        With grdetalle2.RootTable.Columns("estado")
+            .Width = 50
+            .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Near
+            .Visible = False
+        End With
+        With grdetalle2.RootTable.Columns("costo")
+            .Width = 50
+            .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far
+            .Visible = False
+        End With
+        With grdetalle2.RootTable.Columns("img")
+            .Width = 80
+            .Caption = "Eliminar".ToUpper
+            .CellStyle.ImageHorizontalAlignment = ImageHorizontalAlignment.Center
+            .Visible = False
+        End With
+        With grdetalle2.RootTable.Columns("venta")
+            .Width = 50
+            .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far
+            .Visible = False
+        End With
+        With grdetalle2.RootTable.Columns("caobs")
+            .Width = 130
+            .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far
+            .Caption = "OBSERVACIÓN"
+            .Visible = True
+        End With
+        With grdetalle2
             .GroupByBoxVisible = False
             'diseño de la grilla
             .DefaultFilterRowComparison = FilterConditionOperator.Contains
@@ -2499,9 +2765,120 @@ salirIf:
             End If
         End If
     End Sub
+
+    Private Sub btnExportar_Click(sender As Object, e As EventArgs) Handles btnExportar.Click
+        _prCrearCarpetaReportes()
+        Dim img As Bitmap = New Bitmap(My.Resources.checked, 50, 50)
+        If (P_ExportarExcel(RutaGlobal + "\Reporte\Reporte Compras")) Then
+            ToastNotification.Show(Me, "EXPORTACIÓN DE DETALLE DE LA COMPRA EXITOSA...!!!",
+                                       img, 2000,
+                                       eToastGlowColor.Green,
+                                       eToastPosition.BottomCenter)
+        Else
+            ToastNotification.Show(Me, "FALLO LA EXPORTACIÓN DE EL DETALLE DE LA COMPRA...!!!",
+                                       My.Resources.WARNING, 2000,
+                                       eToastGlowColor.Red,
+                                       eToastPosition.BottomLeft)
+        End If
+    End Sub
+
 #End Region
 
+    Private Sub _prCrearCarpetaReportes()
 
+        Dim rutaDestino As String = RutaGlobal + "\Reporte\Reporte Compras\"
 
+        If System.IO.Directory.Exists(RutaGlobal + "\Reporte\Reporte Compras\") = False Then
+            If System.IO.Directory.Exists(RutaGlobal + "\Reporte") = False Then
+                System.IO.Directory.CreateDirectory(RutaGlobal + "\Reporte")
+                If System.IO.Directory.Exists(RutaGlobal + "\Reporte\Reporte Compras") = False Then
+                    System.IO.Directory.CreateDirectory(RutaGlobal + "\Reporte\Reporte Compras")
+                End If
+            Else
+                If System.IO.Directory.Exists(RutaGlobal + "\Reporte\Reporte Compras") = False Then
+                    System.IO.Directory.CreateDirectory(RutaGlobal + "\Reporte\Reporte Compras")
+
+                End If
+            End If
+        End If
+    End Sub
+    Public Function P_ExportarExcel(_ruta As String) As Boolean
+        Dim _ubicacion As String
+        'Dim _directorio As New FolderBrowserDialog
+
+        If (1 = 1) Then 'If(_directorio.ShowDialog = Windows.Forms.DialogResult.OK) Then
+            '_ubicacion = _directorio.SelectedPath
+            _ubicacion = _ruta
+            Try
+                Dim _stream As Stream
+                Dim _escritor As StreamWriter
+                Dim _fila As Integer = grdetalle2.GetRows.Length
+                Dim _columna As Integer = grdetalle2.RootTable.Columns.Count
+                Dim _archivo As String = _ubicacion & "\ListaDetalleCompra_" & Now.Date.Day &
+                    "." & Now.Date.Month & "." & Now.Date.Year & "_" & Now.Hour & "." & Now.Minute & "." & Now.Second & ".csv"
+                Dim _linea As String = ""
+                Dim _filadata = 0, columndata As Int32 = 0
+                File.Delete(_archivo)
+                _stream = File.OpenWrite(_archivo)
+                _escritor = New StreamWriter(_stream, System.Text.Encoding.UTF8)
+
+                For Each _col As GridEXColumn In grdetalle2.RootTable.Columns
+                    If (_col.Visible) Then
+                        _linea = _linea & _col.Caption & ";"
+                    End If
+                Next
+                _linea = Mid(CStr(_linea), 1, _linea.Length - 1)
+                _escritor.WriteLine(_linea)
+                _linea = Nothing
+
+                'Pbx_Precios.Visible = True
+                'Pbx_Precios.Minimum = 1
+                'Pbx_Precios.Maximum = Dgv_Precios.RowCount
+                'Pbx_Precios.Value = 1
+
+                For Each _fil As GridEXRow In grdetalle2.GetRows
+                    For Each _col As GridEXColumn In grdetalle2.RootTable.Columns
+                        If (_col.Visible) Then
+                            Dim data As String = CStr(_fil.Cells(_col.Key).Value)
+                            data = data.Replace(";", ",")
+                            _linea = _linea & data & ";"
+                        End If
+                    Next
+                    _linea = Mid(CStr(_linea), 1, _linea.Length - 1)
+                    _escritor.WriteLine(_linea)
+                    _linea = Nothing
+                    'Pbx_Precios.Value += 1
+                Next
+                _escritor.Close()
+                'Pbx_Precios.Visible = False
+                Try
+                    Dim ef = New Efecto
+                    ef._archivo = _archivo
+
+                    ef.tipo = 1
+                    ef.Context = "Su archivo ha sido Guardado en la ruta: " + _archivo + vbLf + "DESEA ABRIR EL ARCHIVO?"
+                    ef.Header = "PREGUNTA"
+                    ef.ShowDialog()
+                    Dim bandera As Boolean = False
+                    bandera = ef.band
+                    If (bandera = True) Then
+                        Process.Start(_archivo)
+                    End If
+
+                    'If (MessageBox.Show("Su archivo ha sido Guardado en la ruta: " + _archivo + vbLf + "DESEA ABRIR EL ARCHIVO?", "PREGUNTA", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = Windows.Forms.DialogResult.Yes) Then
+                    '    Process.Start(_archivo)
+                    'End If
+                    Return True
+                Catch ex As Exception
+                    MsgBox(ex.Message)
+                    Return False
+                End Try
+            Catch ex As Exception
+                MsgBox(ex.Message)
+                Return False
+            End Try
+        End If
+        Return False
+    End Function
 
 End Class

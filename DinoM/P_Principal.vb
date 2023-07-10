@@ -122,7 +122,7 @@ Public Class P_Principal
         gb_email = dtFact.Rows(0).Item("email")
         gb_password = dtFact.Rows(0).Item("password")
         gb_url = dtFact.Rows(0).Item("url")
-        gb_onoff = dtFact.Rows(0).Item("OnOff")
+        gb_OnOff = dtFact.Rows(0).Item("OnOff")
     End Sub
 
     Private Sub _prCargarConfiguracionSistema()
