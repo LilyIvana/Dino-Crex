@@ -115,17 +115,17 @@ Public Class F0_Precios
             'a.yfcprod ,a.yfnumi ,a.yfcdprod1,gr3.ycdes3 as Laboratorio,gr4.ycdes3 as Presentacion 
             With grprecio.RootTable.Columns("yfcprod")
                 .Caption = "COD DELTA"
-                .Width = 90
+                .Width = 85
                 .Visible = True
             End With
             With grprecio.RootTable.Columns("yfnumi")
                 .Caption = "COD DYN"
-                .Width = 90
+                .Width = 75
                 .Visible = True
             End With
             With grprecio.RootTable.Columns("yfcdprod1")
                 .Caption = "PRODUCTO"
-                .Width = 370
+                .Width = 360
                 .Visible = True
             End With
             With grprecio.RootTable.Columns("Laboratorio")
@@ -137,6 +137,11 @@ Public Class F0_Precios
                 .Caption = "Presentacion"
                 .Width = 120
                 .Visible = False
+            End With
+            With grprecio.RootTable.Columns("Proveedor")
+                .Caption = "PROVEEDOR"
+                .Width = 100
+                .Visible = True
             End With
             'Habilitar Filtradores
             With grprecio
