@@ -78,6 +78,13 @@ Public Class DescuentosCajeros
             .WordWrap = True
             .MaxLines = 3
         End With
+        With grProducto.RootTable.Columns("ycdes3")
+            .Caption = "Proveedor"
+            .Width = 100
+            .Visible = True
+            .WordWrap = True
+            .MaxLines = 3
+        End With
         With grProducto.RootTable.Columns("PrecioCosto")
             .Caption = "Precio Costo"
             .Width = 50

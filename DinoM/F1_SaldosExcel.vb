@@ -218,6 +218,10 @@ Public Class F1_SaldosExcel
                 .TotalRowFormatStyle.BackColor = Color.Gold
                 .TotalRowPosition = TotalRowPosition.BottomFixed
                 'diseño de la grilla
+
+
+                .RecordNavigator = True
+                .RecordNavigatorText = "Datos"
             End With
 
         Else

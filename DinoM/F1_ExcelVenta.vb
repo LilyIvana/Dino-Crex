@@ -1,10 +1,9 @@
 ﻿
-Imports Logica.AccesoLogica
-Imports DevComponents.DotNetBar
-Imports Janus.Windows.GridEX
 Imports System.IO
-Imports DevComponents.DotNetBar.SuperGrid
+Imports DevComponents.DotNetBar
 Imports DevComponents.DotNetBar.Controls
+Imports Janus.Windows.GridEX
+Imports Logica.AccesoLogica
 
 Public Class F1_ExcelVenta
     Dim _Inter As Integer = 0
@@ -302,6 +301,9 @@ Public Class F1_ExcelVenta
                 .TotalRowFormatStyle.BackColor = Color.Gold
                 .TotalRowPosition = TotalRowPosition.BottomFixed
                 'diseño de la grilla
+
+                .RecordNavigator = True
+                .RecordNavigatorText = "Datos"
             End With
 
         Else

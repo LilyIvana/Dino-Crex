@@ -107,7 +107,7 @@ Partial Class F0_Precios
         '
         'PanelInferior
         '
-        Me.PanelInferior.Location = New System.Drawing.Point(0, 622)
+        Me.PanelInferior.Location = New System.Drawing.Point(0, 662)
         Me.PanelInferior.Margin = New System.Windows.Forms.Padding(4)
         Me.PanelInferior.Size = New System.Drawing.Size(1344, 39)
         Me.PanelInferior.Style.Alignment = System.Drawing.StringAlignment.Center
@@ -178,7 +178,7 @@ Partial Class F0_Precios
         'PanelPrincipal
         '
         Me.PanelPrincipal.Margin = New System.Windows.Forms.Padding(4)
-        Me.PanelPrincipal.Size = New System.Drawing.Size(1344, 661)
+        Me.PanelPrincipal.Size = New System.Drawing.Size(1344, 701)
         Me.PanelPrincipal.Controls.SetChildIndex(Me.PanelInferior, 0)
         Me.PanelPrincipal.Controls.SetChildIndex(Me.PanelUsuario, 0)
         Me.PanelPrincipal.Controls.SetChildIndex(Me.PanelSuperior, 0)
@@ -217,18 +217,18 @@ Partial Class F0_Precios
         Me.PanelContent.Controls.Add(Me.PanelPrecios)
         Me.PanelContent.Controls.Add(Me.PanelCategoria)
         Me.PanelContent.Margin = New System.Windows.Forms.Padding(2)
-        Me.PanelContent.Size = New System.Drawing.Size(1311, 550)
+        Me.PanelContent.Size = New System.Drawing.Size(1311, 590)
         '
         'Panel1
         '
         Me.Panel1.BackColor = System.Drawing.Color.White
         Me.Panel1.Margin = New System.Windows.Forms.Padding(4)
-        Me.Panel1.Size = New System.Drawing.Size(1344, 550)
+        Me.Panel1.Size = New System.Drawing.Size(1344, 590)
         '
         'MSuperTabControlPanel1
         '
         Me.MSuperTabControlPanel1.Margin = New System.Windows.Forms.Padding(2)
-        Me.MSuperTabControlPanel1.Size = New System.Drawing.Size(1311, 550)
+        Me.MSuperTabControlPanel1.Size = New System.Drawing.Size(1311, 590)
         '
         'MSuperTabControl
         '
@@ -246,7 +246,7 @@ Partial Class F0_Precios
         Me.MSuperTabControl.ControlBox.Name = ""
         Me.MSuperTabControl.ControlBox.SubItems.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.MSuperTabControl.ControlBox.MenuBox, Me.MSuperTabControl.ControlBox.CloseBox})
         Me.MSuperTabControl.Margin = New System.Windows.Forms.Padding(4)
-        Me.MSuperTabControl.Size = New System.Drawing.Size(1344, 550)
+        Me.MSuperTabControl.Size = New System.Drawing.Size(1344, 590)
         Me.MSuperTabControl.Controls.SetChildIndex(Me.MSuperTabControlPanel1, 0)
         '
         'PictureBox1
@@ -262,7 +262,7 @@ Partial Class F0_Precios
         Me.PanelCategoria.Dock = System.Windows.Forms.DockStyle.Right
         Me.PanelCategoria.Location = New System.Drawing.Point(965, 0)
         Me.PanelCategoria.Name = "PanelCategoria"
-        Me.PanelCategoria.Size = New System.Drawing.Size(346, 550)
+        Me.PanelCategoria.Size = New System.Drawing.Size(346, 590)
         Me.PanelCategoria.TabIndex = 0
         '
         'GroupPanel2
@@ -275,7 +275,7 @@ Partial Class F0_Precios
         Me.GroupPanel2.Font = New System.Drawing.Font("Georgia", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GroupPanel2.Location = New System.Drawing.Point(0, 147)
         Me.GroupPanel2.Name = "GroupPanel2"
-        Me.GroupPanel2.Size = New System.Drawing.Size(346, 403)
+        Me.GroupPanel2.Size = New System.Drawing.Size(346, 443)
         '
         '
         '
@@ -315,7 +315,7 @@ Partial Class F0_Precios
         Me.Panel3.Dock = System.Windows.Forms.DockStyle.Fill
         Me.Panel3.Location = New System.Drawing.Point(0, 0)
         Me.Panel3.Name = "Panel3"
-        Me.Panel3.Size = New System.Drawing.Size(340, 380)
+        Me.Panel3.Size = New System.Drawing.Size(340, 420)
         Me.Panel3.TabIndex = 0
         '
         'grcategoria
@@ -329,7 +329,7 @@ Partial Class F0_Precios
         Me.grcategoria.Name = "grcategoria"
         Me.grcategoria.Office2007ColorScheme = Janus.Windows.GridEX.Office2007ColorScheme.Custom
         Me.grcategoria.Office2007CustomColor = System.Drawing.Color.DodgerBlue
-        Me.grcategoria.Size = New System.Drawing.Size(340, 380)
+        Me.grcategoria.Size = New System.Drawing.Size(340, 420)
         Me.grcategoria.TabIndex = 0
         Me.grcategoria.VisualStyle = Janus.Windows.GridEX.VisualStyle.Office2007
         '
@@ -535,7 +535,7 @@ Partial Class F0_Precios
         Me.PanelPrecios.Dock = System.Windows.Forms.DockStyle.Fill
         Me.PanelPrecios.Location = New System.Drawing.Point(0, 0)
         Me.PanelPrecios.Name = "PanelPrecios"
-        Me.PanelPrecios.Size = New System.Drawing.Size(965, 550)
+        Me.PanelPrecios.Size = New System.Drawing.Size(965, 590)
         Me.PanelPrecios.TabIndex = 1
         '
         'GroupPanel4
@@ -548,7 +548,7 @@ Partial Class F0_Precios
         Me.GroupPanel4.Font = New System.Drawing.Font("Georgia", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GroupPanel4.Location = New System.Drawing.Point(0, 92)
         Me.GroupPanel4.Name = "GroupPanel4"
-        Me.GroupPanel4.Size = New System.Drawing.Size(965, 458)
+        Me.GroupPanel4.Size = New System.Drawing.Size(965, 498)
         '
         '
         '
@@ -587,7 +587,7 @@ Partial Class F0_Precios
         Me.Panel5.Dock = System.Windows.Forms.DockStyle.Fill
         Me.Panel5.Location = New System.Drawing.Point(0, 0)
         Me.Panel5.Name = "Panel5"
-        Me.Panel5.Size = New System.Drawing.Size(959, 435)
+        Me.Panel5.Size = New System.Drawing.Size(959, 475)
         Me.Panel5.TabIndex = 0
         '
         'grprecio
@@ -599,7 +599,7 @@ Partial Class F0_Precios
         Me.grprecio.Name = "grprecio"
         Me.grprecio.Office2007ColorScheme = Janus.Windows.GridEX.Office2007ColorScheme.Custom
         Me.grprecio.Office2007CustomColor = System.Drawing.Color.DodgerBlue
-        Me.grprecio.Size = New System.Drawing.Size(959, 435)
+        Me.grprecio.Size = New System.Drawing.Size(959, 475)
         Me.grprecio.TabIndex = 0
         Me.grprecio.VisualStyle = Janus.Windows.GridEX.VisualStyle.Office2007
         '
@@ -762,7 +762,7 @@ Partial Class F0_Precios
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1344, 661)
+        Me.ClientSize = New System.Drawing.Size(1344, 701)
         Me.Location = New System.Drawing.Point(0, 0)
         Me.Margin = New System.Windows.Forms.Padding(4)
         Me.Name = "F0_Precios"

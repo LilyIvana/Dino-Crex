@@ -193,15 +193,15 @@ Public Class F0_VentasSupermercado
 
                 Dim CantidadInicial As Integer = dr.Item("CantidadInicial")
                 Dim CantidadFinal As Integer = dr.Item("CantidadFinal")
-                Dim PrecioDescuento As Double = dr.Item("Precio")
+                Dim PrecioDescuento As Decimal = dr.Item("Precio")
 
                 If (Cantidad >= CantidadInicial And Cantidad <= CantidadFinal) Then
 
-                    Dim SubTotalDescuento As Double = Cantidad * PrecioDescuento
-                    Dim Descuento As Double = (Cantidad * Precio) - SubTotalDescuento
+                    Dim SubTotalDescuento As Decimal = Format((Cantidad * PrecioDescuento), "#.#0")
+                    Dim Descuento As Decimal = Format((Cantidad * Precio), "#.#0") - SubTotalDescuento
                     CType(grdetalle.DataSource, DataTable).Rows(Posicion).Item("tbdesc") = Descuento
                     'grdetalle.SetValue("tbdesc", Descuento)
-                    CType(grdetalle.DataSource, DataTable).Rows(Posicion).Item("tbtotdesc") = (CType(grdetalle.DataSource, DataTable).Rows(Posicion).Item("tbpbas") * CType(grdetalle.DataSource, DataTable).Rows(Posicion).Item("tbcmin")) - Descuento
+                    CType(grdetalle.DataSource, DataTable).Rows(Posicion).Item("tbtotdesc") = Format((CType(grdetalle.DataSource, DataTable).Rows(Posicion).Item("tbpbas") * CType(grdetalle.DataSource, DataTable).Rows(Posicion).Item("tbcmin")) - Descuento, "#.#0")
 
                     ' grdetalle.SetValue("tbtotdesc", ((CType(grdetalle.DataSource, DataTable).Rows(Posicion).Item("tbpbas") * CType(grdetalle.DataSource, DataTable).Rows(Posicion).Item("tbcmin")) - Descuento))
                     Return

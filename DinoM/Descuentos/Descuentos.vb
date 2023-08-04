@@ -66,14 +66,21 @@ Public Class Descuentos
         End With
         With grProducto.RootTable.Columns("CodigoBarra")
             .Caption = "Cod.Barra"
-            .Width = 70
+            .Width = 60
             .WordWrap = True
             .MaxLines = 3
             .Visible = True
         End With
         With grProducto.RootTable.Columns("NombreProducto")
             .Caption = "Productos"
-            .Width = 230
+            .Width = 220
+            .Visible = True
+            .WordWrap = True
+            .MaxLines = 3
+        End With
+        With grProducto.RootTable.Columns("ycdes3")
+            .Caption = "Proveedor"
+            .Width = 100
             .Visible = True
             .WordWrap = True
             .MaxLines = 3
@@ -94,6 +101,7 @@ Public Class Descuentos
             .Caption = "Precio Preferencial"
             .Width = 60
             .Visible = True
+            .WordWrap = True
             .FormatString = "0.00"
         End With
         With grProducto.RootTable.Columns("PrecioPDV")
