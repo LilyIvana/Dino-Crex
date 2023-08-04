@@ -209,7 +209,7 @@ Public Class F0_VentasSupermercado
                 Else
 
                     CType(grdetalle.DataSource, DataTable).Rows(Posicion).Item("tbdesc") = 0
-                    CType(grdetalle.DataSource, DataTable).Rows(Posicion).Item("tbtotdesc") = (CType(grdetalle.DataSource, DataTable).Rows(Posicion).Item("tbpbas") * CType(grdetalle.DataSource, DataTable).Rows(Posicion).Item("tbcmin"))
+                    CType(grdetalle.DataSource, DataTable).Rows(Posicion).Item("tbtotdesc") = Format((CType(grdetalle.DataSource, DataTable).Rows(Posicion).Item("tbpbas") * CType(grdetalle.DataSource, DataTable).Rows(Posicion).Item("tbcmin")), "#.#0")
 
 
                 End If
@@ -240,7 +240,7 @@ Public Class F0_VentasSupermercado
                     For Each preciodesc As DataRow In fila
                         If cantf >= preciodesc.Item("CantidadInicial") And cantf <= preciodesc.Item("CantidadFinal") Then
                             preciod = preciodesc.Item("Precio")
-                            total2 = cantnormal * preciod
+                            total2 = Format(cantnormal * preciod, "#.#0")
                         End If
                     Next
                     If total2 > 0 Then
