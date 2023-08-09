@@ -107,6 +107,7 @@ Public Class F0_MCompras
         tbFechaVenc.IsInputReadOnly = True
         cbSucursal.ReadOnly = True
         swTipoVenta.IsReadOnly = True
+        swMostrarProdProv.IsReadOnly = True
 
         tbNitProv.ReadOnly = True
         tbRazonSocial.ReadOnly = True
@@ -146,6 +147,7 @@ Public Class F0_MCompras
         ''  tbCliente.ReadOnly = False  por que solo podra seleccionar Cliente
         ''  tbVendedor.ReadOnly = False
         tbObservacion.ReadOnly = False
+        swMostrarProdProv.IsReadOnly = False
         tbFechaVenta.IsInputReadOnly = False
         tbFechaVenc.IsInputReadOnly = False
         'If (tbCodigo.Text.Length > 0) Then
@@ -194,6 +196,7 @@ Public Class F0_MCompras
         tbNitProv.Clear()
         tbRazonSocial.Clear()
         tbObservacion.Clear()
+        swMostrarProdProv.Value = True
         If (CType(cbSucursal.DataSource, DataTable).Rows.Count > 0) Then
             cbSucursal.SelectedIndex = 0
         Else
@@ -1077,8 +1080,11 @@ Public Class F0_MCompras
             Return
         End If
 
-        'dt = L_fnListarProductosCompra(cbSucursal.Value, 73)
-        dt = L_fnListarProductosCompraNueva(cbSucursal.Value, 73, Convert.ToInt64(tbCodProv.Text))
+        If swMostrarProdProv.Value = True Then
+            dt = L_fnListarProductosCompraNueva(cbSucursal.Value, 73, Convert.ToInt64(tbCodProv.Text))
+        Else
+            dt = L_fnListarProductosCompra(cbSucursal.Value, 73)
+        End If
 
 
         ''1=Almacen  73=Cat Precio Costo
@@ -1092,13 +1098,13 @@ Public Class F0_MCompras
 
         With grProductos.RootTable.Columns("yfnumi")
             .Width = 100
-            .Caption = "CODIGO"
+            .Caption = "COD. DYNASYS"
             .Visible = True
 
         End With
         With grProductos.RootTable.Columns("yfcprod")
             .Width = 120
-            .Caption = "COD. PRODUCTO"
+            .Caption = "COD. DELTA"
             .Visible = True
         End With
         With grProductos.RootTable.Columns("yfcbarra")
@@ -1114,8 +1120,8 @@ Public Class F0_MCompras
         End With
         With grProductos.RootTable.Columns("yfcdprod2")
             .Width = 150
-            .Visible = False
-            .Caption = "Descripcion Corta"
+            .Visible = True
+            .Caption = "COD. PROVEEDOR"
         End With
 
         With grProductos.RootTable.Columns("yfgr1")

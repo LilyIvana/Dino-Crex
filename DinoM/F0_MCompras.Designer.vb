@@ -102,6 +102,8 @@ Partial Class F0_MCompras
         Me.cmOpcionesDetalle = New System.Windows.Forms.ContextMenuStrip(Me.components)
         Me.INSERTARFILAToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.btnExportar = New DevComponents.DotNetBar.ButtonX()
+        Me.swMostrarProdProv = New DevComponents.DotNetBar.Controls.SwitchButton()
+        Me.LabelX19 = New DevComponents.DotNetBar.LabelX()
         Me.PanelSuperior.SuspendLayout()
         Me.PanelInferior.SuspendLayout()
         CType(Me.BubbleBarUsuario, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -153,6 +155,8 @@ Partial Class F0_MCompras
         '
         'PanelSuperior
         '
+        Me.PanelSuperior.Controls.Add(Me.LabelX19)
+        Me.PanelSuperior.Controls.Add(Me.swMostrarProdProv)
         Me.PanelSuperior.Style.Alignment = System.Drawing.StringAlignment.Center
         Me.PanelSuperior.Style.BackColor1.Color = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(45, Byte), Integer), CType(CType(150, Byte), Integer))
         Me.PanelSuperior.Style.BackColor2.Color = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(45, Byte), Integer), CType(CType(150, Byte), Integer))
@@ -166,6 +170,12 @@ Partial Class F0_MCompras
         Me.PanelSuperior.StyleMouseOver.BackColor1.Color = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(45, Byte), Integer), CType(CType(150, Byte), Integer))
         Me.PanelSuperior.StyleMouseOver.BackColor2.Color = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(45, Byte), Integer), CType(CType(150, Byte), Integer))
         Me.PanelSuperior.StyleMouseOver.BackgroundImage = CType(resources.GetObject("PanelSuperior.StyleMouseOver.BackgroundImage"), System.Drawing.Image)
+        Me.PanelSuperior.Controls.SetChildIndex(Me.PanelToolBar1, 0)
+        Me.PanelSuperior.Controls.SetChildIndex(Me.PanelToolBar2, 0)
+        Me.PanelSuperior.Controls.SetChildIndex(Me.MRlAccion, 0)
+        Me.PanelSuperior.Controls.SetChildIndex(Me.PictureBox1, 0)
+        Me.PanelSuperior.Controls.SetChildIndex(Me.swMostrarProdProv, 0)
+        Me.PanelSuperior.Controls.SetChildIndex(Me.LabelX19, 0)
         '
         'PanelInferior
         '
@@ -1708,7 +1718,7 @@ Partial Class F0_MCompras
         Me.btnExportar.Dock = System.Windows.Forms.DockStyle.Right
         Me.btnExportar.Font = New System.Drawing.Font("Arial", 8.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnExportar.Image = Global.DinoM.My.Resources.Resources.sheets
-        Me.btnExportar.ImageFixedSize = New System.Drawing.Size(45, 47)
+        Me.btnExportar.ImageFixedSize = New System.Drawing.Size(40, 42)
         Me.btnExportar.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top
         Me.btnExportar.Location = New System.Drawing.Point(85, 0)
         Me.btnExportar.Name = "btnExportar"
@@ -1716,8 +1726,41 @@ Partial Class F0_MCompras
         Me.btnExportar.Size = New System.Drawing.Size(75, 72)
         Me.btnExportar.Style = DevComponents.DotNetBar.eDotNetBarStyle.OfficeMobile2014
         Me.btnExportar.TabIndex = 15
-        Me.btnExportar.Text = "EXPORTAR"
+        Me.btnExportar.Text = "EXPORTAR DETALLE"
         Me.btnExportar.TextColor = System.Drawing.Color.White
+        '
+        'swMostrarProdProv
+        '
+        '
+        '
+        '
+        Me.swMostrarProdProv.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.swMostrarProdProv.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.swMostrarProdProv.Location = New System.Drawing.Point(508, 31)
+        Me.swMostrarProdProv.Name = "swMostrarProdProv"
+        Me.swMostrarProdProv.OffBackColor = System.Drawing.Color.LawnGreen
+        Me.swMostrarProdProv.OffText = "TODOS"
+        Me.swMostrarProdProv.OnBackColor = System.Drawing.Color.Gold
+        Me.swMostrarProdProv.OnText = "UN PROVEEDOR"
+        Me.swMostrarProdProv.Size = New System.Drawing.Size(152, 22)
+        Me.swMostrarProdProv.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+        Me.swMostrarProdProv.TabIndex = 10
+        Me.swMostrarProdProv.Value = True
+        Me.swMostrarProdProv.ValueObject = "Y"
+        '
+        'LabelX19
+        '
+        '
+        '
+        '
+        Me.LabelX19.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.LabelX19.Font = New System.Drawing.Font("Georgia", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LabelX19.ForeColor = System.Drawing.Color.White
+        Me.LabelX19.Location = New System.Drawing.Point(508, 10)
+        Me.LabelX19.Name = "LabelX19"
+        Me.LabelX19.Size = New System.Drawing.Size(147, 16)
+        Me.LabelX19.TabIndex = 371
+        Me.LabelX19.Text = "Mostrar Productos de:"
         '
         'F0_MCompras
         '
@@ -1858,4 +1901,6 @@ Partial Class F0_MCompras
     Friend WithEvents tbRazonSocial As DevComponents.DotNetBar.Controls.TextBoxX
     Friend WithEvents grdetalle2 As Janus.Windows.GridEX.GridEX
     Friend WithEvents btnExportar As DevComponents.DotNetBar.ButtonX
+    Friend WithEvents LabelX19 As DevComponents.DotNetBar.LabelX
+    Friend WithEvents swMostrarProdProv As DevComponents.DotNetBar.Controls.SwitchButton
 End Class

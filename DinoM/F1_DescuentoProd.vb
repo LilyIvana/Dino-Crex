@@ -218,6 +218,8 @@ Public Class F1_DescuentoProd
                 '.TotalRowFormatStyle.BackColor = Color.Gold
                 '.TotalRowPosition = TotalRowPosition.BottomFixed
                 'diseño de la grilla
+                .RecordNavigator = True
+                .RecordNavigatorText = "Descuento-Productos"
             End With
 
         Else

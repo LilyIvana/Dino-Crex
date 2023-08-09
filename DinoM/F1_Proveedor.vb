@@ -43,7 +43,7 @@ Public Class F1_Proveedor
 
         _prMaxLength()
         _prCargarComboLibreriaZona(cbZona)
-      
+
         _prCargarComboLibreria(cbTipoDoc, 2, 1)
         _prAsignarPermisos()
         _PMIniciarTodo()
@@ -87,10 +87,10 @@ Public Class F1_Proveedor
         'copio la imagen en la carpeta del sistema
 
         Dim file As New OpenFileDialog()
-        file.Filter = "Ficheros JPG o JPEG o PNG|*.jpg;*.jpeg;*.png" & _
-                      "|Ficheros GIF|*.gif" & _
-                      "|Ficheros BMP|*.bmp" & _
-                      "|Ficheros PNG|*.png" & _
+        file.Filter = "Ficheros JPG o JPEG o PNG|*.jpg;*.jpeg;*.png" &
+                      "|Ficheros GIF|*.gif" &
+                      "|Ficheros BMP|*.bmp" &
+                      "|Ficheros PNG|*.png" &
                       "|Ficheros TIFF|*.tif"
         If file.ShowDialog() = DialogResult.OK Then
             Dim ruta As String = file.FileName
@@ -145,7 +145,7 @@ Public Class F1_Proveedor
         tbTelf2.MaxLength = 50
         tbNdoc.MaxLength = 20
         tbObs.MaxLength = 150
-       
+
     End Sub
 
     Private Sub _prCargarComboLibreria(mCombo As Janus.Windows.GridEX.EditControls.MultiColumnCombo, cod1 As String, cod2 As String)
@@ -277,7 +277,7 @@ Public Class F1_Proveedor
 
     Public Overrides Sub _PMOHabilitar()
 
-      
+
         tbNombre.ReadOnly = False
         tbDireccion.ReadOnly = False
         tbTelf1.ReadOnly = False
@@ -340,7 +340,7 @@ Public Class F1_Proveedor
         _Overlay.Markers.Clear()
         _latitud = 0
         _longitud = 0
-      
+
         If (cbZona.SelectedIndex < 0) Then
 
             If (CType(cbZona.DataSource, DataTable).Rows.Count > 0) Then
@@ -353,7 +353,7 @@ Public Class F1_Proveedor
                 cbTipoDoc.SelectedIndex = 0
             End If
         End If
-     
+
         NumiVendedor = 0
 
 
@@ -586,17 +586,17 @@ Public Class F1_Proveedor
             tbCodCliente.Text = .GetValue("ydcod").ToString
             tbNombre.Text = .GetValue("yddesc").ToString
             cbZona.Value = .GetValue("ydzona")
-           cbTipoDoc.Value = .GetValue("yddct")
+            cbTipoDoc.Value = .GetValue("yddct")
             tbNdoc.Text = .GetValue("yddctnum").ToString
             tbDireccion.Text = .GetValue("yddirec").ToString
             tbTelf1.Text = .GetValue("ydtelf1").ToString
             tbTelf2.Text = .GetValue("ydtelf2").ToString
-           swEstado.Value = .GetValue("ydest")
+            swEstado.Value = .GetValue("ydest")
             _latitud = .GetValue("ydlat")
             _longitud = .GetValue("ydlongi")
             tbObs.Text = .GetValue("ydobs").ToString
             tbFnac.Value = .GetValue("ydfnac")
-           tbFIngr.Value = .GetValue("ydfecing")
+            tbFIngr.Value = .GetValue("ydfecing")
             tbUltVenta.Value = .GetValue("ydultvent")
             lbFecha.Text = CType(.GetValue("ydfact"), Date).ToString("dd/MM/yyyy")
             lbHora.Text = .GetValue("ydhact").ToString
@@ -779,6 +779,5 @@ Public Class F1_Proveedor
             Timer1.Enabled = False
         End If
     End Sub
-
 
 End Class

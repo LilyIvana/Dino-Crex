@@ -108,7 +108,7 @@ Public Class F0_VentasSupermercado
 
         ''Aqui verifico si el parámetro para facturar esta en 1 o 2
         swEstadoFacturas.Value = IIf(gb_OnOff = 1, "True", "False")
-        If gi_userRol = 1 Then
+        If gi_userRol = 1 Or gi_userRol = 3 Then
             swEstadoFacturas.Visible = True
         Else
             swEstadoFacturas.Visible = False
@@ -612,6 +612,9 @@ Public Class F0_VentasSupermercado
             .GroupByBoxVisible = False
             'diseño de la grilla
             .VisualStyle = VisualStyle.Office2007
+
+            .RecordNavigator = True
+            .RecordNavigatorText = "Productos"
         End With
 
     End Sub
