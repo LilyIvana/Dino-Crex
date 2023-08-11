@@ -101,6 +101,9 @@ Public Class F0_Venta2
 
         Programa = P_Principal.btVentVenta.Text
 
+        Dim dtFact As DataTable = L_fnConfParametrosFacturacion()
+        gb_OnOff = dtFact.Rows(0).Item("OnOff")
+
     End Sub
 
     Public Sub _prCargarNameLabel()
@@ -233,6 +236,8 @@ Public Class F0_Venta2
         TbNombre2.ReadOnly = True
         cbSucursal.ReadOnly = True
         FilaSelectLote = Nothing
+
+        swPulperia.IsReadOnly = True
     End Sub
     Private Sub _prhabilitar()
 
@@ -285,6 +290,8 @@ Public Class F0_Venta2
 
 
         dtDescuentos = L_fnListarDescuentosTodos()
+
+        swPulperia.IsReadOnly = False
     End Sub
 
 
@@ -387,6 +394,12 @@ Public Class F0_Venta2
         'Borrar datos de los combobox de sifac
         CbTipoDoc.SelectedIndex = 0
         TbEmail.Clear()
+
+        ''Pulperia
+        swPulperia.Visible = True
+        lbPulperia.Visible = True
+        swPulperia.Value = False
+
     End Sub
     Public Sub _prMostrarRegistro(_N As Integer)
         '' grVentas.Row = _N
@@ -449,6 +462,8 @@ Public Class F0_Venta2
             lbUsuario.Text = .GetValue("tauact").ToString
 
         End With
+        swPulperia.Visible = False
+        lbPulperia.Visible = False
 
         _prCargarDetalleVenta(tbCodigo.Text)
         tbMdesc.Value = grVentas.GetValue("tadesc")
@@ -5163,6 +5178,14 @@ salirIf:
                 End If
 
             End If
+        End If
+    End Sub
+
+    Private Sub swPulperia_ValueChanged(sender As Object, e As EventArgs) Handles swPulperia.ValueChanged
+        If swPulperia.Value = True Then
+            tbObservacion.Text = "PULPERÍA"
+        Else
+            tbObservacion.Clear()
         End If
     End Sub
 

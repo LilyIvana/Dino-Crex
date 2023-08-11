@@ -107,6 +107,9 @@ Public Class F0_VentasSupermercado
         Programa = P_Principal.btnVentaRapida.Text
 
         ''Aqui verifico si el parámetro para facturar esta en 1 o 2
+        Dim dtFact As DataTable = L_fnConfParametrosFacturacion()
+        gb_OnOff = dtFact.Rows(0).Item("OnOff")
+
         swEstadoFacturas.Value = IIf(gb_OnOff = 1, "True", "False")
         If gi_userRol = 1 Or gi_userRol = 3 Then
             swEstadoFacturas.Visible = True
@@ -665,6 +668,7 @@ Public Class F0_VentasSupermercado
             'Table_Producto = dt.Copy
         Else
             dt = L_fnListarProductosSinLote(Sucursal, _cliente, CType(grdetalle.DataSource, DataTable))  ''1=Almacen
+            'dt = L_fnListarProductosSinLoteNuevo(Sucursal, _cliente, CType(grdetalle.DataSource, DataTable))  ''1=Almacen
             'Table_Producto = dt.Copy
         End If
 
@@ -3633,14 +3637,14 @@ Public Class F0_VentasSupermercado
             contador = 0
         End If
 
-        Dim code = VerifConexion(tokenObtenido)
-        If (code = True) Then
-            Label1Conn.Text = "ONLINE SIAT"
-            Label1Conn.BackColor = Color.Green
-        Else
-            Label1Conn.Text = "OFFLINE SIAT"
-            Label1Conn.BackColor = Color.Red
-        End If
+        'Dim code = VerifConexion(tokenObtenido)
+        'If (code = True) Then
+        '    Label1Conn.Text = "ONLINE SIAT"
+        '    Label1Conn.BackColor = Color.Green
+        'Else
+        '    Label1Conn.Text = "OFFLINE SIAT"
+        '    Label1Conn.BackColor = Color.Red
+        'End If
 
     End Sub
 
