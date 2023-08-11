@@ -2,9 +2,6 @@
 Imports DevComponents.DotNetBar
 Public Class Pr_RepFacturasAnuladas
     Dim _Inter As Integer = 0
-
-    'gb_FacturaIncluirICE
-
     Public _nameButton As String
     Public _tab As SuperTabItem
 
@@ -15,9 +12,7 @@ Public Class Pr_RepFacturasAnuladas
         'L_prAbrirConexion(gs_Ip, gs_UsuarioSql, gs_ClaveSql, gs_NombreBD)
         Me.Text = "REPORTE FACTURAS  ANULADAS"
         MReportViewer.ToolPanelView = CrystalDecisions.Windows.Forms.ToolPanelViewType.None
-
     End Sub
-
 
     Private Sub _prCargarReporte()
         Dim _dt As New DataTable
@@ -38,9 +33,9 @@ Public Class Pr_RepFacturasAnuladas
 
         Else
             ToastNotification.Show(Me, "NO HAY DATOS PARA LOS PARAMETROS SELECCIONADOS..!!!",
-                                       My.Resources.INFORMATION, 2000,
+                                       My.Resources.INFORMATION, 2200,
                                        eToastGlowColor.Blue,
-                                       eToastPosition.BottomLeft)
+                                       eToastPosition.TopCenter)
             MReportViewer.ReportSource = Nothing
         End If
 
@@ -48,26 +43,20 @@ Public Class Pr_RepFacturasAnuladas
     End Sub
     Private Sub btnGenerar_Click(sender As Object, e As EventArgs) Handles btnGenerar.Click
         _prCargarReporte()
-
     End Sub
 
     Private Sub Pr_VentasAtendidas_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         _prIniciarTodo()
-
     End Sub
 
-
     Private Sub btnSalir_Click(sender As Object, e As EventArgs) Handles btnSalir.Click
-
         Me.Close()
-
     End Sub
 
     Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
         _Inter = _Inter + 1
         If _Inter = 1 Then
             Me.WindowState = FormWindowState.Normal
-
         Else
             Me.Opacity = 100
             Timer1.Enabled = False

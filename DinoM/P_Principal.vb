@@ -1220,6 +1220,12 @@ Public Class P_Principal
         frm.Show()
     End Sub
 
+    Private Sub btRepFactAnuladas_Click(sender As Object, e As EventArgs) Handles btRepFactAnuladas.Click
+        Dim frm As New Pr_RepFacturasAnuladas
+        frm._nameButton = btRepFactAnuladas.Name
+        frm.Show()
+    End Sub
+
 
 
 

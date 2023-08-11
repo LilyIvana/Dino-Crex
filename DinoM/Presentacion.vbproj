@@ -2268,6 +2268,7 @@
     <None Include="Resources\fondoazul1.png" />
     <None Include="Resources\Ideteca.PNG" />
     <None Include="Resources\imageDefault.jpg" />
+    <None Include="Resources\Fondo-empresarial.jpg" />
     <Content Include="Resources\man.png" />
     <None Include="Resources\pdf.png" />
     <None Include="Resources\txt.png" />
