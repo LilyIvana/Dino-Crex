@@ -763,6 +763,12 @@
     <Compile Include="Pr_VentasAtendidas2.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Pr_RepFacturasAnuladas.Designer.vb">
+      <DependentUpon>Pr_RepFacturasAnuladas.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Pr_RepFacturasAnuladas.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Pr_VentasVsCostos.Designer.vb">
       <DependentUpon>Pr_VentasVsCostos.vb</DependentUpon>
     </Compile>
@@ -791,6 +797,12 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>R_CierreCaja.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reporte\R_FacturasAnuladas.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>R_FacturasAnuladas.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Reporte\R_StickerCodigoBarras5.vb">
@@ -1561,6 +1573,9 @@
     <EmbeddedResource Include="Pr_VentasAtendidas2.resx">
       <DependentUpon>Pr_VentasAtendidas2.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Pr_RepFacturasAnuladas.resx">
+      <DependentUpon>Pr_RepFacturasAnuladas.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Pr_VentasVsCostos.resx">
       <DependentUpon>Pr_VentasVsCostos.vb</DependentUpon>
     </EmbeddedResource>
@@ -1578,6 +1593,10 @@
     <EmbeddedResource Include="Reporte\R_CierreCaja.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>R_CierreCaja.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reporte\R_FacturasAnuladas.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>R_FacturasAnuladas.vb</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Reporte\R_StickerCodigoBarras5.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
