@@ -1,5 +1,5 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
-Partial Class F1_PreciosProdExcel
+Partial Class F1_PVentaMenorPCosto
     Inherits Modelo.ModeloF1
 
 
@@ -24,13 +24,15 @@ Partial Class F1_PreciosProdExcel
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(F1_PreciosProdExcel))
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(F1_PVentaMenorPCosto))
         Me.btExcel = New DevComponents.DotNetBar.ButtonX()
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         Me.GroupPanel2 = New DevComponents.DotNetBar.Controls.GroupPanel()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.btnExportarExcel = New DevComponents.DotNetBar.ButtonX()
         Me.btnGenerar = New DevComponents.DotNetBar.ButtonX()
+        Me.LabelX4 = New DevComponents.DotNetBar.LabelX()
+        Me.swEstado = New DevComponents.DotNetBar.Controls.SwitchButton()
         CType(Me.SuperTabPrincipal, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuperTabPrincipal.SuspendLayout()
         Me.SuperTabControlPanelRegistro.SuspendLayout()
@@ -66,7 +68,7 @@ Partial Class F1_PreciosProdExcel
         Me.SuperTabPrincipal.ControlBox.MenuBox.Name = ""
         Me.SuperTabPrincipal.ControlBox.Name = ""
         Me.SuperTabPrincipal.ControlBox.SubItems.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.SuperTabPrincipal.ControlBox.MenuBox, Me.SuperTabPrincipal.ControlBox.CloseBox})
-        Me.SuperTabPrincipal.Size = New System.Drawing.Size(1344, 701)
+        Me.SuperTabPrincipal.Size = New System.Drawing.Size(1344, 661)
         Me.SuperTabPrincipal.Controls.SetChildIndex(Me.SuperTabControlPanelBuscador, 0)
         Me.SuperTabPrincipal.Controls.SetChildIndex(Me.SuperTabControlPanelRegistro, 0)
         '
@@ -81,7 +83,7 @@ Partial Class F1_PreciosProdExcel
         '
         'SuperTabControlPanelRegistro
         '
-        Me.SuperTabControlPanelRegistro.Size = New System.Drawing.Size(1312, 701)
+        Me.SuperTabControlPanelRegistro.Size = New System.Drawing.Size(1312, 661)
         Me.SuperTabControlPanelRegistro.Controls.SetChildIndex(Me.PanelSuperior, 0)
         Me.SuperTabControlPanelRegistro.Controls.SetChildIndex(Me.PanelInferior, 0)
         Me.SuperTabControlPanelRegistro.Controls.SetChildIndex(Me.PanelPrincipal, 0)
@@ -101,7 +103,7 @@ Partial Class F1_PreciosProdExcel
         '
         'PanelInferior
         '
-        Me.PanelInferior.Location = New System.Drawing.Point(0, 665)
+        Me.PanelInferior.Location = New System.Drawing.Point(0, 625)
         Me.PanelInferior.Size = New System.Drawing.Size(1312, 36)
         Me.PanelInferior.Style.Alignment = System.Drawing.StringAlignment.Center
         Me.PanelInferior.Style.BackColor1.Color = System.Drawing.Color.DarkSlateGray
@@ -153,13 +155,13 @@ Partial Class F1_PreciosProdExcel
         '
         'PanelPrincipal
         '
-        Me.PanelPrincipal.Size = New System.Drawing.Size(1312, 593)
+        Me.PanelPrincipal.Size = New System.Drawing.Size(1312, 553)
         '
         'GroupPanelBuscador
         '
         Me.GroupPanelBuscador.Font = New System.Drawing.Font("Georgia", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GroupPanelBuscador.Location = New System.Drawing.Point(0, 100)
-        Me.GroupPanelBuscador.Size = New System.Drawing.Size(1312, 493)
+        Me.GroupPanelBuscador.Size = New System.Drawing.Size(1312, 453)
         '
         '
         '
@@ -214,7 +216,7 @@ Partial Class F1_PreciosProdExcel
         Me.JGrM_Buscador.SelectedFormatStyle.BackColor = System.Drawing.Color.DodgerBlue
         Me.JGrM_Buscador.SelectedFormatStyle.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.JGrM_Buscador.SelectedFormatStyle.ForeColor = System.Drawing.Color.White
-        Me.JGrM_Buscador.Size = New System.Drawing.Size(1306, 470)
+        Me.JGrM_Buscador.Size = New System.Drawing.Size(1306, 430)
         Me.JGrM_Buscador.VisualStyle = Janus.Windows.GridEX.VisualStyle.Office2007
         '
         'PanelUsuario
@@ -305,6 +307,8 @@ Partial Class F1_PreciosProdExcel
         'Panel1
         '
         Me.Panel1.AutoScroll = True
+        Me.Panel1.Controls.Add(Me.LabelX4)
+        Me.Panel1.Controls.Add(Me.swEstado)
         Me.Panel1.Controls.Add(Me.btnExportarExcel)
         Me.Panel1.Controls.Add(Me.btnGenerar)
         Me.Panel1.Dock = System.Windows.Forms.DockStyle.Fill
@@ -321,7 +325,7 @@ Partial Class F1_PreciosProdExcel
         Me.btnExportarExcel.Image = Global.DinoM.My.Resources.Resources.sheets
         Me.btnExportarExcel.ImageFixedSize = New System.Drawing.Size(35, 40)
         Me.btnExportarExcel.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top
-        Me.btnExportarExcel.Location = New System.Drawing.Point(626, 6)
+        Me.btnExportarExcel.Location = New System.Drawing.Point(758, 6)
         Me.btnExportarExcel.Name = "btnExportarExcel"
         Me.btnExportarExcel.Size = New System.Drawing.Size(65, 65)
         Me.btnExportarExcel.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
@@ -336,21 +340,56 @@ Partial Class F1_PreciosProdExcel
         Me.btnGenerar.Image = Global.DinoM.My.Resources.Resources.ventasCostos
         Me.btnGenerar.ImageFixedSize = New System.Drawing.Size(40, 40)
         Me.btnGenerar.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top
-        Me.btnGenerar.Location = New System.Drawing.Point(519, 5)
+        Me.btnGenerar.Location = New System.Drawing.Point(651, 5)
         Me.btnGenerar.Name = "btnGenerar"
         Me.btnGenerar.Size = New System.Drawing.Size(65, 65)
         Me.btnGenerar.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
         Me.btnGenerar.TabIndex = 240
         Me.btnGenerar.Text = "Generar"
         '
-        'F1_PreciosProdExcel
+        'LabelX4
+        '
+        Me.LabelX4.BackColor = System.Drawing.Color.Transparent
+        '
+        '
+        '
+        Me.LabelX4.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.LabelX4.Font = New System.Drawing.Font("Georgia", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LabelX4.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(85, Byte), Integer), CType(CType(139, Byte), Integer))
+        Me.LabelX4.Location = New System.Drawing.Point(320, 29)
+        Me.LabelX4.Name = "LabelX4"
+        Me.LabelX4.SingleLineColor = System.Drawing.SystemColors.Control
+        Me.LabelX4.Size = New System.Drawing.Size(155, 23)
+        Me.LabelX4.TabIndex = 371
+        Me.LabelX4.Text = "Estado de los Productos:"
+        '
+        'swEstado
+        '
+        '
+        '
+        '
+        Me.swEstado.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.swEstado.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.swEstado.Location = New System.Drawing.Point(481, 29)
+        Me.swEstado.Name = "swEstado"
+        Me.swEstado.OffBackColor = System.Drawing.Color.Gold
+        Me.swEstado.OffText = "TODOS"
+        Me.swEstado.OnBackColor = System.Drawing.Color.LimeGreen
+        Me.swEstado.OnText = "ACTIVOS"
+        Me.swEstado.Size = New System.Drawing.Size(140, 22)
+        Me.swEstado.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+        Me.swEstado.TabIndex = 370
+        Me.swEstado.Value = True
+        Me.swEstado.ValueObject = "Y"
+        '
+        'F1_PVentaMenorPCosto
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1344, 701)
+        Me.ClientSize = New System.Drawing.Size(1344, 661)
         Me.Location = New System.Drawing.Point(0, 0)
-        Me.Name = "F1_PreciosProdExcel"
-        Me.Text = "PRECIOS DE PRODUCTOS PARA EXPORTAR"
+        Me.Name = "F1_PVentaMenorPCosto"
+        Me.Text = "PRECIOS VENTA MENORES AL PRECIO COSTO"
         Me.Controls.SetChildIndex(Me.SuperTabPrincipal, 0)
         CType(Me.SuperTabPrincipal, System.ComponentModel.ISupportInitialize).EndInit()
         Me.SuperTabPrincipal.ResumeLayout(False)
@@ -381,4 +420,6 @@ Partial Class F1_PreciosProdExcel
     Friend WithEvents Panel1 As Panel
     Friend WithEvents btnGenerar As DevComponents.DotNetBar.ButtonX
     Friend WithEvents btnExportarExcel As DevComponents.DotNetBar.ButtonX
+    Friend WithEvents LabelX4 As DevComponents.DotNetBar.LabelX
+    Friend WithEvents swEstado As DevComponents.DotNetBar.Controls.SwitchButton
 End Class

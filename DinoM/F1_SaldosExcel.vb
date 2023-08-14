@@ -219,7 +219,6 @@ Public Class F1_SaldosExcel
                 .TotalRowPosition = TotalRowPosition.BottomFixed
                 'diseño de la grilla
 
-
                 .RecordNavigator = True
                 .RecordNavigatorText = "Datos"
             End With

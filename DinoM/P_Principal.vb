@@ -1226,6 +1226,12 @@ Public Class P_Principal
         frm.Show()
     End Sub
 
+    Private Sub btPventaMenorPcosto_Click(sender As Object, e As EventArgs) Handles btPventaMenorPcosto.Click
+        Dim frm As New F1_PVentaMenorPCosto
+        frm._nameButton = btPventaMenorPcosto.Name
+        frm.Show()
+    End Sub
+
 
 
 
