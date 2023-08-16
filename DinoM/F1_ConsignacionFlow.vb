@@ -1,12 +1,11 @@
 ﻿
-Imports Logica.AccesoLogica
-Imports DevComponents.DotNetBar
-Imports Janus.Windows.GridEX
 Imports System.IO
-Imports DevComponents.DotNetBar.SuperGrid
+Imports DevComponents.DotNetBar
 Imports DevComponents.DotNetBar.Controls
+Imports Janus.Windows.GridEX
+Imports Logica.AccesoLogica
 
-Public Class F1_PVentaMenorPCosto
+Public Class F1_ConsignacionFlow
     Dim _Inter As Integer = 0
 #Region "Variables Locales"
     Dim RutaGlobal As String = gs_CarpetaRaiz
@@ -20,8 +19,9 @@ Public Class F1_PVentaMenorPCosto
 #End Region
 #Region "Metodos Privados"
     Private Sub _prIniciarTodo()
-        Me.Text = "PRECIOS VENTA  MENORES AL PRECIO COSTO"
-
+        Me.Text = "REPORTE CONSIGNACIÓN FLOW"
+        tbFechaI.Value = Now.Date
+        tbFechaF.Value = Now.Date
 
         Dim blah As New Bitmap(New Bitmap(My.Resources.producto), 20, 20)
         Dim ico As Icon = Icon.FromHandle(blah.GetHicon())
@@ -68,7 +68,23 @@ Public Class F1_PVentaMenorPCosto
         End If
 
     End Sub
+    Private Sub _prCrearCarpetaImagenes()
+        Dim rutaDestino As String = RutaGlobal + "\Imagenes\Imagenes ProductoDino\"
 
+        If System.IO.Directory.Exists(RutaGlobal + "\Imagenes\Imagenes ProductoDino\") = False Then
+            If System.IO.Directory.Exists(RutaGlobal + "\Imagenes") = False Then
+                System.IO.Directory.CreateDirectory(RutaGlobal + "\Imagenes")
+                If System.IO.Directory.Exists(RutaGlobal + "\Imagenes\Imagenes ProductoDino") = False Then
+                    System.IO.Directory.CreateDirectory(RutaGlobal + "\Imagenes\Imagenes ProductoDino")
+                End If
+            Else
+                If System.IO.Directory.Exists(RutaGlobal + "\Imagenes\Imagenes ProductoDino") = False Then
+                    System.IO.Directory.CreateDirectory(RutaGlobal + "\Imagenes\Imagenes ProductoDino")
+
+                End If
+            End If
+        End If
+    End Sub
 
     Private Sub _prCrearCarpetaReportes()
         Dim rutaDestino As String = RutaGlobal + "\Reporte\Reporte Productos\"
@@ -87,64 +103,79 @@ Public Class F1_PVentaMenorPCosto
             End If
         End If
     End Sub
-    Private Sub _prCargarDescuentosProd()
-
-        Dim dt As DataTable = L_PrecioVentaMenorPrecioCosto(IIf(swEstado.Value = True, 1, 0))
+    Private Sub _prCargarProductos()
+        Dim fechaDesde As DateTime = tbFechaI.Value.ToString("yyyy/MM/dd")
+        Dim fechaHasta As DateTime = tbFechaF.Value.ToString("yyyy/MM/dd")
+        Dim dt As DataTable = L_ProductosConsignacionFlow(fechaDesde, fechaHasta)
 
         If dt.Rows.Count > 0 Then
             JGrM_Buscador.DataSource = dt
             JGrM_Buscador.RetrieveStructure()
             JGrM_Buscador.AlternatingColors = True
 
-            With JGrM_Buscador.RootTable.Columns("yhalm")
-                .Visible = False
-            End With
-            With JGrM_Buscador.RootTable.Columns("yhprod")
-                .Width = 100
+            With JGrM_Buscador.RootTable.Columns("codpro")
+                .Width = 90
                 .Visible = True
                 .Caption = "COD. DYNASYS"
             End With
             With JGrM_Buscador.RootTable.Columns("yfcprod")
-                .Width = 100
+                .Width = 90
                 .Visible = True
                 .Caption = "COD. DELTA"
             End With
             With JGrM_Buscador.RootTable.Columns("yfcbarra")
-                .Width = 150
+                .Width = 100
+                .Caption = "COD. BARRAS"
                 .Visible = True
-                .Caption = "COD. DE BARRAS"
             End With
             With JGrM_Buscador.RootTable.Columns("yfcdprod2")
-                .Visible = False
-            End With
-            With JGrM_Buscador.RootTable.Columns("yfcdprod1")
-                .Width = 400
+                .Width = 100
+                .Caption = "COD. PROVEEDOR"
                 .Visible = True
-                .Caption = "DESCRIPCIÓN"
+                .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far
             End With
             With JGrM_Buscador.RootTable.Columns("ycdes3")
-                .Width = 160
+                .Width = 150
                 .Caption = "PROVEEDOR"
                 .Visible = True
             End With
-            With JGrM_Buscador.RootTable.Columns("yhprecio")
-                .Width = 125
-                .Caption = "PRECIO COSTO"
+            With JGrM_Buscador.RootTable.Columns("yfcdprod1")
+                .Width = 380
+                .Caption = "DESCRIPCIÓN"
+                .Visible = True
+            End With
+
+            With JGrM_Buscador.RootTable.Columns("cantidad")
+                .Width = 100
+                .Caption = "CANTIDAD INICIAL"
                 .Visible = True
                 .FormatString = "0.00"
                 .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far
+                .AggregateFunction = AggregateFunction.Sum
             End With
-            With JGrM_Buscador.RootTable.Columns("PVenta")
-                .Width = 160
-                .Caption = "PRECIO WHOLESALE"
+            With JGrM_Buscador.RootTable.Columns("Ingreso")
+                .Width = 120
+                .Caption = "OTROS INGRESOS"
                 .Visible = True
                 .FormatString = "0.00"
                 .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far
+                .AggregateFunction = AggregateFunction.Sum
             End With
-            With JGrM_Buscador.RootTable.Columns("Estado")
-                .Width = 90
-                .Caption = "ESTADO"
+            With JGrM_Buscador.RootTable.Columns("Ventas")
+                .Width = 120
+                .Caption = "VENTAS"
                 .Visible = True
+                .FormatString = "0.00"
+                .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far
+                .AggregateFunction = AggregateFunction.Sum
+            End With
+            With JGrM_Buscador.RootTable.Columns("Salida")
+                .Width = 120
+                .Caption = "OTRAS SALIDAS"
+                .Visible = True
+                .FormatString = "0.00"
+                .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far
+                .AggregateFunction = AggregateFunction.Sum
             End With
 
             With JGrM_Buscador
@@ -152,14 +183,13 @@ Public Class F1_PVentaMenorPCosto
                 .FilterMode = FilterMode.Automatic
                 .FilterRowUpdateMode = FilterRowUpdateMode.WhenValueChanges
                 .GroupByBoxVisible = False
-                '.TotalRow = InheritableBoolean.True
-                '.TotalRowFormatStyle.BackColor = Color.Gold
-                '.TotalRowPosition = TotalRowPosition.BottomFixed
-
+                .TotalRow = InheritableBoolean.True
+                .TotalRowFormatStyle.BackColor = Color.Gold
+                .TotalRowPosition = TotalRowPosition.BottomFixed
                 'diseño de la grilla
+
                 .RecordNavigator = True
                 .RecordNavigatorText = "Datos"
-
             End With
 
         Else
@@ -171,11 +201,9 @@ Public Class F1_PVentaMenorPCosto
     End Sub
 #End Region
 
-    Private Sub F1_DesctoProductos_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+    Private Sub F1_Productos_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         _prIniciarTodo()
     End Sub
-
-
 
     Public Function P_ExportarExcel(_ruta As String) As Boolean
         Dim _ubicacion As String
@@ -189,7 +217,7 @@ Public Class F1_PVentaMenorPCosto
                 Dim _escritor As StreamWriter
                 Dim _fila As Integer = JGrM_Buscador.GetRows.Length
                 Dim _columna As Integer = JGrM_Buscador.RootTable.Columns.Count
-                Dim _archivo As String = _ubicacion & "\ComparaciónPrecios_" & Now.Date.Day &
+                Dim _archivo As String = _ubicacion & "\ProductosConsignacionFlow_" & Now.Date.Day &
                     "." & Now.Date.Month & "." & Now.Date.Year & "_" & Now.Hour & "." & Now.Minute & "." & Now.Second & ".csv"
                 Dim _linea As String = ""
                 Dim _filadata = 0, columndata As Int32 = 0
@@ -257,9 +285,6 @@ Public Class F1_PVentaMenorPCosto
     End Function
 
 
-
-
-
     Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
         _Inter = _Inter + 1
         If _Inter = 1 Then
@@ -272,19 +297,19 @@ Public Class F1_PVentaMenorPCosto
     End Sub
 
     Private Sub btnGenerar_Click(sender As Object, e As EventArgs) Handles btnGenerar.Click
-        _prCargarDescuentosProd()
+        _prCargarProductos()
     End Sub
 
     Private Sub btnExportarExcel_Click(sender As Object, e As EventArgs) Handles btnExportarExcel.Click
         _prCrearCarpetaReportes()
         Dim img As Bitmap = New Bitmap(My.Resources.checked, 50, 50)
         If (P_ExportarExcel(RutaGlobal + "\Reporte\Reporte Productos")) Then
-            ToastNotification.Show(Me, "EXPORTACIÓN DE COMPARACIÓN PRECIOS DE PRODUCTOS EXITOSA..!!!",
+            ToastNotification.Show(Me, "EXPORTACIÓN DE PRODUCTOS DE CONSIGNACIÓN FLOW EXITOSA..!!!",
                                        img, 2000,
                                        eToastGlowColor.Green,
                                        eToastPosition.BottomCenter)
         Else
-            ToastNotification.Show(Me, "FALLÓ LA EXPORTACIÓN DE COMPARACIÓN DE PRECIOS DE PRODUCTOS..!!!",
+            ToastNotification.Show(Me, "FALLÓ LA EXPORTACIÓN DE PRODUCTOS DE CONSIGNACIÓN FLOW..!!!",
                                        My.Resources.WARNING, 2000,
                                        eToastGlowColor.Red,
                                        eToastPosition.BottomLeft)

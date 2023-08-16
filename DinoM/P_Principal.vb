@@ -34,9 +34,9 @@ Public Class P_Principal
         'iniciar login de usuario
         _prLogin()
 
-        If My.Computer.FileSystem.FileExists(gs_CarpetaRaiz + "\LogoIco.ico") Then
-            Me.Icon = Icon.ExtractAssociatedIcon(gs_CarpetaRaiz + "\LogoIco.ico")
-        End If
+        'If My.Computer.FileSystem.FileExists(gs_CarpetaRaiz + "\LogoIcoCrex.ico") Then
+        '    Me.Icon = Icon.ExtractAssociatedIcon(gs_CarpetaRaiz + "\LogoIcoCrex.ico")
+        'End If
 
 
 
@@ -1229,6 +1229,12 @@ Public Class P_Principal
     Private Sub btPventaMenorPcosto_Click(sender As Object, e As EventArgs) Handles btPventaMenorPcosto.Click
         Dim frm As New F1_PVentaMenorPCosto
         frm._nameButton = btPventaMenorPcosto.Name
+        frm.Show()
+    End Sub
+
+    Private Sub btRepConsignacionFlow_Click(sender As Object, e As EventArgs) Handles btRepConsignacionFlow.Click
+        Dim frm As New F1_ConsignacionFlow
+        frm._nameButton = btRepConsignacionFlow.Name
         frm.Show()
     End Sub
 
