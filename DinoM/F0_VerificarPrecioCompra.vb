@@ -77,26 +77,32 @@ Public Class F0_VerificarPrecioCompra
             End With
             With grprecio.RootTable.Columns("cbtv1numi")
                 .Width = 100
-                .Visible = False
+                .Caption = "COD. COMPRA"
+                .Visible = True
             End With
             With grprecio.RootTable.Columns("cbty5prod")
-                .Caption = "COD DYNASYS"
-                .Width = 100
+                .Caption = "COD. DYNASYS"
+                .Width = 90
                 .Visible = True
             End With
             With grprecio.RootTable.Columns("yfcprod")
-                .Caption = "COD DELTA"
-                .Width = 100
+                .Caption = "COD. DELTA"
+                .Width = 90
                 .Visible = True
             End With
             With grprecio.RootTable.Columns("yfcbarra")
                 .Caption = "COD. BARRAS"
-                .Width = 120
+                .Width = 110
+                .Visible = True
+            End With
+            With grprecio.RootTable.Columns("ycdes3")
+                .Caption = "PROVEEDOR"
+                .Width = 110
                 .Visible = True
             End With
             With grprecio.RootTable.Columns("producto")
                 .Caption = "PRODUCTO"
-                .Width = 450
+                .Width = 370
                 .Visible = True
             End With
             With grprecio.RootTable.Columns("cbumin")
@@ -109,19 +115,19 @@ Public Class F0_VerificarPrecioCompra
             End With
             With grprecio.RootTable.Columns("PrecioAntiguo")
                 .Caption = "PRECIO ANTIGUO"
-                .Width = 150
+                .Width = 120
                 .FormatString = "0.00"
                 .Visible = True
             End With
             With grprecio.RootTable.Columns("PrecioNuevo")
                 .Caption = "PRECIO NUEVO"
-                .Width = 150
+                .Width = 120
                 .FormatString = "0.00"
                 .Visible = True
             End With
             With grprecio.RootTable.Columns("cbaest")
-                .Caption = "ACTUALIZA PRECIO COSTO?"
-                .Width = 210
+                .Caption = "ACTUALIZA PREC. COSTO?"
+                .Width = 190
                 .Visible = True
             End With
 

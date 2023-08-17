@@ -161,6 +161,11 @@ Public Class F1_SaldosExcel
                 .Caption = "CÓD. DELTA"
                 .Visible = True
             End With
+            With JGrM_Buscador.RootTable.Columns("yfcbarra")
+                .Width = 110
+                .Caption = "CÓD. BARRAS"
+                .Visible = True
+            End With
             With JGrM_Buscador.RootTable.Columns("yfcdprod1")
                 .Width = 400
                 .Caption = "PRODUCTO"
