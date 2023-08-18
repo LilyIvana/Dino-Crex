@@ -149,6 +149,111 @@ Public Class F0_VerificarPrecioCompra
             End With
         End If
     End Sub
+    Public Sub _prCargarTodasLasCompras()
+
+        Dim productos As DataTable = L_fnMostrarSubidaPreciosTodasLasCompras()
+
+        grTodasCompras.BoundMode = Janus.Data.BoundMode.Bound
+        grTodasCompras.DataSource = productos
+        grTodasCompras.RetrieveStructure()
+
+        With grTodasCompras.RootTable.Columns("canumi")
+            .Width = 100
+            .Caption = "COD. COMPRA"
+            .Visible = True
+        End With
+        With grTodasCompras.RootTable.Columns("canumemis")
+            .Width = 100
+            .Visible = False
+        End With
+        With grTodasCompras.RootTable.Columns("cafdoc")
+            .Width = 100
+            .Caption = "FECHA COMPRA"
+            .Visible = True
+        End With
+        With grTodasCompras.RootTable.Columns("caty4prov")
+            .Width = 100
+            .Visible = False
+        End With
+        With grTodasCompras.RootTable.Columns("proveedor")
+            .Caption = "PROVEEDOR"
+            .Width = 110
+            .Visible = True
+        End With
+        With grTodasCompras.RootTable.Columns("cbty5prod")
+            .Caption = "COD. DYNASYS"
+            .Width = 90
+            .Visible = True
+        End With
+        With grTodasCompras.RootTable.Columns("yfcprod")
+            .Caption = "COD. DELTA"
+            .Width = 90
+            .Visible = True
+        End With
+        With grTodasCompras.RootTable.Columns("yfcbarra")
+            .Caption = "COD. BARRAS"
+            .Width = 110
+            .Visible = True
+        End With
+        With grTodasCompras.RootTable.Columns("producto")
+            .Caption = "PRODUCTO"
+            .Width = 370
+            .Visible = True
+        End With
+        With grTodasCompras.RootTable.Columns("PrecioAntiguo")
+            .Caption = "PRECIO ANTIGUO"
+            .Width = 120
+            .FormatString = "0.00"
+            .Visible = True
+        End With
+        With grTodasCompras.RootTable.Columns("PrecioNuevo")
+            .Caption = "PRECIO NUEVO"
+            .Width = 120
+            .FormatString = "0.00"
+            .Visible = True
+        End With
+        With grTodasCompras.RootTable.Columns("PWholesale")
+            .Caption = "PRECIO WHOLESALE"
+            .Width = 120
+            .FormatString = "0.00"
+            .Visible = True
+        End With
+        With grTodasCompras.RootTable.Columns("PPreferencial")
+            .Caption = "PRECIO PREFERENCIAL"
+            .Width = 120
+            .FormatString = "0.00"
+            .Visible = True
+        End With
+        With grTodasCompras.RootTable.Columns("PDV")
+            .Caption = "PRECIO PDV"
+            .Width = 120
+            .FormatString = "0.00"
+            .Visible = True
+        End With
+        With grTodasCompras.RootTable.Columns("cbaest")
+            .Caption = "ACTUALIZA PREC. COSTO?"
+            .Width = 190
+            .Visible = False
+        End With
+
+        'Habilitar Filtradores
+        With grTodasCompras
+            .GroupByBoxVisible = False
+            '.FilterRowFormatStyle.BackColor = Color.Blue
+            .DefaultFilterRowComparison = FilterConditionOperator.Contains
+            '.FilterMode = FilterMode.Automatic
+            .FilterRowUpdateMode = FilterRowUpdateMode.WhenValueChanges
+            .FilterMode = FilterMode.Automatic
+            'Diseño de la tabla
+            .VisualStyle = VisualStyle.Office2007
+            .SelectionMode = SelectionMode.SingleSelection
+            .AlternatingColors = True
+
+            .RecordNavigator = True
+            .RecordNavigatorText = "Productos-Precios Costo"
+        End With
+
+    End Sub
     Private Sub _prCargarComboLibreria(mCombo As Janus.Windows.GridEX.EditControls.MultiColumnCombo)
         Dim dt As New DataTable
         dt = L_fnGeneralSucursales()
@@ -373,6 +478,84 @@ Public Class F0_VerificarPrecioCompra
         End If
         Return False
     End Function
+    Public Function P_ExportarExcelSubidaPrecios(_ruta As String) As Boolean
+        Dim _ubicacion As String
+        'Dim _directorio As New FolderBrowserDialog
+
+        If (1 = 1) Then 'If(_directorio.ShowDialog = Windows.Forms.DialogResult.OK) Then
+            '_ubicacion = _directorio.SelectedPath
+            _ubicacion = _ruta
+            Try
+                Dim _stream As Stream
+                Dim _escritor As StreamWriter
+                Dim _fila As Integer = grTodasCompras.GetRows.Length
+                Dim _columna As Integer = grTodasCompras.RootTable.Columns.Count
+                Dim _archivo As String = _ubicacion & "\ListaSubidaDePreciosCosto_" & Now.Date.Day &
+                    "." & Now.Date.Month & "." & Now.Date.Year & "_" & Now.Hour & "." & Now.Minute & "." & Now.Second & ".csv"
+                Dim _linea As String = ""
+                Dim _filadata = 0, columndata As Int32 = 0
+                File.Delete(_archivo)
+                _stream = File.OpenWrite(_archivo)
+                _escritor = New StreamWriter(_stream, System.Text.Encoding.UTF8)
+
+                For Each _col As GridEXColumn In grTodasCompras.RootTable.Columns
+                    If (_col.Visible) Then
+                        _linea = _linea & _col.Caption & ";"
+                    End If
+                Next
+                _linea = Mid(CStr(_linea), 1, _linea.Length - 1)
+                _escritor.WriteLine(_linea)
+                _linea = Nothing
+
+                'Pbx_Precios.Visible = True
+                'Pbx_Precios.Minimum = 1
+                'Pbx_Precios.Maximum = Dgv_Precios.RowCount
+                'Pbx_Precios.Value = 1
+
+                For Each _fil As GridEXRow In grTodasCompras.GetRows
+                    For Each _col As GridEXColumn In grTodasCompras.RootTable.Columns
+                        If (_col.Visible) Then
+                            Dim data As String = CStr(_fil.Cells(_col.Key).Value)
+                            data = data.Replace(";", ",")
+                            _linea = _linea & data & ";"
+                        End If
+                    Next
+                    _linea = Mid(CStr(_linea), 1, _linea.Length - 1)
+                    _escritor.WriteLine(_linea)
+                    _linea = Nothing
+                    'Pbx_Precios.Value += 1
+                Next
+                _escritor.Close()
+                'Pbx_Precios.Visible = False
+                Try
+                    Dim ef = New Efecto
+                    ef._archivo = _archivo
+
+                    ef.tipo = 1
+                    ef.Context = "Su archivo ha sido Guardado en la ruta: " + _archivo + vbLf + "DESEA ABRIR EL ARCHIVO?"
+                    ef.Header = "PREGUNTA"
+                    ef.ShowDialog()
+                    Dim bandera As Boolean = False
+                    bandera = ef.band
+                    If (bandera = True) Then
+                        Process.Start(_archivo)
+                    End If
+
+                    'If (MessageBox.Show("Su archivo ha sido Guardado en la ruta: " + _archivo + vbLf + "DESEA ABRIR EL ARCHIVO?", "PREGUNTA", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = Windows.Forms.DialogResult.Yes) Then
+                    '    Process.Start(_archivo)
+                    'End If
+                    Return True
+                Catch ex As Exception
+                    MsgBox(ex.Message)
+                    Return False
+                End Try
+            Catch ex As Exception
+                MsgBox(ex.Message)
+                Return False
+            End Try
+        End If
+        Return False
+    End Function
     Private Sub _prCrearCarpetaReportes()
 
         Dim rutaDestino As String = RutaGlobal + "\Reporte\Reporte PreciosCosto\"
@@ -512,5 +695,20 @@ Public Class F0_VerificarPrecioCompra
         End Try
     End Sub
 
-
+    Private Sub btTodasCompras_Click(sender As Object, e As EventArgs) Handles btTodasCompras.Click
+        _prCargarTodasLasCompras()
+        _prCrearCarpetaReportes()
+        Dim img As Bitmap = New Bitmap(My.Resources.checked, 50, 50)
+        If (P_ExportarExcelSubidaPrecios(RutaGlobal + "\Reporte\Reporte PreciosCosto")) Then
+            ToastNotification.Show(Me, "EXPORTACIÓN DE LISTA DE SUBIDA DE PRECIOS DE COSTO EXITOSA..!!!",
+                                       img, 2000,
+                                       eToastGlowColor.Green,
+                                       eToastPosition.BottomCenter)
+        Else
+            ToastNotification.Show(Me, "FALLÓ LA EXPORTACIÓN DE LISTA DE SUBIDA DE PRECIOS DE COSTO..!!!",
+                                       My.Resources.WARNING, 2000,
+                                       eToastGlowColor.Red,
+                                       eToastPosition.BottomLeft)
+        End If
+    End Sub
 End Class

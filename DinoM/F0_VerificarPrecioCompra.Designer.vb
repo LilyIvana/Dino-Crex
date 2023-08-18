@@ -28,6 +28,7 @@ Partial Class F0_VerificarPrecioCompra
         Me.PanelPrecios = New System.Windows.Forms.Panel()
         Me.GroupPanel4 = New DevComponents.DotNetBar.Controls.GroupPanel()
         Me.Panel5 = New System.Windows.Forms.Panel()
+        Me.grTodasCompras = New Janus.Windows.GridEX.GridEX()
         Me.grprecio = New Janus.Windows.GridEX.GridEX()
         Me.GroupPanel3 = New DevComponents.DotNetBar.Controls.GroupPanel()
         Me.Panel4 = New System.Windows.Forms.Panel()
@@ -42,6 +43,7 @@ Partial Class F0_VerificarPrecioCompra
         Me.cbAlmacen = New Janus.Windows.GridEX.EditControls.MultiColumnCombo()
         Me.lbgrupo2 = New DevComponents.DotNetBar.LabelX()
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
+        Me.btTodasCompras = New DevComponents.DotNetBar.ButtonX()
         Me.PanelSuperior.SuspendLayout()
         Me.PanelInferior.SuspendLayout()
         CType(Me.BubbleBarUsuario, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -61,6 +63,7 @@ Partial Class F0_VerificarPrecioCompra
         Me.PanelPrecios.SuspendLayout()
         Me.GroupPanel4.SuspendLayout()
         Me.Panel5.SuspendLayout()
+        CType(Me.grTodasCompras, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.grprecio, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupPanel3.SuspendLayout()
         Me.Panel4.SuspendLayout()
@@ -150,8 +153,12 @@ Partial Class F0_VerificarPrecioCompra
         '
         'PanelToolBar2
         '
-        Me.PanelToolBar2.Location = New System.Drawing.Point(1264, 0)
+        Me.PanelToolBar2.Controls.Add(Me.btTodasCompras)
+        Me.PanelToolBar2.Location = New System.Drawing.Point(1164, 0)
         Me.PanelToolBar2.Margin = New System.Windows.Forms.Padding(4)
+        Me.PanelToolBar2.Size = New System.Drawing.Size(180, 72)
+        Me.PanelToolBar2.Controls.SetChildIndex(Me.btTodasCompras, 0)
+        Me.PanelToolBar2.Controls.SetChildIndex(Me.btnImprimir, 0)
         '
         'PanelPrincipal
         '
@@ -165,6 +172,7 @@ Partial Class F0_VerificarPrecioCompra
         'btnImprimir
         '
         Me.btnImprimir.Image = Global.DinoM.My.Resources.Resources.sheets
+        Me.btnImprimir.Size = New System.Drawing.Size(85, 72)
         Me.btnImprimir.Text = "EXPORTAR"
         '
         'btnUltimo
@@ -187,7 +195,7 @@ Partial Class F0_VerificarPrecioCompra
         '
         Me.MRlAccion.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.MRlAccion.Margin = New System.Windows.Forms.Padding(4)
-        Me.MRlAccion.Size = New System.Drawing.Size(888, 72)
+        Me.MRlAccion.Size = New System.Drawing.Size(788, 72)
         '
         'PanelContent
         '
@@ -227,7 +235,7 @@ Partial Class F0_VerificarPrecioCompra
         '
         'PictureBox1
         '
-        Me.PictureBox1.Location = New System.Drawing.Point(1071, 0)
+        Me.PictureBox1.Location = New System.Drawing.Point(971, 0)
         Me.PictureBox1.Margin = New System.Windows.Forms.Padding(4)
         '
         'PanelPrecios
@@ -288,11 +296,26 @@ Partial Class F0_VerificarPrecioCompra
         '
         Me.Panel5.BackColor = System.Drawing.Color.White
         Me.Panel5.Controls.Add(Me.grprecio)
+        Me.Panel5.Controls.Add(Me.grTodasCompras)
         Me.Panel5.Dock = System.Windows.Forms.DockStyle.Fill
         Me.Panel5.Location = New System.Drawing.Point(0, 0)
         Me.Panel5.Name = "Panel5"
         Me.Panel5.Size = New System.Drawing.Size(1305, 427)
         Me.Panel5.TabIndex = 0
+        '
+        'grTodasCompras
+        '
+        Me.grTodasCompras.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.grTodasCompras.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.5!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.grTodasCompras.HeaderFormatStyle.Font = New System.Drawing.Font("Georgia", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.grTodasCompras.Location = New System.Drawing.Point(0, 0)
+        Me.grTodasCompras.Name = "grTodasCompras"
+        Me.grTodasCompras.Office2007ColorScheme = Janus.Windows.GridEX.Office2007ColorScheme.Custom
+        Me.grTodasCompras.Office2007CustomColor = System.Drawing.Color.DodgerBlue
+        Me.grTodasCompras.Size = New System.Drawing.Size(1305, 427)
+        Me.grTodasCompras.TabIndex = 1
+        Me.grTodasCompras.Visible = False
+        Me.grTodasCompras.VisualStyle = Janus.Windows.GridEX.VisualStyle.Office2007
         '
         'grprecio
         '
@@ -531,6 +554,24 @@ Partial Class F0_VerificarPrecioCompra
         Me.Timer1.Enabled = True
         Me.Timer1.Interval = 500
         '
+        'btTodasCompras
+        '
+        Me.btTodasCompras.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
+        Me.btTodasCompras.ColorTable = DevComponents.DotNetBar.eButtonColor.Flat
+        Me.btTodasCompras.Dock = System.Windows.Forms.DockStyle.Right
+        Me.btTodasCompras.Font = New System.Drawing.Font("Arial", 7.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btTodasCompras.Image = Global.DinoM.My.Resources.Resources.sheets
+        Me.btTodasCompras.ImageFixedSize = New System.Drawing.Size(40, 45)
+        Me.btTodasCompras.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top
+        Me.btTodasCompras.Location = New System.Drawing.Point(85, 0)
+        Me.btTodasCompras.Name = "btTodasCompras"
+        Me.btTodasCompras.Padding = New System.Windows.Forms.Padding(0, 0, 0, 20)
+        Me.btTodasCompras.Size = New System.Drawing.Size(95, 72)
+        Me.btTodasCompras.Style = DevComponents.DotNetBar.eDotNetBarStyle.OfficeMobile2014
+        Me.btTodasCompras.TabIndex = 12
+        Me.btTodasCompras.Text = "EXPORTAR TODAS LAS COMPRAS"
+        Me.btTodasCompras.TextColor = System.Drawing.Color.White
+        '
         'F0_VerificarPrecioCompra
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -562,6 +603,7 @@ Partial Class F0_VerificarPrecioCompra
         Me.PanelPrecios.ResumeLayout(False)
         Me.GroupPanel4.ResumeLayout(False)
         Me.Panel5.ResumeLayout(False)
+        CType(Me.grTodasCompras, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.grprecio, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupPanel3.ResumeLayout(False)
         Me.Panel4.ResumeLayout(False)
@@ -589,4 +631,6 @@ Partial Class F0_VerificarPrecioCompra
     Friend WithEvents LabelX1 As DevComponents.DotNetBar.LabelX
     Friend WithEvents lbCtrlEnter As DevComponents.DotNetBar.LabelX
     Friend WithEvents btnSearch As DevComponents.DotNetBar.ButtonX
+    Friend WithEvents btTodasCompras As DevComponents.DotNetBar.ButtonX
+    Friend WithEvents grTodasCompras As Janus.Windows.GridEX.GridEX
 End Class
