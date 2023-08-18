@@ -241,19 +241,20 @@ Public Class F1_MontoPagar
     End Sub
 
     Private Sub tbNit_Validating(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles tbNit.Validating
-        Dim nom1, nom2, correo, tipoDoc, id, complemento As String
+        Dim nom1, nom2, correo, tipoDoc, id, complemento, cel As String
         nom1 = ""
         nom2 = ""
         correo = ""
         tipoDoc = ""
         id = ""
+        cel = ""
         complemento = tbComplemento.Text.Trim
         If (tbNit.Text.Trim <> String.Empty) Then
-            L_Validar_Nit(tbNit.Text.Trim, nom1, nom2, correo, tipoDoc, id, complemento) ''falta validar
+            L_Validar_Nit(tbNit.Text.Trim, nom1, nom2, correo, tipoDoc, id, complemento, cel) ''falta validar
             If nom1 = "" Then
                 CiNitNuevo()
                 'tbRazonSocial.Focus()
-                L_Validar_Nit(tbNit.Text.Trim, nom1, nom2, correo, tipoDoc, id, complemento)
+                L_Validar_Nit(tbNit.Text.Trim, nom1, nom2, correo, tipoDoc, id, complemento, cel)
                 IdNit = id
 
             Else

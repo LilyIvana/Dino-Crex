@@ -53,6 +53,7 @@ Public Class F0_Venta2
     Public NombreProd As String
     Public NroFact As Integer
     Public NroTarjeta As String
+    Public Cel As String
 
     Public _Fecha As Date
 
@@ -1968,9 +1969,9 @@ Public Class F0_Venta2
             End If
 
             If (Not tbNit.Text.Trim.Equals("0")) Then
-                L_Grabar_Nit(tbNit.Text.Trim, TbNombre1.Text.Trim, Convert.ToString(_CodCliente), CbTipoDoc.Value, TbEmail.Text, tbComplemento.Text)
+                L_Grabar_Nit(tbNit.Text.Trim, TbNombre1.Text.Trim, Convert.ToString(_CodCliente), CbTipoDoc.Value, TbEmail.Text, tbComplemento.Text, Cel)
             Else
-                L_Grabar_Nit(tbNit.Text, "S/N", "", "", "", "")
+                L_Grabar_Nit(tbNit.Text, "S/N", "", "", "", "", "")
             End If
         End If
 
@@ -5162,13 +5163,14 @@ salirIf:
         If (e.KeyData = Keys.Enter) Then
             If btnGrabar.Enabled = True Then
 
-                Dim nom1, nom2, correo, tipoDoc As String
+                Dim nom1, nom2, correo, tipoDoc, cel As String
                 nom1 = ""
                 nom2 = ""
                 correo = ""
                 tipoDoc = ""
+                cel = ""
                 If (tbNit.Text.Trim <> String.Empty) Then
-                    L_Validar_Nit(tbNit.Text.Trim, nom1, nom2, correo, tipoDoc, "", tbComplemento.Text)
+                    L_Validar_Nit(tbNit.Text.Trim, nom1, nom2, correo, tipoDoc, "", tbComplemento.Text, cel)
 
                     TbNombre1.Text = nom1
                     TbNombre2.Text = nom2

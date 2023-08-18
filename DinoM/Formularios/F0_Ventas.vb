@@ -1130,9 +1130,9 @@ Public Class F0_Ventas
             End If
 
             If (Not TbNit.Text.Trim.Equals("0")) Then
-                L_Grabar_Nit(TbNit.Text.Trim, TbNombre1.Text.Trim, TbNombre2.Text.Trim, "", "", "")
+                L_Grabar_Nit(TbNit.Text.Trim, TbNombre1.Text.Trim, TbNombre2.Text.Trim, "", "", "", "")
             Else
-                L_Grabar_Nit(TbNit.Text, "S/N", "", "", "", "")
+                L_Grabar_Nit(TbNit.Text, "S/N", "", "", "", "", "")
             End If
         End If
 
@@ -2369,7 +2369,7 @@ salirIf:
         If (TbNit.Text.Trim = String.Empty) Then
             TbNit.Text = "0"
         End If
-        L_Validar_Nit(TbNit.Text.Trim, nom1, nom2, "", "", "", "")
+        L_Validar_Nit(TbNit.Text.Trim, nom1, nom2, "", "", "", "", "")
         TbNombre1.Text = nom1
         TbNombre2.Text = nom2
     End Sub

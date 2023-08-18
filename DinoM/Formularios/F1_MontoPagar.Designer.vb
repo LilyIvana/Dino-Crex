@@ -64,6 +64,8 @@ Partial Class F1_MontoPagar
         Me.tbNit = New System.Windows.Forms.TextBox()
         Me.LabelX3 = New DevComponents.DotNetBar.LabelX()
         Me.LabelX4 = New DevComponents.DotNetBar.LabelX()
+        Me.LabelX7 = New DevComponents.DotNetBar.LabelX()
+        Me.tbCel = New DevComponents.DotNetBar.Controls.TextBoxX()
         Me.GroupBox2.SuspendLayout()
         Me.GroupBox1.SuspendLayout()
         CType(Me.tbMontoQR, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -88,9 +90,9 @@ Partial Class F1_MontoPagar
         Me.GroupBox2.Dock = System.Windows.Forms.DockStyle.Fill
         Me.GroupBox2.Font = New System.Drawing.Font("Georgia", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GroupBox2.ForeColor = System.Drawing.Color.Gold
-        Me.GroupBox2.Location = New System.Drawing.Point(0, 281)
+        Me.GroupBox2.Location = New System.Drawing.Point(0, 314)
         Me.GroupBox2.Name = "GroupBox2"
-        Me.GroupBox2.Size = New System.Drawing.Size(497, 154)
+        Me.GroupBox2.Size = New System.Drawing.Size(502, 149)
         Me.GroupBox2.TabIndex = 364
         Me.GroupBox2.TabStop = False
         Me.GroupBox2.Text = "Monto Venta/Cambio:"
@@ -217,9 +219,9 @@ Partial Class F1_MontoPagar
         Me.GroupBox1.Dock = System.Windows.Forms.DockStyle.Top
         Me.GroupBox1.Font = New System.Drawing.Font("Georgia", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GroupBox1.ForeColor = System.Drawing.Color.Gold
-        Me.GroupBox1.Location = New System.Drawing.Point(0, 140)
+        Me.GroupBox1.Location = New System.Drawing.Point(0, 173)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(497, 141)
+        Me.GroupBox1.Size = New System.Drawing.Size(502, 141)
         Me.GroupBox1.TabIndex = 362
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Efectivo:"
@@ -543,6 +545,8 @@ Partial Class F1_MontoPagar
         '
         Me.GroupBox3.BackColor = System.Drawing.Color.Transparent
         Me.GroupBox3.BackgroundImage = Global.DinoM.My.Resources.Resources.fondo1
+        Me.GroupBox3.Controls.Add(Me.LabelX7)
+        Me.GroupBox3.Controls.Add(Me.tbCel)
         Me.GroupBox3.Controls.Add(Me.tbComplemento)
         Me.GroupBox3.Controls.Add(Me.LabelX2)
         Me.GroupBox3.Controls.Add(Me.LabelX1)
@@ -559,7 +563,7 @@ Partial Class F1_MontoPagar
         Me.GroupBox3.ForeColor = System.Drawing.Color.Gold
         Me.GroupBox3.Location = New System.Drawing.Point(0, 0)
         Me.GroupBox3.Name = "GroupBox3"
-        Me.GroupBox3.Size = New System.Drawing.Size(497, 140)
+        Me.GroupBox3.Size = New System.Drawing.Size(502, 173)
         Me.GroupBox3.TabIndex = 365
         Me.GroupBox3.TabStop = False
         Me.GroupBox3.Text = "Datos de Factura"
@@ -727,11 +731,43 @@ Partial Class F1_MontoPagar
         Me.LabelX4.TabIndex = 366
         Me.LabelX4.Text = "Razón Social:"
         '
+        'LabelX7
+        '
+        Me.LabelX7.BackColor = System.Drawing.Color.Transparent
+        '
+        '
+        '
+        Me.LabelX7.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.LabelX7.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Bold)
+        Me.LabelX7.ForeColor = System.Drawing.Color.White
+        Me.LabelX7.Location = New System.Drawing.Point(9, 134)
+        Me.LabelX7.Name = "LabelX7"
+        Me.LabelX7.SingleLineColor = System.Drawing.SystemColors.Control
+        Me.LabelX7.Size = New System.Drawing.Size(70, 23)
+        Me.LabelX7.TabIndex = 428
+        Me.LabelX7.Text = "Celular:"
+        '
+        'tbCel
+        '
+        Me.tbCel.BackColor = System.Drawing.Color.White
+        '
+        '
+        '
+        Me.tbCel.Border.Class = "TextBoxBorder"
+        Me.tbCel.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.tbCel.Font = New System.Drawing.Font("Georgia", 10.0!, System.Drawing.FontStyle.Bold)
+        Me.tbCel.ForeColor = System.Drawing.Color.FromArgb(CType(CType(45, Byte), Integer), CType(CType(59, Byte), Integer), CType(CType(66, Byte), Integer))
+        Me.tbCel.Location = New System.Drawing.Point(124, 134)
+        Me.tbCel.Name = "tbCel"
+        Me.tbCel.PreventEnterBeep = True
+        Me.tbCel.Size = New System.Drawing.Size(354, 23)
+        Me.tbCel.TabIndex = 427
+        '
         'F1_MontoPagar
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(497, 435)
+        Me.ClientSize = New System.Drawing.Size(502, 463)
         Me.Controls.Add(Me.GroupBox2)
         Me.Controls.Add(Me.GroupBox1)
         Me.Controls.Add(Me.GroupBox3)
@@ -794,4 +830,6 @@ Partial Class F1_MontoPagar
     Friend WithEvents tbNroTarjeta2 As DevComponents.DotNetBar.Controls.TextBoxX
     Friend WithEvents tbComplemento As TextBox
     Friend WithEvents LabelX2 As DevComponents.DotNetBar.LabelX
+    Friend WithEvents LabelX7 As DevComponents.DotNetBar.LabelX
+    Friend WithEvents tbCel As DevComponents.DotNetBar.Controls.TextBoxX
 End Class

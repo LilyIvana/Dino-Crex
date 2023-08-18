@@ -1161,9 +1161,9 @@ Public Class F0_Factura
             'Validar para facturar
             P_prImprimirFacturar(numi, True, True) '_Codigo de a tabla TV001
             If (Not tbnit.Text.Trim.Equals("0")) Then
-                L_Grabar_Nit(tbnit.Text.Trim, tbnombfact.Text.Trim, "", "", "", "")
+                L_Grabar_Nit(tbnit.Text.Trim, tbnombfact.Text.Trim, "", "", "", "", "")
             Else
-                L_Grabar_Nit(tbnit.Text, "S/N", "", "", "", "")
+                L_Grabar_Nit(tbnit.Text, "S/N", "", "", "", "", "")
             End If
         End If
 

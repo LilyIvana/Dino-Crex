@@ -79,6 +79,7 @@ Public Class F0_VentasSupermercado
     Public CodExcepcion As Integer
     Public IdNit As String
     Public ComplementoCI As String
+    Public Cel As String
 
     Public SwFacturaClick As Boolean = False
 
@@ -1651,9 +1652,9 @@ Public Class F0_VentasSupermercado
             End If
 
             If (Not lbNit.Text.Trim.Equals("0")) Then
-                L_Grabar_Nit(lbNit.Text.Trim, lbCliente.Text.Trim, "", CbTDoc.Value, TbEmailS.Text, ComplementoCI)
+                L_Grabar_Nit(lbNit.Text.Trim, lbCliente.Text.Trim, "", CbTDoc.Value, TbEmailS.Text, ComplementoCI, Cel)
             Else
-                L_Grabar_Nit(lbNit.Text, "S/N", "", "", "", "")
+                L_Grabar_Nit(lbNit.Text, "S/N", "", "", "", "", "")
             End If
         End If
 
@@ -2659,6 +2660,7 @@ Public Class F0_VentasSupermercado
                 NroTarjeta = ef.nroTarjeta
                 CodExcepcion = ef.CExc
                 ComplementoCI = ef.ComplementoCi
+                Cel = ef.ComplementoCi
 
                 _prGuardar()
             Else

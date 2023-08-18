@@ -3220,24 +3220,25 @@ Public Class AccesoLogica
     End Function
 
     Public Shared Sub L_Grabar_Nit(_Nit As String, _Nom1 As String, _Nom2 As String, _TipoDoc As String,
-                                   _Correo As String, _Complemento As String)
+                                   _Correo As String, _Complemento As String, _Cel As String)
         Dim _Err As Boolean
-        Dim _Nom01, _Nom02, Correo, TipoDoc, Complem As String
+        Dim _Nom01, _Nom02, Correo, TipoDoc, Complem, cel As String
         Dim Sql As String
         _Nom01 = ""
         _Nom02 = ""
         Correo = ""
         TipoDoc = ""
         Complem = ""
-        L_Validar_Nit(_Nit, _Nom01, _Nom02, Correo, TipoDoc, "", _Complemento)
+        cel = ""
+        L_Validar_Nit(_Nit, _Nom01, _Nom02, Correo, TipoDoc, "", _Complemento, cel)
 
         If _Nom01 = "" Then
-            Sql = "'" + _Nit + "', '" + _Nom1 + "', '" + _Nom2 + "', '" + _TipoDoc + "','" + _Correo + "','" + _Complemento + "'"
+            Sql = "'" + _Nit + "', '" + _Nom1 + "', '" + _Nom2 + "', '" + _TipoDoc + "','" + _Correo + "','" + _Complemento + "','" + _Cel + "'"
             _Err = D_Insertar_Datos("TS001", Sql)
         Else
-            If (_Nom1 <> _Nom01 Or _Correo <> Correo Or _TipoDoc <> TipoDoc) Then
+            If (_Nom1 <> _Nom01 Or _Correo <> Correo Or _TipoDoc <> TipoDoc Or _Cel <> cel) Then
                 Sql = "sanom1 = '" + _Nom1 + "' " + " , satipdoc = '" + _TipoDoc + "' " + " , sacorreo = '" + _Correo + "' " +
-                       ", sanom2 = '" + _Nom2 + "' " + " , sacomplemento = '" + _Complemento + "' "
+                       ", sanom2 = '" + _Nom2 + "' " + ", sacel = '" + _Cel + "' " + " , sacomplemento = '" + _Complemento + "' "
                 _Err = D_Modificar_Datos("TS001", Sql, "sanit = '" + _Nit + "'" + " And sacomplemento = '" + _Complemento + "'")
             End If
         End If
@@ -3261,7 +3262,7 @@ Public Class AccesoLogica
     End Function
     Public Shared Sub L_Validar_Nit(_Nit As String, ByRef _Nom1 As String, ByRef _Nom2 As String,
                                     ByRef _Correo As String, ByRef _TipoDoc As String, ByRef _Id As String,
-                                    ByRef _Complemento As String)
+                                    ByRef _Complemento As String, ByRef _Cel As String)
         Dim _Tabla As DataTable
 
         _Tabla = D_Datos_Tabla("*", "TS001", "sanit = '" + _Nit + "'" + " And sacomplemento = '" + _Complemento + "'")
@@ -3273,6 +3274,7 @@ Public Class AccesoLogica
             _TipoDoc = _Tabla.Rows(0).Item(4)
             _Id = _Tabla.Rows(0).Item(0)
             _Complemento = _Tabla.Rows(0).Item(6)
+            _Cel = _Tabla.Rows(0).Item(7)
         End If
     End Sub
 
