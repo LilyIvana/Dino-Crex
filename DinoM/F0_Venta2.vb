@@ -5163,19 +5163,20 @@ salirIf:
         If (e.KeyData = Keys.Enter) Then
             If btnGrabar.Enabled = True Then
 
-                Dim nom1, nom2, correo, tipoDoc, cel As String
+                Dim nom1, nom2, correo, tipoDoc, cel1 As String
                 nom1 = ""
                 nom2 = ""
                 correo = ""
                 tipoDoc = ""
-                cel = ""
+                cel1 = ""
                 If (tbNit.Text.Trim <> String.Empty) Then
-                    L_Validar_Nit(tbNit.Text.Trim, nom1, nom2, correo, tipoDoc, "", tbComplemento.Text, cel)
+                    L_Validar_Nit(tbNit.Text.Trim, nom1, nom2, correo, tipoDoc, "", tbComplemento.Text, cel1)
 
                     TbNombre1.Text = nom1
                     TbNombre2.Text = nom2
                     TbEmail.Text = correo
                     CbTipoDoc.Value = tipoDoc
+                    Cel = cel1
 
                 End If
 
