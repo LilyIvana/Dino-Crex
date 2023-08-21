@@ -3246,12 +3246,12 @@ Public Class AccesoLogica
     End Sub
 
     Public Shared Function L_Grabar_NitPrimero(_Nit As String, _Nom1 As String, _Nom2 As String, _TipoDoc As String,
-                                               _Correo As String, _Complemento As String) As Boolean
+                                               _Correo As String, _Complemento As String, _Cel As String) As Boolean
         Dim _Err As Boolean
         Dim resultado As Boolean
         Dim Sql As String
 
-        Sql = "'" + _Nit + "', '" + _Nom1 + "', '" + _Nom2 + "', '" + _TipoDoc + "','" + _Correo + "','" + _Complemento + "'"
+        Sql = "'" + _Nit + "', '" + _Nom1 + "', '" + _Nom2 + "', '" + _TipoDoc + "','" + _Correo + "','" + _Complemento + "','" + _Cel + "'"
         _Err = D_Insertar_Datos("TS001", Sql)
         If _Err = False Then
             resultado = True

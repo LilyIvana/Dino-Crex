@@ -120,7 +120,7 @@ Public Class F_CiNitNuevo
 
 
             Dim res As Boolean = L_Grabar_NitPrimero(tbNit.Text, tbRazonSocial.Text, "", CbTDoc.Value,
-                                                     TbEmailN.Text, tbComplementoCi.Text)
+                                                     TbEmailN.Text, tbComplementoCi.Text, "")
 
             If res Then
                 ToastNotification.Show(Me, "Los datos se grabaron con éxito.".ToUpper, My.Resources.GRABACION_EXITOSA, 5000, eToastGlowColor.Green, eToastPosition.TopCenter)

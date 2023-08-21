@@ -263,6 +263,7 @@ Public Class F1_MontoPagar
                 CbTipoDoc.Value = tipoDoc
                 IdNit = id
                 tbComplemento.Text = complemento
+                tbCel.Text = cel
             End If
         End If
     End Sub

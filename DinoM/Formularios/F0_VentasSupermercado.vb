@@ -2660,7 +2660,7 @@ Public Class F0_VentasSupermercado
                 NroTarjeta = ef.nroTarjeta
                 CodExcepcion = ef.CExc
                 ComplementoCI = ef.ComplementoCi
-                Cel = ef.ComplementoCi
+                Cel = ef.cel
 
                 _prGuardar()
             Else
