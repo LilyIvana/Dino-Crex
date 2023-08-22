@@ -30,6 +30,8 @@ Partial Class F0_Venta2
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(F0_Venta2))
         Me.GroupPanel2 = New DevComponents.DotNetBar.Controls.GroupPanel()
         Me.Panel2 = New System.Windows.Forms.Panel()
+        Me.lbPulperia = New DevComponents.DotNetBar.LabelX()
+        Me.swPulperia = New DevComponents.DotNetBar.Controls.SwitchButton()
         Me.TbEmail = New DevComponents.DotNetBar.Controls.TextBoxX()
         Me.LabelX27 = New DevComponents.DotNetBar.LabelX()
         Me.lbNroCaja = New System.Windows.Forms.Label()
@@ -135,8 +137,8 @@ Partial Class F0_Venta2
         Me.Label1Conn = New System.Windows.Forms.Label()
         Me.tbComplemento = New System.Windows.Forms.TextBox()
         Me.LabelX26 = New DevComponents.DotNetBar.LabelX()
-        Me.swPulperia = New DevComponents.DotNetBar.Controls.SwitchButton()
-        Me.lbPulperia = New DevComponents.DotNetBar.LabelX()
+        Me.tbCel = New DevComponents.DotNetBar.Controls.TextBoxX()
+        Me.LabelX28 = New DevComponents.DotNetBar.LabelX()
         Me.PanelSuperior.SuspendLayout()
         Me.PanelInferior.SuspendLayout()
         CType(Me.BubbleBarUsuario, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -193,6 +195,8 @@ Partial Class F0_Venta2
         '
         'PanelSuperior
         '
+        Me.PanelSuperior.Controls.Add(Me.LabelX28)
+        Me.PanelSuperior.Controls.Add(Me.tbCel)
         Me.PanelSuperior.Controls.Add(Me.tbComplemento)
         Me.PanelSuperior.Controls.Add(Me.LabelX26)
         Me.PanelSuperior.Controls.Add(Me.SwDescuentoProveedor)
@@ -226,6 +230,8 @@ Partial Class F0_Venta2
         Me.PanelSuperior.Controls.SetChildIndex(Me.SwDescuentoProveedor, 0)
         Me.PanelSuperior.Controls.SetChildIndex(Me.LabelX26, 0)
         Me.PanelSuperior.Controls.SetChildIndex(Me.tbComplemento, 0)
+        Me.PanelSuperior.Controls.SetChildIndex(Me.tbCel, 0)
+        Me.PanelSuperior.Controls.SetChildIndex(Me.LabelX28, 0)
         '
         'PanelInferior
         '
@@ -465,6 +471,39 @@ Partial Class F0_Venta2
         Me.Panel2.Name = "Panel2"
         Me.Panel2.Size = New System.Drawing.Size(1280, 107)
         Me.Panel2.TabIndex = 0
+        '
+        'lbPulperia
+        '
+        Me.lbPulperia.BackColor = System.Drawing.Color.Transparent
+        '
+        '
+        '
+        Me.lbPulperia.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.lbPulperia.Font = New System.Drawing.Font("Georgia", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lbPulperia.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(85, Byte), Integer), CType(CType(139, Byte), Integer))
+        Me.lbPulperia.Location = New System.Drawing.Point(804, 60)
+        Me.lbPulperia.Name = "lbPulperia"
+        Me.lbPulperia.SingleLineColor = System.Drawing.SystemColors.Control
+        Me.lbPulperia.Size = New System.Drawing.Size(60, 15)
+        Me.lbPulperia.TabIndex = 392
+        Me.lbPulperia.Text = "Pulpería:"
+        '
+        'swPulperia
+        '
+        '
+        '
+        '
+        Me.swPulperia.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.swPulperia.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.swPulperia.Location = New System.Drawing.Point(804, 76)
+        Me.swPulperia.Name = "swPulperia"
+        Me.swPulperia.OffBackColor = System.Drawing.Color.SteelBlue
+        Me.swPulperia.OffText = "NO"
+        Me.swPulperia.OnBackColor = System.Drawing.Color.Gold
+        Me.swPulperia.OnText = "SI"
+        Me.swPulperia.Size = New System.Drawing.Size(70, 20)
+        Me.swPulperia.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+        Me.swPulperia.TabIndex = 391
         '
         'TbEmail
         '
@@ -2413,38 +2452,37 @@ Partial Class F0_Venta2
         Me.LabelX26.TabIndex = 428
         Me.LabelX26.Text = "Complemento:"
         '
-        'swPulperia
+        'tbCel
+        '
+        Me.tbCel.BackColor = System.Drawing.Color.White
         '
         '
         '
+        Me.tbCel.Border.Class = "TextBoxBorder"
+        Me.tbCel.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.tbCel.Font = New System.Drawing.Font("Georgia", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.tbCel.ForeColor = System.Drawing.Color.FromArgb(CType(CType(45, Byte), Integer), CType(CType(59, Byte), Integer), CType(CType(66, Byte), Integer))
+        Me.tbCel.Location = New System.Drawing.Point(918, 12)
+        Me.tbCel.Name = "tbCel"
+        Me.tbCel.PreventEnterBeep = True
+        Me.tbCel.Size = New System.Drawing.Size(140, 21)
+        Me.tbCel.TabIndex = 429
         '
-        Me.swPulperia.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.swPulperia.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.swPulperia.Location = New System.Drawing.Point(804, 76)
-        Me.swPulperia.Name = "swPulperia"
-        Me.swPulperia.OffBackColor = System.Drawing.Color.SteelBlue
-        Me.swPulperia.OffText = "NO"
-        Me.swPulperia.OnBackColor = System.Drawing.Color.Gold
-        Me.swPulperia.OnText = "SI"
-        Me.swPulperia.Size = New System.Drawing.Size(70, 20)
-        Me.swPulperia.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-        Me.swPulperia.TabIndex = 391
+        'LabelX28
         '
-        'lbPulperia
-        '
-        Me.lbPulperia.BackColor = System.Drawing.Color.Transparent
+        Me.LabelX28.BackColor = System.Drawing.Color.Transparent
         '
         '
         '
-        Me.lbPulperia.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.lbPulperia.Font = New System.Drawing.Font("Georgia", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lbPulperia.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(85, Byte), Integer), CType(CType(139, Byte), Integer))
-        Me.lbPulperia.Location = New System.Drawing.Point(804, 60)
-        Me.lbPulperia.Name = "lbPulperia"
-        Me.lbPulperia.SingleLineColor = System.Drawing.SystemColors.Control
-        Me.lbPulperia.Size = New System.Drawing.Size(60, 15)
-        Me.lbPulperia.TabIndex = 392
-        Me.lbPulperia.Text = "Pulpería:"
+        Me.LabelX28.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.LabelX28.Font = New System.Drawing.Font("Georgia", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LabelX28.ForeColor = System.Drawing.Color.White
+        Me.LabelX28.Location = New System.Drawing.Point(885, 11)
+        Me.LabelX28.Name = "LabelX28"
+        Me.LabelX28.SingleLineColor = System.Drawing.SystemColors.Control
+        Me.LabelX28.Size = New System.Drawing.Size(32, 23)
+        Me.LabelX28.TabIndex = 430
+        Me.LabelX28.Text = "Cel:"
         '
         'F0_Venta2
         '
@@ -2628,4 +2666,6 @@ Partial Class F0_Venta2
     Friend WithEvents LabelX26 As DevComponents.DotNetBar.LabelX
     Friend WithEvents lbPulperia As DevComponents.DotNetBar.LabelX
     Friend WithEvents swPulperia As DevComponents.DotNetBar.Controls.SwitchButton
+    Friend WithEvents LabelX28 As DevComponents.DotNetBar.LabelX
+    Friend WithEvents tbCel As DevComponents.DotNetBar.Controls.TextBoxX
 End Class

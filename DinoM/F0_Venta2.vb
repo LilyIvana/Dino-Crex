@@ -2834,6 +2834,7 @@ Public Class F0_Venta2
                     TbEmail.Text = Row.Cells("email").Value
                     CbTipoDoc.Value = Row.Cells("yddct").Value.ToString
                     tbComplemento.Text = Row.Cells("ydobs").Value
+                    tbCel.Text = Row.Cells("ydtelf1").Value.ToString
 
                     Dim numiVendedor As Integer = IIf(IsDBNull(Row.Cells("ydnumivend").Value), 0, Row.Cells("ydnumivend").Value)
                     If (numiVendedor > 0) Then
