@@ -1845,7 +1845,7 @@ Public Class AccesoLogica
                                            _tatotal As Double, detalle As DataTable, _almacen As Integer, _taprforma As Integer,
                                            Monto As DataTable, _NroCaja As Integer, _programa As String, _Nit As String,
                                            _Rsocial As String, _Correo As String, _TipoDoc As String, _actualizar As Integer,
-                                           _Complemento As String) As Boolean
+                                           _Complemento As String, _cel As String) As Boolean
         Dim _Tabla As DataTable
         Dim _resultado As Boolean
         Dim _listParam As New List(Of Datos.DParametro)
@@ -1876,6 +1876,7 @@ Public Class AccesoLogica
         _listParam.Add(New Datos.DParametro("@Rsocial", _Rsocial))
         _listParam.Add(New Datos.DParametro("@actualizar", _actualizar))
         _listParam.Add(New Datos.DParametro("@complemento", _Complemento))
+        _listParam.Add(New Datos.DParametro("@cel", _cel))
 
         _listParam.Add(New Datos.DParametro("@TV0011", "", detalle))
         _listParam.Add(New Datos.DParametro("@TV0014", "", Monto))

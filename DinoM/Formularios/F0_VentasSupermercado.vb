@@ -1439,7 +1439,7 @@ Public Class F0_VentasSupermercado
             Dim dtDetalle As DataTable = CType(grdetalle.DataSource, DataTable)
             Dim res As Boolean = L_fnGrabarVenta(numi, "", Now.Date.ToString("yyyy/MM/dd"), Vendedor, 1, Now.Date.ToString("yyyy/MM/dd"), _CodCliente, 1, "",
                                                  tbDescuento.Value, 0, Str(tbTotal.Value), dtDetalle, Sucursal, 0, tabla, gs_NroCaja, Programa,
-                                                 lbNit.Text, lbCliente.Text, TbEmailS.Text, CbTDoc.Value, actualizar, ComplementoCI)
+                                                 lbNit.Text, lbCliente.Text, TbEmailS.Text, CbTDoc.Value, actualizar, ComplementoCI, Cel)
             If res Then
                 'res = P_fnGrabarFacturarTFV001(numi)
                 'Emite factura
@@ -2595,6 +2595,8 @@ Public Class F0_VentasSupermercado
                 lbNombreCliente.Text = Row.Cells("yddesc").Value
                 CbTDoc.Value = Row.Cells("yddct").Value
                 TbEmailS.Text = Row.Cells("email").Value
+                Cel = Row.Cells("ydtelf1").Value
+
 
                 Dim numiVendedor As Integer = IIf(IsDBNull(Row.Cells("ydnumivend").Value), 0, Row.Cells("ydnumivend").Value)
 
@@ -2625,6 +2627,7 @@ Public Class F0_VentasSupermercado
             ef.Nit = lbNit.Text
             ef.RazonSocial = lbCliente.Text
             ef.Email = TbEmailS.Text
+            ef.cel = Cel
             Dim TipoDoc As String = CbTDoc.Value
 
             With ef.Tdoc

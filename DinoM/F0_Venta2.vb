@@ -53,7 +53,7 @@ Public Class F0_Venta2
     Public NombreProd As String
     Public NroFact As Integer
     Public NroTarjeta As String
-    Public Cel As String
+
 
     Public _Fecha As Date
 
@@ -1761,7 +1761,7 @@ Public Class F0_Venta2
             Dim res As Boolean = L_fnGrabarVenta(numi, "", tbFechaVenta.Value.ToString("yyyy/MM/dd"), _CodEmpleado, IIf(swTipoVenta.Value = True, 1, 0), IIf(swTipoVenta.Value = True,
                                                 Now.Date.ToString("yyyy/MM/dd"), tbFechaVenc.Value.ToString("yyyy/MM/dd")), _CodCliente, IIf(swMoneda.Value = True, 1, 0),
                                                 tbObservacion.Text.Trim, tbMdesc.Value, tbIce.Value, tbTotalBs.Text, dtDetalle, cbSucursal.Value, 0, tabla, gs_NroCaja, Programa,
-                                                tbNit.Text, TbNombre1.Text, TbEmail.Text, CbTipoDoc.Value, 1, tbComplemento.Text)
+                                                tbNit.Text, TbNombre1.Text, TbEmail.Text, CbTipoDoc.Value, 1, tbComplemento.Text, tbCel.Text)
             If res Then
                 'res = P_fnGrabarFacturarTFV001(numi)
                 'Emite factura
@@ -1969,7 +1969,7 @@ Public Class F0_Venta2
             End If
 
             If (Not tbNit.Text.Trim.Equals("0")) Then
-                L_Grabar_Nit(tbNit.Text.Trim, TbNombre1.Text.Trim, Convert.ToString(_CodCliente), CbTipoDoc.Value, TbEmail.Text, tbComplemento.Text, Cel)
+                L_Grabar_Nit(tbNit.Text.Trim, TbNombre1.Text.Trim, Convert.ToString(_CodCliente), CbTipoDoc.Value, TbEmail.Text, tbComplemento.Text, tbCel.Text)
             Else
                 L_Grabar_Nit(tbNit.Text, "S/N", "", "", "", "", "")
             End If
@@ -5177,7 +5177,7 @@ salirIf:
                     TbNombre2.Text = nom2
                     TbEmail.Text = correo
                     CbTipoDoc.Value = tipoDoc
-                    Cel = cel1
+                    tbCel.Text = cel1
 
                 End If
 

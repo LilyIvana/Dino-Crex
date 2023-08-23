@@ -100,6 +100,7 @@ Public Class Efecto
         frmAyuda.TotalVenta = TotalVenta
         frmAyuda.Nit = Nit
         frmAyuda.RazonSocial = RazonSocial
+        frmAyuda.tbCel.Text = cel
 
 
         With frmAyuda.CbTipoDoc
