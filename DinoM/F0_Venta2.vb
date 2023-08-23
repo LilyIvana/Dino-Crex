@@ -233,6 +233,7 @@ Public Class F0_Venta2
 
         tbNit.ReadOnly = True
         tbComplemento.ReadOnly = True
+        tbCel.ReadOnly = True
         TbNombre1.ReadOnly = True
         TbNombre2.ReadOnly = True
         cbSucursal.ReadOnly = True
@@ -258,6 +259,7 @@ Public Class F0_Venta2
 
         tbNit.ReadOnly = False
         tbComplemento.ReadOnly = False
+        tbCel.ReadOnly = False
         TbNombre1.ReadOnly = False
         TbNombre2.ReadOnly = False
         CbTipoDoc.ReadOnly = False
@@ -376,6 +378,7 @@ Public Class F0_Venta2
 
         tbNit.Clear()
         tbComplemento.Clear()
+        tbCel.Clear()
         TbNombre1.Clear()
         TbNombre2.Clear()
         tbNit.Select()
@@ -432,7 +435,7 @@ Public Class F0_Venta2
                 btnEliminar.Enabled = False
             End If
             'If (gb_FacturaEmite) Then
-            Dim dt As DataTable = L_fnObtenerTabla("TFV001" + " inner join ts001 on tfv001.fvanitcli=ts001.sanit AND tfv001.fvadescli2=ts001.sacomplemento", "fvanitcli, fvadescli1, fvadescli2, fvaautoriz, fvanfac, fvaccont, fvafec,ts001.sacorreo,ts001.satipdoc ", "fvanumi=" + tbCodigo.Text.Trim)
+            Dim dt As DataTable = L_fnObtenerTabla("TFV001" + " inner join ts001 on tfv001.fvanitcli=ts001.sanit AND tfv001.fvadescli2=ts001.sacomplemento", "fvanitcli, fvadescli1, fvadescli2, fvaautoriz, fvanfac, fvaccont, fvafec,ts001.sacorreo, ts001.satipdoc, ts001.sacel ", "fvanumi=" + tbCodigo.Text.Trim)
             If (dt.Rows.Count = 1) Then
                 tbNit.Text = dt.Rows(0).Item("fvanitcli").ToString
                 tbComplemento.Text = dt.Rows(0).Item("fvadescli2").ToString
@@ -440,6 +443,7 @@ Public Class F0_Venta2
                 TbNombre2.Text = dt.Rows(0).Item("fvadescli2").ToString
                 TbEmail.Text = dt.Rows(0).Item("sacorreo").ToString
                 CbTipoDoc.Value = dt.Rows(0).Item("satipdoc").ToString
+                tbCel.Text = dt.Rows(0).Item("sacel").ToString
 
                 tbNroAutoriz.Text = dt.Rows(0).Item("fvaautoriz").ToString
                 tbNroFactura.Text = dt.Rows(0).Item("fvanfac").ToString
