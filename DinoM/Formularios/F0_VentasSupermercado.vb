@@ -2595,7 +2595,7 @@ Public Class F0_VentasSupermercado
                 lbNombreCliente.Text = Row.Cells("yddesc").Value
                 CbTDoc.Value = Row.Cells("yddct").Value
                 TbEmailS.Text = Row.Cells("email").Value
-                Cel = Row.Cells("ydtelf1").Value
+                'Cel = Row.Cells("ydtelf1").Value
 
 
                 Dim numiVendedor As Integer = IIf(IsDBNull(Row.Cells("ydnumivend").Value), 0, Row.Cells("ydnumivend").Value)

@@ -449,6 +449,12 @@
     <Compile Include="F1_ConsignacionFlow.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="F1_ListaClientesCel.Designer.vb">
+      <DependentUpon>F1_ListaClientesCel.vb</DependentUpon>
+    </Compile>
+    <Compile Include="F1_ListaClientesCel.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="F1_PVentaMenorPCosto.Designer.vb">
       <DependentUpon>F1_PVentaMenorPCosto.vb</DependentUpon>
     </Compile>
@@ -1436,6 +1442,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="F1_ConsignacionFlow.resx">
       <DependentUpon>F1_ConsignacionFlow.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="F1_ListaClientesCel.resx">
+      <DependentUpon>F1_ListaClientesCel.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="F1_PVentaMenorPCosto.resx">
       <DependentUpon>F1_PVentaMenorPCosto.vb</DependentUpon>

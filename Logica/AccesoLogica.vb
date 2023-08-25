@@ -1183,6 +1183,26 @@ Public Class AccesoLogica
 
         Return _Tabla
     End Function
+    Public Shared Function L_fnReportecliente() As DataTable
+        Dim _Tabla As DataTable
+
+        Dim _listParam As New List(Of Datos.DParametro)
+
+        _listParam.Add(New Datos.DParametro("@tipo", 12))
+        _Tabla = D_ProcedimientoConParam("sp_Mam_TY004", _listParam)
+
+        Return _Tabla
+    End Function
+    Public Shared Function L_ClientesCel(tipo As String) As DataTable
+        Dim _Tabla As DataTable
+        Dim _listParam As New List(Of Datos.DParametro)
+        _listParam.Add(New Datos.DParametro("@tipo", 13))
+        _listParam.Add(New Datos.DParametro("@tipoCliente", tipo))
+        _listParam.Add(New Datos.DParametro("@yduact", L_Usuario))
+        _Tabla = D_ProcedimientoConParam("sp_Mam_TY004", _listParam)
+        Return _Tabla
+    End Function
+
 #End Region
 
 #Region "TY006 Categorias"
@@ -5720,16 +5740,7 @@ Public Class AccesoLogica
 
         Return _Tabla
     End Function
-    Public Shared Function L_fnReportecliente() As DataTable
-        Dim _Tabla As DataTable
 
-        Dim _listParam As New List(Of Datos.DParametro)
-
-        _listParam.Add(New Datos.DParametro("@tipo", 12))
-        _Tabla = D_ProcedimientoConParam("sp_Mam_TY004", _listParam)
-
-        Return _Tabla
-    End Function
     Public Shared Function L_fnReporteproducto() As DataTable
         Dim _Tabla As DataTable
 
