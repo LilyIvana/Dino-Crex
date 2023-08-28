@@ -180,6 +180,7 @@ Partial Class P_Principal
         Me.SideNavItem3 = New DevComponents.DotNetBar.Controls.SideNavItem()
         Me.MetroTileItem11 = New DevComponents.DotNetBar.Metro.MetroTileItem()
         Me.MetroTileItem12 = New DevComponents.DotNetBar.Metro.MetroTileItem()
+        Me.btRepClientesCel = New DevComponents.DotNetBar.Metro.MetroTileItem()
         MetroTileFrame1 = New DevComponents.DotNetBar.Metro.MetroTileFrame()
         MetroTileFrame2 = New DevComponents.DotNetBar.Metro.MetroTileFrame()
         Me.SideNav1.SuspendLayout()
@@ -570,7 +571,7 @@ Partial Class P_Principal
         Me.MetroTilePanel1.DragDropSupport = True
         Me.MetroTilePanel1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.MetroTilePanel1.ForeColor = System.Drawing.Color.White
-        Me.MetroTilePanel1.Items.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.btConfRoles, Me.btConfUsuarios, Me.btConfCliente, Me.btConfProducto, Me.btConfPrecio, Me.btConfLibreria, Me.btConfDosificacion, Me.btnCodControl, Me.btZonas1, Me.btBancos, Me.btServicios, Me.btConfDescuentos, Me.btConfDescuentosProveedor, Me.btConfDescuentosCajeros, Me.btConfPesaje, Me.btConfActPrecios, Me.btConfVerificarPCosto, Me.btPventaMenorPcosto})
+        Me.MetroTilePanel1.Items.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.btConfRoles, Me.btConfUsuarios, Me.btConfCliente, Me.btConfProducto, Me.btConfPrecio, Me.btConfLibreria, Me.btConfDosificacion, Me.btnCodControl, Me.btZonas1, Me.btBancos, Me.btServicios, Me.btConfDescuentos, Me.btConfDescuentosProveedor, Me.btConfDescuentosCajeros, Me.btConfPesaje, Me.btConfActPrecios, Me.btConfVerificarPCosto, Me.btPventaMenorPcosto, Me.btRepClientesCel})
         Me.MetroTilePanel1.ItemSpacing = 10
         Me.MetroTilePanel1.Location = New System.Drawing.Point(0, 0)
         Me.MetroTilePanel1.MultiLine = True
@@ -2895,6 +2896,22 @@ Partial Class P_Principal
         Me.MetroTileItem12.TitleTextAlignment = System.Drawing.ContentAlignment.BottomCenter
         Me.MetroTileItem12.TitleTextColor = System.Drawing.Color.Red
         '
+        'btRepClientesCel
+        '
+        Me.btRepClientesCel.Image = Global.DinoM.My.Resources.Resources.check_mark
+        Me.btRepClientesCel.ImageTextAlignment = System.Drawing.ContentAlignment.MiddleCenter
+        Me.btRepClientesCel.Name = "btRepClientesCel"
+        Me.btRepClientesCel.SymbolColor = System.Drawing.Color.Empty
+        Me.btRepClientesCel.TileColor = DevComponents.DotNetBar.Metro.eMetroTileColor.Magenta
+        Me.btRepClientesCel.TileSize = New System.Drawing.Size(250, 135)
+        '
+        '
+        '
+        Me.btRepClientesCel.TileStyle.BackColor = System.Drawing.SystemColors.HotTrack
+        Me.btRepClientesCel.TileStyle.BackColor2 = System.Drawing.Color.FromArgb(CType(CType(139, Byte), Integer), CType(CType(165, Byte), Integer), CType(CType(42, Byte), Integer), CType(CType(42, Byte), Integer))
+        Me.btRepClientesCel.TileStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.btRepClientesCel.TitleText = "REPORTE CLIENTES CON CELULAR"
+        '
         'P_Principal
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -3084,4 +3101,5 @@ Partial Class P_Principal
     Friend WithEvents btRepFactAnuladas As DevComponents.DotNetBar.Metro.MetroTileItem
     Friend WithEvents btPventaMenorPcosto As DevComponents.DotNetBar.Metro.MetroTileItem
     Friend WithEvents btRepConsignacionFlow As DevComponents.DotNetBar.Metro.MetroTileItem
+    Friend WithEvents btRepClientesCel As DevComponents.DotNetBar.Metro.MetroTileItem
 End Class

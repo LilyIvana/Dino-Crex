@@ -25,7 +25,6 @@ Partial Class F1_ListaClientesCel
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(F1_ListaClientesCel))
-        Me.btExcel = New DevComponents.DotNetBar.ButtonX()
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         Me.GroupPanel2 = New DevComponents.DotNetBar.Controls.GroupPanel()
         Me.Panel1 = New System.Windows.Forms.Panel()
@@ -68,7 +67,7 @@ Partial Class F1_ListaClientesCel
         Me.SuperTabPrincipal.ControlBox.MenuBox.Name = ""
         Me.SuperTabPrincipal.ControlBox.Name = ""
         Me.SuperTabPrincipal.ControlBox.SubItems.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.SuperTabPrincipal.ControlBox.MenuBox, Me.SuperTabPrincipal.ControlBox.CloseBox})
-        Me.SuperTabPrincipal.Size = New System.Drawing.Size(1344, 661)
+        Me.SuperTabPrincipal.Size = New System.Drawing.Size(1284, 661)
         Me.SuperTabPrincipal.Controls.SetChildIndex(Me.SuperTabControlPanelBuscador, 0)
         Me.SuperTabPrincipal.Controls.SetChildIndex(Me.SuperTabControlPanelRegistro, 0)
         '
@@ -83,14 +82,14 @@ Partial Class F1_ListaClientesCel
         '
         'SuperTabControlPanelRegistro
         '
-        Me.SuperTabControlPanelRegistro.Size = New System.Drawing.Size(1312, 661)
+        Me.SuperTabControlPanelRegistro.Size = New System.Drawing.Size(1252, 661)
         Me.SuperTabControlPanelRegistro.Controls.SetChildIndex(Me.PanelSuperior, 0)
         Me.SuperTabControlPanelRegistro.Controls.SetChildIndex(Me.PanelInferior, 0)
         Me.SuperTabControlPanelRegistro.Controls.SetChildIndex(Me.PanelPrincipal, 0)
         '
         'PanelSuperior
         '
-        Me.PanelSuperior.Size = New System.Drawing.Size(1312, 72)
+        Me.PanelSuperior.Size = New System.Drawing.Size(1252, 72)
         Me.PanelSuperior.Style.Alignment = System.Drawing.StringAlignment.Center
         Me.PanelSuperior.Style.BackColor1.Color = System.Drawing.Color.DarkSlateGray
         Me.PanelSuperior.Style.BackColor2.Color = System.Drawing.Color.DarkSlateGray
@@ -104,7 +103,7 @@ Partial Class F1_ListaClientesCel
         'PanelInferior
         '
         Me.PanelInferior.Location = New System.Drawing.Point(0, 625)
-        Me.PanelInferior.Size = New System.Drawing.Size(1312, 36)
+        Me.PanelInferior.Size = New System.Drawing.Size(1252, 36)
         Me.PanelInferior.Style.Alignment = System.Drawing.StringAlignment.Center
         Me.PanelInferior.Style.BackColor1.Color = System.Drawing.Color.DarkSlateGray
         Me.PanelInferior.Style.BackColor2.Color = System.Drawing.Color.DarkSlateGray
@@ -140,28 +139,25 @@ Partial Class F1_ListaClientesCel
         '
         'PanelToolBar2
         '
-        Me.PanelToolBar2.Controls.Add(Me.btExcel)
-        Me.PanelToolBar2.Location = New System.Drawing.Point(1157, 0)
+        Me.PanelToolBar2.Location = New System.Drawing.Point(1097, 0)
         Me.PanelToolBar2.Size = New System.Drawing.Size(155, 72)
-        Me.PanelToolBar2.Controls.SetChildIndex(Me.btExcel, 0)
-        Me.PanelToolBar2.Controls.SetChildIndex(Me.btnImprimir, 0)
         '
         'MPanelSup
         '
         Me.MPanelSup.Controls.Add(Me.GroupPanel2)
-        Me.MPanelSup.Size = New System.Drawing.Size(1312, 100)
+        Me.MPanelSup.Size = New System.Drawing.Size(1252, 100)
         Me.MPanelSup.Controls.SetChildIndex(Me.PanelUsuario, 0)
         Me.MPanelSup.Controls.SetChildIndex(Me.GroupPanel2, 0)
         '
         'PanelPrincipal
         '
-        Me.PanelPrincipal.Size = New System.Drawing.Size(1312, 553)
+        Me.PanelPrincipal.Size = New System.Drawing.Size(1252, 553)
         '
         'GroupPanelBuscador
         '
         Me.GroupPanelBuscador.Font = New System.Drawing.Font("Georgia", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GroupPanelBuscador.Location = New System.Drawing.Point(0, 100)
-        Me.GroupPanelBuscador.Size = New System.Drawing.Size(1312, 453)
+        Me.GroupPanelBuscador.Size = New System.Drawing.Size(1252, 453)
         '
         '
         '
@@ -216,7 +212,7 @@ Partial Class F1_ListaClientesCel
         Me.JGrM_Buscador.SelectedFormatStyle.BackColor = System.Drawing.Color.DodgerBlue
         Me.JGrM_Buscador.SelectedFormatStyle.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.JGrM_Buscador.SelectedFormatStyle.ForeColor = System.Drawing.Color.White
-        Me.JGrM_Buscador.Size = New System.Drawing.Size(1306, 430)
+        Me.JGrM_Buscador.Size = New System.Drawing.Size(1246, 430)
         Me.JGrM_Buscador.VisualStyle = Janus.Windows.GridEX.VisualStyle.Office2007
         '
         'PanelUsuario
@@ -236,25 +232,7 @@ Partial Class F1_ListaClientesCel
         '
         'MPanelUserAct
         '
-        Me.MPanelUserAct.Location = New System.Drawing.Point(1112, 0)
-        '
-        'btExcel
-        '
-        Me.btExcel.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
-        Me.btExcel.ColorTable = DevComponents.DotNetBar.eButtonColor.Flat
-        Me.btExcel.Dock = System.Windows.Forms.DockStyle.Right
-        Me.btExcel.Font = New System.Drawing.Font("Arial", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btExcel.Image = Global.DinoM.My.Resources.Resources.sheets
-        Me.btExcel.ImageFixedSize = New System.Drawing.Size(45, 50)
-        Me.btExcel.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top
-        Me.btExcel.Location = New System.Drawing.Point(80, 0)
-        Me.btExcel.Name = "btExcel"
-        Me.btExcel.Padding = New System.Windows.Forms.Padding(0, 0, 0, 20)
-        Me.btExcel.Size = New System.Drawing.Size(75, 72)
-        Me.btExcel.Style = DevComponents.DotNetBar.eDotNetBarStyle.OfficeMobile2014
-        Me.btExcel.TabIndex = 9
-        Me.btExcel.Text = "EXPORTAR"
-        Me.btExcel.TextColor = System.Drawing.Color.White
+        Me.MPanelUserAct.Location = New System.Drawing.Point(1052, 0)
         '
         'Timer1
         '
@@ -272,7 +250,7 @@ Partial Class F1_ListaClientesCel
         Me.GroupPanel2.ImeMode = System.Windows.Forms.ImeMode.NoControl
         Me.GroupPanel2.Location = New System.Drawing.Point(0, 0)
         Me.GroupPanel2.Name = "GroupPanel2"
-        Me.GroupPanel2.Size = New System.Drawing.Size(1312, 100)
+        Me.GroupPanel2.Size = New System.Drawing.Size(1252, 100)
         '
         '
         '
@@ -314,7 +292,7 @@ Partial Class F1_ListaClientesCel
         Me.Panel1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.Panel1.Location = New System.Drawing.Point(0, 0)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(1306, 77)
+        Me.Panel1.Size = New System.Drawing.Size(1246, 77)
         Me.Panel1.TabIndex = 227
         '
         'LabelX4
@@ -326,7 +304,7 @@ Partial Class F1_ListaClientesCel
         Me.LabelX4.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.LabelX4.Font = New System.Drawing.Font("Georgia", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.LabelX4.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(85, Byte), Integer), CType(CType(139, Byte), Integer))
-        Me.LabelX4.Location = New System.Drawing.Point(359, 28)
+        Me.LabelX4.Location = New System.Drawing.Point(364, 28)
         Me.LabelX4.Name = "LabelX4"
         Me.LabelX4.SingleLineColor = System.Drawing.SystemColors.Control
         Me.LabelX4.Size = New System.Drawing.Size(60, 23)
@@ -340,7 +318,7 @@ Partial Class F1_ListaClientesCel
         '
         Me.swClientes.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.swClientes.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.swClientes.Location = New System.Drawing.Point(428, 28)
+        Me.swClientes.Location = New System.Drawing.Point(433, 28)
         Me.swClientes.Name = "swClientes"
         Me.swClientes.OffBackColor = System.Drawing.Color.Gold
         Me.swClientes.OffText = "MÓDULO CLIENTES"
@@ -360,7 +338,7 @@ Partial Class F1_ListaClientesCel
         Me.btnExportarExcel.Image = Global.DinoM.My.Resources.Resources.sheets
         Me.btnExportarExcel.ImageFixedSize = New System.Drawing.Size(35, 40)
         Me.btnExportarExcel.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top
-        Me.btnExportarExcel.Location = New System.Drawing.Point(758, 6)
+        Me.btnExportarExcel.Location = New System.Drawing.Point(763, 6)
         Me.btnExportarExcel.Name = "btnExportarExcel"
         Me.btnExportarExcel.Size = New System.Drawing.Size(65, 65)
         Me.btnExportarExcel.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
@@ -375,7 +353,7 @@ Partial Class F1_ListaClientesCel
         Me.btnGenerar.Image = Global.DinoM.My.Resources.Resources.ventasCostos
         Me.btnGenerar.ImageFixedSize = New System.Drawing.Size(40, 40)
         Me.btnGenerar.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top
-        Me.btnGenerar.Location = New System.Drawing.Point(651, 5)
+        Me.btnGenerar.Location = New System.Drawing.Point(656, 5)
         Me.btnGenerar.Name = "btnGenerar"
         Me.btnGenerar.Size = New System.Drawing.Size(65, 65)
         Me.btnGenerar.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
@@ -386,7 +364,7 @@ Partial Class F1_ListaClientesCel
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1344, 661)
+        Me.ClientSize = New System.Drawing.Size(1284, 661)
         Me.Location = New System.Drawing.Point(0, 0)
         Me.Name = "F1_ListaClientesCel"
         Me.Text = "LISTA DE CLIENTES CON CELULAR"
@@ -414,7 +392,6 @@ Partial Class F1_ListaClientesCel
         Me.ResumeLayout(False)
 
     End Sub
-    Friend WithEvents btExcel As DevComponents.DotNetBar.ButtonX
     Friend WithEvents Timer1 As Timer
     Friend WithEvents GroupPanel2 As DevComponents.DotNetBar.Controls.GroupPanel
     Friend WithEvents Panel1 As Panel

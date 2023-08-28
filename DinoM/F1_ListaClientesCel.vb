@@ -23,7 +23,7 @@ Public Class F1_ListaClientesCel
         Me.Text = "LISTA DE CLIENTES CON CELULAR"
 
 
-        Dim blah As New Bitmap(New Bitmap(My.Resources.producto), 20, 20)
+        Dim blah As New Bitmap(New Bitmap(My.Resources.cliente), 20, 20)
         Dim ico As Icon = Icon.FromHandle(blah.GetHicon())
         Me.Icon = ico
 
@@ -71,17 +71,17 @@ Public Class F1_ListaClientesCel
 
 
     Private Sub _prCrearCarpetaReportes()
-        Dim rutaDestino As String = RutaGlobal + "\Reporte\Reporte Productos\"
+        Dim rutaDestino As String = RutaGlobal + "\Reporte\Reporte ClienteDino\"
 
-        If System.IO.Directory.Exists(RutaGlobal + "\Reporte\Reporte Productos\") = False Then
+        If System.IO.Directory.Exists(RutaGlobal + "\Reporte\Reporte ClienteDino\") = False Then
             If System.IO.Directory.Exists(RutaGlobal + "\Reporte") = False Then
                 System.IO.Directory.CreateDirectory(RutaGlobal + "\Reporte")
-                If System.IO.Directory.Exists(RutaGlobal + "\Reporte\Reporte Productos") = False Then
-                    System.IO.Directory.CreateDirectory(RutaGlobal + "\Reporte\Reporte Productos")
+                If System.IO.Directory.Exists(RutaGlobal + "\Reporte\Reporte ClienteDino") = False Then
+                    System.IO.Directory.CreateDirectory(RutaGlobal + "\Reporte\Reporte ClienteDino")
                 End If
             Else
-                If System.IO.Directory.Exists(RutaGlobal + "\Reporte\Reporte Productos") = False Then
-                    System.IO.Directory.CreateDirectory(RutaGlobal + "\Reporte\Reporte Productos")
+                If System.IO.Directory.Exists(RutaGlobal + "\Reporte\Reporte ClienteDino") = False Then
+                    System.IO.Directory.CreateDirectory(RutaGlobal + "\Reporte\Reporte ClienteDino")
 
                 End If
             End If
@@ -101,55 +101,61 @@ Public Class F1_ListaClientesCel
             JGrM_Buscador.RetrieveStructure()
             JGrM_Buscador.AlternatingColors = True
 
-            With JGrM_Buscador.RootTable.Columns("yhalm")
+            With JGrM_Buscador.RootTable.Columns("Cod")
                 .Visible = False
             End With
-            With JGrM_Buscador.RootTable.Columns("yhprod")
-                .Width = 100
-                .Visible = True
-                .Caption = "COD. DYNASYS"
-            End With
-            With JGrM_Buscador.RootTable.Columns("yfcprod")
-                .Width = 100
-                .Visible = True
-                .Caption = "COD. DELTA"
-            End With
-            With JGrM_Buscador.RootTable.Columns("yfcbarra")
-                .Width = 150
-                .Visible = True
-                .Caption = "COD. DE BARRAS"
-            End With
-            With JGrM_Buscador.RootTable.Columns("yfcdprod2")
+            With JGrM_Buscador.RootTable.Columns("ydcod")
                 .Visible = False
             End With
-            With JGrM_Buscador.RootTable.Columns("yfcdprod1")
+            With JGrM_Buscador.RootTable.Columns("yddesc")
                 .Width = 400
-                .Visible = True
-                .Caption = "DESCRIPCIÓN"
+                If swClientes.Value = True Then
+                    .Visible = False
+                Else
+                    .Visible = True
+                End If
+                .Caption = "CLIENTE"
             End With
-            With JGrM_Buscador.RootTable.Columns("ycdes3")
-                .Width = 160
-                .Caption = "PROVEEDOR"
+            With JGrM_Buscador.RootTable.Columns("nit")
+                .Width = 100
+                .Visible = True
+                .Caption = "CI/NIT"
+            End With
+
+            With JGrM_Buscador.RootTable.Columns("complemento")
+                .Width = 120
+                .Visible = True
+                .Caption = "COMPLEMENTO"
+            End With
+
+            With JGrM_Buscador.RootTable.Columns("rsocial")
+                .Width = 400
+                .Caption = "RAZÓN SOCIAL"
                 .Visible = True
             End With
-            With JGrM_Buscador.RootTable.Columns("yhprecio")
-                .Width = 125
-                .Caption = "PRECIO COSTO"
+            With JGrM_Buscador.RootTable.Columns("cel")
+                .Width = 110
+                .Caption = "CELULAR"
                 .Visible = True
-                .FormatString = "0.00"
-                .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far
             End With
-            With JGrM_Buscador.RootTable.Columns("PVenta")
-                .Width = 160
-                .Caption = "PRECIO WHOLESALE"
-                .Visible = True
-                .FormatString = "0.00"
-                .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far
+            With JGrM_Buscador.RootTable.Columns("sanom2")
+                .Visible = False
             End With
-            With JGrM_Buscador.RootTable.Columns("Estado")
-                .Width = 90
-                .Caption = "ESTADO"
-                .Visible = True
+            With JGrM_Buscador.RootTable.Columns("satipdoc")
+                .Visible = False
+            End With
+            With JGrM_Buscador.RootTable.Columns("sacorreo")
+                .Width = 300
+                .Caption = "CORREO"
+                If swClientes.Value = True Then
+                    .Visible = True
+                Else
+                    .Visible = False
+                End If
+
+            End With
+            With JGrM_Buscador.RootTable.Columns("cat")
+                .Visible = False
             End With
 
             With JGrM_Buscador
@@ -157,9 +163,6 @@ Public Class F1_ListaClientesCel
                 .FilterMode = FilterMode.Automatic
                 .FilterRowUpdateMode = FilterRowUpdateMode.WhenValueChanges
                 .GroupByBoxVisible = False
-                '.TotalRow = InheritableBoolean.True
-                '.TotalRowFormatStyle.BackColor = Color.Gold
-                '.TotalRowPosition = TotalRowPosition.BottomFixed
 
                 'diseño de la grilla
                 .RecordNavigator = True
@@ -182,19 +185,18 @@ Public Class F1_ListaClientesCel
 
 
 
-    Public Function P_ExportarExcel(_ruta As String) As Boolean
+    Public Function P_ExportarExcel(_ruta As String, _nombre As String) As Boolean
         Dim _ubicacion As String
-        'Dim _directorio As New FolderBrowserDialog
 
         If (1 = 1) Then 'If(_directorio.ShowDialog = Windows.Forms.DialogResult.OK) Then
-            '_ubicacion = _directorio.SelectedPath
+
             _ubicacion = _ruta
             Try
                 Dim _stream As Stream
                 Dim _escritor As StreamWriter
                 Dim _fila As Integer = JGrM_Buscador.GetRows.Length
                 Dim _columna As Integer = JGrM_Buscador.RootTable.Columns.Count
-                Dim _archivo As String = _ubicacion & "\ComparaciónPrecios_" & Now.Date.Day &
+                Dim _archivo As String = _ubicacion & "\" & _nombre & "_" & Now.Date.Day &
                     "." & Now.Date.Month & "." & Now.Date.Year & "_" & Now.Hour & "." & Now.Minute & "." & Now.Second & ".csv"
                 Dim _linea As String = ""
                 Dim _filadata = 0, columndata As Int32 = 0
@@ -268,8 +270,8 @@ Public Class F1_ListaClientesCel
     Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
         _Inter = _Inter + 1
         If _Inter = 1 Then
+            Me.StartPosition = FormStartPosition.CenterParent
             Me.WindowState = FormWindowState.Normal
-
         Else
             Me.Opacity = 100
             Timer1.Enabled = False
@@ -281,15 +283,21 @@ Public Class F1_ListaClientesCel
     End Sub
 
     Private Sub btnExportarExcel_Click(sender As Object, e As EventArgs) Handles btnExportarExcel.Click
+        Dim nombre As String
         _prCrearCarpetaReportes()
         Dim img As Bitmap = New Bitmap(My.Resources.checked, 50, 50)
-        If (P_ExportarExcel(RutaGlobal + "\Reporte\Reporte Productos")) Then
-            ToastNotification.Show(Me, "EXPORTACIÓN DE COMPARACIÓN PRECIOS DE PRODUCTOS EXITOSA..!!!",
+        If swClientes.Value = True Then
+            nombre = "ListaClientesRegulares"
+        Else
+            nombre = "ListaMóduloClientes"
+        End If
+        If (P_ExportarExcel(RutaGlobal + "\Reporte\Reporte ClienteDino", nombre)) Then
+            ToastNotification.Show(Me, "EXPORTACIÓN DE CLIENTES EXITOSA..!!!",
                                        img, 2000,
                                        eToastGlowColor.Green,
                                        eToastPosition.BottomCenter)
         Else
-            ToastNotification.Show(Me, "FALLÓ LA EXPORTACIÓN DE COMPARACIÓN DE PRECIOS DE PRODUCTOS..!!!",
+            ToastNotification.Show(Me, "FALLÓ LA EXPORTACIÓN DE CLIENTES..!!!",
                                        My.Resources.WARNING, 2000,
                                        eToastGlowColor.Red,
                                        eToastPosition.BottomLeft)
