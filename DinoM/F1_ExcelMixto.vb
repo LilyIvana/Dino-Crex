@@ -353,8 +353,13 @@ Public Class F1_ExcelMixto
                 .Visible = True
             End With
             With JGrM_Buscador.RootTable.Columns("Obs")
-                .Width = 200
+                .Width = 300
                 .Caption = "OBSERVACIÓN"
+                .Visible = True
+            End With
+            With JGrM_Buscador.RootTable.Columns("aabdes")
+                .Width = 180
+                .Caption = "ALMACÉN"
                 .Visible = True
             End With
             With JGrM_Buscador
@@ -365,7 +370,10 @@ Public Class F1_ExcelMixto
                 .TotalRow = InheritableBoolean.True
                 .TotalRowFormatStyle.BackColor = Color.Gold
                 .TotalRowPosition = TotalRowPosition.BottomFixed
+
                 'diseño de la grilla
+                .RecordNavigator = True
+                .RecordNavigatorText = "Datos"
             End With
 
         Else
