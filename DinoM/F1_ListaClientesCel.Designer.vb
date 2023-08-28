@@ -67,7 +67,7 @@ Partial Class F1_ListaClientesCel
         Me.SuperTabPrincipal.ControlBox.MenuBox.Name = ""
         Me.SuperTabPrincipal.ControlBox.Name = ""
         Me.SuperTabPrincipal.ControlBox.SubItems.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.SuperTabPrincipal.ControlBox.MenuBox, Me.SuperTabPrincipal.ControlBox.CloseBox})
-        Me.SuperTabPrincipal.Size = New System.Drawing.Size(1284, 661)
+        Me.SuperTabPrincipal.Size = New System.Drawing.Size(1324, 661)
         Me.SuperTabPrincipal.Controls.SetChildIndex(Me.SuperTabControlPanelBuscador, 0)
         Me.SuperTabPrincipal.Controls.SetChildIndex(Me.SuperTabControlPanelRegistro, 0)
         '
@@ -82,14 +82,14 @@ Partial Class F1_ListaClientesCel
         '
         'SuperTabControlPanelRegistro
         '
-        Me.SuperTabControlPanelRegistro.Size = New System.Drawing.Size(1252, 661)
+        Me.SuperTabControlPanelRegistro.Size = New System.Drawing.Size(1292, 661)
         Me.SuperTabControlPanelRegistro.Controls.SetChildIndex(Me.PanelSuperior, 0)
         Me.SuperTabControlPanelRegistro.Controls.SetChildIndex(Me.PanelInferior, 0)
         Me.SuperTabControlPanelRegistro.Controls.SetChildIndex(Me.PanelPrincipal, 0)
         '
         'PanelSuperior
         '
-        Me.PanelSuperior.Size = New System.Drawing.Size(1252, 72)
+        Me.PanelSuperior.Size = New System.Drawing.Size(1292, 72)
         Me.PanelSuperior.Style.Alignment = System.Drawing.StringAlignment.Center
         Me.PanelSuperior.Style.BackColor1.Color = System.Drawing.Color.DarkSlateGray
         Me.PanelSuperior.Style.BackColor2.Color = System.Drawing.Color.DarkSlateGray
@@ -103,7 +103,7 @@ Partial Class F1_ListaClientesCel
         'PanelInferior
         '
         Me.PanelInferior.Location = New System.Drawing.Point(0, 625)
-        Me.PanelInferior.Size = New System.Drawing.Size(1252, 36)
+        Me.PanelInferior.Size = New System.Drawing.Size(1292, 36)
         Me.PanelInferior.Style.Alignment = System.Drawing.StringAlignment.Center
         Me.PanelInferior.Style.BackColor1.Color = System.Drawing.Color.DarkSlateGray
         Me.PanelInferior.Style.BackColor2.Color = System.Drawing.Color.DarkSlateGray
@@ -139,25 +139,25 @@ Partial Class F1_ListaClientesCel
         '
         'PanelToolBar2
         '
-        Me.PanelToolBar2.Location = New System.Drawing.Point(1097, 0)
+        Me.PanelToolBar2.Location = New System.Drawing.Point(1137, 0)
         Me.PanelToolBar2.Size = New System.Drawing.Size(155, 72)
         '
         'MPanelSup
         '
         Me.MPanelSup.Controls.Add(Me.GroupPanel2)
-        Me.MPanelSup.Size = New System.Drawing.Size(1252, 100)
+        Me.MPanelSup.Size = New System.Drawing.Size(1292, 100)
         Me.MPanelSup.Controls.SetChildIndex(Me.PanelUsuario, 0)
         Me.MPanelSup.Controls.SetChildIndex(Me.GroupPanel2, 0)
         '
         'PanelPrincipal
         '
-        Me.PanelPrincipal.Size = New System.Drawing.Size(1252, 553)
+        Me.PanelPrincipal.Size = New System.Drawing.Size(1292, 553)
         '
         'GroupPanelBuscador
         '
         Me.GroupPanelBuscador.Font = New System.Drawing.Font("Georgia", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GroupPanelBuscador.Location = New System.Drawing.Point(0, 100)
-        Me.GroupPanelBuscador.Size = New System.Drawing.Size(1252, 453)
+        Me.GroupPanelBuscador.Size = New System.Drawing.Size(1292, 453)
         '
         '
         '
@@ -212,7 +212,7 @@ Partial Class F1_ListaClientesCel
         Me.JGrM_Buscador.SelectedFormatStyle.BackColor = System.Drawing.Color.DodgerBlue
         Me.JGrM_Buscador.SelectedFormatStyle.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.JGrM_Buscador.SelectedFormatStyle.ForeColor = System.Drawing.Color.White
-        Me.JGrM_Buscador.Size = New System.Drawing.Size(1246, 430)
+        Me.JGrM_Buscador.Size = New System.Drawing.Size(1286, 430)
         Me.JGrM_Buscador.VisualStyle = Janus.Windows.GridEX.VisualStyle.Office2007
         '
         'PanelUsuario
@@ -232,7 +232,7 @@ Partial Class F1_ListaClientesCel
         '
         'MPanelUserAct
         '
-        Me.MPanelUserAct.Location = New System.Drawing.Point(1052, 0)
+        Me.MPanelUserAct.Location = New System.Drawing.Point(1092, 0)
         '
         'Timer1
         '
@@ -250,7 +250,7 @@ Partial Class F1_ListaClientesCel
         Me.GroupPanel2.ImeMode = System.Windows.Forms.ImeMode.NoControl
         Me.GroupPanel2.Location = New System.Drawing.Point(0, 0)
         Me.GroupPanel2.Name = "GroupPanel2"
-        Me.GroupPanel2.Size = New System.Drawing.Size(1252, 100)
+        Me.GroupPanel2.Size = New System.Drawing.Size(1292, 100)
         '
         '
         '
@@ -292,7 +292,7 @@ Partial Class F1_ListaClientesCel
         Me.Panel1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.Panel1.Location = New System.Drawing.Point(0, 0)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(1246, 77)
+        Me.Panel1.Size = New System.Drawing.Size(1286, 77)
         Me.Panel1.TabIndex = 227
         '
         'LabelX4
@@ -321,9 +321,9 @@ Partial Class F1_ListaClientesCel
         Me.swClientes.Location = New System.Drawing.Point(433, 28)
         Me.swClientes.Name = "swClientes"
         Me.swClientes.OffBackColor = System.Drawing.Color.Gold
-        Me.swClientes.OffText = "MÓDULO CLIENTES"
+        Me.swClientes.OffText = "BASE DE DATOS"
         Me.swClientes.OnBackColor = System.Drawing.Color.LimeGreen
-        Me.swClientes.OnText = "REGULARES"
+        Me.swClientes.OnText = "WHOLESALE"
         Me.swClientes.Size = New System.Drawing.Size(190, 22)
         Me.swClientes.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
         Me.swClientes.TabIndex = 370
@@ -364,7 +364,7 @@ Partial Class F1_ListaClientesCel
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1284, 661)
+        Me.ClientSize = New System.Drawing.Size(1324, 661)
         Me.Location = New System.Drawing.Point(0, 0)
         Me.Name = "F1_ListaClientesCel"
         Me.Text = "LISTA DE CLIENTES CON CELULAR"

@@ -50,25 +50,6 @@ Public Class F1_ListaClientesCel
             btnEliminar.Visible = False
         End If
     End Sub
-    Private Sub _prCrearCarpetaTemporal()
-
-        If System.IO.Directory.Exists(RutaTemporal) = False Then
-            System.IO.Directory.CreateDirectory(RutaTemporal)
-        Else
-            Try
-                My.Computer.FileSystem.DeleteDirectory(RutaTemporal, FileIO.DeleteDirectoryOption.DeleteAllContents)
-                My.Computer.FileSystem.CreateDirectory(RutaTemporal)
-                'My.Computer.FileSystem.DeleteDirectory(RutaTemporal, FileIO.UIOption.AllDialogs, FileIO.RecycleOption.SendToRecycleBin)
-                'System.IO.Directory.CreateDirectory(RutaTemporal)
-
-            Catch ex As Exception
-
-            End Try
-
-        End If
-
-    End Sub
-
 
     Private Sub _prCrearCarpetaReportes()
         Dim rutaDestino As String = RutaGlobal + "\Reporte\Reporte ClienteDino\"
@@ -89,12 +70,11 @@ Public Class F1_ListaClientesCel
     End Sub
     Private Sub _prCargarClientes()
         Dim dt As DataTable
-        If swClientes.Value = True Then ''Clientes Regulares del módulo venta rápida
+        If swClientes.Value = True Then ''Clientes Wholesale del módulo venta rápida
             dt = L_ClientesCel(1)
         Else
-            dt = L_ClientesCel(0)
+            dt = L_ClientesCel(0) ''Clientes desde el módulo de Clientes
         End If
-
 
         If dt.Rows.Count > 0 Then
             JGrM_Buscador.DataSource = dt
@@ -105,7 +85,13 @@ Public Class F1_ListaClientesCel
                 .Visible = False
             End With
             With JGrM_Buscador.RootTable.Columns("ydcod")
-                .Visible = False
+                .Caption = "COD. CLIENTE"
+                .Width = 120
+                If swClientes.Value = True Then
+                    .Visible = False
+                Else
+                    .Visible = True
+                End If
             End With
             With JGrM_Buscador.RootTable.Columns("yddesc")
                 .Width = 400
@@ -213,11 +199,6 @@ Public Class F1_ListaClientesCel
                 _escritor.WriteLine(_linea)
                 _linea = Nothing
 
-                'Pbx_Precios.Visible = True
-                'Pbx_Precios.Minimum = 1
-                'Pbx_Precios.Maximum = Dgv_Precios.RowCount
-                'Pbx_Precios.Value = 1
-
                 For Each _fil As GridEXRow In JGrM_Buscador.GetRows
                     For Each _col As GridEXColumn In JGrM_Buscador.RootTable.Columns
                         If (_col.Visible) Then
@@ -229,10 +210,10 @@ Public Class F1_ListaClientesCel
                     _linea = Mid(CStr(_linea), 1, _linea.Length - 1)
                     _escritor.WriteLine(_linea)
                     _linea = Nothing
-                    'Pbx_Precios.Value += 1
+
                 Next
                 _escritor.Close()
-                'Pbx_Precios.Visible = False
+
                 Try
                     Dim ef = New Efecto
                     ef._archivo = _archivo
@@ -247,9 +228,6 @@ Public Class F1_ListaClientesCel
                         Process.Start(_archivo)
                     End If
 
-                    'If (MessageBox.Show("Su archivo ha sido Guardado en la ruta: " + _archivo + vbLf + "DESEA ABRIR EL ARCHIVO?", "PREGUNTA", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = Windows.Forms.DialogResult.Yes) Then
-                    '    Process.Start(_archivo)
-                    'End If
                     Return True
                 Catch ex As Exception
                     MsgBox(ex.Message)
@@ -262,10 +240,6 @@ Public Class F1_ListaClientesCel
         End If
         Return False
     End Function
-
-
-
-
 
     Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
         _Inter = _Inter + 1
@@ -287,9 +261,9 @@ Public Class F1_ListaClientesCel
         _prCrearCarpetaReportes()
         Dim img As Bitmap = New Bitmap(My.Resources.checked, 50, 50)
         If swClientes.Value = True Then
-            nombre = "ListaClientesRegulares"
+            nombre = "ListaClientesWholesale"
         Else
-            nombre = "ListaMóduloClientes"
+            nombre = "ListaClientesBaseDeDatos"
         End If
         If (P_ExportarExcel(RutaGlobal + "\Reporte\Reporte ClienteDino", nombre)) Then
             ToastNotification.Show(Me, "EXPORTACIÓN DE CLIENTES EXITOSA..!!!",

@@ -67,6 +67,7 @@ Partial Class P_Principal
         Me.btConfActPrecios = New DevComponents.DotNetBar.Metro.MetroTileItem()
         Me.btConfVerificarPCosto = New DevComponents.DotNetBar.Metro.MetroTileItem()
         Me.btPventaMenorPcosto = New DevComponents.DotNetBar.Metro.MetroTileItem()
+        Me.btRepClientesCel = New DevComponents.DotNetBar.Metro.MetroTileItem()
         Me.PictureBox4 = New System.Windows.Forms.PictureBox()
         Me.SideNav_Ventas = New DevComponents.DotNetBar.Controls.SideNavPanel()
         Me.MetroTilePanelVentas = New DevComponents.DotNetBar.Metro.MetroTilePanel()
@@ -180,7 +181,6 @@ Partial Class P_Principal
         Me.SideNavItem3 = New DevComponents.DotNetBar.Controls.SideNavItem()
         Me.MetroTileItem11 = New DevComponents.DotNetBar.Metro.MetroTileItem()
         Me.MetroTileItem12 = New DevComponents.DotNetBar.Metro.MetroTileItem()
-        Me.btRepClientesCel = New DevComponents.DotNetBar.Metro.MetroTileItem()
         MetroTileFrame1 = New DevComponents.DotNetBar.Metro.MetroTileFrame()
         MetroTileFrame2 = New DevComponents.DotNetBar.Metro.MetroTileFrame()
         Me.SideNav1.SuspendLayout()
@@ -518,7 +518,7 @@ Partial Class P_Principal
         Me.lbVersion.SingleLineColor = System.Drawing.Color.Transparent
         Me.lbVersion.Size = New System.Drawing.Size(127, 18)
         Me.lbVersion.TabIndex = 5
-        Me.lbVersion.Text = "Versión 3.3.1.230825"
+        Me.lbVersion.Text = "Versión 3.3.1.230828"
         Me.lbVersion.TextAlignment = System.Drawing.StringAlignment.Center
         '
         'SideNav1
@@ -903,6 +903,22 @@ Partial Class P_Principal
         Me.btPventaMenorPcosto.TileStyle.BackColor2 = System.Drawing.Color.Red
         Me.btPventaMenorPcosto.TileStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.btPventaMenorPcosto.TitleText = "PREC. VENTA MENOR A PREC. COSTO"
+        '
+        'btRepClientesCel
+        '
+        Me.btRepClientesCel.Image = Global.DinoM.My.Resources.Resources.check_mark
+        Me.btRepClientesCel.ImageTextAlignment = System.Drawing.ContentAlignment.MiddleCenter
+        Me.btRepClientesCel.Name = "btRepClientesCel"
+        Me.btRepClientesCel.SymbolColor = System.Drawing.Color.Empty
+        Me.btRepClientesCel.TileColor = DevComponents.DotNetBar.Metro.eMetroTileColor.Magenta
+        Me.btRepClientesCel.TileSize = New System.Drawing.Size(250, 135)
+        '
+        '
+        '
+        Me.btRepClientesCel.TileStyle.BackColor = System.Drawing.SystemColors.HotTrack
+        Me.btRepClientesCel.TileStyle.BackColor2 = System.Drawing.Color.FromArgb(CType(CType(139, Byte), Integer), CType(CType(165, Byte), Integer), CType(CType(42, Byte), Integer), CType(CType(42, Byte), Integer))
+        Me.btRepClientesCel.TileStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.btRepClientesCel.TitleText = "REPORTE CLIENTES CON CELULAR"
         '
         'PictureBox4
         '
@@ -2895,22 +2911,6 @@ Partial Class P_Principal
         Me.MetroTileItem12.TileStyle.TextLineAlignment = DevComponents.DotNetBar.eStyleTextAlignment.Far
         Me.MetroTileItem12.TitleTextAlignment = System.Drawing.ContentAlignment.BottomCenter
         Me.MetroTileItem12.TitleTextColor = System.Drawing.Color.Red
-        '
-        'btRepClientesCel
-        '
-        Me.btRepClientesCel.Image = Global.DinoM.My.Resources.Resources.check_mark
-        Me.btRepClientesCel.ImageTextAlignment = System.Drawing.ContentAlignment.MiddleCenter
-        Me.btRepClientesCel.Name = "btRepClientesCel"
-        Me.btRepClientesCel.SymbolColor = System.Drawing.Color.Empty
-        Me.btRepClientesCel.TileColor = DevComponents.DotNetBar.Metro.eMetroTileColor.Magenta
-        Me.btRepClientesCel.TileSize = New System.Drawing.Size(250, 135)
-        '
-        '
-        '
-        Me.btRepClientesCel.TileStyle.BackColor = System.Drawing.SystemColors.HotTrack
-        Me.btRepClientesCel.TileStyle.BackColor2 = System.Drawing.Color.FromArgb(CType(CType(139, Byte), Integer), CType(CType(165, Byte), Integer), CType(CType(42, Byte), Integer), CType(CType(42, Byte), Integer))
-        Me.btRepClientesCel.TileStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.btRepClientesCel.TitleText = "REPORTE CLIENTES CON CELULAR"
         '
         'P_Principal
         '
