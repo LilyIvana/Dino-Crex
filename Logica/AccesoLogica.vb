@@ -4939,16 +4939,16 @@ Public Class AccesoLogica
         _Tabla = D_ProcedimientoConParam("Sp_Mam_ReporteVentas", _listParam)
         Return _Tabla
     End Function
-    Public Shared Function L_RepMixto(fechaI As String, fechaF As String) As DataTable
-        Dim _Tabla As DataTable
-        Dim _listParam As New List(Of Datos.DParametro)
-        _listParam.Add(New Datos.DParametro("@tipo", 8))
-        _listParam.Add(New Datos.DParametro("@fechaI", fechaI))
-        _listParam.Add(New Datos.DParametro("@fechaF", fechaF))
-        _listParam.Add(New Datos.DParametro("@uact", L_Usuario))
-        _Tabla = D_ProcedimientoConParam("Sp_Mam_ReporteVentas", _listParam)
-        Return _Tabla
-    End Function
+    'Public Shared Function L_RepMixto(fechaI As String, fechaF As String) As DataTable
+    '    Dim _Tabla As DataTable
+    '    Dim _listParam As New List(Of Datos.DParametro)
+    '    _listParam.Add(New Datos.DParametro("@tipo", 8))
+    '    _listParam.Add(New Datos.DParametro("@fechaI", fechaI))
+    '    _listParam.Add(New Datos.DParametro("@fechaF", fechaF))
+    '    _listParam.Add(New Datos.DParametro("@uact", L_Usuario))
+    '    _Tabla = D_ProcedimientoConParam("Sp_Mam_ReporteVentas", _listParam)
+    '    Return _Tabla
+    'End Function
 
     Public Shared Function L_RepCierresCajaResumen(fechaI As String, fechaF As String) As DataTable
         Dim _Tabla As DataTable
@@ -5012,6 +5012,79 @@ Public Class AccesoLogica
         _listParam.Add(New Datos.DParametro("@fechaF", fechaF))
         _listParam.Add(New Datos.DParametro("@uact", L_Usuario))
         _Tabla = D_ProcedimientoConParam("Sp_Mam_ReporteVentas", _listParam)
+        Return _Tabla
+    End Function
+#End Region
+#Region "REPORTE MIXTO"
+    Public Shared Function L_RepMixto(fechaI As String, fechaF As String) As DataTable
+        Dim _Tabla As DataTable
+        Dim _listParam As New List(Of Datos.DParametro)
+        _listParam.Add(New Datos.DParametro("@tipo", 1))
+        _listParam.Add(New Datos.DParametro("@fechaI", fechaI))
+        _listParam.Add(New Datos.DParametro("@fechaF", fechaF))
+        _listParam.Add(New Datos.DParametro("@uact", L_Usuario))
+        _Tabla = D_ProcedimientoConParam("Sp_Mam_ReporteMixto", _listParam)
+        Return _Tabla
+    End Function
+    Public Shared Function L_RepMixtoVentas(fechaI As String, fechaF As String) As DataTable
+        Dim _Tabla As DataTable
+        Dim _listParam As New List(Of Datos.DParametro)
+        _listParam.Add(New Datos.DParametro("@tipo", 2))
+        _listParam.Add(New Datos.DParametro("@fechaI", fechaI))
+        _listParam.Add(New Datos.DParametro("@fechaF", fechaF))
+        _listParam.Add(New Datos.DParametro("@uact", L_Usuario))
+        _Tabla = D_ProcedimientoConParam("Sp_Mam_ReporteMixto", _listParam)
+        Return _Tabla
+    End Function
+
+    Public Shared Function L_RepMixtoCompras(fechaI As String, fechaF As String) As DataTable
+        Dim _Tabla As DataTable
+        Dim _listParam As New List(Of Datos.DParametro)
+        _listParam.Add(New Datos.DParametro("@tipo", 3))
+        _listParam.Add(New Datos.DParametro("@fechaI", fechaI))
+        _listParam.Add(New Datos.DParametro("@fechaF", fechaF))
+        _listParam.Add(New Datos.DParametro("@uact", L_Usuario))
+        _Tabla = D_ProcedimientoConParam("Sp_Mam_ReporteMixto", _listParam)
+        Return _Tabla
+    End Function
+    Public Shared Function L_RepMixtoMovSalida(fechaI As String, fechaF As String) As DataTable
+        Dim _Tabla As DataTable
+        Dim _listParam As New List(Of Datos.DParametro)
+        _listParam.Add(New Datos.DParametro("@tipo", 4))
+        _listParam.Add(New Datos.DParametro("@fechaI", fechaI))
+        _listParam.Add(New Datos.DParametro("@fechaF", fechaF))
+        _listParam.Add(New Datos.DParametro("@uact", L_Usuario))
+        _Tabla = D_ProcedimientoConParam("Sp_Mam_ReporteMixto", _listParam)
+        Return _Tabla
+    End Function
+    Public Shared Function L_RepMixtoMovEntrada(fechaI As String, fechaF As String) As DataTable
+        Dim _Tabla As DataTable
+        Dim _listParam As New List(Of Datos.DParametro)
+        _listParam.Add(New Datos.DParametro("@tipo", 5))
+        _listParam.Add(New Datos.DParametro("@fechaI", fechaI))
+        _listParam.Add(New Datos.DParametro("@fechaF", fechaF))
+        _listParam.Add(New Datos.DParametro("@uact", L_Usuario))
+        _Tabla = D_ProcedimientoConParam("Sp_Mam_ReporteMixto", _listParam)
+        Return _Tabla
+    End Function
+    Public Shared Function L_RepMixtoTraspasoSalida(fechaI As String, fechaF As String) As DataTable
+        Dim _Tabla As DataTable
+        Dim _listParam As New List(Of Datos.DParametro)
+        _listParam.Add(New Datos.DParametro("@tipo", 6))
+        _listParam.Add(New Datos.DParametro("@fechaI", fechaI))
+        _listParam.Add(New Datos.DParametro("@fechaF", fechaF))
+        _listParam.Add(New Datos.DParametro("@uact", L_Usuario))
+        _Tabla = D_ProcedimientoConParam("Sp_Mam_ReporteMixto", _listParam)
+        Return _Tabla
+    End Function
+    Public Shared Function L_RepMixtoTraspasoIngreso(fechaI As String, fechaF As String) As DataTable
+        Dim _Tabla As DataTable
+        Dim _listParam As New List(Of Datos.DParametro)
+        _listParam.Add(New Datos.DParametro("@tipo", 7))
+        _listParam.Add(New Datos.DParametro("@fechaI", fechaI))
+        _listParam.Add(New Datos.DParametro("@fechaF", fechaF))
+        _listParam.Add(New Datos.DParametro("@uact", L_Usuario))
+        _Tabla = D_ProcedimientoConParam("Sp_Mam_ReporteMixto", _listParam)
         Return _Tabla
     End Function
 #End Region

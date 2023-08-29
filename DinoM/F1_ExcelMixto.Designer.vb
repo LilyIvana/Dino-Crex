@@ -25,10 +25,12 @@ Partial Class F1_ExcelMixto
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(F1_ExcelMixto))
-        Me.btExcel = New DevComponents.DotNetBar.ButtonX()
+        Dim cbTipo_DesignTimeLayout As Janus.Windows.GridEX.GridEXLayout = New Janus.Windows.GridEX.GridEXLayout()
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         Me.GroupPanel2 = New DevComponents.DotNetBar.Controls.GroupPanel()
         Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.LabelX2 = New DevComponents.DotNetBar.LabelX()
+        Me.cbTipo = New Janus.Windows.GridEX.EditControls.MultiColumnCombo()
         Me.btnExportarExcel = New DevComponents.DotNetBar.ButtonX()
         Me.btnGenerar = New DevComponents.DotNetBar.ButtonX()
         Me.LabelX1 = New DevComponents.DotNetBar.LabelX()
@@ -53,6 +55,7 @@ Partial Class F1_ExcelMixto
         CType(Me.MEP, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupPanel2.SuspendLayout()
         Me.Panel1.SuspendLayout()
+        CType(Me.cbTipo, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.tbFechaF, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.tbFechaI, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -79,7 +82,7 @@ Partial Class F1_ExcelMixto
         'SuperTabControlPanelBuscador
         '
         Me.SuperTabControlPanelBuscador.Location = New System.Drawing.Point(0, 0)
-        Me.SuperTabControlPanelBuscador.Size = New System.Drawing.Size(1322, 711)
+        Me.SuperTabControlPanelBuscador.Size = New System.Drawing.Size(1322, 661)
         '
         'SupTabItemBusqueda
         '
@@ -144,11 +147,8 @@ Partial Class F1_ExcelMixto
         '
         'PanelToolBar2
         '
-        Me.PanelToolBar2.Controls.Add(Me.btExcel)
         Me.PanelToolBar2.Location = New System.Drawing.Point(1167, 0)
         Me.PanelToolBar2.Size = New System.Drawing.Size(155, 72)
-        Me.PanelToolBar2.Controls.SetChildIndex(Me.btExcel, 0)
-        Me.PanelToolBar2.Controls.SetChildIndex(Me.btnImprimir, 0)
         '
         'MPanelSup
         '
@@ -242,24 +242,6 @@ Partial Class F1_ExcelMixto
         '
         Me.MPanelUserAct.Location = New System.Drawing.Point(1122, 0)
         '
-        'btExcel
-        '
-        Me.btExcel.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
-        Me.btExcel.ColorTable = DevComponents.DotNetBar.eButtonColor.Flat
-        Me.btExcel.Dock = System.Windows.Forms.DockStyle.Right
-        Me.btExcel.Font = New System.Drawing.Font("Arial", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btExcel.Image = Global.DinoM.My.Resources.Resources.sheets
-        Me.btExcel.ImageFixedSize = New System.Drawing.Size(45, 50)
-        Me.btExcel.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top
-        Me.btExcel.Location = New System.Drawing.Point(80, 0)
-        Me.btExcel.Name = "btExcel"
-        Me.btExcel.Padding = New System.Windows.Forms.Padding(0, 0, 0, 20)
-        Me.btExcel.Size = New System.Drawing.Size(75, 72)
-        Me.btExcel.Style = DevComponents.DotNetBar.eDotNetBarStyle.OfficeMobile2014
-        Me.btExcel.TabIndex = 9
-        Me.btExcel.Text = "EXPORTAR"
-        Me.btExcel.TextColor = System.Drawing.Color.White
-        '
         'Timer1
         '
         Me.Timer1.Enabled = True
@@ -311,6 +293,8 @@ Partial Class F1_ExcelMixto
         'Panel1
         '
         Me.Panel1.AutoScroll = True
+        Me.Panel1.Controls.Add(Me.LabelX2)
+        Me.Panel1.Controls.Add(Me.cbTipo)
         Me.Panel1.Controls.Add(Me.btnExportarExcel)
         Me.Panel1.Controls.Add(Me.btnGenerar)
         Me.Panel1.Controls.Add(Me.LabelX1)
@@ -323,6 +307,38 @@ Partial Class F1_ExcelMixto
         Me.Panel1.Size = New System.Drawing.Size(1316, 77)
         Me.Panel1.TabIndex = 227
         '
+        'LabelX2
+        '
+        Me.LabelX2.BackColor = System.Drawing.Color.Transparent
+        '
+        '
+        '
+        Me.LabelX2.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.LabelX2.Font = New System.Drawing.Font("Georgia", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LabelX2.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(85, Byte), Integer), CType(CType(139, Byte), Integer))
+        Me.LabelX2.Location = New System.Drawing.Point(175, 27)
+        Me.LabelX2.Name = "LabelX2"
+        Me.LabelX2.SingleLineColor = System.Drawing.SystemColors.Control
+        Me.LabelX2.Size = New System.Drawing.Size(100, 23)
+        Me.LabelX2.TabIndex = 249
+        Me.LabelX2.Text = "Tipo Categoría:"
+        '
+        'cbTipo
+        '
+        Me.cbTipo.BackColor = System.Drawing.Color.Gainsboro
+        cbTipo_DesignTimeLayout.LayoutString = resources.GetString("cbTipo_DesignTimeLayout.LayoutString")
+        Me.cbTipo.DesignTimeLayout = cbTipo_DesignTimeLayout
+        Me.cbTipo.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cbTipo.Location = New System.Drawing.Point(281, 28)
+        Me.cbTipo.Name = "cbTipo"
+        Me.cbTipo.Office2007ColorScheme = Janus.Windows.GridEX.Office2007ColorScheme.Custom
+        Me.cbTipo.Office2007CustomColor = System.Drawing.Color.DodgerBlue
+        Me.cbTipo.SelectedIndex = -1
+        Me.cbTipo.SelectedItem = Nothing
+        Me.cbTipo.Size = New System.Drawing.Size(205, 22)
+        Me.cbTipo.TabIndex = 248
+        Me.cbTipo.VisualStyle = Janus.Windows.GridEX.VisualStyle.Office2007
+        '
         'btnExportarExcel
         '
         Me.btnExportarExcel.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
@@ -331,7 +347,7 @@ Partial Class F1_ExcelMixto
         Me.btnExportarExcel.Image = Global.DinoM.My.Resources.Resources.sheets
         Me.btnExportarExcel.ImageFixedSize = New System.Drawing.Size(35, 40)
         Me.btnExportarExcel.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top
-        Me.btnExportarExcel.Location = New System.Drawing.Point(626, 6)
+        Me.btnExportarExcel.Location = New System.Drawing.Point(1086, 4)
         Me.btnExportarExcel.Name = "btnExportarExcel"
         Me.btnExportarExcel.Size = New System.Drawing.Size(65, 65)
         Me.btnExportarExcel.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
@@ -346,7 +362,7 @@ Partial Class F1_ExcelMixto
         Me.btnGenerar.Image = Global.DinoM.My.Resources.Resources.ventasCostos
         Me.btnGenerar.ImageFixedSize = New System.Drawing.Size(40, 40)
         Me.btnGenerar.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top
-        Me.btnGenerar.Location = New System.Drawing.Point(519, 5)
+        Me.btnGenerar.Location = New System.Drawing.Point(979, 3)
         Me.btnGenerar.Name = "btnGenerar"
         Me.btnGenerar.Size = New System.Drawing.Size(65, 65)
         Me.btnGenerar.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
@@ -362,7 +378,7 @@ Partial Class F1_ExcelMixto
         Me.LabelX1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.LabelX1.Font = New System.Drawing.Font("Georgia", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.LabelX1.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(85, Byte), Integer), CType(CType(139, Byte), Integer))
-        Me.LabelX1.Location = New System.Drawing.Point(265, 30)
+        Me.LabelX1.Location = New System.Drawing.Point(741, 28)
         Me.LabelX1.Name = "LabelX1"
         Me.LabelX1.SingleLineColor = System.Drawing.SystemColors.Control
         Me.LabelX1.Size = New System.Drawing.Size(80, 23)
@@ -380,7 +396,7 @@ Partial Class F1_ExcelMixto
         Me.tbFechaF.ButtonDropDown.Visible = True
         Me.tbFechaF.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.tbFechaF.IsPopupCalendarOpen = False
-        Me.tbFechaF.Location = New System.Drawing.Point(351, 30)
+        Me.tbFechaF.Location = New System.Drawing.Point(827, 28)
         '
         '
         '
@@ -424,7 +440,7 @@ Partial Class F1_ExcelMixto
         Me.LabelX4.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.LabelX4.Font = New System.Drawing.Font("Georgia", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.LabelX4.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(85, Byte), Integer), CType(CType(139, Byte), Integer))
-        Me.LabelX4.Location = New System.Drawing.Point(24, 28)
+        Me.LabelX4.Location = New System.Drawing.Point(512, 27)
         Me.LabelX4.Name = "LabelX4"
         Me.LabelX4.SingleLineColor = System.Drawing.SystemColors.Control
         Me.LabelX4.Size = New System.Drawing.Size(90, 23)
@@ -442,7 +458,7 @@ Partial Class F1_ExcelMixto
         Me.tbFechaI.ButtonDropDown.Visible = True
         Me.tbFechaI.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.tbFechaI.IsPopupCalendarOpen = False
-        Me.tbFechaI.Location = New System.Drawing.Point(120, 29)
+        Me.tbFechaI.Location = New System.Drawing.Point(608, 28)
         '
         '
         '
@@ -506,12 +522,13 @@ Partial Class F1_ExcelMixto
         CType(Me.MEP, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupPanel2.ResumeLayout(False)
         Me.Panel1.ResumeLayout(False)
+        Me.Panel1.PerformLayout()
+        CType(Me.cbTipo, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.tbFechaF, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.tbFechaI, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
-    Friend WithEvents btExcel As DevComponents.DotNetBar.ButtonX
     Friend WithEvents Timer1 As Timer
     Friend WithEvents GroupPanel2 As DevComponents.DotNetBar.Controls.GroupPanel
     Friend WithEvents Panel1 As Panel
@@ -521,4 +538,6 @@ Partial Class F1_ExcelMixto
     Friend WithEvents tbFechaI As DevComponents.Editors.DateTimeAdv.DateTimeInput
     Friend WithEvents btnGenerar As DevComponents.DotNetBar.ButtonX
     Friend WithEvents btnExportarExcel As DevComponents.DotNetBar.ButtonX
+    Friend WithEvents LabelX2 As DevComponents.DotNetBar.LabelX
+    Friend WithEvents cbTipo As Janus.Windows.GridEX.EditControls.MultiColumnCombo
 End Class

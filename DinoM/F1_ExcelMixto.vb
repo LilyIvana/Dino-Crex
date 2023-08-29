@@ -24,6 +24,8 @@ Public Class F1_ExcelMixto
         tbFechaI.Value = Now.Date
         tbFechaF.Value = Now.Date
 
+        _prCargarComboTipo(cbTipo)
+
         Dim blah As New Bitmap(New Bitmap(My.Resources.producto), 20, 20)
         Dim ico As Icon = Icon.FromHandle(blah.GetHicon())
         Me.Icon = ico
@@ -49,6 +51,36 @@ Public Class F1_ExcelMixto
         End If
         If del = False Then
             btnEliminar.Visible = False
+        End If
+    End Sub
+    Private Sub _prCargarComboTipo(mCombo As Janus.Windows.GridEX.EditControls.MultiColumnCombo)
+        Dim dt As New DataTable
+
+        dt.Columns.Add("COD")
+        dt.Columns.Add("CATEGORÍA")
+
+        dt.Rows.Add(1, "VENTAS")
+        dt.Rows.Add(2, "COMPRAS")
+        dt.Rows.Add(3, "MOVIMIENTO SALIDA")
+        dt.Rows.Add(4, "MOVIMIENTO ENTRADA")
+        dt.Rows.Add(5, "TRASPASO SALIDA")
+        dt.Rows.Add(6, "TRASPASO INGRESO")
+        dt.Rows.Add(7, "TODOS")
+
+        With mCombo
+            .DropDownList.Columns.Clear()
+            .DropDownList.Columns.Add("COD").Width = 70
+            .DropDownList.Columns("COD").Caption = "COD"
+            .DropDownList.Columns.Add("CATEGORÍA").Width = 200
+            .DropDownList.Columns("CATEGORÍA").Caption = "CATEGORÍA"
+            .ValueMember = "COD"
+            .DisplayMember = "CATEGORÍA"
+            .DataSource = dt
+            .Refresh()
+        End With
+
+        If dt.Rows.Count > 0 Then
+            mCombo.SelectedIndex = 6
         End If
     End Sub
     Private Sub _prCrearCarpetaTemporal()
@@ -107,7 +139,26 @@ Public Class F1_ExcelMixto
     Private Sub _prCargarMixto()
         Dim fechaDesde As DateTime = tbFechaI.Value.ToString("yyyy/MM/dd")
         Dim fechaHasta As DateTime = tbFechaF.Value.ToString("yyyy/MM/dd")
-        Dim dt As DataTable = L_RepMixto(fechaDesde, fechaHasta)
+        Dim dt As DataTable
+        Dim Tipo As Integer = cbTipo.Value
+        Select Case Tipo
+            Case 1
+                dt = L_RepMixtoVentas(fechaDesde, fechaHasta)
+            Case 2
+                dt = L_RepMixtoCompras(fechaDesde, fechaHasta)
+            Case 3
+                dt = L_RepMixtoMovSalida(fechaDesde, fechaHasta)
+            Case 4
+                dt = L_RepMixtoMovEntrada(fechaDesde, fechaHasta)
+            Case 5
+                dt = L_RepMixtoTraspasoSalida(fechaDesde, fechaHasta)
+            Case 6
+                dt = L_RepMixtoTraspasoIngreso(fechaDesde, fechaHasta)
+            Case 7 ''Todos
+                dt = L_RepMixto(fechaDesde, fechaHasta)
+
+        End Select
+
 
         If dt.Rows.Count > 0 Then
             JGrM_Buscador.DataSource = dt
@@ -379,7 +430,7 @@ Public Class F1_ExcelMixto
         Else
             JGrM_Buscador.ClearStructure()
             Dim img As Bitmap = New Bitmap(My.Resources.mensaje, 50, 50)
-            ToastNotification.Show(Me, "No existe datos para mostrar".ToUpper, img, 2000, eToastGlowColor.Red, eToastPosition.TopCenter)
+            ToastNotification.Show(Me, "No existe datos para mostrar".ToUpper, img, 2500, eToastGlowColor.Red, eToastPosition.TopCenter)
         End If
 
     End Sub
@@ -390,24 +441,8 @@ Public Class F1_ExcelMixto
     End Sub
 
 
-    Private Sub ButtonX2_Click(sender As Object, e As EventArgs) Handles btExcel.Click
-        _prCrearCarpetaReportes()
-        Dim img As Bitmap = New Bitmap(My.Resources.checked, 50, 50)
-        If (P_ExportarExcel(RutaGlobal + "\Reporte\Reporte Productos")) Then
-            ToastNotification.Show(Me, "EXPORTACIÓN DE LISTA DE PRODUCTOS EXITOSA..!!!",
-                                       img, 2000,
-                                       eToastGlowColor.Green,
-                                       eToastPosition.BottomCenter)
-        Else
-            ToastNotification.Show(Me, "FALLO AL EXPORTACIÓN DE LISTA DE PRODUCTOS..!!!",
-                                       My.Resources.WARNING, 2000,
-                                       eToastGlowColor.Red,
-                                       eToastPosition.BottomLeft)
-        End If
-    End Sub
 
-
-    Public Function P_ExportarExcel(_ruta As String) As Boolean
+    Public Function P_ExportarExcel(_ruta As String, _nombre As String) As Boolean
         Dim _ubicacion As String
         'Dim _directorio As New FolderBrowserDialog
 
@@ -419,7 +454,7 @@ Public Class F1_ExcelMixto
                 Dim _escritor As StreamWriter
                 Dim _fila As Integer = JGrM_Buscador.GetRows.Length
                 Dim _columna As Integer = JGrM_Buscador.RootTable.Columns.Count
-                Dim _archivo As String = _ubicacion & "\RepMixtoDetallado_" & Now.Date.Day &
+                Dim _archivo As String = _ubicacion & "\" & _nombre & "_" & Now.Date.Day &
                     "." & Now.Date.Month & "." & Now.Date.Year & "_" & Now.Hour & "." & Now.Minute & "." & Now.Second & ".csv"
                 Dim _linea As String = ""
                 Dim _filadata = 0, columndata As Int32 = 0
@@ -507,14 +542,35 @@ Public Class F1_ExcelMixto
 
     Private Sub btnExportarExcel_Click(sender As Object, e As EventArgs) Handles btnExportarExcel.Click
         _prCrearCarpetaReportes()
+        Dim nombre As String
+        Dim Tipo As Integer = cbTipo.Value
         Dim img As Bitmap = New Bitmap(My.Resources.checked, 50, 50)
-        If (P_ExportarExcel(RutaGlobal + "\Reporte\Reporte Productos")) Then
-            ToastNotification.Show(Me, "EXPORTACIÓN DE REPORTE MIXTO DETALLADO EXITOSA...!!!",
+
+
+        Select Case Tipo
+            Case 1
+                nombre = "RepVentasDetallado"
+            Case 2
+                nombre = "RepComprasDetallado"
+            Case 3
+                nombre = "RepMovimientoSalidaDetallado"
+            Case 4
+                nombre = "RepMovimientoEntradaDetallado"
+            Case 5
+                nombre = "RepTraspasoSalidaDetallado"
+            Case 6
+                nombre = "RepTraspasoIngresoDetallado"
+            Case 7 ''Todos
+                nombre = "RepMixtoDetallado"
+
+        End Select
+        If (P_ExportarExcel((RutaGlobal + "\Reporte\Reporte Productos"), nombre)) Then
+            ToastNotification.Show(Me, "EXPORTACIÓN A EXCEL EXITOSA...!!!",
                                        img, 2000,
                                        eToastGlowColor.Green,
                                        eToastPosition.BottomCenter)
         Else
-            ToastNotification.Show(Me, "FALLÓ LA EXPORTACIÓN DE REPORTE MIXTO DETALLADO...!!!",
+            ToastNotification.Show(Me, "FALLÓ LA EXPORTACIÓN A EXCEL...!!!",
                                        My.Resources.WARNING, 2000,
                                        eToastGlowColor.Red,
                                        eToastPosition.BottomLeft)
