@@ -23,7 +23,7 @@ Public Class F1_ProdNoEntraronXCompra
         Me.Text = "PRODUCTOS QUE NO ENTRARON POR COMPRA"
 
 
-        Dim blah As New Bitmap(New Bitmap(My.Resources.cliente), 20, 20)
+        Dim blah As New Bitmap(New Bitmap(My.Resources.producto), 20, 20)
         Dim ico As Icon = Icon.FromHandle(blah.GetHicon())
         Me.Icon = ico
 
@@ -52,97 +52,74 @@ Public Class F1_ProdNoEntraronXCompra
     End Sub
 
     Private Sub _prCrearCarpetaReportes()
-        Dim rutaDestino As String = RutaGlobal + "\Reporte\Reporte ClienteDino\"
+        Dim rutaDestino As String = RutaGlobal + "\Reporte\Reporte Productos\"
 
-        If System.IO.Directory.Exists(RutaGlobal + "\Reporte\Reporte ClienteDino\") = False Then
+        If System.IO.Directory.Exists(RutaGlobal + "\Reporte\Reporte Productos\") = False Then
             If System.IO.Directory.Exists(RutaGlobal + "\Reporte") = False Then
                 System.IO.Directory.CreateDirectory(RutaGlobal + "\Reporte")
-                If System.IO.Directory.Exists(RutaGlobal + "\Reporte\Reporte ClienteDino") = False Then
-                    System.IO.Directory.CreateDirectory(RutaGlobal + "\Reporte\Reporte ClienteDino")
+                If System.IO.Directory.Exists(RutaGlobal + "\Reporte\Reporte Productos") = False Then
+                    System.IO.Directory.CreateDirectory(RutaGlobal + "\Reporte\Reporte Productos")
                 End If
             Else
-                If System.IO.Directory.Exists(RutaGlobal + "\Reporte\Reporte ClienteDino") = False Then
-                    System.IO.Directory.CreateDirectory(RutaGlobal + "\Reporte\Reporte ClienteDino")
+                If System.IO.Directory.Exists(RutaGlobal + "\Reporte\Reporte Productos") = False Then
+                    System.IO.Directory.CreateDirectory(RutaGlobal + "\Reporte\Reporte Productos")
 
                 End If
             End If
         End If
     End Sub
-    Private Sub _prCargarClientes()
+    Private Sub _prCargar()
         Dim dt As DataTable
-        If swClientes.Value = True Then ''Clientes Wholesale del módulo venta rápida
-            dt = L_ClientesCel(1)
-        Else
-            dt = L_ClientesCel(0) ''Clientes desde el módulo de Clientes
-        End If
+
+        dt = L_ProdQueNoEntraronXCompra()
 
         If dt.Rows.Count > 0 Then
             JGrM_Buscador.DataSource = dt
             JGrM_Buscador.RetrieveStructure()
             JGrM_Buscador.AlternatingColors = True
 
-            With JGrM_Buscador.RootTable.Columns("Cod")
+            With JGrM_Buscador.RootTable.Columns("abnumi")
                 .Visible = False
             End With
-            With JGrM_Buscador.RootTable.Columns("ydcod")
-                .Caption = "COD. CLIENTE"
-                .Width = 120
-                If swClientes.Value = True Then
-                    .Visible = False
-                Else
-                    .Visible = True
-                End If
+            With JGrM_Buscador.RootTable.Columns("proveedor")
+                .Caption = "PROVEEDOR"
+                .Width = 200
+                .Visible = True
             End With
-            With JGrM_Buscador.RootTable.Columns("yddesc")
-                .Width = 400
-                If swClientes.Value = True Then
-                    .Visible = False
-                Else
-                    .Visible = True
-                End If
-                .Caption = "CLIENTE"
+            With JGrM_Buscador.RootTable.Columns("abdesc")
+                .Visible = False
             End With
-            With JGrM_Buscador.RootTable.Columns("nit")
+            With JGrM_Buscador.RootTable.Columns("yfnumi")
+                .Width = 110
+                .Visible = True
+                .Caption = "COD. DYNASYS"
+            End With
+            With JGrM_Buscador.RootTable.Columns("yfcprod")
                 .Width = 100
                 .Visible = True
-                .Caption = "CI/NIT"
+                .Caption = "COD. DELTA"
             End With
-
-            With JGrM_Buscador.RootTable.Columns("complemento")
+            With JGrM_Buscador.RootTable.Columns("yfcbarra")
                 .Width = 120
                 .Visible = True
-                .Caption = "COMPLEMENTO"
+                .Caption = "COD. BARRAS"
             End With
-
-            With JGrM_Buscador.RootTable.Columns("rsocial")
-                .Width = 400
-                .Caption = "RAZÓN SOCIAL"
+            With JGrM_Buscador.RootTable.Columns("yfcdprod1")
+                .Width = 580
+                .Caption = "DESCRIPCIÓN"
                 .Visible = True
             End With
-            With JGrM_Buscador.RootTable.Columns("cel")
+            With JGrM_Buscador.RootTable.Columns("yfap")
+                .Visible = False
+            End With
+            With JGrM_Buscador.RootTable.Columns("Stock")
                 .Width = 110
-                .Caption = "CELULAR"
+                .Caption = "STOCK"
                 .Visible = True
+                .FormatString = "0.00"
+                .TextAlignment = TextAlignment.Far
             End With
-            With JGrM_Buscador.RootTable.Columns("sanom2")
-                .Visible = False
-            End With
-            With JGrM_Buscador.RootTable.Columns("satipdoc")
-                .Visible = False
-            End With
-            With JGrM_Buscador.RootTable.Columns("sacorreo")
-                .Width = 300
-                .Caption = "CORREO"
-                If swClientes.Value = True Then
-                    .Visible = True
-                Else
-                    .Visible = False
-                End If
 
-            End With
-            With JGrM_Buscador.RootTable.Columns("cat")
-                .Visible = False
-            End With
 
             With JGrM_Buscador
                 .DefaultFilterRowComparison = FilterConditionOperator.Contains
@@ -253,25 +230,23 @@ Public Class F1_ProdNoEntraronXCompra
     End Sub
 
     Private Sub btnGenerar_Click(sender As Object, e As EventArgs) Handles btnGenerar.Click
-        _prCargarClientes()
+        _prCargar()
     End Sub
 
     Private Sub btnExportarExcel_Click(sender As Object, e As EventArgs) Handles btnExportarExcel.Click
         Dim nombre As String
         _prCrearCarpetaReportes()
         Dim img As Bitmap = New Bitmap(My.Resources.checked, 50, 50)
-        If swClientes.Value = True Then
-            nombre = "ListaClientesWholesale"
-        Else
-            nombre = "ListaClientesBaseDeDatos"
-        End If
-        If (P_ExportarExcel(RutaGlobal + "\Reporte\Reporte ClienteDino", nombre)) Then
-            ToastNotification.Show(Me, "EXPORTACIÓN DE CLIENTES EXITOSA..!!!",
+
+        nombre = "ListaProdNoEntraronXCompra"
+
+        If (P_ExportarExcel(RutaGlobal + "\Reporte\Reporte Reporte Productos", nombre)) Then
+            ToastNotification.Show(Me, "EXPORTACIÓN DE PRODUCTOS QUE NO ENTRARON POR COMPRA EXITOSA..!!!",
                                        img, 2000,
                                        eToastGlowColor.Green,
                                        eToastPosition.BottomCenter)
         Else
-            ToastNotification.Show(Me, "FALLÓ LA EXPORTACIÓN DE CLIENTES..!!!",
+            ToastNotification.Show(Me, "FALLÓ LA EXPORTACIÓN DE PRODUCTOS QUE NO ENTRARON POR COMPRA..!!!",
                                        My.Resources.WARNING, 2000,
                                        eToastGlowColor.Red,
                                        eToastPosition.BottomLeft)

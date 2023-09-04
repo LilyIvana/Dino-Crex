@@ -1244,6 +1244,12 @@ Public Class P_Principal
         frm.Show()
     End Sub
 
+    Private Sub btProdNoCompra_Click(sender As Object, e As EventArgs) Handles btProdNoCompra.Click
+        Dim frm As New F1_ProdNoEntraronXCompra
+        frm._nameButton = btProdNoCompra.Name
+        frm.Show()
+    End Sub
+
 
 
 

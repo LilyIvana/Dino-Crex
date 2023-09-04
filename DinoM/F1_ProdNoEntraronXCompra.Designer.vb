@@ -65,7 +65,7 @@ Partial Class F1_ProdNoEntraronXCompra
         Me.SuperTabPrincipal.ControlBox.MenuBox.Name = ""
         Me.SuperTabPrincipal.ControlBox.Name = ""
         Me.SuperTabPrincipal.ControlBox.SubItems.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.SuperTabPrincipal.ControlBox.MenuBox, Me.SuperTabPrincipal.ControlBox.CloseBox})
-        Me.SuperTabPrincipal.Size = New System.Drawing.Size(1324, 661)
+        Me.SuperTabPrincipal.Size = New System.Drawing.Size(1284, 661)
         Me.SuperTabPrincipal.Controls.SetChildIndex(Me.SuperTabControlPanelBuscador, 0)
         Me.SuperTabPrincipal.Controls.SetChildIndex(Me.SuperTabControlPanelRegistro, 0)
         '
@@ -80,14 +80,14 @@ Partial Class F1_ProdNoEntraronXCompra
         '
         'SuperTabControlPanelRegistro
         '
-        Me.SuperTabControlPanelRegistro.Size = New System.Drawing.Size(1292, 661)
+        Me.SuperTabControlPanelRegistro.Size = New System.Drawing.Size(1252, 661)
         Me.SuperTabControlPanelRegistro.Controls.SetChildIndex(Me.PanelSuperior, 0)
         Me.SuperTabControlPanelRegistro.Controls.SetChildIndex(Me.PanelInferior, 0)
         Me.SuperTabControlPanelRegistro.Controls.SetChildIndex(Me.PanelPrincipal, 0)
         '
         'PanelSuperior
         '
-        Me.PanelSuperior.Size = New System.Drawing.Size(1292, 72)
+        Me.PanelSuperior.Size = New System.Drawing.Size(1252, 72)
         Me.PanelSuperior.Style.Alignment = System.Drawing.StringAlignment.Center
         Me.PanelSuperior.Style.BackColor1.Color = System.Drawing.Color.DarkSlateGray
         Me.PanelSuperior.Style.BackColor2.Color = System.Drawing.Color.DarkSlateGray
@@ -101,7 +101,7 @@ Partial Class F1_ProdNoEntraronXCompra
         'PanelInferior
         '
         Me.PanelInferior.Location = New System.Drawing.Point(0, 625)
-        Me.PanelInferior.Size = New System.Drawing.Size(1292, 36)
+        Me.PanelInferior.Size = New System.Drawing.Size(1252, 36)
         Me.PanelInferior.Style.Alignment = System.Drawing.StringAlignment.Center
         Me.PanelInferior.Style.BackColor1.Color = System.Drawing.Color.DarkSlateGray
         Me.PanelInferior.Style.BackColor2.Color = System.Drawing.Color.DarkSlateGray
@@ -137,25 +137,25 @@ Partial Class F1_ProdNoEntraronXCompra
         '
         'PanelToolBar2
         '
-        Me.PanelToolBar2.Location = New System.Drawing.Point(1137, 0)
+        Me.PanelToolBar2.Location = New System.Drawing.Point(1097, 0)
         Me.PanelToolBar2.Size = New System.Drawing.Size(155, 72)
         '
         'MPanelSup
         '
         Me.MPanelSup.Controls.Add(Me.GroupPanel2)
-        Me.MPanelSup.Size = New System.Drawing.Size(1292, 100)
+        Me.MPanelSup.Size = New System.Drawing.Size(1252, 100)
         Me.MPanelSup.Controls.SetChildIndex(Me.PanelUsuario, 0)
         Me.MPanelSup.Controls.SetChildIndex(Me.GroupPanel2, 0)
         '
         'PanelPrincipal
         '
-        Me.PanelPrincipal.Size = New System.Drawing.Size(1292, 553)
+        Me.PanelPrincipal.Size = New System.Drawing.Size(1252, 553)
         '
         'GroupPanelBuscador
         '
         Me.GroupPanelBuscador.Font = New System.Drawing.Font("Georgia", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GroupPanelBuscador.Location = New System.Drawing.Point(0, 100)
-        Me.GroupPanelBuscador.Size = New System.Drawing.Size(1292, 453)
+        Me.GroupPanelBuscador.Size = New System.Drawing.Size(1252, 453)
         '
         '
         '
@@ -185,7 +185,7 @@ Partial Class F1_ProdNoEntraronXCompra
         '
         '
         Me.GroupPanelBuscador.StyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.GroupPanelBuscador.Text = "CLIENTES"
+        Me.GroupPanelBuscador.Text = "PRODUCTOS"
         '
         'JGrM_Buscador
         '
@@ -210,7 +210,7 @@ Partial Class F1_ProdNoEntraronXCompra
         Me.JGrM_Buscador.SelectedFormatStyle.BackColor = System.Drawing.Color.DodgerBlue
         Me.JGrM_Buscador.SelectedFormatStyle.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.JGrM_Buscador.SelectedFormatStyle.ForeColor = System.Drawing.Color.White
-        Me.JGrM_Buscador.Size = New System.Drawing.Size(1286, 430)
+        Me.JGrM_Buscador.Size = New System.Drawing.Size(1246, 430)
         Me.JGrM_Buscador.VisualStyle = Janus.Windows.GridEX.VisualStyle.Office2007
         '
         'PanelUsuario
@@ -230,7 +230,7 @@ Partial Class F1_ProdNoEntraronXCompra
         '
         'MPanelUserAct
         '
-        Me.MPanelUserAct.Location = New System.Drawing.Point(1092, 0)
+        Me.MPanelUserAct.Location = New System.Drawing.Point(1052, 0)
         '
         'Timer1
         '
@@ -248,7 +248,7 @@ Partial Class F1_ProdNoEntraronXCompra
         Me.GroupPanel2.ImeMode = System.Windows.Forms.ImeMode.NoControl
         Me.GroupPanel2.Location = New System.Drawing.Point(0, 0)
         Me.GroupPanel2.Name = "GroupPanel2"
-        Me.GroupPanel2.Size = New System.Drawing.Size(1292, 100)
+        Me.GroupPanel2.Size = New System.Drawing.Size(1252, 100)
         '
         '
         '
@@ -288,7 +288,7 @@ Partial Class F1_ProdNoEntraronXCompra
         Me.Panel1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.Panel1.Location = New System.Drawing.Point(0, 0)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(1286, 77)
+        Me.Panel1.Size = New System.Drawing.Size(1246, 77)
         Me.Panel1.TabIndex = 227
         '
         'btnExportarExcel
@@ -299,7 +299,7 @@ Partial Class F1_ProdNoEntraronXCompra
         Me.btnExportarExcel.Image = Global.DinoM.My.Resources.Resources.sheets
         Me.btnExportarExcel.ImageFixedSize = New System.Drawing.Size(35, 40)
         Me.btnExportarExcel.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top
-        Me.btnExportarExcel.Location = New System.Drawing.Point(664, 6)
+        Me.btnExportarExcel.Location = New System.Drawing.Point(649, 6)
         Me.btnExportarExcel.Name = "btnExportarExcel"
         Me.btnExportarExcel.Size = New System.Drawing.Size(65, 65)
         Me.btnExportarExcel.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
@@ -314,7 +314,7 @@ Partial Class F1_ProdNoEntraronXCompra
         Me.btnGenerar.Image = Global.DinoM.My.Resources.Resources.ventasCostos
         Me.btnGenerar.ImageFixedSize = New System.Drawing.Size(40, 40)
         Me.btnGenerar.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top
-        Me.btnGenerar.Location = New System.Drawing.Point(557, 5)
+        Me.btnGenerar.Location = New System.Drawing.Point(542, 5)
         Me.btnGenerar.Name = "btnGenerar"
         Me.btnGenerar.Size = New System.Drawing.Size(65, 65)
         Me.btnGenerar.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
@@ -325,7 +325,7 @@ Partial Class F1_ProdNoEntraronXCompra
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1324, 661)
+        Me.ClientSize = New System.Drawing.Size(1284, 661)
         Me.Location = New System.Drawing.Point(0, 0)
         Me.Name = "F1_ProdNoEntraronXCompra"
         Me.Text = "PRODUCTOS QUE NO ENTRARON POR COMPRA"
