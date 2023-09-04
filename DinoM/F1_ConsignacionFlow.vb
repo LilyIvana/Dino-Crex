@@ -20,8 +20,6 @@ Public Class F1_ConsignacionFlow
 #Region "Metodos Privados"
     Private Sub _prIniciarTodo()
         Me.Text = "REPORTE CONSIGNACIÓN FLOW"
-        tbFechaI.Value = Now.Date
-        tbFechaF.Value = Now.Date
 
         Dim blah As New Bitmap(New Bitmap(My.Resources.producto), 20, 20)
         Dim ico As Icon = Icon.FromHandle(blah.GetHicon())
@@ -104,9 +102,8 @@ Public Class F1_ConsignacionFlow
         End If
     End Sub
     Private Sub _prCargarProductos()
-        Dim fechaDesde As DateTime = tbFechaI.Value.ToString("yyyy/MM/dd")
-        Dim fechaHasta As DateTime = tbFechaF.Value.ToString("yyyy/MM/dd")
-        Dim dt As DataTable = L_ProductosConsignacionFlow(fechaDesde, fechaHasta)
+
+        Dim dt As DataTable = L_ProductosConsignacionFlow(If(swConsignación.Value = True, 1, 2))
 
         If dt.Rows.Count > 0 Then
             JGrM_Buscador.DataSource = dt
@@ -205,7 +202,7 @@ Public Class F1_ConsignacionFlow
         _prIniciarTodo()
     End Sub
 
-    Public Function P_ExportarExcel(_ruta As String) As Boolean
+    Public Function P_ExportarExcel(_ruta As String, _nombre As String) As Boolean
         Dim _ubicacion As String
         'Dim _directorio As New FolderBrowserDialog
 
@@ -217,7 +214,7 @@ Public Class F1_ConsignacionFlow
                 Dim _escritor As StreamWriter
                 Dim _fila As Integer = JGrM_Buscador.GetRows.Length
                 Dim _columna As Integer = JGrM_Buscador.RootTable.Columns.Count
-                Dim _archivo As String = _ubicacion & "\ProductosConsignacionFlow_" & Now.Date.Day &
+                Dim _archivo As String = _ubicacion & "\" & _nombre & "_" & Now.Date.Day &
                     "." & Now.Date.Month & "." & Now.Date.Year & "_" & Now.Hour & "." & Now.Minute & "." & Now.Second & ".csv"
                 Dim _linea As String = ""
                 Dim _filadata = 0, columndata As Int32 = 0
@@ -301,9 +298,15 @@ Public Class F1_ConsignacionFlow
     End Sub
 
     Private Sub btnExportarExcel_Click(sender As Object, e As EventArgs) Handles btnExportarExcel.Click
+        Dim nombre As String
         _prCrearCarpetaReportes()
+        If swConsignación.Value = True Then
+            nombre = "ConsignaciónFlow1"
+        Else
+            nombre = "ConsignaciónFlow2"
+        End If
         Dim img As Bitmap = New Bitmap(My.Resources.checked, 50, 50)
-        If (P_ExportarExcel(RutaGlobal + "\Reporte\Reporte Productos")) Then
+        If (P_ExportarExcel(RutaGlobal + "\Reporte\Reporte Productos", nombre)) Then
             ToastNotification.Show(Me, "EXPORTACIÓN DE PRODUCTOS DE CONSIGNACIÓN FLOW EXITOSA..!!!",
                                        img, 2000,
                                        eToastGlowColor.Green,
