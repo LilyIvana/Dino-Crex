@@ -121,7 +121,7 @@ Public Class F1_ConsignacionFlow
                 .Caption = "COD. DELTA"
             End With
             With JGrM_Buscador.RootTable.Columns("yfcbarra")
-                .Width = 100
+                .Width = 120
                 .Caption = "COD. BARRAS"
                 .Visible = True
             End With
@@ -141,7 +141,19 @@ Public Class F1_ConsignacionFlow
                 .Caption = "DESCRIPCIÓN"
                 .Visible = True
             End With
+            With JGrM_Buscador.RootTable.Columns("pcosto")
+                .Width = 100
+                If (swConsignación.Value = True) Then
+                    .Caption = "COSTO"
+                Else
+                    .Caption = "COSTO REFERENCIAL (ACTUAL)"
+                End If
 
+                .Visible = True
+                .FormatString = "0.00"
+                .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far
+                .AggregateFunction = AggregateFunction.Sum
+            End With
             With JGrM_Buscador.RootTable.Columns("cantidad")
                 .Width = 100
                 .Caption = "CANTIDAD INICIAL"
@@ -175,7 +187,7 @@ Public Class F1_ConsignacionFlow
                 .AggregateFunction = AggregateFunction.Sum
             End With
             With JGrM_Buscador.RootTable.Columns("Obs")
-                .Width = 250
+                .Width = 200
                 .Caption = "OBSERVACIÓN"
                 .Visible = True
             End With
@@ -209,10 +221,8 @@ Public Class F1_ConsignacionFlow
 
     Public Function P_ExportarExcel(_ruta As String, _nombre As String) As Boolean
         Dim _ubicacion As String
-        'Dim _directorio As New FolderBrowserDialog
 
         If (1 = 1) Then 'If(_directorio.ShowDialog = Windows.Forms.DialogResult.OK) Then
-            '_ubicacion = _directorio.SelectedPath
             _ubicacion = _ruta
             Try
                 Dim _stream As Stream
