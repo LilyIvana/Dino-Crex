@@ -174,6 +174,11 @@ Public Class F1_ConsignacionFlow
                 .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far
                 .AggregateFunction = AggregateFunction.Sum
             End With
+            With JGrM_Buscador.RootTable.Columns("Obs")
+                .Width = 250
+                .Caption = "OBSERVACIÓN"
+                .Visible = True
+            End With
 
             With JGrM_Buscador
                 .DefaultFilterRowComparison = FilterConditionOperator.Contains

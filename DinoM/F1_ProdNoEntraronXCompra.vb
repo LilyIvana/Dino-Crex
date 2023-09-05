@@ -120,7 +120,6 @@ Public Class F1_ProdNoEntraronXCompra
                 .TextAlignment = TextAlignment.Far
             End With
 
-
             With JGrM_Buscador
                 .DefaultFilterRowComparison = FilterConditionOperator.Contains
                 .FilterMode = FilterMode.Automatic
