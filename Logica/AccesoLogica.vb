@@ -3439,32 +3439,64 @@ Public Class AccesoLogica
 
         'Cambiar la logica para visualizar las facturas esto en el programa de facturas
         If mostrar = True Then
-            _Where = " 1 = 1"
+            _Where = " 1 = 1 "
             _Tabla1 = D_Datos_Tabla("concat(fvanfac, '_', fvaautoriz) as Archivo, fvanumi as Codigo, fvanfac as [Nro Factura], " _
                          + "fvafec as Fecha, fvacodcli as [Cod Cliente], " _
                          + " fvadescli1 as [Nombre 1], fvadescli2 as [Nombre 2], fvanitcli as Nit, " _
                          + " fvastot as Subtotal, fvadesc as Descuento, fvatotal as Total, " _
                          + " fvaccont as [Cod Control], fvaflim as [Fec Limite], fvaest as Estado",
                          "TFV001", _Where)
+
+            '_Tabla1 = L_FacturasTodas()
         Else
             _Where = " 1 = 1  Order By fvanumi desc"
-            _Tabla1 = D_Datos_Tabla("Top(5000) concat(fvanfac, '_', fvaautoriz) as Archivo, fvanumi as Codigo, fvanfac as [Nro Factura], " _
+            _Tabla1 = D_Datos_Tabla("Top(1500) concat(fvanfac, '_', fvaautoriz) as Archivo, fvanumi as Codigo, fvanfac as [Nro Factura], " _
                          + "fvafec as Fecha, fvacodcli as [Cod Cliente], " _
                          + " fvadescli1 as [Nombre 1], fvadescli2 as [Nombre 2], fvanitcli as Nit, " _
                          + " fvastot as Subtotal, fvadesc as Descuento, fvatotal as Total, " _
                          + " fvaccont as [Cod Control], fvaflim as [Fec Limite], fvaest as Estado",
                          "TFV001", _Where)
+
+            '_Tabla1 = L_Facturas2500()
+
         End If
 
-        '_Tabla1.Columns(0).ColumnMapping = MappingType.Hidden
         _Ds.Tables.Add(_Tabla1)
 
         _Tabla2 = D_Datos_Tabla("concat(fvanfac, '_', fvaautoriz) as Archivo, fvbnumi as Codigo, fvbcprod as [Cod Producto], fvbdesprod as Descripcion, " _
                                 + " fvbcant as Cantidad, fvbprecio as [Precio Unitario], (fvbcant * fvbprecio) as Precio",
                                 "TFV001, TFV0011", "fvanumi = fvbnumi and fvanumi2 = fvbnumi2")
+
+        '_Tabla2 = L_FacturasDet()
+
         _Ds.Tables.Add(_Tabla2)
         _Ds.Relations.Add("1", _Tabla1.Columns("Archivo"), _Tabla2.Columns("Archivo"), False)
         Return _Ds
+    End Function
+
+    Public Shared Function L_Facturas2500() As DataTable
+        Dim _Tabla As DataTable
+        Dim _listParam As New List(Of Datos.DParametro)
+        _listParam.Add(New Datos.DParametro("@tipo", 1))
+        _listParam.Add(New Datos.DParametro("@uact", L_Usuario))
+        _Tabla = D_ProcedimientoConParam("Sp_Mam_Facturas", _listParam)
+        Return _Tabla
+    End Function
+    Public Shared Function L_FacturasTodas() As DataTable
+        Dim _Tabla As DataTable
+        Dim _listParam As New List(Of Datos.DParametro)
+        _listParam.Add(New Datos.DParametro("@tipo", 2))
+        _listParam.Add(New Datos.DParametro("@uact", L_Usuario))
+        _Tabla = D_ProcedimientoConParam("Sp_Mam_Facturas", _listParam)
+        Return _Tabla
+    End Function
+    Public Shared Function L_FacturasDet() As DataTable
+        Dim _Tabla As DataTable
+        Dim _listParam As New List(Of Datos.DParametro)
+        _listParam.Add(New Datos.DParametro("@tipo", 3))
+        _listParam.Add(New Datos.DParametro("@uact", L_Usuario))
+        _Tabla = D_ProcedimientoConParam("Sp_Mam_Facturas", _listParam)
+        Return _Tabla
     End Function
 
     Public Shared Function L_ObtenerDetalleFactura(_CodFact As String) As DataSet 'Modifcar para que solo Traiga los productos Con Stock

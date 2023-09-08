@@ -110,6 +110,7 @@ Public Class F0_AnularFactura
 
         DgdFactura.PrimaryGrid.SelectionGranularity = SelectionGranularity.RowWithCellHighlight
 
+
         Dim col As GridColumn
 
         'nfa
@@ -428,16 +429,6 @@ Public Class F0_AnularFactura
 
     End Sub
 
-    Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
-        _Inter = _Inter + 1
-        If _Inter = 1 Then
-            Me.WindowState = FormWindowState.Normal
-
-        Else
-            Me.Opacity = 100
-            Timer1.Enabled = False
-        End If
-    End Sub
 
     Private Sub MostrarMensajeError(mensaje As String)
         ToastNotification.Show(Me,
@@ -555,5 +546,16 @@ Public Class F0_AnularFactura
 
     Private Sub swMostrar_ValueChanged(sender As Object, e As EventArgs) Handles swMostrar.ValueChanged
         P_ArmarGrilla()
+    End Sub
+
+    Private Sub Timer1_Tick_1(sender As Object, e As EventArgs) Handles Timer1.Tick
+        _Inter = _Inter + 1
+        If _Inter = 1 Then
+            Me.WindowState = FormWindowState.Normal
+
+        Else
+            Me.Opacity = 100
+            Timer1.Enabled = False
+        End If
     End Sub
 End Class
