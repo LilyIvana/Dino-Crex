@@ -417,9 +417,6 @@ Public Class F1_ExcelVenta
     End Function
 
 
-
-
-
     Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
         _Inter = _Inter + 1
         If _Inter = 1 Then

@@ -24,8 +24,8 @@ Partial Class F0_AnularFactura
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(F0_AnularFactura))
-        Dim Background3 As DevComponents.DotNetBar.SuperGrid.Style.Background = New DevComponents.DotNetBar.SuperGrid.Style.Background()
-        Dim Background4 As DevComponents.DotNetBar.SuperGrid.Style.Background = New DevComponents.DotNetBar.SuperGrid.Style.Background()
+        Dim Background1 As DevComponents.DotNetBar.SuperGrid.Style.Background = New DevComponents.DotNetBar.SuperGrid.Style.Background()
+        Dim Background2 As DevComponents.DotNetBar.SuperGrid.Style.Background = New DevComponents.DotNetBar.SuperGrid.Style.Background()
         Dim CbMotivoA_DesignTimeLayout As Janus.Windows.GridEX.GridEXLayout = New Janus.Windows.GridEX.GridEXLayout()
         Me.TableLayoutPanelPrincipal = New System.Windows.Forms.TableLayoutPanel()
         Me.GroupPanelListaFactura = New DevComponents.DotNetBar.Controls.GroupPanel()
@@ -109,7 +109,7 @@ Partial Class F0_AnularFactura
         '
         'PanelInferior
         '
-        Me.PanelInferior.Location = New System.Drawing.Point(0, 662)
+        Me.PanelInferior.Location = New System.Drawing.Point(0, 652)
         Me.PanelInferior.Size = New System.Drawing.Size(1324, 39)
         Me.PanelInferior.Style.Alignment = System.Drawing.StringAlignment.Center
         Me.PanelInferior.Style.BackColor1.Color = System.Drawing.Color.Transparent
@@ -165,7 +165,7 @@ Partial Class F0_AnularFactura
         '
         'PanelPrincipal
         '
-        Me.PanelPrincipal.Size = New System.Drawing.Size(1324, 701)
+        Me.PanelPrincipal.Size = New System.Drawing.Size(1324, 691)
         Me.PanelPrincipal.Controls.SetChildIndex(Me.PanelInferior, 0)
         Me.PanelPrincipal.Controls.SetChildIndex(Me.PanelUsuario, 0)
         Me.PanelPrincipal.Controls.SetChildIndex(Me.PanelSuperior, 0)
@@ -200,16 +200,16 @@ Partial Class F0_AnularFactura
         '
         Me.PanelContent.Controls.Add(Me.TableLayoutPanelPrincipal)
         Me.PanelContent.Margin = New System.Windows.Forms.Padding(2)
-        Me.PanelContent.Size = New System.Drawing.Size(1291, 590)
+        Me.PanelContent.Size = New System.Drawing.Size(1291, 580)
         '
         'Panel1
         '
-        Me.Panel1.Size = New System.Drawing.Size(1324, 590)
+        Me.Panel1.Size = New System.Drawing.Size(1324, 580)
         '
         'MSuperTabControlPanel1
         '
         Me.MSuperTabControlPanel1.Margin = New System.Windows.Forms.Padding(2)
-        Me.MSuperTabControlPanel1.Size = New System.Drawing.Size(1291, 590)
+        Me.MSuperTabControlPanel1.Size = New System.Drawing.Size(1291, 580)
         '
         'MSuperTabControl
         '
@@ -228,7 +228,7 @@ Partial Class F0_AnularFactura
         Me.MSuperTabControl.ControlBox.SubItems.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.MSuperTabControl.ControlBox.MenuBox, Me.MSuperTabControl.ControlBox.CloseBox})
         Me.MSuperTabControl.Controls.Add(Me.SuperTabControlPanel2)
         Me.MSuperTabControl.SelectedTabIndex = 1
-        Me.MSuperTabControl.Size = New System.Drawing.Size(1324, 590)
+        Me.MSuperTabControl.Size = New System.Drawing.Size(1324, 580)
         Me.MSuperTabControl.Tabs.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.SuperTabItem1})
         Me.MSuperTabControl.Controls.SetChildIndex(Me.MSuperTabControlPanel1, 0)
         Me.MSuperTabControl.Controls.SetChildIndex(Me.SuperTabControlPanel2, 0)
@@ -249,7 +249,7 @@ Partial Class F0_AnularFactura
         Me.TableLayoutPanelPrincipal.RowCount = 2
         Me.TableLayoutPanelPrincipal.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 35.0!))
         Me.TableLayoutPanelPrincipal.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 65.0!))
-        Me.TableLayoutPanelPrincipal.Size = New System.Drawing.Size(1291, 590)
+        Me.TableLayoutPanelPrincipal.Size = New System.Drawing.Size(1291, 580)
         Me.TableLayoutPanelPrincipal.TabIndex = 0
         '
         'GroupPanelListaFactura
@@ -260,9 +260,9 @@ Partial Class F0_AnularFactura
         Me.GroupPanelListaFactura.DisabledBackColor = System.Drawing.Color.Empty
         Me.GroupPanelListaFactura.Dock = System.Windows.Forms.DockStyle.Fill
         Me.GroupPanelListaFactura.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.GroupPanelListaFactura.Location = New System.Drawing.Point(3, 209)
+        Me.GroupPanelListaFactura.Location = New System.Drawing.Point(3, 206)
         Me.GroupPanelListaFactura.Name = "GroupPanelListaFactura"
-        Me.GroupPanelListaFactura.Size = New System.Drawing.Size(1285, 378)
+        Me.GroupPanelListaFactura.Size = New System.Drawing.Size(1285, 371)
         '
         '
         '
@@ -300,12 +300,12 @@ Partial Class F0_AnularFactura
         Me.DgdFactura.BackColor = System.Drawing.Color.WhiteSmoke
         Me.DgdFactura.DefaultVisualStyles.ColumnHeaderStyles.Default.Font = New System.Drawing.Font("Georgia", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.DgdFactura.DefaultVisualStyles.ColumnHeaderStyles.Default.TextColor = System.Drawing.Color.FromArgb(CType(CType(15, Byte), Integer), CType(CType(72, Byte), Integer), CType(CType(127, Byte), Integer))
-        Background3.Color1 = System.Drawing.Color.DodgerBlue
-        Me.DgdFactura.DefaultVisualStyles.RowStyles.Selected.Background = Background3
+        Background1.Color1 = System.Drawing.Color.DodgerBlue
+        Me.DgdFactura.DefaultVisualStyles.RowStyles.Selected.Background = Background1
         Me.DgdFactura.DefaultVisualStyles.RowStyles.Selected.RowHeaderStyle.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.DgdFactura.DefaultVisualStyles.RowStyles.Selected.RowHeaderStyle.TextColor = System.Drawing.Color.White
-        Background4.Color1 = System.Drawing.Color.DodgerBlue
-        Me.DgdFactura.DefaultVisualStyles.RowStyles.SelectedMouseOver.Background = Background4
+        Background2.Color1 = System.Drawing.Color.DodgerBlue
+        Me.DgdFactura.DefaultVisualStyles.RowStyles.SelectedMouseOver.Background = Background2
         Me.DgdFactura.Dock = System.Windows.Forms.DockStyle.Fill
         Me.DgdFactura.FilterExprColors.SysFunction = System.Drawing.Color.DarkRed
         Me.DgdFactura.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -320,7 +320,7 @@ Partial Class F0_AnularFactura
         Me.DgdFactura.PrimaryGrid.MultiSelect = False
         Me.DgdFactura.PrimaryGrid.SelectionGranularity = DevComponents.DotNetBar.SuperGrid.SelectionGranularity.RowWithCellHighlight
         Me.DgdFactura.PrimaryGrid.UseAlternateRowStyle = True
-        Me.DgdFactura.Size = New System.Drawing.Size(1279, 355)
+        Me.DgdFactura.Size = New System.Drawing.Size(1279, 348)
         Me.DgdFactura.TabIndex = 0
         Me.DgdFactura.Text = "SuperGridControl1"
         '
@@ -334,7 +334,7 @@ Partial Class F0_AnularFactura
         Me.GroupPanelDatosGenerales.Font = New System.Drawing.Font("Georgia", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GroupPanelDatosGenerales.Location = New System.Drawing.Point(3, 3)
         Me.GroupPanelDatosGenerales.Name = "GroupPanelDatosGenerales"
-        Me.GroupPanelDatosGenerales.Size = New System.Drawing.Size(1285, 200)
+        Me.GroupPanelDatosGenerales.Size = New System.Drawing.Size(1285, 197)
         '
         '
         '
@@ -404,7 +404,7 @@ Partial Class F0_AnularFactura
         Me.PanelExDatosGenerales.Dock = System.Windows.Forms.DockStyle.Fill
         Me.PanelExDatosGenerales.Location = New System.Drawing.Point(0, 0)
         Me.PanelExDatosGenerales.Name = "PanelExDatosGenerales"
-        Me.PanelExDatosGenerales.Size = New System.Drawing.Size(1279, 177)
+        Me.PanelExDatosGenerales.Size = New System.Drawing.Size(1279, 174)
         Me.PanelExDatosGenerales.Style.Alignment = System.Drawing.StringAlignment.Center
         Me.PanelExDatosGenerales.Style.BackColor1.Color = System.Drawing.Color.White
         Me.PanelExDatosGenerales.Style.BackColor2.Color = System.Drawing.Color.White
@@ -950,7 +950,7 @@ Partial Class F0_AnularFactura
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1324, 701)
+        Me.ClientSize = New System.Drawing.Size(1324, 691)
         Me.Location = New System.Drawing.Point(0, 0)
         Me.Margin = New System.Windows.Forms.Padding(4)
         Me.Name = "F0_AnularFactura"

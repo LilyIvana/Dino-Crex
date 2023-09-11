@@ -23,6 +23,8 @@ Public Class F0_KardexMovimiento
     Public _nameButton As String
     Public _tab As SuperTabItem
     Public _modulo As SideNavItem
+    Dim RutaGlobal As String = gs_CarpetaRaiz
+
 #End Region
     Private Sub _IniciarTodo()
         ''L_prAbrirConexion(gs_Ip, gs_UsuarioSql, gs_ClaveSql, gs_NombreBD)
@@ -209,7 +211,7 @@ Public Class F0_KardexMovimiento
         f.Item(4) = "SALDO INICIAL"
         f.Item(5) = "Saldo Inicial"
         f.Item(6) = ""
-        '' f.Item(7) = ""
+        ''f.Item(7) = tbFechaI.Value.ToShortDateString
         f.Item(8) = 1
         f.Item(9) = 1
         f.Item(10) = 0
@@ -220,6 +222,7 @@ Public Class F0_KardexMovimiento
         f.Item(15) = 0
         f.Item(16) = saldoInicial
         f.Item(17) = ""
+
 
         Dt1Kardex.Rows.InsertAt(f, 0)
 
@@ -465,7 +468,12 @@ Public Class F0_KardexMovimiento
             .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far
             .Visible = True
             '.CellStyle.BackColor = Color.AliceBlue
-            .FormatString = "0.00"
+            If IsDBNull(Dgj1Datos.RootTable.Columns(14)) Then
+                .FormatString = "''"
+            Else
+                .FormatString = "0.00"
+            End If
+
             .AggregateFunction = AggregateFunction.Sum
         End With
         With Dgj1Datos.RootTable.Columns(15)
@@ -736,4 +744,112 @@ Public Class F0_KardexMovimiento
             Timer1.Enabled = False
         End If
     End Sub
+
+    Private Sub btExportar_Click(sender As Object, e As EventArgs) Handles btExportar.Click
+        _prCrearCarpetaReportes()
+        Dim img As Bitmap = New Bitmap(My.Resources.checked, 50, 50)
+        If (P_ExportarExcel(RutaGlobal + "\Reporte\Reporte Productos")) Then
+            ToastNotification.Show(Me, "EXPORTACIÓN DE KARDEX DE PRODUCTOS EXITOSA..!!!",
+                                       img, 2000,
+                                       eToastGlowColor.Green,
+                                       eToastPosition.BottomCenter)
+        Else
+            ToastNotification.Show(Me, "FALLÓ LA EXPORTACIÓN DE KARDEX DE PRODUCTOS..!!!",
+                                       My.Resources.WARNING, 2000,
+                                       eToastGlowColor.Red,
+                                       eToastPosition.BottomLeft)
+        End If
+    End Sub
+    Private Sub _prCrearCarpetaReportes()
+        Dim rutaDestino As String = RutaGlobal + "\Reporte\Reporte Productos\"
+
+        If System.IO.Directory.Exists(RutaGlobal + "\Reporte\Reporte Productos\") = False Then
+            If System.IO.Directory.Exists(RutaGlobal + "\Reporte") = False Then
+                System.IO.Directory.CreateDirectory(RutaGlobal + "\Reporte")
+                If System.IO.Directory.Exists(RutaGlobal + "\Reporte\Reporte Productos") = False Then
+                    System.IO.Directory.CreateDirectory(RutaGlobal + "\Reporte\Reporte Productos")
+                End If
+            Else
+                If System.IO.Directory.Exists(RutaGlobal + "\Reporte\Reporte Productos") = False Then
+                    System.IO.Directory.CreateDirectory(RutaGlobal + "\Reporte\Reporte Productos")
+
+                End If
+            End If
+        End If
+    End Sub
+
+    Public Function P_ExportarExcel(_ruta As String) As Boolean
+        Dim _ubicacion As String
+        'Dim _directorio As New FolderBrowserDialog
+
+        If (1 = 1) Then 'If(_directorio.ShowDialog = Windows.Forms.DialogResult.OK) Then
+            '_ubicacion = _directorio.SelectedPath
+            _ubicacion = _ruta
+            Try
+                Dim _stream As Stream
+                Dim _escritor As StreamWriter
+                Dim _fila As Integer = Dgj1Datos.GetRows.Length
+                Dim _columna As Integer = Dgj1Datos.RootTable.Columns.Count
+                Dim _archivo As String = _ubicacion & "\KardexProductos_" & Now.Date.Day &
+                    "." & Now.Date.Month & "." & Now.Date.Year & "_" & Now.Hour & "." & Now.Minute & "." & Now.Second & ".csv"
+                Dim _linea As String = ""
+                Dim _filadata = 0, columndata As Int32 = 0
+                File.Delete(_archivo)
+                _stream = File.OpenWrite(_archivo)
+                _escritor = New StreamWriter(_stream, System.Text.Encoding.UTF8)
+
+                For Each _col As GridEXColumn In Dgj1Datos.RootTable.Columns
+                    If (_col.Visible) Then
+                        _linea = _linea & _col.Caption & ";"
+                    End If
+                Next
+                _linea = Mid(CStr(_linea), 1, _linea.Length - 1)
+                _escritor.WriteLine(_linea)
+                _linea = Nothing
+
+
+                For Each _fil As GridEXRow In Dgj1Datos.GetRows
+                    For Each _col As GridEXColumn In Dgj1Datos.RootTable.Columns
+                        If (_col.Visible) Then
+                            Dim data As String = CStr(_fil.Cells(_col.Key).Value)
+                            data = data.Replace(";", ",")
+                            _linea = _linea & data & ";"
+                        End If
+                    Next
+                    _linea = Mid(CStr(_linea), 1, _linea.Length - 1)
+                    _escritor.WriteLine(_linea)
+                    _linea = Nothing
+                    'Pbx_Precios.Value += 1
+                Next
+                _escritor.Close()
+                'Pbx_Precios.Visible = False
+                Try
+                    Dim ef = New Efecto
+                    ef._archivo = _archivo
+
+                    ef.tipo = 1
+                    ef.Context = "Su archivo ha sido Guardado en la ruta: " + _archivo + vbLf + "DESEA ABRIR EL ARCHIVO?"
+                    ef.Header = "PREGUNTA"
+                    ef.ShowDialog()
+                    Dim bandera As Boolean = False
+                    bandera = ef.band
+                    If (bandera = True) Then
+                        Process.Start(_archivo)
+                    End If
+
+                    'If (MessageBox.Show("Su archivo ha sido Guardado en la ruta: " + _archivo + vbLf + "DESEA ABRIR EL ARCHIVO?", "PREGUNTA", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = Windows.Forms.DialogResult.Yes) Then
+                    '    Process.Start(_archivo)
+                    'End If
+                    Return True
+                Catch ex As Exception
+                    MsgBox(ex.Message)
+                    Return False
+                End Try
+            Catch ex As Exception
+                MsgBox(ex.Message)
+                Return False
+            End Try
+        End If
+        Return False
+    End Function
 End Class

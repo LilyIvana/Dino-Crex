@@ -51,6 +51,7 @@ Partial Class F0_KardexMovimiento
         Me.Panel3 = New System.Windows.Forms.Panel()
         Me.PictureBox2 = New System.Windows.Forms.PictureBox()
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
+        Me.btExportar = New DevComponents.DotNetBar.ButtonX()
         Me.PanelSuperior.SuspendLayout()
         Me.PanelInferior.SuspendLayout()
         CType(Me.BubbleBarUsuario, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -274,6 +275,7 @@ Partial Class F0_KardexMovimiento
         '
         'Panel2
         '
+        Me.Panel2.Controls.Add(Me.btExportar)
         Me.Panel2.Controls.Add(Me.Label1)
         Me.Panel2.Controls.Add(Me.tbFechaVenc)
         Me.Panel2.Controls.Add(Me.tblote)
@@ -403,10 +405,10 @@ Partial Class F0_KardexMovimiento
         Me.btActualizar.Font = New System.Drawing.Font("Georgia", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btActualizar.Image = Global.DinoM.My.Resources.Resources.reload_5
         Me.btActualizar.ImageFixedSize = New System.Drawing.Size(40, 40)
-        Me.btActualizar.Location = New System.Drawing.Point(383, 121)
+        Me.btActualizar.Location = New System.Drawing.Point(522, 121)
         Me.btActualizar.Name = "btActualizar"
         Me.btActualizar.Shape = New DevComponents.DotNetBar.RoundRectangleShapeDescriptor(4)
-        Me.btActualizar.Size = New System.Drawing.Size(132, 49)
+        Me.btActualizar.Size = New System.Drawing.Size(135, 49)
         Me.btActualizar.SubItemsExpandWidth = 10
         Me.btActualizar.TabIndex = 238
         Me.btActualizar.Text = "ACTUALIZAR SALDO"
@@ -746,6 +748,23 @@ Partial Class F0_KardexMovimiento
         Me.Timer1.Enabled = True
         Me.Timer1.Interval = 500
         '
+        'btExportar
+        '
+        Me.btExportar.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
+        Me.btExportar.BackColor = System.Drawing.Color.SkyBlue
+        Me.btExportar.ColorTable = DevComponents.DotNetBar.eButtonColor.Office2007WithBackground
+        Me.btExportar.Font = New System.Drawing.Font("Georgia", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btExportar.Image = Global.DinoM.My.Resources.Resources.sheets
+        Me.btExportar.ImageFixedSize = New System.Drawing.Size(35, 35)
+        Me.btExportar.Location = New System.Drawing.Point(385, 121)
+        Me.btExportar.Name = "btExportar"
+        Me.btExportar.Shape = New DevComponents.DotNetBar.RoundRectangleShapeDescriptor(4)
+        Me.btExportar.Size = New System.Drawing.Size(126, 49)
+        Me.btExportar.SubItemsExpandWidth = 10
+        Me.btExportar.TabIndex = 245
+        Me.btExportar.Text = "EXPORTAR"
+        Me.btExportar.TextColor = System.Drawing.Color.FromArgb(CType(CType(49, Byte), Integer), CType(CType(59, Byte), Integer), CType(CType(66, Byte), Integer))
+        '
         'F0_KardexMovimiento
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -812,4 +831,5 @@ Partial Class F0_KardexMovimiento
     Friend WithEvents tbFechaVenc As DevComponents.DotNetBar.Controls.TextBoxX
     Friend WithEvents Timer1 As Timer
     Friend WithEvents Label1 As Label
+    Friend WithEvents btExportar As DevComponents.DotNetBar.ButtonX
 End Class
