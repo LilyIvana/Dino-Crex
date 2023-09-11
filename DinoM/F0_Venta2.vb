@@ -181,6 +181,7 @@ Public Class F0_Venta2
         tbFechaVenc.IsInputReadOnly = True
         swTipoVenta.IsReadOnly = True
         txtEstado.ReadOnly = True
+        ''swMostrar.IsReadOnly = True
 
         cbCambioDolar.ReadOnly = True
 
@@ -248,12 +249,11 @@ Public Class F0_Venta2
         ''  tbCliente.ReadOnly = False  por que solo podra seleccionar Cliente
         ''  tbVendedor.ReadOnly = False
         tbFechaVenc.IsInputReadOnly = False
-
         swTipoVenta.IsReadOnly = False
         tbFechaVenta.IsInputReadOnly = False
         tbFechaVenta.Enabled = True
-
         swMoneda.IsReadOnly = False
+        ''swMostrar.IsReadOnly = False
 
         btnGrabar.Enabled = True
 
@@ -753,7 +753,7 @@ Public Class F0_Venta2
 
     Private Sub _prCargarVenta()
         Dim dt As New DataTable
-        dt = L_fnGeneralVenta()
+        dt = L_fnGeneralVenta(If(swMostrar.Value = True, 1, 0))
         grVentas.DataSource = dt
         grVentas.RetrieveStructure()
         grVentas.AlternatingColors = True
@@ -5195,6 +5195,10 @@ salirIf:
         Else
             tbObservacion.Clear()
         End If
+    End Sub
+
+    Private Sub swMostrar_ValueChanged(sender As Object, e As EventArgs) Handles swMostrar.ValueChanged
+        _prCargarVenta()
     End Sub
 
 

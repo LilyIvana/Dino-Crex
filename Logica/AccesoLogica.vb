@@ -1531,12 +1531,13 @@ Public Class AccesoLogica
 #End Region
 
 #Region "TV001 Ventas"
-    Public Shared Function L_fnGeneralVenta() As DataTable
+    Public Shared Function L_fnGeneralVenta(_mostrar As String) As DataTable
         Dim _Tabla As DataTable
 
         Dim _listParam As New List(Of Datos.DParametro)
 
         _listParam.Add(New Datos.DParametro("@tipo", 3))
+        _listParam.Add(New Datos.DParametro("@mostrar", _mostrar))
         _listParam.Add(New Datos.DParametro("@tauact", L_Usuario))
         _Tabla = D_ProcedimientoConParam("sp_Mam_TV001", _listParam)
 
