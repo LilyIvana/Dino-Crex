@@ -381,8 +381,8 @@ Partial Class F0_LibroVenta2
         Me.TableLayoutPanelDatos.Location = New System.Drawing.Point(3, 3)
         Me.TableLayoutPanelDatos.Name = "TableLayoutPanelDatos"
         Me.TableLayoutPanelDatos.RowCount = 2
-        Me.TableLayoutPanelDatos.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 27.27273!))
-        Me.TableLayoutPanelDatos.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 72.72727!))
+        Me.TableLayoutPanelDatos.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20.0!))
+        Me.TableLayoutPanelDatos.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 80.0!))
         Me.TableLayoutPanelDatos.Size = New System.Drawing.Size(1074, 564)
         Me.TableLayoutPanelDatos.TabIndex = 0
         '
@@ -394,9 +394,9 @@ Partial Class F0_LibroVenta2
         Me.GroupPanelListaVentas.DisabledBackColor = System.Drawing.Color.Empty
         Me.GroupPanelListaVentas.Dock = System.Windows.Forms.DockStyle.Fill
         Me.GroupPanelListaVentas.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.GroupPanelListaVentas.Location = New System.Drawing.Point(3, 156)
+        Me.GroupPanelListaVentas.Location = New System.Drawing.Point(3, 115)
         Me.GroupPanelListaVentas.Name = "GroupPanelListaVentas"
-        Me.GroupPanelListaVentas.Size = New System.Drawing.Size(1068, 405)
+        Me.GroupPanelListaVentas.Size = New System.Drawing.Size(1068, 446)
         '
         '
         '
@@ -440,7 +440,7 @@ Partial Class F0_LibroVenta2
         Me.DgdLCV.FilterExprColors.SysFunction = System.Drawing.Color.DarkRed
         Me.DgdLCV.Location = New System.Drawing.Point(0, 0)
         Me.DgdLCV.Name = "DgdLCV"
-        Me.DgdLCV.Size = New System.Drawing.Size(1062, 382)
+        Me.DgdLCV.Size = New System.Drawing.Size(1062, 423)
         Me.DgdLCV.TabIndex = 2
         Me.DgdLCV.Text = "SuperGridControl1"
         '
@@ -454,7 +454,7 @@ Partial Class F0_LibroVenta2
         Me.GroupPanelDatosGenerales.Font = New System.Drawing.Font("Georgia", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GroupPanelDatosGenerales.Location = New System.Drawing.Point(3, 3)
         Me.GroupPanelDatosGenerales.Name = "GroupPanelDatosGenerales"
-        Me.GroupPanelDatosGenerales.Size = New System.Drawing.Size(1068, 147)
+        Me.GroupPanelDatosGenerales.Size = New System.Drawing.Size(1068, 106)
         '
         '
         '
@@ -511,7 +511,7 @@ Partial Class F0_LibroVenta2
         Me.PanelExDatosGenerales.Dock = System.Windows.Forms.DockStyle.Fill
         Me.PanelExDatosGenerales.Location = New System.Drawing.Point(0, 0)
         Me.PanelExDatosGenerales.Name = "PanelExDatosGenerales"
-        Me.PanelExDatosGenerales.Size = New System.Drawing.Size(1062, 124)
+        Me.PanelExDatosGenerales.Size = New System.Drawing.Size(1062, 83)
         Me.PanelExDatosGenerales.Style.Alignment = System.Drawing.StringAlignment.Center
         Me.PanelExDatosGenerales.Style.BackColor1.Color = System.Drawing.Color.White
         Me.PanelExDatosGenerales.Style.BackColor2.Color = System.Drawing.Color.White
