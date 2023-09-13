@@ -5,6 +5,7 @@ Imports System.IO
 Imports System.Drawing.Printing
 Imports DevComponents.DotNetBar
 Imports DevComponents.DotNetBar.Controls
+Imports Janus.Windows.GridEX
 Public Class F0_LibroVenta2
 
 #Region "Variables Globales"
@@ -217,6 +218,7 @@ Public Class F0_LibroVenta2
         'DgdLCV.PrimaryGrid.ColumnAutoSizeMode = ColumnAutoSizeMode.DisplayedCells
 
         DgdLCV.PrimaryGrid.SelectionGranularity = SelectionGranularity.RowWithCellHighlight
+
 
         Dim col As GridColumn
 
@@ -501,17 +503,17 @@ Public Class F0_LibroVenta2
 
 
 
-        For Each fil As DataRow In _DsLV.Rows
-            If (fil.Item("fvaest").ToString.Equals("A")) Then
-                fil.Item("fvadescli") = "ANULADA"
-                fil.Item("fvanitcli") = "0"
-                fil.Item("fvastot") = 0
-                fil.Item("fvasubtotal") = 0
-                fil.Item("fvadesc") = 0
-                fil.Item("fvatotal") = 0
-                fil.Item("fvadebfis") = 0
-            End If
-        Next
+        'For Each fil As DataRow In _DsLV.Rows
+        '    If (fil.Item("fvaest").ToString.Equals("A")) Then
+        '        fil.Item("fvadescli") = "ANULADA"
+        '        fil.Item("fvanitcli") = "0"
+        '        fil.Item("fvastot") = 0
+        '        fil.Item("fvasubtotal") = 0
+        '        fil.Item("fvadesc") = 0
+        '        fil.Item("fvatotal") = 0
+        '        fil.Item("fvadebfis") = 0
+        '    End If
+        'Next
 
         DgdLCV.PrimaryGrid.Rows.Clear()
 
