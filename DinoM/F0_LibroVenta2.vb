@@ -420,6 +420,26 @@ Public Class F0_LibroVenta2
         col.Width = 0
         DgdLCV.PrimaryGrid.Columns.Add(col)
 
+        'Nombre factura
+        col = New GridColumn("factura")
+        col.HeaderText = ""
+        col.EditorType = GetType(GridTextBoxXEditControl)
+        col.CellStyles.Default.Alignment = Style.Alignment.MiddleLeft
+        col.ReadOnly = True
+        col.Visible = False
+        col.Width = 0
+        DgdLCV.PrimaryGrid.Columns.Add(col)
+
+
+        'Nombre Nro Caja
+        col = New GridColumn("fvanrocaja")
+        col.HeaderText = "NRO. CAJA"
+        col.EditorType = GetType(GridTextBoxXEditControl)
+        col.CellStyles.Default.Alignment = Style.Alignment.MiddleLeft
+        col.ReadOnly = True
+        col.Visible = True
+        col.Width = 100
+        DgdLCV.PrimaryGrid.Columns.Add(col)
     End Sub
 
     Private Sub P_ComboRazonSocial()

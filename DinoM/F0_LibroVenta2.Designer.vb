@@ -90,8 +90,8 @@ Partial Class F0_LibroVenta2
         '
         'PanelSuperior
         '
-        Me.PanelSuperior.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
-        Me.PanelSuperior.Size = New System.Drawing.Size(984, 72)
+        Me.PanelSuperior.Margin = New System.Windows.Forms.Padding(4)
+        Me.PanelSuperior.Size = New System.Drawing.Size(1304, 72)
         Me.PanelSuperior.Style.Alignment = System.Drawing.StringAlignment.Center
         Me.PanelSuperior.Style.BackColor1.Color = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(45, Byte), Integer), CType(CType(150, Byte), Integer))
         Me.PanelSuperior.Style.BackColor2.Color = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(45, Byte), Integer), CType(CType(150, Byte), Integer))
@@ -108,9 +108,9 @@ Partial Class F0_LibroVenta2
         '
         'PanelInferior
         '
-        Me.PanelInferior.Location = New System.Drawing.Point(0, 570)
-        Me.PanelInferior.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
-        Me.PanelInferior.Size = New System.Drawing.Size(984, 39)
+        Me.PanelInferior.Location = New System.Drawing.Point(0, 642)
+        Me.PanelInferior.Margin = New System.Windows.Forms.Padding(4)
+        Me.PanelInferior.Size = New System.Drawing.Size(1304, 39)
         Me.PanelInferior.Style.Alignment = System.Drawing.StringAlignment.Center
         Me.PanelInferior.Style.BackColor1.Color = System.Drawing.Color.Transparent
         Me.PanelInferior.Style.BackColor2.Color = System.Drawing.Color.Transparent
@@ -145,7 +145,7 @@ Partial Class F0_LibroVenta2
         '
         'TxtNombreUsu
         '
-        Me.TxtNombreUsu.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.TxtNombreUsu.Margin = New System.Windows.Forms.Padding(4)
         Me.TxtNombreUsu.ReadOnly = True
         Me.TxtNombreUsu.Size = New System.Drawing.Size(135, 32)
         Me.TxtNombreUsu.Text = "DEFAULT"
@@ -155,13 +155,13 @@ Partial Class F0_LibroVenta2
         '
         'PanelToolBar2
         '
-        Me.PanelToolBar2.Location = New System.Drawing.Point(904, 0)
-        Me.PanelToolBar2.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.PanelToolBar2.Location = New System.Drawing.Point(1224, 0)
+        Me.PanelToolBar2.Margin = New System.Windows.Forms.Padding(4)
         '
         'PanelPrincipal
         '
-        Me.PanelPrincipal.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
-        Me.PanelPrincipal.Size = New System.Drawing.Size(984, 609)
+        Me.PanelPrincipal.Margin = New System.Windows.Forms.Padding(4)
+        Me.PanelPrincipal.Size = New System.Drawing.Size(1304, 681)
         Me.PanelPrincipal.Controls.SetChildIndex(Me.PanelInferior, 0)
         Me.PanelPrincipal.Controls.SetChildIndex(Me.PanelUsuario, 0)
         Me.PanelPrincipal.Controls.SetChildIndex(Me.PanelSuperior, 0)
@@ -169,12 +169,12 @@ Partial Class F0_LibroVenta2
         '
         'btnUltimo
         '
-        Me.btnUltimo.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.btnUltimo.Margin = New System.Windows.Forms.Padding(2)
         '
         'MPanelUserAct
         '
-        Me.MPanelUserAct.Location = New System.Drawing.Point(784, 0)
-        Me.MPanelUserAct.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.MPanelUserAct.Location = New System.Drawing.Point(1104, 0)
+        Me.MPanelUserAct.Margin = New System.Windows.Forms.Padding(4)
         '
         'MRlAccion
         '
@@ -182,24 +182,24 @@ Partial Class F0_LibroVenta2
         '
         '
         Me.MRlAccion.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.MRlAccion.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
-        Me.MRlAccion.Size = New System.Drawing.Size(528, 72)
+        Me.MRlAccion.Margin = New System.Windows.Forms.Padding(4)
+        Me.MRlAccion.Size = New System.Drawing.Size(848, 72)
         '
         'PanelContent
         '
         Me.PanelContent.Controls.Add(Me.TableLayoutPanelPrincipal)
-        Me.PanelContent.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
-        Me.PanelContent.Size = New System.Drawing.Size(951, 498)
+        Me.PanelContent.Margin = New System.Windows.Forms.Padding(4)
+        Me.PanelContent.Size = New System.Drawing.Size(1271, 570)
         '
         'Panel1
         '
-        Me.Panel1.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
-        Me.Panel1.Size = New System.Drawing.Size(984, 498)
+        Me.Panel1.Margin = New System.Windows.Forms.Padding(4)
+        Me.Panel1.Size = New System.Drawing.Size(1304, 570)
         '
         'MSuperTabControlPanel1
         '
-        Me.MSuperTabControlPanel1.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
-        Me.MSuperTabControlPanel1.Size = New System.Drawing.Size(951, 498)
+        Me.MSuperTabControlPanel1.Margin = New System.Windows.Forms.Padding(4)
+        Me.MSuperTabControlPanel1.Size = New System.Drawing.Size(1271, 570)
         '
         'MSuperTabControl
         '
@@ -216,20 +216,20 @@ Partial Class F0_LibroVenta2
         Me.MSuperTabControl.ControlBox.MenuBox.Name = ""
         Me.MSuperTabControl.ControlBox.Name = ""
         Me.MSuperTabControl.ControlBox.SubItems.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.MSuperTabControl.ControlBox.MenuBox, Me.MSuperTabControl.ControlBox.CloseBox})
-        Me.MSuperTabControl.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
-        Me.MSuperTabControl.Size = New System.Drawing.Size(984, 498)
+        Me.MSuperTabControl.Margin = New System.Windows.Forms.Padding(4)
+        Me.MSuperTabControl.Size = New System.Drawing.Size(1304, 570)
         Me.MSuperTabControl.Controls.SetChildIndex(Me.MSuperTabControlPanel1, 0)
         '
         'PictureBox1
         '
-        Me.PictureBox1.Location = New System.Drawing.Point(711, 0)
-        Me.PictureBox1.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.PictureBox1.Location = New System.Drawing.Point(1031, 0)
+        Me.PictureBox1.Margin = New System.Windows.Forms.Padding(4)
         '
         'TableLayoutPanelPrincipal
         '
         Me.TableLayoutPanelPrincipal.ColumnCount = 2
-        Me.TableLayoutPanelPrincipal.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 80.0!))
-        Me.TableLayoutPanelPrincipal.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20.0!))
+        Me.TableLayoutPanelPrincipal.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 85.0!))
+        Me.TableLayoutPanelPrincipal.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 15.0!))
         Me.TableLayoutPanelPrincipal.Controls.Add(Me.GroupPanelAciones, 1, 0)
         Me.TableLayoutPanelPrincipal.Controls.Add(Me.TableLayoutPanelDatos, 0, 0)
         Me.TableLayoutPanelPrincipal.Dock = System.Windows.Forms.DockStyle.Fill
@@ -237,7 +237,7 @@ Partial Class F0_LibroVenta2
         Me.TableLayoutPanelPrincipal.Name = "TableLayoutPanelPrincipal"
         Me.TableLayoutPanelPrincipal.RowCount = 1
         Me.TableLayoutPanelPrincipal.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
-        Me.TableLayoutPanelPrincipal.Size = New System.Drawing.Size(951, 498)
+        Me.TableLayoutPanelPrincipal.Size = New System.Drawing.Size(1271, 570)
         Me.TableLayoutPanelPrincipal.TabIndex = 1
         '
         'GroupPanelAciones
@@ -248,9 +248,9 @@ Partial Class F0_LibroVenta2
         Me.GroupPanelAciones.DisabledBackColor = System.Drawing.Color.Empty
         Me.GroupPanelAciones.Dock = System.Windows.Forms.DockStyle.Fill
         Me.GroupPanelAciones.Font = New System.Drawing.Font("Georgia", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.GroupPanelAciones.Location = New System.Drawing.Point(763, 3)
+        Me.GroupPanelAciones.Location = New System.Drawing.Point(1083, 3)
         Me.GroupPanelAciones.Name = "GroupPanelAciones"
-        Me.GroupPanelAciones.Size = New System.Drawing.Size(185, 492)
+        Me.GroupPanelAciones.Size = New System.Drawing.Size(185, 564)
         '
         '
         '
@@ -297,7 +297,7 @@ Partial Class F0_LibroVenta2
         Me.PanelExAcciones.Dock = System.Windows.Forms.DockStyle.Fill
         Me.PanelExAcciones.Location = New System.Drawing.Point(0, 0)
         Me.PanelExAcciones.Name = "PanelExAcciones"
-        Me.PanelExAcciones.Size = New System.Drawing.Size(179, 469)
+        Me.PanelExAcciones.Size = New System.Drawing.Size(179, 541)
         Me.PanelExAcciones.Style.Alignment = System.Drawing.StringAlignment.Center
         Me.PanelExAcciones.Style.BackColor1.Color = System.Drawing.Color.White
         Me.PanelExAcciones.Style.BackColor2.Color = System.Drawing.Color.Ivory
@@ -310,8 +310,9 @@ Partial Class F0_LibroVenta2
         '
         Me.btSalir.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
         Me.btSalir.ColorTable = DevComponents.DotNetBar.eButtonColor.Office2007WithBackground
-        Me.btSalir.ImageFixedSize = New System.Drawing.Size(40, 40)
-        Me.btSalir.Location = New System.Drawing.Point(23, 230)
+        Me.btSalir.Image = Global.DinoM.My.Resources.Resources.cancel
+        Me.btSalir.ImageFixedSize = New System.Drawing.Size(32, 32)
+        Me.btSalir.Location = New System.Drawing.Point(18, 140)
         Me.btSalir.Name = "btSalir"
         Me.btSalir.Size = New System.Drawing.Size(150, 50)
         Me.btSalir.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
@@ -322,8 +323,9 @@ Partial Class F0_LibroVenta2
         '
         Me.Bt1Generar.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
         Me.Bt1Generar.ColorTable = DevComponents.DotNetBar.eButtonColor.Office2007WithBackground
-        Me.Bt1Generar.ImageFixedSize = New System.Drawing.Size(40, 40)
-        Me.Bt1Generar.Location = New System.Drawing.Point(23, 5)
+        Me.Bt1Generar.Image = Global.DinoM.My.Resources.Resources.actualizado
+        Me.Bt1Generar.ImageFixedSize = New System.Drawing.Size(32, 32)
+        Me.Bt1Generar.Location = New System.Drawing.Point(18, 25)
         Me.Bt1Generar.Name = "Bt1Generar"
         Me.Bt1Generar.Size = New System.Drawing.Size(150, 50)
         Me.Bt1Generar.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
@@ -335,19 +337,20 @@ Partial Class F0_LibroVenta2
         Me.Bt4Txt.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
         Me.Bt4Txt.ColorTable = DevComponents.DotNetBar.eButtonColor.Office2007WithBackground
         Me.Bt4Txt.ImageFixedSize = New System.Drawing.Size(40, 40)
-        Me.Bt4Txt.Location = New System.Drawing.Point(23, 173)
+        Me.Bt4Txt.Location = New System.Drawing.Point(14, 236)
         Me.Bt4Txt.Name = "Bt4Txt"
         Me.Bt4Txt.Size = New System.Drawing.Size(150, 50)
         Me.Bt4Txt.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
         Me.Bt4Txt.TabIndex = 3
         Me.Bt4Txt.Text = "Archivo Txt"
+        Me.Bt4Txt.Visible = False
         '
         'Bt2Reporte
         '
         Me.Bt2Reporte.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
         Me.Bt2Reporte.ColorTable = DevComponents.DotNetBar.eButtonColor.Office2007WithBackground
         Me.Bt2Reporte.ImageFixedSize = New System.Drawing.Size(40, 40)
-        Me.Bt2Reporte.Location = New System.Drawing.Point(23, 61)
+        Me.Bt2Reporte.Location = New System.Drawing.Point(14, 293)
         Me.Bt2Reporte.Name = "Bt2Reporte"
         Me.Bt2Reporte.Size = New System.Drawing.Size(150, 50)
         Me.Bt2Reporte.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
@@ -359,8 +362,9 @@ Partial Class F0_LibroVenta2
         '
         Me.Bt3Excel.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
         Me.Bt3Excel.ColorTable = DevComponents.DotNetBar.eButtonColor.Office2007WithBackground
-        Me.Bt3Excel.ImageFixedSize = New System.Drawing.Size(35, 35)
-        Me.Bt3Excel.Location = New System.Drawing.Point(23, 117)
+        Me.Bt3Excel.Image = Global.DinoM.My.Resources.Resources.sheets
+        Me.Bt3Excel.ImageFixedSize = New System.Drawing.Size(32, 35)
+        Me.Bt3Excel.Location = New System.Drawing.Point(18, 84)
         Me.Bt3Excel.Name = "Bt3Excel"
         Me.Bt3Excel.Size = New System.Drawing.Size(150, 50)
         Me.Bt3Excel.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
@@ -379,7 +383,7 @@ Partial Class F0_LibroVenta2
         Me.TableLayoutPanelDatos.RowCount = 2
         Me.TableLayoutPanelDatos.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 27.27273!))
         Me.TableLayoutPanelDatos.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 72.72727!))
-        Me.TableLayoutPanelDatos.Size = New System.Drawing.Size(754, 492)
+        Me.TableLayoutPanelDatos.Size = New System.Drawing.Size(1074, 564)
         Me.TableLayoutPanelDatos.TabIndex = 0
         '
         'GroupPanelListaVentas
@@ -390,9 +394,9 @@ Partial Class F0_LibroVenta2
         Me.GroupPanelListaVentas.DisabledBackColor = System.Drawing.Color.Empty
         Me.GroupPanelListaVentas.Dock = System.Windows.Forms.DockStyle.Fill
         Me.GroupPanelListaVentas.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.GroupPanelListaVentas.Location = New System.Drawing.Point(3, 137)
+        Me.GroupPanelListaVentas.Location = New System.Drawing.Point(3, 156)
         Me.GroupPanelListaVentas.Name = "GroupPanelListaVentas"
-        Me.GroupPanelListaVentas.Size = New System.Drawing.Size(748, 352)
+        Me.GroupPanelListaVentas.Size = New System.Drawing.Size(1068, 405)
         '
         '
         '
@@ -436,7 +440,7 @@ Partial Class F0_LibroVenta2
         Me.DgdLCV.FilterExprColors.SysFunction = System.Drawing.Color.DarkRed
         Me.DgdLCV.Location = New System.Drawing.Point(0, 0)
         Me.DgdLCV.Name = "DgdLCV"
-        Me.DgdLCV.Size = New System.Drawing.Size(742, 329)
+        Me.DgdLCV.Size = New System.Drawing.Size(1062, 382)
         Me.DgdLCV.TabIndex = 2
         Me.DgdLCV.Text = "SuperGridControl1"
         '
@@ -450,7 +454,7 @@ Partial Class F0_LibroVenta2
         Me.GroupPanelDatosGenerales.Font = New System.Drawing.Font("Georgia", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GroupPanelDatosGenerales.Location = New System.Drawing.Point(3, 3)
         Me.GroupPanelDatosGenerales.Name = "GroupPanelDatosGenerales"
-        Me.GroupPanelDatosGenerales.Size = New System.Drawing.Size(748, 128)
+        Me.GroupPanelDatosGenerales.Size = New System.Drawing.Size(1068, 147)
         '
         '
         '
@@ -507,7 +511,7 @@ Partial Class F0_LibroVenta2
         Me.PanelExDatosGenerales.Dock = System.Windows.Forms.DockStyle.Fill
         Me.PanelExDatosGenerales.Location = New System.Drawing.Point(0, 0)
         Me.PanelExDatosGenerales.Name = "PanelExDatosGenerales"
-        Me.PanelExDatosGenerales.Size = New System.Drawing.Size(742, 105)
+        Me.PanelExDatosGenerales.Size = New System.Drawing.Size(1062, 124)
         Me.PanelExDatosGenerales.Style.Alignment = System.Drawing.StringAlignment.Center
         Me.PanelExDatosGenerales.Style.BackColor1.Color = System.Drawing.Color.White
         Me.PanelExDatosGenerales.Style.BackColor2.Color = System.Drawing.Color.White
@@ -560,6 +564,7 @@ Partial Class F0_LibroVenta2
         Me.tbTipoFactura.SelectedItem = Nothing
         Me.tbTipoFactura.Size = New System.Drawing.Size(200, 21)
         Me.tbTipoFactura.TabIndex = 36
+        Me.tbTipoFactura.Visible = False
         Me.tbTipoFactura.VisualStyle = Janus.Windows.GridEX.VisualStyle.Office2007
         '
         'LabelX3
@@ -684,6 +689,7 @@ Partial Class F0_LibroVenta2
         Me.LabelX15.TabIndex = 31
         Me.LabelX15.Text = "Tipo Factura:"
         Me.LabelX15.TextAlignment = System.Drawing.StringAlignment.Far
+        Me.LabelX15.Visible = False
         '
         'LabelX14
         '
@@ -704,6 +710,7 @@ Partial Class F0_LibroVenta2
         '
         CbAlmacen_DesignTimeLayout.LayoutString = resources.GetString("CbAlmacen_DesignTimeLayout.LayoutString")
         Me.CbAlmacen.DesignTimeLayout = CbAlmacen_DesignTimeLayout
+        Me.CbAlmacen.Enabled = False
         Me.CbAlmacen.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.CbAlmacen.Location = New System.Drawing.Point(579, 3)
         Me.CbAlmacen.Name = "CbAlmacen"
@@ -826,9 +833,9 @@ Partial Class F0_LibroVenta2
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(984, 609)
+        Me.ClientSize = New System.Drawing.Size(1304, 681)
         Me.Location = New System.Drawing.Point(0, 0)
-        Me.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.Margin = New System.Windows.Forms.Padding(4)
         Me.Name = "F0_LibroVenta2"
         Me.Text = "F0_LibroVenta2"
         Me.Controls.SetChildIndex(Me.PanelPrincipal, 0)
