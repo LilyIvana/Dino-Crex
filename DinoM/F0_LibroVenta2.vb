@@ -514,12 +514,20 @@ Public Class F0_LibroVenta2
         '        fil.Item("fvadebfis") = 0
         '    End If
         'Next
+        If _DsLV.Rows.Count > 0 Then
+            DgdLCV.PrimaryGrid.Rows.Clear()
 
-        DgdLCV.PrimaryGrid.Rows.Clear()
+            DgdLCV.PrimaryGrid.DataSource = _DsLV
 
-        DgdLCV.PrimaryGrid.DataSource = _DsLV
+            DgdLCV.PrimaryGrid.SetActiveRow(CType(DgdLCV.PrimaryGrid.ActiveRow, GridRow))
+        Else
+            DgdLCV.PrimaryGrid.Rows.Clear()
+            ToastNotification.Show(Me, "NO HAY DATOS PARA MOSTRAR...!!!",
+                              My.Resources.WARNING, _DuracionSms * 1000,
+                              eToastGlowColor.Red,
+                              eToastPosition.TopCenter)
+        End If
 
-        DgdLCV.PrimaryGrid.SetActiveRow(CType(DgdLCV.PrimaryGrid.ActiveRow, GridRow))
     End Sub
 
     Private Sub P_GenerarReporte()

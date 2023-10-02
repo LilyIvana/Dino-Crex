@@ -21,6 +21,7 @@ Public Class F1_ConsignacionFlow
     Private Sub _prIniciarTodo()
         Me.Text = "REPORTE CONSIGNACIÓN FLOW"
 
+        _prCargarComboTipo(cbConsignación)
         Dim blah As New Bitmap(New Bitmap(My.Resources.producto), 20, 20)
         Dim ico As Icon = Icon.FromHandle(blah.GetHicon())
         Me.Icon = ico
@@ -46,6 +47,33 @@ Public Class F1_ConsignacionFlow
         End If
         If del = False Then
             btnEliminar.Visible = False
+        End If
+    End Sub
+    Private Sub _prCargarComboTipo(mCombo As Janus.Windows.GridEX.EditControls.MultiColumnCombo)
+        Dim dt As New DataTable
+
+        dt.Columns.Add("COD")
+        dt.Columns.Add("CONSIGNACIÓN")
+
+        dt.Rows.Add(1, "CONSIGNACIÓN 1")
+        dt.Rows.Add(2, "CONSIGNACIÓN 2")
+        dt.Rows.Add(3, "TODOS")
+
+
+        With mCombo
+            .DropDownList.Columns.Clear()
+            .DropDownList.Columns.Add("COD").Width = 70
+            .DropDownList.Columns("COD").Caption = "COD"
+            .DropDownList.Columns.Add("CONSIGNACIÓN").Width = 150
+            .DropDownList.Columns("CONSIGNACIÓN").Caption = "CONSIGNACIÓN"
+            .ValueMember = "COD"
+            .DisplayMember = "CONSIGNACIÓN"
+            .DataSource = dt
+            .Refresh()
+        End With
+
+        If dt.Rows.Count > 0 Then
+            mCombo.SelectedIndex = 2
         End If
     End Sub
     Private Sub _prCrearCarpetaTemporal()
@@ -103,7 +131,7 @@ Public Class F1_ConsignacionFlow
     End Sub
     Private Sub _prCargarProductos()
 
-        Dim dt As DataTable = L_ProductosConsignacionFlow(If(swConsignación.Value = True, 1, 2))
+        Dim dt As DataTable = L_ProductosConsignacionFlow(cbConsignación.Value)
 
         If dt.Rows.Count > 0 Then
             JGrM_Buscador.DataSource = dt
@@ -143,12 +171,7 @@ Public Class F1_ConsignacionFlow
             End With
             With JGrM_Buscador.RootTable.Columns("pcosto")
                 .Width = 100
-                If (swConsignación.Value = True) Then
-                    .Caption = "COSTO"
-                Else
-                    .Caption = "COSTO REFERENCIAL (ACTUAL)"
-                End If
-
+                .Caption = "COSTO"
                 .Visible = True
                 .FormatString = "0.00"
                 .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far
@@ -315,10 +338,12 @@ Public Class F1_ConsignacionFlow
     Private Sub btnExportarExcel_Click(sender As Object, e As EventArgs) Handles btnExportarExcel.Click
         Dim nombre As String
         _prCrearCarpetaReportes()
-        If swConsignación.Value = True Then
+        If cbConsignación.Value = 1 Then
             nombre = "ConsignaciónFlow1"
-        Else
+        ElseIf cbConsignación.Value = 2 Then
             nombre = "ConsignaciónFlow2"
+        ElseIf cbConsignación.Value = 3 Then
+            nombre = "ConsignaciónFlowTodos"
         End If
         Dim img As Bitmap = New Bitmap(My.Resources.checked, 50, 50)
         If (P_ExportarExcel(RutaGlobal + "\Reporte\Reporte Productos", nombre)) Then

@@ -25,14 +25,15 @@ Partial Class F1_ConsignacionFlow
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(F1_ConsignacionFlow))
+        Dim cbConsignación_DesignTimeLayout As Janus.Windows.GridEX.GridEXLayout = New Janus.Windows.GridEX.GridEXLayout()
         Me.btExcel = New DevComponents.DotNetBar.ButtonX()
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         Me.GroupPanel2 = New DevComponents.DotNetBar.Controls.GroupPanel()
         Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.LabelX4 = New DevComponents.DotNetBar.LabelX()
         Me.btnExportarExcel = New DevComponents.DotNetBar.ButtonX()
         Me.btnGenerar = New DevComponents.DotNetBar.ButtonX()
-        Me.LabelX4 = New DevComponents.DotNetBar.LabelX()
-        Me.swConsignación = New DevComponents.DotNetBar.Controls.SwitchButton()
+        Me.cbConsignación = New Janus.Windows.GridEX.EditControls.MultiColumnCombo()
         CType(Me.SuperTabPrincipal, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuperTabPrincipal.SuspendLayout()
         Me.SuperTabControlPanelRegistro.SuspendLayout()
@@ -51,6 +52,7 @@ Partial Class F1_ConsignacionFlow
         CType(Me.MEP, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupPanel2.SuspendLayout()
         Me.Panel1.SuspendLayout()
+        CType(Me.cbConsignación, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'SuperTabPrincipal
@@ -307,8 +309,8 @@ Partial Class F1_ConsignacionFlow
         'Panel1
         '
         Me.Panel1.AutoScroll = True
+        Me.Panel1.Controls.Add(Me.cbConsignación)
         Me.Panel1.Controls.Add(Me.LabelX4)
-        Me.Panel1.Controls.Add(Me.swConsignación)
         Me.Panel1.Controls.Add(Me.btnExportarExcel)
         Me.Panel1.Controls.Add(Me.btnGenerar)
         Me.Panel1.Dock = System.Windows.Forms.DockStyle.Fill
@@ -316,6 +318,22 @@ Partial Class F1_ConsignacionFlow
         Me.Panel1.Name = "Panel1"
         Me.Panel1.Size = New System.Drawing.Size(1316, 77)
         Me.Panel1.TabIndex = 227
+        '
+        'LabelX4
+        '
+        Me.LabelX4.BackColor = System.Drawing.Color.Transparent
+        '
+        '
+        '
+        Me.LabelX4.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.LabelX4.Font = New System.Drawing.Font("Georgia", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LabelX4.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(85, Byte), Integer), CType(CType(139, Byte), Integer))
+        Me.LabelX4.Location = New System.Drawing.Point(352, 29)
+        Me.LabelX4.Name = "LabelX4"
+        Me.LabelX4.SingleLineColor = System.Drawing.SystemColors.Control
+        Me.LabelX4.Size = New System.Drawing.Size(125, 23)
+        Me.LabelX4.TabIndex = 373
+        Me.LabelX4.Text = "Nro. Consignación:"
         '
         'btnExportarExcel
         '
@@ -340,47 +358,28 @@ Partial Class F1_ConsignacionFlow
         Me.btnGenerar.Image = Global.DinoM.My.Resources.Resources.ventasCostos
         Me.btnGenerar.ImageFixedSize = New System.Drawing.Size(40, 40)
         Me.btnGenerar.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top
-        Me.btnGenerar.Location = New System.Drawing.Point(700, 5)
+        Me.btnGenerar.Location = New System.Drawing.Point(705, 5)
         Me.btnGenerar.Name = "btnGenerar"
         Me.btnGenerar.Size = New System.Drawing.Size(65, 65)
         Me.btnGenerar.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
         Me.btnGenerar.TabIndex = 240
         Me.btnGenerar.Text = "Generar"
         '
-        'LabelX4
+        'cbConsignación
         '
-        Me.LabelX4.BackColor = System.Drawing.Color.Transparent
-        '
-        '
-        '
-        Me.LabelX4.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.LabelX4.Font = New System.Drawing.Font("Georgia", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelX4.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(85, Byte), Integer), CType(CType(139, Byte), Integer))
-        Me.LabelX4.Location = New System.Drawing.Point(352, 29)
-        Me.LabelX4.Name = "LabelX4"
-        Me.LabelX4.SingleLineColor = System.Drawing.SystemColors.Control
-        Me.LabelX4.Size = New System.Drawing.Size(125, 23)
-        Me.LabelX4.TabIndex = 373
-        Me.LabelX4.Text = "Nro. Consignación:"
-        '
-        'swConsignación
-        '
-        '
-        '
-        '
-        Me.swConsignación.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.swConsignación.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.swConsignación.Location = New System.Drawing.Point(485, 29)
-        Me.swConsignación.Name = "swConsignación"
-        Me.swConsignación.OffBackColor = System.Drawing.Color.Gold
-        Me.swConsignación.OffText = "CONSIGNACIÓN 2"
-        Me.swConsignación.OnBackColor = System.Drawing.Color.LimeGreen
-        Me.swConsignación.OnText = "CONSIGNACIÓN 1"
-        Me.swConsignación.Size = New System.Drawing.Size(165, 22)
-        Me.swConsignación.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-        Me.swConsignación.TabIndex = 372
-        Me.swConsignación.Value = True
-        Me.swConsignación.ValueObject = "Y"
+        Me.cbConsignación.BackColor = System.Drawing.Color.White
+        cbConsignación_DesignTimeLayout.LayoutString = resources.GetString("cbConsignación_DesignTimeLayout.LayoutString")
+        Me.cbConsignación.DesignTimeLayout = cbConsignación_DesignTimeLayout
+        Me.cbConsignación.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cbConsignación.Location = New System.Drawing.Point(481, 27)
+        Me.cbConsignación.Name = "cbConsignación"
+        Me.cbConsignación.Office2007ColorScheme = Janus.Windows.GridEX.Office2007ColorScheme.Custom
+        Me.cbConsignación.Office2007CustomColor = System.Drawing.Color.DodgerBlue
+        Me.cbConsignación.SelectedIndex = -1
+        Me.cbConsignación.SelectedItem = Nothing
+        Me.cbConsignación.Size = New System.Drawing.Size(205, 22)
+        Me.cbConsignación.TabIndex = 374
+        Me.cbConsignación.VisualStyle = Janus.Windows.GridEX.VisualStyle.Office2007
         '
         'F1_ConsignacionFlow
         '
@@ -411,6 +410,8 @@ Partial Class F1_ConsignacionFlow
         CType(Me.MEP, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupPanel2.ResumeLayout(False)
         Me.Panel1.ResumeLayout(False)
+        Me.Panel1.PerformLayout()
+        CType(Me.cbConsignación, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -421,5 +422,5 @@ Partial Class F1_ConsignacionFlow
     Friend WithEvents btnGenerar As DevComponents.DotNetBar.ButtonX
     Friend WithEvents btnExportarExcel As DevComponents.DotNetBar.ButtonX
     Friend WithEvents LabelX4 As DevComponents.DotNetBar.LabelX
-    Friend WithEvents swConsignación As DevComponents.DotNetBar.Controls.SwitchButton
+    Friend WithEvents cbConsignación As Janus.Windows.GridEX.EditControls.MultiColumnCombo
 End Class
