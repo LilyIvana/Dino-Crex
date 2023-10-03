@@ -171,11 +171,11 @@ Public Class F1_ConsignacionFlow
             End With
             With JGrM_Buscador.RootTable.Columns("pcosto")
                 .Width = 100
-                .Caption = "COSTO"
+                .Caption = "COSTO UN."
                 .Visible = True
                 .FormatString = "0.00"
                 .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far
-                .AggregateFunction = AggregateFunction.Sum
+                '.AggregateFunction = AggregateFunction.Sum
             End With
             With JGrM_Buscador.RootTable.Columns("cantidad")
                 .Width = 100
