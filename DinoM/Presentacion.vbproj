@@ -449,6 +449,12 @@
     <Compile Include="F1_ConsignacionFlow.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="F1_CalculoPedidoSugerido.Designer.vb">
+      <DependentUpon>F1_CalculoPedidoSugerido.vb</DependentUpon>
+    </Compile>
+    <Compile Include="F1_CalculoPedidoSugerido.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="F1_ProdNoEntraronXCompra.Designer.vb">
       <DependentUpon>F1_ProdNoEntraronXCompra.vb</DependentUpon>
     </Compile>
@@ -1448,6 +1454,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="F1_ConsignacionFlow.resx">
       <DependentUpon>F1_ConsignacionFlow.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="F1_CalculoPedidoSugerido.resx">
+      <DependentUpon>F1_CalculoPedidoSugerido.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="F1_ProdNoEntraronXCompra.resx">
       <DependentUpon>F1_ProdNoEntraronXCompra.vb</DependentUpon>
