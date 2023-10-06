@@ -182,6 +182,7 @@ Partial Class P_Principal
         Me.SideNavItem3 = New DevComponents.DotNetBar.Controls.SideNavItem()
         Me.MetroTileItem11 = New DevComponents.DotNetBar.Metro.MetroTileItem()
         Me.MetroTileItem12 = New DevComponents.DotNetBar.Metro.MetroTileItem()
+        Me.btCalculoPedSugerido = New DevComponents.DotNetBar.Metro.MetroTileItem()
         MetroTileFrame1 = New DevComponents.DotNetBar.Metro.MetroTileFrame()
         MetroTileFrame2 = New DevComponents.DotNetBar.Metro.MetroTileFrame()
         Me.SideNav1.SuspendLayout()
@@ -527,8 +528,8 @@ Partial Class P_Principal
         Me.SideNav1.BackColor = System.Drawing.Color.FromArgb(CType(CType(49, Byte), Integer), CType(CType(59, Byte), Integer), CType(CType(66, Byte), Integer))
         Me.SideNav1.BackgroundImage = Global.DinoM.My.Resources.Resources.Fondo_empresarial
         Me.SideNav1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.SideNav1.Controls.Add(Me.SideNav_Ventas)
         Me.SideNav1.Controls.Add(Me.SideNavPanel5)
+        Me.SideNav1.Controls.Add(Me.SideNav_Ventas)
         Me.SideNav1.Controls.Add(Me.SideNavPanel6)
         Me.SideNav1.Controls.Add(Me.SideNavPanel7)
         Me.SideNav1.Controls.Add(Me.SideNavPanel4)
@@ -558,6 +559,7 @@ Partial Class P_Principal
         Me.SideNav_Ventas.Name = "SideNav_Ventas"
         Me.SideNav_Ventas.Size = New System.Drawing.Size(848, 524)
         Me.SideNav_Ventas.TabIndex = 134
+        Me.SideNav_Ventas.Visible = False
         '
         'MetroTilePanelVentas
         '
@@ -1116,7 +1118,6 @@ Partial Class P_Principal
         Me.SideNavPanel5.Name = "SideNavPanel5"
         Me.SideNavPanel5.Size = New System.Drawing.Size(848, 524)
         Me.SideNavPanel5.TabIndex = 87
-        Me.SideNavPanel5.Visible = False
         '
         'MetroTilePanel6
         '
@@ -1132,7 +1133,7 @@ Partial Class P_Principal
         Me.MetroTilePanel6.ContainerControlProcessDialogKey = True
         Me.MetroTilePanel6.Dock = System.Windows.Forms.DockStyle.Fill
         Me.MetroTilePanel6.DragDropSupport = True
-        Me.MetroTilePanel6.Items.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.btInvDeposito, Me.btInvAmacen, Me.btInvMovimiento, Me.btInvKardex, Me.btInvSaldo, Me.btInvKardexReporte, Me.btInvUtilidad, Me.btInvSaldoLote, Me.btlvSaldoMinimo, Me.btInvVentas, Me.btInvStockDif, Me.btSaldosValoradosExcel, Me.btProdNoCompra})
+        Me.MetroTilePanel6.Items.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.btInvDeposito, Me.btInvAmacen, Me.btInvMovimiento, Me.btInvKardex, Me.btInvSaldo, Me.btInvKardexReporte, Me.btInvUtilidad, Me.btInvSaldoLote, Me.btlvSaldoMinimo, Me.btInvVentas, Me.btInvStockDif, Me.btSaldosValoradosExcel, Me.btProdNoCompra, Me.btCalculoPedSugerido})
         Me.MetroTilePanel6.ItemSpacing = 10
         Me.MetroTilePanel6.Location = New System.Drawing.Point(0, 0)
         Me.MetroTilePanel6.MultiLine = True
@@ -2829,6 +2830,7 @@ Partial Class P_Principal
         '
         'FP_INVENTARIO
         '
+        Me.FP_INVENTARIO.Checked = True
         Me.FP_INVENTARIO.Name = "FP_INVENTARIO"
         Me.FP_INVENTARIO.Panel = Me.SideNavPanel5
         Me.FP_INVENTARIO.Symbol = ""
@@ -2859,7 +2861,6 @@ Partial Class P_Principal
         '
         'FP_VENTAS
         '
-        Me.FP_VENTAS.Checked = True
         Me.FP_VENTAS.Name = "FP_VENTAS"
         Me.FP_VENTAS.Panel = Me.SideNav_Ventas
         Me.FP_VENTAS.Symbol = ""
@@ -2933,6 +2934,27 @@ Partial Class P_Principal
         Me.MetroTileItem12.TileStyle.TextLineAlignment = DevComponents.DotNetBar.eStyleTextAlignment.Far
         Me.MetroTileItem12.TitleTextAlignment = System.Drawing.ContentAlignment.BottomCenter
         Me.MetroTileItem12.TitleTextColor = System.Drawing.Color.Red
+        '
+        'btCalculoPedSugerido
+        '
+        Me.btCalculoPedSugerido.Image = CType(resources.GetObject("btCalculoPedSugerido.Image"), System.Drawing.Image)
+        Me.btCalculoPedSugerido.ImageTextAlignment = System.Drawing.ContentAlignment.MiddleCenter
+        Me.btCalculoPedSugerido.ItemAlignment = DevComponents.DotNetBar.eItemAlignment.Center
+        Me.btCalculoPedSugerido.Name = "btCalculoPedSugerido"
+        Me.btCalculoPedSugerido.SymbolColor = System.Drawing.Color.Empty
+        Me.btCalculoPedSugerido.Text = "CÁLCULO PEDIDO SUGERIDO"
+        Me.btCalculoPedSugerido.TileColor = DevComponents.DotNetBar.Metro.eMetroTileColor.DarkBlue
+        Me.btCalculoPedSugerido.TileSize = New System.Drawing.Size(250, 135)
+        '
+        '
+        '
+        Me.btCalculoPedSugerido.TileStyle.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(130, Byte), Integer), CType(CType(0, Byte), Integer))
+        Me.btCalculoPedSugerido.TileStyle.BackColor2 = System.Drawing.Color.FromArgb(CType(CType(111, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
+        Me.btCalculoPedSugerido.TileStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.btCalculoPedSugerido.TileStyle.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btCalculoPedSugerido.TileStyle.TextLineAlignment = DevComponents.DotNetBar.eStyleTextAlignment.Far
+        Me.btCalculoPedSugerido.TitleTextAlignment = System.Drawing.ContentAlignment.BottomCenter
+        Me.btCalculoPedSugerido.TitleTextColor = System.Drawing.Color.Red
         '
         'P_Principal
         '
@@ -3125,4 +3147,5 @@ Partial Class P_Principal
     Friend WithEvents btRepConsignacionFlow As DevComponents.DotNetBar.Metro.MetroTileItem
     Friend WithEvents btRepClientesCel As DevComponents.DotNetBar.Metro.MetroTileItem
     Friend WithEvents btProdNoCompra As DevComponents.DotNetBar.Metro.MetroTileItem
+    Friend WithEvents btCalculoPedSugerido As DevComponents.DotNetBar.Metro.MetroTileItem
 End Class

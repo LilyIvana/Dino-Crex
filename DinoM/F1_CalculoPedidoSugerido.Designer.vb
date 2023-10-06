@@ -29,6 +29,9 @@ Partial Class F1_CalculoPedidoSugerido
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         Me.GroupPanel2 = New DevComponents.DotNetBar.Controls.GroupPanel()
         Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.tbCantSemPedido = New DevComponents.Editors.IntegerInput()
+        Me.LabelX5 = New DevComponents.DotNetBar.LabelX()
+        Me.tbCantSemVentas = New DevComponents.Editors.IntegerInput()
         Me.LabelX3 = New DevComponents.DotNetBar.LabelX()
         Me.lbCtrlEnter = New DevComponents.DotNetBar.LabelX()
         Me.tbCodProv = New DevComponents.DotNetBar.Controls.TextBoxX()
@@ -41,7 +44,6 @@ Partial Class F1_CalculoPedidoSugerido
         Me.tbFechaF = New DevComponents.Editors.DateTimeAdv.DateTimeInput()
         Me.LabelX4 = New DevComponents.DotNetBar.LabelX()
         Me.tbFechaI = New DevComponents.Editors.DateTimeAdv.DateTimeInput()
-        Me.tbCantSemanas = New DevComponents.Editors.IntegerInput()
         CType(Me.SuperTabPrincipal, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuperTabPrincipal.SuspendLayout()
         Me.SuperTabControlPanelRegistro.SuspendLayout()
@@ -60,9 +62,10 @@ Partial Class F1_CalculoPedidoSugerido
         CType(Me.MEP, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupPanel2.SuspendLayout()
         Me.Panel1.SuspendLayout()
+        CType(Me.tbCantSemPedido, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.tbCantSemVentas, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.tbFechaF, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.tbFechaI, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.tbCantSemanas, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'SuperTabPrincipal
@@ -203,7 +206,7 @@ Partial Class F1_CalculoPedidoSugerido
         '
         '
         Me.GroupPanelBuscador.StyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.GroupPanelBuscador.Text = "VENTAS"
+        Me.GroupPanelBuscador.Text = "CÁLCULOS   PEDIDO   SUGERIDO"
         '
         'JGrM_Buscador
         '
@@ -319,7 +322,9 @@ Partial Class F1_CalculoPedidoSugerido
         'Panel1
         '
         Me.Panel1.AutoScroll = True
-        Me.Panel1.Controls.Add(Me.tbCantSemanas)
+        Me.Panel1.Controls.Add(Me.tbCantSemPedido)
+        Me.Panel1.Controls.Add(Me.LabelX5)
+        Me.Panel1.Controls.Add(Me.tbCantSemVentas)
         Me.Panel1.Controls.Add(Me.LabelX3)
         Me.Panel1.Controls.Add(Me.lbCtrlEnter)
         Me.Panel1.Controls.Add(Me.tbCodProv)
@@ -338,6 +343,56 @@ Partial Class F1_CalculoPedidoSugerido
         Me.Panel1.Size = New System.Drawing.Size(1316, 97)
         Me.Panel1.TabIndex = 227
         '
+        'tbCantSemPedido
+        '
+        '
+        '
+        '
+        Me.tbCantSemPedido.BackgroundStyle.Class = "DateTimeInputBackground"
+        Me.tbCantSemPedido.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.tbCantSemPedido.ButtonFreeText.Shortcut = DevComponents.DotNetBar.eShortcut.F2
+        Me.tbCantSemPedido.Font = New System.Drawing.Font("Georgia", 10.0!, System.Drawing.FontStyle.Bold)
+        Me.tbCantSemPedido.Location = New System.Drawing.Point(551, 33)
+        Me.tbCantSemPedido.MinValue = 0
+        Me.tbCantSemPedido.Name = "tbCantSemPedido"
+        Me.tbCantSemPedido.RightToLeft = System.Windows.Forms.RightToLeft.No
+        Me.tbCantSemPedido.Size = New System.Drawing.Size(85, 23)
+        Me.tbCantSemPedido.TabIndex = 695
+        Me.tbCantSemPedido.WatermarkAlignment = DevComponents.Editors.eTextAlignment.Right
+        '
+        'LabelX5
+        '
+        Me.LabelX5.BackColor = System.Drawing.Color.Transparent
+        '
+        '
+        '
+        Me.LabelX5.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.LabelX5.Font = New System.Drawing.Font("Georgia", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LabelX5.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(85, Byte), Integer), CType(CType(139, Byte), Integer))
+        Me.LabelX5.Location = New System.Drawing.Point(345, 33)
+        Me.LabelX5.Name = "LabelX5"
+        Me.LabelX5.SingleLineColor = System.Drawing.SystemColors.Control
+        Me.LabelX5.Size = New System.Drawing.Size(200, 23)
+        Me.LabelX5.TabIndex = 694
+        Me.LabelX5.Text = "Nro. Semanas Pedido Máximo*:"
+        '
+        'tbCantSemVentas
+        '
+        '
+        '
+        '
+        Me.tbCantSemVentas.BackgroundStyle.Class = "DateTimeInputBackground"
+        Me.tbCantSemVentas.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.tbCantSemVentas.ButtonFreeText.Shortcut = DevComponents.DotNetBar.eShortcut.F2
+        Me.tbCantSemVentas.Font = New System.Drawing.Font("Georgia", 10.0!, System.Drawing.FontStyle.Bold)
+        Me.tbCantSemVentas.Location = New System.Drawing.Point(244, 32)
+        Me.tbCantSemVentas.MinValue = 0
+        Me.tbCantSemVentas.Name = "tbCantSemVentas"
+        Me.tbCantSemVentas.RightToLeft = System.Windows.Forms.RightToLeft.No
+        Me.tbCantSemVentas.Size = New System.Drawing.Size(85, 23)
+        Me.tbCantSemVentas.TabIndex = 693
+        Me.tbCantSemVentas.WatermarkAlignment = DevComponents.Editors.eTextAlignment.Right
+        '
         'LabelX3
         '
         Me.LabelX3.BackColor = System.Drawing.Color.Transparent
@@ -347,12 +402,12 @@ Partial Class F1_CalculoPedidoSugerido
         Me.LabelX3.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.LabelX3.Font = New System.Drawing.Font("Georgia", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.LabelX3.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(85, Byte), Integer), CType(CType(139, Byte), Integer))
-        Me.LabelX3.Location = New System.Drawing.Point(24, 63)
+        Me.LabelX3.Location = New System.Drawing.Point(24, 33)
         Me.LabelX3.Name = "LabelX3"
         Me.LabelX3.SingleLineColor = System.Drawing.SystemColors.Control
-        Me.LabelX3.Size = New System.Drawing.Size(120, 23)
+        Me.LabelX3.Size = New System.Drawing.Size(210, 23)
         Me.LabelX3.TabIndex = 692
-        Me.LabelX3.Text = "Cantidad Semanas:"
+        Me.LabelX3.Text = "Nro. Semanas Promedio Ventas*:"
         '
         'lbCtrlEnter
         '
@@ -363,12 +418,12 @@ Partial Class F1_CalculoPedidoSugerido
         Me.lbCtrlEnter.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.lbCtrlEnter.Font = New System.Drawing.Font("Georgia", 7.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lbCtrlEnter.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(85, Byte), Integer), CType(CType(139, Byte), Integer))
-        Me.lbCtrlEnter.Location = New System.Drawing.Point(736, 12)
+        Me.lbCtrlEnter.Location = New System.Drawing.Point(755, 8)
         Me.lbCtrlEnter.Name = "lbCtrlEnter"
         Me.lbCtrlEnter.SingleLineColor = System.Drawing.SystemColors.Control
-        Me.lbCtrlEnter.Size = New System.Drawing.Size(120, 11)
+        Me.lbCtrlEnter.Size = New System.Drawing.Size(120, 21)
         Me.lbCtrlEnter.TabIndex = 691
-        Me.lbCtrlEnter.Text = "Haga Click en la lupa"
+        Me.lbCtrlEnter.Text = "Click en la lupa para" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "elegir Proveedor"
         '
         'tbCodProv
         '
@@ -377,9 +432,10 @@ Partial Class F1_CalculoPedidoSugerido
         '
         Me.tbCodProv.Border.Class = "TextBoxBorder"
         Me.tbCodProv.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.tbCodProv.Enabled = False
         Me.tbCodProv.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.tbCodProv.ForeColor = System.Drawing.Color.FromArgb(CType(CType(45, Byte), Integer), CType(CType(59, Byte), Integer), CType(CType(66, Byte), Integer))
-        Me.tbCodProv.Location = New System.Drawing.Point(159, 6)
+        Me.tbCodProv.Location = New System.Drawing.Point(171, 6)
         Me.tbCodProv.Name = "tbCodProv"
         Me.tbCodProv.PreventEnterBeep = True
         Me.tbCodProv.Size = New System.Drawing.Size(63, 22)
@@ -394,9 +450,10 @@ Partial Class F1_CalculoPedidoSugerido
         '
         Me.tbProveedor.Border.Class = "TextBoxBorder"
         Me.tbProveedor.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.tbProveedor.Enabled = False
         Me.tbProveedor.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.tbProveedor.ForeColor = System.Drawing.Color.FromArgb(CType(CType(45, Byte), Integer), CType(CType(59, Byte), Integer), CType(CType(66, Byte), Integer))
-        Me.tbProveedor.Location = New System.Drawing.Point(225, 6)
+        Me.tbProveedor.Location = New System.Drawing.Point(243, 6)
         Me.tbProveedor.Name = "tbProveedor"
         Me.tbProveedor.PreventEnterBeep = True
         Me.tbProveedor.Size = New System.Drawing.Size(460, 22)
@@ -409,7 +466,7 @@ Partial Class F1_CalculoPedidoSugerido
         Me.btnSearch.ColorTable = DevComponents.DotNetBar.eButtonColor.Flat
         Me.btnSearch.Image = Global.DinoM.My.Resources.Resources.search
         Me.btnSearch.ImageFixedSize = New System.Drawing.Size(24, 22)
-        Me.btnSearch.Location = New System.Drawing.Point(701, 6)
+        Me.btnSearch.Location = New System.Drawing.Point(716, 6)
         Me.btnSearch.Name = "btnSearch"
         Me.btnSearch.Size = New System.Drawing.Size(27, 25)
         Me.btnSearch.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
@@ -429,7 +486,7 @@ Partial Class F1_CalculoPedidoSugerido
         Me.LabelX2.SingleLineColor = System.Drawing.SystemColors.Control
         Me.LabelX2.Size = New System.Drawing.Size(90, 23)
         Me.LabelX2.TabIndex = 242
-        Me.LabelX2.Text = "Proveedor:"
+        Me.LabelX2.Text = "Proveedor*:"
         '
         'btnExportarExcel
         '
@@ -439,7 +496,7 @@ Partial Class F1_CalculoPedidoSugerido
         Me.btnExportarExcel.Image = Global.DinoM.My.Resources.Resources.sheets
         Me.btnExportarExcel.ImageFixedSize = New System.Drawing.Size(35, 40)
         Me.btnExportarExcel.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top
-        Me.btnExportarExcel.Location = New System.Drawing.Point(999, 16)
+        Me.btnExportarExcel.Location = New System.Drawing.Point(1037, 16)
         Me.btnExportarExcel.Name = "btnExportarExcel"
         Me.btnExportarExcel.Size = New System.Drawing.Size(65, 65)
         Me.btnExportarExcel.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
@@ -454,7 +511,7 @@ Partial Class F1_CalculoPedidoSugerido
         Me.btnGenerar.Image = Global.DinoM.My.Resources.Resources.ventasCostos
         Me.btnGenerar.ImageFixedSize = New System.Drawing.Size(40, 40)
         Me.btnGenerar.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top
-        Me.btnGenerar.Location = New System.Drawing.Point(892, 15)
+        Me.btnGenerar.Location = New System.Drawing.Point(930, 15)
         Me.btnGenerar.Name = "btnGenerar"
         Me.btnGenerar.Size = New System.Drawing.Size(65, 65)
         Me.btnGenerar.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
@@ -470,10 +527,10 @@ Partial Class F1_CalculoPedidoSugerido
         Me.LabelX1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.LabelX1.Font = New System.Drawing.Font("Georgia", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.LabelX1.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(85, Byte), Integer), CType(CType(139, Byte), Integer))
-        Me.LabelX1.Location = New System.Drawing.Point(305, 36)
+        Me.LabelX1.Location = New System.Drawing.Point(430, 61)
         Me.LabelX1.Name = "LabelX1"
         Me.LabelX1.SingleLineColor = System.Drawing.SystemColors.Control
-        Me.LabelX1.Size = New System.Drawing.Size(80, 23)
+        Me.LabelX1.Size = New System.Drawing.Size(75, 23)
         Me.LabelX1.TabIndex = 239
         Me.LabelX1.Text = "Fecha Fin:"
         '
@@ -486,9 +543,10 @@ Partial Class F1_CalculoPedidoSugerido
         Me.tbFechaF.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.tbFechaF.ButtonDropDown.Shortcut = DevComponents.DotNetBar.eShortcut.AltDown
         Me.tbFechaF.ButtonDropDown.Visible = True
+        Me.tbFechaF.Enabled = False
         Me.tbFechaF.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.tbFechaF.IsPopupCalendarOpen = False
-        Me.tbFechaF.Location = New System.Drawing.Point(391, 36)
+        Me.tbFechaF.Location = New System.Drawing.Point(516, 62)
         '
         '
         '
@@ -532,10 +590,10 @@ Partial Class F1_CalculoPedidoSugerido
         Me.LabelX4.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.LabelX4.Font = New System.Drawing.Font("Georgia", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.LabelX4.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(85, Byte), Integer), CType(CType(139, Byte), Integer))
-        Me.LabelX4.Location = New System.Drawing.Point(24, 35)
+        Me.LabelX4.Location = New System.Drawing.Point(154, 60)
         Me.LabelX4.Name = "LabelX4"
         Me.LabelX4.SingleLineColor = System.Drawing.SystemColors.Control
-        Me.LabelX4.Size = New System.Drawing.Size(90, 23)
+        Me.LabelX4.Size = New System.Drawing.Size(82, 23)
         Me.LabelX4.TabIndex = 237
         Me.LabelX4.Text = "Fecha Inicio:"
         '
@@ -548,9 +606,10 @@ Partial Class F1_CalculoPedidoSugerido
         Me.tbFechaI.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.tbFechaI.ButtonDropDown.Shortcut = DevComponents.DotNetBar.eShortcut.AltDown
         Me.tbFechaI.ButtonDropDown.Visible = True
+        Me.tbFechaI.Enabled = False
         Me.tbFechaI.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.tbFechaI.IsPopupCalendarOpen = False
-        Me.tbFechaI.Location = New System.Drawing.Point(160, 35)
+        Me.tbFechaI.Location = New System.Drawing.Point(245, 62)
         '
         '
         '
@@ -585,23 +644,6 @@ Partial Class F1_CalculoPedidoSugerido
         Me.tbFechaI.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
         Me.tbFechaI.TabIndex = 236
         '
-        'tbCantSemanas
-        '
-        '
-        '
-        '
-        Me.tbCantSemanas.BackgroundStyle.Class = "DateTimeInputBackground"
-        Me.tbCantSemanas.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.tbCantSemanas.ButtonFreeText.Shortcut = DevComponents.DotNetBar.eShortcut.F2
-        Me.tbCantSemanas.Font = New System.Drawing.Font("Georgia", 10.0!, System.Drawing.FontStyle.Bold)
-        Me.tbCantSemanas.Location = New System.Drawing.Point(159, 64)
-        Me.tbCantSemanas.MinValue = 0
-        Me.tbCantSemanas.Name = "tbCantSemanas"
-        Me.tbCantSemanas.RightToLeft = System.Windows.Forms.RightToLeft.No
-        Me.tbCantSemanas.Size = New System.Drawing.Size(85, 23)
-        Me.tbCantSemanas.TabIndex = 693
-        Me.tbCantSemanas.WatermarkAlignment = DevComponents.Editors.eTextAlignment.Right
-        '
         'F1_CalculoPedidoSugerido
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -609,7 +651,7 @@ Partial Class F1_CalculoPedidoSugerido
         Me.ClientSize = New System.Drawing.Size(1354, 661)
         Me.Location = New System.Drawing.Point(0, 0)
         Me.Name = "F1_CalculoPedidoSugerido"
-        Me.Text = "VENTAS PRODUCTOS PARA EXPORTAR"
+        Me.Text = "CÁLCULOS PEDIDO SUGERIDO"
         Me.Controls.SetChildIndex(Me.SuperTabPrincipal, 0)
         CType(Me.SuperTabPrincipal, System.ComponentModel.ISupportInitialize).EndInit()
         Me.SuperTabPrincipal.ResumeLayout(False)
@@ -631,9 +673,10 @@ Partial Class F1_CalculoPedidoSugerido
         CType(Me.MEP, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupPanel2.ResumeLayout(False)
         Me.Panel1.ResumeLayout(False)
+        CType(Me.tbCantSemPedido, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.tbCantSemVentas, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.tbFechaF, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.tbFechaI, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.tbCantSemanas, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -653,5 +696,7 @@ Partial Class F1_CalculoPedidoSugerido
     Friend WithEvents tbProveedor As DevComponents.DotNetBar.Controls.TextBoxX
     Friend WithEvents LabelX3 As DevComponents.DotNetBar.LabelX
     Friend WithEvents lbCtrlEnter As DevComponents.DotNetBar.LabelX
-    Friend WithEvents tbCantSemanas As DevComponents.Editors.IntegerInput
+    Friend WithEvents tbCantSemVentas As DevComponents.Editors.IntegerInput
+    Friend WithEvents tbCantSemPedido As DevComponents.Editors.IntegerInput
+    Friend WithEvents LabelX5 As DevComponents.DotNetBar.LabelX
 End Class

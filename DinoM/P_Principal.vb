@@ -1250,6 +1250,12 @@ Public Class P_Principal
         frm.Show()
     End Sub
 
+    Private Sub btCalculoPedSugerido_Click(sender As Object, e As EventArgs) Handles btCalculoPedSugerido.Click
+        Dim frm As New F1_CalculoPedidoSugerido
+        frm._nameButton = btCalculoPedSugerido.Name
+        frm.Show()
+    End Sub
+
 
 
 

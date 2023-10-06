@@ -19,7 +19,7 @@ Public Class F1_CalculoPedidoSugerido
 #End Region
 #Region "Metodos Privados"
     Private Sub _prIniciarTodo()
-        Me.Text = "VENTAS DETALLADAS POR PRODUCTOS PARA EXPORTAR"
+        Me.Text = "CÁLCULOS  PEDIDO  SUGERIDO"
         tbFechaI.Value = Now.Date
         tbFechaF.Value = Now.Date
 
@@ -103,193 +103,94 @@ Public Class F1_CalculoPedidoSugerido
             End If
         End If
     End Sub
-    Private Sub _prCargarVenta()
-        Dim fechaDesde As DateTime = tbFechaI.Value.ToString("yyyy/MM/dd")
-        Dim fechaHasta As DateTime = tbFechaF.Value.ToString("yyyy/MM/dd")
-        Dim dt As DataTable = L_VentasProductos(fechaDesde, fechaHasta)
+    Private Sub _prCargarDatos()
+        Dim fechaDesde As DateTime = tbFechaI.Value.ToString("dd/MM/yyyy")
+        Dim fechaHasta As DateTime = tbFechaF.Value.ToString("dd/MM/yyyy")
+        Dim dt As DataTable = L_CalculoPedidoSugerido(fechaDesde, fechaHasta, tbCodProv.Text, tbCantSemVentas.Value, tbCantSemPedido.Value)
 
         If dt.Rows.Count > 0 Then
             JGrM_Buscador.DataSource = dt
             JGrM_Buscador.RetrieveStructure()
             JGrM_Buscador.AlternatingColors = True
 
-            With JGrM_Buscador.RootTable.Columns("FechaVenta")
-                .Width = 90
+            With JGrM_Buscador.RootTable.Columns("Proveedor")
+                .Width = 130
                 .Visible = True
-                .Caption = "FECHA"
+                .Caption = "PROVEEDOR"
             End With
-            With JGrM_Buscador.RootTable.Columns("Dia")
-                .Width = 60
-                .Visible = True
-                .Caption = "DÍA"
-            End With
-            With JGrM_Buscador.RootTable.Columns("Mes")
-                .Width = 60
-                .Visible = True
-                .Caption = "MES"
-            End With
-            With JGrM_Buscador.RootTable.Columns("Anio")
-                .Width = 60
-                .Visible = True
-                .Caption = "AÑO"
-            End With
-            With JGrM_Buscador.RootTable.Columns("Autorizacion")
-                .Width = 170
-                .Caption = "COD. AUTORIZACIÓN"
-                .Visible = True
-                .FormatString = "0"
-            End With
-            With JGrM_Buscador.RootTable.Columns("CodControl")
+            With JGrM_Buscador.RootTable.Columns("yfnumi")
                 .Width = 100
-                .Visible = False
-            End With
-            With JGrM_Buscador.RootTable.Columns("NroCaja")
-                .Width = 90
-                .Caption = "NRO. CAJA"
+                .Caption = "COD. DYNASYS"
                 .Visible = True
             End With
-            With JGrM_Buscador.RootTable.Columns("NroFactura")
-                .Width = 120
-                .Caption = "NRO. FACTURA"
-                .Visible = True
-            End With
-            With JGrM_Buscador.RootTable.Columns("Nit")
+            With JGrM_Buscador.RootTable.Columns("yfcprod")
                 .Width = 100
-                .Caption = "NIT"
+                .Caption = "COD. DELTA"
                 .Visible = True
             End With
-            With JGrM_Buscador.RootTable.Columns("RazonSocial")
-                .Width = 150
-                .Caption = "RAZÓN SOCIAL"
+            With JGrM_Buscador.RootTable.Columns("yfcdprod2")
+                .Width = 100
+                .Caption = "COD. PROVEEDOR"
                 .Visible = True
             End With
-            With JGrM_Buscador.RootTable.Columns("tbty5prod")
+            With JGrM_Buscador.RootTable.Columns("yfcbarra")
                 .Width = 100
-                .Caption = "COD. ORIGINAL"
-                .Visible = False
-            End With
-            With JGrM_Buscador.RootTable.Columns("CodDelta")
-                .Width = 100
-                .Caption = "COD. PRODUCTO"
+                .Caption = "COD. BARRAS"
                 .Visible = True
             End With
             With JGrM_Buscador.RootTable.Columns("yfcdprod1")
-                .Width = 380
+                .Width = 400
                 .Caption = "DESCRIPCIÓN"
                 .Visible = True
             End With
-            With JGrM_Buscador.RootTable.Columns("Unidad")
-                .Width = 100
+            With JGrM_Buscador.RootTable.Columns("unidad")
+                .Width = 80
                 .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far
                 .Caption = "UNIDAD"
                 .Visible = True
             End With
-            With JGrM_Buscador.RootTable.Columns("Conversion")
-                .Width = 90
-                .Caption = "CONVERSIÓN"
-                .Visible = True
-                .FormatString = "0.00"
-                .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far
-            End With
-            With JGrM_Buscador.RootTable.Columns("Cantidad")
+            With JGrM_Buscador.RootTable.Columns("cantVentas")
                 .Width = 100
-                .Caption = "CANTIDAD"
-                .Visible = True
-                .FormatString = "0.00"
-                .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far
-                .AggregateFunction = AggregateFunction.Sum
-            End With
-            With JGrM_Buscador.RootTable.Columns("PrecioBase")
-                .Width = 120
-                .Caption = "PRECIO BASE"
+                .Caption = "CANTIDAD VENDIDA"
                 .Visible = True
                 .FormatString = "0.00"
                 .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far
             End With
-            With JGrM_Buscador.RootTable.Columns("PrecioVendido")
-                .Width = 120
-                .Caption = "PRECIO VENDIDO"
-                .Visible = True
-                .FormatString = "0.00"
-                .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far
-            End With
-            With JGrM_Buscador.RootTable.Columns("Descuento")
+            With JGrM_Buscador.RootTable.Columns("VentasxSem")
                 .Width = 100
-                .Caption = "DESCUENTO"
+                .Caption = "VENTAS X SEMANA"
+                .Visible = True
+                .FormatString = "0.00"
+                .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far
+                '.AggregateFunction = AggregateFunction.Sum
+            End With
+            With JGrM_Buscador.RootTable.Columns("Maximo")
+                .Width = 120
+                .Caption = "MÁXIMO EN UNIDADES"
                 .Visible = True
                 .FormatString = "0.00"
                 .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far
             End With
-            With JGrM_Buscador.RootTable.Columns("Total")
+            With JGrM_Buscador.RootTable.Columns("StockAct")
+                .Width = 120
+                .Caption = "STOCK ACTUAL"
+                .Visible = True
+                .FormatString = "0.00"
+                .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far
+            End With
+            With JGrM_Buscador.RootTable.Columns("PedidoSug")
                 .Width = 150
-                .Caption = "IMPORTE VENTA"
+                .Caption = "PEDIDO SUGERIDO"
                 .Visible = True
                 .FormatString = "0.00"
                 .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far
-                .AggregateFunction = AggregateFunction.Sum
-            End With
-            With JGrM_Buscador.RootTable.Columns("PrecioCosto")
-                .Width = 100
-                .Caption = "COSTO"
-                .Visible = True
-                .FormatString = "0.00"
-                .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far
-            End With
-            With JGrM_Buscador.RootTable.Columns("Vendedor")
-                .Width = 100
-                .Visible = True
-                .Caption = "VENDEDOR"
-            End With
-            With JGrM_Buscador.RootTable.Columns("Usuario")
-                .Width = 100
-                .Visible = True
-                .Caption = "USUARIO"
-            End With
-            With JGrM_Buscador.RootTable.Columns("yccod3")
-                .Width = 90
-                .Visible = False
-            End With
-            With JGrM_Buscador.RootTable.Columns("Proveedor")
-                .Width = 150
-                .Visible = True
-                .Caption = "PROVEEDOR"
-            End With
-            With JGrM_Buscador.RootTable.Columns("Marca")
-                .Width = 120
-                .Visible = True
-                .Caption = "MARCA"
-            End With
-            With JGrM_Buscador.RootTable.Columns("Categoria")
-                .Width = 150
-                .Visible = True
-                .Caption = "CATEGORÍA"
-            End With
-            With JGrM_Buscador.RootTable.Columns("Gramaje")
-                .Width = 120
-                .Visible = True
-                .Caption = "GRAMAJE"
-            End With
-            With JGrM_Buscador.RootTable.Columns("yfdetprod")
-                .Width = 220
-                .Visible = True
-                .Caption = "DESCRIPCIÓN DETALLADA"
-            End With
-            With JGrM_Buscador.RootTable.Columns("yfcbarra")
-                .Width = 150
-                .Visible = True
-                .Caption = "CÓDIGO DE BARRAS"
-            End With
-            With JGrM_Buscador.RootTable.Columns("CodOrigen")
-                .Width = 120
-                .Visible = True
-                .Caption = "COD. PROVEEDOR"
-            End With
-            With JGrM_Buscador.RootTable.Columns("OBSERVACION")
-                .Width = 120
-                .Visible = True
-                .Caption = "OBSERVACIÓN"
             End With
 
+            With JGrM_Buscador.RootTable.Columns("Estado")
+                .Width = 100
+                .Visible = True
+                .Caption = "ESTADO"
+            End With
 
 
             With JGrM_Buscador
@@ -309,7 +210,7 @@ Public Class F1_CalculoPedidoSugerido
         Else
             JGrM_Buscador.ClearStructure()
             Dim img As Bitmap = New Bitmap(My.Resources.mensaje, 50, 50)
-            ToastNotification.Show(Me, "No existe datos para mostrar".ToUpper, img, 2000, eToastGlowColor.Red, eToastPosition.TopCenter)
+            ToastNotification.Show(Me, "No existe datos para mostrar".ToUpper, img, 3000, eToastGlowColor.Red, eToastPosition.TopCenter)
         End If
 
     End Sub
@@ -320,24 +221,8 @@ Public Class F1_CalculoPedidoSugerido
     End Sub
 
 
-    Private Sub ButtonX2_Click(sender As Object, e As EventArgs) Handles btExcel.Click
-        _prCrearCarpetaReportes()
-        Dim img As Bitmap = New Bitmap(My.Resources.checked, 50, 50)
-        If (P_ExportarExcel(RutaGlobal + "\Reporte\Reporte Productos")) Then
-            ToastNotification.Show(Me, "EXPORTACIÓN DE LISTA DE PRODUCTOS EXITOSA..!!!",
-                                       img, 2000,
-                                       eToastGlowColor.Green,
-                                       eToastPosition.BottomCenter)
-        Else
-            ToastNotification.Show(Me, "FALLO AL EXPORTACIÓN DE LISTA DE PRODUCTOS..!!!",
-                                       My.Resources.WARNING, 2000,
-                                       eToastGlowColor.Red,
-                                       eToastPosition.BottomLeft)
-        End If
-    End Sub
 
-
-    Public Function P_ExportarExcel(_ruta As String) As Boolean
+    Public Function P_ExportarExcel(_ruta As String, Prov As String) As Boolean
         Dim _ubicacion As String
         'Dim _directorio As New FolderBrowserDialog
 
@@ -349,7 +234,7 @@ Public Class F1_CalculoPedidoSugerido
                 Dim _escritor As StreamWriter
                 Dim _fila As Integer = JGrM_Buscador.GetRows.Length
                 Dim _columna As Integer = JGrM_Buscador.RootTable.Columns.Count
-                Dim _archivo As String = _ubicacion & "\VentaProductos_" & Now.Date.Day &
+                Dim _archivo As String = _ubicacion & "\PedidoSugerido" & Prov & "_" & Now.Date.Day &
                     "." & Now.Date.Month & "." & Now.Date.Year & "_" & Now.Hour & "." & Now.Minute & "." & Now.Second & ".csv"
                 Dim _linea As String = ""
                 Dim _filadata = 0, columndata As Int32 = 0
@@ -429,11 +314,11 @@ Public Class F1_CalculoPedidoSugerido
     End Sub
 
     Private Sub btnGenerar_Click(sender As Object, e As EventArgs) Handles btnGenerar.Click
-        If tbCodProv.Text <> String.Empty And tbCantSemanas.Value > 0 Then
+        If tbCodProv.Text <> String.Empty And tbCantSemVentas.Value > 0 And tbCantSemPedido.Value > 0 Then
 
-            _prCargarVenta()
+            _prCargarDatos()
         Else
-            ToastNotification.Show(Me, "Debe elegir proveedor y colocar cantidad de semanas..!!!",
+            ToastNotification.Show(Me, "Debe llenar los campos requeridos..!!!".ToUpper,
                            My.Resources.WARNING, 3000,
                            eToastGlowColor.Red,
                            eToastPosition.TopCenter)
@@ -444,16 +329,64 @@ Public Class F1_CalculoPedidoSugerido
     Private Sub btnExportarExcel_Click(sender As Object, e As EventArgs) Handles btnExportarExcel.Click
         _prCrearCarpetaReportes()
         Dim img As Bitmap = New Bitmap(My.Resources.checked, 50, 50)
-        If (P_ExportarExcel(RutaGlobal + "\Reporte\Reporte Productos")) Then
-            ToastNotification.Show(Me, "EXPORTACIÓN DE VENTA-PRODUCTOS EXITOSA..!!!",
+        If (P_ExportarExcel(RutaGlobal + "\Reporte\Reporte Productos", tbProveedor.Text)) Then
+            ToastNotification.Show(Me, "EXPORTACIÓN DE PEDIDOS SUGERIDO EXITOSA..!!!",
                                        img, 2000,
                                        eToastGlowColor.Green,
                                        eToastPosition.BottomCenter)
         Else
-            ToastNotification.Show(Me, "FALLÓ LA EXPORTACIÓN DE VENTA-PRODUCTOS..!!!",
+            ToastNotification.Show(Me, "FALLÓ LA EXPORTACIÓN DE PEDIDOS SUGERIDO..!!!",
                                        My.Resources.WARNING, 2000,
                                        eToastGlowColor.Red,
                                        eToastPosition.BottomLeft)
+        End If
+    End Sub
+
+    Private Sub tbCantSemVentas_ValueChanged(sender As Object, e As EventArgs) Handles tbCantSemVentas.ValueChanged
+        Dim Dias = tbCantSemVentas.Value * 7
+        tbFechaF.Value = Now.Date.AddDays(-1)
+        tbFechaI.Value = tbFechaF.Value.AddDays(-Dias)
+
+    End Sub
+
+    Private Sub btnSearch_Click(sender As Object, e As EventArgs) Handles btnSearch.Click
+        BuscarProveedor()
+    End Sub
+    Private Sub BuscarProveedor()
+        Dim dt As DataTable
+
+        dt = L_fnListarProveedores()
+
+        If dt.Rows.Count = 0 Then
+            Throw New Exception("Lista de proveedores vacia")
+        End If
+        Dim listEstCeldas As New List(Of Modelo.Celda)
+
+        listEstCeldas.Add(New Modelo.Celda("ydnumi,", True, "COD SISTEMA.", 90))
+        listEstCeldas.Add(New Modelo.Celda("ydcod", True, "COD PROV.", 90))
+        listEstCeldas.Add(New Modelo.Celda("yddesc", True, "NOMBRE", 280))
+        listEstCeldas.Add(New Modelo.Celda("yddctnum", True, "N. Documento".ToUpper, 150))
+        listEstCeldas.Add(New Modelo.Celda("yddirec", False, "DIRECCION", 220))
+        listEstCeldas.Add(New Modelo.Celda("ydtelf1", True, "Telefono".ToUpper, 200))
+        listEstCeldas.Add(New Modelo.Celda("ydfnac", False, "F.Nacimiento".ToUpper, 150, "MM/dd,YYYY"))
+
+
+        Dim ef = New Efecto
+        ef.tipo = 3
+        ef.dt = dt
+        ef.SeleclCol = 2
+        ef.listEstCeldas = listEstCeldas
+        ef.alto = 80
+        ef.ancho = 180
+        ef.Context = "Seleccione Proveedor".ToUpper
+        ef.ShowDialog()
+        Dim bandera As Boolean = False
+        bandera = ef.band
+        If (bandera = True) Then
+            Dim Row As Janus.Windows.GridEX.GridEXRow = ef.Row
+
+            tbCodProv.Text = Row.Cells("ydnumi").Value
+            tbProveedor.Text = Row.Cells("yddesc").Value
         End If
     End Sub
 End Class
