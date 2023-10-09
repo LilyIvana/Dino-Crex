@@ -83,7 +83,7 @@ Partial Class F1_CalculoPedidoSugerido
         Me.SuperTabPrincipal.ControlBox.MenuBox.Name = ""
         Me.SuperTabPrincipal.ControlBox.Name = ""
         Me.SuperTabPrincipal.ControlBox.SubItems.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.SuperTabPrincipal.ControlBox.MenuBox, Me.SuperTabPrincipal.ControlBox.CloseBox})
-        Me.SuperTabPrincipal.Size = New System.Drawing.Size(1354, 661)
+        Me.SuperTabPrincipal.Size = New System.Drawing.Size(1354, 691)
         Me.SuperTabPrincipal.Controls.SetChildIndex(Me.SuperTabControlPanelBuscador, 0)
         Me.SuperTabPrincipal.Controls.SetChildIndex(Me.SuperTabControlPanelRegistro, 0)
         '
@@ -98,7 +98,7 @@ Partial Class F1_CalculoPedidoSugerido
         '
         'SuperTabControlPanelRegistro
         '
-        Me.SuperTabControlPanelRegistro.Size = New System.Drawing.Size(1322, 661)
+        Me.SuperTabControlPanelRegistro.Size = New System.Drawing.Size(1322, 691)
         Me.SuperTabControlPanelRegistro.Controls.SetChildIndex(Me.PanelSuperior, 0)
         Me.SuperTabControlPanelRegistro.Controls.SetChildIndex(Me.PanelInferior, 0)
         Me.SuperTabControlPanelRegistro.Controls.SetChildIndex(Me.PanelPrincipal, 0)
@@ -118,7 +118,7 @@ Partial Class F1_CalculoPedidoSugerido
         '
         'PanelInferior
         '
-        Me.PanelInferior.Location = New System.Drawing.Point(0, 625)
+        Me.PanelInferior.Location = New System.Drawing.Point(0, 655)
         Me.PanelInferior.Size = New System.Drawing.Size(1322, 36)
         Me.PanelInferior.Style.Alignment = System.Drawing.StringAlignment.Center
         Me.PanelInferior.Style.BackColor1.Color = System.Drawing.Color.DarkSlateGray
@@ -170,13 +170,13 @@ Partial Class F1_CalculoPedidoSugerido
         '
         'PanelPrincipal
         '
-        Me.PanelPrincipal.Size = New System.Drawing.Size(1322, 553)
+        Me.PanelPrincipal.Size = New System.Drawing.Size(1322, 583)
         '
         'GroupPanelBuscador
         '
         Me.GroupPanelBuscador.Font = New System.Drawing.Font("Georgia", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GroupPanelBuscador.Location = New System.Drawing.Point(0, 120)
-        Me.GroupPanelBuscador.Size = New System.Drawing.Size(1322, 433)
+        Me.GroupPanelBuscador.Size = New System.Drawing.Size(1322, 463)
         '
         '
         '
@@ -231,7 +231,7 @@ Partial Class F1_CalculoPedidoSugerido
         Me.JGrM_Buscador.SelectedFormatStyle.BackColor = System.Drawing.Color.DodgerBlue
         Me.JGrM_Buscador.SelectedFormatStyle.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.JGrM_Buscador.SelectedFormatStyle.ForeColor = System.Drawing.Color.White
-        Me.JGrM_Buscador.Size = New System.Drawing.Size(1316, 410)
+        Me.JGrM_Buscador.Size = New System.Drawing.Size(1316, 440)
         Me.JGrM_Buscador.VisualStyle = Janus.Windows.GridEX.VisualStyle.Office2007
         '
         'PanelUsuario
@@ -648,7 +648,7 @@ Partial Class F1_CalculoPedidoSugerido
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1354, 661)
+        Me.ClientSize = New System.Drawing.Size(1354, 691)
         Me.Location = New System.Drawing.Point(0, 0)
         Me.Name = "F1_CalculoPedidoSugerido"
         Me.Text = "CÁLCULOS PEDIDO SUGERIDO"

@@ -150,14 +150,14 @@ Public Class F1_CalculoPedidoSugerido
                 .Visible = True
             End With
             With JGrM_Buscador.RootTable.Columns("cantVentas")
-                .Width = 100
+                .Width = 150
                 .Caption = "CANTIDAD VENDIDA"
                 .Visible = True
                 .FormatString = "0.00"
                 .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far
             End With
             With JGrM_Buscador.RootTable.Columns("VentasxSem")
-                .Width = 100
+                .Width = 150
                 .Caption = "VENTAS X SEMANA"
                 .Visible = True
                 .FormatString = "0.00"
@@ -165,14 +165,14 @@ Public Class F1_CalculoPedidoSugerido
                 '.AggregateFunction = AggregateFunction.Sum
             End With
             With JGrM_Buscador.RootTable.Columns("Maximo")
-                .Width = 120
+                .Width = 150
                 .Caption = "MÁXIMO EN UNIDADES"
                 .Visible = True
                 .FormatString = "0.00"
                 .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far
             End With
             With JGrM_Buscador.RootTable.Columns("StockAct")
-                .Width = 120
+                .Width = 130
                 .Caption = "STOCK ACTUAL"
                 .Visible = True
                 .FormatString = "0.00"
@@ -315,7 +315,6 @@ Public Class F1_CalculoPedidoSugerido
 
     Private Sub btnGenerar_Click(sender As Object, e As EventArgs) Handles btnGenerar.Click
         If tbCodProv.Text <> String.Empty And tbCantSemVentas.Value > 0 And tbCantSemPedido.Value > 0 Then
-
             _prCargarDatos()
         Else
             ToastNotification.Show(Me, "Debe llenar los campos requeridos..!!!".ToUpper,
