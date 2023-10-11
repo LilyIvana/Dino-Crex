@@ -185,7 +185,35 @@ Public Class F1_CalculoPedidoSugerido
                 .FormatString = "0.00"
                 .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far
             End With
-
+            With JGrM_Buscador.RootTable.Columns("Costo")
+                .Width = 120
+                .Caption = "COSTO UN."
+                .Visible = True
+                .FormatString = "0.00"
+                .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far
+            End With
+            With JGrM_Buscador.RootTable.Columns("Total")
+                .Width = 120
+                .Caption = "TOTAL"
+                .Visible = True
+                .FormatString = "0.00"
+                .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far
+                .AggregateFunction = AggregateFunction.Sum
+            End With
+            With JGrM_Buscador.RootTable.Columns("Conversion1")
+                .Width = 120
+                .Caption = "CONVERSIÓN DS-UN"
+                .Visible = True
+                .FormatString = "0.00"
+                .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far
+            End With
+            With JGrM_Buscador.RootTable.Columns("Conversion2")
+                .Width = 120
+                .Caption = "CONVERSIÓN CJ-DS"
+                .Visible = True
+                .FormatString = "0.00"
+                .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far
+            End With
             With JGrM_Buscador.RootTable.Columns("Estado")
                 .Width = 100
                 .Visible = True
