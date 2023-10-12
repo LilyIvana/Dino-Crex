@@ -1066,6 +1066,9 @@ Public Class F0_MCompras
             .TotalRow = InheritableBoolean.True
             .TotalRowFormatStyle.BackColor = Color.Gold
             .TotalRowPosition = TotalRowPosition.BottomFixed
+
+            .RecordNavigator = True
+            .RecordNavigatorText = "Compras"
         End With
 
         If (dt.Rows.Count <= 0) Then

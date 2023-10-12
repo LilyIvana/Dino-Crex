@@ -886,6 +886,9 @@ Public Class F0_Venta2
             .TotalRow = InheritableBoolean.True
             .TotalRowFormatStyle.BackColor = Color.Gold
             .TotalRowPosition = TotalRowPosition.BottomFixed
+
+            .RecordNavigator = True
+            .RecordNavigatorText = "Ventas"
         End With
 
         If (dt.Rows.Count <= 0) Then
