@@ -44,7 +44,6 @@ Partial Class F0_VentasSupermercado
         Me.CmDetalle = New System.Windows.Forms.ContextMenuStrip(Me.components)
         Me.ModificarCantidadMenu = New System.Windows.Forms.ToolStripMenuItem()
         Me.EliminarProductoMenu = New System.Windows.Forms.ToolStripMenuItem()
-        Me.TimerImagenes = New System.Windows.Forms.Timer(Me.components)
         Me.PanelDatos = New System.Windows.Forms.Panel()
         Me.grdetalle = New Janus.Windows.GridEX.GridEX()
         Me.PanelButtom = New System.Windows.Forms.Panel()
@@ -385,10 +384,6 @@ Partial Class F0_VentasSupermercado
         Me.EliminarProductoMenu.Name = "EliminarProductoMenu"
         Me.EliminarProductoMenu.Size = New System.Drawing.Size(190, 36)
         Me.EliminarProductoMenu.Text = "Eliminar Producto"
-        '
-        'TimerImagenes
-        '
-        Me.TimerImagenes.Interval = 20000
         '
         'PanelDatos
         '
@@ -918,7 +913,6 @@ Partial Class F0_VentasSupermercado
     Friend WithEvents ModificarCantidadMenu As ToolStripMenuItem
     Friend WithEvents EliminarProductoMenu As ToolStripMenuItem
     Friend WithEvents prCargando As DevComponents.DotNetBar.Controls.CircularProgress
-    Friend WithEvents TimerImagenes As Timer
     Friend WithEvents tbDescuento As DevComponents.Editors.DoubleInput
     Friend WithEvents Label1 As Label
     Friend WithEvents lbUsuario As Label

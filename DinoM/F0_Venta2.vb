@@ -942,7 +942,8 @@ Public Class F0_Venta2
         If (G_Lote = True) Then
             dt = L_fnListarProductos(cbSucursal.Value, _cliente)
         Else
-            dt = L_fnListarProductosSinLote(cbSucursal.Value, _cliente, CType(grdetalle.DataSource, DataTable))
+            'dt = L_fnListarProductosSinLote(cbSucursal.Value, _cliente, CType(grdetalle.DataSource, DataTable))
+            dt = L_fnListarProductosSinLoteUlt(cbSucursal.Value, _cliente, CType(grdetalle.DataSource, DataTable))
         End If
 
         grProductos.DataSource = dt

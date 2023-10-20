@@ -98,7 +98,7 @@ Public Class F0_VentasSupermercado
         P_prCargarParametro()
         tbTotal.Value = 0
 
-        TimerImagenes.Start()
+        'TimerImagenes.Start()
 
         lbNroCaja.Text = gs_NroCaja
         lbUsuario.Text = gs_user
@@ -114,10 +114,12 @@ Public Class F0_VentasSupermercado
         swEstadoFacturas.Value = IIf(gb_OnOff = 1, "True", "False")
         If gi_userRol = 1 Or gi_userRol = 3 Then
             swEstadoFacturas.Visible = True
+            swEstadoFacturas.IsReadOnly = False
         Else
-            swEstadoFacturas.Visible = False
+            'swEstadoFacturas.Visible = False
+            swEstadoFacturas.Visible = True
+            swEstadoFacturas.IsReadOnly = True
         End If
-
 
     End Sub
     Private Sub _CargarBanner()
@@ -668,7 +670,9 @@ Public Class F0_VentasSupermercado
             dt = L_fnListarProductos(Sucursal, _cliente)  ''1=Almacen
             'Table_Producto = dt.Copy
         Else
-            dt = L_fnListarProductosSinLote(Sucursal, _cliente, CType(grdetalle.DataSource, DataTable))  ''1=Almacen
+            'dt = L_fnListarProductosSinLote(Sucursal, _cliente, CType(grdetalle.DataSource, DataTable))  ''1=Almacen
+            dt = L_fnListarProductosSinLoteUlt(Sucursal, _cliente, CType(grdetalle.DataSource, DataTable))
+
             'dt = L_fnListarProductosSinLoteNuevo(Sucursal, _cliente, CType(grdetalle.DataSource, DataTable))  ''1=Almacen
             'Table_Producto = dt.Copy
         End If
@@ -3070,7 +3074,8 @@ Public Class F0_VentasSupermercado
             dt = L_fnListarProductos(Sucursal, Str(_CodCliente))  ''1=Almacen
             Table_Producto = dt.Copy
         Else
-            dt = L_fnListarProductosSinLote(Sucursal, Str(_CodCliente), CType(grdetalle.DataSource, DataTable).Clone)  ''1=Almacen
+            'dt = L_fnListarProductosSinLote(Sucursal, Str(_CodCliente), CType(grdetalle.DataSource, DataTable).Clone)  ''1=Almacen
+            dt = L_fnListarProductosSinLoteUlt(Sucursal, Str(_CodCliente), CType(grdetalle.DataSource, DataTable).Clone)  ''1=Almacen
             Table_Producto = dt.Copy
         End If
     End Sub
@@ -3633,25 +3638,25 @@ Public Class F0_VentasSupermercado
     End Sub
 
 
-    Private Sub TimerImagenes_Tick(sender As Object, e As EventArgs) Handles TimerImagenes.Tick
+    'Private Sub TimerImagenes_Tick(sender As Object, e As EventArgs) Handles TimerImagenes.Tick
 
-        If (contador <= ListImagenes.Count - 1) Then
-            pictureImagen.ImageLocation = ListImagenes(contador)
-            contador += 1
-        Else
-            contador = 0
-        End If
+    '    If (contador <= ListImagenes.Count - 1) Then
+    '        pictureImagen.ImageLocation = ListImagenes(contador)
+    '        contador += 1
+    '    Else
+    '        contador = 0
+    '    End If
 
-        'Dim code = VerifConexion(tokenObtenido)
-        'If (code = True) Then
-        '    Label1Conn.Text = "ONLINE SIAT"
-        '    Label1Conn.BackColor = Color.Green
-        'Else
-        '    Label1Conn.Text = "OFFLINE SIAT"
-        '    Label1Conn.BackColor = Color.Red
-        'End If
+    '    'Dim code = VerifConexion(tokenObtenido)
+    '    'If (code = True) Then
+    '    '    Label1Conn.Text = "ONLINE SIAT"
+    '    '    Label1Conn.BackColor = Color.Green
+    '    'Else
+    '    '    Label1Conn.Text = "OFFLINE SIAT"
+    '    '    Label1Conn.BackColor = Color.Red
+    '    'End If
 
-    End Sub
+    'End Sub
 
     Private Function quitarUltimaFilaVacia(tabla As DataTable) As DataTable
         If tabla.Rows.Count > 0 Then
