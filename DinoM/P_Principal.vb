@@ -1256,6 +1256,12 @@ Public Class P_Principal
         frm.Show()
     End Sub
 
+    Private Sub btRevStockVentaProv_Click(sender As Object, e As EventArgs) Handles btRevStockVentaProv.Click
+        Dim frm As New F1_RevStockVentaProv
+        frm._nameButton = btRevStockVentaProv.Name
+        frm.Show()
+    End Sub
+
 
 
 

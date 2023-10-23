@@ -183,6 +183,7 @@ Partial Class P_Principal
         Me.SideNavItem3 = New DevComponents.DotNetBar.Controls.SideNavItem()
         Me.MetroTileItem11 = New DevComponents.DotNetBar.Metro.MetroTileItem()
         Me.MetroTileItem12 = New DevComponents.DotNetBar.Metro.MetroTileItem()
+        Me.btRevStockVentaProv = New DevComponents.DotNetBar.Metro.MetroTileItem()
         MetroTileFrame1 = New DevComponents.DotNetBar.Metro.MetroTileFrame()
         MetroTileFrame2 = New DevComponents.DotNetBar.Metro.MetroTileFrame()
         Me.SideNav1.SuspendLayout()
@@ -571,7 +572,7 @@ Partial Class P_Principal
         Me.MetroTilePanel6.ContainerControlProcessDialogKey = True
         Me.MetroTilePanel6.Dock = System.Windows.Forms.DockStyle.Fill
         Me.MetroTilePanel6.DragDropSupport = True
-        Me.MetroTilePanel6.Items.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.btInvDeposito, Me.btInvAmacen, Me.btInvMovimiento, Me.btInvKardex, Me.btInvSaldo, Me.btInvKardexReporte, Me.btInvUtilidad, Me.btInvSaldoLote, Me.btlvSaldoMinimo, Me.btInvVentas, Me.btInvStockDif, Me.btSaldosValoradosExcel, Me.btProdNoCompra, Me.btCalculoPedSugerido})
+        Me.MetroTilePanel6.Items.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.btInvDeposito, Me.btInvAmacen, Me.btInvMovimiento, Me.btInvKardex, Me.btInvSaldo, Me.btInvKardexReporte, Me.btInvUtilidad, Me.btInvSaldoLote, Me.btlvSaldoMinimo, Me.btInvVentas, Me.btInvStockDif, Me.btSaldosValoradosExcel, Me.btProdNoCompra, Me.btCalculoPedSugerido, Me.btRevStockVentaProv})
         Me.MetroTilePanel6.ItemSpacing = 10
         Me.MetroTilePanel6.Location = New System.Drawing.Point(0, 0)
         Me.MetroTilePanel6.MultiLine = True
@@ -2956,6 +2957,27 @@ Partial Class P_Principal
         Me.MetroTileItem12.TitleTextAlignment = System.Drawing.ContentAlignment.BottomCenter
         Me.MetroTileItem12.TitleTextColor = System.Drawing.Color.Red
         '
+        'btRevStockVentaProv
+        '
+        Me.btRevStockVentaProv.Image = Global.DinoM.My.Resources.Resources._14
+        Me.btRevStockVentaProv.ImageTextAlignment = System.Drawing.ContentAlignment.MiddleCenter
+        Me.btRevStockVentaProv.ItemAlignment = DevComponents.DotNetBar.eItemAlignment.Center
+        Me.btRevStockVentaProv.Name = "btRevStockVentaProv"
+        Me.btRevStockVentaProv.SymbolColor = System.Drawing.Color.Empty
+        Me.btRevStockVentaProv.Text = "REVISIÓN STOCK-VENTA PROVEEDORES"
+        Me.btRevStockVentaProv.TileColor = DevComponents.DotNetBar.Metro.eMetroTileColor.Olive
+        Me.btRevStockVentaProv.TileSize = New System.Drawing.Size(250, 135)
+        '
+        '
+        '
+        Me.btRevStockVentaProv.TileStyle.BackColor = System.Drawing.Color.Gold
+        Me.btRevStockVentaProv.TileStyle.BackColor2 = System.Drawing.Color.FromArgb(CType(CType(190, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(140, Byte), Integer), CType(CType(0, Byte), Integer))
+        Me.btRevStockVentaProv.TileStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.btRevStockVentaProv.TileStyle.Font = New System.Drawing.Font("Georgia", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btRevStockVentaProv.TileStyle.TextLineAlignment = DevComponents.DotNetBar.eStyleTextAlignment.Far
+        Me.btRevStockVentaProv.TitleTextAlignment = System.Drawing.ContentAlignment.BottomCenter
+        Me.btRevStockVentaProv.TitleTextColor = System.Drawing.Color.Red
+        '
         'P_Principal
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -3148,4 +3170,5 @@ Partial Class P_Principal
     Friend WithEvents btRepClientesCel As DevComponents.DotNetBar.Metro.MetroTileItem
     Friend WithEvents btProdNoCompra As DevComponents.DotNetBar.Metro.MetroTileItem
     Friend WithEvents btCalculoPedSugerido As DevComponents.DotNetBar.Metro.MetroTileItem
+    Friend WithEvents btRevStockVentaProv As DevComponents.DotNetBar.Metro.MetroTileItem
 End Class
