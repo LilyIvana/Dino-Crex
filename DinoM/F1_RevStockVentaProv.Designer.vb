@@ -562,7 +562,7 @@ Partial Class F1_RevStockVentaProv
         Me.ClientSize = New System.Drawing.Size(1354, 691)
         Me.Location = New System.Drawing.Point(0, 0)
         Me.Name = "F1_RevStockVentaProv"
-        Me.Text = "CÁLCULOS PEDIDO SUGERIDO"
+        Me.Text = "REVISIÓN STOCK-VENTA PROVEEDORES"
         Me.Controls.SetChildIndex(Me.SuperTabPrincipal, 0)
         CType(Me.SuperTabPrincipal, System.ComponentModel.ISupportInitialize).EndInit()
         Me.SuperTabPrincipal.ResumeLayout(False)

@@ -63,6 +63,7 @@ Partial Class P_Principal
         Me.btSaldosValoradosExcel = New DevComponents.DotNetBar.Metro.MetroTileItem()
         Me.btProdNoCompra = New DevComponents.DotNetBar.Metro.MetroTileItem()
         Me.btCalculoPedSugerido = New DevComponents.DotNetBar.Metro.MetroTileItem()
+        Me.btRevStockVentaProv = New DevComponents.DotNetBar.Metro.MetroTileItem()
         Me.SideNav_Ventas = New DevComponents.DotNetBar.Controls.SideNavPanel()
         Me.MetroTilePanelVentas = New DevComponents.DotNetBar.Metro.MetroTilePanel()
         Me.btVentProforma = New DevComponents.DotNetBar.Metro.MetroTileItem()
@@ -183,7 +184,6 @@ Partial Class P_Principal
         Me.SideNavItem3 = New DevComponents.DotNetBar.Controls.SideNavItem()
         Me.MetroTileItem11 = New DevComponents.DotNetBar.Metro.MetroTileItem()
         Me.MetroTileItem12 = New DevComponents.DotNetBar.Metro.MetroTileItem()
-        Me.btRevStockVentaProv = New DevComponents.DotNetBar.Metro.MetroTileItem()
         MetroTileFrame1 = New DevComponents.DotNetBar.Metro.MetroTileFrame()
         MetroTileFrame2 = New DevComponents.DotNetBar.Metro.MetroTileFrame()
         Me.SideNav1.SuspendLayout()
@@ -521,7 +521,7 @@ Partial Class P_Principal
         Me.lbVersion.SingleLineColor = System.Drawing.Color.Transparent
         Me.lbVersion.Size = New System.Drawing.Size(127, 18)
         Me.lbVersion.TabIndex = 5
-        Me.lbVersion.Text = "Versión 3.7.1.231020"
+        Me.lbVersion.Text = "Versión 3.7.3.231024"
         Me.lbVersion.TextAlignment = System.Drawing.StringAlignment.Center
         '
         'SideNav1
@@ -529,12 +529,12 @@ Partial Class P_Principal
         Me.SideNav1.BackColor = System.Drawing.Color.FromArgb(CType(CType(49, Byte), Integer), CType(CType(59, Byte), Integer), CType(CType(66, Byte), Integer))
         Me.SideNav1.BackgroundImage = Global.DinoM.My.Resources.Resources.Fondo_empresarial
         Me.SideNav1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.SideNav1.Controls.Add(Me.SideNav_Conf)
         Me.SideNav1.Controls.Add(Me.SideNavPanel5)
         Me.SideNav1.Controls.Add(Me.SideNav_Ventas)
         Me.SideNav1.Controls.Add(Me.SideNavPanel6)
         Me.SideNav1.Controls.Add(Me.SideNavPanel7)
         Me.SideNav1.Controls.Add(Me.SideNavPanel4)
-        Me.SideNav1.Controls.Add(Me.SideNav_Conf)
         Me.SideNav1.Controls.Add(Me.SideNavPanel3)
         Me.SideNav1.Controls.Add(Me.SideNav_Logistica)
         Me.SideNav1.Controls.Add(Me.SideNavPanel1)
@@ -557,6 +557,7 @@ Partial Class P_Principal
         Me.SideNavPanel5.Name = "SideNavPanel5"
         Me.SideNavPanel5.Size = New System.Drawing.Size(848, 524)
         Me.SideNavPanel5.TabIndex = 87
+        Me.SideNavPanel5.Visible = False
         '
         'MetroTilePanel6
         '
@@ -657,7 +658,7 @@ Partial Class P_Principal
         '
         '
         '
-        Me.btInvKardex.TileStyle.BackColor = System.Drawing.SystemColors.Highlight
+        Me.btInvKardex.TileStyle.BackColor = System.Drawing.Color.MediumVioletRed
         Me.btInvKardex.TileStyle.BackColor2 = System.Drawing.Color.FromArgb(CType(CType(201, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(102, Byte), Integer), CType(CType(204, Byte), Integer))
         Me.btInvKardex.TileStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.btInvKardex.TileStyle.Font = New System.Drawing.Font("Georgia", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -875,6 +876,27 @@ Partial Class P_Principal
         Me.btCalculoPedSugerido.TileStyle.TextLineAlignment = DevComponents.DotNetBar.eStyleTextAlignment.Far
         Me.btCalculoPedSugerido.TitleTextAlignment = System.Drawing.ContentAlignment.BottomCenter
         Me.btCalculoPedSugerido.TitleTextColor = System.Drawing.Color.Red
+        '
+        'btRevStockVentaProv
+        '
+        Me.btRevStockVentaProv.Image = Global.DinoM.My.Resources.Resources._14
+        Me.btRevStockVentaProv.ImageTextAlignment = System.Drawing.ContentAlignment.MiddleCenter
+        Me.btRevStockVentaProv.ItemAlignment = DevComponents.DotNetBar.eItemAlignment.Center
+        Me.btRevStockVentaProv.Name = "btRevStockVentaProv"
+        Me.btRevStockVentaProv.SymbolColor = System.Drawing.Color.Empty
+        Me.btRevStockVentaProv.Text = "REVISIÓN STOCK-VENTA PROVEEDORES"
+        Me.btRevStockVentaProv.TileColor = DevComponents.DotNetBar.Metro.eMetroTileColor.Olive
+        Me.btRevStockVentaProv.TileSize = New System.Drawing.Size(250, 135)
+        '
+        '
+        '
+        Me.btRevStockVentaProv.TileStyle.BackColor = System.Drawing.Color.SeaGreen
+        Me.btRevStockVentaProv.TileStyle.BackColor2 = System.Drawing.SystemColors.ActiveBorder
+        Me.btRevStockVentaProv.TileStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.btRevStockVentaProv.TileStyle.Font = New System.Drawing.Font("Georgia", 8.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btRevStockVentaProv.TileStyle.TextLineAlignment = DevComponents.DotNetBar.eStyleTextAlignment.Far
+        Me.btRevStockVentaProv.TitleTextAlignment = System.Drawing.ContentAlignment.BottomCenter
+        Me.btRevStockVentaProv.TitleTextColor = System.Drawing.Color.Red
         '
         'SideNav_Ventas
         '
@@ -1951,7 +1973,6 @@ Partial Class P_Principal
         Me.SideNav_Conf.Name = "SideNav_Conf"
         Me.SideNav_Conf.Size = New System.Drawing.Size(848, 524)
         Me.SideNav_Conf.TabIndex = 2
-        Me.SideNav_Conf.Visible = False
         '
         'MetroTilePanel1
         '
@@ -2836,6 +2857,7 @@ Partial Class P_Principal
         '
         'FP_Configuracion
         '
+        Me.FP_Configuracion.Checked = True
         Me.FP_Configuracion.Name = "FP_Configuracion"
         Me.FP_Configuracion.Panel = Me.SideNav_Conf
         Me.FP_Configuracion.Symbol = ""
@@ -2852,7 +2874,6 @@ Partial Class P_Principal
         '
         'FP_INVENTARIO
         '
-        Me.FP_INVENTARIO.Checked = True
         Me.FP_INVENTARIO.Name = "FP_INVENTARIO"
         Me.FP_INVENTARIO.Panel = Me.SideNavPanel5
         Me.FP_INVENTARIO.Symbol = ""
@@ -2956,27 +2977,6 @@ Partial Class P_Principal
         Me.MetroTileItem12.TileStyle.TextLineAlignment = DevComponents.DotNetBar.eStyleTextAlignment.Far
         Me.MetroTileItem12.TitleTextAlignment = System.Drawing.ContentAlignment.BottomCenter
         Me.MetroTileItem12.TitleTextColor = System.Drawing.Color.Red
-        '
-        'btRevStockVentaProv
-        '
-        Me.btRevStockVentaProv.Image = Global.DinoM.My.Resources.Resources._14
-        Me.btRevStockVentaProv.ImageTextAlignment = System.Drawing.ContentAlignment.MiddleCenter
-        Me.btRevStockVentaProv.ItemAlignment = DevComponents.DotNetBar.eItemAlignment.Center
-        Me.btRevStockVentaProv.Name = "btRevStockVentaProv"
-        Me.btRevStockVentaProv.SymbolColor = System.Drawing.Color.Empty
-        Me.btRevStockVentaProv.Text = "REVISIÓN STOCK-VENTA PROVEEDORES"
-        Me.btRevStockVentaProv.TileColor = DevComponents.DotNetBar.Metro.eMetroTileColor.Olive
-        Me.btRevStockVentaProv.TileSize = New System.Drawing.Size(250, 135)
-        '
-        '
-        '
-        Me.btRevStockVentaProv.TileStyle.BackColor = System.Drawing.Color.Gold
-        Me.btRevStockVentaProv.TileStyle.BackColor2 = System.Drawing.Color.FromArgb(CType(CType(190, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(140, Byte), Integer), CType(CType(0, Byte), Integer))
-        Me.btRevStockVentaProv.TileStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.btRevStockVentaProv.TileStyle.Font = New System.Drawing.Font("Georgia", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btRevStockVentaProv.TileStyle.TextLineAlignment = DevComponents.DotNetBar.eStyleTextAlignment.Far
-        Me.btRevStockVentaProv.TitleTextAlignment = System.Drawing.ContentAlignment.BottomCenter
-        Me.btRevStockVentaProv.TitleTextColor = System.Drawing.Color.Red
         '
         'P_Principal
         '

@@ -146,7 +146,7 @@ Public Class F1_CalculoPedidoSugerido
             With JGrM_Buscador.RootTable.Columns("unidad")
                 .Width = 80
                 .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far
-                .Caption = "UNIDAD"
+                .Caption = "UNIDAD VENTA"
                 .Visible = True
             End With
             With JGrM_Buscador.RootTable.Columns("cantVentas")

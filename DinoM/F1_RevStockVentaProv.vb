@@ -19,7 +19,7 @@ Public Class F1_RevStockVentaProv
 #End Region
 #Region "Metodos Privados"
     Private Sub _prIniciarTodo()
-        Me.Text = "CÁLCULOS  PEDIDO  SUGERIDO"
+        Me.Text = "REVISIÓN STOCK-VENTA PROVEEDORES"
         tbFechaI.Value = Now.Date
         tbFechaF.Value = Now.Date
 
@@ -146,7 +146,7 @@ Public Class F1_RevStockVentaProv
             With JGrM_Buscador.RootTable.Columns("unidad")
                 .Width = 80
                 .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far
-                .Caption = "UNIDAD"
+                .Caption = "UNIDAD VENTA"
                 .Visible = True
             End With
             With JGrM_Buscador.RootTable.Columns("cantVentas")
@@ -357,13 +357,13 @@ Public Class F1_RevStockVentaProv
         _prCrearCarpetaReportes()
         Dim img As Bitmap = New Bitmap(My.Resources.checked, 50, 50)
         If (P_ExportarExcel(RutaGlobal + "\Reporte\Reporte Productos")) Then
-            ToastNotification.Show(Me, "EXPORTACIÓN DE PEDIDOS SUGERIDO EXITOSA..!!!",
-                                       img, 2000,
+            ToastNotification.Show(Me, "EXPORTACIÓN DE REV. STOCK-VENTA PROVEEDORES EXITOSA..!!!",
+                                       img, 2500,
                                        eToastGlowColor.Green,
                                        eToastPosition.BottomCenter)
         Else
-            ToastNotification.Show(Me, "FALLÓ LA EXPORTACIÓN DE PEDIDOS SUGERIDO..!!!",
-                                       My.Resources.WARNING, 2000,
+            ToastNotification.Show(Me, "FALLÓ LA EXPORTACIÓN DE REV. STOCK-VENTA PROVEEDORES..!!!",
+                                       My.Resources.WARNING, 2500,
                                        eToastGlowColor.Red,
                                        eToastPosition.BottomLeft)
         End If
