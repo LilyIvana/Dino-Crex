@@ -28,6 +28,7 @@ Partial Class F0_KardexMovimiento
         Dim cbAlmacen_DesignTimeLayout As Janus.Windows.GridEX.GridEXLayout = New Janus.Windows.GridEX.GridEXLayout()
         Me.GroupPanelDatos = New DevComponents.DotNetBar.Controls.GroupPanel()
         Me.Panel2 = New System.Windows.Forms.Panel()
+        Me.btExportar = New DevComponents.DotNetBar.ButtonX()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.tbFechaVenc = New DevComponents.DotNetBar.Controls.TextBoxX()
         Me.tblote = New DevComponents.DotNetBar.Controls.TextBoxX()
@@ -51,7 +52,6 @@ Partial Class F0_KardexMovimiento
         Me.Panel3 = New System.Windows.Forms.Panel()
         Me.PictureBox2 = New System.Windows.Forms.PictureBox()
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
-        Me.btExportar = New DevComponents.DotNetBar.ButtonX()
         Me.PanelSuperior.SuspendLayout()
         Me.PanelInferior.SuspendLayout()
         CType(Me.BubbleBarUsuario, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -300,6 +300,23 @@ Partial Class F0_KardexMovimiento
         Me.Panel2.Size = New System.Drawing.Size(1305, 194)
         Me.Panel2.TabIndex = 0
         '
+        'btExportar
+        '
+        Me.btExportar.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
+        Me.btExportar.BackColor = System.Drawing.Color.SkyBlue
+        Me.btExportar.ColorTable = DevComponents.DotNetBar.eButtonColor.Office2007WithBackground
+        Me.btExportar.Font = New System.Drawing.Font("Georgia", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btExportar.Image = Global.DinoM.My.Resources.Resources.sheets
+        Me.btExportar.ImageFixedSize = New System.Drawing.Size(35, 35)
+        Me.btExportar.Location = New System.Drawing.Point(385, 121)
+        Me.btExportar.Name = "btExportar"
+        Me.btExportar.Shape = New DevComponents.DotNetBar.RoundRectangleShapeDescriptor(4)
+        Me.btExportar.Size = New System.Drawing.Size(126, 49)
+        Me.btExportar.SubItemsExpandWidth = 10
+        Me.btExportar.TabIndex = 245
+        Me.btExportar.Text = "EXPORTAR"
+        Me.btExportar.TextColor = System.Drawing.Color.FromArgb(CType(CType(49, Byte), Integer), CType(CType(59, Byte), Integer), CType(CType(66, Byte), Integer))
+        '
         'Label1
         '
         Me.Label1.AutoSize = True
@@ -322,7 +339,7 @@ Partial Class F0_KardexMovimiento
         Me.tbFechaVenc.DisabledBackColor = System.Drawing.Color.White
         Me.tbFechaVenc.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.tbFechaVenc.ForeColor = System.Drawing.Color.Black
-        Me.tbFechaVenc.Location = New System.Drawing.Point(748, 16)
+        Me.tbFechaVenc.Location = New System.Drawing.Point(748, 45)
         Me.tbFechaVenc.Name = "tbFechaVenc"
         Me.tbFechaVenc.PreventEnterBeep = True
         Me.tbFechaVenc.Size = New System.Drawing.Size(109, 21)
@@ -340,7 +357,7 @@ Partial Class F0_KardexMovimiento
         Me.tblote.DisabledBackColor = System.Drawing.Color.White
         Me.tblote.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.tblote.ForeColor = System.Drawing.Color.Black
-        Me.tblote.Location = New System.Drawing.Point(627, 16)
+        Me.tblote.Location = New System.Drawing.Point(627, 45)
         Me.tblote.Name = "tblote"
         Me.tblote.PreventEnterBeep = True
         Me.tblote.Size = New System.Drawing.Size(109, 21)
@@ -357,7 +374,7 @@ Partial Class F0_KardexMovimiento
         Me.lblote.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.lblote.Font = New System.Drawing.Font("Georgia", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblote.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(85, Byte), Integer), CType(CType(139, Byte), Integer))
-        Me.lblote.Location = New System.Drawing.Point(570, 16)
+        Me.lblote.Location = New System.Drawing.Point(570, 45)
         Me.lblote.Name = "lblote"
         Me.lblote.SingleLineColor = System.Drawing.SystemColors.Control
         Me.lblote.Size = New System.Drawing.Size(34, 16)
@@ -623,7 +640,7 @@ Partial Class F0_KardexMovimiento
         Me.tbproducto.Location = New System.Drawing.Point(196, 14)
         Me.tbproducto.Name = "tbproducto"
         Me.tbproducto.PreventEnterBeep = True
-        Me.tbproducto.Size = New System.Drawing.Size(316, 21)
+        Me.tbproducto.Size = New System.Drawing.Size(660, 21)
         Me.tbproducto.TabIndex = 228
         '
         'tbCodigo
@@ -747,23 +764,6 @@ Partial Class F0_KardexMovimiento
         '
         Me.Timer1.Enabled = True
         Me.Timer1.Interval = 500
-        '
-        'btExportar
-        '
-        Me.btExportar.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
-        Me.btExportar.BackColor = System.Drawing.Color.SkyBlue
-        Me.btExportar.ColorTable = DevComponents.DotNetBar.eButtonColor.Office2007WithBackground
-        Me.btExportar.Font = New System.Drawing.Font("Georgia", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btExportar.Image = Global.DinoM.My.Resources.Resources.sheets
-        Me.btExportar.ImageFixedSize = New System.Drawing.Size(35, 35)
-        Me.btExportar.Location = New System.Drawing.Point(385, 121)
-        Me.btExportar.Name = "btExportar"
-        Me.btExportar.Shape = New DevComponents.DotNetBar.RoundRectangleShapeDescriptor(4)
-        Me.btExportar.Size = New System.Drawing.Size(126, 49)
-        Me.btExportar.SubItemsExpandWidth = 10
-        Me.btExportar.TabIndex = 245
-        Me.btExportar.Text = "EXPORTAR"
-        Me.btExportar.TextColor = System.Drawing.Color.FromArgb(CType(CType(49, Byte), Integer), CType(CType(59, Byte), Integer), CType(CType(66, Byte), Integer))
         '
         'F0_KardexMovimiento
         '

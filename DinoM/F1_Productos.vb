@@ -42,6 +42,7 @@ Public Class F1_Productos
         _prCargarComboLibreria(cbgrupo3, 1, 3)
         _prCargarComboLibreria(cbgrupo4, 1, 4)
         _prCargarComboLibreria(cbgrupo5, 1, 7)
+        _prCargarComboLibreria(cbUniCompra, 1, 8)
         _prCargarComboLibreria(cbUMed, 1, 5)
         _prCargarComboLibreria(cbUniVenta, 1, 6)
         _prCargarComboLibreria(cbUnidMaxima, 1, 6)
@@ -261,7 +262,7 @@ Public Class F1_Productos
     Public Overrides Sub _PMOHabilitar()
         tbCodBarra.ReadOnly = False
         tbCodProd.ReadOnly = False
-        tbPrefijo.ReadOnly = False
+        tbRotacion.ReadOnly = False
         tbDescPro.ReadOnly = False
         tbDescDet.ReadOnly = False
         tbDescCort.ReadOnly = False
@@ -272,6 +273,7 @@ Public Class F1_Productos
         cbgrupo4.ReadOnly = False
         cbgrupo5.ReadOnly = False
         cbUMed.ReadOnly = False
+        cbUniCompra.ReadOnly = False
         swEstado.IsReadOnly = False
         cbUniVenta.ReadOnly = False
         cbUnidMaxima.ReadOnly = False
@@ -299,7 +301,7 @@ Public Class F1_Productos
         tbCodBarra.ReadOnly = True
         tbCodProd.ReadOnly = True
         tbDescPro.ReadOnly = True
-        tbPrefijo.ReadOnly = True
+        tbRotacion.ReadOnly = True
         tbDescCort.ReadOnly = True
         tbDescDet.ReadOnly = True
 
@@ -309,6 +311,7 @@ Public Class F1_Productos
         cbgrupo4.ReadOnly = True
         cbgrupo5.ReadOnly = True
         cbUMed.ReadOnly = True
+        cbUniCompra.ReadOnly = True
         swEstado.IsReadOnly = True
         cbUniVenta.ReadOnly = True
         cbUnidMaxima.ReadOnly = True
@@ -336,7 +339,7 @@ Public Class F1_Productos
         tbCodBarra.Clear()
         tbCodProd.Clear()
         tbDescPro.Clear()
-        tbPrefijo.Clear()
+        tbRotacion.Clear()
         tbDescDet.Clear()
         tbDescCort.Clear()
 
@@ -355,6 +358,7 @@ Public Class F1_Productos
             _prSeleccionarCombo(cbUMed)
             _prSeleccionarCombo(cbUnidMaxima)
             _prSeleccionarCombo(cbUniVenta)
+            _prSeleccionarCombo(cbUniCompra)
             swEstado.Value = True
             tbConversion1.Value = 1
             tbConversion2.Value = 1
@@ -393,7 +397,7 @@ Public Class F1_Productos
     Public Overrides Sub _PMOLimpiarErrores()
         MEP.Clear()
         tbCodBarra.BackColor = Color.White
-        tbPrefijo.BackColor = Color.White
+        tbRotacion.BackColor = Color.White
         tbDescPro.BackColor = Color.White
         tbDescDet.BackColor = Color.White
         tbDescCort.BackColor = Color.White
@@ -425,7 +429,8 @@ Public Class F1_Productos
                                                 IIf(swEstado.Value = True, 1, 0), nameImg,
                                                 quitarUltimaFilaVacia(CType(dgjDetalleProducto.DataSource, DataTable).DefaultView.ToTable(False, "yfanumi", "yfayfnumi", "yfasim", "yfadesc", "estado")),
                                                 tbDescDet.Text, cbgrupo5.Value, CbAeconomica.Value, CbUmedida.Value,
-                                                CbProdServ.Value, TbPrecioPsifac.Text, tbPrefijo.Text.Trim, tbConversion2.Text)
+                                                CbProdServ.Value, TbPrecioPsifac.Text, tbRotacion.Text.Trim, tbConversion2.Text,
+                                                cbUniCompra.Value)
 
         'Else
         '    res = False
@@ -470,7 +475,7 @@ Public Class F1_Productos
                                         IIf(swEstado.Value = True, 1, 0), nameImage,
                                         quitarUltimaFilaVacia(CType(dgjDetalleProducto.DataSource, DataTable).DefaultView.ToTable(False, "yfanumi", "yfayfnumi", "yfasim", "yfadesc", "estado")),
                                         tbDescDet.Text, cbgrupo5.Value, CbAeconomica.Value, CbUmedida.Value, CbProdServ.Value,
-                                        TbPrecioPsifac.Text, tbPrefijo.Text.Trim, tbConversion2.Text)
+                                        TbPrecioPsifac.Text, tbRotacion.Text.Trim, tbConversion2.Text, cbUniCompra.Value)
         Else
             res = L_fnModificarProducto(tbCodigo.Text, tbCodProd.Text.Trim, tbCodBarra.Text.Trim, tbDescPro.Text.Trim, tbDescCort.Text.Trim,
                                         cbgrupo1.Value, cbgrupo2.Value, cbgrupo3.Value, cbgrupo4.Value, cbUMed.Value,
@@ -478,7 +483,7 @@ Public Class F1_Productos
                                         tbStockMinimo.Text, IIf(swEstado.Value = True, 1, 0), nameImg,
                                         quitarUltimaFilaVacia(CType(dgjDetalleProducto.DataSource, DataTable).DefaultView.ToTable(False, "yfanumi", "yfayfnumi", "yfasim", "yfadesc", "estado")),
                                         tbDescDet.Text, cbgrupo5.Value, CbAeconomica.Value, CbUmedida.Value, CbProdServ.Value,
-                                        TbPrecioPsifac.Text, tbPrefijo.Text.Trim, tbConversion2.Text)
+                                        TbPrecioPsifac.Text, tbRotacion.Text.Trim, tbConversion2.Text, cbUniCompra.Value)
         End If
         If res Then
 
@@ -595,7 +600,7 @@ Public Class F1_Productos
         If tbDescPro.Text = String.Empty Then
             tbDescPro.BackColor = Color.Red
             AddHandler tbDescPro.KeyDown, AddressOf TextBox_KeyDown
-            MEP.SetError(tbDescPro, "ingrese el descripcion del producto!".ToUpper)
+            MEP.SetError(tbDescPro, "ingrese el descripción del producto!".ToUpper)
             _ok = False
         Else
             tbDescPro.BackColor = Color.White
@@ -613,7 +618,7 @@ Public Class F1_Productos
 
         If cbgrupo1.SelectedIndex < 0 Then
             cbgrupo1.BackColor = Color.Red
-            MEP.SetError(cbgrupo1, "Selecciones grupo del producto!".ToUpper)
+            MEP.SetError(cbgrupo1, "Seleccione grupo del producto!".ToUpper)
             _ok = False
         Else
             cbgrupo1.BackColor = Color.White
@@ -622,7 +627,7 @@ Public Class F1_Productos
 
         If cbgrupo2.SelectedIndex < 0 Then
             cbgrupo2.BackColor = Color.Red
-            MEP.SetError(cbgrupo2, "Selecciones grupo del producto!".ToUpper)
+            MEP.SetError(cbgrupo2, "Seleccione grupo del producto!".ToUpper)
             _ok = False
         Else
             cbgrupo2.BackColor = Color.White
@@ -630,7 +635,7 @@ Public Class F1_Productos
         End If
         If cbgrupo3.SelectedIndex < 0 Then
             cbgrupo3.BackColor = Color.Red
-            MEP.SetError(cbgrupo3, "Selecciones grupo del producto!".ToUpper)
+            MEP.SetError(cbgrupo3, "Seleccione grupo del producto!".ToUpper)
             _ok = False
         Else
             cbgrupo3.BackColor = Color.White
@@ -638,7 +643,7 @@ Public Class F1_Productos
         End If
         If cbgrupo4.SelectedIndex < 0 Then
             cbgrupo4.BackColor = Color.Red
-            MEP.SetError(cbgrupo4, "Selecciones grupo del producto!".ToUpper)
+            MEP.SetError(cbgrupo4, "Seleccione grupo del producto!".ToUpper)
             _ok = False
         Else
             cbgrupo4.BackColor = Color.White
@@ -646,11 +651,19 @@ Public Class F1_Productos
         End If
         If cbUMed.SelectedIndex < 0 Then
             cbUMed.BackColor = Color.Red
-            MEP.SetError(cbUMed, "Selecciones Unidad De Medida Del Producto!".ToUpper)
+            MEP.SetError(cbUMed, "Seleccione Unidad De Medida Del Producto!".ToUpper)
             _ok = False
         Else
             cbUMed.BackColor = Color.White
             MEP.SetError(cbUMed, "")
+        End If
+        If cbUniCompra.SelectedIndex < 0 Then
+            cbUniCompra.BackColor = Color.Red
+            MEP.SetError(cbUniCompra, "Seleccione Unidad de Compra Del Producto!".ToUpper)
+            _ok = False
+        Else
+            cbUniCompra.BackColor = Color.White
+            MEP.SetError(cbUniCompra, "")
         End If
         If swEstado.Value = False Then
             tbCodBarra.Text = ""
@@ -809,7 +822,7 @@ Public Class F1_Productos
             tbCodigo.Text = .GetValue("yfnumi").ToString
             tbCodProd.Text = .GetValue("yfcprod").ToString
             tbCodBarra.Text = .GetValue("yfcbarra").ToString
-            tbPrefijo.Text = .GetValue("yfcampo1").ToString
+            tbRotacion.Text = .GetValue("yfcampo1").ToString
             tbDescPro.Text = .GetValue("yfcdprod1").ToString
             tbDescCort.Text = .GetValue("yfcdprod2").ToString
             tbDescDet.Text = .GetValue("yfdetprod").ToString
@@ -1604,4 +1617,20 @@ Public Class F1_Productos
         tbCodSin.Text = CbProdServ.Value
     End Sub
 
+    Private Sub btUniCompra_Click(sender As Object, e As EventArgs) Handles btUniCompra.Click
+        Dim numi As String = ""
+
+        If L_prLibreriaGrabarGrupos(numi, "1", "8", cbUniCompra.Text, "", 108) Then
+            _prCargarComboLibreria(cbUniCompra, "1", "8")
+            cbUniCompra.SelectedIndex = CType(cbUniCompra.DataSource, DataTable).Rows.Count - 1
+        End If
+    End Sub
+
+    Private Sub cbUniCompra_ValueChanged(sender As Object, e As EventArgs) Handles cbUniCompra.ValueChanged
+        If cbUniCompra.SelectedIndex < 0 And cbUniCompra.Text <> String.Empty Then
+            btUniCompra.Visible = True
+        Else
+            btUniCompra.Visible = False
+        End If
+    End Sub
 End Class
