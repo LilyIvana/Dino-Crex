@@ -7265,9 +7265,7 @@ Public Class AccesoLogica
     End Function
 #End Region
 
-
-
-
+#Region "Reporte Saldos"
     Public Shared Function L_prReporteUtilidadNueva(_codAlmacen As Integer, _codCat As Integer) As DataTable
         Dim _Tabla As DataTable
 
@@ -7392,6 +7390,10 @@ Public Class AccesoLogica
         Return _Tabla
     End Function
 
+#End Region
+
+
+#Region "Cálculo Pedido Sugerido"
     Public Shared Function L_CalculoPedidoSugerido(fechaI As String, fechaF As String, CodProv As String, nroSemVentas As Integer, nroSemPedido As Integer) As DataTable
         Dim _Tabla As DataTable
         Dim _listParam As New List(Of Datos.DParametro)
@@ -7417,4 +7419,30 @@ Public Class AccesoLogica
         _Tabla = D_ProcedimientoConParam("Sp_Mam_CalculoPedSugerido", _listParam)
         Return _Tabla
     End Function
+#End Region
+
+#Region "Cálculo Pedido Sugerido"
+
+    Public Shared Function L_fnListarConteoUsuario(usu As String, fecha As String) As DataTable
+        Dim _Tabla As DataTable
+
+        Dim _listParam As New List(Of Datos.DParametro)
+
+        _listParam.Add(New Datos.DParametro("@tipo", 3))
+        _listParam.Add(New Datos.DParametro("@yguact", L_Usuario))
+        _Tabla = D_ProcedimientoConParam("ProcConteoFisico", _listParam)
+
+        Return _Tabla
+    End Function
+    Public Shared Function L_fnMostrarUsuariosConteo() As DataTable
+        Dim _Tabla As DataTable
+
+        Dim _listParam As New List(Of Datos.DParametro)
+        _listParam.Add(New Datos.DParametro("@tipo", 4))
+        _Tabla = D_ProcedimientoConParam("ProcConteoFisico", _listParam)
+
+        Return _Tabla
+    End Function
+
+#End Region
 End Class

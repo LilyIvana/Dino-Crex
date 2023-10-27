@@ -1262,6 +1262,12 @@ Public Class P_Principal
         frm.Show()
     End Sub
 
+    Private Sub btConteoFisico_Click(sender As Object, e As EventArgs) Handles btConteoFisico.Click
+        Dim frm As New F0_ExpImpStockFisico
+        frm._nameButton = btConteoFisico.Name
+        frm.Show()
+    End Sub
+
 
 
 

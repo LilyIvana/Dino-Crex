@@ -32,11 +32,9 @@ Public Class F0_ExpImpStockFisico
 
         'Me.WindowState = FormWindowState.Maximized
 
-        _prCargarComboLibreria(cbAlmacen)
-
         _prAsignarPermisos()
-        Me.Text = "ACTUALIZAR CONDICIÓN DE PRODUCTOS, PRECIOS PDV Y ESPECIAL"
-        Dim blah As New Bitmap(New Bitmap(My.Resources.precio), 20, 20)
+        Me.Text = "CONTEO  FÍSICO  DE  PRODUCTOS"
+        Dim blah As New Bitmap(New Bitmap(My.Resources.hojaruta), 20, 20)
         Dim ico As Icon = Icon.FromHandle(blah.GetHicon())
         Me.Icon = ico
     End Sub
@@ -60,88 +58,70 @@ Public Class F0_ExpImpStockFisico
         End If
     End Sub
 
-    Public Sub _prCargarTabla(bandera As Boolean) ''Bandera = true si es que haiq cargar denuevo la tabla de Precio Bandera =false si solo cargar datos al Janus con el precio antepuesto
-        If (cbAlmacen.SelectedIndex >= 0) Then
-            'Dim productos As DataTable = L_fnListarProductos()
-            Dim productos As DataTable = L_fnListarProductosParaActualizarPrecios()
+    Public Sub _prCargarTabla(Usuario As String, fecha As String) ''Bandera = true si es que haiq cargar denuevo la tabla de Precio Bandera =false si solo cargar datos al Janus con el precio antepuesto
+
+        Dim productos As DataTable = L_fnListarConteoUsuario(Usuario, fecha)
 
 
-            grprecio.BoundMode = Janus.Data.BoundMode.Bound
-            grprecio.DataSource = productos
-            grprecio.RetrieveStructure()
+        grDatos.BoundMode = Janus.Data.BoundMode.Bound
+        grDatos.DataSource = productos
+        grDatos.RetrieveStructure()
 
-            With grprecio.RootTable.Columns("yfnumi")
-                .Caption = "COD DYN"
-                .Width = 100
-                .Visible = True
-            End With
-            With grprecio.RootTable.Columns("yfcprod")
-                .Caption = "COD DELTA"
-                .Width = 100
-                .Visible = True
-            End With
-            With grprecio.RootTable.Columns("yfcbarra")
-                .Caption = "COD. BARRAS"
-                .Width = 150
-                .Visible = True
-            End With
-            With grprecio.RootTable.Columns("yfcdprod1")
-                .Caption = "PRODUCTO"
-                .Width = 450
-                .Visible = True
-            End With
-
-            With grprecio.RootTable.Columns("yfbactPrecio")
-                .Caption = "ACTUALIZA PRECIO PDV?"
-                .Width = 150
-                .Visible = True
-            End With
-            With grprecio.RootTable.Columns("estado")
-                .Caption = "ESTADO"
-                .Width = 120
-                .Visible = False
-            End With
-            'Habilitar Filtradores
-            With grprecio
-                .GroupByBoxVisible = False
-                '.FilterRowFormatStyle.BackColor = Color.Blue
-                .DefaultFilterRowComparison = FilterConditionOperator.Contains
-                '.FilterMode = FilterMode.Automatic
-                .FilterRowUpdateMode = FilterRowUpdateMode.WhenValueChanges
-                .FilterMode = FilterMode.Automatic
-                'Diseño de la tabla
-                .VisualStyle = VisualStyle.Office2007
-                .SelectionMode = SelectionMode.SingleSelection
-                .AlternatingColors = True
-
-                .RecordNavigator = True
-                .RecordNavigatorText = "Productos"
-            End With
-        End If
-    End Sub
-    Private Sub _prCargarComboLibreria(mCombo As Janus.Windows.GridEX.EditControls.MultiColumnCombo)
-        Dim dt As New DataTable
-        dt = L_fnGeneralSucursales()
-        With mCombo
-            .DropDownList.Columns.Clear()
-            .DropDownList.Columns.Add("aanumi").Width = 70
-            .DropDownList.Columns("aanumi").Caption = "COD"
-            .DropDownList.Columns.Add("aabdes").Width = 200
-            .DropDownList.Columns("aabdes").Caption = "DESCRIPCION"
-            .ValueMember = "aanumi"
-            .DisplayMember = "aabdes"
-            .DataSource = dt
-            .Refresh()
+        With grDatos.RootTable.Columns("yfnumi")
+            .Caption = "COD DYN"
+            .Width = 100
+            .Visible = True
         End With
-        If (CType(cbAlmacen.DataSource, DataTable).Rows.Count > 0) Then
-            cbAlmacen.SelectedIndex = 0
-        End If
+        With grDatos.RootTable.Columns("yfcprod")
+            .Caption = "COD DELTA"
+            .Width = 100
+            .Visible = True
+        End With
+        With grDatos.RootTable.Columns("yfcbarra")
+            .Caption = "COD. BARRAS"
+            .Width = 150
+            .Visible = True
+        End With
+        With grDatos.RootTable.Columns("yfcdprod1")
+            .Caption = "PRODUCTO"
+            .Width = 450
+            .Visible = True
+        End With
+
+        With grDatos.RootTable.Columns("yfbactPrecio")
+            .Caption = "ACTUALIZA PRECIO PDV?"
+            .Width = 150
+            .Visible = True
+        End With
+        With grDatos.RootTable.Columns("estado")
+            .Caption = "ESTADO"
+            .Width = 120
+            .Visible = False
+        End With
+        'Habilitar Filtradores
+        With grDatos
+            .GroupByBoxVisible = False
+            '.FilterRowFormatStyle.BackColor = Color.Blue
+            .DefaultFilterRowComparison = FilterConditionOperator.Contains
+            '.FilterMode = FilterMode.Automatic
+            .FilterRowUpdateMode = FilterRowUpdateMode.WhenValueChanges
+            .FilterMode = FilterMode.Automatic
+            'Diseño de la tabla
+            .VisualStyle = VisualStyle.Office2007
+            .SelectionMode = SelectionMode.SingleSelection
+            .AlternatingColors = True
+
+            .RecordNavigator = True
+            .RecordNavigatorText = "Productos"
+        End With
+
     End Sub
+
     Private Sub _prInhabiliitar()
 
         btnModificar.Enabled = True
         btnGrabar.Enabled = False
-        _prCargarTabla(True)
+        '_prCargarTabla(True)
 
     End Sub
     Private Sub _prhabilitar()
@@ -156,100 +136,6 @@ Public Class F0_ExpImpStockFisico
         Return num + 1
     End Function
 
-#End Region
-
-
-#Region "MEtodoso Formulario"
-    Private Sub F0_Precios_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        _IniciarTodo()
-        _prInhabiliitar()
-    End Sub
-    Private Sub btnModificar_Click(sender As Object, e As EventArgs) Handles btnModificar.Click
-        _prhabilitar()
-        btnModificar.Enabled = False
-
-    End Sub
-
-    Private Sub btnSalir_Click(sender As Object, e As EventArgs) Handles btnSalir.Click
-        If (_fnAccesible()) Then
-            _prInhabiliitar()
-        Else
-            _modulo.Select()
-            Me.Close()
-        End If
-    End Sub
-
-
-    Private Sub grprecio_CellEdited(sender As Object, e As ColumnActionEventArgs) Handles grprecio.CellEdited
-        If (_fnAccesible()) Then
-
-            ''Habilitar solo las columnas de Precio, %, Monto y Observación
-            'If (e.Column.Index > 1) Then
-            '    Dim data As String = grprecio.GetValue(e.Column.Index - 1).ToString.Trim 'En esta columna obtengo un protocolo que me indica el estado del precio 0= no insertado 1= ya insertado , a la ves con un '-' me indica la posicion de ese dato en el Datatable que envio para grabarlo que esta en 'precio' Ejemplo:1-15 -> estado=1 posicion=15
-            '    Dim estado As String = data.Substring(0, 1).Trim
-            '    Dim pos As String = data.Substring(2, data.Length - 2)
-            '    If (estado = 1 Or estado = 2) Then
-            '        precio.Rows(pos).Item("estado") = 2
-            '        precio.Rows(pos).Item("yhprecio") = grprecio.GetValue(e.Column.Index)
-            '    Else
-            '        If (estado = 0 Or estado = 3) Then
-            '            precio.Rows(pos).Item("estado") = 3
-            '            precio.Rows(pos).Item("yhprecio") = grprecio.GetValue(e.Column.Index)
-            '        End If
-            '    End If
-            'End If
-
-
-        End If
-    End Sub
-
-    Private Sub grprecio_EditingCell(sender As Object, e As EditingCellEventArgs) Handles grprecio.EditingCell
-
-        If btnGrabar.Enabled = False Then
-            e.Cancel = True
-            Return
-        End If
-        If (_fnAccesible() And IsNothing(grprecio.DataSource) = False) Then
-            'Deshabilitar la columna de Productos y solo habilitar la de los precios
-            If (e.Column.Index = grprecio.RootTable.Columns("yfcdprod1").Index Or
-               e.Column.Index = grprecio.RootTable.Columns("yfcprod").Index Or
-                e.Column.Index = grprecio.RootTable.Columns("yfnumi").Index Or
-                e.Column.Index = grprecio.RootTable.Columns("yfcbarra").Index) Then
-                e.Cancel = True
-            Else
-                e.Cancel = False
-            End If
-        Else
-            e.Cancel = True
-        End If
-    End Sub
-    Private Sub btnGrabar_Click(sender As Object, e As EventArgs) Handles btnGrabar.Click
-
-        Dim grabar As Boolean = L_fnActualizarProductoTY0052("", CType(grprecio.DataSource, DataTable))
-        If (grabar) Then
-            Dim img As Bitmap = New Bitmap(My.Resources.checked, 50, 50)
-            ToastNotification.Show(Me, "Condición de Productos Actualizados con éxito".ToUpper,
-                                      img, 2000,
-                                      eToastGlowColor.Green,
-                                      eToastPosition.TopCenter
-                                      )
-
-            _prCargarTabla(True)
-            _prInhabiliitar()
-
-        Else
-            Dim img As Bitmap = New Bitmap(My.Resources.cancel, 50, 50)
-            ToastNotification.Show(Me, "La Condición de Productos no pudo ser insertado".ToUpper, img, 2000, eToastGlowColor.Red, eToastPosition.BottomCenter)
-        End If
-
-    End Sub
-
-    Private Sub cbAlmacen_ValueChanged(sender As Object, e As EventArgs) Handles cbAlmacen.ValueChanged
-        _prCargarTabla(True) ''Si el selecciona otra sucursal cambia sus precio por sucursales
-    End Sub
-
-
-#End Region
 
     Public Function P_ExportarExcel(_ruta As String) As Boolean
         Dim _ubicacion As String
@@ -261,8 +147,8 @@ Public Class F0_ExpImpStockFisico
             Try
                 Dim _stream As Stream
                 Dim _escritor As StreamWriter
-                Dim _fila As Integer = grprecio.GetRows.Length
-                Dim _columna As Integer = grprecio.RootTable.Columns.Count
+                Dim _fila As Integer = grDatos.GetRows.Length
+                Dim _columna As Integer = grDatos.RootTable.Columns.Count
                 Dim _archivo As String = _ubicacion & "\ListaDeProd_" & Now.Date.Day &
                     "." & Now.Date.Month & "." & Now.Date.Year & "_" & Now.Hour & "." & Now.Minute & "." & Now.Second & ".csv"
                 Dim _linea As String = ""
@@ -271,7 +157,7 @@ Public Class F0_ExpImpStockFisico
                 _stream = File.OpenWrite(_archivo)
                 _escritor = New StreamWriter(_stream, System.Text.Encoding.UTF8)
 
-                For Each _col As GridEXColumn In grprecio.RootTable.Columns
+                For Each _col As GridEXColumn In grDatos.RootTable.Columns
                     If (_col.Visible) Then
                         _linea = _linea & _col.Caption & ";"
                     End If
@@ -285,8 +171,8 @@ Public Class F0_ExpImpStockFisico
                 'Pbx_Precios.Maximum = Dgv_Precios.RowCount
                 'Pbx_Precios.Value = 1
 
-                For Each _fil As GridEXRow In grprecio.GetRows
-                    For Each _col As GridEXColumn In grprecio.RootTable.Columns
+                For Each _fil As GridEXRow In grDatos.GetRows
+                    For Each _col As GridEXColumn In grDatos.RootTable.Columns
                         If (_col.Visible) Then
                             Dim data As String = CStr(_fil.Cells(_col.Key).Value)
                             data = data.Replace(";", ",")
@@ -347,6 +233,148 @@ Public Class F0_ExpImpStockFisico
             End If
         End If
     End Sub
+
+    Private Sub Buscador()
+        Try
+            Dim dt As DataTable
+            dt = L_fnMostrarUsuariosConteo()
+
+            Dim listEstCeldas As New List(Of Modelo.Celda)
+            listEstCeldas.Add(New Modelo.Celda("ydnumi,", True, "COD USUARIO", 90))
+            listEstCeldas.Add(New Modelo.Celda("yduser", True, "USUARIO", 120))
+            listEstCeldas.Add(New Modelo.Celda("ydest", False, "ESTADO", 50))
+
+            Dim ef = New Efecto
+            ef.tipo = 3
+            ef.dt = dt
+            ef.SeleclCol = 1
+            ef.listEstCeldas = listEstCeldas
+            ef.alto = 50
+            ef.ancho = 200
+            ef.Context = "Seleccione Usuario".ToUpper
+            ef.SeleclCol = 1
+            ef.ShowDialog()
+            Dim bandera As Boolean = False
+            bandera = ef.band
+            If (bandera = True) Then
+                Dim Row As Janus.Windows.GridEX.GridEXRow = ef.Row
+                If (IsNothing(Row)) Then
+                    tbUsuario.Focus()
+                    Return
+                End If
+
+                tbUsuario.Text = Row.Cells("yduser").Value
+
+                _prCargarTabla(tbUsuario.Text, tbFechaInv.Value.ToString("dd/MM/yyyy"))
+
+            End If
+
+        Catch ex As Exception
+            MostrarMensajeError(ex.Message)
+        End Try
+    End Sub
+
+    Private Sub MostrarMensajeError(mensaje As String)
+        ToastNotification.Show(Me,
+                               mensaje.ToUpper,
+                               My.Resources.WARNING,
+                               5000,
+                               eToastGlowColor.Red,
+                               eToastPosition.TopCenter)
+
+    End Sub
+#End Region
+
+
+#Region "MEtodoso Formulario"
+    Private Sub F0_Precios_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        _IniciarTodo()
+        _prInhabiliitar()
+    End Sub
+    Private Sub btnModificar_Click(sender As Object, e As EventArgs) Handles btnModificar.Click
+        _prhabilitar()
+        btnModificar.Enabled = False
+
+    End Sub
+
+    Private Sub btnSalir_Click(sender As Object, e As EventArgs) Handles btnSalir.Click
+        If (_fnAccesible()) Then
+            _prInhabiliitar()
+        Else
+            _modulo.Select()
+            Me.Close()
+        End If
+    End Sub
+
+
+    Private Sub grprecio_CellEdited(sender As Object, e As ColumnActionEventArgs) Handles grDatos.CellEdited
+        If (_fnAccesible()) Then
+
+            ''Habilitar solo las columnas de Precio, %, Monto y Observación
+            'If (e.Column.Index > 1) Then
+            '    Dim data As String = grprecio.GetValue(e.Column.Index - 1).ToString.Trim 'En esta columna obtengo un protocolo que me indica el estado del precio 0= no insertado 1= ya insertado , a la ves con un '-' me indica la posicion de ese dato en el Datatable que envio para grabarlo que esta en 'precio' Ejemplo:1-15 -> estado=1 posicion=15
+            '    Dim estado As String = data.Substring(0, 1).Trim
+            '    Dim pos As String = data.Substring(2, data.Length - 2)
+            '    If (estado = 1 Or estado = 2) Then
+            '        precio.Rows(pos).Item("estado") = 2
+            '        precio.Rows(pos).Item("yhprecio") = grprecio.GetValue(e.Column.Index)
+            '    Else
+            '        If (estado = 0 Or estado = 3) Then
+            '            precio.Rows(pos).Item("estado") = 3
+            '            precio.Rows(pos).Item("yhprecio") = grprecio.GetValue(e.Column.Index)
+            '        End If
+            '    End If
+            'End If
+
+
+        End If
+    End Sub
+
+    Private Sub grprecio_EditingCell(sender As Object, e As EditingCellEventArgs) Handles grDatos.EditingCell
+
+        If btnGrabar.Enabled = False Then
+            e.Cancel = True
+            Return
+        End If
+        If (_fnAccesible() And IsNothing(grDatos.DataSource) = False) Then
+            'Deshabilitar la columna de Productos y solo habilitar la de los precios
+            If (e.Column.Index = grDatos.RootTable.Columns("yfcdprod1").Index Or
+               e.Column.Index = grDatos.RootTable.Columns("yfcprod").Index Or
+                e.Column.Index = grDatos.RootTable.Columns("yfnumi").Index Or
+                e.Column.Index = grDatos.RootTable.Columns("yfcbarra").Index) Then
+                e.Cancel = True
+            Else
+                e.Cancel = False
+            End If
+        Else
+            e.Cancel = True
+        End If
+    End Sub
+    Private Sub btnGrabar_Click(sender As Object, e As EventArgs) Handles btnGrabar.Click
+
+        Dim grabar As Boolean = L_fnActualizarProductoTY0052("", CType(grDatos.DataSource, DataTable))
+        If (grabar) Then
+            Dim img As Bitmap = New Bitmap(My.Resources.checked, 50, 50)
+            ToastNotification.Show(Me, "Condición de Productos Actualizados con éxito".ToUpper,
+                                      img, 2000,
+                                      eToastGlowColor.Green,
+                                      eToastPosition.TopCenter
+                                      )
+
+            '_prCargarTabla(True)
+            _prInhabiliitar()
+
+        Else
+            Dim img As Bitmap = New Bitmap(My.Resources.cancel, 50, 50)
+            ToastNotification.Show(Me, "La Condición de Productos no pudo ser insertado".ToUpper, img, 2000, eToastGlowColor.Red, eToastPosition.BottomCenter)
+        End If
+
+    End Sub
+
+
+#End Region
+
+
     Private Sub btnImprimir_Click(sender As Object, e As EventArgs) Handles btnImprimir.Click
         _prCrearCarpetaReportes()
         Dim img As Bitmap = New Bitmap(My.Resources.checked, 50, 50)
@@ -374,19 +402,19 @@ Public Class F0_ExpImpStockFisico
         End If
     End Sub
 
-    Private Sub grprecio_CellValueChanged(sender As Object, e As ColumnActionEventArgs) Handles grprecio.CellValueChanged
-        Dim lin As Integer = grprecio.GetValue("yfnumi")
+    Private Sub grprecio_CellValueChanged(sender As Object, e As ColumnActionEventArgs) Handles grDatos.CellValueChanged
+        Dim lin As Integer = grDatos.GetValue("yfnumi")
         Dim pos As Integer = -1
         _fnObtenerFilaDetalle(pos, lin)
 
-        Dim estado As Integer = CType(grprecio.DataSource, DataTable).Rows(pos).Item("estado")
+        Dim estado As Integer = CType(grDatos.DataSource, DataTable).Rows(pos).Item("estado")
         If (estado = 1) Then
-            CType(grprecio.DataSource, DataTable).Rows(pos).Item("estado") = 2
+            CType(grDatos.DataSource, DataTable).Rows(pos).Item("estado") = 2
         End If
     End Sub
     Public Sub _fnObtenerFilaDetalle(ByRef pos As Integer, numi As Integer)
-        For i As Integer = 0 To CType(grprecio.DataSource, DataTable).Rows.Count - 1 Step 1
-            Dim _numi As Integer = CType(grprecio.DataSource, DataTable).Rows(i).Item("yfnumi")
+        For i As Integer = 0 To CType(grDatos.DataSource, DataTable).Rows.Count - 1 Step 1
+            Dim _numi As Integer = CType(grDatos.DataSource, DataTable).Rows(i).Item("yfnumi")
             If (_numi = numi) Then
                 pos = i
                 Return
@@ -411,5 +439,13 @@ Public Class F0_ExpImpStockFisico
             ToastNotification.Show(Me, "Precio PDV y Especial no pudieron ser actualizados".ToUpper,
                                    img, 2000, eToastGlowColor.Red, eToastPosition.BottomCenter)
         End If
+    End Sub
+
+    Private Sub btnSearch_Click(sender As Object, e As EventArgs) Handles btnSearch.Click
+        Buscador()
+    End Sub
+
+    Private Sub btnGenerar_Click(sender As Object, e As EventArgs) Handles btnGenerar.Click
+
     End Sub
 End Class
