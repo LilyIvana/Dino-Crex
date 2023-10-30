@@ -38,7 +38,7 @@ Partial Class F0_ExpImpStockFisico
         Me.LabelX4 = New DevComponents.DotNetBar.LabelX()
         Me.tbFechaInv = New DevComponents.Editors.DateTimeAdv.DateTimeInput()
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
-        Me.btActPrecios = New DevComponents.DotNetBar.ButtonX()
+        Me.btnImportar = New DevComponents.DotNetBar.ButtonX()
         Me.PanelSuperior.SuspendLayout()
         Me.PanelInferior.SuspendLayout()
         CType(Me.BubbleBarUsuario, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -148,11 +148,11 @@ Partial Class F0_ExpImpStockFisico
         '
         'PanelToolBar2
         '
-        Me.PanelToolBar2.Controls.Add(Me.btActPrecios)
+        Me.PanelToolBar2.Controls.Add(Me.btnImportar)
         Me.PanelToolBar2.Location = New System.Drawing.Point(1184, 0)
         Me.PanelToolBar2.Margin = New System.Windows.Forms.Padding(4)
         Me.PanelToolBar2.Size = New System.Drawing.Size(160, 72)
-        Me.PanelToolBar2.Controls.SetChildIndex(Me.btActPrecios, 0)
+        Me.PanelToolBar2.Controls.SetChildIndex(Me.btnImportar, 0)
         Me.PanelToolBar2.Controls.SetChildIndex(Me.btnImprimir, 0)
         '
         'PanelPrincipal
@@ -167,10 +167,9 @@ Partial Class F0_ExpImpStockFisico
         'btnImprimir
         '
         Me.btnImprimir.Image = Global.DinoM.My.Resources.Resources.sheets
-        Me.btnImprimir.ImageFixedSize = New System.Drawing.Size(45, 45)
+        Me.btnImprimir.ImageFixedSize = New System.Drawing.Size(42, 45)
         Me.btnImprimir.Size = New System.Drawing.Size(75, 72)
         Me.btnImprimir.Text = "EXPORTAR"
-        Me.btnImprimir.Visible = False
         '
         'btnUltimo
         '
@@ -353,7 +352,6 @@ Partial Class F0_ExpImpStockFisico
         Me.GroupPanel3.StyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.GroupPanel3.TabIndex = 0
         Me.GroupPanel3.Text = "FILTROS"
-        Me.GroupPanel3.Visible = False
         '
         'Panel4
         '
@@ -513,23 +511,23 @@ Partial Class F0_ExpImpStockFisico
         Me.Timer1.Enabled = True
         Me.Timer1.Interval = 500
         '
-        'btActPrecios
+        'btnImportar
         '
-        Me.btActPrecios.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
-        Me.btActPrecios.ColorTable = DevComponents.DotNetBar.eButtonColor.Flat
-        Me.btActPrecios.Dock = System.Windows.Forms.DockStyle.Right
-        Me.btActPrecios.Font = New System.Drawing.Font("Arial", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btActPrecios.Image = Global.DinoM.My.Resources.Resources.sheets
-        Me.btActPrecios.ImageFixedSize = New System.Drawing.Size(45, 45)
-        Me.btActPrecios.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top
-        Me.btActPrecios.Location = New System.Drawing.Point(75, 0)
-        Me.btActPrecios.Name = "btActPrecios"
-        Me.btActPrecios.Padding = New System.Windows.Forms.Padding(0, 0, 0, 20)
-        Me.btActPrecios.Size = New System.Drawing.Size(85, 72)
-        Me.btActPrecios.Style = DevComponents.DotNetBar.eDotNetBarStyle.OfficeMobile2014
-        Me.btActPrecios.TabIndex = 13
-        Me.btActPrecios.Text = "IMPORTAR"
-        Me.btActPrecios.TextColor = System.Drawing.Color.White
+        Me.btnImportar.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
+        Me.btnImportar.ColorTable = DevComponents.DotNetBar.eButtonColor.Flat
+        Me.btnImportar.Dock = System.Windows.Forms.DockStyle.Right
+        Me.btnImportar.Font = New System.Drawing.Font("Arial", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnImportar.Image = Global.DinoM.My.Resources.Resources.importar
+        Me.btnImportar.ImageFixedSize = New System.Drawing.Size(48, 45)
+        Me.btnImportar.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top
+        Me.btnImportar.Location = New System.Drawing.Point(75, 0)
+        Me.btnImportar.Name = "btnImportar"
+        Me.btnImportar.Padding = New System.Windows.Forms.Padding(0, 0, 0, 20)
+        Me.btnImportar.Size = New System.Drawing.Size(85, 72)
+        Me.btnImportar.Style = DevComponents.DotNetBar.eDotNetBarStyle.OfficeMobile2014
+        Me.btnImportar.TabIndex = 13
+        Me.btnImportar.Text = "IMPORTAR"
+        Me.btnImportar.TextColor = System.Drawing.Color.White
         '
         'F0_ExpImpStockFisico
         '
@@ -576,7 +574,7 @@ Partial Class F0_ExpImpStockFisico
     Friend WithEvents Panel5 As System.Windows.Forms.Panel
     Friend WithEvents grDatos As Janus.Windows.GridEX.GridEX
     Friend WithEvents Timer1 As Timer
-    Friend WithEvents btActPrecios As DevComponents.DotNetBar.ButtonX
+    Friend WithEvents btnImportar As DevComponents.DotNetBar.ButtonX
     Friend WithEvents LabelX4 As DevComponents.DotNetBar.LabelX
     Friend WithEvents tbFechaInv As DevComponents.Editors.DateTimeAdv.DateTimeInput
     Friend WithEvents LabelX1 As DevComponents.DotNetBar.LabelX

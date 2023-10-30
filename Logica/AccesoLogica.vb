@@ -7444,5 +7444,17 @@ Public Class AccesoLogica
         Return _Tabla
     End Function
 
+    Public Shared Function L_fnMostrarProductosXresponsable(responsable As String) As DataTable
+        Dim _Tabla As DataTable
+
+        Dim _listParam As New List(Of Datos.DParametro)
+
+        _listParam.Add(New Datos.DParametro("@tipo", 5))
+        _listParam.Add(New Datos.DParametro("@responsable", responsable))
+        _listParam.Add(New Datos.DParametro("@yguact", L_Usuario))
+        _Tabla = D_ProcedimientoConParam("ProcConteoFisico", _listParam)
+
+        Return _Tabla
+    End Function
 #End Region
 End Class

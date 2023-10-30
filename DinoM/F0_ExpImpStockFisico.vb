@@ -13,6 +13,7 @@ Imports System.Drawing
 Imports DevComponents.DotNetBar.Controls
 Imports System.Threading
 Imports System.Drawing.Text
+Imports System.Data.OleDb
 
 Imports System.Reflection
 Imports System.Runtime.InteropServices
@@ -26,6 +27,8 @@ Public Class F0_ExpImpStockFisico
     Public _nameButton As String
     Public _modulo As SideNavItem
     Public _tab As SuperTabItem
+    Public InventarioImport As New DataTable
+
 #End Region
 #Region "MEtodos Privados"
     Private Sub _IniciarTodo()
@@ -273,7 +276,96 @@ Public Class F0_ExpImpStockFisico
             MostrarMensajeError(ex.Message)
         End Try
     End Sub
+    Private Sub MP_ImportarExcel()
+        Try
+            Dim folder As String = ""
+            Dim doc As String = "Hoja1"
+            Dim openfile1 As OpenFileDialog = New OpenFileDialog()
 
+            If openfile1.ShowDialog() = System.Windows.Forms.DialogResult.OK Then
+                folder = openfile1.FileName
+            End If
+
+            If True Then
+                Dim pathconn As String = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" & folder & ";Extended Properties='Excel 12.0 Xml;HDR=Yes'"
+                'Dim pathconn As String = "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=" & folder & ";"
+                'Dim pathconn As String = "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=" & folder & ";Extended Properties=""Excel 8.0;HDR=YES;"""
+
+                Dim con As OleDbConnection = New OleDbConnection(pathconn)
+                Dim MyDataAdapter As OleDbDataAdapter = New OleDbDataAdapter("Select * from [" & doc & "$]", con)
+                con.Open()
+
+                MyDataAdapter.Fill(InventarioImport)
+                con.Close()
+
+                'Dim dt = InventarioImport.Copy
+
+                'Dim fecha = dt.Rows(0).Item("Fecha1")
+
+            End If
+
+        Catch ex As Exception
+            MostrarMensajeError(ex.Message)
+        End Try
+    End Sub
+
+    Private Sub MP_PasarDatos()
+        Try
+            Dim resp = InventarioImport.Rows(0).Item("RESPONSABLE")
+            Dim TablaProductos As DataTable = L_fnMostrarProductosXresponsable(resp)
+            Dim ProdFiltrado As DataTable
+            Dim Numi As String
+            Dim Tablaaux As DataTable = InventarioImport.Copy
+
+            '''Validación para comprobar que no existan dos o mas filas con el mismo codigo
+            'For k = 0 To InventarioImport.Rows.Count - 1
+            '    Dim aux = Tablaaux.Select("Codigo=" + InventarioImport.Rows(k).Item("Codigo").ToString)
+            '    If aux.Length > 1 Then
+            '        ToastNotification.Show(Me, "No se puede realizar la importación porque el codigo:  ".ToUpper & InventarioImport.Rows(k).Item("Codigo").ToString & " existe  ".ToUpper & aux.Length.ToString & " veces en la lista".ToUpper,
+            '                               My.Resources.WARNING, 5000, eToastGlowColor.Green, eToastPosition.BottomCenter)
+            '        Exit Sub
+            '    End If
+            'Next
+
+
+            If InventarioImport.Rows.Count = TablaProductos.Rows.Count Then
+                '''Hago una copia para ir cambiando el codigo flex por el codigo del sistema
+                'Dim InvProductos As DataTable = InventarioImport.Copy
+                'For i = 0 To InventarioImport.Rows.Count - 1
+                '    ProdFiltrado = L_fnProductoPorCacod(InventarioImport.Rows(i).Item("Codigo").ToString)
+                '    If ProdFiltrado.Rows.Count > 0 Then
+                '        Numi = ProdFiltrado.Rows(0).Item("canumi").ToString
+                '        InvProductos.Rows(i).Item("Codigo") = Numi
+                '    Else
+                '        ToastNotification.Show(Me, "No se puede realizar la importación porque el código de producto: ".ToUpper & InventarioImport.Rows(i).Item("Codigo").ToString & " no pertenece a la lista de Productos de la base de datos".ToUpper,
+                '                               My.Resources.WARNING, 5000, eToastGlowColor.Green, eToastPosition.BottomCenter)
+                '        Exit Sub
+                '    End If
+
+                'Next
+                'Dim importar As Boolean = L_fnImportarInventario(InvProductos)
+                'If importar Then
+                '    ToastNotification.Show(Me, "IMPORTACIÓN DEL INVENTARIO EXITOSA!!! ",
+                '                  My.Resources.OK, 5000,
+                '                  eToastGlowColor.Green,
+                '                  eToastPosition.BottomCenter)
+                'Else
+                '    ToastNotification.Show(Me, "FALLÓ LA IMPORTACIÓN DEL INVENTARIO!!!",
+                '                  My.Resources.WARNING, 4000,
+                '                  eToastGlowColor.Red,
+                '                  eToastPosition.BottomCenter)
+                'End If
+            Else
+                ToastNotification.Show(Me, "No se puede realizar la importación porque la Lista del Inventario tiene que tener ".ToUpper & TablaProductos.Rows.Count & " registros".ToUpper,
+                                       My.Resources.WARNING, 5000, eToastGlowColor.Green, eToastPosition.BottomCenter)
+                Exit Sub
+            End If
+
+
+        Catch ex As Exception
+            MostrarMensajeError(ex.Message)
+        End Try
+    End Sub
     Private Sub MostrarMensajeError(mensaje As String)
         ToastNotification.Show(Me,
                                mensaje.ToUpper,
@@ -283,10 +375,12 @@ Public Class F0_ExpImpStockFisico
                                eToastPosition.TopCenter)
 
     End Sub
+
+
 #End Region
 
 
-#Region "MEtodoso Formulario"
+#Region "Métodos Formulario"
     Private Sub F0_Precios_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         _IniciarTodo()
         _prInhabiliitar()
@@ -423,23 +517,7 @@ Public Class F0_ExpImpStockFisico
 
     End Sub
 
-    Private Sub btActPrecios_Click(sender As Object, e As EventArgs) Handles btActPrecios.Click
-        Dim grabar As Boolean = L_fnActualizarPreciosEnLote()
-        If (grabar) Then
-            Dim img As Bitmap = New Bitmap(My.Resources.checked, 50, 50)
-            ToastNotification.Show(Me, "Precio PDV y Especial actualizados con éxito".ToUpper,
-                                      img, 2000,
-                                      eToastGlowColor.Green,
-                                      eToastPosition.TopCenter
-                                      )
 
-
-        Else
-            Dim img As Bitmap = New Bitmap(My.Resources.cancel, 50, 50)
-            ToastNotification.Show(Me, "Precio PDV y Especial no pudieron ser actualizados".ToUpper,
-                                   img, 2000, eToastGlowColor.Red, eToastPosition.BottomCenter)
-        End If
-    End Sub
 
     Private Sub btnSearch_Click(sender As Object, e As EventArgs) Handles btnSearch.Click
         Buscador()
@@ -447,5 +525,11 @@ Public Class F0_ExpImpStockFisico
 
     Private Sub btnGenerar_Click(sender As Object, e As EventArgs) Handles btnGenerar.Click
 
+    End Sub
+
+    Private Sub btnImportar_Click(sender As Object, e As EventArgs) Handles btnImportar.Click
+        InventarioImport.Clear()
+        MP_ImportarExcel()
+        MP_PasarDatos()
     End Sub
 End Class
