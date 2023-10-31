@@ -39,6 +39,7 @@ Partial Class F0_ExpImpStockFisico
         Me.tbFechaInv = New DevComponents.Editors.DateTimeAdv.DateTimeInput()
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         Me.btnImportar = New DevComponents.DotNetBar.ButtonX()
+        Me.btnGrabarImp = New DevComponents.DotNetBar.ButtonX()
         Me.PanelSuperior.SuspendLayout()
         Me.PanelInferior.SuspendLayout()
         CType(Me.BubbleBarUsuario, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -357,6 +358,7 @@ Partial Class F0_ExpImpStockFisico
         '
         Me.Panel4.AutoScroll = True
         Me.Panel4.BackColor = System.Drawing.Color.White
+        Me.Panel4.Controls.Add(Me.btnGrabarImp)
         Me.Panel4.Controls.Add(Me.btnGenerar)
         Me.Panel4.Controls.Add(Me.lbCtrlEnter)
         Me.Panel4.Controls.Add(Me.btnSearch)
@@ -529,6 +531,22 @@ Partial Class F0_ExpImpStockFisico
         Me.btnImportar.Text = "IMPORTAR"
         Me.btnImportar.TextColor = System.Drawing.Color.White
         '
+        'btnGrabarImp
+        '
+        Me.btnGrabarImp.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
+        Me.btnGrabarImp.BackColor = System.Drawing.Color.Transparent
+        Me.btnGrabarImp.ColorTable = DevComponents.DotNetBar.eButtonColor.BlueOrb
+        Me.btnGrabarImp.Image = Global.DinoM.My.Resources.Resources.save
+        Me.btnGrabarImp.ImageFixedSize = New System.Drawing.Size(40, 40)
+        Me.btnGrabarImp.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top
+        Me.btnGrabarImp.Location = New System.Drawing.Point(603, 10)
+        Me.btnGrabarImp.Name = "btnGrabarImp"
+        Me.btnGrabarImp.Size = New System.Drawing.Size(65, 65)
+        Me.btnGrabarImp.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+        Me.btnGrabarImp.TabIndex = 691
+        Me.btnGrabarImp.Text = "Grabar"
+        Me.btnGrabarImp.Visible = False
+        '
         'F0_ExpImpStockFisico
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -582,4 +600,5 @@ Partial Class F0_ExpImpStockFisico
     Friend WithEvents btnSearch As DevComponents.DotNetBar.ButtonX
     Friend WithEvents lbCtrlEnter As DevComponents.DotNetBar.LabelX
     Friend WithEvents btnGenerar As DevComponents.DotNetBar.ButtonX
+    Friend WithEvents btnGrabarImp As DevComponents.DotNetBar.ButtonX
 End Class
