@@ -7441,12 +7441,28 @@ Public Class AccesoLogica
 
         Return _resultado
     End Function
+
+    Public Shared Function L_fnVerificarGrabadoConteo(resp As String, fecha As String) As DataTable
+        Dim _Tabla As DataTable
+
+        Dim _listParam As New List(Of Datos.DParametro)
+
+        _listParam.Add(New Datos.DParametro("@tipo", 2))
+        _listParam.Add(New Datos.DParametro("@responsable", resp))
+        _listParam.Add(New Datos.DParametro("@fechaInv", fecha))
+        _listParam.Add(New Datos.DParametro("@cguact", L_Usuario))
+        _Tabla = D_ProcedimientoConParam("ProcConteoFisico", _listParam)
+
+        Return _Tabla
+    End Function
     Public Shared Function L_fnListarConteoUsuario(usu As String, fecha As String) As DataTable
         Dim _Tabla As DataTable
 
         Dim _listParam As New List(Of Datos.DParametro)
 
         _listParam.Add(New Datos.DParametro("@tipo", 3))
+        _listParam.Add(New Datos.DParametro("@responsable", usu))
+        _listParam.Add(New Datos.DParametro("@fechaInv", fecha))
         _listParam.Add(New Datos.DParametro("@cguact", L_Usuario))
         _Tabla = D_ProcedimientoConParam("ProcConteoFisico", _listParam)
 

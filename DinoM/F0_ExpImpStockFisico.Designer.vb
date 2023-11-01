@@ -30,7 +30,7 @@ Partial Class F0_ExpImpStockFisico
         Me.grDatos = New Janus.Windows.GridEX.GridEX()
         Me.GroupPanel3 = New DevComponents.DotNetBar.Controls.GroupPanel()
         Me.Panel4 = New System.Windows.Forms.Panel()
-        Me.btnGenerar = New DevComponents.DotNetBar.ButtonX()
+        Me.btnGrabarImp = New DevComponents.DotNetBar.ButtonX()
         Me.lbCtrlEnter = New DevComponents.DotNetBar.LabelX()
         Me.btnSearch = New DevComponents.DotNetBar.ButtonX()
         Me.LabelX1 = New DevComponents.DotNetBar.LabelX()
@@ -39,7 +39,6 @@ Partial Class F0_ExpImpStockFisico
         Me.tbFechaInv = New DevComponents.Editors.DateTimeAdv.DateTimeInput()
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         Me.btnImportar = New DevComponents.DotNetBar.ButtonX()
-        Me.btnGrabarImp = New DevComponents.DotNetBar.ButtonX()
         Me.PanelSuperior.SuspendLayout()
         Me.PanelInferior.SuspendLayout()
         CType(Me.BubbleBarUsuario, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -359,7 +358,6 @@ Partial Class F0_ExpImpStockFisico
         Me.Panel4.AutoScroll = True
         Me.Panel4.BackColor = System.Drawing.Color.White
         Me.Panel4.Controls.Add(Me.btnGrabarImp)
-        Me.Panel4.Controls.Add(Me.btnGenerar)
         Me.Panel4.Controls.Add(Me.lbCtrlEnter)
         Me.Panel4.Controls.Add(Me.btnSearch)
         Me.Panel4.Controls.Add(Me.LabelX1)
@@ -372,20 +370,21 @@ Partial Class F0_ExpImpStockFisico
         Me.Panel4.Size = New System.Drawing.Size(1305, 97)
         Me.Panel4.TabIndex = 0
         '
-        'btnGenerar
+        'btnGrabarImp
         '
-        Me.btnGenerar.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
-        Me.btnGenerar.BackColor = System.Drawing.Color.Transparent
-        Me.btnGenerar.ColorTable = DevComponents.DotNetBar.eButtonColor.BlueOrb
-        Me.btnGenerar.Image = Global.DinoM.My.Resources.Resources.ventasCostos
-        Me.btnGenerar.ImageFixedSize = New System.Drawing.Size(40, 40)
-        Me.btnGenerar.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top
-        Me.btnGenerar.Location = New System.Drawing.Point(488, 10)
-        Me.btnGenerar.Name = "btnGenerar"
-        Me.btnGenerar.Size = New System.Drawing.Size(65, 65)
-        Me.btnGenerar.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-        Me.btnGenerar.TabIndex = 690
-        Me.btnGenerar.Text = "Generar"
+        Me.btnGrabarImp.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
+        Me.btnGrabarImp.BackColor = System.Drawing.Color.Transparent
+        Me.btnGrabarImp.ColorTable = DevComponents.DotNetBar.eButtonColor.BlueOrb
+        Me.btnGrabarImp.Image = Global.DinoM.My.Resources.Resources.save
+        Me.btnGrabarImp.ImageFixedSize = New System.Drawing.Size(40, 40)
+        Me.btnGrabarImp.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top
+        Me.btnGrabarImp.Location = New System.Drawing.Point(603, 10)
+        Me.btnGrabarImp.Name = "btnGrabarImp"
+        Me.btnGrabarImp.Size = New System.Drawing.Size(65, 65)
+        Me.btnGrabarImp.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+        Me.btnGrabarImp.TabIndex = 691
+        Me.btnGrabarImp.Text = "Grabar"
+        Me.btnGrabarImp.Visible = False
         '
         'lbCtrlEnter
         '
@@ -531,22 +530,6 @@ Partial Class F0_ExpImpStockFisico
         Me.btnImportar.Text = "IMPORTAR"
         Me.btnImportar.TextColor = System.Drawing.Color.White
         '
-        'btnGrabarImp
-        '
-        Me.btnGrabarImp.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
-        Me.btnGrabarImp.BackColor = System.Drawing.Color.Transparent
-        Me.btnGrabarImp.ColorTable = DevComponents.DotNetBar.eButtonColor.BlueOrb
-        Me.btnGrabarImp.Image = Global.DinoM.My.Resources.Resources.save
-        Me.btnGrabarImp.ImageFixedSize = New System.Drawing.Size(40, 40)
-        Me.btnGrabarImp.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top
-        Me.btnGrabarImp.Location = New System.Drawing.Point(603, 10)
-        Me.btnGrabarImp.Name = "btnGrabarImp"
-        Me.btnGrabarImp.Size = New System.Drawing.Size(65, 65)
-        Me.btnGrabarImp.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-        Me.btnGrabarImp.TabIndex = 691
-        Me.btnGrabarImp.Text = "Grabar"
-        Me.btnGrabarImp.Visible = False
-        '
         'F0_ExpImpStockFisico
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -599,6 +582,5 @@ Partial Class F0_ExpImpStockFisico
     Friend WithEvents tbUsuario As DevComponents.DotNetBar.Controls.TextBoxX
     Friend WithEvents btnSearch As DevComponents.DotNetBar.ButtonX
     Friend WithEvents lbCtrlEnter As DevComponents.DotNetBar.LabelX
-    Friend WithEvents btnGenerar As DevComponents.DotNetBar.ButtonX
     Friend WithEvents btnGrabarImp As DevComponents.DotNetBar.ButtonX
 End Class

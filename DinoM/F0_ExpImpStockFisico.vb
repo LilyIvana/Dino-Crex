@@ -37,6 +37,7 @@ Public Class F0_ExpImpStockFisico
 
         _prAsignarPermisos()
         Me.Text = "CONTEO  FÍSICO  DE  PRODUCTOS"
+        tbFechaInv.Value = Now.Date
         Dim blah As New Bitmap(New Bitmap(My.Resources.hojaruta), 20, 20)
         Dim ico As Icon = Icon.FromHandle(blah.GetHicon())
         Me.Icon = ico
@@ -63,61 +64,175 @@ Public Class F0_ExpImpStockFisico
 
     Public Sub _prCargarTabla(Usuario As String, fecha As String) ''Bandera = true si es que haiq cargar denuevo la tabla de Precio Bandera =false si solo cargar datos al Janus con el precio antepuesto
 
-        Dim productos As DataTable = L_fnListarConteoUsuario(Usuario, fecha)
+        Dim datos As DataTable = L_fnListarConteoUsuario(Usuario, fecha)
+
+        If datos.Rows.Count > 0 Then
+
+            grDatos.BoundMode = Janus.Data.BoundMode.Bound
+            grDatos.DataSource = datos
+            grDatos.RetrieveStructure()
+
+            With grDatos.RootTable.Columns("ordenacion")
+                .Caption = "ORDENACIÓN"
+                .Width = 100
+                .Visible = True
+            End With
+            With grDatos.RootTable.Columns("codDynasys")
+                .Caption = "COD DYNASYS"
+                .Width = 100
+                .Visible = True
+            End With
+            With grDatos.RootTable.Columns("codDelta")
+                .Caption = "COD DELTA"
+                .Width = 100
+                .Visible = True
+            End With
+            With grDatos.RootTable.Columns("codBarra")
+                .Caption = "COD BARRAS"
+                .Width = 150
+                .Visible = True
+            End With
+            With grDatos.RootTable.Columns("codProv")
+                .Caption = "COD PROVEEDOR"
+                .Width = 120
+                .Visible = True
+            End With
+            With grDatos.RootTable.Columns("prod")
+                .Caption = "PRODUCTO"
+                .Width = 350
+                .Visible = True
+            End With
+            With grDatos.RootTable.Columns("prov")
+                .Caption = "PROVEEDOR"
+                .Width = 120
+                .Visible = True
+            End With
+            With grDatos.RootTable.Columns("icental")
+                .Caption = "ISLA CENTRAL"
+                .Width = 120
+                .Visible = True
+                .FormatString = "0.00"
+            End With
+            With grDatos.RootTable.Columns("imedia")
+                .Caption = "ISLA MEDIA"
+                .Width = 120
+                .Visible = True
+                .FormatString = "0.00"
+            End With
+            With grDatos.RootTable.Columns("ifinal")
+                .Caption = "ISLA FINAL"
+                .Width = 120
+                .Visible = True
+                .FormatString = "0.00"
+            End With
+            With grDatos.RootTable.Columns("refri")
+                .Caption = "REFRI"
+                .Width = 120
+                .Visible = True
+                .FormatString = "0.00"
+            End With
+            With grDatos.RootTable.Columns("rack")
+                .Caption = "RACK"
+                .Width = 120
+                .Visible = True
+                .FormatString = "0.00"
+            End With
+            With grDatos.RootTable.Columns("estan")
+                .Caption = "ESTAN"
+                .Width = 120
+                .Visible = True
+                .FormatString = "0.00"
+            End With
+            With grDatos.RootTable.Columns("paq")
+                .Caption = "PAQ"
+                .Width = 120
+                .Visible = True
+                .FormatString = "0.00"
+            End With
+            With grDatos.RootTable.Columns("canttotal")
+                .Caption = "TOTAL CANTIDAD"
+                .Width = 120
+                .Visible = True
+                .FormatString = "0.00"
+            End With
+            With grDatos.RootTable.Columns("cant1")
+                .Caption = "CANTIDAD1"
+                .Width = 120
+                .Visible = True
+                .FormatString = "0.00"
+            End With
+            With grDatos.RootTable.Columns("fecha1")
+                .Caption = "FECHA1"
+                .Width = 120
+                .Visible = True
+            End With
+            With grDatos.RootTable.Columns("cant2")
+                .Caption = "CANTIDAD2"
+                .Width = 120
+                .Visible = True
+                .FormatString = "0.00"
+            End With
+            With grDatos.RootTable.Columns("fecha2")
+                .Caption = "FECHA2"
+                .Width = 120
+                .Visible = True
+            End With
+            With grDatos.RootTable.Columns("cant3")
+                .Caption = "CANTIDAD3"
+                .Width = 120
+                .Visible = True
+                .FormatString = "0.00"
+            End With
+            With grDatos.RootTable.Columns("fecha3")
+                .Caption = "FECHA3"
+                .Width = 120
+                .Visible = True
+            End With
+            With grDatos.RootTable.Columns("cant4")
+                .Caption = "CANTIDAD4"
+                .Width = 120
+                .Visible = True
+                .FormatString = "0.00"
+            End With
+            With grDatos.RootTable.Columns("fecha4")
+                .Caption = "FECHA4"
+                .Width = 120
+                .Visible = True
+            End With
+            With grDatos.RootTable.Columns("responsable")
+                .Caption = "RESPONSABLE"
+                .Width = 120
+                .Visible = True
+            End With
+            With grDatos.RootTable.Columns("lado")
+                .Caption = "LADO"
+                .Width = 120
+                .Visible = True
+            End With
 
 
-        grDatos.BoundMode = Janus.Data.BoundMode.Bound
-        grDatos.DataSource = productos
-        grDatos.RetrieveStructure()
+            'Habilitar Filtradores
+            With grDatos
+                .GroupByBoxVisible = False
+                '.FilterRowFormatStyle.BackColor = Color.Blue
+                .DefaultFilterRowComparison = FilterConditionOperator.Contains
+                '.FilterMode = FilterMode.Automatic
+                .FilterRowUpdateMode = FilterRowUpdateMode.WhenValueChanges
+                .FilterMode = FilterMode.Automatic
+                'Diseño de la tabla
+                .VisualStyle = VisualStyle.Office2007
+                .SelectionMode = SelectionMode.SingleSelection
+                .AlternatingColors = True
 
-        With grDatos.RootTable.Columns("yfnumi")
-            .Caption = "COD DYN"
-            .Width = 100
-            .Visible = True
-        End With
-        With grDatos.RootTable.Columns("yfcprod")
-            .Caption = "COD DELTA"
-            .Width = 100
-            .Visible = True
-        End With
-        With grDatos.RootTable.Columns("yfcbarra")
-            .Caption = "COD. BARRAS"
-            .Width = 150
-            .Visible = True
-        End With
-        With grDatos.RootTable.Columns("yfcdprod1")
-            .Caption = "PRODUCTO"
-            .Width = 450
-            .Visible = True
-        End With
+                .RecordNavigator = True
+                .RecordNavigatorText = "Datos"
+            End With
 
-        With grDatos.RootTable.Columns("yfbactPrecio")
-            .Caption = "ACTUALIZA PRECIO PDV?"
-            .Width = 150
-            .Visible = True
-        End With
-        With grDatos.RootTable.Columns("estado")
-            .Caption = "ESTADO"
-            .Width = 120
-            .Visible = False
-        End With
-        'Habilitar Filtradores
-        With grDatos
-            .GroupByBoxVisible = False
-            '.FilterRowFormatStyle.BackColor = Color.Blue
-            .DefaultFilterRowComparison = FilterConditionOperator.Contains
-            '.FilterMode = FilterMode.Automatic
-            .FilterRowUpdateMode = FilterRowUpdateMode.WhenValueChanges
-            .FilterMode = FilterMode.Automatic
-            'Diseño de la tabla
-            .VisualStyle = VisualStyle.Office2007
-            .SelectionMode = SelectionMode.SingleSelection
-            .AlternatingColors = True
-
-            .RecordNavigator = True
-            .RecordNavigatorText = "Productos"
-        End With
-
+        Else
+            grDatos.ClearStructure()
+            ToastNotification.Show(Me, "No existe datos de la fecha elegida para: ".ToUpper & tbUsuario.Text,
+                           My.Resources.WARNING, 5000, eToastGlowColor.Green, eToastPosition.TopCenter)
+        End If
     End Sub
 
     Private Sub _prInhabiliitar()
@@ -140,7 +255,7 @@ Public Class F0_ExpImpStockFisico
     End Function
 
 
-    Public Function P_ExportarExcel(_ruta As String) As Boolean
+    Public Function P_ExportarExcel(_ruta As String, nombre As String) As Boolean
         Dim _ubicacion As String
         'Dim _directorio As New FolderBrowserDialog
 
@@ -152,8 +267,9 @@ Public Class F0_ExpImpStockFisico
                 Dim _escritor As StreamWriter
                 Dim _fila As Integer = grDatos.GetRows.Length
                 Dim _columna As Integer = grDatos.RootTable.Columns.Count
-                Dim _archivo As String = _ubicacion & "\ListaDeProd_" & Now.Date.Day &
+                Dim _archivo As String = _ubicacion & "\ListaConteo_" & nombre & "_" & Now.Date.Day &
                     "." & Now.Date.Month & "." & Now.Date.Year & "_" & Now.Hour & "." & Now.Minute & "." & Now.Second & ".csv"
+                '"." & Now.Date.Month & "." & Now.Date.Year & "_" & Now.Hour & "." & Now.Minute & "." & Now.Second & ".csv"
                 Dim _linea As String = ""
                 Dim _filadata = 0, columndata As Int32 = 0
                 File.Delete(_archivo)
@@ -243,8 +359,8 @@ Public Class F0_ExpImpStockFisico
             dt = L_fnMostrarUsuariosConteo()
 
             Dim listEstCeldas As New List(Of Modelo.Celda)
-            listEstCeldas.Add(New Modelo.Celda("ydnumi,", True, "COD USUARIO", 90))
-            listEstCeldas.Add(New Modelo.Celda("yduser", True, "USUARIO", 120))
+            listEstCeldas.Add(New Modelo.Celda("ydnumi,", True, "COD USUARIO", 120))
+            listEstCeldas.Add(New Modelo.Celda("yduser", True, "USUARIO", 250))
             listEstCeldas.Add(New Modelo.Celda("ydest", False, "ESTADO", 50))
 
             Dim ef = New Efecto
@@ -252,7 +368,7 @@ Public Class F0_ExpImpStockFisico
             ef.dt = dt
             ef.SeleclCol = 1
             ef.listEstCeldas = listEstCeldas
-            ef.alto = 50
+            ef.alto = 150
             ef.ancho = 200
             ef.Context = "Seleccione Usuario".ToUpper
             ef.SeleclCol = 1
@@ -267,7 +383,6 @@ Public Class F0_ExpImpStockFisico
                 End If
 
                 tbUsuario.Text = Row.Cells("yduser").Value
-
                 _prCargarTabla(tbUsuario.Text, tbFechaInv.Value.ToString("dd/MM/yyyy"))
 
             End If
@@ -313,9 +428,6 @@ Public Class F0_ExpImpStockFisico
         Try
             Dim resp = InventarioImport.Rows(0).Item("RESPONSABLE")
             Dim TablaProductos As DataTable = L_fnMostrarProductosXresponsable(resp)
-            Dim ProdFiltrado As DataTable
-            Dim Numi As String
-            Dim Tablaaux As DataTable = InventarioImport.Copy
 
             '''Validación para comprobar que no existan dos o mas filas con el mismo codigo
             'For k = 0 To InventarioImport.Rows.Count - 1
@@ -326,7 +438,6 @@ Public Class F0_ExpImpStockFisico
             '        Exit Sub
             '    End If
             'Next
-
 
             If InventarioImport.Rows.Count = TablaProductos.Rows.Count Then
 
@@ -357,53 +468,51 @@ Public Class F0_ExpImpStockFisico
                     If IsDBNull(InventarioImport.Rows(k).Item("FECHA1")) Or IsDBNull(InventarioImport.Rows(k).Item("FECHA2")) Or
                         IsDBNull(InventarioImport.Rows(k).Item("FECHA3")) Or IsDBNull(InventarioImport.Rows(k).Item("FECHA4")) Then
                         ToastNotification.Show(Me, "No se puede realizar la importación porque el codigo Dynasys: ".ToUpper & InventarioImport.Rows(k).Item("COD DYNASYS") &
-                                               " tiene una de las fechas de vencimimiento vacío o con un formato incorrecto, el formato es (dd/MM/aaaa) , revise por favor".ToUpper,
+                        " tiene una de las fechas de vencimimiento vacío o con un formato incorrecto, el formato es (dd/MM/aaaa) , revise por favor".ToUpper,
                                                My.Resources.WARNING, 8000, eToastGlowColor.Green, eToastPosition.BottomCenter)
                         Exit Sub
                     End If
                 Next
 
-
-
-
-                'grDatos.DataSource = InventarioImport.Copy
                 _prCargarTablaImport(InventarioImport)
                 btnGrabarImp.Visible = True
-
 
             Else
-                ''Validación para comprobar campos de cantidades
-                For i = 0 To InventarioImport.Rows.Count - 1
-                    'Dim aux = IIf(InventarioImport.Rows(i).Item("ISLA CENTRAL").ToString = String.Empty, 0, InventarioImport.Rows(i).Item("ISLA CENTRAL"))
-                    'Tablaaux.Select("Codigo=" + InventarioImport.Rows(i).Item("Codigo").ToString)
-                    If IsDBNull(InventarioImport.Rows(i).Item("ISLA CENTRAL")) Or (IIf(InventarioImport.Rows(i).Item("ISLA CENTRAL").ToString = String.Empty, 0, InventarioImport.Rows(i).Item("ISLA CENTRAL")) < 0) Or
-                       IsDBNull(InventarioImport.Rows(i).Item("ISLA MEDIA")) Or (IIf(InventarioImport.Rows(i).Item("ISLA MEDIA").ToString = String.Empty, 0, InventarioImport.Rows(i).Item("ISLA MEDIA")) < 0) Or
-                       IsDBNull(InventarioImport.Rows(i).Item("ISLA FINAL")) Or (IIf(InventarioImport.Rows(i).Item("ISLA FINAL").ToString = String.Empty, 0, InventarioImport.Rows(i).Item("ISLA FINAL")) < 0) Or
-                       IsDBNull(InventarioImport.Rows(i).Item("REFRI")) Or (IIf(InventarioImport.Rows(i).Item("REFRI").ToString = String.Empty, 0, InventarioImport.Rows(i).Item("REFRI")) < 0) Or
-                       IsDBNull(InventarioImport.Rows(i).Item("RACK")) Or (IIf(InventarioImport.Rows(i).Item("RACK").ToString = String.Empty, 0, InventarioImport.Rows(i).Item("RACK")) < 0) Or
-                       IsDBNull(InventarioImport.Rows(i).Item("ESTAN")) Or (IIf(InventarioImport.Rows(i).Item("ESTAN").ToString = String.Empty, 0, InventarioImport.Rows(i).Item("ESTAN")) < 0) Or
-                       IsDBNull(InventarioImport.Rows(i).Item("PAQ")) Or (IIf(InventarioImport.Rows(i).Item("PAQ").ToString = String.Empty, 0, InventarioImport.Rows(i).Item("PAQ")) < 0) Then
-                        ToastNotification.Show(Me, "No se puede realizar la importación porque el codigo Dynasys: " & InventarioImport.Rows(i).Item("COD DYNASYS") & " tiene una de las cantidades con valor negativo o vacío, revise por favor".ToUpper,
-                                               My.Resources.WARNING, 4000, eToastGlowColor.Green, eToastPosition.BottomCenter)
-                        Exit Sub
-                    End If
-                Next
+                '''Validación para comprobar todos los campos de cantidades menos  el campo Total Cantidad
+                'For i = 0 To InventarioImport.Rows.Count - 1
+                '    'Dim aux = IIf(InventarioImport.Rows(i).Item("ISLA CENTRAL").ToString = String.Empty, 0, InventarioImport.Rows(i).Item("ISLA CENTRAL"))
+                '    'Tablaaux.Select("Codigo=" + InventarioImport.Rows(i).Item("Codigo").ToString)
+                '    If IsDBNull(InventarioImport.Rows(i).Item("ISLA CENTRAL")) Or (IIf(InventarioImport.Rows(i).Item("ISLA CENTRAL").ToString = String.Empty, 0, InventarioImport.Rows(i).Item("ISLA CENTRAL")) < 0) Or
+                '       IsDBNull(InventarioImport.Rows(i).Item("ISLA MEDIA")) Or (IIf(InventarioImport.Rows(i).Item("ISLA MEDIA").ToString = String.Empty, 0, InventarioImport.Rows(i).Item("ISLA MEDIA")) < 0) Or
+                '       IsDBNull(InventarioImport.Rows(i).Item("ISLA FINAL")) Or (IIf(InventarioImport.Rows(i).Item("ISLA FINAL").ToString = String.Empty, 0, InventarioImport.Rows(i).Item("ISLA FINAL")) < 0) Or
+                '       IsDBNull(InventarioImport.Rows(i).Item("REFRI")) Or (IIf(InventarioImport.Rows(i).Item("REFRI").ToString = String.Empty, 0, InventarioImport.Rows(i).Item("REFRI")) < 0) Or
+                '       IsDBNull(InventarioImport.Rows(i).Item("RACK")) Or (IIf(InventarioImport.Rows(i).Item("RACK").ToString = String.Empty, 0, InventarioImport.Rows(i).Item("RACK")) < 0) Or
+                '       IsDBNull(InventarioImport.Rows(i).Item("ESTAN")) Or (IIf(InventarioImport.Rows(i).Item("ESTAN").ToString = String.Empty, 0, InventarioImport.Rows(i).Item("ESTAN")) < 0) Or
+                '       IsDBNull(InventarioImport.Rows(i).Item("PAQ")) Or (IIf(InventarioImport.Rows(i).Item("PAQ").ToString = String.Empty, 0, InventarioImport.Rows(i).Item("PAQ")) < 0) Or
+                '       IsDBNull(InventarioImport.Rows(i).Item("CANTIDAD1")) Or (IIf(InventarioImport.Rows(i).Item("CANTIDAD1").ToString = String.Empty, 0, InventarioImport.Rows(i).Item("CANTIDAD1")) < 0) Or
+                '       IsDBNull(InventarioImport.Rows(i).Item("CANTIDAD2")) Or (IIf(InventarioImport.Rows(i).Item("CANTIDAD2").ToString = String.Empty, 0, InventarioImport.Rows(i).Item("CANTIDAD2")) < 0) Or
+                '       IsDBNull(InventarioImport.Rows(i).Item("CANTIDAD3")) Or (IIf(InventarioImport.Rows(i).Item("CANTIDAD3").ToString = String.Empty, 0, InventarioImport.Rows(i).Item("CANTIDAD3")) < 0) Or
+                '       IsDBNull(InventarioImport.Rows(i).Item("CANTIDAD4")) Or (IIf(InventarioImport.Rows(i).Item("CANTIDAD4").ToString = String.Empty, 0, InventarioImport.Rows(i).Item("CANTIDAD4")) < 0) Then
+                '        ToastNotification.Show(Me, "No se puede realizar la importación porque el codigo Dynasys: ".ToUpper & InventarioImport.Rows(i).Item("COD DYNASYS") & " tiene una de las cantidades con valor negativo o vacío, revise por favor".ToUpper,
+                '                               My.Resources.WARNING, 6000, eToastGlowColor.Green, eToastPosition.BottomCenter)
+                '        Exit Sub
+                '    End If
+                'Next
 
-                ''Validación para comprobar fechas de vencimiento
-                For k = 0 To InventarioImport.Rows.Count - 1
+                '''Validación para comprobar fechas de vencimiento
+                'For k = 0 To InventarioImport.Rows.Count - 1
 
-                    If IsDBNull(InventarioImport.Rows(k).Item("FECHA1")) Or IsDBNull(InventarioImport.Rows(k).Item("FECHA2")) Or
-                        IsDBNull(InventarioImport.Rows(k).Item("FECHA3")) Or IsDBNull(InventarioImport.Rows(k).Item("FECHA4")) Then
-                        ToastNotification.Show(Me, "No se puede realizar la importación porque el codigo Dynasys: ".ToUpper & InventarioImport.Rows(k).Item("COD DYNASYS") &
-                                               " tiene una de las fechas de vencimimiento vacío o con un formato incorrecto, el formato es (dd/MM/aaaa) , revise por favor".ToUpper,
-                                               My.Resources.WARNING, 8000, eToastGlowColor.Green, eToastPosition.BottomCenter)
-                        Exit Sub
-                    End If
-                Next
+                '    If IsDBNull(InventarioImport.Rows(k).Item("FECHA1")) Or IsDBNull(InventarioImport.Rows(k).Item("FECHA2")) Or
+                '        IsDBNull(InventarioImport.Rows(k).Item("FECHA3")) Or IsDBNull(InventarioImport.Rows(k).Item("FECHA4")) Then
+                '        ToastNotification.Show(Me, "No se puede realizar la importación porque el codigo Dynasys: ".ToUpper & InventarioImport.Rows(k).Item("COD DYNASYS") &
+                '        " tiene una de las fechas de vencimimiento vacío o con un formato incorrecto, el formato es (dd/MM/aaaa) , revise por favor".ToUpper,
+                '                               My.Resources.WARNING, 8000, eToastGlowColor.Green, eToastPosition.BottomCenter)
+                '        Exit Sub
+                '    End If
+                'Next
 
-                _prCargarTablaImport(InventarioImport)
-                btnGrabarImp.Visible = True
-
+                '_prCargarTablaImport(InventarioImport)
+                'btnGrabarImp.Visible = True
                 ToastNotification.Show(Me, "No se puede realizar la importación porque la Lista tiene que tener ".ToUpper & TablaProductos.Rows.Count & " registros".ToUpper,
                                        My.Resources.WARNING, 5000, eToastGlowColor.Green, eToastPosition.BottomCenter)
                 Exit Sub
@@ -416,8 +525,6 @@ Public Class F0_ExpImpStockFisico
     End Sub
 
     Public Sub _prCargarTablaImport(dtImport As DataTable) ''Bandera = true si es que haiq cargar denuevo la tabla de Precio Bandera =false si solo cargar datos al Janus con el precio antepuesto
-
-
 
 
         grDatos.BoundMode = Janus.Data.BoundMode.Bound
@@ -514,87 +621,55 @@ Public Class F0_ExpImpStockFisico
     End Sub
 
 
-    Private Sub grprecio_CellEdited(sender As Object, e As ColumnActionEventArgs) Handles grDatos.CellEdited
-        If (_fnAccesible()) Then
-
-            ''Habilitar solo las columnas de Precio, %, Monto y Observación
-            'If (e.Column.Index > 1) Then
-            '    Dim data As String = grprecio.GetValue(e.Column.Index - 1).ToString.Trim 'En esta columna obtengo un protocolo que me indica el estado del precio 0= no insertado 1= ya insertado , a la ves con un '-' me indica la posicion de ese dato en el Datatable que envio para grabarlo que esta en 'precio' Ejemplo:1-15 -> estado=1 posicion=15
-            '    Dim estado As String = data.Substring(0, 1).Trim
-            '    Dim pos As String = data.Substring(2, data.Length - 2)
-            '    If (estado = 1 Or estado = 2) Then
-            '        precio.Rows(pos).Item("estado") = 2
-            '        precio.Rows(pos).Item("yhprecio") = grprecio.GetValue(e.Column.Index)
-            '    Else
-            '        If (estado = 0 Or estado = 3) Then
-            '            precio.Rows(pos).Item("estado") = 3
-            '            precio.Rows(pos).Item("yhprecio") = grprecio.GetValue(e.Column.Index)
-            '        End If
-            '    End If
-            'End If
 
 
-        End If
-    End Sub
+    'Private Sub grprecio_EditingCell(sender As Object, e As EditingCellEventArgs) Handles grDatos.EditingCell
 
-    Private Sub grprecio_EditingCell(sender As Object, e As EditingCellEventArgs) Handles grDatos.EditingCell
-
-        If btnGrabar.Enabled = False Then
-            e.Cancel = True
-            Return
-        End If
-        If (_fnAccesible() And IsNothing(grDatos.DataSource) = False) Then
-            'Deshabilitar la columna de Productos y solo habilitar la de los precios
-            If (e.Column.Index = grDatos.RootTable.Columns("yfcdprod1").Index Or
-               e.Column.Index = grDatos.RootTable.Columns("yfcprod").Index Or
-                e.Column.Index = grDatos.RootTable.Columns("yfnumi").Index Or
-                e.Column.Index = grDatos.RootTable.Columns("yfcbarra").Index) Then
-                e.Cancel = True
-            Else
-                e.Cancel = False
-            End If
-        Else
-            e.Cancel = True
-        End If
-    End Sub
-    Private Sub btnGrabar_Click(sender As Object, e As EventArgs) Handles btnGrabar.Click
-
-        Dim grabar As Boolean = L_fnActualizarProductoTY0052("", CType(grDatos.DataSource, DataTable))
-        If (grabar) Then
-            Dim img As Bitmap = New Bitmap(My.Resources.checked, 50, 50)
-            ToastNotification.Show(Me, "Condición de Productos Actualizados con éxito".ToUpper,
-                                      img, 2000,
-                                      eToastGlowColor.Green,
-                                      eToastPosition.TopCenter
-                                      )
-
-            '_prCargarTabla(True)
-            _prInhabiliitar()
-
-        Else
-            Dim img As Bitmap = New Bitmap(My.Resources.cancel, 50, 50)
-            ToastNotification.Show(Me, "La Condición de Productos no pudo ser insertado".ToUpper, img, 2000, eToastGlowColor.Red, eToastPosition.BottomCenter)
-        End If
-
-    End Sub
+    '    If btnGrabar.Enabled = False Then
+    '        e.Cancel = True
+    '        Return
+    '    End If
+    '    If (_fnAccesible() And IsNothing(grDatos.DataSource) = False) Then
+    '        'Deshabilitar la columna de Productos y solo habilitar la de los precios
+    '        If (e.Column.Index = grDatos.RootTable.Columns("yfcdprod1").Index Or
+    '           e.Column.Index = grDatos.RootTable.Columns("yfcprod").Index Or
+    '            e.Column.Index = grDatos.RootTable.Columns("yfnumi").Index Or
+    '            e.Column.Index = grDatos.RootTable.Columns("yfcbarra").Index) Then
+    '            e.Cancel = True
+    '        Else
+    '            e.Cancel = False
+    '        End If
+    '    Else
+    '        e.Cancel = True
+    '    End If
+    'End Sub
 
 
 #End Region
 
 
     Private Sub btnImprimir_Click(sender As Object, e As EventArgs) Handles btnImprimir.Click
-        _prCrearCarpetaReportes()
-        Dim img As Bitmap = New Bitmap(My.Resources.checked, 50, 50)
-        If (P_ExportarExcel(RutaGlobal + "\Reporte\Reporte Productos")) Then
-            ToastNotification.Show(Me, "EXPORTACIÓN DE LISTA DE PRODUCTOS EXITOSA..!!!",
+        If grDatos.RowCount > 0 Then
+
+            _prCrearCarpetaReportes()
+            Dim img As Bitmap = New Bitmap(My.Resources.checked, 50, 50)
+
+            If (P_ExportarExcel(RutaGlobal + "\Reporte\Reporte Productos", tbUsuario.Text)) Then
+                ToastNotification.Show(Me, "EXPORTACIÓN DE LISTA DE PRODUCTOS EXITOSA..!!!",
                                        img, 2000,
                                        eToastGlowColor.Green,
                                        eToastPosition.BottomCenter)
-        Else
-            ToastNotification.Show(Me, "FALLO AL EXPORTACIÓN DE LISTA DE PRODUCTOS..!!!",
+            Else
+                ToastNotification.Show(Me, "FALLO AL EXPORTACIÓN DE LISTA DE PRODUCTOS..!!!",
                                        My.Resources.WARNING, 2000,
                                        eToastGlowColor.Red,
                                        eToastPosition.BottomLeft)
+            End If
+        Else
+            ToastNotification.Show(Me, "NO EXISTE DATOS PARA EXPORTAR",
+                       My.Resources.WARNING, 2000,
+                       eToastGlowColor.Red,
+                       eToastPosition.TopCenter)
         End If
     End Sub
 
@@ -609,36 +684,10 @@ Public Class F0_ExpImpStockFisico
         End If
     End Sub
 
-    Private Sub grprecio_CellValueChanged(sender As Object, e As ColumnActionEventArgs) Handles grDatos.CellValueChanged
-        Dim lin As Integer = grDatos.GetValue("yfnumi")
-        Dim pos As Integer = -1
-        _fnObtenerFilaDetalle(pos, lin)
-
-        Dim estado As Integer = CType(grDatos.DataSource, DataTable).Rows(pos).Item("estado")
-        If (estado = 1) Then
-            CType(grDatos.DataSource, DataTable).Rows(pos).Item("estado") = 2
-        End If
-    End Sub
-    Public Sub _fnObtenerFilaDetalle(ByRef pos As Integer, numi As Integer)
-        For i As Integer = 0 To CType(grDatos.DataSource, DataTable).Rows.Count - 1 Step 1
-            Dim _numi As Integer = CType(grDatos.DataSource, DataTable).Rows(i).Item("yfnumi")
-            If (_numi = numi) Then
-                pos = i
-                Return
-            End If
-        Next
-
-    End Sub
-
-
-
     Private Sub btnSearch_Click(sender As Object, e As EventArgs) Handles btnSearch.Click
         Buscador()
     End Sub
 
-    Private Sub btnGenerar_Click(sender As Object, e As EventArgs) Handles btnGenerar.Click
-
-    End Sub
 
     Private Sub btnImportar_Click(sender As Object, e As EventArgs) Handles btnImportar.Click
         InventarioImport.Clear()
@@ -647,17 +696,38 @@ Public Class F0_ExpImpStockFisico
     End Sub
 
     Private Sub btnGrabarImp_Click(sender As Object, e As EventArgs) Handles btnGrabarImp.Click
-        Dim importar As Boolean = L_fnImportarInventarioFisico(InventarioImport)
-        If importar Then
-            ToastNotification.Show(Me, "IMPORTACIÓN DEL INVENTARIO FÍSICO EXITOSA!!! ",
-                          My.Resources.OK, 5000,
-                          eToastGlowColor.Green,
-                          eToastPosition.BottomCenter)
+        Dim respons As String = InventarioImport.Rows(0).Item("RESPONSABLE").ToString
+        Dim fecha As Date = Now.Date.ToString("dd/MM/yyyy")
+        Dim dtVerificar = L_fnVerificarGrabadoConteo(respons, fecha)
+        If dtVerificar.Rows.Count > 0 Then
+            ToastNotification.Show(Me, "YA EXISTE EL CONTEO DE HOY, NO PUEDE GRABAR 2 VECES!!!",
+              My.Resources.WARNING, 4000,
+              eToastGlowColor.Red,
+              eToastPosition.BottomCenter)
+            btnGrabarImp.Visible = False
+            grDatos.ClearStructure()
+            Exit Sub
         Else
-            ToastNotification.Show(Me, "FALLÓ LA IMPORTACIÓN DEL INVENTARIO FÍSICO!!!",
-                          My.Resources.WARNING, 4000,
-                          eToastGlowColor.Red,
-                          eToastPosition.BottomCenter)
+            Dim importar As Boolean = L_fnImportarInventarioFisico(InventarioImport)
+            If importar Then
+                ToastNotification.Show(Me, "IMPORTACIÓN DEL INVENTARIO FÍSICO EXITOSA!!! ",
+                              My.Resources.OK, 5000,
+                              eToastGlowColor.Green,
+                              eToastPosition.BottomCenter)
+                btnGrabarImp.Visible = False
+            Else
+                ToastNotification.Show(Me, "FALLÓ LA IMPORTACIÓN DEL INVENTARIO FÍSICO!!!",
+                              My.Resources.WARNING, 4000,
+                              eToastGlowColor.Red,
+                              eToastPosition.BottomCenter)
+            End If
         End If
+
+
+
+    End Sub
+
+    Private Sub grDatos_EditingCell(sender As Object, e As EditingCellEventArgs) Handles grDatos.EditingCell
+        e.Cancel = True
     End Sub
 End Class

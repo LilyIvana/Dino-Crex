@@ -449,7 +449,7 @@ Partial Class F1_Productos
         Me.tbConversion2.ButtonFreeText.Shortcut = DevComponents.DotNetBar.eShortcut.F2
         Me.tbConversion2.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.tbConversion2.Increment = 1.0R
-        Me.tbConversion2.Location = New System.Drawing.Point(332, 39)
+        Me.tbConversion2.Location = New System.Drawing.Point(300, 39)
         Me.tbConversion2.MinValue = 0R
         Me.tbConversion2.Name = "tbConversion2"
         Me.tbConversion2.Size = New System.Drawing.Size(69, 22)
@@ -463,14 +463,14 @@ Partial Class F1_Productos
         '
         '
         Me.LabelX18.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.LabelX18.Font = New System.Drawing.Font("Georgia", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LabelX18.Font = New System.Drawing.Font("Georgia", 8.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.LabelX18.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(85, Byte), Integer), CType(CType(139, Byte), Integer))
         Me.LabelX18.Location = New System.Drawing.Point(208, 38)
         Me.LabelX18.Name = "LabelX18"
         Me.LabelX18.SingleLineColor = System.Drawing.SystemColors.Control
-        Me.LabelX18.Size = New System.Drawing.Size(121, 23)
+        Me.LabelX18.Size = New System.Drawing.Size(80, 23)
         Me.LabelX18.TabIndex = 211
-        Me.LabelX18.Text = "Conversión CJ-DS:"
+        Me.LabelX18.Text = "Displays" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "por CAJ/PAQ:"
         '
         'cbUniVenta
         '
@@ -555,7 +555,7 @@ Partial Class F1_Productos
         Me.tbConversion1.ButtonFreeText.Shortcut = DevComponents.DotNetBar.eShortcut.F2
         Me.tbConversion1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.tbConversion1.Increment = 1.0R
-        Me.tbConversion1.Location = New System.Drawing.Point(132, 39)
+        Me.tbConversion1.Location = New System.Drawing.Point(127, 39)
         Me.tbConversion1.MinValue = 0R
         Me.tbConversion1.Name = "tbConversion1"
         Me.tbConversion1.Size = New System.Drawing.Size(69, 22)
@@ -569,14 +569,14 @@ Partial Class F1_Productos
         '
         '
         Me.LabelX7.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.LabelX7.Font = New System.Drawing.Font("Georgia", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LabelX7.Font = New System.Drawing.Font("Georgia", 8.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.LabelX7.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(85, Byte), Integer), CType(CType(139, Byte), Integer))
         Me.LabelX7.Location = New System.Drawing.Point(5, 38)
         Me.LabelX7.Name = "LabelX7"
         Me.LabelX7.SingleLineColor = System.Drawing.SystemColors.Control
-        Me.LabelX7.Size = New System.Drawing.Size(121, 23)
+        Me.LabelX7.Size = New System.Drawing.Size(115, 23)
         Me.LabelX7.TabIndex = 32
-        Me.LabelX7.Text = "Conversión DS-UN:"
+        Me.LabelX7.Text = "Unidades " & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "por CAJ/PAQ/DISP:"
         '
         'LabelX6
         '
@@ -1176,9 +1176,9 @@ Partial Class F1_Productos
         Me.LabelX19.Location = New System.Drawing.Point(8, 130)
         Me.LabelX19.Name = "LabelX19"
         Me.LabelX19.SingleLineColor = System.Drawing.SystemColors.Control
-        Me.LabelX19.Size = New System.Drawing.Size(95, 23)
+        Me.LabelX19.Size = New System.Drawing.Size(115, 23)
         Me.LabelX19.TabIndex = 229
-        Me.LabelX19.Text = "Rotación:"
+        Me.LabelX19.Text = "Prefijo Rotación:"
         '
         'LabelX13
         '
