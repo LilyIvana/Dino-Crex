@@ -498,6 +498,12 @@
     <Compile Include="F1_Bancos.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="F1_ProductosConteo.Designer.vb">
+      <DependentUpon>F1_ProductosConteo.vb</DependentUpon>
+    </Compile>
+    <Compile Include="F1_ProductosConteo.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="F1_RevStockVentaProv.Designer.vb">
       <DependentUpon>F1_RevStockVentaProv.vb</DependentUpon>
     </Compile>
@@ -1515,6 +1521,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="F1_Bancos.resx">
       <DependentUpon>F1_Bancos.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="F1_ProductosConteo.resx">
+      <DependentUpon>F1_ProductosConteo.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="F1_RevStockVentaProv.resx">
       <DependentUpon>F1_RevStockVentaProv.vb</DependentUpon>

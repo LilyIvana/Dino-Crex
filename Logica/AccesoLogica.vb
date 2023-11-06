@@ -827,6 +827,32 @@ Public Class AccesoLogica
         _Tabla = D_ProcedimientoConParam("sp_Mam_TY005", _listParam)
         Return _Tabla
     End Function
+
+    Public Shared Function L_fnModificarProductoConteo(ByRef _yfnumi As String, _responsable As String, _lado As String, _orden As Integer) As Boolean
+        Dim _resultado As Boolean
+
+        Dim _Tabla As DataTable
+        Dim _listParam As New List(Of Datos.DParametro)
+
+        _listParam.Add(New Datos.DParametro("@tipo", 20))
+        _listParam.Add(New Datos.DParametro("@yfnumi", _yfnumi))
+        _listParam.Add(New Datos.DParametro("@yfresponsable", _responsable))
+        _listParam.Add(New Datos.DParametro("@yflado", _lado))
+        _listParam.Add(New Datos.DParametro("@yfuact", L_Usuario))
+
+
+        _Tabla = D_ProcedimientoConParam("sp_Mam_TY005", _listParam)
+
+        If _Tabla.Rows.Count > 0 Then
+            _yfnumi = _Tabla.Rows(0).Item(0)
+            _resultado = True
+        Else
+            _resultado = False
+        End If
+
+        Return _resultado
+    End Function
+
 #End Region
 
 #Region "TY004 CLIENTES"
