@@ -17,6 +17,8 @@ Imports System.Data.OleDb
 
 Imports System.Reflection
 Imports System.Runtime.InteropServices
+Imports Microsoft.Office.Interop
+
 
 Public Class F0_ExpImpStockFisico
     Dim _Inter As Integer = 0
@@ -397,8 +399,18 @@ Public Class F0_ExpImpStockFisico
             Dim doc As String = "Hoja1"
             Dim openfile1 As OpenFileDialog = New OpenFileDialog()
 
+            'Dim xlw As Excel.Workbook
+            'Dim xlsheet As Excel.Worksheets
+            'Dim xl As New Excel.Application
+
             If openfile1.ShowDialog() = System.Windows.Forms.DialogResult.OK Then
                 folder = openfile1.FileName
+
+                'xlw = xl.Workbooks.Open("f:\Documentos\Excel\JSanchez06-11-23.xls")
+                'xlsheet = xlw.worksheet(1)
+                ''doc = xlsheet.ToString
+                'xlsheet.Name = "hoja1"
+                'xlw.Save()
             End If
 
             If True Then
@@ -414,7 +426,6 @@ Public Class F0_ExpImpStockFisico
                 con.Close()
 
                 'Dim dt = InventarioImport.Copy
-
                 'Dim fecha = dt.Rows(0).Item("Fecha1")
 
             End If
@@ -456,8 +467,8 @@ Public Class F0_ExpImpStockFisico
                        IsDBNull(InventarioImport.Rows(i).Item("CANTIDAD2")) Or (IIf(InventarioImport.Rows(i).Item("CANTIDAD2").ToString = String.Empty, 0, InventarioImport.Rows(i).Item("CANTIDAD2")) < 0) Or
                        IsDBNull(InventarioImport.Rows(i).Item("CANTIDAD3")) Or (IIf(InventarioImport.Rows(i).Item("CANTIDAD3").ToString = String.Empty, 0, InventarioImport.Rows(i).Item("CANTIDAD3")) < 0) Or
                        IsDBNull(InventarioImport.Rows(i).Item("CANTIDAD4")) Or (IIf(InventarioImport.Rows(i).Item("CANTIDAD4").ToString = String.Empty, 0, InventarioImport.Rows(i).Item("CANTIDAD4")) < 0) Then
-                        ToastNotification.Show(Me, "No se puede realizar la importación porque el codigo Dynasys: ".ToUpper & InventarioImport.Rows(i).Item("COD DYNASYS") & " tiene una de las cantidades con valor negativo o vacío, revise por favor".ToUpper,
-                                               My.Resources.WARNING, 6000, eToastGlowColor.Green, eToastPosition.BottomCenter)
+                        ToastNotification.Show(Me, "No se puede realizar la importación porque el codigo Dynasys: ".ToUpper & InventarioImport.Rows(i).Item("COD DYNASYS") & " tiene una de las cantidades con valor negativo, vacío o con letra, corrija por favor".ToUpper,
+                                               My.Resources.WARNING, 6500, eToastGlowColor.Green, eToastPosition.BottomCenter)
                         Exit Sub
                     End If
                 Next
@@ -468,7 +479,7 @@ Public Class F0_ExpImpStockFisico
                     If IsDBNull(InventarioImport.Rows(k).Item("FECHA1")) Or IsDBNull(InventarioImport.Rows(k).Item("FECHA2")) Or
                         IsDBNull(InventarioImport.Rows(k).Item("FECHA3")) Or IsDBNull(InventarioImport.Rows(k).Item("FECHA4")) Then
                         ToastNotification.Show(Me, "No se puede realizar la importación porque el codigo Dynasys: ".ToUpper & InventarioImport.Rows(k).Item("COD DYNASYS") &
-                        " tiene una de las fechas de vencimimiento vacío o con un formato incorrecto, el formato es (dd/MM/aaaa) , revise por favor".ToUpper,
+                        " tiene una de las fechas de vencimimiento vacío o con un formato incorrecto, el formato es (dd/MM/aaaa) , corrija por favor".ToUpper,
                                                My.Resources.WARNING, 8000, eToastGlowColor.Green, eToastPosition.BottomCenter)
                         Exit Sub
                     End If
@@ -655,6 +666,8 @@ Public Class F0_ExpImpStockFisico
             Dim img As Bitmap = New Bitmap(My.Resources.checked, 50, 50)
 
             If (P_ExportarExcel(RutaGlobal + "\Reporte\Reporte Productos", tbUsuario.Text)) Then
+
+
                 ToastNotification.Show(Me, "EXPORTACIÓN DE LISTA DE PRODUCTOS EXITOSA..!!!",
                                        img, 2000,
                                        eToastGlowColor.Green,
