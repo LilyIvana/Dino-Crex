@@ -387,6 +387,9 @@ Public Class F1_ProductosConteo
             tbCodBarra.Text = .GetValue("yfcbarra").ToString
             tbDescPro.Text = .GetValue("yfcdprod1").ToString
             tbDescCort.Text = .GetValue("yfcdprod2").ToString
+            tbResponsable.Text = .GetValue("yfresponsable").ToString
+            tbLado.Text = .GetValue("yflado").ToString
+            tbOrden.Value = .GetValue("yfordenacion")
 
             cbgrupo1.Value = .GetValue("yfgr1")
             cbgrupo2.Value = .GetValue("yfgr2")
@@ -400,8 +403,6 @@ Public Class F1_ProductosConteo
             lbHora.Text = .GetValue("yfhact").ToString
             lbUsuario.Text = .GetValue("yfuact").ToString
 
-
-
         End With
         Dim name As String = JGrM_Buscador.GetValue("yfimg")
 
@@ -409,13 +410,11 @@ Public Class F1_ProductosConteo
         LblPaginacion.Text = Str(_MPos + 1) + "/" + JGrM_Buscador.RowCount.ToString
     End Sub
 
-
 #End Region
 
     Private Sub F1_Productos_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         _prIniciarTodo()
     End Sub
-
 
 
     Private Sub ButtonX2_Click(sender As Object, e As EventArgs) Handles btExcel.Click
@@ -603,9 +602,6 @@ Public Class F1_ProductosConteo
         End If
     End Sub
 
-    Private Sub btnModificar_Click(sender As Object, e As EventArgs) Handles btnModificar.Click
-        CodBarras = tbCodBarra.Text
-    End Sub
 
 
 

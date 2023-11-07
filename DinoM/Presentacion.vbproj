@@ -498,6 +498,12 @@
     <Compile Include="F1_Bancos.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="F1_StockSistVsFisico.Designer.vb">
+      <DependentUpon>F1_StockSistVsFisico.vb</DependentUpon>
+    </Compile>
+    <Compile Include="F1_StockSistVsFisico.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="F1_ProductosConteo.Designer.vb">
       <DependentUpon>F1_ProductosConteo.vb</DependentUpon>
     </Compile>
@@ -1522,6 +1528,9 @@
     <EmbeddedResource Include="F1_Bancos.resx">
       <DependentUpon>F1_Bancos.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="F1_StockSistVsFisico.resx">
+      <DependentUpon>F1_StockSistVsFisico.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="F1_ProductosConteo.resx">
       <DependentUpon>F1_ProductosConteo.vb</DependentUpon>
     </EmbeddedResource>
@@ -2391,6 +2400,7 @@
     <None Include="Resources\imageDefault.jpg" />
     <None Include="Resources\Fondo-empresarial.jpg" />
     <None Include="Resources\importar.png" />
+    <None Include="Resources\EXCEL.png" />
     <Content Include="Resources\man.png" />
     <None Include="Resources\pdf.png" />
     <None Include="Resources\txt.png" />

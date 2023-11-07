@@ -838,8 +838,8 @@ Public Class AccesoLogica
         _listParam.Add(New Datos.DParametro("@yfnumi", _yfnumi))
         _listParam.Add(New Datos.DParametro("@yfresponsable", _responsable))
         _listParam.Add(New Datos.DParametro("@yflado", _lado))
+        _listParam.Add(New Datos.DParametro("@yfordenacion", _orden))
         _listParam.Add(New Datos.DParametro("@yfuact", L_Usuario))
-
 
         _Tabla = D_ProcedimientoConParam("sp_Mam_TY005", _listParam)
 
@@ -7517,6 +7517,18 @@ Public Class AccesoLogica
         Return _Tabla
     End Function
 
+    Public Shared Function L_fnStockSistemavsFisico(fecha As String) As DataTable
+        Dim _Tabla As DataTable
+
+        Dim _listParam As New List(Of Datos.DParametro)
+
+        _listParam.Add(New Datos.DParametro("@tipo", 6))
+        _listParam.Add(New Datos.DParametro("@fechaInv", fecha))
+        _listParam.Add(New Datos.DParametro("@cguact", L_Usuario))
+        _Tabla = D_ProcedimientoConParam("ProcConteoFisico", _listParam)
+
+        Return _Tabla
+    End Function
 
 #End Region
 End Class

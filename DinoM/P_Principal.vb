@@ -1268,6 +1268,22 @@ Public Class P_Principal
         frm.Show()
     End Sub
 
+    Private Sub btConfProductoConteo_Click(sender As Object, e As EventArgs) Handles btConfProductoConteo.Click
+        Dim frm As New F1_ProductosConteo
+        frm._nameButton = btConfProductoConteo.Name
+        frm._modulo = FP_Configuracion
+        frm.Show()
+    End Sub
+
+    Private Sub btStockSisFis_Click(sender As Object, e As EventArgs) Handles btStockSisFis.Click
+        Dim frm As New F1_StockSistVsFisico
+        frm._nameButton = btStockSisFis.Name
+        frm._modulo = FP_INVENTARIO
+        frm.Show()
+    End Sub
+
+
+
 
 
 
