@@ -30,6 +30,7 @@ Partial Class F1_ProductosConteo
         Dim cbgrupo3_DesignTimeLayout As Janus.Windows.GridEX.GridEXLayout = New Janus.Windows.GridEX.GridEXLayout()
         Dim cbgrupo4_DesignTimeLayout As Janus.Windows.GridEX.GridEXLayout = New Janus.Windows.GridEX.GridEXLayout()
         Dim cbUMed_DesignTimeLayout As Janus.Windows.GridEX.GridEXLayout = New Janus.Windows.GridEX.GridEXLayout()
+        Dim cbLado_DesignTimeLayout As Janus.Windows.GridEX.GridEXLayout = New Janus.Windows.GridEX.GridEXLayout()
         Dim cbgrupo5_DesignTimeLayout As Janus.Windows.GridEX.GridEXLayout = New Janus.Windows.GridEX.GridEXLayout()
         Me.lbgrupo1 = New DevComponents.DotNetBar.LabelX()
         Me.lbgrupo2 = New DevComponents.DotNetBar.LabelX()
@@ -54,12 +55,15 @@ Partial Class F1_ProductosConteo
         Me.tbCodigo = New DevComponents.DotNetBar.Controls.TextBoxX()
         Me.GroupPanel1 = New DevComponents.DotNetBar.Controls.GroupPanel()
         Me.Panel3 = New System.Windows.Forms.Panel()
+        Me.cbLado = New Janus.Windows.GridEX.EditControls.MultiColumnCombo()
+        Me.lbInf = New DevComponents.DotNetBar.LabelX()
+        Me.btnSearch = New DevComponents.DotNetBar.ButtonX()
         Me.tbOrden = New DevComponents.Editors.IntegerInput()
         Me.LabelX13 = New DevComponents.DotNetBar.LabelX()
-        Me.tbLado = New DevComponents.DotNetBar.Controls.TextBoxX()
         Me.LabelX12 = New DevComponents.DotNetBar.LabelX()
         Me.tbResponsable = New DevComponents.DotNetBar.Controls.TextBoxX()
         Me.LabelX11 = New DevComponents.DotNetBar.LabelX()
+        Me.tbDescPro = New DevComponents.DotNetBar.Controls.TextBoxX()
         Me.GroupPanel2 = New DevComponents.DotNetBar.Controls.GroupPanel()
         Me.Panel2 = New System.Windows.Forms.Panel()
         Me.lbgrupo5 = New DevComponents.DotNetBar.LabelX()
@@ -67,9 +71,6 @@ Partial Class F1_ProductosConteo
         Me.btExcel = New DevComponents.DotNetBar.ButtonX()
         Me.TableLayoutPanel1 = New System.Windows.Forms.TableLayoutPanel()
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
-        Me.lbCtrlEnter = New DevComponents.DotNetBar.LabelX()
-        Me.btnSearch = New DevComponents.DotNetBar.ButtonX()
-        Me.tbDescPro = New DevComponents.DotNetBar.Controls.TextBoxX()
         CType(Me.SuperTabPrincipal, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuperTabPrincipal.SuspendLayout()
         Me.SuperTabControlPanelRegistro.SuspendLayout()
@@ -93,6 +94,7 @@ Partial Class F1_ProductosConteo
         CType(Me.cbUMed, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupPanel1.SuspendLayout()
         Me.Panel3.SuspendLayout()
+        CType(Me.cbLado, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.tbOrden, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupPanel2.SuspendLayout()
         Me.Panel2.SuspendLayout()
@@ -369,7 +371,7 @@ Partial Class F1_ProductosConteo
         Me.cbgrupo1.SelectedIndex = -1
         Me.cbgrupo1.SelectedItem = Nothing
         Me.cbgrupo1.Size = New System.Drawing.Size(220, 22)
-        Me.cbgrupo1.TabIndex = 0
+        Me.cbgrupo1.TabIndex = 10
         Me.cbgrupo1.VisualStyle = Janus.Windows.GridEX.VisualStyle.Office2007
         '
         'cbgrupo2
@@ -385,7 +387,7 @@ Partial Class F1_ProductosConteo
         Me.cbgrupo2.SelectedIndex = -1
         Me.cbgrupo2.SelectedItem = Nothing
         Me.cbgrupo2.Size = New System.Drawing.Size(220, 22)
-        Me.cbgrupo2.TabIndex = 1
+        Me.cbgrupo2.TabIndex = 11
         Me.cbgrupo2.VisualStyle = Janus.Windows.GridEX.VisualStyle.Office2007
         '
         'cbgrupo3
@@ -401,7 +403,7 @@ Partial Class F1_ProductosConteo
         Me.cbgrupo3.SelectedIndex = -1
         Me.cbgrupo3.SelectedItem = Nothing
         Me.cbgrupo3.Size = New System.Drawing.Size(220, 22)
-        Me.cbgrupo3.TabIndex = 2
+        Me.cbgrupo3.TabIndex = 13
         Me.cbgrupo3.VisualStyle = Janus.Windows.GridEX.VisualStyle.Office2007
         '
         'cbgrupo4
@@ -417,7 +419,7 @@ Partial Class F1_ProductosConteo
         Me.cbgrupo4.SelectedIndex = -1
         Me.cbgrupo4.SelectedItem = Nothing
         Me.cbgrupo4.Size = New System.Drawing.Size(220, 22)
-        Me.cbgrupo4.TabIndex = 3
+        Me.cbgrupo4.TabIndex = 14
         Me.cbgrupo4.VisualStyle = Janus.Windows.GridEX.VisualStyle.Office2007
         '
         'cbUMed
@@ -433,7 +435,7 @@ Partial Class F1_ProductosConteo
         Me.cbUMed.SelectedIndex = -1
         Me.cbUMed.SelectedItem = Nothing
         Me.cbUMed.Size = New System.Drawing.Size(220, 22)
-        Me.cbUMed.TabIndex = 4
+        Me.cbUMed.TabIndex = 15
         Me.cbUMed.VisualStyle = Janus.Windows.GridEX.VisualStyle.Office2007
         '
         'LabelX8
@@ -507,7 +509,7 @@ Partial Class F1_ProductosConteo
         '
         Me.swEstado.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.swEstado.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.swEstado.Location = New System.Drawing.Point(156, 198)
+        Me.swEstado.Location = New System.Drawing.Point(156, 200)
         Me.swEstado.Name = "swEstado"
         Me.swEstado.OffBackColor = System.Drawing.SystemColors.ActiveCaptionText
         Me.swEstado.OffText = "PASIVO"
@@ -517,7 +519,7 @@ Partial Class F1_ProductosConteo
         Me.swEstado.OnTextColor = System.Drawing.Color.White
         Me.swEstado.Size = New System.Drawing.Size(126, 22)
         Me.swEstado.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-        Me.swEstado.TabIndex = 6
+        Me.swEstado.TabIndex = 8
         Me.swEstado.Value = True
         Me.swEstado.ValueObject = "Y"
         '
@@ -530,7 +532,7 @@ Partial Class F1_ProductosConteo
         Me.LabelX9.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.LabelX9.Font = New System.Drawing.Font("Georgia", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.LabelX9.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(85, Byte), Integer), CType(CType(139, Byte), Integer))
-        Me.LabelX9.Location = New System.Drawing.Point(8, 200)
+        Me.LabelX9.Location = New System.Drawing.Point(8, 203)
         Me.LabelX9.Name = "LabelX9"
         Me.LabelX9.SingleLineColor = System.Drawing.SystemColors.Control
         Me.LabelX9.Size = New System.Drawing.Size(50, 19)
@@ -680,11 +682,11 @@ Partial Class F1_ProductosConteo
         'Panel3
         '
         Me.Panel3.AutoScroll = True
-        Me.Panel3.Controls.Add(Me.lbCtrlEnter)
+        Me.Panel3.Controls.Add(Me.cbLado)
+        Me.Panel3.Controls.Add(Me.lbInf)
         Me.Panel3.Controls.Add(Me.btnSearch)
         Me.Panel3.Controls.Add(Me.tbOrden)
         Me.Panel3.Controls.Add(Me.LabelX13)
-        Me.Panel3.Controls.Add(Me.tbLado)
         Me.Panel3.Controls.Add(Me.LabelX12)
         Me.Panel3.Controls.Add(Me.tbResponsable)
         Me.Panel3.Controls.Add(Me.LabelX11)
@@ -706,6 +708,53 @@ Partial Class F1_ProductosConteo
         Me.Panel3.Size = New System.Drawing.Size(844, 231)
         Me.Panel3.TabIndex = 227
         '
+        'cbLado
+        '
+        Me.cbLado.BorderStyle = Janus.Windows.GridEX.BorderStyle.Flat
+        Me.cbLado.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
+        cbLado_DesignTimeLayout.LayoutString = resources.GetString("cbLado_DesignTimeLayout.LayoutString")
+        Me.cbLado.DesignTimeLayout = cbLado_DesignTimeLayout
+        Me.cbLado.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cbLado.Location = New System.Drawing.Point(157, 145)
+        Me.cbLado.MaxLength = 40
+        Me.cbLado.Name = "cbLado"
+        Me.cbLado.Office2007ColorScheme = Janus.Windows.GridEX.Office2007ColorScheme.Custom
+        Me.cbLado.Office2007CustomColor = System.Drawing.Color.DodgerBlue
+        Me.cbLado.SelectedIndex = -1
+        Me.cbLado.SelectedItem = Nothing
+        Me.cbLado.Size = New System.Drawing.Size(120, 22)
+        Me.cbLado.TabIndex = 6
+        Me.cbLado.VisualStyle = Janus.Windows.GridEX.VisualStyle.Office2007
+        '
+        'lbInf
+        '
+        Me.lbInf.BackColor = System.Drawing.Color.Transparent
+        '
+        '
+        '
+        Me.lbInf.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.lbInf.Font = New System.Drawing.Font("Georgia", 7.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lbInf.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(85, Byte), Integer), CType(CType(139, Byte), Integer))
+        Me.lbInf.Location = New System.Drawing.Point(372, 124)
+        Me.lbInf.Name = "lbInf"
+        Me.lbInf.SingleLineColor = System.Drawing.SystemColors.Control
+        Me.lbInf.Size = New System.Drawing.Size(75, 11)
+        Me.lbInf.TabIndex = 691
+        Me.lbInf.Text = "Click en la lupa"
+        '
+        'btnSearch
+        '
+        Me.btnSearch.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
+        Me.btnSearch.BackColor = System.Drawing.Color.Transparent
+        Me.btnSearch.ColorTable = DevComponents.DotNetBar.eButtonColor.Flat
+        Me.btnSearch.Image = Global.DinoM.My.Resources.Resources.search
+        Me.btnSearch.ImageFixedSize = New System.Drawing.Size(24, 22)
+        Me.btnSearch.Location = New System.Drawing.Point(340, 116)
+        Me.btnSearch.Name = "btnSearch"
+        Me.btnSearch.Size = New System.Drawing.Size(27, 25)
+        Me.btnSearch.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+        Me.btnSearch.TabIndex = 690
+        '
         'tbOrden
         '
         '
@@ -714,10 +763,11 @@ Partial Class F1_ProductosConteo
         Me.tbOrden.BackgroundStyle.Class = "DateTimeInputBackground"
         Me.tbOrden.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.tbOrden.ButtonFreeText.Shortcut = DevComponents.DotNetBar.eShortcut.F2
-        Me.tbOrden.Location = New System.Drawing.Point(157, 170)
+        Me.tbOrden.Font = New System.Drawing.Font("Georgia", 8.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.tbOrden.Location = New System.Drawing.Point(157, 173)
         Me.tbOrden.Name = "tbOrden"
-        Me.tbOrden.Size = New System.Drawing.Size(120, 22)
-        Me.tbOrden.TabIndex = 225
+        Me.tbOrden.Size = New System.Drawing.Size(120, 20)
+        Me.tbOrden.TabIndex = 7
         '
         'LabelX13
         '
@@ -728,28 +778,12 @@ Partial Class F1_ProductosConteo
         Me.LabelX13.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.LabelX13.Font = New System.Drawing.Font("Georgia", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.LabelX13.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(85, Byte), Integer), CType(CType(139, Byte), Integer))
-        Me.LabelX13.Location = New System.Drawing.Point(6, 173)
+        Me.LabelX13.Location = New System.Drawing.Point(8, 175)
         Me.LabelX13.Name = "LabelX13"
         Me.LabelX13.SingleLineColor = System.Drawing.SystemColors.Control
         Me.LabelX13.Size = New System.Drawing.Size(125, 19)
         Me.LabelX13.TabIndex = 224
         Me.LabelX13.Text = "Ordenación:"
-        '
-        'tbLado
-        '
-        '
-        '
-        '
-        Me.tbLado.Border.Class = "TextBoxBorder"
-        Me.tbLado.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.tbLado.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.tbLado.ForeColor = System.Drawing.Color.FromArgb(CType(CType(45, Byte), Integer), CType(CType(59, Byte), Integer), CType(CType(66, Byte), Integer))
-        Me.tbLado.Location = New System.Drawing.Point(157, 145)
-        Me.tbLado.MaxLength = 15
-        Me.tbLado.Name = "tbLado"
-        Me.tbLado.PreventEnterBeep = True
-        Me.tbLado.Size = New System.Drawing.Size(166, 21)
-        Me.tbLado.TabIndex = 222
         '
         'LabelX12
         '
@@ -760,7 +794,7 @@ Partial Class F1_ProductosConteo
         Me.LabelX12.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.LabelX12.Font = New System.Drawing.Font("Georgia", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.LabelX12.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(85, Byte), Integer), CType(CType(139, Byte), Integer))
-        Me.LabelX12.Location = New System.Drawing.Point(8, 144)
+        Me.LabelX12.Location = New System.Drawing.Point(8, 146)
         Me.LabelX12.Name = "LabelX12"
         Me.LabelX12.SingleLineColor = System.Drawing.SystemColors.Control
         Me.LabelX12.Size = New System.Drawing.Size(125, 19)
@@ -781,7 +815,7 @@ Partial Class F1_ProductosConteo
         Me.tbResponsable.Name = "tbResponsable"
         Me.tbResponsable.PreventEnterBeep = True
         Me.tbResponsable.Size = New System.Drawing.Size(166, 21)
-        Me.tbResponsable.TabIndex = 220
+        Me.tbResponsable.TabIndex = 5
         '
         'LabelX11
         '
@@ -798,6 +832,24 @@ Partial Class F1_ProductosConteo
         Me.LabelX11.Size = New System.Drawing.Size(125, 19)
         Me.LabelX11.TabIndex = 221
         Me.LabelX11.Text = "Responsable:"
+        '
+        'tbDescPro
+        '
+        '
+        '
+        '
+        Me.tbDescPro.Border.Class = "TextBoxBorder"
+        Me.tbDescPro.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.tbDescPro.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.tbDescPro.ForeColor = System.Drawing.Color.FromArgb(CType(CType(45, Byte), Integer), CType(CType(59, Byte), Integer), CType(CType(66, Byte), Integer))
+        Me.tbDescPro.Location = New System.Drawing.Point(157, 67)
+        Me.tbDescPro.MaxLength = 200
+        Me.tbDescPro.Multiline = True
+        Me.tbDescPro.Name = "tbDescPro"
+        Me.tbDescPro.PreventEnterBeep = True
+        Me.tbDescPro.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
+        Me.tbDescPro.Size = New System.Drawing.Size(566, 43)
+        Me.tbDescPro.TabIndex = 4
         '
         'GroupPanel2
         '
@@ -892,7 +944,7 @@ Partial Class F1_ProductosConteo
         Me.cbgrupo5.SelectedIndex = -1
         Me.cbgrupo5.SelectedItem = Nothing
         Me.cbgrupo5.Size = New System.Drawing.Size(220, 22)
-        Me.cbgrupo5.TabIndex = 216
+        Me.cbgrupo5.TabIndex = 12
         Me.cbgrupo5.VisualStyle = Janus.Windows.GridEX.VisualStyle.Office2007
         '
         'btExcel
@@ -933,53 +985,6 @@ Partial Class F1_ProductosConteo
         Me.Timer1.Enabled = True
         Me.Timer1.Interval = 500
         '
-        'lbCtrlEnter
-        '
-        Me.lbCtrlEnter.BackColor = System.Drawing.Color.Transparent
-        '
-        '
-        '
-        Me.lbCtrlEnter.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.lbCtrlEnter.Font = New System.Drawing.Font("Georgia", 7.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lbCtrlEnter.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(85, Byte), Integer), CType(CType(139, Byte), Integer))
-        Me.lbCtrlEnter.Location = New System.Drawing.Point(372, 124)
-        Me.lbCtrlEnter.Name = "lbCtrlEnter"
-        Me.lbCtrlEnter.SingleLineColor = System.Drawing.SystemColors.Control
-        Me.lbCtrlEnter.Size = New System.Drawing.Size(75, 11)
-        Me.lbCtrlEnter.TabIndex = 691
-        Me.lbCtrlEnter.Text = "Click en la lupa"
-        '
-        'btnSearch
-        '
-        Me.btnSearch.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
-        Me.btnSearch.BackColor = System.Drawing.Color.Transparent
-        Me.btnSearch.ColorTable = DevComponents.DotNetBar.eButtonColor.Flat
-        Me.btnSearch.Image = Global.DinoM.My.Resources.Resources.search
-        Me.btnSearch.ImageFixedSize = New System.Drawing.Size(24, 22)
-        Me.btnSearch.Location = New System.Drawing.Point(340, 116)
-        Me.btnSearch.Name = "btnSearch"
-        Me.btnSearch.Size = New System.Drawing.Size(27, 25)
-        Me.btnSearch.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-        Me.btnSearch.TabIndex = 690
-        '
-        'tbDescPro
-        '
-        '
-        '
-        '
-        Me.tbDescPro.Border.Class = "TextBoxBorder"
-        Me.tbDescPro.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.tbDescPro.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.tbDescPro.ForeColor = System.Drawing.Color.FromArgb(CType(CType(45, Byte), Integer), CType(CType(59, Byte), Integer), CType(CType(66, Byte), Integer))
-        Me.tbDescPro.Location = New System.Drawing.Point(157, 67)
-        Me.tbDescPro.MaxLength = 200
-        Me.tbDescPro.Multiline = True
-        Me.tbDescPro.Name = "tbDescPro"
-        Me.tbDescPro.PreventEnterBeep = True
-        Me.tbDescPro.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
-        Me.tbDescPro.Size = New System.Drawing.Size(566, 43)
-        Me.tbDescPro.TabIndex = 4
-        '
         'F1_ProductosConteo
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -1015,6 +1020,7 @@ Partial Class F1_ProductosConteo
         Me.GroupPanel1.ResumeLayout(False)
         Me.Panel3.ResumeLayout(False)
         Me.Panel3.PerformLayout()
+        CType(Me.cbLado, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.tbOrden, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupPanel2.ResumeLayout(False)
         Me.Panel2.ResumeLayout(False)
@@ -1055,12 +1061,12 @@ Partial Class F1_ProductosConteo
     Friend WithEvents cbgrupo5 As Janus.Windows.GridEX.EditControls.MultiColumnCombo
     Friend WithEvents Timer1 As Timer
     Friend WithEvents LabelX13 As DevComponents.DotNetBar.LabelX
-    Friend WithEvents tbLado As DevComponents.DotNetBar.Controls.TextBoxX
     Friend WithEvents LabelX12 As DevComponents.DotNetBar.LabelX
     Friend WithEvents tbResponsable As DevComponents.DotNetBar.Controls.TextBoxX
     Friend WithEvents LabelX11 As DevComponents.DotNetBar.LabelX
     Friend WithEvents tbOrden As DevComponents.Editors.IntegerInput
-    Friend WithEvents lbCtrlEnter As DevComponents.DotNetBar.LabelX
+    Friend WithEvents lbInf As DevComponents.DotNetBar.LabelX
     Friend WithEvents btnSearch As DevComponents.DotNetBar.ButtonX
     Friend WithEvents tbDescPro As DevComponents.DotNetBar.Controls.TextBoxX
+    Friend WithEvents cbLado As Janus.Windows.GridEX.EditControls.MultiColumnCombo
 End Class

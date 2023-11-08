@@ -33,7 +33,7 @@ Public Class F1_ProductosConteo
 #End Region
 #Region "Metodos Privados"
     Private Sub _prIniciarTodo()
-        Me.Text = "PRODUCTOS"
+        Me.Text = "PRODUCTOS CONTEO"
         'L_prAbrirConexion(gs_Ip, gs_UsuarioSql, gs_ClaveSql, gs_NombreBD)
 
         _prCargarNameLabel()
@@ -43,7 +43,7 @@ Public Class F1_ProductosConteo
         _prCargarComboLibreria(cbgrupo4, 1, 4)
         _prCargarComboLibreria(cbgrupo5, 1, 7)
         _prCargarComboLibreria(cbUMed, 1, 5)
-
+        _prCargarComboLado(cbLado)
         _prAsignarPermisos()
 
         ''Mostrar u ocultar el grupo 4(Familia)
@@ -98,6 +98,33 @@ Public Class F1_ProductosConteo
             .DataSource = dt
             .Refresh()
         End With
+    End Sub
+
+    Private Sub _prCargarComboLado(mCombo As Janus.Windows.GridEX.EditControls.MultiColumnCombo)
+        Dim dt As New DataTable
+
+        dt.Columns.Add("COD")
+        dt.Columns.Add("LADO")
+
+        dt.Rows.Add(1, "LADO A")
+        dt.Rows.Add(2, "LADO B")
+        dt.Rows.Add(3, "S/L")
+
+        With mCombo
+            .DropDownList.Columns.Clear()
+            .DropDownList.Columns.Add("COD").Width = 50
+            .DropDownList.Columns("COD").Caption = "COD"
+            .DropDownList.Columns.Add("LADO").Width = 120
+            .DropDownList.Columns("LADO").Caption = "LADO"
+            .ValueMember = "COD"
+            .DisplayMember = "LADO"
+            .DataSource = dt
+            .Refresh()
+        End With
+
+        'If dt.Rows.Count > 0 Then
+        '    mCombo.SelectedIndex = 3
+        'End If
     End Sub
     Private Sub _prAsignarPermisos()
 
@@ -176,9 +203,14 @@ Public Class F1_ProductosConteo
 #Region "METODOS SOBRECARGADOS"
 
     Public Overrides Sub _PMOHabilitar()
-        tbResponsable.ReadOnly = False
-        tbLado.ReadOnly = False
+        'tbResponsable.ReadOnly = False
+        cbLado.ReadOnly = False
+        'cbLado.Enabled = True
+        'cbLado.ButtonEnabled = True
+
         tbOrden.IsInputReadOnly = False
+        btnSearch.Visible = True
+        lbInf.Visible = True
 
         _prCrearCarpetaImagenes()
         _prCrearCarpetaTemporal()
@@ -196,8 +228,12 @@ Public Class F1_ProductosConteo
         tbDescPro.ReadOnly = True
         tbDescCort.ReadOnly = True
         tbResponsable.ReadOnly = True
-        tbLado.ReadOnly = True
+        cbLado.ReadOnly = True
+        'cbLado.Enabled = False
+        'cbLado.ButtonEnabled = False
         tbOrden.IsInputReadOnly = True
+        btnSearch.Visible = False
+        lbInf.Visible = False
 
         cbgrupo1.ReadOnly = True
         cbgrupo2.ReadOnly = True
@@ -246,9 +282,9 @@ Public Class F1_ProductosConteo
 
         Dim nameImage As String = JGrM_Buscador.GetValue("yfimg")
         If (Modificado = False) Then
-            res = L_fnModificarProductoConteo(tbCodigo.Text, tbResponsable.Text.Trim, tbLado.Text.Trim, tbOrden.Value)
+            res = L_fnModificarProductoConteo(tbCodigo.Text, tbResponsable.Text.Trim, cbLado.Text.Trim, tbOrden.Value)
         Else
-            res = L_fnModificarProductoConteo(tbCodigo.Text, tbResponsable.Text.Trim, tbLado.Text.Trim, tbOrden.Value)
+            res = L_fnModificarProductoConteo(tbCodigo.Text, tbResponsable.Text.Trim, cbLado.Text.Trim, tbOrden.Value)
         End If
         If res Then
 
@@ -259,7 +295,7 @@ Public Class F1_ProductosConteo
 
             Dim img As Bitmap = New Bitmap(My.Resources.checked, 50, 50)
             ToastNotification.Show(Me, "Código de Producto ".ToUpper + tbCodigo.Text + " modificado con Exito.".ToUpper,
-                                      img, 2000,
+                                      img, 3000,
                                       eToastGlowColor.Green,
                                       eToastPosition.TopCenter)
 
@@ -291,14 +327,14 @@ Public Class F1_ProductosConteo
             MEP.SetError(tbResponsable, "")
         End If
 
-        If tbLado.Text = String.Empty Then
-            tbLado.BackColor = Color.Red
-            AddHandler tbLado.KeyDown, AddressOf TextBox_KeyDown
-            MEP.SetError(tbLado, "ingrese el responsable de conteo del producto!".ToUpper)
+        If cbLado.Text = String.Empty Then
+            cbLado.BackColor = Color.Red
+            AddHandler cbLado.KeyDown, AddressOf TextBox_KeyDown
+            MEP.SetError(cbLado, "ingrese el responsable de conteo del producto!".ToUpper)
             _ok = False
         Else
-            tbLado.BackColor = Color.White
-            MEP.SetError(tbLado, "")
+            cbLado.BackColor = Color.White
+            MEP.SetError(cbLado, "")
         End If
 
         If tbOrden.Value < 0 Or tbOrden.Text = String.Empty Then
@@ -316,7 +352,7 @@ Public Class F1_ProductosConteo
     End Function
 
     Public Overrides Function _PMOGetTablaBuscador() As DataTable
-        Dim dtBuscador As DataTable = L_fnGeneralProductos()
+        Dim dtBuscador As DataTable = L_fnGeneralProductosConteo()
         Return dtBuscador
     End Function
 
@@ -363,6 +399,7 @@ Public Class F1_ProductosConteo
         listEstCeldas.Add(New Modelo.Celda("UnidMin", True, "UniVenta".ToUpper, 100))
         listEstCeldas.Add(New Modelo.Celda("Umax", True, "UniMáxima".ToUpper, 100))
         listEstCeldas.Add(New Modelo.Celda("yfdetprod", True, "Descripción Detallada".ToUpper, 150))
+        listEstCeldas.Add(New Modelo.Celda("inf", True, "Stock".ToUpper, 120))
         listEstCeldas.Add(New Modelo.Celda("yfresponsable", True, "Responsable".ToUpper, 130))
         listEstCeldas.Add(New Modelo.Celda("yflado", True, "Lado".ToUpper, 100))
         listEstCeldas.Add(New Modelo.Celda("yfordenacion", True, "Ordenación".ToUpper, 90))
@@ -388,7 +425,7 @@ Public Class F1_ProductosConteo
             tbDescPro.Text = .GetValue("yfcdprod1").ToString
             tbDescCort.Text = .GetValue("yfcdprod2").ToString
             tbResponsable.Text = .GetValue("yfresponsable").ToString
-            tbLado.Text = .GetValue("yflado").ToString
+            cbLado.Text = .GetValue("yflado").ToString
             tbOrden.Value = .GetValue("yfordenacion")
 
             cbgrupo1.Value = .GetValue("yfgr1")
@@ -602,12 +639,55 @@ Public Class F1_ProductosConteo
         End If
     End Sub
 
+    Private Sub btnSearch_Click(sender As Object, e As EventArgs) Handles btnSearch.Click
+        Buscador()
+    End Sub
+    Private Sub Buscador()
+        Try
+            Dim dt As DataTable
+            dt = L_fnMostrarUsuariosConteo()
 
+            Dim listEstCeldas As New List(Of Modelo.Celda)
+            listEstCeldas.Add(New Modelo.Celda("ydnumi,", True, "COD USUARIO", 120))
+            listEstCeldas.Add(New Modelo.Celda("yduser", True, "USUARIO", 250))
+            listEstCeldas.Add(New Modelo.Celda("ydest", False, "ESTADO", 50))
 
+            Dim ef = New Efecto
+            ef.tipo = 3
+            ef.dt = dt
+            ef.SeleclCol = 1
+            ef.listEstCeldas = listEstCeldas
+            ef.alto = 150
+            ef.ancho = 200
+            ef.Context = "Seleccione Usuario".ToUpper
+            ef.SeleclCol = 1
+            ef.ShowDialog()
+            Dim bandera As Boolean = False
+            bandera = ef.band
+            If (bandera = True) Then
+                Dim Row As Janus.Windows.GridEX.GridEXRow = ef.Row
+                If (IsNothing(Row)) Then
+                    tbResponsable.Focus()
+                    Return
+                End If
 
+                tbResponsable.Text = Row.Cells("yduser").Value
 
+            End If
 
+        Catch ex As Exception
+            MostrarMensajeError(ex.Message)
+        End Try
+    End Sub
+    Private Sub MostrarMensajeError(mensaje As String)
+        ToastNotification.Show(Me,
+                               mensaje.ToUpper,
+                               My.Resources.WARNING,
+                               3000,
+                               eToastGlowColor.Red,
+                               eToastPosition.TopCenter)
 
+    End Sub
 
 
 End Class

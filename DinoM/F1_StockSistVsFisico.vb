@@ -125,7 +125,7 @@ Public Class F1_StockSistVsFisico
             With JGrM_Buscador.RootTable.Columns("codDynasys")
                 .Width = 100
                 .Caption = "COD. DYNASYS"
-                .Visible = False
+                .Visible = True
             End With
             With JGrM_Buscador.RootTable.Columns("codDelta")
                 .Width = 100
