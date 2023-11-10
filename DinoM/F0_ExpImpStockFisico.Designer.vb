@@ -301,8 +301,8 @@ Partial Class F0_ExpImpStockFisico
         'grDatos
         '
         Me.grDatos.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.grDatos.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.5!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.grDatos.HeaderFormatStyle.Font = New System.Drawing.Font("Georgia", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.grDatos.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.grDatos.HeaderFormatStyle.Font = New System.Drawing.Font("Georgia", 8.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.grDatos.Location = New System.Drawing.Point(0, 0)
         Me.grDatos.Name = "grDatos"
         Me.grDatos.Office2007ColorScheme = Janus.Windows.GridEX.Office2007ColorScheme.Custom

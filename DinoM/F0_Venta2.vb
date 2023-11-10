@@ -579,7 +579,7 @@ Public Class F0_Venta2
 
         With grdetalle.RootTable.Columns("producto")
             .Caption = "Productos".ToUpper
-            .Width = 440
+            .Width = 420
             .Visible = True
         End With
 
@@ -590,7 +590,7 @@ Public Class F0_Venta2
         End With
 
         With grdetalle.RootTable.Columns("tbcmin")
-            .Width = 110
+            .Width = 90
             .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far
             .Visible = True
             .FormatString = "0.00"
@@ -608,35 +608,35 @@ Public Class F0_Venta2
             .Caption = "UN.".ToUpper
         End With
         With grdetalle.RootTable.Columns("tbpbas")
-            .Width = 90
+            .Width = 80
             .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far
             .Visible = True
             .FormatString = "0.00"
             .Caption = "Precio U.".ToUpper
         End With
         With grdetalle.RootTable.Columns("tbptot")
-            .Width = 100
+            .Width = 90
             .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far
             .Visible = True
             .FormatString = "0.00"
             .Caption = "SubTotal".ToUpper
         End With
         With grdetalle.RootTable.Columns("tbporc")
-            .Width = 100
+            .Width = 80
             .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far
             .Visible = False
             .FormatString = "0.00"
             .Caption = "P.Desc(%)".ToUpper
         End With
         With grdetalle.RootTable.Columns("tbdesc")
-            .Width = 100
+            .Width = 80
             .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far
             .Visible = True
             .FormatString = "0.00"
             .Caption = "M.Desc".ToUpper
         End With
         With grdetalle.RootTable.Columns("tbtotdesc")
-            .Width = 100
+            .Width = 90
             .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far
             .Visible = True
             .FormatString = "0.00"
@@ -960,36 +960,36 @@ Public Class F0_Venta2
 
     Private Sub ArmarGrillaProducto(dtname As DataTable, visualizarGrupo As Boolean)
         With grProductos.RootTable.Columns("yfnumi")
-            .Width = 85
-            .Caption = "Cód. Dynasys"
+            .Width = 70
+            .Caption = "Cód. Dynasys".ToUpper
             .Visible = True
         End With
         With grProductos.RootTable.Columns("yfcprod")
-            .Width = 100
-            .Caption = "Cód.Delta"
+            .Width = 90
+            .Caption = "Cód.Delta".ToUpper
             .Visible = True
         End With
         With grProductos.RootTable.Columns("yfcbarra")
             .Width = 90
-            .Caption = "Cod. Barra"
+            .Caption = "Cod. Barra".ToUpper
             .Visible = gb_CodigoBarra
         End With
         With grProductos.RootTable.Columns("yfcdprod1")
-            .Width = IIf(visualizarGrupo, 360, 360)
+            .Width = IIf(visualizarGrupo, 360, 380)
             .Visible = True
-            .Caption = "Descripción"
+            .Caption = "Descripción".ToUpper
             .WordWrap = True
             .MaxLines = 20
         End With
         With grProductos.RootTable.Columns("yfcdprod2")
             .Width = 150
             .Visible = False
-            .Caption = "Descripcion Corta"
+            .Caption = "Descripcion Corta".ToUpper
         End With
         With grProductos.RootTable.Columns("yfvsup")
             .Width = 90
             .Visible = True
-            .Caption = "Conversión"
+            .Caption = "Conversión".ToUpper
             .FormatString = "0.00"
         End With
         With grProductos.RootTable.Columns("yfgr1")
@@ -1012,10 +1012,10 @@ Public Class F0_Venta2
         If (dtname.Rows.Count > 0) Then
 
             With grProductos.RootTable.Columns("grupo1")
-                .Width = 120
+                .Width = 100
                 .Caption = dtname.Rows(0).Item("Grupo 1").ToString
                 .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Near
-                .Visible = False
+                .Visible = True
                 .WordWrap = False
                 .MaxLines = 20
             End With
@@ -1036,11 +1036,12 @@ Public Class F0_Venta2
                 .Visible = False
             End With
             With grProductos.RootTable.Columns("grupo4")
-                .Width = 120
-                .Caption = dtname.Rows(0).Item("Grupo 4").ToString.ToLowerInvariant
+                .Width = 100
+                .Caption = dtname.Rows(0).Item("Grupo 4").ToString.ToUpper
                 .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Near
                 .Visible = visualizarGrupo
                 .WordWrap = True
+                .Visible = False
                 .MaxLines = 20
             End With
         Else
@@ -1115,21 +1116,21 @@ Public Class F0_Venta2
             .Width = 100
             .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Near
             .Visible = True
-            .Caption = "Precio"
+            .Caption = "Precio".ToUpper
             .FormatString = "0.00"
         End With
         With grProductos.RootTable.Columns("pcos")
             .Width = 70
             .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Near
             .Visible = False
-            .Caption = "Precio Costo"
+            .Caption = "Precio Costo".ToUpper
             .FormatString = "0.00"
         End With
         With grProductos.RootTable.Columns("stock")
             .Width = 70
             .FormatString = "0.00"
             .Visible = True
-            .Caption = "Stock"
+            .Caption = "Stock".ToUpper
         End With
         With grProductos.RootTable.Columns("DescuentoId")
             .Width = 50
@@ -1139,7 +1140,7 @@ Public Class F0_Venta2
         With grProductos.RootTable.Columns("grupoDesc")
             .Width = 100
             .Visible = False
-            .Caption = "Grupo Desc."
+            .Caption = "Grupo Desc.".ToUpper
         End With
         With grProductos.RootTable.Columns("ygcodsin")
             .Width = 0

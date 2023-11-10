@@ -361,11 +361,11 @@ Public Class F1_ProductosConteo
         'a.yfnumi, a.yfcprod, a.yfcbarra, a.yfcdprod1, a.yfcdprod2, a.yfgr1, a.yfgr2, a.yfgr3, a.yfgr4,
         'a.yfMed, a.yfumin, a.yfusup, a.yfmstk, a.yfclot, a.yfsmin, a.yfap, a.yfimg, a.yffact, a.yfhact, a.yfuact
         listEstCeldas.Add(New Modelo.Celda("yfnumi", True, "Cod. Dynasys".ToUpper, 80))
-        listEstCeldas.Add(New Modelo.Celda("yfcprod", True, "Cod. Delta".ToUpper, 100))
-        listEstCeldas.Add(New Modelo.Celda("yfcdprod2", True, "Cod. Proveedor".ToUpper, 140))
-        listEstCeldas.Add(New Modelo.Celda("yfcbarra", True, "Cod.Barra".ToUpper, 140))
-        listEstCeldas.Add(New Modelo.Celda("yfcampo1", True, "Prefijo Rotación".ToUpper, 100))
-        listEstCeldas.Add(New Modelo.Celda("yfcdprod1", True, "Descripción Producto".ToUpper, 250))
+        listEstCeldas.Add(New Modelo.Celda("yfcprod", True, "Cod. Delta".ToUpper, 90))
+        listEstCeldas.Add(New Modelo.Celda("yfcdprod2", True, "Cod. Proveedor".ToUpper, 90))
+        listEstCeldas.Add(New Modelo.Celda("yfcbarra", True, "Cod.Barra".ToUpper, 110))
+        listEstCeldas.Add(New Modelo.Celda("yfcampo1", True, "Prefijo Rotación".ToUpper, 90))
+        listEstCeldas.Add(New Modelo.Celda("yfcdprod1", True, "Descripción Producto".ToUpper, 270))
         listEstCeldas.Add(New Modelo.Celda("yfgr1", False))
         listEstCeldas.Add(New Modelo.Celda("yfgr2", False))
         listEstCeldas.Add(New Modelo.Celda("yfgr3", False))
@@ -390,17 +390,17 @@ Public Class F1_ProductosConteo
         listEstCeldas.Add(New Modelo.Celda("yffact", False))
         listEstCeldas.Add(New Modelo.Celda("yfhact", False))
         listEstCeldas.Add(New Modelo.Celda("yfuact", False))
-        listEstCeldas.Add(New Modelo.Celda("grupo1", True, lbgrupo1.Text.Substring(0, lbgrupo1.Text.Length - 1).ToUpper, 150))
-        listEstCeldas.Add(New Modelo.Celda("grupo2", True, lbgrupo2.Text.Substring(0, lbgrupo2.Text.Length - 1).ToUpper, 150))
-        listEstCeldas.Add(New Modelo.Celda("grupo3", True, lbgrupo3.Text.Substring(0, lbgrupo3.Text.Length - 1).ToUpper, 150))
-        listEstCeldas.Add(New Modelo.Celda("grupo4", True, lbgrupo4.Text.Substring(0, lbgrupo4.Text.Length - 1).ToUpper, 150))
+        listEstCeldas.Add(New Modelo.Celda("grupo1", True, lbgrupo1.Text.Substring(0, lbgrupo1.Text.Length - 1).ToUpper, 120))
+        listEstCeldas.Add(New Modelo.Celda("grupo2", True, lbgrupo2.Text.Substring(0, lbgrupo2.Text.Length - 1).ToUpper, 140))
+        listEstCeldas.Add(New Modelo.Celda("grupo3", True, lbgrupo3.Text.Substring(0, lbgrupo3.Text.Length - 1).ToUpper, 140))
+        listEstCeldas.Add(New Modelo.Celda("grupo4", True, lbgrupo4.Text.Substring(0, lbgrupo4.Text.Length - 1).ToUpper, 140))
         listEstCeldas.Add(New Modelo.Celda("grupo5", True, "CATEGORÍA".ToUpper, 200))
         listEstCeldas.Add(New Modelo.Celda("Umedida", True, "GRUPO DESCT.".ToUpper, 150))
         listEstCeldas.Add(New Modelo.Celda("UnidMin", True, "UniVenta".ToUpper, 100))
         listEstCeldas.Add(New Modelo.Celda("Umax", True, "UniMáxima".ToUpper, 100))
         listEstCeldas.Add(New Modelo.Celda("yfdetprod", True, "Descripción Detallada".ToUpper, 150))
-        listEstCeldas.Add(New Modelo.Celda("inf", True, "Stock".ToUpper, 120))
-        listEstCeldas.Add(New Modelo.Celda("yfresponsable", True, "Responsable".ToUpper, 130))
+        listEstCeldas.Add(New Modelo.Celda("inf", True, "Stock".ToUpper, 100))
+        listEstCeldas.Add(New Modelo.Celda("yfresponsable", True, "Responsable".ToUpper, 110))
         listEstCeldas.Add(New Modelo.Celda("yflado", True, "Lado".ToUpper, 100))
         listEstCeldas.Add(New Modelo.Celda("yfordenacion", True, "Ordenación".ToUpper, 90))
         listEstCeldas.Add(New Modelo.Celda("Estado", True, "Estado".ToUpper, 100))
@@ -646,7 +646,7 @@ Public Class F1_ProductosConteo
         Try
             Dim dt As DataTable
             dt = L_fnMostrarUsuariosConteo()
-
+            dt.Rows.Add(0, "NADIE")
             Dim listEstCeldas As New List(Of Modelo.Celda)
             listEstCeldas.Add(New Modelo.Celda("ydnumi,", True, "COD USUARIO", 120))
             listEstCeldas.Add(New Modelo.Celda("yduser", True, "USUARIO", 250))
@@ -659,7 +659,7 @@ Public Class F1_ProductosConteo
             ef.listEstCeldas = listEstCeldas
             ef.alto = 150
             ef.ancho = 200
-            ef.Context = "Seleccione Usuario".ToUpper
+            ef.Context = "Seleccione Responsable".ToUpper
             ef.SeleclCol = 1
             ef.ShowDialog()
             Dim bandera As Boolean = False
