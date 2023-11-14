@@ -474,7 +474,7 @@ Public Class F0_ExpImpStockFisico
                                IsDBNull(InventarioImport.Rows(i).Item("CANTIDAD3")) Or (IIf(InventarioImport.Rows(i).Item("CANTIDAD3").ToString = String.Empty, 0, InventarioImport.Rows(i).Item("CANTIDAD3")) < 0) Or
                                IsDBNull(InventarioImport.Rows(i).Item("CANTIDAD4")) Or (IIf(InventarioImport.Rows(i).Item("CANTIDAD4").ToString = String.Empty, 0, InventarioImport.Rows(i).Item("CANTIDAD4")) < 0) Then
                                 ToastNotification.Show(Me, "No se puede realizar la importación porque el codigo Dynasys: ".ToUpper & InventarioImport.Rows(i).Item("COD DYNASYS") & " tiene una de las cantidades con valor negativo, vacío o con letra, corrija por favor".ToUpper,
-                                                       My.Resources.WARNING, 6500, eToastGlowColor.Green, eToastPosition.BottomCenter)
+                                                       My.Resources.WARNING, 7500, eToastGlowColor.Green, eToastPosition.BottomCenter)
                                 Exit Sub
                             End If
                         Next
@@ -486,7 +486,7 @@ Public Class F0_ExpImpStockFisico
                                 IsDBNull(InventarioImport.Rows(k).Item("FECHA3")) Or IsDBNull(InventarioImport.Rows(k).Item("FECHA4")) Then
                                 ToastNotification.Show(Me, "No se puede realizar la importación porque el codigo Dynasys: ".ToUpper & InventarioImport.Rows(k).Item("COD DYNASYS") &
                                 " tiene una de las fechas de vencimimiento vacío o con un formato incorrecto, el formato es (dd/MM/aaaa) , corrija por favor".ToUpper,
-                                                       My.Resources.WARNING, 8000, eToastGlowColor.Green, eToastPosition.BottomCenter)
+                                                       My.Resources.WARNING, 8500, eToastGlowColor.Green, eToastPosition.BottomCenter)
                                 Exit Sub
                             End If
                         Next
@@ -543,7 +543,7 @@ Public Class F0_ExpImpStockFisico
             Else
 
                 ToastNotification.Show(Me, "No se logró importar el excel".ToUpper,
-                                     My.Resources.WARNING, 4000, eToastGlowColor.Green, eToastPosition.TopCenter)
+                                     My.Resources.WARNING, 2700, eToastGlowColor.Green, eToastPosition.TopCenter)
             End If
 
         Catch ex As Exception
@@ -617,7 +617,7 @@ Public Class F0_ExpImpStockFisico
         ToastNotification.Show(Me,
                                mensaje.ToUpper,
                                My.Resources.WARNING,
-                               5000,
+                               5500,
                                eToastGlowColor.Red,
                                eToastPosition.TopCenter)
 
