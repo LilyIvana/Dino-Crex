@@ -188,6 +188,9 @@ Partial Class F1_ProductosConteo
         '
         Me.btnEliminar.Visible = False
         '
+        'btnModificar
+        '
+        '
         'btnNuevo
         '
         Me.btnNuevo.Visible = False

@@ -495,41 +495,6 @@ Public Class F0_ExpImpStockFisico
                         btnGrabarImp.Visible = True
 
                     Else
-                        '''Validación para comprobar todos los campos de cantidades menos  el campo Total Cantidad
-                        'For i = 0 To InventarioImport.Rows.Count - 1
-                        '    'Dim aux = IIf(InventarioImport.Rows(i).Item("ISLA CENTRAL").ToString = String.Empty, 0, InventarioImport.Rows(i).Item("ISLA CENTRAL"))
-                        '    'Tablaaux.Select("Codigo=" + InventarioImport.Rows(i).Item("Codigo").ToString)
-                        '    If IsDBNull(InventarioImport.Rows(i).Item("ISLA CENTRAL")) Or (IIf(InventarioImport.Rows(i).Item("ISLA CENTRAL").ToString = String.Empty, 0, InventarioImport.Rows(i).Item("ISLA CENTRAL")) < 0) Or
-                        '       IsDBNull(InventarioImport.Rows(i).Item("ISLA MEDIA")) Or (IIf(InventarioImport.Rows(i).Item("ISLA MEDIA").ToString = String.Empty, 0, InventarioImport.Rows(i).Item("ISLA MEDIA")) < 0) Or
-                        '       IsDBNull(InventarioImport.Rows(i).Item("ISLA FINAL")) Or (IIf(InventarioImport.Rows(i).Item("ISLA FINAL").ToString = String.Empty, 0, InventarioImport.Rows(i).Item("ISLA FINAL")) < 0) Or
-                        '       IsDBNull(InventarioImport.Rows(i).Item("REFRI")) Or (IIf(InventarioImport.Rows(i).Item("REFRI").ToString = String.Empty, 0, InventarioImport.Rows(i).Item("REFRI")) < 0) Or
-                        '       IsDBNull(InventarioImport.Rows(i).Item("RACK")) Or (IIf(InventarioImport.Rows(i).Item("RACK").ToString = String.Empty, 0, InventarioImport.Rows(i).Item("RACK")) < 0) Or
-                        '       IsDBNull(InventarioImport.Rows(i).Item("ESTAN")) Or (IIf(InventarioImport.Rows(i).Item("ESTAN").ToString = String.Empty, 0, InventarioImport.Rows(i).Item("ESTAN")) < 0) Or
-                        '       IsDBNull(InventarioImport.Rows(i).Item("PAQ")) Or (IIf(InventarioImport.Rows(i).Item("PAQ").ToString = String.Empty, 0, InventarioImport.Rows(i).Item("PAQ")) < 0) Or
-                        '       IsDBNull(InventarioImport.Rows(i).Item("CANTIDAD1")) Or (IIf(InventarioImport.Rows(i).Item("CANTIDAD1").ToString = String.Empty, 0, InventarioImport.Rows(i).Item("CANTIDAD1")) < 0) Or
-                        '       IsDBNull(InventarioImport.Rows(i).Item("CANTIDAD2")) Or (IIf(InventarioImport.Rows(i).Item("CANTIDAD2").ToString = String.Empty, 0, InventarioImport.Rows(i).Item("CANTIDAD2")) < 0) Or
-                        '       IsDBNull(InventarioImport.Rows(i).Item("CANTIDAD3")) Or (IIf(InventarioImport.Rows(i).Item("CANTIDAD3").ToString = String.Empty, 0, InventarioImport.Rows(i).Item("CANTIDAD3")) < 0) Or
-                        '       IsDBNull(InventarioImport.Rows(i).Item("CANTIDAD4")) Or (IIf(InventarioImport.Rows(i).Item("CANTIDAD4").ToString = String.Empty, 0, InventarioImport.Rows(i).Item("CANTIDAD4")) < 0) Then
-                        '        ToastNotification.Show(Me, "No se puede realizar la importación porque el codigo Dynasys: ".ToUpper & InventarioImport.Rows(i).Item("COD DYNASYS") & " tiene una de las cantidades con valor negativo o vacío, revise por favor".ToUpper,
-                        '                               My.Resources.WARNING, 6000, eToastGlowColor.Green, eToastPosition.BottomCenter)
-                        '        Exit Sub
-                        '    End If
-                        'Next
-
-                        '''Validación para comprobar fechas de vencimiento
-                        'For k = 0 To InventarioImport.Rows.Count - 1
-
-                        '    If IsDBNull(InventarioImport.Rows(k).Item("FECHA1")) Or IsDBNull(InventarioImport.Rows(k).Item("FECHA2")) Or
-                        '        IsDBNull(InventarioImport.Rows(k).Item("FECHA3")) Or IsDBNull(InventarioImport.Rows(k).Item("FECHA4")) Then
-                        '        ToastNotification.Show(Me, "No se puede realizar la importación porque el codigo Dynasys: ".ToUpper & InventarioImport.Rows(k).Item("COD DYNASYS") &
-                        '        " tiene una de las fechas de vencimimiento vacío o con un formato incorrecto, el formato es (dd/MM/aaaa) , revise por favor".ToUpper,
-                        '                               My.Resources.WARNING, 8000, eToastGlowColor.Green, eToastPosition.BottomCenter)
-                        '        Exit Sub
-                        '    End If
-                        'Next
-
-                        '_prCargarTablaImport(InventarioImport)
-                        'btnGrabarImp.Visible = True
                         ToastNotification.Show(Me, "No se puede realizar la importación porque la Lista tiene que tener ".ToUpper & TablaProductos.Rows.Count & " registros".ToUpper,
                                                My.Resources.WARNING, 5000, eToastGlowColor.Green, eToastPosition.TopCenter)
                         Exit Sub

@@ -98,7 +98,6 @@ Partial Class F1_Productos
         Me.SuperTabControl_Imagenes_DetalleProducto = New DevComponents.DotNetBar.SuperTabControl()
         Me.SuperTabControlPanel1 = New DevComponents.DotNetBar.SuperTabControlPanel()
         Me.Panel1 = New System.Windows.Forms.Panel()
-        Me.UsImg = New DinoM.UCImg()
         Me.SuperTabItem_Imagenes = New DevComponents.DotNetBar.SuperTabItem()
         Me.SuperTabControlPanel2 = New DevComponents.DotNetBar.SuperTabControlPanel()
         Me.dgjDetalleProducto = New Janus.Windows.GridEX.GridEX()
@@ -119,6 +118,8 @@ Partial Class F1_Productos
         Me.btExcel = New DevComponents.DotNetBar.ButtonX()
         Me.TableLayoutPanel1 = New System.Windows.Forms.TableLayoutPanel()
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
+        Me.tbResponsable = New DevComponents.DotNetBar.Controls.TextBoxX()
+        Me.UsImg = New DinoM.UCImg()
         CType(Me.SuperTabPrincipal, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuperTabPrincipal.SuspendLayout()
         Me.SuperTabControlPanelRegistro.SuspendLayout()
@@ -1124,6 +1125,7 @@ Partial Class F1_Productos
         'Panel3
         '
         Me.Panel3.AutoScroll = True
+        Me.Panel3.Controls.Add(Me.tbResponsable)
         Me.Panel3.Controls.Add(Me.tbRotacion)
         Me.Panel3.Controls.Add(Me.LabelX19)
         Me.Panel3.Controls.Add(Me.LabelX13)
@@ -1441,16 +1443,6 @@ Partial Class F1_Productos
         Me.Panel1.Size = New System.Drawing.Size(428, 290)
         Me.Panel1.TabIndex = 223
         '
-        'UsImg
-        '
-        Me.UsImg.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
-        Me.UsImg.BackColor = System.Drawing.Color.Transparent
-        Me.UsImg.Location = New System.Drawing.Point(108, 6)
-        Me.UsImg.Margin = New System.Windows.Forms.Padding(4)
-        Me.UsImg.Name = "UsImg"
-        Me.UsImg.Size = New System.Drawing.Size(290, 270)
-        Me.UsImg.TabIndex = 222
-        '
         'SuperTabItem_Imagenes
         '
         Me.SuperTabItem_Imagenes.AttachedControl = Me.SuperTabControlPanel1
@@ -1754,6 +1746,34 @@ Partial Class F1_Productos
         Me.Timer1.Enabled = True
         Me.Timer1.Interval = 500
         '
+        'tbResponsable
+        '
+        '
+        '
+        '
+        Me.tbResponsable.Border.Class = "TextBoxBorder"
+        Me.tbResponsable.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.tbResponsable.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.tbResponsable.ForeColor = System.Drawing.Color.FromArgb(CType(CType(45, Byte), Integer), CType(CType(59, Byte), Integer), CType(CType(66, Byte), Integer))
+        Me.tbResponsable.Location = New System.Drawing.Point(11, 184)
+        Me.tbResponsable.MaxLength = 50
+        Me.tbResponsable.Multiline = True
+        Me.tbResponsable.Name = "tbResponsable"
+        Me.tbResponsable.PreventEnterBeep = True
+        Me.tbResponsable.Size = New System.Drawing.Size(100, 23)
+        Me.tbResponsable.TabIndex = 231
+        Me.tbResponsable.Visible = False
+        '
+        'UsImg
+        '
+        Me.UsImg.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
+        Me.UsImg.BackColor = System.Drawing.Color.Transparent
+        Me.UsImg.Location = New System.Drawing.Point(108, 6)
+        Me.UsImg.Margin = New System.Windows.Forms.Padding(4)
+        Me.UsImg.Name = "UsImg"
+        Me.UsImg.Size = New System.Drawing.Size(290, 270)
+        Me.UsImg.TabIndex = 222
+        '
         'F1_Productos
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -1904,4 +1924,5 @@ Partial Class F1_Productos
     Friend WithEvents cbUniCompra As Janus.Windows.GridEX.EditControls.MultiColumnCombo
     Friend WithEvents LabelX20 As DevComponents.DotNetBar.LabelX
     Friend WithEvents btUniCompra As DevComponents.DotNetBar.ButtonX
+    Friend WithEvents tbResponsable As DevComponents.DotNetBar.Controls.TextBoxX
 End Class

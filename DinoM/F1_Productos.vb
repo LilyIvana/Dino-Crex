@@ -752,6 +752,20 @@ Public Class F1_Productos
             MEP.SetError(TbPrecioPsifac, "")
         End If
 
+        If swEstado.Value = False Then
+            Dim hora = Now.ToShortTimeString
+
+            If tbResponsable.Text <> "NADIE" And hora <= "15:00" Then
+                swEstado.BackColor = Color.Red
+                MEP.SetError(swEstado, "No puede pasivar este producto hasta las 15:00 horas".ToUpper)
+                _ok = False
+            End If
+
+        Else
+            swEstado.BackColor = Color.White
+            MEP.SetError(swEstado, "")
+        End If
+
 
         MHighlighterFocus.UpdateHighlights()
         Return _ok
@@ -847,6 +861,7 @@ Public Class F1_Productos
             lbFecha.Text = CType(.GetValue("yffact"), Date).ToString("dd/MM/yyyy")
             lbHora.Text = .GetValue("yfhact").ToString
             lbUsuario.Text = .GetValue("yfuact").ToString
+            tbResponsable.Text = .GetValue("yfresponsable").ToString
 
             CbAeconomica.Value = .GetValue("ygcodact")
             CbUmedida.Value = .GetValue("ygcodu")

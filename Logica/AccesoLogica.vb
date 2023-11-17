@@ -545,7 +545,7 @@ Public Class AccesoLogica
         _listParam.Add(New Datos.DParametro("@yfcampo1", _yfprefijo))
         _listParam.Add(New Datos.DParametro("@yfcampo2", _yfconv2))
         _listParam.Add(New Datos.DParametro("@yfresponsable", "NADIE"))
-        _listParam.Add(New Datos.DParametro("@yflado", "N/A"))
+        _listParam.Add(New Datos.DParametro("@yflado", "S/L"))
         _listParam.Add(New Datos.DParametro("@yfordenacion", 0))
         _listParam.Add(New Datos.DParametro("@yfucompra", _yfucompra))
 

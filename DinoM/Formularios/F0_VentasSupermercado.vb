@@ -705,7 +705,7 @@ Public Class F0_VentasSupermercado
             .Visible = gb_CodigoBarra
         End With
         With grProductos.RootTable.Columns("yfcdprod1")
-            .Width = 320
+            .Width = 390
             .Visible = True
             .Caption = "Descripción".ToUpper
         End With

@@ -317,6 +317,17 @@ Public Class F1_ProductosConteo
         Dim _ok As Boolean = True
         MEP.Clear()
 
+        If swEstado.Value = False Then
+            swEstado.BackColor = Color.Red
+            AddHandler swEstado.KeyDown, AddressOf TextBox_KeyDown
+            MEP.SetError(swEstado, "Solo puede asignar responsable a los productos Activos, este producto se encuentra pasivo".ToUpper)
+            _ok = False
+        Else
+            swEstado.BackColor = Color.White
+            MEP.SetError(swEstado, "")
+        End If
+
+
         If tbResponsable.Text = String.Empty Then
             tbResponsable.BackColor = Color.Red
             AddHandler tbResponsable.KeyDown, AddressOf TextBox_KeyDown
