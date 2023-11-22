@@ -326,7 +326,7 @@ Public Class F1_Rol
         If btnGrabar.Enabled = True Then
             _PMInhabilitar()
             _PMPrimerRegistro()
-
+            PanelNavegacion.Enabled = True
         Else
             '  Public _modulo As SideNavItem
             _modulo.Select()

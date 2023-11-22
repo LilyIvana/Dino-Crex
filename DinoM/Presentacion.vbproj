@@ -498,6 +498,12 @@
     <Compile Include="F1_Bancos.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="F1_CalculoPedidoSugeridoDias.Designer.vb">
+      <DependentUpon>F1_CalculoPedidoSugeridoDias.vb</DependentUpon>
+    </Compile>
+    <Compile Include="F1_CalculoPedidoSugeridoDias.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="F1_StockSistVsFisico.Designer.vb">
       <DependentUpon>F1_StockSistVsFisico.vb</DependentUpon>
     </Compile>
@@ -1527,6 +1533,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="F1_Bancos.resx">
       <DependentUpon>F1_Bancos.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="F1_CalculoPedidoSugeridoDias.resx">
+      <DependentUpon>F1_CalculoPedidoSugeridoDias.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="F1_StockSistVsFisico.resx">
       <DependentUpon>F1_StockSistVsFisico.vb</DependentUpon>

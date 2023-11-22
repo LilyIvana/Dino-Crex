@@ -7440,7 +7440,7 @@ Public Class AccesoLogica
         _listParam.Add(New Datos.DParametro("@nroSemVentas", nroSemVentas))
         _listParam.Add(New Datos.DParametro("@nroSemPedido", nroSemPedido))
         _listParam.Add(New Datos.DParametro("@uact", L_Usuario))
-        _Tabla = D_ProcedimientoConParam("Sp_Mam_CalculoPedSugerido", _listParam)
+        _Tabla = D_ProcedimientoConParam("ProcCalculoPedSugerido", _listParam)
         Return _Tabla
     End Function
     Public Shared Function L_RevStockVentaProv(fechaI As String, fechaF As String, nroSemVentas As Integer, nroSemPedido As Integer) As DataTable
@@ -7452,7 +7452,20 @@ Public Class AccesoLogica
         _listParam.Add(New Datos.DParametro("@nroSemVentas", nroSemVentas))
         _listParam.Add(New Datos.DParametro("@nroSemPedido", nroSemPedido))
         _listParam.Add(New Datos.DParametro("@uact", L_Usuario))
-        _Tabla = D_ProcedimientoConParam("Sp_Mam_CalculoPedSugerido", _listParam)
+        _Tabla = D_ProcedimientoConParam("ProcCalculoPedSugerido", _listParam)
+        Return _Tabla
+    End Function
+    Public Shared Function L_CalculoPedidoSugeridoDias(fechaI As String, fechaF As String, CodProv As String, nroDiasVentas As Integer, nroDiasPedido As Integer) As DataTable
+        Dim _Tabla As DataTable
+        Dim _listParam As New List(Of Datos.DParametro)
+        _listParam.Add(New Datos.DParametro("@tipo", 3))
+        _listParam.Add(New Datos.DParametro("@fechaI", fechaI))
+        _listParam.Add(New Datos.DParametro("@fechaF", fechaF))
+        _listParam.Add(New Datos.DParametro("@proveedor", CodProv))
+        _listParam.Add(New Datos.DParametro("@nroDiasVentas", nroDiasVentas))
+        _listParam.Add(New Datos.DParametro("@nroDiasPedido", nroDiasPedido))
+        _listParam.Add(New Datos.DParametro("@uact", L_Usuario))
+        _Tabla = D_ProcedimientoConParam("ProcCalculoPedSugerido", _listParam)
         Return _Tabla
     End Function
 #End Region
