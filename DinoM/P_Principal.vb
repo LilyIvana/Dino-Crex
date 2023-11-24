@@ -1251,8 +1251,7 @@ Public Class P_Principal
     End Sub
 
     Private Sub btCalculoPedSugerido_Click(sender As Object, e As EventArgs) Handles btCalculoPedSugerido.Click
-        ''Dim frm As New F1_CalculoPedidoSugerido
-        Dim frm As New F1_CalculoPedidoSugeridoDias
+        Dim frm As New F1_CalculoPedidoSugerido
         frm._nameButton = btCalculoPedSugerido.Name
         frm.Show()
     End Sub
@@ -1280,6 +1279,12 @@ Public Class P_Principal
         Dim frm As New F1_StockSistVsFisico
         frm._nameButton = btStockSisFis.Name
         frm._modulo = FP_INVENTARIO
+        frm.Show()
+    End Sub
+
+    Private Sub btCalculoPedSugeridoDias_Click(sender As Object, e As EventArgs) Handles btCalculoPedSugeridoDias.Click
+        Dim frm As New F1_CalculoPedidoSugeridoDias
+        frm._nameButton = btCalculoPedSugeridoDias.Name
         frm.Show()
     End Sub
 

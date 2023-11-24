@@ -111,18 +111,19 @@ Public Class F1_CalculoPedidoSugeridoDias
         If dt.Rows.Count > 0 Then
 
             For i = 0 To dt.Rows.Count - 1
-                Dim PedConv1 = Math.Round((dt.Rows(i).Item("PedSugeridoUniNuevo") / dt.Rows(i).Item("Conversion1")), 0)
+                'Dim PedConv1 = Math.Round((dt.Rows(i).Item("PedSugeridoUniNuevo") / dt.Rows(i).Item("Conversion1")), 0)
+                Dim PedConv1 = Format((dt.Rows(i).Item("PedSugeridoUniNuevo") / dt.Rows(i).Item("Conversion1")), 0)
+
                 dt.Rows(i).Item("PedidoFinalUni") = IIf(dt.Rows(i).Item("Conversion2") > 1, 0, PedConv1 * dt.Rows(i).Item("Conversion1"))
                 dt.Rows(i).Item("PedidoFinalDisp") = IIf(dt.Rows(i).Item("Conversion2") = 1, 0, PedConv1)
                 dt.Rows(i).Item("TotalNuevo") = Math.Round((IIf(dt.Rows(i).Item("Conversion2") = 1, (dt.Rows(i).Item("PedidoFinalUni") * dt.Rows(i).Item("CostoNuevo")), (dt.Rows(i).Item("PedidoFinalDisp") * dt.Rows(i).Item("CostoNuevo")))), 2)
+                'Dim AUX = Math.Ceiling(1.1)
+                'Dim B = Format(1.45, "0")
             Next
-
-
 
             JGrM_Buscador.DataSource = dt
             JGrM_Buscador.RetrieveStructure()
             JGrM_Buscador.AlternatingColors = True
-
 
             With JGrM_Buscador.RootTable.Columns("yfnumi")
                 .Width = 100
@@ -152,12 +153,12 @@ Public Class F1_CalculoPedidoSugeridoDias
             With JGrM_Buscador.RootTable.Columns("Proveedor")
                 .Width = 130
                 .Visible = True
-                .Caption = "PROVEEDOR"
+                .Caption = "PROVEEDOR A CREX"
             End With
             With JGrM_Buscador.RootTable.Columns("unidad")
                 .Width = 80
                 .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far
-                .Caption = "UNIDAD VENTA"
+                .Caption = "EMPAQUE VENTA"
                 .Visible = True
             End With
             With JGrM_Buscador.RootTable.Columns("StockAct")
@@ -185,7 +186,7 @@ Public Class F1_CalculoPedidoSugeridoDias
             With JGrM_Buscador.RootTable.Columns("TotDiasVentConStock")
                 .Width = 150
                 .Caption = "TOTAL DIAS VENTAS CON STOCK"
-                .Visible = True
+                .Visible = False
                 .FormatString = "0.00"
                 .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far
                 '.AggregateFunction = AggregateFunction.Sum
@@ -209,7 +210,7 @@ Public Class F1_CalculoPedidoSugeridoDias
             End With
             With JGrM_Buscador.RootTable.Columns("MaximoNuevo")
                 .Width = 150
-                .Caption = "MÁXIMO EN UNIDADES"
+                .Caption = "MÁXIMO STOCK UN."
                 .Visible = True
                 .FormatString = "0.00"
                 .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far
@@ -217,14 +218,14 @@ Public Class F1_CalculoPedidoSugeridoDias
 
             With JGrM_Buscador.RootTable.Columns("PedSugeridoUniNuevo")
                 .Width = 150
-                .Caption = "PEDIDO SUGERIDO UNIDADES INICIAL"
+                .Caption = "PEDIDO INICIAL UN."
                 .Visible = True
                 .FormatString = "0.00"
                 .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far
             End With
             With JGrM_Buscador.RootTable.Columns("Conversion1")
                 .Width = 120
-                .Caption = "UNIDADES POR CAJ/PAQ/DISP"
+                .Caption = "UN. POR CAJ/PAQ/DISP"
                 .Visible = True
                 .FormatString = "0.00"
                 .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far
@@ -238,7 +239,7 @@ Public Class F1_CalculoPedidoSugeridoDias
             End With
             With JGrM_Buscador.RootTable.Columns("PedidoFinalUni")
                 .Width = 120
-                .Caption = "PEDIDO FINAL UNIDADES"
+                .Caption = "PEDIDO FINAL UN."
                 .Visible = True
                 .FormatString = "0.00"
                 .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far
@@ -253,24 +254,28 @@ Public Class F1_CalculoPedidoSugeridoDias
             With JGrM_Buscador.RootTable.Columns("UniCompra")
                 .Width = 90
                 .Visible = True
-                .Caption = "UNIDAD COMPRA"
+                .Caption = "EMPAQUE COMPRA"
             End With
             With JGrM_Buscador.RootTable.Columns("CostoNuevo")
                 .Width = 120
-                .Caption = "COSTO UN."
+                .Caption = "COSTO EMPAQUE APROX."
                 .Visible = True
                 .FormatString = "0.00"
                 .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far
             End With
             With JGrM_Buscador.RootTable.Columns("TotalNuevo")
                 .Width = 120
-                .Caption = "TOTAL"
+                .Caption = "TOTAL EMPAQUE APROX."
                 .Visible = True
                 .FormatString = "0.00"
                 .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far
                 .AggregateFunction = AggregateFunction.Sum
             End With
-
+            With JGrM_Buscador.RootTable.Columns("pref")
+                .Width = 100
+                .Visible = True
+                .Caption = "PREFIJO ROTACIÓN"
+            End With
             With JGrM_Buscador.RootTable.Columns("Estado")
                 .Width = 100
                 .Visible = True

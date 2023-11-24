@@ -324,6 +324,12 @@
     <Compile Include="Descuentos\DescuentoXProveedor.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="F0_ProductosConteoTodos.Designer.vb">
+      <DependentUpon>F0_ProductosConteoTodos.vb</DependentUpon>
+    </Compile>
+    <Compile Include="F0_ProductosConteoTodos.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="F0_ExpImpStockFisico.Designer.vb">
       <DependentUpon>F0_ExpImpStockFisico.vb</DependentUpon>
     </Compile>
@@ -1446,6 +1452,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Descuentos\DescuentoXProveedor.resx">
       <DependentUpon>DescuentoXProveedor.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="F0_ProductosConteoTodos.resx">
+      <DependentUpon>F0_ProductosConteoTodos.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="F0_ExpImpStockFisico.resx">
       <DependentUpon>F0_ExpImpStockFisico.vb</DependentUpon>

@@ -206,7 +206,7 @@ Partial Class F1_CalculoPedidoSugerido
         '
         '
         Me.GroupPanelBuscador.StyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.GroupPanelBuscador.Text = "CÁLCULOS   PEDIDO   SUGERIDO"
+        Me.GroupPanelBuscador.Text = "CÁLCULOS   PEDIDO   SUGERIDO  SEMANAS"
         '
         'JGrM_Buscador
         '
@@ -651,7 +651,7 @@ Partial Class F1_CalculoPedidoSugerido
         Me.ClientSize = New System.Drawing.Size(1354, 691)
         Me.Location = New System.Drawing.Point(0, 0)
         Me.Name = "F1_CalculoPedidoSugerido"
-        Me.Text = "CÁLCULOS PEDIDO SUGERIDO"
+        Me.Text = "CÁLCULOS PEDIDO SUGERIDO SEMANAS"
         Me.Controls.SetChildIndex(Me.SuperTabPrincipal, 0)
         CType(Me.SuperTabPrincipal, System.ComponentModel.ISupportInitialize).EndInit()
         Me.SuperTabPrincipal.ResumeLayout(False)

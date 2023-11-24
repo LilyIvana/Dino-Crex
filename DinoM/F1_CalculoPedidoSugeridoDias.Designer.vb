@@ -206,7 +206,7 @@ Partial Class F1_CalculoPedidoSugeridoDias
         '
         '
         Me.GroupPanelBuscador.StyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.GroupPanelBuscador.Text = "CÁLCULOS   PEDIDO   SUGERIDO"
+        Me.GroupPanelBuscador.Text = "CÁLCULOS   PEDIDO   SUGERIDO  DÍAS"
         '
         'JGrM_Buscador
         '
