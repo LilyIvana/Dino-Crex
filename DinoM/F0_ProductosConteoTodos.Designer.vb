@@ -25,6 +25,8 @@ Partial Class F0_ProductosConteoTodos
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(F0_ProductosConteoTodos))
         Dim cbAlmacen_DesignTimeLayout As Janus.Windows.GridEX.GridEXLayout = New Janus.Windows.GridEX.GridEXLayout()
+        Dim cbResp_DesignTimeLayout As Janus.Windows.GridEX.GridEXLayout = New Janus.Windows.GridEX.GridEXLayout()
+        Dim cbLado_DesignTimeLayout As Janus.Windows.GridEX.GridEXLayout = New Janus.Windows.GridEX.GridEXLayout()
         Me.PanelPrecios = New System.Windows.Forms.Panel()
         Me.GroupPanel4 = New DevComponents.DotNetBar.Controls.GroupPanel()
         Me.Panel5 = New System.Windows.Forms.Panel()
@@ -35,8 +37,9 @@ Partial Class F0_ProductosConteoTodos
         Me.Panel6 = New System.Windows.Forms.Panel()
         Me.cbAlmacen = New Janus.Windows.GridEX.EditControls.MultiColumnCombo()
         Me.lbgrupo2 = New DevComponents.DotNetBar.LabelX()
+        Me.cbResp = New Janus.Windows.GridEX.EditControls.MultiColumnCombo()
+        Me.cbLado = New Janus.Windows.GridEX.EditControls.MultiColumnCombo()
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
-        Me.btActPrecios = New DevComponents.DotNetBar.ButtonX()
         Me.PanelSuperior.SuspendLayout()
         Me.PanelInferior.SuspendLayout()
         CType(Me.BubbleBarUsuario, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -62,6 +65,8 @@ Partial Class F0_ProductosConteoTodos
         Me.TableLayoutPanel1.SuspendLayout()
         Me.Panel6.SuspendLayout()
         CType(Me.cbAlmacen, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.cbResp, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.cbLado, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'PanelSuperior
@@ -145,12 +150,8 @@ Partial Class F0_ProductosConteoTodos
         '
         'PanelToolBar2
         '
-        Me.PanelToolBar2.Controls.Add(Me.btActPrecios)
-        Me.PanelToolBar2.Location = New System.Drawing.Point(1184, 0)
+        Me.PanelToolBar2.Location = New System.Drawing.Point(1264, 0)
         Me.PanelToolBar2.Margin = New System.Windows.Forms.Padding(4)
-        Me.PanelToolBar2.Size = New System.Drawing.Size(160, 72)
-        Me.PanelToolBar2.Controls.SetChildIndex(Me.btActPrecios, 0)
-        Me.PanelToolBar2.Controls.SetChildIndex(Me.btnImprimir, 0)
         '
         'PanelPrincipal
         '
@@ -164,9 +165,7 @@ Partial Class F0_ProductosConteoTodos
         'btnImprimir
         '
         Me.btnImprimir.Image = Global.DinoM.My.Resources.Resources.sheets
-        Me.btnImprimir.Size = New System.Drawing.Size(85, 72)
         Me.btnImprimir.Text = "EXPORTAR"
-        Me.btnImprimir.Visible = False
         '
         'btnUltimo
         '
@@ -188,7 +187,7 @@ Partial Class F0_ProductosConteoTodos
         '
         Me.MRlAccion.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.MRlAccion.Margin = New System.Windows.Forms.Padding(4)
-        Me.MRlAccion.Size = New System.Drawing.Size(808, 72)
+        Me.MRlAccion.Size = New System.Drawing.Size(888, 72)
         '
         'PanelContent
         '
@@ -228,7 +227,7 @@ Partial Class F0_ProductosConteoTodos
         '
         'PictureBox1
         '
-        Me.PictureBox1.Location = New System.Drawing.Point(991, 0)
+        Me.PictureBox1.Location = New System.Drawing.Point(1071, 0)
         Me.PictureBox1.Margin = New System.Windows.Forms.Padding(4)
         '
         'PanelPrecios
@@ -369,6 +368,8 @@ Partial Class F0_ProductosConteoTodos
         Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 40.0!))
         Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30.0!))
         Me.TableLayoutPanel1.Controls.Add(Me.Panel6, 1, 0)
+        Me.TableLayoutPanel1.Controls.Add(Me.cbResp, 1, 0)
+        Me.TableLayoutPanel1.Controls.Add(Me.cbLado, 0, 0)
         Me.TableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.TableLayoutPanel1.Location = New System.Drawing.Point(0, 0)
         Me.TableLayoutPanel1.Name = "TableLayoutPanel1"
@@ -425,28 +426,38 @@ Partial Class F0_ProductosConteoTodos
         Me.lbgrupo2.TabIndex = 32
         Me.lbgrupo2.Text = "Almacen:"
         '
+        'cbResp
+        '
+        cbResp_DesignTimeLayout.LayoutString = resources.GetString("cbResp_DesignTimeLayout.LayoutString")
+        Me.cbResp.DesignTimeLayout = cbResp_DesignTimeLayout
+        Me.cbResp.Font = New System.Drawing.Font("Georgia", 8.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cbResp.Location = New System.Drawing.Point(915, 2)
+        Me.cbResp.Margin = New System.Windows.Forms.Padding(2)
+        Me.cbResp.Name = "cbResp"
+        Me.cbResp.SelectedIndex = -1
+        Me.cbResp.SelectedItem = Nothing
+        Me.cbResp.Size = New System.Drawing.Size(100, 20)
+        Me.cbResp.TabIndex = 235
+        Me.cbResp.Visible = False
+        '
+        'cbLado
+        '
+        cbLado_DesignTimeLayout.LayoutString = resources.GetString("cbLado_DesignTimeLayout.LayoutString")
+        Me.cbLado.DesignTimeLayout = cbLado_DesignTimeLayout
+        Me.cbLado.Font = New System.Drawing.Font("Georgia", 8.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cbLado.Location = New System.Drawing.Point(2, 2)
+        Me.cbLado.Margin = New System.Windows.Forms.Padding(2)
+        Me.cbLado.Name = "cbLado"
+        Me.cbLado.SelectedIndex = -1
+        Me.cbLado.SelectedItem = Nothing
+        Me.cbLado.Size = New System.Drawing.Size(100, 20)
+        Me.cbLado.TabIndex = 236
+        Me.cbLado.Visible = False
+        '
         'Timer1
         '
         Me.Timer1.Enabled = True
         Me.Timer1.Interval = 500
-        '
-        'btActPrecios
-        '
-        Me.btActPrecios.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
-        Me.btActPrecios.ColorTable = DevComponents.DotNetBar.eButtonColor.Flat
-        Me.btActPrecios.Dock = System.Windows.Forms.DockStyle.Right
-        Me.btActPrecios.Font = New System.Drawing.Font("Arial", 7.5!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btActPrecios.Image = Global.DinoM.My.Resources.Resources.precio1
-        Me.btActPrecios.ImageFixedSize = New System.Drawing.Size(35, 35)
-        Me.btActPrecios.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top
-        Me.btActPrecios.Location = New System.Drawing.Point(85, 0)
-        Me.btActPrecios.Name = "btActPrecios"
-        Me.btActPrecios.Padding = New System.Windows.Forms.Padding(0, 0, 0, 20)
-        Me.btActPrecios.Size = New System.Drawing.Size(75, 72)
-        Me.btActPrecios.Style = DevComponents.DotNetBar.eDotNetBarStyle.OfficeMobile2014
-        Me.btActPrecios.TabIndex = 13
-        Me.btActPrecios.Text = "ACTUALIZAR PRECIOS"
-        Me.btActPrecios.TextColor = System.Drawing.Color.White
         '
         'F0_ProductosConteoTodos
         '
@@ -483,9 +494,12 @@ Partial Class F0_ProductosConteoTodos
         Me.GroupPanel3.ResumeLayout(False)
         Me.Panel4.ResumeLayout(False)
         Me.TableLayoutPanel1.ResumeLayout(False)
+        Me.TableLayoutPanel1.PerformLayout()
         Me.Panel6.ResumeLayout(False)
         Me.Panel6.PerformLayout()
         CType(Me.cbAlmacen, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.cbResp, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.cbLado, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -500,5 +514,6 @@ Partial Class F0_ProductosConteoTodos
     Friend WithEvents Panel6 As System.Windows.Forms.Panel
     Friend WithEvents TableLayoutPanel1 As System.Windows.Forms.TableLayoutPanel
     Friend WithEvents Timer1 As Timer
-    Friend WithEvents btActPrecios As DevComponents.DotNetBar.ButtonX
+    Friend WithEvents cbResp As Janus.Windows.GridEX.EditControls.MultiColumnCombo
+    Friend WithEvents cbLado As Janus.Windows.GridEX.EditControls.MultiColumnCombo
 End Class

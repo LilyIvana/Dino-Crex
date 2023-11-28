@@ -41,7 +41,9 @@ Partial Class DescuentosCajeros
         Me.btnGrabar = New DevComponents.DotNetBar.ButtonX()
         Me.btnNuevo = New DevComponents.DotNetBar.ButtonX()
         Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.Panel4 = New System.Windows.Forms.Panel()
         Me.ButtonX1 = New DevComponents.DotNetBar.ButtonX()
+        Me.btnExportar = New DevComponents.DotNetBar.ButtonX()
         Me.Panel2.SuspendLayout()
         Me.GroupPanel2.SuspendLayout()
         CType(Me.grProducto, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -53,6 +55,7 @@ Partial Class DescuentosCajeros
         CType(Me.tbHasta, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.tbDesde, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel1.SuspendLayout()
+        Me.Panel4.SuspendLayout()
         Me.SuspendLayout()
         '
         'Panel2
@@ -370,6 +373,7 @@ Partial Class DescuentosCajeros
         'Panel1
         '
         Me.Panel1.BackgroundImage = Global.DinoM.My.Resources.Resources.fondo1
+        Me.Panel1.Controls.Add(Me.Panel4)
         Me.Panel1.Controls.Add(Me.ButtonX1)
         Me.Panel1.Dock = System.Windows.Forms.DockStyle.Top
         Me.Panel1.Location = New System.Drawing.Point(0, 0)
@@ -377,6 +381,17 @@ Partial Class DescuentosCajeros
         Me.Panel1.Name = "Panel1"
         Me.Panel1.Size = New System.Drawing.Size(1284, 61)
         Me.Panel1.TabIndex = 0
+        '
+        'Panel4
+        '
+        Me.Panel4.BackColor = System.Drawing.Color.Transparent
+        Me.Panel4.Controls.Add(Me.btnExportar)
+        Me.Panel4.Dock = System.Windows.Forms.DockStyle.Right
+        Me.Panel4.ForeColor = System.Drawing.Color.Transparent
+        Me.Panel4.Location = New System.Drawing.Point(1214, 0)
+        Me.Panel4.Name = "Panel4"
+        Me.Panel4.Size = New System.Drawing.Size(70, 61)
+        Me.Panel4.TabIndex = 6
         '
         'ButtonX1
         '
@@ -394,6 +409,24 @@ Partial Class DescuentosCajeros
         Me.ButtonX1.TabIndex = 5
         Me.ButtonX1.Text = "Salir"
         Me.ButtonX1.TextColor = System.Drawing.Color.White
+        '
+        'btnExportar
+        '
+        Me.btnExportar.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
+        Me.btnExportar.ColorTable = DevComponents.DotNetBar.eButtonColor.Flat
+        Me.btnExportar.Dock = System.Windows.Forms.DockStyle.Right
+        Me.btnExportar.Font = New System.Drawing.Font("Arial", 8.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnExportar.Image = Global.DinoM.My.Resources.Resources.sheets
+        Me.btnExportar.ImageFixedSize = New System.Drawing.Size(35, 35)
+        Me.btnExportar.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top
+        Me.btnExportar.Location = New System.Drawing.Point(-5, 0)
+        Me.btnExportar.Name = "btnExportar"
+        Me.btnExportar.Padding = New System.Windows.Forms.Padding(0, 0, 0, 20)
+        Me.btnExportar.Size = New System.Drawing.Size(75, 61)
+        Me.btnExportar.Style = DevComponents.DotNetBar.eDotNetBarStyle.OfficeMobile2014
+        Me.btnExportar.TabIndex = 14
+        Me.btnExportar.Text = "EXPORTAR"
+        Me.btnExportar.TextColor = System.Drawing.Color.White
         '
         'DescuentosCajeros
         '
@@ -418,6 +451,7 @@ Partial Class DescuentosCajeros
         CType(Me.tbHasta, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.tbDesde, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Panel1.ResumeLayout(False)
+        Me.Panel4.ResumeLayout(False)
         Me.ResumeLayout(False)
 
     End Sub
@@ -441,4 +475,6 @@ Partial Class DescuentosCajeros
     Friend WithEvents ButtonX1 As DevComponents.DotNetBar.ButtonX
     Friend WithEvents MenuEliminar As ContextMenuStrip
     Friend WithEvents EliminarToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents Panel4 As Panel
+    Friend WithEvents btnExportar As DevComponents.DotNetBar.ButtonX
 End Class

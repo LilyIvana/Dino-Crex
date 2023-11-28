@@ -84,6 +84,7 @@ Partial Class F1_Productos
         Me.tbCodigo = New DevComponents.DotNetBar.Controls.TextBoxX()
         Me.GroupPanel1 = New DevComponents.DotNetBar.Controls.GroupPanel()
         Me.Panel3 = New System.Windows.Forms.Panel()
+        Me.tbResponsable = New DevComponents.DotNetBar.Controls.TextBoxX()
         Me.tbRotacion = New DevComponents.DotNetBar.Controls.TextBoxX()
         Me.LabelX19 = New DevComponents.DotNetBar.LabelX()
         Me.LabelX13 = New DevComponents.DotNetBar.LabelX()
@@ -118,7 +119,6 @@ Partial Class F1_Productos
         Me.btExcel = New DevComponents.DotNetBar.ButtonX()
         Me.TableLayoutPanel1 = New System.Windows.Forms.TableLayoutPanel()
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
-        Me.tbResponsable = New DevComponents.DotNetBar.Controls.TextBoxX()
         Me.UsImg = New DinoM.UCImg()
         CType(Me.SuperTabPrincipal, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuperTabPrincipal.SuspendLayout()
@@ -408,7 +408,7 @@ Partial Class F1_Productos
         Me.cbUniCompra.SelectedIndex = -1
         Me.cbUniCompra.SelectedItem = Nothing
         Me.cbUniCompra.Size = New System.Drawing.Size(63, 22)
-        Me.cbUniCompra.TabIndex = 212
+        Me.cbUniCompra.TabIndex = 16
         Me.cbUniCompra.VisualStyle = Janus.Windows.GridEX.VisualStyle.Office2007
         '
         'LabelX20
@@ -455,7 +455,7 @@ Partial Class F1_Productos
         Me.tbConversion2.MinValue = 0R
         Me.tbConversion2.Name = "tbConversion2"
         Me.tbConversion2.Size = New System.Drawing.Size(69, 22)
-        Me.tbConversion2.TabIndex = 210
+        Me.tbConversion2.TabIndex = 15
         Me.tbConversion2.WatermarkAlignment = DevComponents.Editors.eTextAlignment.Right
         '
         'LabelX18
@@ -486,7 +486,7 @@ Partial Class F1_Productos
         Me.cbUniVenta.SelectedIndex = -1
         Me.cbUniVenta.SelectedItem = Nothing
         Me.cbUniVenta.Size = New System.Drawing.Size(63, 22)
-        Me.cbUniVenta.TabIndex = 0
+        Me.cbUniVenta.TabIndex = 12
         Me.cbUniVenta.VisualStyle = Janus.Windows.GridEX.VisualStyle.Office2007
         '
         'LabelX5
@@ -544,7 +544,7 @@ Partial Class F1_Productos
         Me.cbUnidMaxima.SelectedIndex = -1
         Me.cbUnidMaxima.SelectedItem = Nothing
         Me.cbUnidMaxima.Size = New System.Drawing.Size(62, 22)
-        Me.cbUnidMaxima.TabIndex = 2
+        Me.cbUnidMaxima.TabIndex = 13
         Me.cbUnidMaxima.VisualStyle = Janus.Windows.GridEX.VisualStyle.Office2007
         '
         'tbConversion1
@@ -561,7 +561,7 @@ Partial Class F1_Productos
         Me.tbConversion1.MinValue = 0R
         Me.tbConversion1.Name = "tbConversion1"
         Me.tbConversion1.Size = New System.Drawing.Size(69, 22)
-        Me.tbConversion1.TabIndex = 1
+        Me.tbConversion1.TabIndex = 14
         Me.tbConversion1.WatermarkAlignment = DevComponents.Editors.eTextAlignment.Right
         '
         'LabelX7
@@ -676,7 +676,7 @@ Partial Class F1_Productos
         Me.cbgrupo1.SelectedIndex = -1
         Me.cbgrupo1.SelectedItem = Nothing
         Me.cbgrupo1.Size = New System.Drawing.Size(144, 22)
-        Me.cbgrupo1.TabIndex = 0
+        Me.cbgrupo1.TabIndex = 6
         Me.cbgrupo1.VisualStyle = Janus.Windows.GridEX.VisualStyle.Office2007
         '
         'cbgrupo2
@@ -692,7 +692,7 @@ Partial Class F1_Productos
         Me.cbgrupo2.SelectedIndex = -1
         Me.cbgrupo2.SelectedItem = Nothing
         Me.cbgrupo2.Size = New System.Drawing.Size(144, 22)
-        Me.cbgrupo2.TabIndex = 1
+        Me.cbgrupo2.TabIndex = 7
         Me.cbgrupo2.VisualStyle = Janus.Windows.GridEX.VisualStyle.Office2007
         '
         'cbgrupo3
@@ -708,7 +708,7 @@ Partial Class F1_Productos
         Me.cbgrupo3.SelectedIndex = -1
         Me.cbgrupo3.SelectedItem = Nothing
         Me.cbgrupo3.Size = New System.Drawing.Size(144, 22)
-        Me.cbgrupo3.TabIndex = 2
+        Me.cbgrupo3.TabIndex = 9
         Me.cbgrupo3.VisualStyle = Janus.Windows.GridEX.VisualStyle.Office2007
         '
         'cbgrupo4
@@ -724,7 +724,7 @@ Partial Class F1_Productos
         Me.cbgrupo4.SelectedIndex = -1
         Me.cbgrupo4.SelectedItem = Nothing
         Me.cbgrupo4.Size = New System.Drawing.Size(144, 22)
-        Me.cbgrupo4.TabIndex = 3
+        Me.cbgrupo4.TabIndex = 10
         Me.cbgrupo4.VisualStyle = Janus.Windows.GridEX.VisualStyle.Office2007
         '
         'btgrupo1
@@ -810,7 +810,7 @@ Partial Class F1_Productos
         Me.cbUMed.SelectedIndex = -1
         Me.cbUMed.SelectedItem = Nothing
         Me.cbUMed.Size = New System.Drawing.Size(144, 22)
-        Me.cbUMed.TabIndex = 4
+        Me.cbUMed.TabIndex = 11
         Me.cbUMed.VisualStyle = Janus.Windows.GridEX.VisualStyle.Office2007
         '
         'LabelX8
@@ -859,7 +859,7 @@ Partial Class F1_Productos
         Me.BtAdicionar.Size = New System.Drawing.Size(75, 61)
         Me.BtAdicionar.Style = DevComponents.DotNetBar.eDotNetBarStyle.OfficeMobile2014
         Me.BtAdicionar.SubItemsExpandWidth = 10
-        Me.BtAdicionar.TabIndex = 1
+        Me.BtAdicionar.TabIndex = 300
         Me.BtAdicionar.Text = "Adicionar"
         Me.BtAdicionar.TextColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(85, Byte), Integer), CType(CType(139, Byte), Integer))
         '
@@ -944,7 +944,7 @@ Partial Class F1_Productos
         Me.swEstado.OnTextColor = System.Drawing.Color.White
         Me.swEstado.Size = New System.Drawing.Size(126, 22)
         Me.swEstado.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-        Me.swEstado.TabIndex = 6
+        Me.swEstado.TabIndex = 0
         Me.swEstado.Value = True
         Me.swEstado.ValueObject = "Y"
         '
@@ -996,7 +996,7 @@ Partial Class F1_Productos
         Me.tbDescPro.PreventEnterBeep = True
         Me.tbDescPro.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
         Me.tbDescPro.Size = New System.Drawing.Size(243, 43)
-        Me.tbDescPro.TabIndex = 4
+        Me.tbDescPro.TabIndex = 5
         '
         'LabelX3
         '
@@ -1150,6 +1150,24 @@ Partial Class F1_Productos
         Me.Panel3.Size = New System.Drawing.Size(427, 300)
         Me.Panel3.TabIndex = 227
         '
+        'tbResponsable
+        '
+        '
+        '
+        '
+        Me.tbResponsable.Border.Class = "TextBoxBorder"
+        Me.tbResponsable.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.tbResponsable.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.tbResponsable.ForeColor = System.Drawing.Color.FromArgb(CType(CType(45, Byte), Integer), CType(CType(59, Byte), Integer), CType(CType(66, Byte), Integer))
+        Me.tbResponsable.Location = New System.Drawing.Point(11, 184)
+        Me.tbResponsable.MaxLength = 50
+        Me.tbResponsable.Multiline = True
+        Me.tbResponsable.Name = "tbResponsable"
+        Me.tbResponsable.PreventEnterBeep = True
+        Me.tbResponsable.Size = New System.Drawing.Size(100, 23)
+        Me.tbResponsable.TabIndex = 400
+        Me.tbResponsable.Visible = False
+        '
         'tbRotacion
         '
         '
@@ -1165,7 +1183,7 @@ Partial Class F1_Productos
         Me.tbRotacion.Name = "tbRotacion"
         Me.tbRotacion.PreventEnterBeep = True
         Me.tbRotacion.Size = New System.Drawing.Size(243, 23)
-        Me.tbRotacion.TabIndex = 230
+        Me.tbRotacion.TabIndex = 4
         '
         'LabelX19
         '
@@ -1215,7 +1233,7 @@ Partial Class F1_Productos
         Me.tbDescDet.PreventEnterBeep = True
         Me.tbDescDet.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
         Me.tbDescDet.Size = New System.Drawing.Size(243, 52)
-        Me.tbDescDet.TabIndex = 5
+        Me.tbDescDet.TabIndex = 0
         '
         'tbStockMinimo
         '
@@ -1229,7 +1247,7 @@ Partial Class F1_Productos
         Me.tbStockMinimo.Location = New System.Drawing.Point(111, 271)
         Me.tbStockMinimo.Name = "tbStockMinimo"
         Me.tbStockMinimo.Size = New System.Drawing.Size(100, 21)
-        Me.tbStockMinimo.TabIndex = 6
+        Me.tbStockMinimo.TabIndex = 0
         '
         'GroupPanel2
         '
@@ -1345,7 +1363,7 @@ Partial Class F1_Productos
         Me.cbgrupo5.SelectedIndex = -1
         Me.cbgrupo5.SelectedItem = Nothing
         Me.cbgrupo5.Size = New System.Drawing.Size(144, 22)
-        Me.cbgrupo5.TabIndex = 216
+        Me.cbgrupo5.TabIndex = 8
         Me.cbgrupo5.VisualStyle = Janus.Windows.GridEX.VisualStyle.Office2007
         '
         'GroupPanel3
@@ -1404,9 +1422,9 @@ Partial Class F1_Productos
         Me.SuperTabControl_Imagenes_DetalleProducto.ControlBox.MenuBox.Name = ""
         Me.SuperTabControl_Imagenes_DetalleProducto.ControlBox.Name = ""
         Me.SuperTabControl_Imagenes_DetalleProducto.ControlBox.SubItems.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.SuperTabControl_Imagenes_DetalleProducto.ControlBox.MenuBox, Me.SuperTabControl_Imagenes_DetalleProducto.ControlBox.CloseBox})
-        Me.SuperTabControl_Imagenes_DetalleProducto.Controls.Add(Me.SuperTabControlPanel1)
-        Me.SuperTabControl_Imagenes_DetalleProducto.Controls.Add(Me.SuperTabControlPanel2)
         Me.SuperTabControl_Imagenes_DetalleProducto.Controls.Add(Me.SuperTabControlPanel3)
+        Me.SuperTabControl_Imagenes_DetalleProducto.Controls.Add(Me.SuperTabControlPanel2)
+        Me.SuperTabControl_Imagenes_DetalleProducto.Controls.Add(Me.SuperTabControlPanel1)
         Me.SuperTabControl_Imagenes_DetalleProducto.Dock = System.Windows.Forms.DockStyle.Fill
         Me.SuperTabControl_Imagenes_DetalleProducto.Location = New System.Drawing.Point(0, 0)
         Me.SuperTabControl_Imagenes_DetalleProducto.Name = "SuperTabControl_Imagenes_DetalleProducto"
@@ -1466,7 +1484,7 @@ Partial Class F1_Productos
         Me.dgjDetalleProducto.Location = New System.Drawing.Point(0, 0)
         Me.dgjDetalleProducto.Name = "dgjDetalleProducto"
         Me.dgjDetalleProducto.Size = New System.Drawing.Size(428, 290)
-        Me.dgjDetalleProducto.TabIndex = 0
+        Me.dgjDetalleProducto.TabIndex = 400
         '
         'SuperTabItem_DetalleProducto
         '
@@ -1559,7 +1577,7 @@ Partial Class F1_Productos
         Me.tbCodSin.PreventEnterBeep = True
         Me.tbCodSin.ReadOnly = True
         Me.tbCodSin.Size = New System.Drawing.Size(90, 21)
-        Me.tbCodSin.TabIndex = 450
+        Me.tbCodSin.TabIndex = 20
         Me.tbCodSin.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         '
         'CbProdServ
@@ -1577,7 +1595,7 @@ Partial Class F1_Productos
         Me.CbProdServ.SelectedIndex = -1
         Me.CbProdServ.SelectedItem = Nothing
         Me.CbProdServ.Size = New System.Drawing.Size(414, 22)
-        Me.CbProdServ.TabIndex = 449
+        Me.CbProdServ.TabIndex = 19
         Me.CbProdServ.VisualStyle = Janus.Windows.GridEX.VisualStyle.Office2007
         '
         'CbUmedida
@@ -1595,7 +1613,7 @@ Partial Class F1_Productos
         Me.CbUmedida.SelectedIndex = -1
         Me.CbUmedida.SelectedItem = Nothing
         Me.CbUmedida.Size = New System.Drawing.Size(414, 22)
-        Me.CbUmedida.TabIndex = 448
+        Me.CbUmedida.TabIndex = 18
         Me.CbUmedida.VisualStyle = Janus.Windows.GridEX.VisualStyle.Office2007
         '
         'CbAeconomica
@@ -1613,7 +1631,7 @@ Partial Class F1_Productos
         Me.CbAeconomica.SelectedIndex = -1
         Me.CbAeconomica.SelectedItem = Nothing
         Me.CbAeconomica.Size = New System.Drawing.Size(414, 22)
-        Me.CbAeconomica.TabIndex = 447
+        Me.CbAeconomica.TabIndex = 17
         Me.CbAeconomica.VisualStyle = Janus.Windows.GridEX.VisualStyle.Office2007
         '
         'TbPrecioPsifac
@@ -1631,7 +1649,7 @@ Partial Class F1_Productos
         Me.TbPrecioPsifac.Name = "TbPrecioPsifac"
         Me.TbPrecioPsifac.PreventEnterBeep = True
         Me.TbPrecioPsifac.Size = New System.Drawing.Size(90, 24)
-        Me.TbPrecioPsifac.TabIndex = 446
+        Me.TbPrecioPsifac.TabIndex = 21
         '
         'LabelX17
         '
@@ -1745,24 +1763,6 @@ Partial Class F1_Productos
         '
         Me.Timer1.Enabled = True
         Me.Timer1.Interval = 500
-        '
-        'tbResponsable
-        '
-        '
-        '
-        '
-        Me.tbResponsable.Border.Class = "TextBoxBorder"
-        Me.tbResponsable.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.tbResponsable.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.tbResponsable.ForeColor = System.Drawing.Color.FromArgb(CType(CType(45, Byte), Integer), CType(CType(59, Byte), Integer), CType(CType(66, Byte), Integer))
-        Me.tbResponsable.Location = New System.Drawing.Point(11, 184)
-        Me.tbResponsable.MaxLength = 50
-        Me.tbResponsable.Multiline = True
-        Me.tbResponsable.Name = "tbResponsable"
-        Me.tbResponsable.PreventEnterBeep = True
-        Me.tbResponsable.Size = New System.Drawing.Size(100, 23)
-        Me.tbResponsable.TabIndex = 231
-        Me.tbResponsable.Visible = False
         '
         'UsImg
         '

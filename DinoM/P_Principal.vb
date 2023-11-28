@@ -1288,6 +1288,14 @@ Public Class P_Principal
         frm.Show()
     End Sub
 
+    Private Sub btConfProdConteoTodos_Click(sender As Object, e As EventArgs) Handles btConfProdConteoTodos.Click
+        Dim frm As New F0_ProductosConteoTodos
+        frm._nameButton = btConfProdConteoTodos.Name
+        frm._modulo = FP_Configuracion
+        frm.Show()
+    End Sub
+
+
 
 
 

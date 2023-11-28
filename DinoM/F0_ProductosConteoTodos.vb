@@ -33,6 +33,8 @@ Public Class F0_ProductosConteoTodos
         'Me.WindowState = FormWindowState.Maximized
 
         _prCargarComboLibreria(cbAlmacen)
+        _prCargarComboLibreriaResp(cbResp)
+        _prCargarComboLado(cbLado)
 
         _prAsignarPermisos()
         Me.Text = "MODIFICAR PRODUCTOS CONTEO"
@@ -72,22 +74,22 @@ Public Class F0_ProductosConteoTodos
 
             With grproductos.RootTable.Columns("yfnumi")
                 .Caption = "COD DYNASYS"
-                .Width = 100
+                .Width = 90
                 .Visible = True
             End With
             With grproductos.RootTable.Columns("yfcprod")
                 .Caption = "COD DELTA"
-                .Width = 100
+                .Width = 90
                 .Visible = True
             End With
             With grproductos.RootTable.Columns("yfcdprod2")
                 .Caption = "COD PROVEEDOR"
-                .Width = 100
+                .Width = 90
                 .Visible = True
             End With
             With grproductos.RootTable.Columns("yfcbarra")
                 .Caption = "COD. BARRAS"
-                .Width = 150
+                .Width = 120
                 .Visible = True
             End With
             With grproductos.RootTable.Columns("yfcdprod1")
@@ -102,33 +104,42 @@ Public Class F0_ProductosConteoTodos
             End With
             With grproductos.RootTable.Columns("grupo1")
                 .Caption = "PROVEEDOR"
-                .Width = 150
+                .Width = 120
                 .Visible = True
             End With
             With grproductos.RootTable.Columns("inf")
                 .Caption = "STOCK"
-                .Width = 100
+                .Width = 80
                 .Visible = True
             End With
             With grproductos.RootTable.Columns("yfresponsable")
                 .Caption = "RESPONSABLE"
-                .Width = 120
+                .Width = 100
                 .Visible = True
+                .EditType = EditType.MultiColumnDropDown
+                .DropDown = cbResp.DropDownList
             End With
             With grproductos.RootTable.Columns("yflado")
                 .Caption = "LADO"
-                .Width = 100
+                .Width = 90
                 .Visible = True
+                .EditType = EditType.MultiColumnDropDown
+                .DropDown = cbLado.DropDownList
             End With
             With grproductos.RootTable.Columns("yfordenacion")
                 .Caption = "ORDENACIÓN"
-                .Width = 100
+                .Width = 90
                 .Visible = True
             End With
-            With grproductos.RootTable.Columns("Estado")
+            With grproductos.RootTable.Columns("est")
                 .Caption = "ESTADO"
                 .Width = 100
                 .Visible = True
+            End With
+            With grproductos.RootTable.Columns("estado")
+                .Caption = "ESTADO"
+                .Width = 100
+                .Visible = False
             End With
             'Habilitar Filtradores
             With grproductos
@@ -165,6 +176,49 @@ Public Class F0_ProductosConteoTodos
         If (CType(cbAlmacen.DataSource, DataTable).Rows.Count > 0) Then
             cbAlmacen.SelectedIndex = 0
         End If
+    End Sub
+
+    Private Sub _prCargarComboLibreriaResp(mCombo As Janus.Windows.GridEX.EditControls.MultiColumnCombo)
+        Dim dt As New DataTable
+        dt = L_fnMostrarUsuariosConteo()
+        dt.Rows.Add(0, "NADIE")
+        With mCombo
+            .DropDownList.Columns.Clear()
+            .DropDownList.Columns.Add("ydnumi").Width = 70
+            .DropDownList.Columns("ydnumi").Caption = "COD"
+            .DropDownList.Columns.Add("yduser").Width = 200
+            .DropDownList.Columns("yduser").Caption = "RESPONSABLE"
+            .ValueMember = "yduser"
+            .DisplayMember = "yduser"
+            .DataSource = dt
+            .Refresh()
+        End With
+    End Sub
+    Private Sub _prCargarComboLado(mCombo As Janus.Windows.GridEX.EditControls.MultiColumnCombo)
+        Dim dt As New DataTable
+
+        dt.Columns.Add("COD")
+        dt.Columns.Add("LADO")
+
+        dt.Rows.Add(1, "LADO A")
+        dt.Rows.Add(2, "LADO B")
+        dt.Rows.Add(3, "S/L")
+
+        With mCombo
+            .DropDownList.Columns.Clear()
+            .DropDownList.Columns.Add("COD").Width = 50
+            .DropDownList.Columns("COD").Caption = "COD"
+            .DropDownList.Columns.Add("LADO").Width = 120
+            .DropDownList.Columns("LADO").Caption = "LADO"
+            .ValueMember = "LADO"
+            .DisplayMember = "LADO"
+            .DataSource = dt
+            .Refresh()
+        End With
+
+        'If dt.Rows.Count > 0 Then
+        '    mCombo.SelectedIndex = 3
+        'End If
     End Sub
     Private Sub _prInhabiliitar()
 
@@ -209,30 +263,8 @@ Public Class F0_ProductosConteoTodos
     End Sub
 
 
-    Private Sub grprecio_CellEdited(sender As Object, e As ColumnActionEventArgs) Handles grproductos.CellEdited
-        If (_fnAccesible()) Then
 
-            ''Habilitar solo las columnas de Precio, %, Monto y Observación
-            'If (e.Column.Index > 1) Then
-            '    Dim data As String = grprecio.GetValue(e.Column.Index - 1).ToString.Trim 'En esta columna obtengo un protocolo que me indica el estado del precio 0= no insertado 1= ya insertado , a la ves con un '-' me indica la posicion de ese dato en el Datatable que envio para grabarlo que esta en 'precio' Ejemplo:1-15 -> estado=1 posicion=15
-            '    Dim estado As String = data.Substring(0, 1).Trim
-            '    Dim pos As String = data.Substring(2, data.Length - 2)
-            '    If (estado = 1 Or estado = 2) Then
-            '        precio.Rows(pos).Item("estado") = 2
-            '        precio.Rows(pos).Item("yhprecio") = grprecio.GetValue(e.Column.Index)
-            '    Else
-            '        If (estado = 0 Or estado = 3) Then
-            '            precio.Rows(pos).Item("estado") = 3
-            '            precio.Rows(pos).Item("yhprecio") = grprecio.GetValue(e.Column.Index)
-            '        End If
-            '    End If
-            'End If
-
-
-        End If
-    End Sub
-
-    Private Sub grprecio_EditingCell(sender As Object, e As EditingCellEventArgs) Handles grproductos.EditingCell
+    Private Sub grproductos_EditingCell(sender As Object, e As EditingCellEventArgs) Handles grproductos.EditingCell
 
         If btnGrabar.Enabled = False Then
             e.Cancel = True
@@ -240,10 +272,14 @@ Public Class F0_ProductosConteoTodos
         End If
         If (_fnAccesible() And IsNothing(grproductos.DataSource) = False) Then
             'Deshabilitar la columna de Productos y solo habilitar la de los precios
-            If (e.Column.Index = grproductos.RootTable.Columns("yfcdprod1").Index Or
-               e.Column.Index = grproductos.RootTable.Columns("yfcprod").Index Or
-                e.Column.Index = grproductos.RootTable.Columns("yfnumi").Index Or
-                e.Column.Index = grproductos.RootTable.Columns("yfcbarra").Index) Then
+            If (e.Column.Index = grproductos.RootTable.Columns("yfnumi").Index Or
+                e.Column.Index = grproductos.RootTable.Columns("yfcprod").Index Or
+                e.Column.Index = grproductos.RootTable.Columns("yfcdprod2").Index Or
+                e.Column.Index = grproductos.RootTable.Columns("yfcbarra").Index Or
+                e.Column.Index = grproductos.RootTable.Columns("yfcdprod1").Index Or
+                e.Column.Index = grproductos.RootTable.Columns("grupo1").Index Or
+                e.Column.Index = grproductos.RootTable.Columns("inf").Index Or
+                e.Column.Index = grproductos.RootTable.Columns("Est").Index) Then
                 e.Cancel = True
             Else
                 e.Cancel = False
@@ -254,11 +290,11 @@ Public Class F0_ProductosConteoTodos
     End Sub
     Private Sub btnGrabar_Click(sender As Object, e As EventArgs) Handles btnGrabar.Click
 
-        Dim grabar As Boolean = L_fnActualizarProductoTY0052("", CType(grproductos.DataSource, DataTable))
+        Dim grabar As Boolean = L_fnActualizarProductoTY005("", CType(grproductos.DataSource, DataTable))
         If (grabar) Then
             Dim img As Bitmap = New Bitmap(My.Resources.checked, 50, 50)
-            ToastNotification.Show(Me, "Condición de Productos Actualizados con éxito".ToUpper,
-                                      img, 2000,
+            ToastNotification.Show(Me, "Asignación de Productos Conteo Actualizados con éxito".ToUpper,
+                                      img, 3000,
                                       eToastGlowColor.Green,
                                       eToastPosition.TopCenter
                                       )
@@ -268,7 +304,7 @@ Public Class F0_ProductosConteoTodos
 
         Else
             Dim img As Bitmap = New Bitmap(My.Resources.cancel, 50, 50)
-            ToastNotification.Show(Me, "La Condición de Productos no pudo ser insertado".ToUpper, img, 2000, eToastGlowColor.Red, eToastPosition.BottomCenter)
+            ToastNotification.Show(Me, "Asignación de Productos Conteo no pudo ser insertado".ToUpper, img, 2500, eToastGlowColor.Red, eToastPosition.TopCenter)
         End If
 
     End Sub
@@ -292,7 +328,7 @@ Public Class F0_ProductosConteoTodos
                 Dim _escritor As StreamWriter
                 Dim _fila As Integer = grproductos.GetRows.Length
                 Dim _columna As Integer = grproductos.RootTable.Columns.Count
-                Dim _archivo As String = _ubicacion & "\ListaDeProd_" & Now.Date.Day &
+                Dim _archivo As String = _ubicacion & "\ListaDeProdConteo_" & Now.Date.Day &
                     "." & Now.Date.Month & "." & Now.Date.Year & "_" & Now.Hour & "." & Now.Minute & "." & Now.Second & ".csv"
                 Dim _linea As String = ""
                 Dim _filadata = 0, columndata As Int32 = 0
@@ -380,12 +416,12 @@ Public Class F0_ProductosConteoTodos
         _prCrearCarpetaReportes()
         Dim img As Bitmap = New Bitmap(My.Resources.checked, 50, 50)
         If (P_ExportarExcel(RutaGlobal + "\Reporte\Reporte Productos")) Then
-            ToastNotification.Show(Me, "EXPORTACIÓN DE LISTA DE PRODUCTOS EXITOSA..!!!",
+            ToastNotification.Show(Me, "EXPORTACIÓN DE LISTA DE PRODUCTOS CONTEO EXITOSA..!!!",
                                        img, 2000,
                                        eToastGlowColor.Green,
                                        eToastPosition.BottomCenter)
         Else
-            ToastNotification.Show(Me, "FALLO AL EXPORTACIÓN DE LISTA DE PRODUCTOS..!!!",
+            ToastNotification.Show(Me, "FALLÓ LA EXPORTACIÓN DE LISTA DE PRODUCTOS CONTEO..!!!",
                                        My.Resources.WARNING, 2000,
                                        eToastGlowColor.Red,
                                        eToastPosition.BottomLeft)
@@ -403,10 +439,20 @@ Public Class F0_ProductosConteoTodos
         End If
     End Sub
 
-    Private Sub grprecio_CellValueChanged(sender As Object, e As ColumnActionEventArgs) Handles grproductos.CellValueChanged
+    Private Sub grproductos_CellValueChanged(sender As Object, e As ColumnActionEventArgs) Handles grproductos.CellValueChanged
         Dim lin As Integer = grproductos.GetValue("yfnumi")
         Dim pos As Integer = -1
         _fnObtenerFilaDetalle(pos, lin)
+
+        If (_fnAccesible()) Then
+            If (e.Column.Index = grproductos.RootTable.Columns("yfordenacion").Index) Then
+                If (Not IsNumeric(grproductos.GetValue("yfordenacion")) Or grproductos.GetValue("yfordenacion").ToString = String.Empty) Then
+                    CType(grproductos.DataSource, DataTable).Rows(pos).Item("yfordenacion") = 0
+                    grproductos.SetValue("yfordenacion", 0)
+
+                End If
+            End If
+        End If
 
         Dim estado As Integer = CType(grproductos.DataSource, DataTable).Rows(pos).Item("estado")
         If (estado = 1) Then
@@ -424,21 +470,4 @@ Public Class F0_ProductosConteoTodos
 
     End Sub
 
-    Private Sub btActPrecios_Click(sender As Object, e As EventArgs) Handles btActPrecios.Click
-        Dim grabar As Boolean = L_fnActualizarPreciosEnLote()
-        If (grabar) Then
-            Dim img As Bitmap = New Bitmap(My.Resources.checked, 50, 50)
-            ToastNotification.Show(Me, "Precio PDV y Especial actualizados con éxito".ToUpper,
-                                      img, 2000,
-                                      eToastGlowColor.Green,
-                                      eToastPosition.TopCenter
-                                      )
-
-
-        Else
-            Dim img As Bitmap = New Bitmap(My.Resources.cancel, 50, 50)
-            ToastNotification.Show(Me, "Precio PDV y Especial no pudieron ser actualizados".ToUpper,
-                                   img, 2000, eToastGlowColor.Red, eToastPosition.BottomCenter)
-        End If
-    End Sub
 End Class
