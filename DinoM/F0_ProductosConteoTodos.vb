@@ -294,7 +294,7 @@ Public Class F0_ProductosConteoTodos
         If (grabar) Then
             Dim img As Bitmap = New Bitmap(My.Resources.checked, 50, 50)
             ToastNotification.Show(Me, "Asignación de Productos Conteo Actualizados con éxito".ToUpper,
-                                      img, 3000,
+                                      img, 3500,
                                       eToastGlowColor.Green,
                                       eToastPosition.TopCenter
                                       )

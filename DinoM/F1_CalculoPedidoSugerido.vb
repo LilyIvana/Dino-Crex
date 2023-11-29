@@ -19,7 +19,7 @@ Public Class F1_CalculoPedidoSugerido
 #End Region
 #Region "Metodos Privados"
     Private Sub _prIniciarTodo()
-        Me.Text = "CÁLCULOS  PEDIDO  SUGERIDO"
+        Me.Text = "CÁLCULO  PEDIDO  SUGERIDO SEMANAS"
         tbFechaI.Value = Now.Date
         tbFechaF.Value = Now.Date
 
