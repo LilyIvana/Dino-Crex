@@ -7586,4 +7586,180 @@ Public Class AccesoLogica
     End Function
 
 #End Region
+
+#Region "Movimiento de Productos por Peso TI003"
+
+    Public Shared Function L_prMovimientoEliminarTI003(numi As String) As Boolean
+        Dim _resultado As Boolean
+
+        Dim _Tabla As DataTable
+        Dim _listParam As New List(Of Datos.DParametro)
+
+        _listParam.Add(New Datos.DParametro("@tipo", -1))
+        _listParam.Add(New Datos.DParametro("@ibid", numi))
+        _listParam.Add(New Datos.DParametro("@ibuact", L_Usuario))
+
+        _Tabla = D_ProcedimientoConParam("ProcMam_TI003", _listParam)
+
+        If _Tabla.Rows.Count > 0 Then
+            _resultado = True
+        Else
+            _resultado = False
+        End If
+
+        Return _resultado
+    End Function
+    Public Shared Function L_prMovimientoChoferGrabarTI003(ByRef _ibid As String, _ibfdoc As String, _ibconcep As Integer,
+                                                      _ibobs As String, _almacen As Integer, _depositoDestino As Integer,
+                                                      _ibidOrigen As Integer, _detalle As DataTable, _motivo As Integer) As Boolean
+        Dim _resultado As Boolean
+        Dim _Tabla As DataTable
+        Dim _listParam As New List(Of Datos.DParametro)
+        _listParam.Add(New Datos.DParametro("@tipo", 1))
+        _listParam.Add(New Datos.DParametro("@ibid", _ibid))
+        _listParam.Add(New Datos.DParametro("@ibfdoc", _ibfdoc))
+        _listParam.Add(New Datos.DParametro("@ibconcep", _ibconcep))
+        _listParam.Add(New Datos.DParametro("@ibobs", _ibobs))
+        _listParam.Add(New Datos.DParametro("@ibest", 1))
+        _listParam.Add(New Datos.DParametro("@ibalm", _almacen))
+        _listParam.Add(New Datos.DParametro("@ibdepdest", _depositoDestino))
+        _listParam.Add(New Datos.DParametro("@ibiddc", 0))
+        _listParam.Add(New Datos.DParametro("@ibidOrigen", _ibidOrigen))
+        _listParam.Add(New Datos.DParametro("@motivo", _motivo))
+
+
+        _listParam.Add(New Datos.DParametro("@TI0021", "", _detalle))
+        _listParam.Add(New Datos.DParametro("@ibuact", L_Usuario))
+        _Tabla = D_ProcedimientoConParam("ProcMam_TI003", _listParam)
+        If _Tabla.Rows.Count > 0 Then
+            _ibid = _Tabla.Rows(0).Item(0)
+            _resultado = True
+        Else
+            _resultado = False
+        End If
+
+        Return _resultado
+    End Function
+    Public Shared Function L_prMovimientoModificarTI003(ByRef _ibid As String, _ibfdoc As String, _ibconcep As Integer, _ibobs As String, _almacen As Integer, _detalle As DataTable) As Boolean
+        Dim _resultado As Boolean
+
+        Dim _Tabla As DataTable
+        Dim _listParam As New List(Of Datos.DParametro)
+
+        _listParam.Add(New Datos.DParametro("@tipo", 2))
+        _listParam.Add(New Datos.DParametro("@ibid", _ibid))
+        _listParam.Add(New Datos.DParametro("@ibfdoc", _ibfdoc))
+        _listParam.Add(New Datos.DParametro("@ibconcep", _ibconcep))
+        _listParam.Add(New Datos.DParametro("@ibobs", _ibobs))
+        _listParam.Add(New Datos.DParametro("@ibest", 1))
+        _listParam.Add(New Datos.DParametro("@ibalm", _almacen))
+        _listParam.Add(New Datos.DParametro("@ibiddc", 0))
+
+        _listParam.Add(New Datos.DParametro("@TI0021", "", _detalle))
+        _listParam.Add(New Datos.DParametro("@ibuact", L_Usuario))
+        _Tabla = D_ProcedimientoConParam("ProcMam_TI003", _listParam)
+
+        If _Tabla.Rows.Count > 0 Then
+            _ibid = _Tabla.Rows(0).Item(0)
+            _resultado = True
+        Else
+            _resultado = False
+        End If
+
+        Return _resultado
+    End Function
+    Public Shared Function L_fnGeneralMovimientoTI003(mostrar As Integer) As DataTable
+        Dim _Tabla As DataTable
+
+        Dim _listParam As New List(Of Datos.DParametro)
+
+        _listParam.Add(New Datos.DParametro("@tipo", 3))
+        _listParam.Add(New Datos.DParametro("@ibuact", L_Usuario))
+        _listParam.Add(New Datos.DParametro("@mostrar", mostrar))
+        _Tabla = D_ProcedimientoConParam("ProcMam_TI003", _listParam)
+
+        Return _Tabla
+    End Function
+    Public Shared Function L_fnDetalleMovimientoTI003(_ibid As String) As DataTable
+        Dim _Tabla As DataTable
+
+        Dim _listParam As New List(Of Datos.DParametro)
+
+        _listParam.Add(New Datos.DParametro("@tipo", 4))
+        _listParam.Add(New Datos.DParametro("@ibid", _ibid))
+        _listParam.Add(New Datos.DParametro("@ibuact", L_Usuario))
+        _Tabla = D_ProcedimientoConParam("ProcMam_TI003", _listParam)
+
+        Return _Tabla
+    End Function
+    Public Shared Function L_prMovimientoConceptoTI003() As DataTable
+        Dim _Tabla As DataTable
+
+        Dim _listParam As New List(Of Datos.DParametro)
+        _listParam.Add(New Datos.DParametro("@tipo", 7))
+        _listParam.Add(New Datos.DParametro("@ibuact", L_Usuario))
+        _Tabla = D_ProcedimientoConParam("ProcMam_TI003", _listParam)
+
+        Return _Tabla
+    End Function
+    Public Shared Function L_fnListarDepositosTI003() As DataTable
+        Dim _Tabla As DataTable
+
+        Dim _listParam As New List(Of Datos.DParametro)
+        _listParam.Add(New Datos.DParametro("@tipo", 24))
+        _Tabla = D_ProcedimientoConParam("ProcMam_TI003", _listParam)
+
+        Return _Tabla
+    End Function
+    Public Shared Function L_fnListarLotesPorProductoMovimientoTI003(_almacen As Integer, _codproducto As Integer) As DataTable
+        Dim _Tabla As DataTable
+
+        Dim _listParam As New List(Of Datos.DParametro)
+
+        _listParam.Add(New Datos.DParametro("@tipo", 32))
+        _listParam.Add(New Datos.DParametro("@almacen", _almacen))
+        _listParam.Add(New Datos.DParametro("@producto", _codproducto))
+        _listParam.Add(New Datos.DParametro("ibuact", L_Usuario))
+        _Tabla = D_ProcedimientoConParam("ProcMam_TI003", _listParam)
+
+        Return _Tabla
+    End Function
+    Public Shared Function L_prMovimientoListarProductosTI003(dt As DataTable, _deposito As Integer) As DataTable
+        Dim _Tabla As DataTable
+
+        Dim _listParam As New List(Of Datos.DParametro)
+
+        _listParam.Add(New Datos.DParametro("@tipo", 7))
+        _listParam.Add(New Datos.DParametro("@ibuact", L_Usuario))
+        _listParam.Add(New Datos.DParametro("@almacen", _deposito))
+        _Tabla = D_ProcedimientoConParam("sp_Marco_TI002", _listParam)
+
+        Return _Tabla
+    End Function
+    Public Shared Function L_prMovimientoListarUnProductoTI003(_deposito As Integer, _CodPro As Integer) As DataTable
+        Dim _Tabla As DataTable
+
+        Dim _listParam As New List(Of Datos.DParametro)
+
+        _listParam.Add(New Datos.DParametro("@tipo", 8))
+        _listParam.Add(New Datos.DParametro("@ibuact", L_Usuario))
+        _listParam.Add(New Datos.DParametro("@almacen", _deposito))
+        _listParam.Add(New Datos.DParametro("@producto", _CodPro))
+        _Tabla = D_ProcedimientoConParam("sp_Marco_TI002", _listParam)
+
+        Return _Tabla
+    End Function
+    Public Shared Function L_prMovimientoListarProductosConLoteTI003(_deposito As Integer) As DataTable
+        Dim _Tabla As DataTable
+
+        Dim _listParam As New List(Of Datos.DParametro)
+
+        _listParam.Add(New Datos.DParametro("@tipo", 32))
+        _listParam.Add(New Datos.DParametro("@ibuact", L_Usuario))
+        _listParam.Add(New Datos.DParametro("@almacen", _deposito))
+        _Tabla = D_ProcedimientoConParam("sp_Marco_TI002", _listParam)
+
+        Return _Tabla
+    End Function
+#End Region
 End Class

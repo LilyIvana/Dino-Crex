@@ -324,6 +324,12 @@
     <Compile Include="Descuentos\DescuentoXProveedor.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="F0_MovimientoProdPeso.Designer.vb">
+      <DependentUpon>F0_MovimientoProdPeso.vb</DependentUpon>
+    </Compile>
+    <Compile Include="F0_MovimientoProdPeso.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="F0_ProductosConteoTodos.Designer.vb">
       <DependentUpon>F0_ProductosConteoTodos.vb</DependentUpon>
     </Compile>
@@ -920,6 +926,12 @@
       <DependentUpon>R_FacturasAnuladas.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Reporte\R_MovimientoProdXpeso.vb">
+      <DependentUpon>R_MovimientoProdXpeso.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Include="Reporte\R_StickerCodigoBarras5.vb">
       <DependentUpon>R_StickerCodigoBarras5.rpt</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -1453,6 +1465,9 @@
     <EmbeddedResource Include="Descuentos\DescuentoXProveedor.resx">
       <DependentUpon>DescuentoXProveedor.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="F0_MovimientoProdPeso.resx">
+      <DependentUpon>F0_MovimientoProdPeso.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="F0_ProductosConteoTodos.resx">
       <DependentUpon>F0_ProductosConteoTodos.vb</DependentUpon>
     </EmbeddedResource>
@@ -1745,6 +1760,10 @@
     <EmbeddedResource Include="Reporte\R_FacturasAnuladas.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>R_FacturasAnuladas.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reporte\R_MovimientoProdXpeso.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>R_MovimientoProdXpeso.vb</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Reporte\R_StickerCodigoBarras5.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>

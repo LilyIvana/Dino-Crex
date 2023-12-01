@@ -1295,6 +1295,13 @@ Public Class P_Principal
         frm.Show()
     End Sub
 
+    Private Sub btInvMovimientoProdPeso_Click(sender As Object, e As EventArgs) Handles btInvMovimientoProdPeso.Click
+        Dim frm As New F0_MovimientoProdPeso
+        frm._nameButton = btInvMovimientoProdPeso.Name
+        frm._modulo = FP_INVENTARIO
+        frm.Show()
+    End Sub
+
 
 
 
