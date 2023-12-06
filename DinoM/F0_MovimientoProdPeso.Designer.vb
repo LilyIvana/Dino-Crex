@@ -23,7 +23,7 @@ Partial Class F0_MovimientoProdPeso
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(F0_Movimiento))
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(F0_MovimientoProdPeso))
         Dim cbMotivo_DesignTimeLayout As Janus.Windows.GridEX.GridEXLayout = New Janus.Windows.GridEX.GridEXLayout()
         Dim cbDepositoDestino_DesignTimeLayout As Janus.Windows.GridEX.GridEXLayout = New Janus.Windows.GridEX.GridEXLayout()
         Dim cbAlmacenOrigen_DesignTimeLayout As Janus.Windows.GridEX.GridEXLayout = New Janus.Windows.GridEX.GridEXLayout()
@@ -164,9 +164,6 @@ Partial Class F0_MovimientoProdPeso
         'btnModificar
         '
         '
-        'btnNuevo
-        '
-        '
         'PanelToolBar2
         '
         Me.PanelToolBar2.Location = New System.Drawing.Point(1272, 0)
@@ -250,6 +247,9 @@ Partial Class F0_MovimientoProdPeso
         '
         Me.PictureBox1.Location = New System.Drawing.Point(1079, 0)
         '
+        'btnNuevo
+        '
+        '
         'GroupPanel3
         '
         Me.GroupPanel3.CanvasColor = System.Drawing.SystemColors.Control
@@ -291,7 +291,7 @@ Partial Class F0_MovimientoProdPeso
         '
         Me.GroupPanel3.StyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.GroupPanel3.TabIndex = 0
-        Me.GroupPanel3.Text = "DETALLE MOVIMIENTOS"
+        Me.GroupPanel3.Text = "DETALLE  MOVIMIENTO PRODUCTOS POR PESO"
         '
         'grdetalle
         '
@@ -444,6 +444,7 @@ Partial Class F0_MovimientoProdPeso
         Me.cbMotivo.SelectedItem = Nothing
         Me.cbMotivo.Size = New System.Drawing.Size(380, 22)
         Me.cbMotivo.TabIndex = 237
+        Me.cbMotivo.Visible = False
         Me.cbMotivo.VisualStyle = Janus.Windows.GridEX.VisualStyle.Office2007
         '
         'lbMotivo
@@ -462,6 +463,7 @@ Partial Class F0_MovimientoProdPeso
         Me.lbMotivo.Size = New System.Drawing.Size(50, 16)
         Me.lbMotivo.TabIndex = 238
         Me.lbMotivo.Text = "Motivo:"
+        Me.lbMotivo.Visible = False
         '
         'cbDepositoDestino
         '
@@ -801,14 +803,14 @@ Partial Class F0_MovimientoProdPeso
         Me.swMostrar.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
         Me.swMostrar.TabIndex = 423
         '
-        'F0_Movimiento
+        'F0_MovimientoProdPeso
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1352, 691)
         Me.Location = New System.Drawing.Point(0, 0)
         Me.Margin = New System.Windows.Forms.Padding(4)
-        Me.Name = "F0_Movimiento"
+        Me.Name = "F0_MovimientoProdPeso"
         Me.Text = "F0_Movimiento"
         Me.Controls.SetChildIndex(Me.PanelPrincipal, 0)
         Me.PanelSuperior.ResumeLayout(False)

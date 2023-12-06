@@ -2890,4 +2890,24 @@ salirIf:
         Return False
     End Function
 
+    Private Sub btnMovXpeso_Click(sender As Object, e As EventArgs) Handles btnMovXpeso.Click
+        Dim dt As DataTable = CType(grdetalle.DataSource, DataTable)
+        Dim frm As New F0_MovimientoProdPeso
+        frm._nameButton = P_Principal.btInvMovimientoProdPeso.Name
+        frm.DesdeModulo = True
+        frm._modulo = P_Principal.FP_INVENTARIO
+        frm.dtCompra = CType(grdetalle.DataSource, DataTable).Copy
+        frm.prog = 1
+        frm._IniciarTodo()
+        frm.Observ = "COMPRA-" + tbProveedor.Text
+
+        frm.StartPosition = FormStartPosition.WindowsDefaultLocation
+        frm.WindowState = FormWindowState.Minimized
+
+        frm.ShowDialog()
+
+
+    End Sub
+
+
 End Class

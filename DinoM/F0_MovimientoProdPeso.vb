@@ -21,10 +21,14 @@ Public Class F0_MovimientoProdPeso
     Dim Table_producto As DataTable
     Dim FilaSelectLote As DataRow = Nothing
     Public Modificar As Boolean
+    Public DesdeModulo As Boolean = False
+    Public dtCompra As DataTable
+    Public Observ As String
+    Public prog As Integer ''1=Compra, 2=Venta, 3=Mov Ingreso, 4=Mov Salida
 
 #End Region
 #Region "Metodos Privados"
-    Private Sub _IniciarTodo()
+    Public Sub _IniciarTodo()
         MSuperTabControl.SelectedTabIndex = 0
         '' L_prAbrirConexion(gs_Ip, gs_UsuarioSql, gs_ClaveSql, gs_NombreBD)
         _prValidarLote()
@@ -44,6 +48,14 @@ Public Class F0_MovimientoProdPeso
         _prAsignarPermisos()
         Me.Text = "MOVIMIENTO DE PRODUCTOS POR PESO"
         tbObservacion.MaxLength = 300
+
+        If DesdeModulo = True Then
+            btnNuevo.PerformClick()
+            _prLlenarDetalle(dtCompra, prog)
+            tbObservacion.Text = Observ
+            cbConcepto.ReadOnly = True
+            ''cbConcepto.Value = prog
+        End If
     End Sub
     Public Sub _prValidarLote()
         Dim dt As DataTable = L_fnPorcUtilidad()
@@ -56,6 +68,36 @@ Public Class F0_MovimientoProdPeso
             End If
 
         End If
+    End Sub
+    Public Sub _prLlenarDetalle(dt As DataTable, prog As Integer)
+        If prog = 1 Then
+            For i = 0 To dt.Rows.Count - 1
+                CType(grdetalle.DataSource, DataTable).Rows(i).Item("igcprod") = dt.Rows(i).Item("cbty5prod")
+                CType(grdetalle.DataSource, DataTable).Rows(i).Item("producto") = dt.Rows(i).Item("producto")
+                CType(grdetalle.DataSource, DataTable).Rows(i).Item("yfcprod") = dt.Rows(i).Item("yfcprod")
+                CType(grdetalle.DataSource, DataTable).Rows(i).Item("igcant") = 1
+
+                ''    _DesHabilitarProductos()
+
+                _prAddDetalleVenta()
+            Next
+        ElseIf prog = 3 Or prog = 4 Then
+            For i = 0 To dt.Rows.Count - 1
+                CType(grdetalle.DataSource, DataTable).Rows(i).Item("igcprod") = dt.Rows(i).Item("iccprod")
+                CType(grdetalle.DataSource, DataTable).Rows(i).Item("producto") = dt.Rows(i).Item("producto")
+                CType(grdetalle.DataSource, DataTable).Rows(i).Item("yfcprod") = dt.Rows(i).Item("yfcprod")
+                CType(grdetalle.DataSource, DataTable).Rows(i).Item("igcant") = 1
+
+                ''    _DesHabilitarProductos()
+
+                _prAddDetalleVenta()
+            Next
+        ElseIf prog = 2 Then
+
+        End If
+
+
+
     End Sub
     Private Sub _prCargarComboLibreriaDeposito(mCombo As Janus.Windows.GridEX.EditControls.MultiColumnCombo)
         Dim dt As New DataTable
@@ -216,13 +258,26 @@ Public Class F0_MovimientoProdPeso
             GPanelProductos.Visible = False
             PanelInferior.Visible = True
         End If
-        If (CType(cbAlmacenOrigen.DataSource, DataTable).Rows.Count > 0) Then
-            cbAlmacenOrigen.SelectedIndex = 0
 
+
+
+
+        If DesdeModulo = False Then
+            If (CType(cbAlmacenOrigen.DataSource, DataTable).Rows.Count > 0) Then
+                cbAlmacenOrigen.SelectedIndex = 0
+            End If
+
+            If (CType(cbConcepto.DataSource, DataTable).Rows.Count > 0) Then
+                cbConcepto.SelectedIndex = 0
+            End If
+        Else
+            If prog = 1 Or prog = 3 Then
+                cbConcepto.Value = 1
+            ElseIf prog = 2 Or prog = 4 Then
+                cbConcepto.Value = 2
+            End If
         End If
-        If (CType(cbConcepto.DataSource, DataTable).Rows.Count > 0) Then
-            cbConcepto.SelectedIndex = 0
-        End If
+
 
         cbMotivo.SelectedIndex = -1
 
@@ -871,7 +926,7 @@ Public Class F0_MovimientoProdPeso
             Return
         End If
         Dim numi As String = ""
-        Dim res As Boolean = L_prMovimientoChoferGrabarTI003(numi, tbFecha.Value.ToString("yyyy/MM/dd"), cbConcepto.Value, tbObservacion.Text, cbAlmacenOrigen.Value, 0, 0, CType(grdetalle.DataSource, DataTable), 0)
+        Dim res As Boolean = L_prMovimientoChoferGrabarTI003(numi, tbFecha.Value.ToString("yyyy/MM/dd"), cbConcepto.Value, tbObservacion.Text.Trim, cbAlmacenOrigen.Value, 0, 0, CType(grdetalle.DataSource, DataTable), 0)
         If res Then
 
             _prCargarMovimiento()

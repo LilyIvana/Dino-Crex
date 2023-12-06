@@ -26,8 +26,8 @@ Partial Class ModeloF0
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim SuperTabColorTable2 As DevComponents.DotNetBar.Rendering.SuperTabColorTable = New DevComponents.DotNetBar.Rendering.SuperTabColorTable()
-        Dim SuperTabLinearGradientColorTable2 As DevComponents.DotNetBar.Rendering.SuperTabLinearGradientColorTable = New DevComponents.DotNetBar.Rendering.SuperTabLinearGradientColorTable()
+        Dim SuperTabColorTable1 As DevComponents.DotNetBar.Rendering.SuperTabColorTable = New DevComponents.DotNetBar.Rendering.SuperTabColorTable()
+        Dim SuperTabLinearGradientColorTable1 As DevComponents.DotNetBar.Rendering.SuperTabLinearGradientColorTable = New DevComponents.DotNetBar.Rendering.SuperTabLinearGradientColorTable()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(ModeloF0))
         Me.PanelPrincipal = New System.Windows.Forms.Panel()
         Me.Panel1 = New System.Windows.Forms.Panel()
@@ -141,9 +141,9 @@ Partial Class ModeloF0
         Me.MSuperTabControl.TabFont = New System.Drawing.Font("Georgia", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.MSuperTabControl.TabIndex = 0
         Me.MSuperTabControl.Tabs.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.MSuperTabItem1})
-        SuperTabLinearGradientColorTable2.Colors = New System.Drawing.Color() {System.Drawing.Color.FromArgb(CType(CType(49, Byte), Integer), CType(CType(59, Byte), Integer), CType(CType(66, Byte), Integer))}
-        SuperTabColorTable2.Background = SuperTabLinearGradientColorTable2
-        Me.MSuperTabControl.TabStripColor = SuperTabColorTable2
+        SuperTabLinearGradientColorTable1.Colors = New System.Drawing.Color() {System.Drawing.Color.FromArgb(CType(CType(49, Byte), Integer), CType(CType(59, Byte), Integer), CType(CType(66, Byte), Integer))}
+        SuperTabColorTable1.Background = SuperTabLinearGradientColorTable1
+        Me.MSuperTabControl.TabStripColor = SuperTabColorTable1
         Me.MSuperTabControl.TabStyle = DevComponents.DotNetBar.eSuperTabStyle.OfficeMobile2014
         Me.MSuperTabControl.Text = "REGISTRO"
         '
@@ -693,7 +693,6 @@ Partial Class ModeloF0
     Protected WithEvents btnGrabar As DevComponents.DotNetBar.ButtonX
     Protected WithEvents btnEliminar As DevComponents.DotNetBar.ButtonX
     Protected WithEvents btnModificar As DevComponents.DotNetBar.ButtonX
-    Protected WithEvents btnNuevo As DevComponents.DotNetBar.ButtonX
     Protected WithEvents PanelToolBar2 As System.Windows.Forms.Panel
     Protected WithEvents PanelPrincipal As System.Windows.Forms.Panel
     Protected WithEvents PanelUsuario As System.Windows.Forms.Panel
@@ -725,4 +724,5 @@ Partial Class ModeloF0
     Protected WithEvents MSuperTabItem1 As DevComponents.DotNetBar.SuperTabItem
     Protected WithEvents MSuperTabControl As DevComponents.DotNetBar.SuperTabControl
     Protected WithEvents PictureBox1 As System.Windows.Forms.PictureBox
+    Public WithEvents btnNuevo As DevComponents.DotNetBar.ButtonX
 End Class

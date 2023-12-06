@@ -104,6 +104,7 @@ Partial Class F0_MCompras
         Me.btnExportar = New DevComponents.DotNetBar.ButtonX()
         Me.swMostrarProdProv = New DevComponents.DotNetBar.Controls.SwitchButton()
         Me.LabelX19 = New DevComponents.DotNetBar.LabelX()
+        Me.btnMovXpeso = New DevComponents.DotNetBar.ButtonX()
         Me.PanelSuperior.SuspendLayout()
         Me.PanelInferior.SuspendLayout()
         CType(Me.BubbleBarUsuario, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -233,15 +234,13 @@ Partial Class F0_MCompras
         '
         Me.btnModificar.TabIndex = 3
         '
-        'btnNuevo
-        '
-        Me.btnNuevo.TabIndex = 2
-        '
         'PanelToolBar2
         '
         Me.PanelToolBar2.Controls.Add(Me.btnExportar)
-        Me.PanelToolBar2.Location = New System.Drawing.Point(1190, 0)
-        Me.PanelToolBar2.Size = New System.Drawing.Size(160, 72)
+        Me.PanelToolBar2.Controls.Add(Me.btnMovXpeso)
+        Me.PanelToolBar2.Location = New System.Drawing.Point(1110, 0)
+        Me.PanelToolBar2.Size = New System.Drawing.Size(240, 72)
+        Me.PanelToolBar2.Controls.SetChildIndex(Me.btnMovXpeso, 0)
         Me.PanelToolBar2.Controls.SetChildIndex(Me.btnExportar, 0)
         Me.PanelToolBar2.Controls.SetChildIndex(Me.btnImprimir, 0)
         '
@@ -255,7 +254,7 @@ Partial Class F0_MCompras
         '
         'btnImprimir
         '
-        Me.btnImprimir.Size = New System.Drawing.Size(85, 72)
+        Me.btnImprimir.Size = New System.Drawing.Size(90, 72)
         '
         'btnUltimo
         '
@@ -275,7 +274,7 @@ Partial Class F0_MCompras
         '
         '
         Me.MRlAccion.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.MRlAccion.Size = New System.Drawing.Size(814, 72)
+        Me.MRlAccion.Size = New System.Drawing.Size(734, 72)
         '
         'PanelContent
         '
@@ -316,7 +315,11 @@ Partial Class F0_MCompras
         '
         'PictureBox1
         '
-        Me.PictureBox1.Location = New System.Drawing.Point(997, 0)
+        Me.PictureBox1.Location = New System.Drawing.Point(917, 0)
+        '
+        'btnNuevo
+        '
+        Me.btnNuevo.TabIndex = 2
         '
         'PanelDetalle
         '
@@ -1720,7 +1723,7 @@ Partial Class F0_MCompras
         Me.btnExportar.Image = Global.DinoM.My.Resources.Resources.sheets
         Me.btnExportar.ImageFixedSize = New System.Drawing.Size(40, 42)
         Me.btnExportar.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top
-        Me.btnExportar.Location = New System.Drawing.Point(85, 0)
+        Me.btnExportar.Location = New System.Drawing.Point(90, 0)
         Me.btnExportar.Name = "btnExportar"
         Me.btnExportar.Padding = New System.Windows.Forms.Padding(0, 0, 0, 20)
         Me.btnExportar.Size = New System.Drawing.Size(75, 72)
@@ -1761,6 +1764,24 @@ Partial Class F0_MCompras
         Me.LabelX19.Size = New System.Drawing.Size(147, 16)
         Me.LabelX19.TabIndex = 371
         Me.LabelX19.Text = "Mostrar Productos de:"
+        '
+        'btnMovXpeso
+        '
+        Me.btnMovXpeso.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
+        Me.btnMovXpeso.ColorTable = DevComponents.DotNetBar.eButtonColor.Flat
+        Me.btnMovXpeso.Dock = System.Windows.Forms.DockStyle.Right
+        Me.btnMovXpeso.Font = New System.Drawing.Font("Arial", 7.5!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnMovXpeso.Image = Global.DinoM.My.Resources.Resources.bandeja_de_entrada
+        Me.btnMovXpeso.ImageFixedSize = New System.Drawing.Size(40, 42)
+        Me.btnMovXpeso.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top
+        Me.btnMovXpeso.Location = New System.Drawing.Point(165, 0)
+        Me.btnMovXpeso.Name = "btnMovXpeso"
+        Me.btnMovXpeso.Padding = New System.Windows.Forms.Padding(0, 0, 0, 20)
+        Me.btnMovXpeso.Size = New System.Drawing.Size(75, 72)
+        Me.btnMovXpeso.Style = DevComponents.DotNetBar.eDotNetBarStyle.OfficeMobile2014
+        Me.btnMovXpeso.TabIndex = 16
+        Me.btnMovXpeso.Text = "MOV. DE PROD. X PESO"
+        Me.btnMovXpeso.TextColor = System.Drawing.Color.White
         '
         'F0_MCompras
         '
@@ -1903,4 +1924,5 @@ Partial Class F0_MCompras
     Friend WithEvents btnExportar As DevComponents.DotNetBar.ButtonX
     Friend WithEvents LabelX19 As DevComponents.DotNetBar.LabelX
     Friend WithEvents swMostrarProdProv As DevComponents.DotNetBar.Controls.SwitchButton
+    Friend WithEvents btnMovXpeso As DevComponents.DotNetBar.ButtonX
 End Class

@@ -54,6 +54,7 @@ Partial Class F0_Movimiento
         Me.grmovimiento = New Janus.Windows.GridEX.GridEX()
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         Me.swMostrar = New DevComponents.DotNetBar.Controls.SwitchButton()
+        Me.btnMovXpeso = New DevComponents.DotNetBar.ButtonX()
         Me.PanelSuperior.SuspendLayout()
         Me.PanelInferior.SuspendLayout()
         CType(Me.BubbleBarUsuario, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -164,12 +165,13 @@ Partial Class F0_Movimiento
         'btnModificar
         '
         '
-        'btnNuevo
-        '
-        '
         'PanelToolBar2
         '
-        Me.PanelToolBar2.Location = New System.Drawing.Point(1272, 0)
+        Me.PanelToolBar2.Controls.Add(Me.btnMovXpeso)
+        Me.PanelToolBar2.Location = New System.Drawing.Point(1192, 0)
+        Me.PanelToolBar2.Size = New System.Drawing.Size(160, 72)
+        Me.PanelToolBar2.Controls.SetChildIndex(Me.btnMovXpeso, 0)
+        Me.PanelToolBar2.Controls.SetChildIndex(Me.btnImprimir, 0)
         '
         'PanelPrincipal
         '
@@ -181,6 +183,7 @@ Partial Class F0_Movimiento
         '
         'btnImprimir
         '
+        Me.btnImprimir.Size = New System.Drawing.Size(85, 72)
         '
         'btnUltimo
         '
@@ -205,7 +208,7 @@ Partial Class F0_Movimiento
         '
         '
         Me.MRlAccion.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.MRlAccion.Size = New System.Drawing.Size(896, 72)
+        Me.MRlAccion.Size = New System.Drawing.Size(816, 72)
         '
         'PanelContent
         '
@@ -248,7 +251,10 @@ Partial Class F0_Movimiento
         '
         'PictureBox1
         '
-        Me.PictureBox1.Location = New System.Drawing.Point(1079, 0)
+        Me.PictureBox1.Location = New System.Drawing.Point(999, 0)
+        '
+        'btnNuevo
+        '
         '
         'GroupPanel3
         '
@@ -801,6 +807,24 @@ Partial Class F0_Movimiento
         Me.swMostrar.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
         Me.swMostrar.TabIndex = 423
         '
+        'btnMovXpeso
+        '
+        Me.btnMovXpeso.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
+        Me.btnMovXpeso.ColorTable = DevComponents.DotNetBar.eButtonColor.Flat
+        Me.btnMovXpeso.Dock = System.Windows.Forms.DockStyle.Right
+        Me.btnMovXpeso.Font = New System.Drawing.Font("Arial", 7.5!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnMovXpeso.Image = Global.DinoM.My.Resources.Resources.FormatFactoryunnamed
+        Me.btnMovXpeso.ImageFixedSize = New System.Drawing.Size(40, 42)
+        Me.btnMovXpeso.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top
+        Me.btnMovXpeso.Location = New System.Drawing.Point(85, 0)
+        Me.btnMovXpeso.Name = "btnMovXpeso"
+        Me.btnMovXpeso.Padding = New System.Windows.Forms.Padding(0, 0, 0, 20)
+        Me.btnMovXpeso.Size = New System.Drawing.Size(75, 72)
+        Me.btnMovXpeso.Style = DevComponents.DotNetBar.eDotNetBarStyle.OfficeMobile2014
+        Me.btnMovXpeso.TabIndex = 17
+        Me.btnMovXpeso.Text = "MOV. DE PROD. X PESO"
+        Me.btnMovXpeso.TextColor = System.Drawing.Color.White
+        '
         'F0_Movimiento
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -873,4 +897,5 @@ Partial Class F0_Movimiento
     Friend WithEvents swMostrar As DevComponents.DotNetBar.Controls.SwitchButton
     Friend WithEvents cbMotivo As Janus.Windows.GridEX.EditControls.MultiColumnCombo
     Friend WithEvents lbMotivo As DevComponents.DotNetBar.LabelX
+    Friend WithEvents btnMovXpeso As DevComponents.DotNetBar.ButtonX
 End Class

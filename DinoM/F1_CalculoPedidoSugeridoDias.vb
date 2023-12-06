@@ -218,7 +218,7 @@ Public Class F1_CalculoPedidoSugeridoDias
 
             With JGrM_Buscador.RootTable.Columns("PedSugeridoUniNuevo")
                 .Width = 150
-                .Caption = "PEDIDO INICIAL UN."
+                .Caption = "SUGERIDO INICIAL UN."
                 .Visible = True
                 .FormatString = "0.00"
                 .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far
@@ -239,14 +239,14 @@ Public Class F1_CalculoPedidoSugeridoDias
             End With
             With JGrM_Buscador.RootTable.Columns("PedidoFinalUni")
                 .Width = 120
-                .Caption = "PEDIDO FINAL UN."
+                .Caption = "SUGERIDO FINAL UN."
                 .Visible = True
                 .FormatString = "0.00"
                 .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far
             End With
             With JGrM_Buscador.RootTable.Columns("PedidoFinalDisp")
                 .Width = 120
-                .Caption = "PEDIDO FINAL DISPLAYS"
+                .Caption = "SUGERIDO FINAL DISPLAYS"
                 .Visible = True
                 .FormatString = "0.00"
                 .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far

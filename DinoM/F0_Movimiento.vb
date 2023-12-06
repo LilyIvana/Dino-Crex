@@ -906,7 +906,7 @@ Public Class F0_Movimiento
 
         End If
         Dim numi As String = ""
-        Dim res As Boolean = L_prMovimientoChoferGrabar(numi, tbFecha.Value.ToString("yyyy/MM/dd"), cbConcepto.Value, tbObservacion.Text, cbAlmacenOrigen.Value, 0, 0, CType(grdetalle.DataSource, DataTable), 0)
+        Dim res As Boolean = L_prMovimientoChoferGrabar(numi, tbFecha.Value.ToString("yyyy/MM/dd"), cbConcepto.Value, tbObservacion.Text.Trim, cbAlmacenOrigen.Value, 0, 0, CType(grdetalle.DataSource, DataTable), 0)
         If res Then
 
             _prCargarVenta()
@@ -1624,6 +1624,37 @@ salirIf:
             End If
         End If
 
+    End Sub
+
+    Private Sub btnMovXpeso_Click(sender As Object, e As EventArgs) Handles btnMovXpeso.Click
+        If cbConcepto.Value = 1 Or cbConcepto.Value = 2 Then
+
+            Dim dt As DataTable = CType(grdetalle.DataSource, DataTable)
+            Dim frm As New F0_MovimientoProdPeso
+            frm._nameButton = P_Principal.btInvMovimientoProdPeso.Name
+            frm.DesdeModulo = True
+            frm._modulo = P_Principal.FP_INVENTARIO
+            frm.dtCompra = CType(grdetalle.DataSource, DataTable).Copy
+            If cbConcepto.Value = 1 Then ''1=INGRESO
+                frm.prog = 3
+            ElseIf cbConcepto.Value = 2 Then ''2=SALIDA
+                frm.prog = 4
+            End If
+
+            frm._IniciarTodo()
+            If cbConcepto.Value = 1 Then ''1=INGRESO
+                frm.Observ = "MOVIMIENTO INGRESO-"
+            ElseIf cbConcepto.Value = 2 Then ''2=SALIDA
+                frm.Observ = "MOVIMIENTO SALIDA-"
+            End If
+
+            frm.StartPosition = FormStartPosition.WindowsDefaultLocation
+            frm.WindowState = FormWindowState.Minimized
+
+            frm.ShowDialog()
+        Else
+            MostrarMensajeError("NO SE PUEDE REGISTRAR MOVIMIENTO DE PRODUCTOS POR PESO  CUANDO EL CONCEPTO ES TRASPASO SALIDA")
+        End If
     End Sub
 #End Region
 End Class
