@@ -1643,9 +1643,9 @@ salirIf:
 
             frm._IniciarTodo()
             If cbConcepto.Value = 1 Then ''1=INGRESO
-                frm.Observ = "MOVIMIENTO INGRESO-"
+                frm.Observ = "MOVIMIENTO INGRESO"
             ElseIf cbConcepto.Value = 2 Then ''2=SALIDA
-                frm.Observ = "MOVIMIENTO SALIDA-"
+                frm.Observ = "MOVIMIENTO SALIDA"
             End If
 
             frm.StartPosition = FormStartPosition.WindowsDefaultLocation

@@ -127,7 +127,6 @@ Partial Class F0_Venta2
         Me.Panel6 = New System.Windows.Forms.Panel()
         Me.grVentas = New Janus.Windows.GridEX.GridEX()
         Me.PrintDialog1 = New System.Windows.Forms.PrintDialog()
-        Me.btnDuplicar = New DevComponents.DotNetBar.ButtonX()
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         Me.PanelFondoDetalle = New System.Windows.Forms.Panel()
         Me.PanelFacturaYCobranza = New System.Windows.Forms.Panel()
@@ -141,6 +140,7 @@ Partial Class F0_Venta2
         Me.LabelX26 = New DevComponents.DotNetBar.LabelX()
         Me.tbCel = New DevComponents.DotNetBar.Controls.TextBoxX()
         Me.LabelX28 = New DevComponents.DotNetBar.LabelX()
+        Me.btnMovXpeso = New DevComponents.DotNetBar.ButtonX()
         Me.PanelSuperior.SuspendLayout()
         Me.PanelInferior.SuspendLayout()
         CType(Me.BubbleBarUsuario, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -301,19 +301,16 @@ Partial Class F0_Venta2
         'btnModificar
         '
         '
-        'btnNuevo
-        '
-        '
         'PanelToolBar2
         '
-        Me.PanelToolBar2.Controls.Add(Me.btnDuplicar)
+        Me.PanelToolBar2.Controls.Add(Me.btnMovXpeso)
         Me.PanelToolBar2.Controls.Add(Me.btnBitacora)
-        Me.PanelToolBar2.Location = New System.Drawing.Point(1059, 0)
+        Me.PanelToolBar2.Location = New System.Drawing.Point(1079, 0)
         Me.PanelToolBar2.Margin = New System.Windows.Forms.Padding(2)
-        Me.PanelToolBar2.Size = New System.Drawing.Size(260, 72)
-        Me.PanelToolBar2.Controls.SetChildIndex(Me.btnImprimir, 0)
+        Me.PanelToolBar2.Size = New System.Drawing.Size(240, 72)
         Me.PanelToolBar2.Controls.SetChildIndex(Me.btnBitacora, 0)
-        Me.PanelToolBar2.Controls.SetChildIndex(Me.btnDuplicar, 0)
+        Me.PanelToolBar2.Controls.SetChildIndex(Me.btnMovXpeso, 0)
+        Me.PanelToolBar2.Controls.SetChildIndex(Me.btnImprimir, 0)
         '
         'PanelPrincipal
         '
@@ -326,7 +323,7 @@ Partial Class F0_Venta2
         '
         'btnImprimir
         '
-        Me.btnImprimir.Size = New System.Drawing.Size(260, 72)
+        Me.btnImprimir.Location = New System.Drawing.Point(80, 0)
         '
         'btnUltimo
         '
@@ -354,7 +351,7 @@ Partial Class F0_Venta2
         Me.MRlAccion.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.MRlAccion.Location = New System.Drawing.Point(370, 0)
         Me.MRlAccion.Margin = New System.Windows.Forms.Padding(2)
-        Me.MRlAccion.Size = New System.Drawing.Size(689, 72)
+        Me.MRlAccion.Size = New System.Drawing.Size(709, 72)
         Me.MRlAccion.Visible = False
         '
         'PanelContent
@@ -398,8 +395,11 @@ Partial Class F0_Venta2
         '
         'PictureBox1
         '
-        Me.PictureBox1.Location = New System.Drawing.Point(866, 0)
+        Me.PictureBox1.Location = New System.Drawing.Point(886, 0)
         Me.PictureBox1.Margin = New System.Windows.Forms.Padding(4)
+        '
+        'btnNuevo
+        '
         '
         'GroupPanel2
         '
@@ -2332,24 +2332,6 @@ Partial Class F0_Venta2
         '
         Me.PrintDialog1.UseEXDialog = True
         '
-        'btnDuplicar
-        '
-        Me.btnDuplicar.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
-        Me.btnDuplicar.ColorTable = DevComponents.DotNetBar.eButtonColor.Orange
-        Me.btnDuplicar.Dock = System.Windows.Forms.DockStyle.Right
-        Me.btnDuplicar.Font = New System.Drawing.Font("Arial", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnDuplicar.Image = Global.DinoM.My.Resources.Resources._14
-        Me.btnDuplicar.ImageFixedSize = New System.Drawing.Size(48, 48)
-        Me.btnDuplicar.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top
-        Me.btnDuplicar.Location = New System.Drawing.Point(180, 0)
-        Me.btnDuplicar.Name = "btnDuplicar"
-        Me.btnDuplicar.Size = New System.Drawing.Size(80, 72)
-        Me.btnDuplicar.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-        Me.btnDuplicar.TabIndex = 13
-        Me.btnDuplicar.Text = "DUPLICAR"
-        Me.btnDuplicar.TextColor = System.Drawing.Color.White
-        Me.btnDuplicar.Visible = False
-        '
         'Timer1
         '
         Me.Timer1.Enabled = True
@@ -2390,13 +2372,13 @@ Partial Class F0_Venta2
         Me.btnBitacora.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
         Me.btnBitacora.ColorTable = DevComponents.DotNetBar.eButtonColor.Orange
         Me.btnBitacora.Dock = System.Windows.Forms.DockStyle.Left
-        Me.btnBitacora.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnBitacora.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnBitacora.Image = Global.DinoM.My.Resources.Resources.BUSQUEDA
         Me.btnBitacora.ImageFixedSize = New System.Drawing.Size(48, 48)
         Me.btnBitacora.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top
         Me.btnBitacora.Location = New System.Drawing.Point(0, 0)
         Me.btnBitacora.Name = "btnBitacora"
-        Me.btnBitacora.Size = New System.Drawing.Size(88, 72)
+        Me.btnBitacora.Size = New System.Drawing.Size(80, 72)
         Me.btnBitacora.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
         Me.btnBitacora.TabIndex = 18
         Me.btnBitacora.Text = "DESCUENTOS"
@@ -2526,6 +2508,24 @@ Partial Class F0_Venta2
         Me.LabelX28.Size = New System.Drawing.Size(32, 23)
         Me.LabelX28.TabIndex = 430
         Me.LabelX28.Text = "Cel:"
+        '
+        'btnMovXpeso
+        '
+        Me.btnMovXpeso.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
+        Me.btnMovXpeso.ColorTable = DevComponents.DotNetBar.eButtonColor.Flat
+        Me.btnMovXpeso.Dock = System.Windows.Forms.DockStyle.Right
+        Me.btnMovXpeso.Font = New System.Drawing.Font("Arial", 7.5!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnMovXpeso.Image = Global.DinoM.My.Resources.Resources.bandeja_de_salida1
+        Me.btnMovXpeso.ImageFixedSize = New System.Drawing.Size(40, 42)
+        Me.btnMovXpeso.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top
+        Me.btnMovXpeso.Location = New System.Drawing.Point(160, 0)
+        Me.btnMovXpeso.Name = "btnMovXpeso"
+        Me.btnMovXpeso.Padding = New System.Windows.Forms.Padding(0, 0, 0, 20)
+        Me.btnMovXpeso.Size = New System.Drawing.Size(80, 72)
+        Me.btnMovXpeso.Style = DevComponents.DotNetBar.eDotNetBarStyle.OfficeMobile2014
+        Me.btnMovXpeso.TabIndex = 19
+        Me.btnMovXpeso.Text = "MOV. DE PROD. X PESO"
+        Me.btnMovXpeso.TextColor = System.Drawing.Color.White
         '
         'F0_Venta2
         '
@@ -2677,7 +2677,6 @@ Partial Class F0_Venta2
     Friend WithEvents GroupBox2 As GroupBox
     Friend WithEvents txtMontoPagado1 As DevComponents.DotNetBar.LabelX
     Friend WithEvents txtCambio1 As DevComponents.DotNetBar.LabelX
-    Protected WithEvents btnDuplicar As DevComponents.DotNetBar.ButtonX
     Friend WithEvents LabelX21 As DevComponents.DotNetBar.LabelX
     Friend WithEvents txtEstado As DevComponents.DotNetBar.Controls.TextBoxX
     Friend WithEvents Timer1 As Timer
@@ -2713,4 +2712,5 @@ Partial Class F0_Venta2
     Friend WithEvents tbCel As DevComponents.DotNetBar.Controls.TextBoxX
     Friend WithEvents swMostrar As DevComponents.DotNetBar.Controls.SwitchButton
     Friend WithEvents LabelX29 As DevComponents.DotNetBar.LabelX
+    Friend WithEvents btnMovXpeso As DevComponents.DotNetBar.ButtonX
 End Class

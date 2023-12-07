@@ -4301,53 +4301,53 @@ salirIf:
         End Try
     End Sub
 
-    Private Sub btnDuplicar_Click(sender As Object, e As EventArgs) Handles btnDuplicar.Click
-        Try
-            Dim Nit As String = tbNit.Text
-            Dim Razon_Social As String = TbNombre1.Text
-            Dim Cliente As String = tbCliente.Text
-            Dim Vend As String = tbVendedor.Text
-            Dim TipoVenta As Boolean = swTipoVenta.Value
-            Dim FechaVenc As Date = tbFechaVenc.Value
-            Dim TotalBs As String = tbTotalBs.Text
-            Dim TotalDo As String = tbTotalDo.Text
+    'Private Sub btnDuplicar_Click(sender As Object, e As EventArgs) Handles btnDuplicar.Click
+    '    Try
+    '        Dim Nit As String = tbNit.Text
+    '        Dim Razon_Social As String = TbNombre1.Text
+    '        Dim Cliente As String = tbCliente.Text
+    '        Dim Vend As String = tbVendedor.Text
+    '        Dim TipoVenta As Boolean = swTipoVenta.Value
+    '        Dim FechaVenc As Date = tbFechaVenc.Value
+    '        Dim TotalBs As String = tbTotalBs.Text
+    '        Dim TotalDo As String = tbTotalDo.Text
 
-            Dim table As DataTable = grdetalle.DataSource
+    '        Dim table As DataTable = grdetalle.DataSource
 
-            btnNuevo.PerformClick()
-            tbNit.Text = Nit
-            TbNombre1.Text = Razon_Social
-            tbCliente.Text = Cliente
-            tbVendedor.Text = Vend
-            swTipoVenta.Value = TipoVenta
-            tbFechaVenc.Value = FechaVenc
-            tbTotalBs.Text = TotalBs
-            tbTotalDo.Text = TotalDo
-            txtEstado.Clear()
-            'txtEstado.Text = "VIGENTE"
-            'grdetalle.DataSource = table
+    '        btnNuevo.PerformClick()
+    '        tbNit.Text = Nit
+    '        TbNombre1.Text = Razon_Social
+    '        tbCliente.Text = Cliente
+    '        tbVendedor.Text = Vend
+    '        swTipoVenta.Value = TipoVenta
+    '        tbFechaVenc.Value = FechaVenc
+    '        tbTotalBs.Text = TotalBs
+    '        tbTotalDo.Text = TotalDo
+    '        txtEstado.Clear()
+    '        'txtEstado.Text = "VIGENTE"
+    '        'grdetalle.DataSource = table
 
-            'Dim _detalle1 As DataTable = grdetalle.DataSource
+    '        'Dim _detalle1 As DataTable = grdetalle.DataSource
 
-            'For j As Integer = 0 To grdetalle.RowCount - 1 Step 1
-            '    grdetalle.Row = j
-            '    _detalle1.Rows(j).Item("tbtv1numi") = 0
-            '    _detalle1.Rows(j).Item("estado") = 0
-            'Next
-            'grdetalle.DataSource = _detalle1
+    '        'For j As Integer = 0 To grdetalle.RowCount - 1 Step 1
+    '        '    grdetalle.Row = j
+    '        '    _detalle1.Rows(j).Item("tbtv1numi") = 0
+    '        '    _detalle1.Rows(j).Item("estado") = 0
+    '        'Next
+    '        'grdetalle.DataSource = _detalle1
 
 
-            For j As Integer = 0 To table.Rows.Count - 1 Step 1
+    '        For j As Integer = 0 To table.Rows.Count - 1 Step 1
 
-                table.Rows(j).Item("tbtv1numi") = 0
-                table.Rows(j).Item("estado") = 0
-            Next
-            grdetalle.DataSource = table
-            _prCargarIconELiminar()
-        Catch ex As Exception
-            MostrarMensajeError(ex.Message)
-        End Try
-    End Sub
+    '            table.Rows(j).Item("tbtv1numi") = 0
+    '            table.Rows(j).Item("estado") = 0
+    '        Next
+    '        grdetalle.DataSource = table
+    '        _prCargarIconELiminar()
+    '    Catch ex As Exception
+    '        MostrarMensajeError(ex.Message)
+    '    End Try
+    'End Sub
 
     Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
         tokenObtenido = ObtToken()
@@ -5204,6 +5204,10 @@ salirIf:
 
     Private Sub swMostrar_ValueChanged(sender As Object, e As EventArgs) Handles swMostrar.ValueChanged
         _prCargarVenta()
+    End Sub
+
+    Private Sub btnMovXpeso_Click(sender As Object, e As EventArgs) Handles btnMovXpeso.Click
+
     End Sub
 
 

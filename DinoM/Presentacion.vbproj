@@ -2407,6 +2407,7 @@
     <None Include="Resources\buscar.png" />
     <None Include="Resources\BUSQUEDA1.png" />
     <None Include="Resources\bandeja-de-entrada.png" />
+    <None Include="Resources\bandeja-de-salida1.png" />
     <Content Include="Resources\check-mark.png" />
     <None Include="Resources\cobro.png" />
     <None Include="Resources\creditopagos.png" />

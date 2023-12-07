@@ -83,10 +83,13 @@ Public Class F0_MovimientoProdPeso
             Next
         ElseIf prog = 3 Or prog = 4 Then
             For i = 0 To dt.Rows.Count - 1
+                Dim dtStock = L_fnVerificarStockTI003(dt.Rows(i).Item("iccprod"))
                 CType(grdetalle.DataSource, DataTable).Rows(i).Item("igcprod") = dt.Rows(i).Item("iccprod")
                 CType(grdetalle.DataSource, DataTable).Rows(i).Item("producto") = dt.Rows(i).Item("producto")
                 CType(grdetalle.DataSource, DataTable).Rows(i).Item("yfcprod") = dt.Rows(i).Item("yfcprod")
                 CType(grdetalle.DataSource, DataTable).Rows(i).Item("igcant") = 1
+                CType(grdetalle.DataSource, DataTable).Rows(i).Item("stock") = dtStock.Rows(0).Item("ihcven")
+
 
                 ''    _DesHabilitarProductos()
 

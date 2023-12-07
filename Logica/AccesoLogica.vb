@@ -7692,6 +7692,18 @@ Public Class AccesoLogica
 
         Return _Tabla
     End Function
+    Public Shared Function L_fnVerificarStockTI003(_CodPro As Integer) As DataTable
+        Dim _Tabla As DataTable
+
+        Dim _listParam As New List(Of Datos.DParametro)
+
+        _listParam.Add(New Datos.DParametro("@tipo", 5))
+        _listParam.Add(New Datos.DParametro("@cbty5prod", _CodPro))
+        _listParam.Add(New Datos.DParametro("@ibuact", L_Usuario))
+        _Tabla = D_ProcedimientoConParam("ProcMam_TI003", _listParam)
+
+        Return _Tabla
+    End Function
     Public Shared Function L_prMovimientoConceptoTI003() As DataTable
         Dim _Tabla As DataTable
 
