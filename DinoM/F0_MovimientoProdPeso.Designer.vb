@@ -677,7 +677,7 @@ Partial Class F0_MovimientoProdPeso
         Me.tbCodigo.Location = New System.Drawing.Point(118, 16)
         Me.tbCodigo.Name = "tbCodigo"
         Me.tbCodigo.PreventEnterBeep = True
-        Me.tbCodigo.Size = New System.Drawing.Size(80, 22)
+        Me.tbCodigo.Size = New System.Drawing.Size(128, 22)
         Me.tbCodigo.TabIndex = 0
         '
         'LabelX1

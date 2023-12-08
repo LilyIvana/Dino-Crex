@@ -5208,14 +5208,30 @@ salirIf:
 
     Private Sub btnMovXpeso_Click(sender As Object, e As EventArgs) Handles btnMovXpeso.Click
         Dim dt As DataTable = CType(grdetalle.DataSource, DataTable)
+        dt.Columns.Add("gramaje")
+        For i = 0 To dt.Rows.Count - 1
+            Dim dt1 As DataTable = L_fnVerificarProdTI003(dt.Rows(i).Item("tbty5prod"))
+            dt.Rows(i).Item("gramaje") = dt1.Rows(0).Item("ycdes3")
+        Next
+        Dim dt2 = dt.Copy
+        dt2.Clear()
+
+        For i = 0 To dt.Rows.Count - 1
+            If dt.Rows(i).Item("gramaje").ToString = "X KILO" Then
+                dt2.Rows.Add(dt.Rows(i).ItemArray)
+            End If
+        Next
+
+
         Dim frm As New F0_MovimientoProdPeso
         frm._nameButton = P_Principal.btInvMovimientoProdPeso.Name
         frm.DesdeModulo = True
         frm._modulo = P_Principal.FP_INVENTARIO
-        frm.dtCompra = CType(grdetalle.DataSource, DataTable).Copy
+        'frm.dtCompra = CType(grdetalle.DataSource, DataTable).Copy
+        frm.dtCompra = dt2.Copy
         frm.prog = 2
         frm._IniciarTodo()
-        frm.Observ = "VENTA-" + tbCodigo.Text
+        frm.Observ = "VENTA " + tbCodigo.Text
 
         frm.StartPosition = FormStartPosition.WindowsDefaultLocation
         frm.WindowState = FormWindowState.Minimized
