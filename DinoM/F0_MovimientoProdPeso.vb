@@ -70,18 +70,16 @@ Public Class F0_MovimientoProdPeso
         End If
     End Sub
     Public Sub _prLlenarDetalle(dt As DataTable, prog As Integer)
-        If prog = 1 Then
+        If prog = 1 Then ''Para llenar detalle de Compra
             For i = 0 To dt.Rows.Count - 1
                 CType(grdetalle.DataSource, DataTable).Rows(i).Item("igcprod") = dt.Rows(i).Item("cbty5prod")
                 CType(grdetalle.DataSource, DataTable).Rows(i).Item("producto") = dt.Rows(i).Item("producto")
                 CType(grdetalle.DataSource, DataTable).Rows(i).Item("yfcprod") = dt.Rows(i).Item("yfcprod")
                 CType(grdetalle.DataSource, DataTable).Rows(i).Item("igcant") = 1
 
-                ''    _DesHabilitarProductos()
-
                 _prAddDetalleVenta()
             Next
-        ElseIf prog = 3 Or prog = 4 Then
+        ElseIf prog = 3 Or prog = 4 Then ''Para llenar detalle de Moviento Entrada y Salida
             For i = 0 To dt.Rows.Count - 1
                 Dim dtStock = L_fnVerificarStockTI003(dt.Rows(i).Item("iccprod"))
                 CType(grdetalle.DataSource, DataTable).Rows(i).Item("igcprod") = dt.Rows(i).Item("iccprod")
@@ -90,13 +88,19 @@ Public Class F0_MovimientoProdPeso
                 CType(grdetalle.DataSource, DataTable).Rows(i).Item("igcant") = 1
                 CType(grdetalle.DataSource, DataTable).Rows(i).Item("stock") = dtStock.Rows(0).Item("ihcven")
 
-
-                ''    _DesHabilitarProductos()
+                _prAddDetalleVenta()
+            Next
+        ElseIf prog = 2 Then ''Para llenar detalle de Venta
+            For i = 0 To dt.Rows.Count - 1
+                Dim dtStock = L_fnVerificarStockTI003(dt.Rows(i).Item("iccprod"))
+                CType(grdetalle.DataSource, DataTable).Rows(i).Item("igcprod") = dt.Rows(i).Item("iccprod")
+                CType(grdetalle.DataSource, DataTable).Rows(i).Item("producto") = dt.Rows(i).Item("producto")
+                CType(grdetalle.DataSource, DataTable).Rows(i).Item("yfcprod") = dt.Rows(i).Item("yfcprod")
+                CType(grdetalle.DataSource, DataTable).Rows(i).Item("igcant") = 1
+                CType(grdetalle.DataSource, DataTable).Rows(i).Item("stock") = dtStock.Rows(0).Item("ihcven")
 
                 _prAddDetalleVenta()
             Next
-        ElseIf prog = 2 Then
-
         End If
 
 

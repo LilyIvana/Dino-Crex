@@ -2892,6 +2892,7 @@ salirIf:
 
     Private Sub btnMovXpeso_Click(sender As Object, e As EventArgs) Handles btnMovXpeso.Click
         Dim dt As DataTable = CType(grdetalle.DataSource, DataTable)
+
         Dim frm As New F0_MovimientoProdPeso
         frm._nameButton = P_Principal.btInvMovimientoProdPeso.Name
         frm.DesdeModulo = True

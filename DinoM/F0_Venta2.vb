@@ -5213,9 +5213,9 @@ salirIf:
         frm.DesdeModulo = True
         frm._modulo = P_Principal.FP_INVENTARIO
         frm.dtCompra = CType(grdetalle.DataSource, DataTable).Copy
-        frm.prog = 1
+        frm.prog = 2
         frm._IniciarTodo()
-        frm.Observ = "VENTA-" + tbProveedor.Text
+        frm.Observ = "VENTA-" + tbCodigo.Text
 
         frm.StartPosition = FormStartPosition.WindowsDefaultLocation
         frm.WindowState = FormWindowState.Minimized
