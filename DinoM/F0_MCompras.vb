@@ -2899,7 +2899,7 @@ salirIf:
         frm.dtCompra = CType(grdetalle.DataSource, DataTable).Copy
         frm.prog = 1
         frm._IniciarTodo()
-        frm.Observ = "COMPRA-" + tbProveedor.Text
+        frm.Observ = "COMPRA-" + "-" + tbCodigo.Text + tbProveedor.Text
 
         frm.StartPosition = FormStartPosition.WindowsDefaultLocation
         frm.WindowState = FormWindowState.Minimized
