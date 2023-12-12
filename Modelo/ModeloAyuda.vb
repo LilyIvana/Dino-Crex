@@ -88,6 +88,9 @@ Public Class ModeloAyuda
             'diseño de la grilla
             .GroupByBoxVisible = False
             .VisualStyle = VisualStyle.Office2007
+
+            .RecordNavigator = True
+            .RecordNavigatorText = "Datos"
         End With
    
         
@@ -116,4 +119,6 @@ Public Class ModeloAyuda
             Me.Close()
         End If
     End Sub
+
+
 End Class

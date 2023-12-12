@@ -358,7 +358,7 @@ Public Class F1_PesajeProductos
         With JGrM_Buscador.RootTable.Columns("pccodPro")
             .Width = 90
             .Visible = True
-            .Caption = "Cod.Producto".ToUpper
+            .Caption = "Cod.Dynasys".ToUpper
         End With
         With JGrM_Buscador.RootTable.Columns("yfcdprod1")
             .Width = 390

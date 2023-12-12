@@ -32,13 +32,14 @@ Partial Class ModeloAyuda
         '
         Me.grJBuscador.AllowEdit = Janus.Windows.GridEX.InheritableBoolean.[False]
         Me.grJBuscador.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.grJBuscador.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.grJBuscador.HeaderFormatStyle.Font = New System.Drawing.Font("Georgia", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.grJBuscador.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!)
+        Me.grJBuscador.HeaderFormatStyle.Font = New System.Drawing.Font("Georgia", 9.0!, System.Drawing.FontStyle.Bold)
         Me.grJBuscador.HeaderFormatStyle.ForeColor = System.Drawing.Color.FromArgb(CType(CType(49, Byte), Integer), CType(CType(59, Byte), Integer), CType(CType(66, Byte), Integer))
         Me.grJBuscador.Location = New System.Drawing.Point(0, 0)
         Me.grJBuscador.Name = "grJBuscador"
         Me.grJBuscador.Office2007ColorScheme = Janus.Windows.GridEX.Office2007ColorScheme.Custom
         Me.grJBuscador.Office2007CustomColor = System.Drawing.Color.DodgerBlue
+        Me.grJBuscador.RecordNavigator = True
         Me.grJBuscador.Size = New System.Drawing.Size(668, 314)
         Me.grJBuscador.TabIndex = 0
         Me.grJBuscador.VisualStyle = Janus.Windows.GridEX.VisualStyle.Office2007

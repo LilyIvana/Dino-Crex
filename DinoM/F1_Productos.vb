@@ -339,10 +339,9 @@ Public Class F1_Productos
         tbCodBarra.Clear()
         tbCodProd.Clear()
         tbDescPro.Clear()
-        tbRotacion.Clear()
+        'tbRotacion.Clear()
         tbDescDet.Clear()
         tbDescCort.Clear()
-
 
         CbAeconomica.SelectedIndex = 0 ''Por defecto que carque la primera actividad económica
         CbUmedida.SelectedIndex = 56 ''Por defecto que carque la unidad (bienes)
@@ -369,6 +368,7 @@ Public Class F1_Productos
         tbConversion1.Value = 1
         tbConversion2.Value = 1
         tbStockMinimo.Value = 0
+        tbRotacion.Text = "PN"
 
         tbCodProd.Focus()
         UsImg.pbImage.Image = My.Resources.pantalla
@@ -926,7 +926,6 @@ Public Class F1_Productos
         CbProdServ.SelectedIndex = -1
         _prIniciarTodo()
     End Sub
-
 
 
     Private Function _fnCopiarImagenRutaDefinida() As String
@@ -1654,4 +1653,5 @@ Public Class F1_Productos
             btUniCompra.Visible = False
         End If
     End Sub
+
 End Class

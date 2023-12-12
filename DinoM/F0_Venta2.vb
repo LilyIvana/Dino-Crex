@@ -5208,7 +5208,10 @@ salirIf:
 
     Private Sub btnMovXpeso_Click(sender As Object, e As EventArgs) Handles btnMovXpeso.Click
         Dim dt As DataTable = CType(grdetalle.DataSource, DataTable)
-        dt.Columns.Add("gramaje")
+        If Not (dt.Columns.Contains("gramaje")) Then
+            dt.Columns.Add("gramaje")
+        End If
+
         For i = 0 To dt.Rows.Count - 1
             Dim dt1 As DataTable = L_fnVerificarProdTI003(dt.Rows(i).Item("tbty5prod"))
             dt.Rows(i).Item("gramaje") = dt1.Rows(0).Item("ycdes3")
@@ -5231,7 +5234,7 @@ salirIf:
         frm.dtCompra = dt2.Copy
         frm.prog = 2
         frm._IniciarTodo()
-        frm.Observ = "VENTA " + tbCodigo.Text
+        frm.Observ = "SALIDA DESDE VENTA " + tbCodigo.Text
 
         frm.StartPosition = FormStartPosition.WindowsDefaultLocation
         frm.WindowState = FormWindowState.Minimized

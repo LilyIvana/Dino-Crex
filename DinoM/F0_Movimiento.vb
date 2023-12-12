@@ -830,31 +830,43 @@ Public Class F0_Movimiento
                     Dim dt = L_prMovimientoListarUnProducto(cbAlmacenOrigen.Value, CodPro)
                     If dt.Rows.Count > 0 Then
 
-
                         Dim stock As Double = dt.Rows(0).Item("stock")
-                        If (CType(grdetalle.DataSource, DataTable).Rows(i).Item("estado") >= 0 And CType(grdetalle.DataSource, DataTable).Rows(i).Item("iccant") > stock) Then
-                            Dim img As Bitmap = New Bitmap(My.Resources.mensaje, 50, 50)
-                            ToastNotification.Show(Me, "La cantidad que se quiere sacar en el Producto: ".ToUpper + CodPro.ToString +
-                            " es mayor a la que existe en el stock solo puede Sacar : ".ToUpper + Str(stock).Trim,
-                              img,
+                        If stock = 0 Then
+                            Dim img1 As Bitmap = New Bitmap(My.Resources.mensaje, 50, 50)
+                            ToastNotification.Show(Me, "El Producto: ".ToUpper + CodPro.ToString +
+                            " tiene stock : ".ToUpper + Str(stock).Trim + " no se puede hacer salidas de este producto.".ToUpper,
+                              img1,
                               5000,
                               eToastGlowColor.Blue,
                               eToastPosition.TopCenter)
 
-
-                            'Dim fc As GridEXFormatCondition
-                            'fc = New GridEXFormatCondition(grdetalle.RootTable.Columns("iccant"), ConditionOperator.GreaterThan, stock)
-                            'fc.FormatStyle.ForeColor = Color.Red
-                            'grdetalle.RootTable.FormatConditions.Add(fc)
-
                             Return False
-
                         Else
-                            'Dim fc As GridEXFormatCondition
-                            'fc = New GridEXFormatCondition(grdetalle.RootTable.Columns("iccant"), ConditionOperator.LessThanOrEqualTo, stock)
-                            'fc.FormatStyle.ForeColor = Color.Black
-                            'grdetalle.RootTable.FormatConditions.Add(fc)
 
+                            If (CType(grdetalle.DataSource, DataTable).Rows(i).Item("estado") >= 0 And CType(grdetalle.DataSource, DataTable).Rows(i).Item("iccant") > stock) Then
+                                Dim img As Bitmap = New Bitmap(My.Resources.mensaje, 50, 50)
+                                ToastNotification.Show(Me, "La cantidad que se quiere sacar en el Producto: ".ToUpper + CodPro.ToString +
+                                " es mayor a la que existe en el stock solo puede Sacar : ".ToUpper + Str(stock).Trim,
+                                  img,
+                                  5000,
+                                  eToastGlowColor.Blue,
+                                  eToastPosition.TopCenter)
+
+
+                                'Dim fc As GridEXFormatCondition
+                                'fc = New GridEXFormatCondition(grdetalle.RootTable.Columns("iccant"), ConditionOperator.GreaterThan, stock)
+                                'fc.FormatStyle.ForeColor = Color.Red
+                                'grdetalle.RootTable.FormatConditions.Add(fc)
+
+                                Return False
+
+                            Else
+                                'Dim fc As GridEXFormatCondition
+                                'fc = New GridEXFormatCondition(grdetalle.RootTable.Columns("iccant"), ConditionOperator.LessThanOrEqualTo, stock)
+                                'fc.FormatStyle.ForeColor = Color.Black
+                                'grdetalle.RootTable.FormatConditions.Add(fc)
+
+                            End If
                         End If
                     End If
                 Next
@@ -1630,7 +1642,9 @@ salirIf:
         If cbConcepto.Value = 1 Or cbConcepto.Value = 2 Then
 
             Dim dt As DataTable = CType(grdetalle.DataSource, DataTable)
-            dt.Columns.Add("gramaje")
+            If Not (dt.Columns.Contains("gramaje")) Then
+                dt.Columns.Add("gramaje")
+            End If
 
             For i = 0 To dt.Rows.Count - 1
                 Dim dt1 As DataTable = L_fnVerificarProdTI003(dt.Rows(i).Item("iccprod"))
