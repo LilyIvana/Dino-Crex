@@ -125,12 +125,6 @@ Public Class F0_MovimientoProdPeso
         Dim dt As New DataTable
         dt = L_prMovimientoConceptoTI003()
 
-        'dt.Columns.Add("cpnumi")
-        'dt.Columns.Add("cpdesc")
-
-        'dt.Rows.Add(1, "INGRESO")
-        'dt.Rows.Add(2, "SALIDA")
-
         With mCombo
             .DropDownList.Columns.Clear()
             .DropDownList.Columns.Add("cpnumi").Width = 60
@@ -200,11 +194,7 @@ Public Class F0_MovimientoProdPeso
             btnModificar.Enabled = True
         End If
 
-        'btnModificar.Enabled = True
-
-
         grdetalle.RootTable.Columns("img").Visible = False
-
 
         If (GPanelProductos.Visible = True) Then
             _DesHabilitarProductos()
@@ -214,15 +204,14 @@ Public Class F0_MovimientoProdPeso
         FilaSelectLote = Nothing
     End Sub
     Private Sub _prhabilitar()
-        'cbConcepto.ReadOnly = False
+
         tbObservacion.ReadOnly = False
         tbFecha.IsInputReadOnly = False
         tbFecha.Enabled = True
         cbAlmacenOrigen.ReadOnly = False
         cbDepositoDestino.ReadOnly = False
         grmovimiento.Enabled = False
-        ''  tbCliente.ReadOnly = False  por que solo podra seleccionar Cliente
-        ''  tbVendedor.ReadOnly = False
+
         If (tbCodigo.Text.Length > 0) Then
             cbAlmacenOrigen.ReadOnly = True
             cbConcepto.ReadOnly = True
@@ -253,7 +242,6 @@ Public Class F0_MovimientoProdPeso
         tbFecha.Value = Now.Date
         _prCargarDetalleVenta(-1)
 
-
         With grdetalle.RootTable.Columns("img")
             .Width = 80
             .Caption = "Eliminar"
@@ -265,9 +253,6 @@ Public Class F0_MovimientoProdPeso
             GPanelProductos.Visible = False
             PanelInferior.Visible = True
         End If
-
-
-
 
         If DesdeModulo = False Then
             If (CType(cbAlmacenOrigen.DataSource, DataTable).Rows.Count > 0) Then
@@ -285,7 +270,6 @@ Public Class F0_MovimientoProdPeso
             End If
         End If
 
-
         cbMotivo.SelectedIndex = -1
 
         _prAddDetalleVenta()
@@ -298,8 +282,6 @@ Public Class F0_MovimientoProdPeso
 
     End Sub
     Public Sub _prMostrarRegistro(_N As Integer)
-        '      a.ibid ,a.ibfdoc ,a.ibconcep ,b.cpdesc as concepto,a.ibobs ,a.ibest ,a.ibalm ,a.ibiddc 
-        ',a.ibfact ,a.ibhact ,a.ibuact,ibdepdest
         With grmovimiento
             tbCodigo.Text = .GetValue("ifid")
             tbFecha.Value = .GetValue("iffdoc")
@@ -318,7 +300,6 @@ Public Class F0_MovimientoProdPeso
         '    btnModificar.Enabled = True
         'End If
 
-
         _prCargarDetalleVenta(tbCodigo.Text)
         LblPaginacion.Text = Str(grmovimiento.Row + 1) + "/" + grmovimiento.RowCount.ToString
 
@@ -335,7 +316,6 @@ Public Class F0_MovimientoProdPeso
             .Width = 100
             .Caption = "CODIGO"
             .Visible = False
-
         End With
         With grdetalle.RootTable.Columns("igcprod")
             .Width = 120
@@ -400,7 +380,6 @@ Public Class F0_MovimientoProdPeso
                 .Visible = True
             End With
         Else
-
             With grdetalle.RootTable.Columns("iglot")
                 .Width = 120
                 .Caption = "lote".ToUpper
@@ -445,14 +424,11 @@ Public Class F0_MovimientoProdPeso
         grmovimiento.RetrieveStructure()
         grmovimiento.AlternatingColors = True
 
-
         With grmovimiento.RootTable.Columns("ifid")
             .Width = 100
             .Caption = "CODIGO"
             .Visible = True
-
         End With
-
         With grmovimiento.RootTable.Columns("iffdoc")
             .Width = 90
             .Visible = True
@@ -463,7 +439,6 @@ Public Class F0_MovimientoProdPeso
             .Width = 90
             .Visible = False
         End With
-
         With grmovimiento.RootTable.Columns("concepto")
             .Width = 160
             .Visible = True
@@ -474,14 +449,11 @@ Public Class F0_MovimientoProdPeso
             .Visible = True
             .Caption = "observacion".ToUpper
         End With
-
-
         With grmovimiento.RootTable.Columns("ifest")
             .Width = 50
             .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Near
             .Visible = False
         End With
-
         With grmovimiento.RootTable.Columns("ifalm")
             .Width = 50
             .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Near
@@ -492,9 +464,6 @@ Public Class F0_MovimientoProdPeso
             .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Near
             .Visible = False
         End With
-        '      a.ibid ,a.ibfdoc ,a.ibconcep ,b.cpdesc as concepto,a.ibobs ,a.ibest ,a.ibalm ,a.ibiddc 
-        ',a.ibfact ,a.ibhact ,a.ibuact
-
         With grmovimiento.RootTable.Columns("iffact")
             .Width = 50
             .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Near
@@ -511,7 +480,6 @@ Public Class F0_MovimientoProdPeso
             .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Near
             .Visible = True
         End With
-
         With grmovimiento.RootTable.Columns("ifdepdest")
             .Width = 50
             .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Near
@@ -531,10 +499,6 @@ Public Class F0_MovimientoProdPeso
         End If
     End Sub
     Public Sub actualizarSaldoSinLote(ByRef dt As DataTable)
-        'b.yfcdprod1 ,a.iclot ,a.icfven  ,a.iccven 
-
-        'a.yfnumi  ,a.yfcdprod1  ,a.yfcdprod2,Sum(b.iccven ) as stock
-        'Dim _detalle As DataTable = CType(grdetalle.DataSource, DataTable)
         Dim _dtDetalle As DataTable = CType(grdetalle.DataSource, DataTable)
         For i As Integer = 0 To dt.Rows.Count - 1 Step 1
             Dim sum As Integer = 0
@@ -562,7 +526,6 @@ Public Class F0_MovimientoProdPeso
             dt = L_prMovimientoListarProductosTI003(CType(grdetalle.DataSource, DataTable), cbAlmacenOrigen.Value)  ''1=Almacen
         End If
 
-        'a.yfnumi  ,a.yfcdprod1  ,a.yfcdprod2 
         If (grproducto.RowCount > 0 And cbConcepto.Value = 1) Then
             grproducto.DataSource = dt
             Return
@@ -633,11 +596,7 @@ Public Class F0_MovimientoProdPeso
         _prAplicarCondiccionJanusSinLote()
     End Sub
     Public Sub actualizarSaldo(ByRef dt As DataTable, CodProducto As Integer)
-        'b.yfcdprod1 ,a.iclot ,a.icfven  ,a.iccven 
 
-        '      a.tbnumi ,a.tbtv1numi ,a.tbty5prod ,b.yfcdprod1 as producto,a.tbest ,a.tbcmin ,a.tbumin ,Umin .ycdes3 as unidad,a.tbpbas ,a.tbptot ,a.tbobs ,
-        'a.tbpcos,a.tblote ,a.tbfechaVenc , a.tbptot2, a.tbfact ,a.tbhact ,a.tbuact,1 as estado,Cast(null as Image) as img,
-        'Cast (0 as decimal (18,2)) as stock
         Dim _detalle As DataTable = CType(grdetalle.DataSource, DataTable)
 
         For i As Integer = 0 To dt.Rows.Count - 1 Step 1
@@ -671,23 +630,18 @@ Public Class F0_MovimientoProdPeso
         With grproducto.RootTable.Columns("yfcdprod1")
             .Width = 150
             .Visible = False
-
         End With
-        'b.yfcdprod1 ,a.iclot ,a.icfven  ,a.iccven 
         With grproducto.RootTable.Columns("ihlot")
             .Width = 150
             .Caption = "LOTE"
             .Visible = True
-
         End With
         With grproducto.RootTable.Columns("ihfven")
             .Width = 160
             .Caption = "FECHA VENCIMIENTO"
             .FormatString = "yyyy/MM/dd"
             .Visible = True
-
         End With
-
         With grproducto.RootTable.Columns("stock")
             .Width = 150
             .Visible = True
@@ -695,7 +649,6 @@ Public Class F0_MovimientoProdPeso
             .FormatString = "0.00"
             .AggregateFunction = AggregateFunction.Sum
         End With
-
 
         With grproducto
             .DefaultFilterRowComparison = FilterConditionOperator.Contains
@@ -709,7 +662,6 @@ Public Class F0_MovimientoProdPeso
             .VisualStyle = VisualStyle.Office2007
         End With
         _prAplicarCondiccionJanusLote()
-
     End Sub
     Public Sub _prAplicarCondiccionJanusLote()
         Dim fc As GridEXFormatCondition
@@ -734,11 +686,7 @@ Public Class F0_MovimientoProdPeso
         grproducto.RootTable.FormatConditions.Add(fc)
     End Sub
 
-
     Private Sub _prAddDetalleVenta()
-        'If grdetalle.RowCount > 0 Then
-        '    Return
-        'End If
         Dim Bin As New MemoryStream
         Dim img As New Bitmap(My.Resources.delete, 28, 28)
         img.Save(Bin, Imaging.ImageFormat.Png)
@@ -751,7 +699,6 @@ Public Class F0_MovimientoProdPeso
             Dim data As Integer = IIf(IsDBNull(CType(grdetalle.DataSource, DataTable).Rows(i).Item("igid")), 0, CType(grdetalle.DataSource, DataTable).Rows(i).Item("igid"))
             If (data > mayor) Then
                 mayor = data
-
             End If
         Next
         Return mayor
@@ -761,7 +708,6 @@ Public Class F0_MovimientoProdPeso
     End Function
     Private Sub _HabilitarProductos()
         GPanelProductos.Visible = True
-
         PanelInferior.Visible = False
         _prCargarProductos()
         grproducto.Focus()
@@ -786,7 +732,6 @@ Public Class F0_MovimientoProdPeso
                 Return
             End If
         Next
-
     End Sub
 
     Public Function _fnExisteProducto(idprod As Integer) As Boolean
@@ -794,7 +739,6 @@ Public Class F0_MovimientoProdPeso
             Dim _idprod As Integer = CType(grdetalle.DataSource, DataTable).Rows(i).Item("igcprod")
             Dim estado As Integer = CType(grdetalle.DataSource, DataTable).Rows(i).Item("estado")
             If (_idprod = idprod And estado >= 0) Then
-
                 Return True
             End If
         Next
@@ -912,19 +856,9 @@ Public Class F0_MovimientoProdPeso
                                   eToastGlowColor.Blue,
                                   eToastPosition.TopCenter)
 
-
-                                'Dim fc As GridEXFormatCondition
-                                'fc = New GridEXFormatCondition(grdetalle.RootTable.Columns("iccant"), ConditionOperator.GreaterThan, stock)
-                                'fc.FormatStyle.ForeColor = Color.Red
-                                'grdetalle.RootTable.FormatConditions.Add(fc)
-
                                 Return False
 
                             Else
-                                'Dim fc As GridEXFormatCondition
-                                'fc = New GridEXFormatCondition(grdetalle.RootTable.Columns("iccant"), ConditionOperator.LessThanOrEqualTo, stock)
-                                'fc.FormatStyle.ForeColor = Color.Black
-                                'grdetalle.RootTable.FormatConditions.Add(fc)
 
                             End If
                         End If
@@ -933,8 +867,6 @@ Public Class F0_MovimientoProdPeso
 
             End If
         End If
-
-
 
         Return True
     End Function
@@ -947,12 +879,10 @@ Public Class F0_MovimientoProdPeso
         Dim numi As String = ""
         Dim res As Boolean = L_prMovimientoChoferGrabarTI003(numi, tbFecha.Value.ToString("yyyy/MM/dd"), cbConcepto.Value, tbObservacion.Text.Trim, cbAlmacenOrigen.Value, 0, 0, CType(grdetalle.DataSource, DataTable), 0)
         If res Then
-
             _prCargarMovimiento()
-
             _Limpiar()
             Dim img As Bitmap = New Bitmap(My.Resources.checked, 50, 50)
-            ToastNotification.Show(Me, "Código de Movimiento ".ToUpper + tbCodigo.Text + " Grabado con Exito.".ToUpper,
+            ToastNotification.Show(Me, "Código de Movimiento ".ToUpper + tbCodigo.Text + " Grabado con éxito.".ToUpper,
                                       img, 2000,
                                       eToastGlowColor.Green,
                                       eToastPosition.TopCenter
@@ -962,12 +892,10 @@ Public Class F0_MovimientoProdPeso
             ToastNotification.Show(Me, "El Movimiento no pudo ser insertado".ToUpper, img, 2000, eToastGlowColor.Red, eToastPosition.BottomCenter)
         End If
 
-
     End Sub
     Private Sub _prGuardarModificado()
         Dim res As Boolean = L_prMovimientoModificarTI003(tbCodigo.Text, tbFecha.Value.ToString("yyyy/MM/dd"), cbConcepto.Value, tbObservacion.Text, cbAlmacenOrigen.Value, CType(grdetalle.DataSource, DataTable))
         If res Then
-
             _prCargarMovimiento()
             Modificar = False
             _prSalir()
@@ -989,15 +917,11 @@ Public Class F0_MovimientoProdPeso
         If btnGrabar.Enabled = True Then
             _prInhabiliitar()
             If grmovimiento.RowCount > 0 Then
-
                 _prMostrarRegistro(0)
-
             End If
         Else
-
             _modulo.Select()
             Me.Close()
-
         End If
     End Sub
     Public Sub _prCargarIconELiminar()
@@ -1031,7 +955,6 @@ Public Class F0_MovimientoProdPeso
                 If (cbConcepto.Value = 2 Or cbConcepto.Value = 6) And grproducto.GetValue("stock") = 0 Then
                     Dim img As Bitmap = New Bitmap(My.Resources.mensaje, 50, 50)
                     ToastNotification.Show(Me, "No puede elegir un producto que tiene stock 0".ToUpper, img, 2500, eToastGlowColor.Red, eToastPosition.BottomCenter)
-
                 Else
 
                     CType(grdetalle.DataSource, DataTable).Rows(pos).Item("igcprod") = grproducto.GetValue("yfnumi")
@@ -1042,12 +965,9 @@ Public Class F0_MovimientoProdPeso
                     CType(grdetalle.DataSource, DataTable).Rows(pos).Item("yfcprod") = grproducto.GetValue("yfcprod")
                     CType(grdetalle.DataSource, DataTable).Rows(pos).Item("igcant") = 1
 
-                    ''    _DesHabilitarProductos()
-
                     _prAddDetalleVenta()
-
                     _prCargarProductos()
-                    'grproducto.RemoveFilters()
+
                     grproducto.Focus()
                     grproducto.MoveTo(grproducto.FilterRow)
                     grproducto.Col = 1
@@ -1063,7 +983,6 @@ Public Class F0_MovimientoProdPeso
                     grproducto.MoveTo(grproducto.FilterRow)
                     grproducto.Col = 1
                 End If
-
             End If
         Catch ex As Exception
             MostrarMensajeError(ex.Message)
@@ -1071,23 +990,6 @@ Public Class F0_MovimientoProdPeso
 
     End Sub
     Public Sub InsertarProductosConLote()
-
-        'Dim pos As Integer = -1
-        'grdetalle.Row = grdetalle.RowCount - 1
-        '_fnObtenerFilaDetalle(pos, grdetalle.GetValue("icid"))
-        'Dim posProducto As Integer = grproducto.Row
-        'FilaSelectLote = CType(grproducto.DataSource, DataTable).Rows(posProducto)
-
-
-
-        'If (grproducto.GetValue("stock") > 0) Then
-        '    _prCargarLotesDeProductos(grproducto.GetValue("yfnumi"), grproducto.GetValue("yfcdprod1"))
-        '    'FilaSelectLote = CType(grproducto.DataSource, DataTable).Rows(0)
-        'Else
-        '    Dim img As Bitmap = New Bitmap(My.Resources.Mensaje, 50, 50)
-        '    ToastNotification.Show(Me, "El Producto: ".ToUpper + grproducto.GetValue("yfcdprod1") + " NO CUENTA CON STOCK DISPONIBLE", img, 5000, eToastGlowColor.Red, eToastPosition.BottomCenter)
-        '    FilaSelectLote = Nothing
-        'End If
 
         Dim pos As Integer = -1
         grdetalle.Row = grdetalle.RowCount - 1
@@ -1106,13 +1008,10 @@ Public Class F0_MovimientoProdPeso
         For i As Integer = 0 To CType(grdetalle.DataSource, DataTable).Rows.Count - 1 Step 1
             Dim _idprod As Integer = CType(grdetalle.DataSource, DataTable).Rows(i).Item("igcprod")
             Dim estado As Integer = CType(grdetalle.DataSource, DataTable).Rows(i).Item("estado")
-            '          a.tbnumi ,a.tbtv1numi ,a.tbty5prod ,b.yfcdprod1 as producto,a.tbest ,a.tbcmin ,a.tbumin ,Umin .ycdes3 as unidad,a.tbpbas ,a.tbptot ,a.tbobs ,
-            'a.tbpcos,a.tblote ,a.tbfechaVenc , a.tbptot2, a.tbfact ,a.tbhact ,a.tbuact,1 as estado,Cast(null as Image) as img,
-            'Cast (0 as decimal (18,2)) as stock
+
             Dim _LoteDetalle As String = CType(grdetalle.DataSource, DataTable).Rows(i).Item("iglot")
             Dim _FechaVencDetalle As Date = CType(grdetalle.DataSource, DataTable).Rows(i).Item("igfvenc")
             If (_idprod = idprod And estado >= 0 And lote = _LoteDetalle And fechaVenci = _FechaVencDetalle) Then
-
                 Return True
             End If
         Next
@@ -1126,7 +1025,6 @@ Public Class F0_MovimientoProdPeso
                 Return
             End If
         Next
-
     End Sub
 
     Private Sub MostrarMensajeError(mensaje As String)
@@ -1136,7 +1034,6 @@ Public Class F0_MovimientoProdPeso
                                5000,
                                eToastGlowColor.Red,
                                eToastPosition.TopCenter)
-
     End Sub
     Private Sub MostrarMensajeOk(mensaje As String)
         ToastNotification.Show(Me,
@@ -1149,8 +1046,6 @@ Public Class F0_MovimientoProdPeso
 #End Region
 
 #Region "Eventos Formulario"
-
-
 
     Private Sub F0_Movimiento_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         _IniciarTodo()
@@ -1188,8 +1083,6 @@ Public Class F0_MovimientoProdPeso
                     e.Cancel = True
                 End If
             End If
-
-
         Else
             e.Cancel = True
         End If
@@ -1205,15 +1098,6 @@ Public Class F0_MovimientoProdPeso
             c = grdetalle.Col
             f = grdetalle.Row
 
-            'If (grdetalle.Col = grdetalle.RootTable.Columns("iccant").Index) Then
-            '    If (grdetalle.GetValue("producto") <> String.Empty) Then
-            '        _prAddDetalleVenta()
-            '        _HabilitarProductos()
-            '    Else
-            '        ToastNotification.Show(Me, "Seleccione un Producto Por Favor", My.Resources.WARNING, 3000, eToastGlowColor.Red, eToastPosition.TopCenter)
-            '    End If
-
-            'End If
             If (grdetalle.Col = grdetalle.RootTable.Columns("producto").Index) Then
                 If (grdetalle.GetValue("producto") <> String.Empty) Then
                     _prAddDetalleVenta()
@@ -1234,14 +1118,8 @@ salirIf:
 
         End If
         If (e.KeyData = Keys.Escape And grdetalle.Row >= 0) Then
-
             _prEliminarFila()
-
-
         End If
-
-
-
     End Sub
 
 
@@ -1261,25 +1139,14 @@ salirIf:
                         If (cbConcepto.Value = 1) Then ''' Aqui pregunto si es con lote y tambien si es una 
                             ''entrada debe solo insertar solo el producto y no seguir con los lotes 
                             InsertarProductosSinLote()
-
                         Else
                             InsertarProductosConLote()
                         End If
-
                     Else
-
                         InsertarProductosSinLote()
                     End If
-                    '''''''''''''''
+
                 Else
-
-                    '      a.icid ,a.icibid ,a.iccprod ,b.yfcdprod1  as producto,a.iccant ,
-                    'a.iclot ,a.icfvenc ,Cast(null as image ) as img,1 as estado,
-                    '(Sum(inv.iccven )+a.iccant  ) as stock
-
-                    'a.yfnumi  ,a.yfcdprod1  ,a.yfcdprod2,Sum(b.iccven ) as stock 
-                    '_fnExisteProductoConLote()
-                    'b.yfcdprod1 ,a.iclot ,a.icfven  ,Sum(a.iccven)as stock 
                     Dim pos As Integer = -1
                     grdetalle.Row = grdetalle.RowCount - 1
                     _fnObtenerFilaDetalle(pos, grdetalle.GetValue("igid"))
@@ -1307,17 +1174,11 @@ salirIf:
                         Dim img As Bitmap = New Bitmap(My.Resources.mensaje, 50, 50)
                         ToastNotification.Show(Me, "El producto con el lote ya existe modifique su cantidad".ToUpper, img, 2000, eToastGlowColor.Red, eToastPosition.BottomCenter)
                     End If
-
-
-
                 End If
-
-
             End If
         End If
         If e.KeyData = Keys.Escape Then
             CType(grproducto.DataSource, DataTable).Rows.Clear()
-
             _DesHabilitarProductos()
         End If
     End Sub
@@ -1327,8 +1188,6 @@ salirIf:
         If (e.Column.Index = grdetalle.RootTable.Columns("igcant").Index) Then
             If (Not IsNumeric(grdetalle.GetValue("igcant")) Or grdetalle.GetValue("igcant").ToString = String.Empty) Then
 
-                'grDetalle.GetRow(rowIndex).Cells("cant").Value = 1
-                '  grDetalle.CurrentRow.Cells.Item("cant").Value = 1
                 Dim lin As Integer = grdetalle.GetValue("igid")
                 Dim pos As Integer = -1
                 _fnObtenerFilaDetalle(pos, lin)
@@ -1389,7 +1248,6 @@ salirIf:
                           eToastPosition.BottomLeft)
                     End If
                 Else
-
                     grdetalle.SetValue("igcant", 1)
 
                 End If
@@ -1407,7 +1265,6 @@ salirIf:
                 _prEliminarFila()
             End If
         End If
-
 
     End Sub
 
@@ -1435,11 +1292,9 @@ salirIf:
                     Dim img As Bitmap = New Bitmap(My.Resources.WARNING, 50, 50)
                     ToastNotification.Show(Me, "No se puede modificar este registro".ToUpper,
                                            img, 2500, eToastGlowColor.Red, eToastPosition.TopCenter)
-
                     Exit Sub
                 End If
             End If
-
 
             _prhabilitar()
             btnNuevo.Enabled = False
@@ -1468,15 +1323,11 @@ salirIf:
             Dim mensajeError As String = ""
             Dim res As Boolean = L_prMovimientoEliminarTI003(tbCodigo.Text)
             If res Then
-
-
                 Dim img As Bitmap = New Bitmap(My.Resources.checked, 50, 50)
-
                 ToastNotification.Show(Me, "Código de Movimiento ".ToUpper + tbCodigo.Text + " eliminado con Exito.".ToUpper,
                                           img, 2000,
                                           eToastGlowColor.Green,
                                           eToastPosition.TopCenter)
-
                 _prFiltrar()
 
             Else
@@ -1488,7 +1339,6 @@ salirIf:
 
     Private Sub grmovimiento_SelectionChanged(sender As Object, e As EventArgs) Handles grmovimiento.SelectionChanged
         If (grmovimiento.RowCount >= 0 And grmovimiento.Row >= 0) Then
-
             _prMostrarRegistro(grmovimiento.Row)
         End If
     End Sub
@@ -1536,7 +1386,6 @@ salirIf:
         If e.KeyData = Keys.Enter Then
             MSuperTabControl.SelectedTabIndex = 0
             grdetalle.Focus()
-
         End If
     End Sub
 
@@ -1552,8 +1401,6 @@ salirIf:
     End Sub
 
     Private Sub cbConcepto_ValueChanged(sender As Object, e As EventArgs) Handles cbConcepto.ValueChanged
-
-
         If (cbConcepto.SelectedIndex >= 0) Then
             If (cbConcepto.Value = 6) Then ''''Movimiento 6=Traspaso Salida
                 If (CType(cbAlmacenOrigen.DataSource, DataTable).Rows.Count > 1) Then
@@ -1568,7 +1415,6 @@ salirIf:
                     btnModificar.Enabled = False
                     lbMotivo.Visible = True
                     cbMotivo.Visible = True
-
 
                 Else
                     lbDepositoDestino.Visible = False
@@ -1603,7 +1449,6 @@ salirIf:
             CType(grdetalle.DataSource, DataTable).Rows.Clear()
             _prAddDetalleVenta()
             _DesHabilitarProductos()
-
         End If
     End Sub
 
@@ -1611,7 +1456,6 @@ salirIf:
         _Inter = _Inter + 1
         If _Inter = 1 Then
             Me.WindowState = FormWindowState.Normal
-
         Else
             Me.Opacity = 100
             Timer1.Enabled = False

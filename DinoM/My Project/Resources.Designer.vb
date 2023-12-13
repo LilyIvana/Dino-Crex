@@ -613,6 +613,16 @@ Namespace My.Resources
         '''<summary>
         '''  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         '''</summary>
+        Friend ReadOnly Property gestion_de_proyectos() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("gestion-de-proyectos", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        '''</summary>
         Friend ReadOnly Property GRABACION_EXITOSA() As System.Drawing.Bitmap
             Get
                 Dim obj As Object = ResourceManager.GetObject("GRABACION_EXITOSA", resourceCulture)

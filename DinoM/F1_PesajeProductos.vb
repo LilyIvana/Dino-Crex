@@ -39,7 +39,7 @@ Public Class F1_PesajeProductos
         Dim ico As Icon = Icon.FromHandle(blah.GetHicon())
         Me.Icon = ico
 
-        btExcel.Visible = False
+        'btExcel.Visible = False
 
     End Sub
 
@@ -444,16 +444,16 @@ Public Class F1_PesajeProductos
         End With
 
     End Sub
-    Private Sub ButtonX2_Click(sender As Object, e As EventArgs) Handles btExcel.Click
+    Private Sub btExcel_Click(sender As Object, e As EventArgs) Handles btExcel.Click
         _prCrearCarpetaReportes()
         Dim img As Bitmap = New Bitmap(My.Resources.checked, 50, 50)
         If (P_ExportarExcel(RutaGlobal + "\Reporte\Reporte Productos")) Then
-            ToastNotification.Show(Me, "EXPORTACIÓN DE LISTA DE PRODUCTOS EXITOSA..!!!",
+            ToastNotification.Show(Me, "EXPORTACIÓN DE PESAJE DE PRODUCTOS EXITOSA..!!!",
                                        img, 2000,
                                        eToastGlowColor.Green,
                                        eToastPosition.BottomCenter)
         Else
-            ToastNotification.Show(Me, "FALLO AL EXPORTACIÓN DE LISTA DE PRODUCTOS..!!!",
+            ToastNotification.Show(Me, "FALLO AL EXPORTACIÓN DE PESAJE DE PRODUCTOS..!!!",
                                        My.Resources.WARNING, 2000,
                                        eToastGlowColor.Red,
                                        eToastPosition.BottomLeft)
@@ -466,14 +466,13 @@ Public Class F1_PesajeProductos
         'Dim _directorio As New FolderBrowserDialog
 
         If (1 = 1) Then 'If(_directorio.ShowDialog = Windows.Forms.DialogResult.OK) Then
-            '_ubicacion = _directorio.SelectedPath
             _ubicacion = _ruta
             Try
                 Dim _stream As Stream
                 Dim _escritor As StreamWriter
                 Dim _fila As Integer = JGrM_Buscador.GetRows.Length
                 Dim _columna As Integer = JGrM_Buscador.RootTable.Columns.Count
-                Dim _archivo As String = _ubicacion & "\ListaDeProductos_" & Now.Date.Day &
+                Dim _archivo As String = _ubicacion & "\ListaPesajeDeProductos_" & Now.Date.Day &
                     "." & Now.Date.Month & "." & Now.Date.Year & "_" & Now.Hour & "." & Now.Minute & "." & Now.Second & ".csv"
                 Dim _linea As String = ""
                 Dim _filadata = 0, columndata As Int32 = 0
@@ -490,11 +489,6 @@ Public Class F1_PesajeProductos
                 _escritor.WriteLine(_linea)
                 _linea = Nothing
 
-                'Pbx_Precios.Visible = True
-                'Pbx_Precios.Minimum = 1
-                'Pbx_Precios.Maximum = Dgv_Precios.RowCount
-                'Pbx_Precios.Value = 1
-
                 For Each _fil As GridEXRow In JGrM_Buscador.GetRows
                     For Each _col As GridEXColumn In JGrM_Buscador.RootTable.Columns
                         If (_col.Visible) Then
@@ -506,10 +500,9 @@ Public Class F1_PesajeProductos
                     _linea = Mid(CStr(_linea), 1, _linea.Length - 1)
                     _escritor.WriteLine(_linea)
                     _linea = Nothing
-                    'Pbx_Precios.Value += 1
                 Next
                 _escritor.Close()
-                'Pbx_Precios.Visible = False
+
                 Try
                     Dim ef = New Efecto
                     ef._archivo = _archivo

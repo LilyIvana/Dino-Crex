@@ -455,7 +455,7 @@ Partial Class F0_KardexMovimiento
         Me.BtGenerar.BackColor = System.Drawing.Color.SkyBlue
         Me.BtGenerar.ColorTable = DevComponents.DotNetBar.eButtonColor.Office2007WithBackground
         Me.BtGenerar.Font = New System.Drawing.Font("Georgia", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.BtGenerar.Image = Global.DinoM.My.Resources.Resources.list
+        Me.BtGenerar.Image = Global.DinoM.My.Resources.Resources.actualizado
         Me.BtGenerar.ImageFixedSize = New System.Drawing.Size(40, 40)
         Me.BtGenerar.Location = New System.Drawing.Point(109, 121)
         Me.BtGenerar.Name = "BtGenerar"

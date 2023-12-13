@@ -1639,52 +1639,57 @@ salirIf:
     End Sub
 
     Private Sub btnMovXpeso_Click(sender As Object, e As EventArgs) Handles btnMovXpeso.Click
-        If cbConcepto.Value = 1 Or cbConcepto.Value = 2 Then
+        Try
+            If cbConcepto.Value = 1 Or cbConcepto.Value = 2 Then
 
-            Dim dt As DataTable = CType(grdetalle.DataSource, DataTable)
-            If Not (dt.Columns.Contains("gramaje")) Then
-                dt.Columns.Add("gramaje")
-            End If
-
-            For i = 0 To dt.Rows.Count - 1
-                Dim dt1 As DataTable = L_fnVerificarProdTI003(dt.Rows(i).Item("iccprod"))
-                dt.Rows(i).Item("gramaje") = dt1.Rows(0).Item("ycdes3")
-            Next
-            Dim dt2 = dt.Copy
-            dt2.Clear()
-
-            For i = 0 To dt.Rows.Count - 1
-                If dt.Rows(i).Item("gramaje").ToString = "X KILO" Then
-                    dt2.Rows.Add(dt.Rows(i).ItemArray)
+                Dim dt As DataTable = CType(grdetalle.DataSource, DataTable)
+                If Not (dt.Columns.Contains("gramaje")) Then
+                    dt.Columns.Add("gramaje")
                 End If
-            Next
 
-            Dim frm As New F0_MovimientoProdPeso
-            frm._nameButton = P_Principal.btInvMovimientoProdPeso.Name
-            frm.DesdeModulo = True
-            frm._modulo = P_Principal.FP_INVENTARIO
-            'frm.dtCompra = CType(grdetalle.DataSource, DataTable).Copy
-            frm.dtCompra = dt2.Copy
-            If cbConcepto.Value = 1 Then ''1=INGRESO
-                frm.prog = 3
-            ElseIf cbConcepto.Value = 2 Then ''2=SALIDA
-                frm.prog = 4
+                For i = 0 To dt.Rows.Count - 1
+                    Dim dt1 As DataTable = L_fnVerificarProdTI003(dt.Rows(i).Item("iccprod"))
+                    dt.Rows(i).Item("gramaje") = dt1.Rows(0).Item("ycdes3")
+                Next
+                Dim dt2 = dt.Copy
+                dt2.Clear()
+
+                For i = 0 To dt.Rows.Count - 1
+                    If dt.Rows(i).Item("gramaje").ToString = "X KILO" Then
+                        dt2.Rows.Add(dt.Rows(i).ItemArray)
+                    End If
+                Next
+
+                Dim frm As New F0_MovimientoProdPeso
+                frm._nameButton = P_Principal.btInvMovimientoProdPeso.Name
+                frm.DesdeModulo = True
+                frm._modulo = P_Principal.FP_INVENTARIO
+                'frm.dtCompra = CType(grdetalle.DataSource, DataTable).Copy
+                frm.dtCompra = dt2.Copy
+                If cbConcepto.Value = 1 Then ''1=INGRESO
+                    frm.prog = 3
+                ElseIf cbConcepto.Value = 2 Then ''2=SALIDA
+                    frm.prog = 4
+                End If
+
+                frm._IniciarTodo()
+                If cbConcepto.Value = 1 Then ''1=INGRESO
+                    frm.Observ = "DESDE MOVIMIENTO INGRESO " + tbCodigo.Text
+                ElseIf cbConcepto.Value = 2 Then ''2=SALIDA
+                    frm.Observ = "DESDE MOVIMIENTO SALIDA " + tbCodigo.Text
+                End If
+
+                frm.StartPosition = FormStartPosition.WindowsDefaultLocation
+                frm.WindowState = FormWindowState.Minimized
+
+                frm.ShowDialog()
+            Else
+                MostrarMensajeError("NO SE PUEDE REGISTRAR MOVIMIENTO DE PRODUCTOS POR PESO  CUANDO EL CONCEPTO ES TRASPASO SALIDA")
             End If
 
-            frm._IniciarTodo()
-            If cbConcepto.Value = 1 Then ''1=INGRESO
-                frm.Observ = "MOVIMIENTO INGRESO " + tbCodigo.Text
-            ElseIf cbConcepto.Value = 2 Then ''2=SALIDA
-                frm.Observ = "MOVIMIENTO SALIDA " + tbCodigo.Text
-            End If
-
-            frm.StartPosition = FormStartPosition.WindowsDefaultLocation
-            frm.WindowState = FormWindowState.Minimized
-
-            frm.ShowDialog()
-        Else
-            MostrarMensajeError("NO SE PUEDE REGISTRAR MOVIMIENTO DE PRODUCTOS POR PESO  CUANDO EL CONCEPTO ES TRASPASO SALIDA")
-        End If
+        Catch ex As Exception
+            MostrarMensajeError(ex.Message)
+        End Try
     End Sub
 #End Region
 End Class

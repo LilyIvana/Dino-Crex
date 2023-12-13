@@ -2440,6 +2440,7 @@
     <None Include="Resources\Fondo-empresarial.jpg" />
     <None Include="Resources\importar.png" />
     <None Include="Resources\EXCEL.png" />
+    <None Include="Resources\gestion-de-proyectos.png" />
     <Content Include="Resources\man.png" />
     <None Include="Resources\pdf.png" />
     <None Include="Resources\txt.png" />
