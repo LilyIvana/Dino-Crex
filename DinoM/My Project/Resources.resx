@@ -187,6 +187,9 @@
   <data name="dinases1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\dinases1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="addbt" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\addbt.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="ventasCostos" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\ventasCostos.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -232,6 +235,9 @@
   <data name="descuentos" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\descuentos.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="fondoazul" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\fondoazul.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="markerIcono" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\markerIcono.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -276,9 +282,6 @@
   </data>
   <data name="MapaClientes" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\MapaClientes.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="OK" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\OK.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="man_28" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\man-28.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -355,9 +358,6 @@
   <data name="addimg" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\addimg.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="checked" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\checked.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="pie-chart" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\pie-chart.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -388,6 +388,9 @@
   <data name="jpg" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\jpg.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="gestion-de-proyectos" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\gestion-de-proyectos.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="clase_practica" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\clase_practica.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -408,6 +411,9 @@
   </data>
   <data name="iconacercar" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\iconacercar.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Kardex2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Kardex2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="save" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\save.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -472,8 +478,8 @@
   <data name="efectoS" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\efectoS.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="addbt" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\addbt.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="checked" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\checked.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="markerR" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\markerR.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -508,8 +514,8 @@
   <data name="ic_p" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\ic_p.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="fondoazul" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\fondoazul.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="OK" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\OK.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="markerf" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\markerf.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -526,7 +532,7 @@
   <data name="ic_c" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\ic_c.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="gestion-de-proyectos" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\gestion-de-proyectos.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Kardex3" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Kardex3.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

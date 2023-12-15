@@ -1302,6 +1302,13 @@ Public Class P_Principal
         frm.Show()
     End Sub
 
+    Private Sub btInvKardexProdPeso_Click(sender As Object, e As EventArgs) Handles btInvKardexProdPeso.Click
+        Dim frm As New F0_KardexMovimientoProdxPeso
+        frm._nameButton = btInvKardexProdPeso.Name
+        frm._modulo = FP_INVENTARIO
+        frm.Show()
+    End Sub
+
 
 
 

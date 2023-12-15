@@ -569,6 +569,8 @@ Public Class F0_Movimiento
             .GroupByBoxVisible = False
             'diseño de la grilla
             .VisualStyle = VisualStyle.Office2007
+            .RecordNavigator = True
+            .RecordNavigatorText = "Productos"
         End With
         _prAplicarCondiccionJanusSinLote()
     End Sub
@@ -701,7 +703,6 @@ Public Class F0_Movimiento
     End Function
     Private Sub _HabilitarProductos()
         GPanelProductos.Visible = True
-
         PanelInferior.Visible = False
         _prCargarProductos()
         grproducto.Focus()

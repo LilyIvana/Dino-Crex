@@ -2365,6 +2365,17 @@ Public Class AccesoLogica
 
         Return _Tabla
     End Function
+    Public Shared Function L_fnListarProductosPesaje(_almacen As String, _catCosto As String) As DataTable
+        Dim _Tabla As DataTable
+        Dim _listParam As New List(Of Datos.DParametro)
+        _listParam.Add(New Datos.DParametro("@tipo", 7))
+        _listParam.Add(New Datos.DParametro("@almacen", _almacen))
+        _listParam.Add(New Datos.DParametro("@CatCosto", _catCosto))
+        _listParam.Add(New Datos.DParametro("@cauact", L_Usuario))
+        _Tabla = D_ProcedimientoConParam("sp_Marco_TC001", _listParam)
+
+        Return _Tabla
+    End Function
     Public Shared Function L_fnListarProveedores() As DataTable
         Dim _Tabla As DataTable
 
@@ -7726,11 +7737,69 @@ Public Class AccesoLogica
 
         Return _Tabla
     End Function
+    Public Shared Function L_fnObtenerHistorialProductoTI003(_codProducto As Integer, FechaI As String, FechaF As String, _almacen As Integer) As DataTable
+        Dim _Tabla As DataTable
+
+        Dim _listParam As New List(Of Datos.DParametro)
+
+        _listParam.Add(New Datos.DParametro("@tipo", 9))
+        _listParam.Add(New Datos.DParametro("@ibuact", L_Usuario))
+        _listParam.Add(New Datos.DParametro("@producto", _codProducto))
+        _listParam.Add(New Datos.DParametro("@fechaI", FechaI))
+        _listParam.Add(New Datos.DParametro("@fechaF", FechaF))
+        _listParam.Add(New Datos.DParametro("@almacen", _almacen))
+        _Tabla = D_ProcedimientoConParam("ProcMam_TI003", _listParam)
+
+        Return _Tabla
+    End Function
+    Public Shared Function L_fnObtenerHistorialProductoGeneralTI003(_codProducto As Integer, FechaI As String, _almacen As Integer) As DataTable
+        Dim _Tabla As DataTable
+        Dim _listParam As New List(Of Datos.DParametro)
+        _listParam.Add(New Datos.DParametro("@tipo", 20))
+        _listParam.Add(New Datos.DParametro("@ibuact", L_Usuario))
+        _listParam.Add(New Datos.DParametro("@producto", _codProducto))
+        _listParam.Add(New Datos.DParametro("@fechaI", FechaI))
+        _listParam.Add(New Datos.DParametro("@almacen", _almacen))
+        _Tabla = D_ProcedimientoConParam("ProcMam_TI003", _listParam)
+
+        Return _Tabla
+    End Function
     Public Shared Function L_fnListarDepositosTI003() As DataTable
         Dim _Tabla As DataTable
 
         Dim _listParam As New List(Of Datos.DParametro)
         _listParam.Add(New Datos.DParametro("@tipo", 24))
+        _Tabla = D_ProcedimientoConParam("ProcMam_TI003", _listParam)
+
+        Return _Tabla
+    End Function
+    Public Shared Function L_fnObtenerHistorialProductoGeneralPorLoteTI003(_codProducto As Integer, FechaI As String, _almacen As Integer, _Lote As String, FechaVenc As String) As DataTable
+        Dim _Tabla As DataTable
+        Dim _listParam As New List(Of Datos.DParametro)
+        _listParam.Add(New Datos.DParametro("@tipo", 29))
+        _listParam.Add(New Datos.DParametro("@ibuact", L_Usuario))
+        _listParam.Add(New Datos.DParametro("@producto", _codProducto))
+        _listParam.Add(New Datos.DParametro("@fechaI", FechaI))
+        _listParam.Add(New Datos.DParametro("@almacen", _almacen))
+        _listParam.Add(New Datos.DParametro("@lote", _Lote))
+        _listParam.Add(New Datos.DParametro("@fechaVenc", FechaVenc))
+        _Tabla = D_ProcedimientoConParam("ProcMam_TI003", _listParam)
+
+        Return _Tabla
+    End Function
+    Public Shared Function L_fnObtenerHistorialProductoporLoteTI003(_codProducto As Integer, FechaI As String, FechaF As String, _almacen As Integer, _Lote As String, _FechaVenc As String) As DataTable
+        Dim _Tabla As DataTable
+
+        Dim _listParam As New List(Of Datos.DParametro)
+
+        _listParam.Add(New Datos.DParametro("@tipo", 30))
+        _listParam.Add(New Datos.DParametro("@ibuact", L_Usuario))
+        _listParam.Add(New Datos.DParametro("@producto", _codProducto))
+        _listParam.Add(New Datos.DParametro("@fechaI", FechaI))
+        _listParam.Add(New Datos.DParametro("@fechaF", FechaF))
+        _listParam.Add(New Datos.DParametro("@almacen", _almacen))
+        _listParam.Add(New Datos.DParametro("@lote", _Lote))
+        _listParam.Add(New Datos.DParametro("@fechaVenc", _FechaVenc))
         _Tabla = D_ProcedimientoConParam("ProcMam_TI003", _listParam)
 
         Return _Tabla

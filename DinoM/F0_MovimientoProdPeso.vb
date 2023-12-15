@@ -592,6 +592,9 @@ Public Class F0_MovimientoProdPeso
             .GroupByBoxVisible = False
             'diseño de la grilla
             .VisualStyle = VisualStyle.Office2007
+
+            .RecordNavigator = True
+            .RecordNavigatorText = "Productos"
         End With
         _prAplicarCondiccionJanusSinLote()
     End Sub

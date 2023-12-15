@@ -703,10 +703,9 @@ Public Class F1_PesajeProductos
     Private Sub btnSearch_Click(sender As Object, e As EventArgs) Handles btnSearch.Click
         If (_fnAccesible()) Then
 
-
             Dim dt As DataTable
-
-            dt = L_fnListarProductosCompra(1, 70)
+            'dt = L_fnListarProductosCompra(1, 70)
+            dt = L_fnListarProductosPesaje(1, 70)
 
 
             Dim listEstCeldas As New List(Of Modelo.Celda)
