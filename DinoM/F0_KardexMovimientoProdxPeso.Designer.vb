@@ -35,8 +35,6 @@ Partial Class F0_KardexMovimientoProdxPeso
         Me.lblote = New DevComponents.DotNetBar.LabelX()
         Me.cbAlmacen = New Janus.Windows.GridEX.EditControls.MultiColumnCombo()
         Me.LabelX5 = New DevComponents.DotNetBar.LabelX()
-        Me.btActualizar = New DevComponents.DotNetBar.ButtonX()
-        Me.btImprimir = New DevComponents.DotNetBar.ButtonX()
         Me.BtGenerar = New DevComponents.DotNetBar.ButtonX()
         Me.tbsaldo = New DevComponents.DotNetBar.Controls.TextBoxX()
         Me.LabelX2 = New DevComponents.DotNetBar.LabelX()
@@ -282,8 +280,6 @@ Partial Class F0_KardexMovimientoProdxPeso
         Me.Panel2.Controls.Add(Me.lblote)
         Me.Panel2.Controls.Add(Me.cbAlmacen)
         Me.Panel2.Controls.Add(Me.LabelX5)
-        Me.Panel2.Controls.Add(Me.btActualizar)
-        Me.Panel2.Controls.Add(Me.btImprimir)
         Me.Panel2.Controls.Add(Me.BtGenerar)
         Me.Panel2.Controls.Add(Me.tbsaldo)
         Me.Panel2.Controls.Add(Me.LabelX2)
@@ -308,7 +304,7 @@ Partial Class F0_KardexMovimientoProdxPeso
         Me.btExportar.Font = New System.Drawing.Font("Georgia", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btExportar.Image = Global.DinoM.My.Resources.Resources.sheets
         Me.btExportar.ImageFixedSize = New System.Drawing.Size(35, 35)
-        Me.btExportar.Location = New System.Drawing.Point(385, 121)
+        Me.btExportar.Location = New System.Drawing.Point(313, 121)
         Me.btExportar.Name = "btExportar"
         Me.btExportar.Shape = New DevComponents.DotNetBar.RoundRectangleShapeDescriptor(4)
         Me.btExportar.Size = New System.Drawing.Size(126, 49)
@@ -386,6 +382,7 @@ Partial Class F0_KardexMovimientoProdxPeso
         '
         cbAlmacen_DesignTimeLayout.LayoutString = resources.GetString("cbAlmacen_DesignTimeLayout.LayoutString")
         Me.cbAlmacen.DesignTimeLayout = cbAlmacen_DesignTimeLayout
+        Me.cbAlmacen.Enabled = False
         Me.cbAlmacen.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cbAlmacen.Location = New System.Drawing.Point(287, 70)
         Me.cbAlmacen.Name = "cbAlmacen"
@@ -413,41 +410,6 @@ Partial Class F0_KardexMovimientoProdxPeso
         Me.LabelX5.Size = New System.Drawing.Size(61, 16)
         Me.LabelX5.TabIndex = 240
         Me.LabelX5.Text = "Almacén:"
-        '
-        'btActualizar
-        '
-        Me.btActualizar.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
-        Me.btActualizar.BackColor = System.Drawing.Color.SkyBlue
-        Me.btActualizar.ColorTable = DevComponents.DotNetBar.eButtonColor.Office2007WithBackground
-        Me.btActualizar.Font = New System.Drawing.Font("Georgia", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btActualizar.Image = Global.DinoM.My.Resources.Resources.reload_5
-        Me.btActualizar.ImageFixedSize = New System.Drawing.Size(40, 40)
-        Me.btActualizar.Location = New System.Drawing.Point(522, 121)
-        Me.btActualizar.Name = "btActualizar"
-        Me.btActualizar.Shape = New DevComponents.DotNetBar.RoundRectangleShapeDescriptor(4)
-        Me.btActualizar.Size = New System.Drawing.Size(135, 49)
-        Me.btActualizar.SubItemsExpandWidth = 10
-        Me.btActualizar.TabIndex = 238
-        Me.btActualizar.Text = "ACTUALIZAR SALDO"
-        Me.btActualizar.TextColor = System.Drawing.Color.FromArgb(CType(CType(49, Byte), Integer), CType(CType(59, Byte), Integer), CType(CType(66, Byte), Integer))
-        Me.btActualizar.Visible = False
-        '
-        'btImprimir
-        '
-        Me.btImprimir.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
-        Me.btImprimir.BackColor = System.Drawing.Color.SkyBlue
-        Me.btImprimir.ColorTable = DevComponents.DotNetBar.eButtonColor.Office2007WithBackground
-        Me.btImprimir.Font = New System.Drawing.Font("Georgia", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btImprimir.Image = Global.DinoM.My.Resources.Resources.printee
-        Me.btImprimir.ImageFixedSize = New System.Drawing.Size(40, 40)
-        Me.btImprimir.Location = New System.Drawing.Point(247, 121)
-        Me.btImprimir.Name = "btImprimir"
-        Me.btImprimir.Shape = New DevComponents.DotNetBar.RoundRectangleShapeDescriptor(4)
-        Me.btImprimir.Size = New System.Drawing.Size(126, 49)
-        Me.btImprimir.SubItemsExpandWidth = 10
-        Me.btImprimir.TabIndex = 237
-        Me.btImprimir.Text = "IMPRIMIR"
-        Me.btImprimir.TextColor = System.Drawing.Color.FromArgb(CType(CType(49, Byte), Integer), CType(CType(59, Byte), Integer), CType(CType(66, Byte), Integer))
         '
         'BtGenerar
         '
@@ -817,8 +779,6 @@ Partial Class F0_KardexMovimientoProdxPeso
     Friend WithEvents tbFechaI As DevComponents.Editors.DateTimeAdv.DateTimeInput
     Friend WithEvents tbsaldo As DevComponents.DotNetBar.Controls.TextBoxX
     Friend WithEvents LabelX2 As DevComponents.DotNetBar.LabelX
-    Friend WithEvents btActualizar As DevComponents.DotNetBar.ButtonX
-    Friend WithEvents btImprimir As DevComponents.DotNetBar.ButtonX
     Friend WithEvents BtGenerar As DevComponents.DotNetBar.ButtonX
     Friend WithEvents GroupPanelKardex As DevComponents.DotNetBar.Controls.GroupPanel
     Friend WithEvents Dgj1Datos As Janus.Windows.GridEX.GridEX

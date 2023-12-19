@@ -33,7 +33,7 @@ Public Class F0_KardexMovimientoProdxPeso
         'Me.WindowState = FormWindowState.Maximized
         _prInhabiliitar()
         ''_prAsignarPermisos()
-        Me.Text = "KARDEX PRODUCTO"
+        Me.Text = "KARDEX PRODUCTOS POR PESO"
         PanelToolBar1.Visible = False
         btnImprimir.Visible = False
         PanelInferior.Visible = False
@@ -123,9 +123,7 @@ Public Class F0_KardexMovimientoProdxPeso
         If e.KeyData = Keys.Control + Keys.Enter Then
 
             Dim dt As DataTable
-
-            dt = L_fnListarProductosKardex(cbAlmacen.Value)
-            ' a.yfnumi ,a.yfcdprod1 as producto,a.yfcdprod2 as descripcioncorta,a.yfcprod,b.iccven as stock 
+            dt = L_fnListarProductosKardexTI003(cbAlmacen.Value)
 
             Dim listEstCeldas As New List(Of Modelo.Celda)
             listEstCeldas.Add(New Modelo.Celda("yfnumi", True, "COD. DYN", 80))
@@ -556,97 +554,9 @@ Public Class F0_KardexMovimientoProdxPeso
 
     End Sub
 
-    Private Sub btImprimir_Click(sender As Object, e As EventArgs) Handles btImprimir.Click
-        If (Dgj1Datos.GetRows.Count > 0) Then
-            P_GenerarReporte()
-        Else
-            ToastNotification.Show(Me, "No hay kardex para el rango de fecha".ToUpper,
-                       My.Resources.INFORMATION,
-                       _DuracionSms * 1000,
-                       eToastGlowColor.Blue,
-                       eToastPosition.BottomLeft)
-        End If
-    End Sub
 
-    Private Sub P_GenerarReporte()
 
-        If Not IsNothing(P_Global.Visualizador) Then
-            P_Global.Visualizador.Close()
-        End If
 
-        P_Global.Visualizador = New Visualizador
-        If (Lote = True) Then
-            Dim objrep As New R_KardexInventarioProducto
-            '' GenerarNro(_dt)
-            ''objrep.SetDataSource(Dt1Kardex)
-            objrep.SetDataSource(CType(Dgj1Datos.DataSource, DataTable))
-            objrep.SetParameterValue("FechaIni", tbFechaI.Value.ToString("yyyy/MM/dd"))
-            objrep.SetParameterValue("FechaFin", tbFechaF.Value.ToString("yyyy/MM/dd"))
-            objrep.SetParameterValue("Saldo", tbsaldo.Text)
-            objrep.SetParameterValue("producto", tbproducto.Text)
-            objrep.SetParameterValue("codProducto", tbCodigo.Text)
-            objrep.SetParameterValue("deposito", cbAlmacen.Text)
-            'MReportViewer.ReportSource = objrep
-            'MReportViewer.Show()
-            'MReportViewer.BringToFront()
-            P_Global.Visualizador.CrGeneral.ReportSource = objrep 'Comentar
-            P_Global.Visualizador.Show() 'Comentar
-            P_Global.Visualizador.BringToFront() 'Comentar
-        Else
-            Dim objrep As New R_KardexInventarioProductoSinLote
-            '' GenerarNro(_dt)
-            ''objrep.SetDataSource(Dt1Kardex)
-            objrep.SetDataSource(CType(Dgj1Datos.DataSource, DataTable))
-            objrep.SetParameterValue("FechaIni", tbFechaI.Value.ToString("yyyy/MM/dd"))
-            objrep.SetParameterValue("FechaFin", tbFechaF.Value.ToString("yyyy/MM/dd"))
-            objrep.SetParameterValue("Saldo", tbsaldo.Text)
-            objrep.SetParameterValue("producto", tbproducto.Text)
-            objrep.SetParameterValue("codProducto", tbCodigo.Text)
-            objrep.SetParameterValue("deposito", cbAlmacen.Text)
-            'MReportViewer.ReportSource = objrep
-
-            'MReportViewer.Show()
-            'MReportViewer.BringToFront()
-
-            P_Global.Visualizador.CrGeneral.ReportSource = objrep 'Comentar
-            P_Global.Visualizador.Show() 'Comentar
-            P_Global.Visualizador.BringToFront() 'Comentar
-        End If
-
-    End Sub
-
-    Private Sub btActualizar_Click(sender As Object, e As EventArgs) Handles btActualizar.Click
-        If (cbAlmacen.SelectedIndex < 0) Then
-            Return
-
-        End If
-        If (Dt1Kardex.Rows.Count > 0) Then
-
-            Dim saldoAct As Double = IIf(tbsaldo.Text = String.Empty, 0, tbsaldo.Text)
-            Dim SaldoTabla As Double = IIf(IsDBNull(Dt1Kardex.Rows(Dt1Kardex.Rows.Count - 1).Item("saldo")), 0, Dt1Kardex.Rows(Dt1Kardex.Rows.Count - 1).Item("saldo"))
-            If (saldoAct = SaldoTabla) Then
-                Return
-            End If
-            If (Now.Date.ToString("yyyy/MM/dd").Equals(tbFechaF.Value.ToString("yyyy/MM/dd")) And tblote.Text = String.Empty) Then
-                L_fnActualizarSaldo(cbAlmacen.Value, tbCodigo.Text, Dt1Kardex.Rows(Dt1Kardex.Rows.Count - 1).Item("saldo").ToString)
-
-                tbsaldo.Text = Dt1Kardex.Rows(Dt1Kardex.Rows.Count - 1).Item("saldo").ToString
-
-                ToastNotification.Show(Me, "Saldo actualizado Correctamente!!!".ToUpper,
-                       My.Resources.OK,
-                       _DuracionSms * 200,
-                       eToastGlowColor.Green,
-                       eToastPosition.MiddleCenter)
-            Else
-                ToastNotification.Show(Me, "Para actualizar el saldo, la fecha final tiene que ser la de hoy!!!".ToUpper,
-                       My.Resources.INFORMATION,
-                       _DuracionSms * 1000,
-                       eToastGlowColor.Red,
-                       eToastPosition.MiddleCenter)
-
-            End If
-        End If
-    End Sub
 
     Private Sub cbAlmacen_ValueChanged(sender As Object, e As EventArgs) Handles cbAlmacen.ValueChanged
         If (tbCodigo.Text.Length > 0 And cbAlmacen.SelectedIndex >= 0) Then
@@ -749,12 +659,12 @@ Public Class F0_KardexMovimientoProdxPeso
         _prCrearCarpetaReportes()
         Dim img As Bitmap = New Bitmap(My.Resources.checked, 50, 50)
         If (P_ExportarExcel(RutaGlobal + "\Reporte\Reporte Productos")) Then
-            ToastNotification.Show(Me, "EXPORTACIÓN DE KARDEX DE PRODUCTOS EXITOSA..!!!",
+            ToastNotification.Show(Me, "EXPORTACIÓN DE KARDEX DE PRODUCTOS POR PESO EXITOSA..!!!",
                                        img, 2000,
                                        eToastGlowColor.Green,
                                        eToastPosition.BottomCenter)
         Else
-            ToastNotification.Show(Me, "FALLÓ LA EXPORTACIÓN DE KARDEX DE PRODUCTOS..!!!",
+            ToastNotification.Show(Me, "FALLÓ LA EXPORTACIÓN DE KARDEX DE PRODUCTOS POR PESO..!!!",
                                        My.Resources.WARNING, 2000,
                                        eToastGlowColor.Red,
                                        eToastPosition.BottomLeft)
@@ -790,7 +700,7 @@ Public Class F0_KardexMovimientoProdxPeso
                 Dim _escritor As StreamWriter
                 Dim _fila As Integer = Dgj1Datos.GetRows.Length
                 Dim _columna As Integer = Dgj1Datos.RootTable.Columns.Count
-                Dim _archivo As String = _ubicacion & "\KardexProductos_" & Now.Date.Day &
+                Dim _archivo As String = _ubicacion & "\KardexProductosXpeso_" & Now.Date.Day &
                     "." & Now.Date.Month & "." & Now.Date.Year & "_" & Now.Hour & "." & Now.Minute & "." & Now.Second & ".csv"
                 Dim _linea As String = ""
                 Dim _filadata = 0, columndata As Int32 = 0
@@ -852,4 +762,6 @@ Public Class F0_KardexMovimientoProdxPeso
         End If
         Return False
     End Function
+
+
 End Class
