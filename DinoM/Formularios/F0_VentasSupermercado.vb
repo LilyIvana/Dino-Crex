@@ -82,7 +82,7 @@ Public Class F0_VentasSupermercado
     Public Cel As String
 
     Public SwFacturaClick As Boolean = False
-
+    Dim RutaGlobal As String = gs_CarpetaRaiz
 
 #Region "Metodos Privados"
     Private Sub _IniciarTodo()
@@ -428,8 +428,9 @@ Public Class F0_VentasSupermercado
             .Visible = False
         End With
         With grdetalle.RootTable.Columns("tbty5prod")
-            .Width = 90
-            .Visible = False
+            .Width = 80
+            .Caption = "COD DYNASYS"
+            .Visible = True
         End With
         'If _codeBar = 2 Then
         '    With grdetalle.RootTable.Columns("yfcbarra")
@@ -447,8 +448,8 @@ Public Class F0_VentasSupermercado
         'End If
 
         With grdetalle.RootTable.Columns("Codigo")
-            .Caption = "Código".ToUpper
-            .Width = 100
+            .Caption = "COD DELTA".ToUpper
+            .Width = 80
             .Visible = False
         End With
 
@@ -689,14 +690,14 @@ Public Class F0_VentasSupermercado
         ' ,b.yhprecio 
 
         With grProductos.RootTable.Columns("yfnumi")
-            .Width = 100
-            .Caption = "Código".ToUpper
-            .Visible = False
+            .Width = 50
+            .Caption = "Cod Dynasys".ToUpper
+            .Visible = True
 
         End With
         With grProductos.RootTable.Columns("yfcprod")
-            .Width = 60
-            .Caption = "Código".ToUpper
+            .Width = 55
+            .Caption = "Cód Delta".ToUpper
             .Visible = True
         End With
         With grProductos.RootTable.Columns("yfcbarra")
@@ -4186,9 +4187,175 @@ Public Class F0_VentasSupermercado
         Return dt
     End Function
 
+    Private Sub btnExportar_Click(sender As Object, e As EventArgs) Handles btnExportar.Click
+        ''P_GenerarReporte()
+        _prCrearCarpetaReportes()
+        Dim img As Bitmap = New Bitmap(My.Resources.checked, 50, 50)
+        If (P_ExportarExcel(RutaGlobal + "\Reporte\Reporte Productos")) Then
+            ToastNotification.Show(Me, "EXPORTACIÓN DE VENTA-PRODUCTOS EXITOSA..!!!",
+                                       img, 2000,
+                                       eToastGlowColor.Green,
+                                       eToastPosition.BottomCenter)
+        Else
+            ToastNotification.Show(Me, "FALLÓ LA EXPORTACIÓN DE VENTA-PRODUCTOS..!!!",
+                                       My.Resources.WARNING, 2000,
+                                       eToastGlowColor.Red,
+                                       eToastPosition.BottomLeft)
+        End If
+    End Sub
+    Private Sub _prCrearCarpetaReportes()
+        Dim rutaDestino As String = RutaGlobal + "\Reporte\Reporte Productos\"
+
+        If System.IO.Directory.Exists(RutaGlobal + "\Reporte\Reporte Productos\") = False Then
+            If System.IO.Directory.Exists(RutaGlobal + "\Reporte") = False Then
+                System.IO.Directory.CreateDirectory(RutaGlobal + "\Reporte")
+                If System.IO.Directory.Exists(RutaGlobal + "\Reporte\Reporte Productos") = False Then
+                    System.IO.Directory.CreateDirectory(RutaGlobal + "\Reporte\Reporte Productos")
+                End If
+            Else
+                If System.IO.Directory.Exists(RutaGlobal + "\Reporte\Reporte Productos") = False Then
+                    System.IO.Directory.CreateDirectory(RutaGlobal + "\Reporte\Reporte Productos")
+
+                End If
+            End If
+        End If
+    End Sub
+    Public Function P_ExportarExcel(_ruta As String) As Boolean
+        Dim _ubicacion As String
+
+        If (1 = 1) Then 'If(_directorio.ShowDialog = Windows.Forms.DialogResult.OK) Then
+            _ubicacion = _ruta
+            Try
+                Dim _stream As Stream
+                Dim _escritor As StreamWriter
+                Dim _fila As Integer = grdetalle.GetRows.Length
+                Dim _columna As Integer = grdetalle.RootTable.Columns.Count
+                Dim _archivo As String = _ubicacion & "\VentaProductos_" & Now.Date.Day &
+                    "." & Now.Date.Month & "." & Now.Date.Year & "_" & Now.Hour & "." & Now.Minute & "." & Now.Second & ".csv"
+                Dim _linea As String = ""
+                Dim _filadata = 0, columndata As Int32 = 0
+                File.Delete(_archivo)
+                _stream = File.OpenWrite(_archivo)
+                _escritor = New StreamWriter(_stream, System.Text.Encoding.UTF8)
+
+                For Each _col As GridEXColumn In grdetalle.RootTable.Columns
+                    If (_col.Visible) Then
+                        _linea = _linea & _col.Caption & ";"
+                    End If
+                Next
+                _linea = Mid(CStr(_linea), 1, _linea.Length - 1)
+                _escritor.WriteLine(_linea)
+                _linea = Nothing
+
+                For Each _fil As GridEXRow In grdetalle.GetRows
+                    For Each _col As GridEXColumn In grdetalle.RootTable.Columns
+                        If (_col.Visible) Then
+                            Dim data As String = CStr(_fil.Cells(_col.Key).Value)
+                            data = data.Replace(";", ",")
+                            _linea = _linea & data & ";"
+                        End If
+                    Next
+                    _linea = Mid(CStr(_linea), 1, _linea.Length - 1)
+                    _escritor.WriteLine(_linea)
+                    _linea = Nothing
+                    'Pbx_Precios.Value += 1
+                Next
+                _escritor.Close()
+                'Pbx_Precios.Visible = False
+                Try
+                    Dim ef = New Efecto
+                    ef._archivo = _archivo
+
+                    ef.tipo = 1
+                    ef.Context = "Su archivo ha sido Guardado en la ruta: " + _archivo + vbLf + "DESEA ABRIR EL ARCHIVO?"
+                    ef.Header = "PREGUNTA"
+                    ef.ShowDialog()
+                    Dim bandera As Boolean = False
+                    bandera = ef.band
+                    If (bandera = True) Then
+                        Process.Start(_archivo)
+                    End If
+
+                    Return True
+                Catch ex As Exception
+                    MsgBox(ex.Message)
+                    Return False
+                End Try
+            Catch ex As Exception
+                MsgBox(ex.Message)
+                Return False
+            End Try
+        End If
+        Return False
+    End Function
+    Private Sub P_GenerarReporte()
+        Dim dt As DataTable = CType(grdetalle.DataSource, DataTable)
+        dt = dt.Select("estado=0").CopyToDataTable
+        If (gb_DetalleProducto) Then
+            ponerDescripcionProducto(dt)
+        End If
+        'Dim total As Decimal = dt.Compute("SUM(Total)", "")
+        Dim total As Decimal = Convert.ToDecimal(tbTotal.Text)
+        Dim totald As Double = (total / 6.96)
+        Dim fechaven As String = Now.Date.ToString("dd-MM-yyyy")
+
+        If Not IsNothing(P_Global.Visualizador) Then
+            P_Global.Visualizador.Close()
+        End If
+        Dim ParteEntera As Long
+        Dim ParteDecimal As Decimal
+        Dim ParteDecimal2 As Decimal
+        ParteEntera = Int(total)
+        ParteDecimal = total - Math.Truncate(total)
+        ParteDecimal2 = CDbl(ParteDecimal) * 100
 
 
+        Dim li As String = Facturacion.ConvertirLiteral.A_fnConvertirLiteral(CDbl(ParteEntera)) + " " +
+        IIf(ParteDecimal2.ToString.Equals("0"), "00", ParteDecimal2.ToString) + "/100 Bolivianos"
 
+        ParteEntera = Int(totald)
+        ParteDecimal = totald - Math.Truncate(totald)
+        ParteDecimal2 = CDbl(ParteDecimal) * 100
 
+        Dim lid As String = Facturacion.ConvertirLiteral.A_fnConvertirLiteral(CDbl(ParteEntera)) + " " +
+        IIf(ParteDecimal2.ToString.Equals("0"), "00", ParteDecimal2.ToString) + "/100 Dolares"
+        Dim _Hora As String = Now.Hour.ToString + ":" + Now.Minute.ToString
+        Dim _Ds2 = L_Reporte_Factura_Cia("2")
+        Dim dt2 As DataTable = L_fnNameReporte()
+        Dim ParEmp1 As String = ""
+        Dim ParEmp2 As String = ""
+        Dim ParEmp3 As String = ""
+        Dim ParEmp4 As String = ""
+        If (dt2.Rows.Count > 0) Then
+            ParEmp1 = dt2.Rows(0).Item("Empresa1").ToString
+            ParEmp2 = dt2.Rows(0).Item("Empresa2").ToString
+            ParEmp3 = dt2.Rows(0).Item("Empresa3").ToString
+            ParEmp4 = dt2.Rows(0).Item("Empresa4").ToString
+        End If
 
+        Dim _Ds3 = L_ObtenerRutaImpresora("2") ' Datos de Impresion de Facturación
+        If (_Ds3.Tables(0).Rows(0).Item("cbvp")) Then 'Vista Previa de la Ventana de Vizualización 1 = True 0 = False
+            P_Global.Visualizador = New Visualizador 'Comentar
+        End If
+        Dim _FechaAct As String
+        Dim _FechaPar As String
+        Dim _Fecha() As String
+        Dim _Meses() As String = {"Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"}
+        _FechaAct = Now.Date.ToString("dd-MM-yyyy")
+        _Fecha = Split(_FechaAct, "-")
+        _FechaPar = "Cochabamba, " + _Fecha(0).Trim + " De " + _Meses(_Fecha(1) - 1).Trim + " Del " + _Fecha(2).Trim
+        Dim objrep As Object = Nothing
+        Dim empresaId = ObtenerEmpresaHabilitada()
+        Dim empresaHabilitada As DataTable = ObtenerEmpresaTipoReporte(empresaId, Convert.ToInt32(ENReporte.NOTAVENTA))
+        For Each fila As DataRow In empresaHabilitada.Rows
+            Select Case fila.Item("TipoReporte").ToString
+                Case ENReporteTipo.NOTAVENTA_Carta
+                    objrep = New R_NotaVenta_Carta
+                    SetParametrosNotaVenta(dt, total, li, _Hora, _Ds2, _Ds3, fila.Item("TipoReporte").ToString, objrep)
+                Case ENReporteTipo.NOTAVENTA_Ticket
+                    objrep = New R_NotaVenta_7_5X100_2
+                    SetParametrosNotaVenta(dt, total, li, _Hora, _Ds2, _Ds3, fila.Item("TipoReporte").ToString, objrep)
+            End Select
+        Next
+    End Sub
 End Class

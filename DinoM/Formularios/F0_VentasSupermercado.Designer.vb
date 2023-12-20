@@ -48,6 +48,7 @@ Partial Class F0_VentasSupermercado
         Me.grdetalle = New Janus.Windows.GridEX.GridEX()
         Me.PanelButtom = New System.Windows.Forms.Panel()
         Me.PanelTotal = New System.Windows.Forms.Panel()
+        Me.btnExportar = New DevComponents.DotNetBar.ButtonX()
         Me.Label1Conn = New System.Windows.Forms.Label()
         Me.tbDescuento = New DevComponents.Editors.DoubleInput()
         Me.Label1 = New System.Windows.Forms.Label()
@@ -439,6 +440,7 @@ Partial Class F0_VentasSupermercado
         '
         Me.PanelTotal.BackColor = System.Drawing.SystemColors.Desktop
         Me.PanelTotal.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.PanelTotal.Controls.Add(Me.btnExportar)
         Me.PanelTotal.Controls.Add(Me.Label1Conn)
         Me.PanelTotal.Controls.Add(Me.tbDescuento)
         Me.PanelTotal.Controls.Add(Me.Label1)
@@ -450,6 +452,24 @@ Partial Class F0_VentasSupermercado
         Me.PanelTotal.Name = "PanelTotal"
         Me.PanelTotal.Size = New System.Drawing.Size(595, 115)
         Me.PanelTotal.TabIndex = 0
+        '
+        'btnExportar
+        '
+        Me.btnExportar.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
+        Me.btnExportar.Anchor = System.Windows.Forms.AnchorStyles.None
+        Me.btnExportar.ColorTable = DevComponents.DotNetBar.eButtonColor.BlueOrb
+        Me.btnExportar.Font = New System.Drawing.Font("Arial", 8.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnExportar.Image = Global.DinoM.My.Resources.Resources.sheets
+        Me.btnExportar.ImageFixedSize = New System.Drawing.Size(40, 42)
+        Me.btnExportar.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top
+        Me.btnExportar.Location = New System.Drawing.Point(205, 3)
+        Me.btnExportar.Name = "btnExportar"
+        Me.btnExportar.Padding = New System.Windows.Forms.Padding(0, 0, 0, 20)
+        Me.btnExportar.Size = New System.Drawing.Size(75, 72)
+        Me.btnExportar.Style = DevComponents.DotNetBar.eDotNetBarStyle.Windows7
+        Me.btnExportar.TabIndex = 416
+        Me.btnExportar.Text = "EXPORTAR"
+        Me.btnExportar.TextColor = System.Drawing.Color.White
         '
         'Label1Conn
         '
@@ -933,4 +953,5 @@ Partial Class F0_VentasSupermercado
     Friend WithEvents lbNombreCliente As Label
     Friend WithEvents Label12 As Label
     Friend WithEvents swEstadoFacturas As DevComponents.DotNetBar.Controls.SwitchButton
+    Friend WithEvents btnExportar As DevComponents.DotNetBar.ButtonX
 End Class

@@ -330,6 +330,12 @@
     <Compile Include="F0_KardexMovimientoProdxPeso.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="F0_MovValorado.Designer.vb">
+      <DependentUpon>F0_MovValorado.vb</DependentUpon>
+    </Compile>
+    <Compile Include="F0_MovValorado.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="F0_MovimientoProdPeso.Designer.vb">
       <DependentUpon>F0_MovimientoProdPeso.vb</DependentUpon>
     </Compile>
@@ -938,6 +944,12 @@
       <SubType>Component</SubType>
       <DesignTime>True</DesignTime>
     </Compile>
+    <Compile Include="Reporte\R_NotaVenta_7_5X100_2.vb">
+      <DependentUpon>R_NotaVenta_7_5X100_2.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Include="Reporte\R_StickerCodigoBarras5.vb">
       <DependentUpon>R_StickerCodigoBarras5.rpt</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -1474,6 +1486,9 @@
     <EmbeddedResource Include="F0_KardexMovimientoProdxPeso.resx">
       <DependentUpon>F0_KardexMovimientoProdxPeso.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="F0_MovValorado.resx">
+      <DependentUpon>F0_MovValorado.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="F0_MovimientoProdPeso.resx">
       <DependentUpon>F0_MovimientoProdPeso.vb</DependentUpon>
     </EmbeddedResource>
@@ -1773,6 +1788,10 @@
     <EmbeddedResource Include="Reporte\R_MovimientoProdXpeso.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>R_MovimientoProdXpeso.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reporte\R_NotaVenta_7_5X100_2.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>R_NotaVenta_7_5X100_2.vb</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Reporte\R_StickerCodigoBarras5.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
