@@ -2325,14 +2325,14 @@ Public Class F0_VentasSupermercado
             Select Case fila.Item("TipoReporte").ToString
                 Case ENReporteTipo.NOTAVENTA_Carta
                     objrep = New R_NotaVenta_Carta
-                    SetParametrosNotaVenta(dt, total, li, _Hora, _Ds2, _Ds3, fila.Item("TipoReporte").ToString, objrep)
+                    SetParametrosNotaVenta(dt, total, li, _Hora, _Ds2, _Ds3, fila.Item("TipoReporte").ToString, objrep, fechaven)
                 Case ENReporteTipo.NOTAVENTA_Ticket
                     objrep = New R_NotaVenta_7_5X100
-                    SetParametrosNotaVenta(dt, total, li, _Hora, _Ds2, _Ds3, fila.Item("TipoReporte").ToString, objrep)
+                    SetParametrosNotaVenta(dt, total, li, _Hora, _Ds2, _Ds3, fila.Item("TipoReporte").ToString, objrep, fechaven)
             End Select
         Next
     End Sub
-    Private Sub SetParametrosNotaVenta(dt As DataTable, total As Decimal, li As String, _Hora As String, _Ds2 As DataSet, _Ds3 As DataSet, tipoReporte As String, objrep As Object)
+    Private Sub SetParametrosNotaVenta(dt As DataTable, total As Decimal, li As String, _Hora As String, _Ds2 As DataSet, _Ds3 As DataSet, tipoReporte As String, objrep As Object, fecha As String)
 
         Select Case tipoReporte
             Case ENReporteTipo.NOTAVENTA_Carta
@@ -2350,6 +2350,7 @@ Public Class F0_VentasSupermercado
                 objrep.SetParameterValue("EDuenho", _Ds2.Tables(0).Rows(0).Item("scnom").ToString) '?
                 objrep.SetParameterValue("Direccionpr", _Ds2.Tables(0).Rows(0).Item("scdir").ToString)
                 objrep.SetParameterValue("Hora", _Hora)
+                objrep.SetParameterValue("Fecha", fecha)
                 objrep.SetParameterValue("ENombre", _Ds2.Tables(0).Rows(0).Item("scneg").ToString) '?
                 objrep.SetParameterValue("Literal1", li)
         End Select
@@ -4188,8 +4189,9 @@ Public Class F0_VentasSupermercado
     End Function
 
     Private Sub btnExportar_Click(sender As Object, e As EventArgs) Handles btnExportar.Click
-        ''P_GenerarReporte()
+        P_GenerarReporte()
         _prCrearCarpetaReportes()
+
         Dim img As Bitmap = New Bitmap(My.Resources.checked, 50, 50)
         If (P_ExportarExcel(RutaGlobal + "\Reporte\Reporte Productos")) Then
             ToastNotification.Show(Me, "EXPORTACIÓN DE VENTA-PRODUCTOS EXITOSA..!!!",
@@ -4297,7 +4299,7 @@ Public Class F0_VentasSupermercado
         'Dim total As Decimal = dt.Compute("SUM(Total)", "")
         Dim total As Decimal = Convert.ToDecimal(tbTotal.Text)
         Dim totald As Double = (total / 6.96)
-        Dim fechaven As String = Now.Date.ToString("dd-MM-yyyy")
+        Dim fechaven As String = Now.Date.ToString("dd/MM/yyyy")
 
         If Not IsNothing(P_Global.Visualizador) Then
             P_Global.Visualizador.Close()
@@ -4341,8 +4343,8 @@ Public Class F0_VentasSupermercado
         Dim _FechaPar As String
         Dim _Fecha() As String
         Dim _Meses() As String = {"Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"}
-        _FechaAct = Now.Date.ToString("dd-MM-yyyy")
-        _Fecha = Split(_FechaAct, "-")
+        _FechaAct = Now.Date.ToString("dd/MM/yyyy")
+        _Fecha = Split(_FechaAct, "/")
         _FechaPar = "Cochabamba, " + _Fecha(0).Trim + " De " + _Meses(_Fecha(1) - 1).Trim + " Del " + _Fecha(2).Trim
         Dim objrep As Object = Nothing
         Dim empresaId = ObtenerEmpresaHabilitada()
@@ -4351,11 +4353,17 @@ Public Class F0_VentasSupermercado
             Select Case fila.Item("TipoReporte").ToString
                 Case ENReporteTipo.NOTAVENTA_Carta
                     objrep = New R_NotaVenta_Carta
-                    SetParametrosNotaVenta(dt, total, li, _Hora, _Ds2, _Ds3, fila.Item("TipoReporte").ToString, objrep)
+                    SetParametrosNotaVenta(dt, total, li, _Hora, _Ds2, _Ds3, fila.Item("TipoReporte").ToString, objrep, fechaven)
                 Case ENReporteTipo.NOTAVENTA_Ticket
                     objrep = New R_NotaVenta_7_5X100_2
-                    SetParametrosNotaVenta(dt, total, li, _Hora, _Ds2, _Ds3, fila.Item("TipoReporte").ToString, objrep)
+                    SetParametrosNotaVenta(dt, total, li, _Hora, _Ds2, _Ds3, fila.Item("TipoReporte").ToString, objrep, fechaven)
             End Select
         Next
+    End Sub
+
+    Private Sub btnNuevo_Click(sender As Object, e As EventArgs) Handles btnNuevo.Click
+        _Limpiar()
+        Table_Producto = Nothing
+
     End Sub
 End Class
