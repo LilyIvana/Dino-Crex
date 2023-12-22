@@ -48,6 +48,7 @@ Partial Class F0_VentasSupermercado
         Me.grdetalle = New Janus.Windows.GridEX.GridEX()
         Me.PanelButtom = New System.Windows.Forms.Panel()
         Me.PanelTotal = New System.Windows.Forms.Panel()
+        Me.btnNuevo = New DevComponents.DotNetBar.ButtonX()
         Me.btnExportar = New DevComponents.DotNetBar.ButtonX()
         Me.Label1Conn = New System.Windows.Forms.Label()
         Me.tbDescuento = New DevComponents.Editors.DoubleInput()
@@ -77,7 +78,6 @@ Partial Class F0_VentasSupermercado
         Me.PanelTop = New System.Windows.Forms.Panel()
         Me.PictureBox2 = New System.Windows.Forms.PictureBox()
         Me.QrFactura = New Gma.QrCodeNet.Encoding.Windows.Forms.QrCodeImgControl()
-        Me.btnNuevo = New DevComponents.DotNetBar.ButtonX()
         Me.PanelImagen.SuspendLayout()
         Me.PanelRight.SuspendLayout()
         Me.PanelC.SuspendLayout()
@@ -454,6 +454,24 @@ Partial Class F0_VentasSupermercado
         Me.PanelTotal.Name = "PanelTotal"
         Me.PanelTotal.Size = New System.Drawing.Size(595, 115)
         Me.PanelTotal.TabIndex = 0
+        '
+        'btnNuevo
+        '
+        Me.btnNuevo.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
+        Me.btnNuevo.Anchor = System.Windows.Forms.AnchorStyles.None
+        Me.btnNuevo.ColorTable = DevComponents.DotNetBar.eButtonColor.BlueOrb
+        Me.btnNuevo.Font = New System.Drawing.Font("Arial", 8.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnNuevo.Image = Global.DinoM.My.Resources.Resources.add2
+        Me.btnNuevo.ImageFixedSize = New System.Drawing.Size(40, 42)
+        Me.btnNuevo.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top
+        Me.btnNuevo.Location = New System.Drawing.Point(220, 3)
+        Me.btnNuevo.Name = "btnNuevo"
+        Me.btnNuevo.Padding = New System.Windows.Forms.Padding(0, 0, 0, 20)
+        Me.btnNuevo.Size = New System.Drawing.Size(71, 62)
+        Me.btnNuevo.Style = DevComponents.DotNetBar.eDotNetBarStyle.Windows7
+        Me.btnNuevo.TabIndex = 417
+        Me.btnNuevo.Text = "NUEVO"
+        Me.btnNuevo.TextColor = System.Drawing.Color.White
         '
         'btnExportar
         '
@@ -863,24 +881,6 @@ Partial Class F0_VentasSupermercado
         Me.QrFactura.TabStop = False
         Me.QrFactura.Text = "QrCodeImgControl1"
         Me.QrFactura.Visible = False
-        '
-        'btnNuevo
-        '
-        Me.btnNuevo.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
-        Me.btnNuevo.Anchor = System.Windows.Forms.AnchorStyles.None
-        Me.btnNuevo.ColorTable = DevComponents.DotNetBar.eButtonColor.BlueOrb
-        Me.btnNuevo.Font = New System.Drawing.Font("Arial", 8.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnNuevo.Image = Global.DinoM.My.Resources.Resources.add2
-        Me.btnNuevo.ImageFixedSize = New System.Drawing.Size(40, 42)
-        Me.btnNuevo.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top
-        Me.btnNuevo.Location = New System.Drawing.Point(220, 3)
-        Me.btnNuevo.Name = "btnNuevo"
-        Me.btnNuevo.Padding = New System.Windows.Forms.Padding(0, 0, 0, 20)
-        Me.btnNuevo.Size = New System.Drawing.Size(71, 62)
-        Me.btnNuevo.Style = DevComponents.DotNetBar.eDotNetBarStyle.Windows7
-        Me.btnNuevo.TabIndex = 417
-        Me.btnNuevo.Text = "NUEVO"
-        Me.btnNuevo.TextColor = System.Drawing.Color.White
         '
         'F0_VentasSupermercado
         '
