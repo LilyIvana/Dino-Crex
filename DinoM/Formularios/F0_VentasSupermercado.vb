@@ -2365,6 +2365,7 @@ Public Class F0_VentasSupermercado
                 ToastNotification.Show(Me, "La Impresora ".ToUpper + _Ds3.Tables(0).Rows(0).Item("cbrut").ToString + Chr(13) + "No Existe".ToUpper,
                                        My.Resources.WARNING, 5 * 1000,
                                        eToastGlowColor.Blue, eToastPosition.BottomRight)
+
             Else
                 objrep.PrintOptions.PrinterName = _Ds3.Tables(0).Rows(0).Item("cbrut").ToString
                 objrep.PrintToPrinter(1, True, 0, 0)
@@ -4189,6 +4190,7 @@ Public Class F0_VentasSupermercado
     End Function
 
     Private Sub btnExportar_Click(sender As Object, e As EventArgs) Handles btnExportar.Click
+        P_GenerarReporte()
         P_GenerarReporte()
         _prCrearCarpetaReportes()
 
