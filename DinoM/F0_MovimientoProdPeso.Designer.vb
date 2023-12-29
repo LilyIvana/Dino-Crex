@@ -54,6 +54,7 @@ Partial Class F0_MovimientoProdPeso
         Me.grmovimiento = New Janus.Windows.GridEX.GridEX()
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         Me.swMostrar = New DevComponents.DotNetBar.Controls.SwitchButton()
+        Me.btnExportar = New DevComponents.DotNetBar.ButtonX()
         Me.PanelSuperior.SuspendLayout()
         Me.PanelInferior.SuspendLayout()
         CType(Me.BubbleBarUsuario, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -166,7 +167,11 @@ Partial Class F0_MovimientoProdPeso
         '
         'PanelToolBar2
         '
-        Me.PanelToolBar2.Location = New System.Drawing.Point(1272, 0)
+        Me.PanelToolBar2.Controls.Add(Me.btnExportar)
+        Me.PanelToolBar2.Location = New System.Drawing.Point(1192, 0)
+        Me.PanelToolBar2.Size = New System.Drawing.Size(160, 72)
+        Me.PanelToolBar2.Controls.SetChildIndex(Me.btnExportar, 0)
+        Me.PanelToolBar2.Controls.SetChildIndex(Me.btnImprimir, 0)
         '
         'PanelPrincipal
         '
@@ -178,6 +183,7 @@ Partial Class F0_MovimientoProdPeso
         '
         'btnImprimir
         '
+        Me.btnImprimir.Size = New System.Drawing.Size(85, 72)
         '
         'btnUltimo
         '
@@ -202,7 +208,7 @@ Partial Class F0_MovimientoProdPeso
         '
         '
         Me.MRlAccion.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.MRlAccion.Size = New System.Drawing.Size(896, 72)
+        Me.MRlAccion.Size = New System.Drawing.Size(816, 72)
         '
         'PanelContent
         '
@@ -245,7 +251,7 @@ Partial Class F0_MovimientoProdPeso
         '
         'PictureBox1
         '
-        Me.PictureBox1.Location = New System.Drawing.Point(1079, 0)
+        Me.PictureBox1.Location = New System.Drawing.Point(999, 0)
         '
         'btnNuevo
         '
@@ -803,6 +809,24 @@ Partial Class F0_MovimientoProdPeso
         Me.swMostrar.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
         Me.swMostrar.TabIndex = 423
         '
+        'btnExportar
+        '
+        Me.btnExportar.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
+        Me.btnExportar.ColorTable = DevComponents.DotNetBar.eButtonColor.Flat
+        Me.btnExportar.Dock = System.Windows.Forms.DockStyle.Right
+        Me.btnExportar.Font = New System.Drawing.Font("Arial", 8.5!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnExportar.Image = Global.DinoM.My.Resources.Resources.sheets
+        Me.btnExportar.ImageFixedSize = New System.Drawing.Size(40, 50)
+        Me.btnExportar.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top
+        Me.btnExportar.Location = New System.Drawing.Point(85, 0)
+        Me.btnExportar.Name = "btnExportar"
+        Me.btnExportar.Padding = New System.Windows.Forms.Padding(0, 0, 0, 20)
+        Me.btnExportar.Size = New System.Drawing.Size(75, 72)
+        Me.btnExportar.Style = DevComponents.DotNetBar.eDotNetBarStyle.OfficeMobile2014
+        Me.btnExportar.TabIndex = 19
+        Me.btnExportar.Text = "EXPORTAR"
+        Me.btnExportar.TextColor = System.Drawing.Color.White
+        '
         'F0_MovimientoProdPeso
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -875,4 +899,5 @@ Partial Class F0_MovimientoProdPeso
     Friend WithEvents swMostrar As DevComponents.DotNetBar.Controls.SwitchButton
     Friend WithEvents cbMotivo As Janus.Windows.GridEX.EditControls.MultiColumnCombo
     Friend WithEvents lbMotivo As DevComponents.DotNetBar.LabelX
+    Friend WithEvents btnExportar As DevComponents.DotNetBar.ButtonX
 End Class

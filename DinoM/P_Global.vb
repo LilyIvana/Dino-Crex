@@ -8,6 +8,8 @@ Module P_Global
     Private Declare Auto Function SetProcessWorkingSetSize Lib "kernel32.dll" (ByVal procHandle As IntPtr, ByVal min As Int32, ByVal max As Int32) As Boolean
     Public gs_SeparadorDecimal As Char = Application.CurrentCulture.NumberFormat.NumberDecimalSeparator
     Public Visualizador As Visualizador
+    Public RutaGlobal As String = gs_CarpetaRaiz
+
 
 #End Region
 
@@ -105,6 +107,23 @@ Module P_Global
             .DataSource = dtCombo
             .Refresh()
         End With
+    End Sub
+    Public Sub _prCrearCarpetaReportes()
+        Dim rutaDestino As String = RutaGlobal + "\Reporte\Reporte Productos\"
+
+        If System.IO.Directory.Exists(RutaGlobal + "\Reporte\Reporte Productos\") = False Then
+            If System.IO.Directory.Exists(RutaGlobal + "\Reporte") = False Then
+                System.IO.Directory.CreateDirectory(RutaGlobal + "\Reporte")
+                If System.IO.Directory.Exists(RutaGlobal + "\Reporte\Reporte Productos") = False Then
+                    System.IO.Directory.CreateDirectory(RutaGlobal + "\Reporte\Reporte Productos")
+                End If
+            Else
+                If System.IO.Directory.Exists(RutaGlobal + "\Reporte\Reporte Productos") = False Then
+                    System.IO.Directory.CreateDirectory(RutaGlobal + "\Reporte\Reporte Productos")
+
+                End If
+            End If
+        End If
     End Sub
 
 #End Region

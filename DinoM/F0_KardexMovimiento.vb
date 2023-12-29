@@ -366,11 +366,13 @@ Public Class F0_KardexMovimiento
         With Dgj1Datos.RootTable.Columns(5)
             .Caption = "Observación".ToUpper
             .Key = "obs"
-            .Width = 400
+            .Width = 480
             .HeaderAlignment = Janus.Windows.GridEX.TextAlignment.Center
             .CellStyle.FontSize = 9
             .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Near
             .Visible = True
+            .WordWrap = True
+            .MaxLines = 3
             '.CellStyle.BackColor = Color.AliceBlue
         End With
 
