@@ -265,8 +265,10 @@ Public Class F0_MovimientoProdPeso
         Else
             If prog = 1 Or prog = 3 Then
                 cbConcepto.Value = 1
+                cbAlmacenOrigen.Value = 1
             ElseIf prog = 2 Or prog = 4 Then
                 cbConcepto.Value = 2
+                cbAlmacenOrigen.Value = 1
             End If
         End If
 

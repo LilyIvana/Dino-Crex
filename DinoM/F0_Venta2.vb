@@ -762,9 +762,8 @@ Public Class F0_Venta2
 
         With grVentas.RootTable.Columns("tanumi")
             .Width = 100
-            .Caption = "CODIGO"
+            .Caption = "ID VENTA"
             .Visible = True
-
         End With
 
         With grVentas.RootTable.Columns("taalm")
