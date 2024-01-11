@@ -41,8 +41,9 @@ Partial Class Descuentos
         Me.btnGrabar = New DevComponents.DotNetBar.ButtonX()
         Me.btnNuevo = New DevComponents.DotNetBar.ButtonX()
         Me.Panel1 = New System.Windows.Forms.Panel()
-        Me.ButtonX1 = New DevComponents.DotNetBar.ButtonX()
         Me.btActualizar = New DevComponents.DotNetBar.ButtonX()
+        Me.ButtonX1 = New DevComponents.DotNetBar.ButtonX()
+        Me.btnExportar = New DevComponents.DotNetBar.ButtonX()
         Me.Panel2.SuspendLayout()
         Me.GroupPanel2.SuspendLayout()
         CType(Me.grProducto, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -364,6 +365,7 @@ Partial Class Descuentos
         'Panel1
         '
         Me.Panel1.BackgroundImage = Global.DinoM.My.Resources.Resources.fondo1
+        Me.Panel1.Controls.Add(Me.btnExportar)
         Me.Panel1.Controls.Add(Me.btActualizar)
         Me.Panel1.Controls.Add(Me.ButtonX1)
         Me.Panel1.Dock = System.Windows.Forms.DockStyle.Top
@@ -372,23 +374,6 @@ Partial Class Descuentos
         Me.Panel1.Name = "Panel1"
         Me.Panel1.Size = New System.Drawing.Size(1284, 61)
         Me.Panel1.TabIndex = 0
-        '
-        'ButtonX1
-        '
-        Me.ButtonX1.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
-        Me.ButtonX1.ColorTable = DevComponents.DotNetBar.eButtonColor.BlueOrb
-        Me.ButtonX1.Font = New System.Drawing.Font("Calibri", 10.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.ButtonX1.Image = Global.DinoM.My.Resources.Resources.atras1
-        Me.ButtonX1.ImageFixedSize = New System.Drawing.Size(25, 25)
-        Me.ButtonX1.ImageTextSpacing = 5
-        Me.ButtonX1.Location = New System.Drawing.Point(21, 10)
-        Me.ButtonX1.Margin = New System.Windows.Forms.Padding(2)
-        Me.ButtonX1.Name = "ButtonX1"
-        Me.ButtonX1.Size = New System.Drawing.Size(122, 38)
-        Me.ButtonX1.Style = DevComponents.DotNetBar.eDotNetBarStyle.Office2013
-        Me.ButtonX1.TabIndex = 5
-        Me.ButtonX1.Text = "Salir"
-        Me.ButtonX1.TextColor = System.Drawing.Color.White
         '
         'btActualizar
         '
@@ -408,6 +393,42 @@ Partial Class Descuentos
         Me.btActualizar.TabIndex = 15
         Me.btActualizar.Text = "ACTUALIZAR"
         Me.btActualizar.TextColor = System.Drawing.Color.White
+        '
+        'ButtonX1
+        '
+        Me.ButtonX1.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
+        Me.ButtonX1.ColorTable = DevComponents.DotNetBar.eButtonColor.BlueOrb
+        Me.ButtonX1.Font = New System.Drawing.Font("Calibri", 10.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ButtonX1.Image = Global.DinoM.My.Resources.Resources.atras1
+        Me.ButtonX1.ImageFixedSize = New System.Drawing.Size(25, 25)
+        Me.ButtonX1.ImageTextSpacing = 5
+        Me.ButtonX1.Location = New System.Drawing.Point(21, 10)
+        Me.ButtonX1.Margin = New System.Windows.Forms.Padding(2)
+        Me.ButtonX1.Name = "ButtonX1"
+        Me.ButtonX1.Size = New System.Drawing.Size(122, 38)
+        Me.ButtonX1.Style = DevComponents.DotNetBar.eDotNetBarStyle.Office2013
+        Me.ButtonX1.TabIndex = 5
+        Me.ButtonX1.Text = "Salir"
+        Me.ButtonX1.TextColor = System.Drawing.Color.White
+        '
+        'btnExportar
+        '
+        Me.btnExportar.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
+        Me.btnExportar.BackColor = System.Drawing.Color.Transparent
+        Me.btnExportar.ColorTable = DevComponents.DotNetBar.eButtonColor.Flat
+        Me.btnExportar.Dock = System.Windows.Forms.DockStyle.Right
+        Me.btnExportar.Font = New System.Drawing.Font("Arial", 8.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnExportar.Image = Global.DinoM.My.Resources.Resources.sheets
+        Me.btnExportar.ImageFixedSize = New System.Drawing.Size(38, 42)
+        Me.btnExportar.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top
+        Me.btnExportar.Location = New System.Drawing.Point(1134, 0)
+        Me.btnExportar.Name = "btnExportar"
+        Me.btnExportar.Padding = New System.Windows.Forms.Padding(0, 0, 0, 20)
+        Me.btnExportar.Size = New System.Drawing.Size(75, 61)
+        Me.btnExportar.Style = DevComponents.DotNetBar.eDotNetBarStyle.OfficeMobile2014
+        Me.btnExportar.TabIndex = 16
+        Me.btnExportar.Text = "EXPORTAR"
+        Me.btnExportar.TextColor = System.Drawing.Color.White
         '
         'Descuentos
         '
@@ -456,4 +477,5 @@ Partial Class Descuentos
     Friend WithEvents MenuEliminar As ContextMenuStrip
     Friend WithEvents EliminarToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents btActualizar As DevComponents.DotNetBar.ButtonX
+    Friend WithEvents btnExportar As DevComponents.DotNetBar.ButtonX
 End Class

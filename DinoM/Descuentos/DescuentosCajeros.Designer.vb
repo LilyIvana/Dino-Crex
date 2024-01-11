@@ -42,8 +42,8 @@ Partial Class DescuentosCajeros
         Me.btnNuevo = New DevComponents.DotNetBar.ButtonX()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.Panel4 = New System.Windows.Forms.Panel()
-        Me.ButtonX1 = New DevComponents.DotNetBar.ButtonX()
         Me.btnExportar = New DevComponents.DotNetBar.ButtonX()
+        Me.ButtonX1 = New DevComponents.DotNetBar.ButtonX()
         Me.Panel2.SuspendLayout()
         Me.GroupPanel2.SuspendLayout()
         CType(Me.grProducto, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -393,23 +393,6 @@ Partial Class DescuentosCajeros
         Me.Panel4.Size = New System.Drawing.Size(70, 61)
         Me.Panel4.TabIndex = 6
         '
-        'ButtonX1
-        '
-        Me.ButtonX1.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
-        Me.ButtonX1.ColorTable = DevComponents.DotNetBar.eButtonColor.BlueOrb
-        Me.ButtonX1.Font = New System.Drawing.Font("Calibri", 10.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.ButtonX1.Image = Global.DinoM.My.Resources.Resources.atras1
-        Me.ButtonX1.ImageFixedSize = New System.Drawing.Size(25, 25)
-        Me.ButtonX1.ImageTextSpacing = 5
-        Me.ButtonX1.Location = New System.Drawing.Point(21, 10)
-        Me.ButtonX1.Margin = New System.Windows.Forms.Padding(2)
-        Me.ButtonX1.Name = "ButtonX1"
-        Me.ButtonX1.Size = New System.Drawing.Size(122, 38)
-        Me.ButtonX1.Style = DevComponents.DotNetBar.eDotNetBarStyle.Office2013
-        Me.ButtonX1.TabIndex = 5
-        Me.ButtonX1.Text = "Salir"
-        Me.ButtonX1.TextColor = System.Drawing.Color.White
-        '
         'btnExportar
         '
         Me.btnExportar.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
@@ -428,6 +411,23 @@ Partial Class DescuentosCajeros
         Me.btnExportar.Text = "EXPORTAR"
         Me.btnExportar.TextColor = System.Drawing.Color.White
         '
+        'ButtonX1
+        '
+        Me.ButtonX1.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
+        Me.ButtonX1.ColorTable = DevComponents.DotNetBar.eButtonColor.BlueOrb
+        Me.ButtonX1.Font = New System.Drawing.Font("Calibri", 10.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ButtonX1.Image = Global.DinoM.My.Resources.Resources.atras1
+        Me.ButtonX1.ImageFixedSize = New System.Drawing.Size(25, 25)
+        Me.ButtonX1.ImageTextSpacing = 5
+        Me.ButtonX1.Location = New System.Drawing.Point(21, 10)
+        Me.ButtonX1.Margin = New System.Windows.Forms.Padding(2)
+        Me.ButtonX1.Name = "ButtonX1"
+        Me.ButtonX1.Size = New System.Drawing.Size(122, 38)
+        Me.ButtonX1.Style = DevComponents.DotNetBar.eDotNetBarStyle.Office2013
+        Me.ButtonX1.TabIndex = 5
+        Me.ButtonX1.Text = "Salir"
+        Me.ButtonX1.TextColor = System.Drawing.Color.White
+        '
         'DescuentosCajeros
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -437,7 +437,7 @@ Partial Class DescuentosCajeros
         Me.Controls.Add(Me.Panel1)
         Me.Margin = New System.Windows.Forms.Padding(2)
         Me.Name = "DescuentosCajeros"
-        Me.Text = "Descuentos"
+        Me.Text = "LISTA PRECIOS CAJEROS"
         Me.WindowState = System.Windows.Forms.FormWindowState.Maximized
         Me.Panel2.ResumeLayout(False)
         Me.GroupPanel2.ResumeLayout(False)

@@ -718,7 +718,7 @@ Partial Class F0_KardexMovimiento
         '
         Me.GroupPanelKardex.StyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.GroupPanelKardex.TabIndex = 1
-        Me.GroupPanelKardex.Text = "KARDEX"
+        Me.GroupPanelKardex.Text = "KARDEX  PRODUCTO"
         '
         'Dgj1Datos
         '
@@ -773,7 +773,7 @@ Partial Class F0_KardexMovimiento
         Me.Location = New System.Drawing.Point(0, 0)
         Me.Margin = New System.Windows.Forms.Padding(4)
         Me.Name = "F0_KardexMovimiento"
-        Me.Text = "F0_KardexMovimiento"
+        Me.Text = ""
         Me.Controls.SetChildIndex(Me.PanelPrincipal, 0)
         Me.PanelSuperior.ResumeLayout(False)
         Me.PanelInferior.ResumeLayout(False)

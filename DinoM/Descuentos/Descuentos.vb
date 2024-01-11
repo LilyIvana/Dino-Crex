@@ -3,6 +3,7 @@ Imports Logica.AccesoLogica
 Imports Janus.Windows.GridEX
 Imports DevComponents.DotNetBar
 Imports DevComponents.DotNetBar.Controls
+Imports System.IO
 Public Class Descuentos
     Dim _inter As Integer = 0
 #Region "Variables Globales"
@@ -66,7 +67,7 @@ Public Class Descuentos
         End With
         With grProducto.RootTable.Columns("CodigoBarra")
             .Caption = "Cod.Barra"
-            .Width = 60
+            .Width = 80
             .WordWrap = True
             .MaxLines = 3
             .Visible = True
@@ -84,6 +85,12 @@ Public Class Descuentos
             .Visible = True
             .WordWrap = True
             .MaxLines = 3
+        End With
+        With grProducto.RootTable.Columns("Stock")
+            .Caption = "Stock"
+            .Width = 50
+            .Visible = True
+            .FormatString = "0.00"
         End With
         With grProducto.RootTable.Columns("PrecioCosto")
             .Caption = "Precio Costo"
@@ -350,4 +357,88 @@ Public Class Descuentos
     Private Sub btActualizar_Click(sender As Object, e As EventArgs) Handles btActualizar.Click
         _prCargarProductos()
     End Sub
+
+    Private Sub btnExportar_Click(sender As Object, e As EventArgs) Handles btnExportar.Click
+        _prCrearCarpetaReportes()
+        Dim img As Bitmap = New Bitmap(My.Resources.checked, 50, 50)
+        If (P_ExportarExcel(RutaGlobal + "\Reporte\Reporte Productos")) Then
+            ToastNotification.Show(Me, "EXPORTACIÓN DE DESCUENTOS DE PRODUCTOS EXITOSA..!!!",
+                                       img, 2000,
+                                       eToastGlowColor.Green,
+                                       eToastPosition.TopCenter)
+        Else
+            ToastNotification.Show(Me, "FALLÓ LA EXPORTACIÓN DE DESCUENTOS DE PRODUCTOS..!!!",
+                                       My.Resources.WARNING, 2000,
+                                       eToastGlowColor.Red,
+                                       eToastPosition.TopCenter)
+        End If
+    End Sub
+    Public Function P_ExportarExcel(_ruta As String) As Boolean
+        Dim _ubicacion As String
+        If (1 = 1) Then
+            _ubicacion = _ruta
+            Try
+                Dim _stream As Stream
+                Dim _escritor As StreamWriter
+                Dim _fila As Integer = grProducto.GetRows.Length
+                Dim _columna As Integer = grProducto.RootTable.Columns.Count
+                Dim _archivo As String = _ubicacion & "\ListaDescuentosProductos_" & Now.Date.Day &
+                    "." & Now.Date.Month & "." & Now.Date.Year & "_" & Now.Hour & "." & Now.Minute & "." & Now.Second & ".csv"
+                Dim _linea As String = ""
+                Dim _filadata = 0, columndata As Int32 = 0
+                File.Delete(_archivo)
+                _stream = File.OpenWrite(_archivo)
+                _escritor = New StreamWriter(_stream, System.Text.Encoding.UTF8)
+
+                For Each _col As GridEXColumn In grProducto.RootTable.Columns
+                    If (_col.Visible) Then
+                        _linea = _linea & _col.Caption & ";"
+                    End If
+                Next
+                _linea = Mid(CStr(_linea), 1, _linea.Length - 1)
+                _escritor.WriteLine(_linea)
+                _linea = Nothing
+
+
+                For Each _fil As GridEXRow In grProducto.GetRows
+                    For Each _col As GridEXColumn In grProducto.RootTable.Columns
+                        If (_col.Visible) Then
+                            Dim data As String = CStr(_fil.Cells(_col.Key).Value)
+                            data = data.Replace(";", ",")
+                            _linea = _linea & data & ";"
+                        End If
+                    Next
+                    _linea = Mid(CStr(_linea), 1, _linea.Length - 1)
+                    _escritor.WriteLine(_linea)
+                    _linea = Nothing
+
+                Next
+                _escritor.Close()
+
+                Try
+                    Dim ef = New Efecto
+                    ef._archivo = _archivo
+
+                    ef.tipo = 1
+                    ef.Context = "Su archivo ha sido Guardado en la ruta: " + _archivo + vbLf + "DESEA ABRIR EL ARCHIVO?"
+                    ef.Header = "PREGUNTA"
+                    ef.ShowDialog()
+                    Dim bandera As Boolean = False
+                    bandera = ef.band
+                    If (bandera = True) Then
+                        Process.Start(_archivo)
+                    End If
+
+                    Return True
+                Catch ex As Exception
+                    MsgBox(ex.Message)
+                    Return False
+                End Try
+            Catch ex As Exception
+                MsgBox(ex.Message)
+                Return False
+            End Try
+        End If
+        Return False
+    End Function
 End Class

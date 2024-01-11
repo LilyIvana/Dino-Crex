@@ -32,7 +32,7 @@ Public Class DescuentosCajeros
         'L_prAbrirConexion()
 
 
-        Me.Text = " P R E C I O S  -  D E S C U E N T O S "
+        Me.Text = "LISTA  PRECIOS  CAJEROS "
         'Me.WindowState = FormWindowState.Maximized
         _prCargarProductos()
 
@@ -50,8 +50,7 @@ Public Class DescuentosCajeros
         grProducto.DataSource = dt
         grProducto.RetrieveStructure()
         grProducto.AlternatingColors = True
-        '      a.tbnumi ,a.tbtv1numi ,a.tbty5prod ,b.yfcdprod1 as producto,a.tbest ,a.tbcmin ,a.tbumin ,Umin .ycdes3 as unidad,a.tbpbas ,a.tbptot,a.tbdesc ,a.tbobs ,
-        'a.tbfact ,a.tbhact ,a.tbuact
+
 
         With grProducto.RootTable.Columns("ProductoId")
             .Width = 50
@@ -70,7 +69,7 @@ Public Class DescuentosCajeros
         End With
         With grProducto.RootTable.Columns("CodigoBarra")
             .Caption = "Cod.Barra"
-            .Width = 70
+            .Width = 80
             .WordWrap = True
             .MaxLines = 3
             .Visible = True
@@ -88,6 +87,12 @@ Public Class DescuentosCajeros
             .Visible = True
             .WordWrap = True
             .MaxLines = 3
+        End With
+        With grProducto.RootTable.Columns("Stock")
+            .Caption = "Stock"
+            .Width = 50
+            .Visible = True
+            .FormatString = "0.00"
         End With
         With grProducto.RootTable.Columns("PrecioCosto")
             .Caption = "Precio Costo"
