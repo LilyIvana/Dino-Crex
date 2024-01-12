@@ -235,6 +235,13 @@ Public Class F1_ExcelVenta
                 .FormatString = "0.00"
                 .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far
             End With
+            With JGrM_Buscador.RootTable.Columns("TotalCosto")
+                .Width = 100
+                .Caption = "TOTAL COSTO"
+                .Visible = True
+                .FormatString = "0.00"
+                .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far
+            End With
             With JGrM_Buscador.RootTable.Columns("Vendedor")
                 .Width = 100
                 .Visible = True
