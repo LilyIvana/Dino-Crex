@@ -4109,17 +4109,17 @@ Public Class F0_VentasSupermercado
 
             ElseIf codigo = 500 Then
 
-                    Dim details = JsonConvert.SerializeObject(resultError.errors.details)
-                    Dim siat = JsonConvert.SerializeObject(resultError.errors.siat)
-                    Dim notifi = New notifi
+                Dim details = JsonConvert.SerializeObject(resultError.errors.details)
+                Dim siat = JsonConvert.SerializeObject(resultError.errors.siat)
+                Dim notifi = New notifi
 
-                    notifi.tipo = 2
-                    notifi.Context = "SIFAC".ToUpper
-                    notifi.Header = "Error de solicitud - Código: " + codigo.ToString() & vbCrLf & " " & vbCrLf & details & vbCrLf & siat & vbCrLf & " " & vbCrLf & " Verifique".ToUpper
-                    notifi.ShowDialog()
+                notifi.tipo = 2
+                notifi.Context = "SIFAC".ToUpper
+                notifi.Header = "Error de solicitud - Código: " + codigo.ToString() & vbCrLf & " " & vbCrLf & details & vbCrLf & siat & vbCrLf & " " & vbCrLf & " Verifique".ToUpper
+                notifi.ShowDialog()
 
-                ElseIf codigo = 401 Or codigo = 404 Or codigo = 405 Then
-                    Dim details = JsonConvert.SerializeObject(resultError.errors.details)
+            ElseIf codigo = 401 Or codigo = 404 Or codigo = 405 Then
+                Dim details = JsonConvert.SerializeObject(resultError.errors.details)
                 Dim notifi = New notifi
 
                 notifi.tipo = 2
@@ -4144,7 +4144,7 @@ Public Class F0_VentasSupermercado
         Dim api = New DBApi()
 
         'Dim url = gb_url + "/api/v2/facturas-emitidas/1/471110/1/100"
-        Dim url = gb_url + "/api/v2/facturas/" + NPventa + "/471110/" + fechaI + "/" + fechaF + "/1/1000"
+        Dim url = gb_url + "/api/v2/facturas/" + NPventa + "/471110/1/" + fechaI + "/" + fechaF + "/1/1000"
 
 
         Dim headers = New List(Of Parametro) From {
