@@ -1442,16 +1442,46 @@ Public Class F0_VentasSupermercado
 
             'Dim dtDetalle As DataTable = rearmarDetalle()
             Dim dtDetalle As DataTable = CType(grdetalle.DataSource, DataTable)
+
+            ''Datos Facturación
+            Dim Anhio As Integer = Now.Date.Year
+            Dim a As Double = CDbl(Convert.ToDouble(Str(tbTotal.Value)))
+            Dim b As Double = CDbl(0)
+            Dim c As Double = CDbl("0")
+            Dim d As Double = CDbl("0")
+            Dim e As Double = a - b - c - d
+            Dim f As Double = 0
+            Dim g As Double = e - f
+            Dim h As Double = g * (gi_IVA / 100)
             Dim res As Boolean = L_fnGrabarVenta(numi, "", Now.Date.ToString("yyyy/MM/dd"), Vendedor, 1, Now.Date.ToString("yyyy/MM/dd"), _CodCliente, 1, "",
                                                  tbDescuento.Value, 0, Str(tbTotal.Value), dtDetalle, Sucursal, 0, tabla, gs_NroCaja, Programa,
-                                                 lbNit.Text, lbCliente.Text, TbEmailS.Text, CbTDoc.Value, actualizar, ComplementoCI, Cel)
+                                                 lbNit.Text.Trim, lbCliente.Text.Trim, TbEmailS.Text, CbTDoc.Value, actualizar, ComplementoCI, Cel,
+                                                 NroFact, gb_cufSifac, "B-" + IdNit, CStr(Format(a, "####0.00")),
+                                                 CStr(Format(b, "####0.00")), CStr(Format(c, "####0.00")), CStr(Format(d, "####0.00")), CStr(Format(e, "####0.00")),
+                                                 CStr(Format(f, "####0.00")), CStr(Format(g, "####0.00")), CStr(Format(h, "####0.00")), QrUrl, FactUrl,
+                                                 SegundaLeyenda, TerceraLeyenda, Cudf, Anhio, IIf(gb_FacturaEmite = True, 1, 0))
             If res Then
-                'res = P_fnGrabarFacturarTFV001(numi)
                 'Emite factura
                 If (gb_FacturaEmite) Then
                     If lbNit.Text <> String.Empty Then
-                        P_fnGenerarFactura(numi)
-                        '_prImiprimirNotaVenta(numi)
+                        ''P_fnGenerarFactura(numi)
+
+                        Dim ef = New Efecto
+                        ef.tipo = 2
+                        ef.Context = "MENSAJE PRINCIPAL".ToUpper
+                        ef.Header = "¿desea imprimir la Factura?".ToUpper
+                        ef.ShowDialog()
+                        Dim bandera As Boolean = False
+                        bandera = ef.band
+                        If (bandera = True) Then
+                            P_prImprimirFacturaNueva(numi, True, True) '_Codigo de la tabla TV001
+                        End If
+
+                        If (Not lbNit.Text.Trim.Equals("0")) Then
+                            L_Grabar_Nit(lbNit.Text.Trim, lbCliente.Text.Trim, "", CbTDoc.Value, TbEmailS.Text, ComplementoCI, Cel)
+                        Else
+                            L_Grabar_Nit(lbNit.Text, "S/N", "", "", "", "", "")
+                        End If
                     Else
                         _prImiprimirNotaVenta(numi)
                     End If
@@ -1473,22 +1503,12 @@ Public Class F0_VentasSupermercado
 
             Else
                 Dim img As Bitmap = New Bitmap(My.Resources.cancel, 50, 50)
-                ToastNotification.Show(Me, "La Venta no pudo ser insertado".ToUpper, img, 2000, eToastGlowColor.Red, eToastPosition.BottomCenter)
-
+                ToastNotification.Show(Me, "La Venta no pudo ser insertado, intente nuevamente".ToUpper, img, 25000, eToastGlowColor.Red, eToastPosition.BottomCenter)
             End If
-            'If (prCargando.IsRunning) Then
 
-            '    prCargando.Dispose()
-            'End If
-
-
-
-
-            'End If
         Catch ex As Exception
             MostrarMensajeError(ex.Message)
         End Try
-
 
     End Sub
     Public Sub _prImiprimirNotaVenta(numi As String)
@@ -1865,7 +1885,6 @@ Public Class F0_VentasSupermercado
         _Ds = L_Reporte_FacturaNueva(numi, numi)
 
         If _Ds.Tables.Count > 0 Then
-
 
             _Fecha = _Ds.Tables(0).Rows(0).Item("fvafec")
             _Hora = _Ds.Tables(0).Rows(0).Item("fvahora")

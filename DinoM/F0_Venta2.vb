@@ -1766,16 +1766,49 @@ Public Class F0_Venta2
 
             'Dim dtDetalle As DataTable = rearmarDetalle()
             Dim dtDetalle As DataTable = CType(grdetalle.DataSource, DataTable)
-            Dim res As Boolean = L_fnGrabarVenta(numi, "", tbFechaVenta.Value.ToString("yyyy/MM/dd"), _CodEmpleado, IIf(swTipoVenta.Value = True, 1, 0), IIf(swTipoVenta.Value = True,
-                                                Now.Date.ToString("yyyy/MM/dd"), tbFechaVenc.Value.ToString("yyyy/MM/dd")), _CodCliente, IIf(swMoneda.Value = True, 1, 0),
-                                                tbObservacion.Text.Trim, tbMdesc.Value, tbIce.Value, tbTotalBs.Text, dtDetalle, cbSucursal.Value, 0, tabla, gs_NroCaja, Programa,
-                                                tbNit.Text, TbNombre1.Text, TbEmail.Text, CbTipoDoc.Value, 1, tbComplemento.Text, tbCel.Text)
+
+            ''Datos para facturar
+            Dim a As Double = CDbl(Convert.ToDouble(tbTotalBs.Text) + tbMdesc.Value)
+            Dim b As Double = CDbl(0)
+            Dim c As Double = CDbl("0")
+            Dim d As Double = CDbl("0")
+            Dim e As Double = a - b - c - d
+            Dim f As Double = CDbl(tbMdesc.Value)
+            Dim g As Double = e - f
+            Dim h As Double = g * (gi_IVA / 100)
+            Dim Anhio As Integer = dtiFechaFactura.Value.Year
+
+            Dim res As Boolean = L_fnGrabarVenta(numi, "", tbFechaVenta.Value.ToString("yyyy/MM/dd"), _CodEmpleado, IIf(swTipoVenta.Value = True, 1, 0),
+                                                 IIf(swTipoVenta.Value = True, Now.Date.ToString("yyyy/MM/dd"), tbFechaVenc.Value.ToString("yyyy/MM/dd")),
+                                                 _CodCliente, IIf(swMoneda.Value = True, 1, 0), tbObservacion.Text.Trim, tbMdesc.Value, tbIce.Value,
+                                                 tbTotalBs.Text, dtDetalle, cbSucursal.Value, 0, tabla, gs_NroCaja, Programa, tbNit.Text, TbNombre1.Text,
+                                                 TbEmail.Text, CbTipoDoc.Value, 1, tbComplemento.Text, tbCel.Text, NroFact, gb_cufSifac, "A-" + _CodCliente.ToString,
+                                                 CStr(Format(a, "####0.00")), CStr(Format(b, "####0.00")), CStr(Format(c, "####0.00")), CStr(Format(d, "####0.00")),
+                                                 CStr(Format(e, "####0.00")), CStr(Format(f, "####0.00")), CStr(Format(g, "####0.00")), CStr(Format(h, "####0.00")),
+                                                 QrUrl, FactUrl, SegundaLeyenda, TerceraLeyenda, Cudf, Anhio, IIf(gb_FacturaEmite = True, 1, 0))
             If res Then
-                'res = P_fnGrabarFacturarTFV001(numi)
                 'Emite factura
                 If (gb_FacturaEmite) Then
                     If tbNit.Text <> String.Empty Then
-                        P_fnGenerarFactura(numi)
+                        ''P_fnGenerarFactura(numi)
+
+                        Dim ef = New Efecto
+                        ef.tipo = 2
+                        ef.Context = "MENSAJE PRINCIPAL".ToUpper
+                        ef.Header = "¿desea imprimir la Factura?".ToUpper
+                        ef.ShowDialog()
+                        Dim bandera As Boolean = False
+                        bandera = ef.band
+                        If (bandera = True) Then
+                            F0_VentasSupermercado.P_prImprimirFacturaNueva(numi, True, True)
+                        End If
+
+                        If (Not tbNit.Text.Trim.Equals("0")) Then
+                            L_Grabar_Nit(tbNit.Text.Trim, TbNombre1.Text.Trim, Convert.ToString(_CodCliente), CbTipoDoc.Value, TbEmail.Text, tbComplemento.Text, tbCel.Text)
+                        Else
+                            L_Grabar_Nit(tbNit.Text, "S/N", "", "", "", "", "")
+                        End If
+
                         _prImiprimirNotaVenta(numi)
                     Else
                         _prImiprimirNotaVenta(numi)
@@ -1798,14 +1831,12 @@ Public Class F0_Venta2
 
             Else
                 Dim img As Bitmap = New Bitmap(My.Resources.cancel, 50, 50)
-                ToastNotification.Show(Me, "La Venta no pudo ser insertado".ToUpper, img, 2000, eToastGlowColor.Red, eToastPosition.BottomCenter)
+                ToastNotification.Show(Me, "La Venta no pudo ser insertado, intente nuevamente".ToUpper, img, 2500, eToastGlowColor.Red, eToastPosition.BottomCenter)
 
             End If
-            'End If
         Catch ex As Exception
             MostrarMensajeError(ex.Message)
         End Try
-
 
     End Sub
     Public Sub _prImiprimirNotaVenta(numi As String)

@@ -1964,7 +1964,11 @@ Public Class AccesoLogica
                                            _tatotal As Double, detalle As DataTable, _almacen As Integer, _taprforma As Integer,
                                            Monto As DataTable, _NroCaja As Integer, _programa As String, _Nit As String,
                                            _Rsocial As String, _Correo As String, _TipoDoc As String, _actualizar As Integer,
-                                           _Complemento As String, _cel As String) As Boolean
+                                           _Complemento As String, _cel As String, _Nfac As String, _NAutoriz As String,
+                                           _CodCli As String, _A As String, _B As String,
+                                           _C As String, _D As String, _E As String, _F As String, _G As String, _H As String,
+                                           _qrurl As String, _facturl As String, _2leyenda As String, _3leyenda As String,
+                                           _cufd As String, _anhio As String, _FacturaEmite As String) As Boolean
         Dim _Tabla As DataTable
         Dim _resultado As Boolean
         Dim _listParam As New List(Of Datos.DParametro)
@@ -1995,7 +1999,26 @@ Public Class AccesoLogica
         _listParam.Add(New Datos.DParametro("@Rsocial", _Rsocial))
         _listParam.Add(New Datos.DParametro("@actualizar", _actualizar))
         _listParam.Add(New Datos.DParametro("@complemento", _Complemento))
-        _listParam.Add(New Datos.DParametro("@cel", _cel))
+        _listParam.Add(New Datos.DParametro("@FacturaEmite", _FacturaEmite))
+        ''Datos Factura
+        _listParam.Add(New Datos.DParametro("@Nfac", _Nfac))
+        _listParam.Add(New Datos.DParametro("@NAutoriz", _NAutoriz))
+        _listParam.Add(New Datos.DParametro("@CodCli", _CodCli))
+        _listParam.Add(New Datos.DParametro("@A", _A))
+        _listParam.Add(New Datos.DParametro("@B", _B))
+        _listParam.Add(New Datos.DParametro("@C", _C))
+        _listParam.Add(New Datos.DParametro("@D", _D))
+        _listParam.Add(New Datos.DParametro("@E", _E))
+        _listParam.Add(New Datos.DParametro("@F", _F))
+        _listParam.Add(New Datos.DParametro("@G", _G))
+        _listParam.Add(New Datos.DParametro("@H", _H))
+        _listParam.Add(New Datos.DParametro("@qrurl", _qrurl))
+        _listParam.Add(New Datos.DParametro("@facturl", _facturl))
+        _listParam.Add(New Datos.DParametro("@2leyenda", _2leyenda))
+        _listParam.Add(New Datos.DParametro("@3leyenda", _3leyenda))
+        _listParam.Add(New Datos.DParametro("@cufd", _cufd))
+        _listParam.Add(New Datos.DParametro("@anhio", _anhio))
+
 
         _listParam.Add(New Datos.DParametro("@TV0011", "", detalle))
         _listParam.Add(New Datos.DParametro("@TV0014", "", Monto))

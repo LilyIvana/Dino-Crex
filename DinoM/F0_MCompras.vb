@@ -407,7 +407,6 @@ Public Class F0_MCompras
             End With
         End If
 
-
         With grdetalle.RootTable.Columns("cbnumi")
             .Width = 100
             .Caption = "CODIGO"
@@ -424,14 +423,16 @@ Public Class F0_MCompras
             .Visible = True
         End With
         With grdetalle.RootTable.Columns("yfcprod")
-            .Width = 90
+            .Width = 80
             .Caption = "COD. DELTA"
             .Visible = True
         End With
         With grdetalle.RootTable.Columns("producto")
             .Caption = "PRODUCTOS"
-            .Width = 280
+            .Width = 320
             .Visible = True
+            .WordWrap = True
+            .MaxLines = 2
         End With
         With grdetalle.RootTable.Columns("cbest")
             .Width = 50
@@ -440,7 +441,7 @@ Public Class F0_MCompras
         End With
 
         With grdetalle.RootTable.Columns("cbcmin")
-            .Width = 120
+            .Width = 100
             .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far
             .Visible = True
             .FormatString = "0.00"
@@ -458,7 +459,7 @@ Public Class F0_MCompras
             .Caption = "Unidad".ToUpper
         End With
         With grdetalle.RootTable.Columns("cbpcost")
-            .Width = 110
+            .Width = 100
             .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far
             .Visible = True
             .FormatString = "0.00"
@@ -505,23 +506,23 @@ Public Class F0_MCompras
             '.AggregateFunction = AggregateFunction.Sum
         End With
         With grdetalle.RootTable.Columns("cbdesc")
-            .Width = 130
+            .Width = 110
             .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far
             .Visible = True
             .FormatString = "0.00"
-            .Caption = "Descuento Un.".ToUpper
+            .Caption = "Descto. Un.".ToUpper
             '.AggregateFunction = AggregateFunction.Sum
         End With
         With grdetalle.RootTable.Columns("cbdescpro")
-            .Width = 130
+            .Width = 110
             .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far
             .Visible = True
             .FormatString = "0.00"
-            .Caption = "Descuento Pro.".ToUpper
+            .Caption = "Descto Pro.".ToUpper
             '.AggregateFunction = AggregateFunction.Sum
         End With
         With grdetalle.RootTable.Columns("cbice")
-            .Width = 100
+            .Width = 90
             .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far
             .Visible = True
             .Caption = "ICE".ToUpper
@@ -1056,6 +1057,9 @@ Public Class F0_MCompras
             .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far
             .Visible = False
         End With
+        With grCompra.RootTable.Columns("obs2")
+            .Visible = False
+        End With
         With grCompra
             .DefaultFilterRowComparison = FilterConditionOperator.Contains
             .FilterMode = FilterMode.Automatic
@@ -1070,10 +1074,18 @@ Public Class F0_MCompras
             .RecordNavigator = True
             .RecordNavigatorText = "Compras"
         End With
+        _prAplicarCondiccionJanus()
 
         If (dt.Rows.Count <= 0) Then
             _prCargarDetalleVenta(-1)
         End If
+    End Sub
+    Public Sub _prAplicarCondiccionJanus()
+
+        Dim fr As GridEXFormatCondition
+        fr = New GridEXFormatCondition(grCompra.RootTable.Columns("obs2"), ConditionOperator.Equal, "PR ")
+        fr.FormatStyle.ForeColor = Color.Red
+        grCompra.RootTable.FormatConditions.Add(fr)
     End Sub
     Private Sub _prCargarProductos(_cliente As String)
 
@@ -1100,29 +1112,31 @@ Public Class F0_MCompras
         ' ,b.yhprecio 
 
         With grProductos.RootTable.Columns("yfnumi")
-            .Width = 100
+            .Width = 80
             .Caption = "COD. DYNASYS"
             .Visible = True
 
         End With
         With grProductos.RootTable.Columns("yfcprod")
-            .Width = 120
+            .Width = 80
             .Caption = "COD. DELTA"
             .Visible = True
         End With
         With grProductos.RootTable.Columns("yfcbarra")
-            .Width = 120
+            .Width = 110
             .Caption = "COD. BARRA"
             .Visible = True
         End With
 
         With grProductos.RootTable.Columns("yfcdprod1")
-            .Width = 350
+            .Width = 450
             .Visible = True
             .Caption = "DESCRIPCIÓN"
+            .WordWrap = True
+            .MaxLines = 2
         End With
         With grProductos.RootTable.Columns("yfcdprod2")
-            .Width = 150
+            .Width = 120
             .Visible = True
             .Caption = "COD. PROVEEDOR"
         End With
