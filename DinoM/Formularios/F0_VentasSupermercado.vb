@@ -1466,6 +1466,12 @@ Public Class F0_VentasSupermercado
                     If lbNit.Text <> String.Empty Then
                         ''P_fnGenerarFactura(numi)
 
+                        If (Not lbNit.Text.Trim.Equals("0")) Then
+                            L_Grabar_Nit(lbNit.Text.Trim, lbCliente.Text.Trim, "", CbTDoc.Value, TbEmailS.Text, ComplementoCI, Cel)
+                        Else
+                            L_Grabar_Nit(lbNit.Text, "S/N", "", "", "", "", "")
+                        End If
+
                         Dim ef = New Efecto
                         ef.tipo = 2
                         ef.Context = "MENSAJE PRINCIPAL".ToUpper
@@ -1477,11 +1483,6 @@ Public Class F0_VentasSupermercado
                             P_prImprimirFacturaNueva(numi, True, True) '_Codigo de la tabla TV001
                         End If
 
-                        If (Not lbNit.Text.Trim.Equals("0")) Then
-                            L_Grabar_Nit(lbNit.Text.Trim, lbCliente.Text.Trim, "", CbTDoc.Value, TbEmailS.Text, ComplementoCI, Cel)
-                        Else
-                            L_Grabar_Nit(lbNit.Text, "S/N", "", "", "", "", "")
-                        End If
                     Else
                         _prImiprimirNotaVenta(numi)
                     End If
@@ -1495,7 +1496,6 @@ Public Class F0_VentasSupermercado
                                           eToastGlowColor.Green,
                                           eToastPosition.TopCenter
                                           )
-
                 'System.Diagnostics.Process.Start(FactUrl)
 
                 _Limpiar()
@@ -2623,9 +2623,7 @@ Public Class F0_VentasSupermercado
                 TbEmailS.Text = Row.Cells("email").Value
                 'Cel = Row.Cells("ydtelf1").Value
 
-
                 Dim numiVendedor As Integer = IIf(IsDBNull(Row.Cells("ydnumivend").Value), 0, Row.Cells("ydnumivend").Value)
-
                 Table_Producto = Nothing
 
                 If (numiVendedor > 0) Then
@@ -2639,10 +2637,9 @@ Public Class F0_VentasSupermercado
             tbProducto.Focus()
         End If
         If e.KeyData = Keys.Control + Keys.Enter Then
-
             _HabilitarProductos()
-
         End If
+
         If (e.KeyData = Keys.Control + Keys.S) Then
             If _ValidarCampos() = False Then
                 Exit Sub
@@ -2669,8 +2666,6 @@ Public Class F0_VentasSupermercado
             End With
 
             ef.AuxTipoDoc = TipoDoc
-
-
             ef.ShowDialog()
             Dim bandera As Boolean = False
             bandera = ef.band

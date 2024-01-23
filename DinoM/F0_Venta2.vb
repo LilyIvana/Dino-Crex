@@ -1792,6 +1792,12 @@ Public Class F0_Venta2
                     If tbNit.Text <> String.Empty Then
                         ''P_fnGenerarFactura(numi)
 
+                        If (Not tbNit.Text.Trim.Equals("0")) Then
+                            L_Grabar_Nit(tbNit.Text.Trim, TbNombre1.Text.Trim, Convert.ToString(_CodCliente), CbTipoDoc.Value, TbEmail.Text, tbComplemento.Text, tbCel.Text)
+                        Else
+                            L_Grabar_Nit(tbNit.Text, "S/N", "", "", "", "", "")
+                        End If
+
                         Dim ef = New Efecto
                         ef.tipo = 2
                         ef.Context = "MENSAJE PRINCIPAL".ToUpper
@@ -1801,12 +1807,6 @@ Public Class F0_Venta2
                         bandera = ef.band
                         If (bandera = True) Then
                             F0_VentasSupermercado.P_prImprimirFacturaNueva(numi, True, True)
-                        End If
-
-                        If (Not tbNit.Text.Trim.Equals("0")) Then
-                            L_Grabar_Nit(tbNit.Text.Trim, TbNombre1.Text.Trim, Convert.ToString(_CodCliente), CbTipoDoc.Value, TbEmail.Text, tbComplemento.Text, tbCel.Text)
-                        Else
-                            L_Grabar_Nit(tbNit.Text, "S/N", "", "", "", "", "")
                         End If
 
                         _prImiprimirNotaVenta(numi)
