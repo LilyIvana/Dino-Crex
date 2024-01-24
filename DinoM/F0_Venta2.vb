@@ -546,8 +546,9 @@ Public Class F0_Venta2
             .Visible = False
         End With
         With grdetalle.RootTable.Columns("tbty5prod")
-            .Width = 90
-            .Visible = False
+            .Width = 55
+            .Visible = True
+            .Caption = "COD DYNASYS"
         End With
         'If _codeBar = 2 Then
         '    With grdetalle.RootTable.Columns("yfcbarra")
@@ -579,8 +580,10 @@ Public Class F0_Venta2
 
         With grdetalle.RootTable.Columns("producto")
             .Caption = "Productos".ToUpper
-            .Width = 420
+            .Width = 350
             .Visible = True
+            .WordWrap = True
+            .MaxLines = 2
         End With
 
         With grdetalle.RootTable.Columns("tbest")
@@ -590,7 +593,7 @@ Public Class F0_Venta2
         End With
 
         With grdetalle.RootTable.Columns("tbcmin")
-            .Width = 90
+            .Width = 70
             .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far
             .Visible = True
             .FormatString = "0.00"
@@ -602,20 +605,20 @@ Public Class F0_Venta2
             .Visible = False
         End With
         With grdetalle.RootTable.Columns("unidad")
-            .Width = 50
+            .Width = 40
             .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far
             .Visible = True
             .Caption = "UN.".ToUpper
         End With
         With grdetalle.RootTable.Columns("tbpbas")
-            .Width = 80
+            .Width = 75
             .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far
             .Visible = True
             .FormatString = "0.00"
             .Caption = "Precio U.".ToUpper
         End With
         With grdetalle.RootTable.Columns("tbptot")
-            .Width = 90
+            .Width = 80
             .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far
             .Visible = True
             .FormatString = "0.00"
@@ -629,14 +632,14 @@ Public Class F0_Venta2
             .Caption = "P.Desc(%)".ToUpper
         End With
         With grdetalle.RootTable.Columns("tbdesc")
-            .Width = 80
+            .Width = 60
             .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far
             .Visible = True
             .FormatString = "0.00"
             .Caption = "M.Desc".ToUpper
         End With
         With grdetalle.RootTable.Columns("tbtotdesc")
-            .Width = 90
+            .Width = 85
             .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far
             .Visible = True
             .FormatString = "0.00"

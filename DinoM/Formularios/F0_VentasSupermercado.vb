@@ -709,6 +709,8 @@ Public Class F0_VentasSupermercado
             .Width = 390
             .Visible = True
             .Caption = "Descripción".ToUpper
+            .WordWrap = True
+            .MaxLines = 2
         End With
         With grProductos.RootTable.Columns("yfvsup")
             .Width = 55
@@ -778,7 +780,6 @@ Public Class F0_VentasSupermercado
                 .Visible = False
             End With
         End If
-
 
         With grProductos.RootTable.Columns("yfgr2")
             .Width = 50
