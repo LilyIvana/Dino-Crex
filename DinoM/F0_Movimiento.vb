@@ -296,6 +296,8 @@ Public Class F0_Movimiento
             .Caption = "PRODUCTOS"
             .Width = 420
             .Visible = True
+            .WordWrap = True
+            .MaxLines = 2
         End With
         With grdetalle.RootTable.Columns("Laboratorio")
             .Caption = "CALIBRE-GRAMAJE"
@@ -515,33 +517,29 @@ Public Class F0_Movimiento
             .Width = 100
             .Caption = "COD. DYNASYS"
             .Visible = True
-
         End With
         With grproducto.RootTable.Columns("yfcprod")
             .Width = 120
             .Caption = "COD. DELTA"
             .Visible = True
-
         End With
         With grproducto.RootTable.Columns("yfcbarra")
             .Width = 120
             .Caption = "COD. BARRAS"
             .Visible = True
-
         End With
         With grproducto.RootTable.Columns("yfcdprod1")
             .Width = 350
             .Caption = "PRODUCTOS"
             .Visible = True
-
+            .WordWrap = True
+            .MaxLines = 2
         End With
-
         With grproducto.RootTable.Columns("yfcdprod2")
             .Width = 250
             .Visible = True
             .Caption = "COD. PROVEEDOR"
         End With
-
         With grproducto.RootTable.Columns("Laboratorio")
             .Width = 200
             .Visible = True

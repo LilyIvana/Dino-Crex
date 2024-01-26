@@ -335,8 +335,10 @@ Public Class F0_MovimientoProdPeso
         End With
         With grdetalle.RootTable.Columns("producto")
             .Caption = "PRODUCTOS"
-            .Width = 420
+            .Width = 450
             .Visible = True
+            .WordWrap = True
+            .MaxLines = 2
         End With
         With grdetalle.RootTable.Columns("Laboratorio")
             .Caption = "CALIBRE-GRAMAJE"
@@ -557,7 +559,8 @@ Public Class F0_MovimientoProdPeso
             .Width = 350
             .Caption = "PRODUCTOS"
             .Visible = True
-
+            .WordWrap = True
+            .MaxLines = 2
         End With
 
         With grproducto.RootTable.Columns("yfcdprod2")

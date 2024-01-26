@@ -147,7 +147,7 @@ Public Class F1_SaldosExcel
                 .Caption = "UNIDAD"
             End With
             With JGrM_Buscador.RootTable.Columns("abdesc")
-                .Width = 180
+                .Width = 150
                 .Visible = True
                 .Caption = "DEPÓSITO"
             End With
@@ -167,9 +167,11 @@ Public Class F1_SaldosExcel
                 .Visible = True
             End With
             With JGrM_Buscador.RootTable.Columns("yfcdprod1")
-                .Width = 400
+                .Width = 440
                 .Caption = "PRODUCTO"
                 .Visible = True
+                .WordWrap = True
+                .MaxLines = 2
             End With
             With JGrM_Buscador.RootTable.Columns("yfMed")
                 .Width = 100
@@ -184,10 +186,11 @@ Public Class F1_SaldosExcel
                 .Visible = False
             End With
             With JGrM_Buscador.RootTable.Columns("iccven")
-                .Width = 100
+                .Width = 90
                 .Caption = "STOCK"
                 .Visible = True
                 .FormatString = "0.00"
+                .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far
             End With
             With JGrM_Buscador.RootTable.Columns("yccod3")
                 .Width = 100

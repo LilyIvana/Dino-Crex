@@ -131,9 +131,9 @@ Public Class F0_KardexMovimiento
             listEstCeldas.Add(New Modelo.Celda("yfnumi", True, "COD. DYN", 80))
             listEstCeldas.Add(New Modelo.Celda("yfcprod", True, "COD. DELTA", 90))
             listEstCeldas.Add(New Modelo.Celda("yfcbarra", True, "COD. BARRAS", 110))
-            listEstCeldas.Add(New Modelo.Celda("producto", True, "PRODUCTO", 400))
+            listEstCeldas.Add(New Modelo.Celda("producto", True, "PRODUCTO", 520))
             listEstCeldas.Add(New Modelo.Celda("descripcioncorta", False, "DESC. CORTA".ToUpper, 150))
-            listEstCeldas.Add(New Modelo.Celda("stock", True, "StockGeneral".ToUpper, 100))
+            listEstCeldas.Add(New Modelo.Celda("stock", True, "Stock".ToUpper, 100))
             Dim ef = New Efecto
             ef.tipo = 3
             ef.dt = dt

@@ -146,6 +146,8 @@ Public Class F1_StockSistVsFisico
                 .Width = 380
                 .Caption = "PRODUCTO"
                 .Visible = True
+                .WordWrap = True
+                .MaxLines = 2
             End With
             With JGrM_Buscador.RootTable.Columns("prov")
                 .Width = 130
