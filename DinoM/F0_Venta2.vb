@@ -5230,8 +5230,10 @@ salirIf:
     Private Sub swPulperia_ValueChanged(sender As Object, e As EventArgs) Handles swPulperia.ValueChanged
         If swPulperia.Value = True Then
             tbObservacion.Text = "PULPERÍA"
+            tbMontoBs.Value = tbTotalBs.Text
         Else
             tbObservacion.Clear()
+            tbMontoBs.Value = 0
         End If
     End Sub
 
