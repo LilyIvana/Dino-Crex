@@ -78,6 +78,7 @@ Public Class F0_Venta2
         'lbTipoMoneda.Visible = False
         swMoneda.Visible = False
         P_prCargarVariablesIndispensables()
+        btnGrabar.Enabled = False
         _prCargarVenta()
         _prInhabiliitar()
         grVentas.Focus()
@@ -339,7 +340,9 @@ Public Class F0_Venta2
         tbMontoBs.Value = 0
         tbMontoDolar.Value = 0
         tbMontoTarej.Value = 0
+        tbMontoTarej.Enabled = False
         tbMontoQR.Value = 0
+        tbMontoQR.Enabled = False
         'txtCambio1.Value = 0
         'txtMontoPagado1.Value = 0
         txtCambio1.Text = "0.00"
@@ -479,7 +482,7 @@ Public Class F0_Venta2
         If tMonto.Rows.Count > 0 Then
 
             tbMontoTarej.Value = tMonto.Rows(0).Item("tgMontTare").ToString
-            tbMontoQR.Text = tMonto.Rows(0).Item("tgMontQR").ToString
+            tbMontoQR.Value = tMonto.Rows(0).Item("tgMontQR").ToString
             cbCambioDolar.Text = tMonto.Rows(0).Item("tgCambioDol").ToString
             tbMontoBs.Value = tMonto.Rows(0).Item("tgMontBs").ToString
             tbMontoDolar.Value = tMonto.Rows(0).Item("tgMontDol").ToString
@@ -4160,12 +4163,16 @@ salirIf:
         'grdetalle.Select()
     End Sub
     Private Sub DoubleInput2_ValueChanged(sender As Object, e As EventArgs) Handles tbMontoBs.ValueChanged
-        If tbMontoBs.Value <> 0 And tbMontoBs.Text <> String.Empty Then
-            txtMontoPagado1.Text = tbMontoBs.Value + (tbMontoDolar.Value * IIf(cbCambioDolar.Text = "", 0, Convert.ToDecimal(cbCambioDolar.Text))) + tbMontoTarej.Value
-            If Convert.ToDecimal(tbTotalBs.Text) <> 0 And Convert.ToDecimal(txtMontoPagado1.Text) >= Convert.ToDecimal(tbTotalBs.Text) Then
-                txtCambio1.Text = Convert.ToDecimal(txtMontoPagado1.Text) - Convert.ToDecimal(tbTotalBs.Text)
+        If btnGrabar.Enabled = True Then
+            If tbMontoBs.Text <> String.Empty Then 'tbMontoBs.Value <> 0 And
+                txtMontoPagado1.Text = tbMontoBs.Value + (tbMontoDolar.Value * IIf(cbCambioDolar.Text = "", 0, Convert.ToDecimal(cbCambioDolar.Text))) + tbMontoTarej.Value + tbMontoQR.Value
+                If Convert.ToDecimal(tbTotalBs.Text) <> 0 And Convert.ToDecimal(txtMontoPagado1.Text) >= Convert.ToDecimal(tbTotalBs.Text) Then
+                    txtCambio1.Text = Convert.ToDecimal(txtMontoPagado1.Text) - Convert.ToDecimal(tbTotalBs.Text)
+                Else
+                    txtCambio1.Text = "0.00"
+                End If
             Else
-                txtCambio1.Text = "0.00"
+                tbMontoBs.Value = 0
             End If
         End If
     End Sub
@@ -4181,58 +4188,72 @@ salirIf:
         End If
     End Sub
     Private Sub tbMontoDolar_ValueChanged(sender As Object, e As EventArgs) Handles tbMontoDolar.ValueChanged
-        If tbMontoDolar.Value <> 0 And tbMontoDolar.Text <> String.Empty Then
-            txtMontoPagado1.Text = tbMontoBs.Value + (tbMontoDolar.Value * IIf(cbCambioDolar.Text = "", 0, Convert.ToDecimal(cbCambioDolar.Text))) + tbMontoTarej.Value
-            If Convert.ToDecimal(tbTotalBs.Text) <> 0 And Convert.ToDecimal(txtMontoPagado1.Text) >= Convert.ToDecimal(tbTotalBs.Text) Then
-                txtCambio1.Text = Convert.ToDecimal(txtMontoPagado1.Text) - Convert.ToDecimal(tbTotalBs.Text)
+        If btnGrabar.Enabled = True Then
+            If tbMontoDolar.Text <> String.Empty Then 'tbMontoDolar.Value <> 0 And
+                txtMontoPagado1.Text = tbMontoBs.Value + (tbMontoDolar.Value * IIf(cbCambioDolar.Text = "", 0, Convert.ToDecimal(cbCambioDolar.Text))) + tbMontoTarej.Value + tbMontoQR.Value
+                If Convert.ToDecimal(tbTotalBs.Text) <> 0 And Convert.ToDecimal(txtMontoPagado1.Text) >= Convert.ToDecimal(tbTotalBs.Text) Then
+                    txtCambio1.Text = Convert.ToDecimal(txtMontoPagado1.Text) - Convert.ToDecimal(tbTotalBs.Text)
+                Else
+                    txtCambio1.Text = "0.00"
+                End If
             Else
-                txtCambio1.Text = "0.00"
+                tbMontoDolar.Value = 0
             End If
         End If
     End Sub
 
     Private Sub tbMontoTarej_ValueChanged(sender As Object, e As EventArgs) Handles tbMontoTarej.ValueChanged
-        If tbMontoTarej.Value <> 0 And tbMontoTarej.Text <> String.Empty Then
-            txtMontoPagado1.Text = tbMontoBs.Value + (tbMontoDolar.Value * IIf(cbCambioDolar.Text = "", 0, Convert.ToDecimal(cbCambioDolar.Text))) + tbMontoTarej.Value
-            If Convert.ToDecimal(tbTotalBs.Text) <> 0 And Convert.ToDecimal(txtMontoPagado1.Text) >= Convert.ToDecimal(tbTotalBs.Text) Then
-                txtCambio1.Text = Convert.ToDecimal(txtMontoPagado1.Text) - Convert.ToDecimal(tbTotalBs.Text)
+        If btnGrabar.Enabled = True Then
+            If tbMontoTarej.Text <> String.Empty Then 'tbMontoTarej.Value <> 0 And
+                txtMontoPagado1.Text = tbMontoBs.Value + (tbMontoDolar.Value * IIf(cbCambioDolar.Text = "", 0, Convert.ToDecimal(cbCambioDolar.Text))) + tbMontoTarej.Value + tbMontoQR.Value
+                If Convert.ToDecimal(tbTotalBs.Text) <> 0 And Convert.ToDecimal(txtMontoPagado1.Text) >= Convert.ToDecimal(tbTotalBs.Text) Then
+                    txtCambio1.Text = Convert.ToDecimal(txtMontoPagado1.Text) - Convert.ToDecimal(tbTotalBs.Text)
+                Else
+                    txtCambio1.Text = "0.00"
+                End If
             Else
-                txtCambio1.Text = "0.00"
+                tbMontoTarej.Value = 0
             End If
         End If
     End Sub
     Private Sub chbTarejetaa_CheckedChanged(sender As Object, e As EventArgs) Handles chbTarjeta.CheckedChanged
-        If chbTarjeta.Checked Then
-            tbMontoBs.Value = 0
-            tbMontoDolar.Value = 0
-            tbMontoQR.Value = 0
-            tbMontoQR.Enabled = False
-            chbQR.Checked = False
-            chbQR.Enabled = False
-            tbMontoTarej.Value = Convert.ToDecimal(tbTotalBs.Text)
-            tbMontoBs.Enabled = False
-            tbMontoDolar.Enabled = False
-            tbMontoTarej.IsInputReadOnly = True
-            lbNroTarjeta.Visible = True
-            tbNroTarjeta1.Visible = True
-            tbNroTarjeta2.Visible = True
-            tbNroTarjeta3.Visible = True
-            lbEjemplo.Visible = True
-        Else
-            tbMontoBs.Enabled = True
-            tbMontoDolar.Enabled = True
-            tbMontoTarej.Value = 0
-            tbMontoQR.Enabled = True
-            chbQR.Enabled = True
-            tbNroTarjeta1.Text = ""
-            tbNroTarjeta3.Text = ""
-            lbNroTarjeta.Visible = False
-            tbNroTarjeta1.Visible = False
-            tbNroTarjeta2.Visible = False
-            tbNroTarjeta3.Visible = False
-            lbEjemplo.Visible = False
-        End If
+        If btnGrabar.Enabled = True Then
+            If chbTarjeta.Checked Then
 
+                'tbMontoBs.Value = 0
+                'tbMontoDolar.Value = 0
+                tbMontoQR.Value = 0
+                tbMontoQR.Enabled = False
+                chbQR.Checked = False
+                chbQR.Enabled = False
+                tbMontoTarej.Enabled = True
+                tbMontoTarej.Value = Convert.ToDecimal(tbTotalBs.Text)
+                'tbMontoBs.Enabled = False
+                tbMontoBs.Enabled = True
+                'tbMontoDolar.Enabled = False
+                tbMontoDolar.Enabled = True
+                'tbMontoTarej.IsInputReadOnly = True
+                tbMontoTarej.IsInputReadOnly = False
+                lbNroTarjeta.Visible = True
+                tbNroTarjeta1.Visible = True
+                tbNroTarjeta2.Visible = True
+                tbNroTarjeta3.Visible = True
+                lbEjemplo.Visible = True
+            Else
+                tbMontoBs.Enabled = True
+                tbMontoDolar.Enabled = True
+                tbMontoTarej.Value = 0
+                tbMontoQR.Enabled = True
+                chbQR.Enabled = True
+                tbNroTarjeta1.Text = ""
+                tbNroTarjeta3.Text = ""
+                lbNroTarjeta.Visible = False
+                tbNroTarjeta1.Visible = False
+                tbNroTarjeta2.Visible = False
+                tbNroTarjeta3.Visible = False
+                lbEjemplo.Visible = False
+            End If
+        End If
 
     End Sub
     Private Sub cbCambioDolar_ValueChanged_1(sender As Object, e As EventArgs) Handles cbCambioDolar.ValueChanged
@@ -5156,44 +5177,64 @@ salirIf:
     End Sub
 
     Private Sub chbQR_CheckedChanged(sender As Object, e As EventArgs) Handles chbQR.CheckedChanged
-        If chbQR.Checked Then
-            tbMontoBs.Value = 0
-            tbMontoDolar.Value = 0
-            tbMontoTarej.Value = 0
-            tbMontoQR.Value = Convert.ToDecimal(tbTotalBs.Text)
-            tbMontoBs.Enabled = False
-            tbMontoDolar.Enabled = False
-            tbMontoTarej.Enabled = False
-            chbTarjeta.Enabled = False
-            tbMontoQR.IsInputReadOnly = True
-            chbTarjeta.Checked = False
-            tbNroTarjeta1.Clear()
-            tbNroTarjeta3.Clear()
-            tbMontoQR.Focus()
-        Else
-            tbMontoBs.Enabled = True
-            tbMontoDolar.Enabled = True
-            tbMontoTarej.Enabled = True
-            chbTarjeta.Enabled = True
-            tbMontoQR.Value = 0
+        If btnGrabar.Enabled = True Then
+            If chbQR.Checked Then
+                'tbMontoBs.Value = 0
+                'tbMontoDolar.Value = 0
+                tbMontoTarej.Value = 0
+                tbMontoQR.Enabled = True
+                tbMontoQR.Value = Convert.ToDecimal(tbTotalBs.Text)
+                'tbMontoBs.Enabled = False
+                'tbMontoDolar.Enabled = False
+                tbMontoBs.Enabled = True
+                tbMontoDolar.Enabled = True
+                tbMontoTarej.Enabled = False
+                chbTarjeta.Enabled = False
+                'tbMontoQR.IsInputReadOnly = True
+                tbMontoQR.IsInputReadOnly = False
+                chbTarjeta.Checked = False
+                tbNroTarjeta1.Clear()
+                tbNroTarjeta3.Clear()
+                tbMontoQR.Focus()
+            Else
+                tbMontoBs.Enabled = True
+                tbMontoDolar.Enabled = True
+                tbMontoTarej.Enabled = True
+                chbTarjeta.Enabled = True
+                tbMontoQR.Value = 0
+            End If
+
         End If
-
-
     End Sub
 
     Private Sub tbMontoQR_ValueChanged(sender As Object, e As EventArgs) Handles tbMontoQR.ValueChanged
-        tbMontoDolar.Value = 0
-        tbMontoBs.Value = 0
-        tbMontoTarej.Value = 0
+        If btnGrabar.Enabled = True Then
+            ''tbMontoDolar.Value = 0
+            ''tbMontoBs.Value = 0
+            'tbMontoTarej.Value = 0
 
-        Dim diferencia As Double = tbMontoQR.Value - tbTotalBs.Text
-        If (diferencia >= 0) Then
-            txtMontoPagado1.Text = tbTotalBs.Text.ToString
-            txtCambio1.Text = diferencia.ToString
+            ''Dim diferencia As Double = tbMontoQR.Value - tbTotalBs.Text
+            'Dim diferencia As Double = (tbMontoTarej.Value + (tbMontoDolar.Value * cbCambioDolar.Text) + tbMontoBs.Value + tbMontoQR.Value) - tbTotalBs.Text
 
-        Else
-            txtMontoPagado1.Text = "0.00"
-            txtCambio1.Text = "0.00"
+            'If (diferencia >= 0) Then
+            '    txtMontoPagado1.Text = tbTotalBs.Text.ToString
+            '    txtCambio1.Text = Format(diferencia, "####0.00").ToString
+            'Else
+            '    txtMontoPagado1.Text = "0.00"
+            '    txtCambio1.Text = "0.00"
+            'End If
+
+            If tbMontoQR.Text <> String.Empty Then 'tbMontoQR.Value <> 0 And
+                txtMontoPagado1.Text = tbMontoBs.Value + (tbMontoDolar.Value * IIf(cbCambioDolar.Text = "", 0, Convert.ToDecimal(cbCambioDolar.Text))) + tbMontoTarej.Value + tbMontoQR.Value
+                If Convert.ToDecimal(tbTotalBs.Text) <> 0 And Convert.ToDecimal(txtMontoPagado1.Text) >= Convert.ToDecimal(tbTotalBs.Text) Then
+                    txtCambio1.Text = Convert.ToDecimal(txtMontoPagado1.Text) - Convert.ToDecimal(tbTotalBs.Text)
+                Else
+                    txtCambio1.Text = "0.00"
+                End If
+            Else
+                tbMontoQR.Value = 0
+            End If
+
         End If
     End Sub
 

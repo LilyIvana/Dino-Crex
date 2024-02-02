@@ -79,48 +79,65 @@ Public Class F1_MontoPagar
         End With
     End Sub
     Private Sub tbMontoBs_ValueChanged(sender As Object, e As EventArgs) Handles tbMontoBs.ValueChanged
-        tbMontoDolar.Value = 0
-        tbMontoTarej.Value = 0
+        'tbMontoDolar.Value = 0
+        'tbMontoTarej.Value = 0
+        If tbMontoBs.Text <> String.Empty Then
+            'Dim diferencia As Double = tbMontoBs.Value - TotalVenta
+            Dim diferencia As Double = (tbMontoTarej.Value + (tbMontoDolar.Value * cbCambioDolar.Text) + tbMontoBs.Value + tbMontoQR.Value) - TotalVenta
 
-        Dim diferencia As Double = tbMontoBs.Value - TotalVenta
-        If (diferencia >= 0) Then
-            txtMontoPagado1.Text = TotalVenta.ToString
-            txtCambio1.Text = Format(diferencia, "####0.00").ToString
+            If (diferencia >= 0) Then
+                txtMontoPagado1.Text = TotalVenta.ToString
+                txtCambio1.Text = Format(diferencia, "####0.00").ToString
 
+            Else
+                txtMontoPagado1.Text = "0.00"
+                txtCambio1.Text = "0.00"
+            End If
         Else
-            txtMontoPagado1.Text = "0.00"
-            txtCambio1.Text = "0.00"
+            tbMontoBs.Value = 0
         End If
-
     End Sub
 
     Private Sub tbMontoDolar_ValueChanged(sender As Object, e As EventArgs) Handles tbMontoDolar.ValueChanged
-        tbMontoBs.Value = 0
-        tbMontoTarej.Value = 0
-        Dim diferencia As Double = (tbMontoDolar.Value * cbCambioDolar.Text) - TotalVenta
-        If (diferencia >= 0) Then
-            txtMontoPagado1.Text = TotalVenta.ToString
-            txtCambio1.Text = diferencia.ToString
+        'tbMontoBs.Value = 0
+        'tbMontoTarej.Value = 0
+        If tbMontoDolar.Text <> String.Empty Then
+            'Dim diferencia As Double = (tbMontoDolar.Value * cbCambioDolar.Text) - TotalVenta
+            Dim diferencia As Double = (tbMontoTarej.Value + (tbMontoDolar.Value * cbCambioDolar.Text) + tbMontoBs.Value + tbMontoQR.Value) - TotalVenta
 
+            If (diferencia >= 0) Then
+                txtMontoPagado1.Text = TotalVenta.ToString
+                txtCambio1.Text = Format(diferencia, "####0.00").ToString
+
+            Else
+                txtMontoPagado1.Text = "0.00"
+                txtCambio1.Text = "0.00"
+            End If
         Else
-            txtMontoPagado1.Text = "0.00"
-            txtCambio1.Text = "0.00"
+            tbMontoDolar.Value = 0
+
         End If
     End Sub
 
     Private Sub tbMontoTarej_ValueChanged(sender As Object, e As EventArgs) Handles tbMontoTarej.ValueChanged
-        tbMontoDolar.Value = 0
-        tbMontoBs.Value = 0
+        'tbMontoDolar.Value = 0
+        'tbMontoBs.Value = 0
         tbMontoQR.Value = 0
+        If tbMontoTarej.Text <> String.Empty Then
 
-        Dim diferencia As Double = tbMontoTarej.Value - TotalVenta
-        If (diferencia >= 0) Then
-            txtMontoPagado1.Text = TotalVenta.ToString
-            txtCambio1.Text = diferencia.ToString
+            'Dim diferencia As Double = tbMontoTarej.Value - TotalVenta
+            Dim diferencia As Double = (tbMontoTarej.Value + (tbMontoDolar.Value * cbCambioDolar.Text) + tbMontoBs.Value + tbMontoQR.Value) - TotalVenta
 
+            If (diferencia >= 0) Then
+                txtMontoPagado1.Text = TotalVenta.ToString
+                txtCambio1.Text = Format(diferencia, "####0.00").ToString
+
+            Else
+                txtMontoPagado1.Text = "0.00"
+                txtCambio1.Text = "0.00"
+            End If
         Else
-            txtMontoPagado1.Text = "0.00"
-            txtCambio1.Text = "0.00"
+            tbMontoTarej.Value = 0
         End If
     End Sub
 
@@ -437,17 +454,19 @@ Public Class F1_MontoPagar
 
     Private Sub chbTarjeta_CheckedChanged(sender As Object, e As EventArgs) Handles chbTarjeta.CheckedChanged
         If chbTarjeta.Checked Then
-            tbMontoBs.Value = 0
-            tbMontoDolar.Value = 0
+            'tbMontoBs.Value = 0
+            'tbMontoDolar.Value = 0
             tbMontoQR.Value = 0
             tbMontoQR.Enabled = False
             chbQR.Checked = False
             chbQR.Enabled = False
+            'tbMontoTarej.Enabled = True
             tbMontoTarej.Enabled = True
             tbMontoTarej.Value = Convert.ToDecimal(TotalVenta)
-            tbMontoBs.Enabled = False
-            tbMontoDolar.Enabled = False
-            tbMontoTarej.IsInputReadOnly = True
+            'tbMontoBs.Enabled = False
+            'tbMontoDolar.Enabled = False
+            'tbMontoTarej.IsInputReadOnly = True
+            tbMontoTarej.IsInputReadOnly = False
             lbNroTarjeta.Visible = True
             tbNroTarjeta1.Visible = True
             tbNroTarjeta2.Visible = True
@@ -521,15 +540,17 @@ Public Class F1_MontoPagar
 
     Private Sub chbQR_CheckedChanged(sender As Object, e As EventArgs) Handles chbQR.CheckedChanged
         If chbQR.Checked Then
-            tbMontoBs.Value = 0
-            tbMontoDolar.Value = 0
+            'tbMontoBs.Value = 0
+            'tbMontoDolar.Value = 0
             tbMontoTarej.Value = 0
+            tbMontoQR.Enabled = True
             tbMontoQR.Value = Convert.ToDecimal(TotalVenta)
-            tbMontoBs.Enabled = False
-            tbMontoDolar.Enabled = False
+            'tbMontoBs.Enabled = False
+            'tbMontoDolar.Enabled = False
             tbMontoTarej.Enabled = False
             chbTarjeta.Enabled = False
-            tbMontoQR.IsInputReadOnly = True
+            'tbMontoQR.IsInputReadOnly = True
+            tbMontoQR.IsInputReadOnly = False
             chbTarjeta.Checked = False
             tbNroTarjeta1.Clear()
             tbNroTarjeta3.Clear()
@@ -549,18 +570,23 @@ Public Class F1_MontoPagar
     End Sub
 
     Private Sub tbMontoQR_ValueChanged(sender As Object, e As EventArgs) Handles tbMontoQR.ValueChanged
-        tbMontoDolar.Value = 0
-        tbMontoBs.Value = 0
+        'tbMontoDolar.Value = 0
+        'tbMontoBs.Value = 0
         tbMontoTarej.Value = 0
+        If tbMontoQR.Text <> String.Empty Then
+            'Dim diferencia As Double = tbMontoQR.Value - TotalVenta
+            Dim diferencia As Double = (tbMontoTarej.Value + (tbMontoDolar.Value * cbCambioDolar.Text) + tbMontoBs.Value + tbMontoQR.Value) - TotalVenta
 
-        Dim diferencia As Double = tbMontoQR.Value - TotalVenta
-        If (diferencia >= 0) Then
-            txtMontoPagado1.Text = TotalVenta.ToString
-            txtCambio1.Text = diferencia.ToString
+            If (diferencia >= 0) Then
+                txtMontoPagado1.Text = TotalVenta.ToString
+                txtCambio1.Text = Format(diferencia, "####0.00").ToString
 
+            Else
+                txtMontoPagado1.Text = "0.00"
+                txtCambio1.Text = "0.00"
+            End If
         Else
-            txtMontoPagado1.Text = "0.00"
-            txtCambio1.Text = "0.00"
+            tbMontoQR.Value = 0
         End If
     End Sub
 

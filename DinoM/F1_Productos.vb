@@ -1624,7 +1624,7 @@ Public Class F1_Productos
                 If dt.Rows.Count > 0 Then
                     If dt.Rows(0).Item("stock") > 0 Then
                         Dim img As Bitmap = New Bitmap(My.Resources.cancel, 50, 50)
-                        ToastNotification.Show(Me, "El producto no puede ponerse como pasivo porque aún existe stock".ToUpper,
+                        ToastNotification.Show(Me, "El producto no puede ponerse como pasivo porque aún existe stock en uno de sus almacenes".ToUpper,
                                                img, 3500, eToastGlowColor.Red, eToastPosition.TopCenter)
                         swEstado.Value = True
                     End If
