@@ -4565,7 +4565,6 @@ Public Class AccesoLogica
         _listParam.Add(New Datos.DParametro("@ibidOrigen", _ibidOrigen))
         _listParam.Add(New Datos.DParametro("@motivo", _motivo))
 
-
         _listParam.Add(New Datos.DParametro("@TI0021", "", _detalle))
         _listParam.Add(New Datos.DParametro("@ibuact", L_Usuario))
         _Tabla = D_ProcedimientoConParam("sp_Mam_TI002", _listParam)

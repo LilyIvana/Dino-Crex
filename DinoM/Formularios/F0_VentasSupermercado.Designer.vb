@@ -48,6 +48,7 @@ Partial Class F0_VentasSupermercado
         Me.grdetalle = New Janus.Windows.GridEX.GridEX()
         Me.PanelButtom = New System.Windows.Forms.Panel()
         Me.PanelTotal = New System.Windows.Forms.Panel()
+        Me.btnProforma = New DevComponents.DotNetBar.ButtonX()
         Me.btnNuevo = New DevComponents.DotNetBar.ButtonX()
         Me.btnExportar = New DevComponents.DotNetBar.ButtonX()
         Me.Label1Conn = New System.Windows.Forms.Label()
@@ -441,6 +442,7 @@ Partial Class F0_VentasSupermercado
         '
         Me.PanelTotal.BackColor = System.Drawing.SystemColors.Desktop
         Me.PanelTotal.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.PanelTotal.Controls.Add(Me.btnProforma)
         Me.PanelTotal.Controls.Add(Me.btnNuevo)
         Me.PanelTotal.Controls.Add(Me.btnExportar)
         Me.PanelTotal.Controls.Add(Me.Label1Conn)
@@ -455,19 +457,37 @@ Partial Class F0_VentasSupermercado
         Me.PanelTotal.Size = New System.Drawing.Size(595, 115)
         Me.PanelTotal.TabIndex = 0
         '
+        'btnProforma
+        '
+        Me.btnProforma.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
+        Me.btnProforma.Anchor = System.Windows.Forms.AnchorStyles.None
+        Me.btnProforma.ColorTable = DevComponents.DotNetBar.eButtonColor.BlueOrb
+        Me.btnProforma.Font = New System.Drawing.Font("Arial", 7.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnProforma.Image = Global.DinoM.My.Resources.Resources.hojaruta
+        Me.btnProforma.ImageFixedSize = New System.Drawing.Size(35, 38)
+        Me.btnProforma.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top
+        Me.btnProforma.Location = New System.Drawing.Point(272, 3)
+        Me.btnProforma.Name = "btnProforma"
+        Me.btnProforma.Padding = New System.Windows.Forms.Padding(0, 0, 0, 20)
+        Me.btnProforma.Size = New System.Drawing.Size(65, 60)
+        Me.btnProforma.Style = DevComponents.DotNetBar.eDotNetBarStyle.Windows7
+        Me.btnProforma.TabIndex = 418
+        Me.btnProforma.Text = "PROFORMA"
+        Me.btnProforma.TextColor = System.Drawing.Color.White
+        '
         'btnNuevo
         '
         Me.btnNuevo.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
         Me.btnNuevo.Anchor = System.Windows.Forms.AnchorStyles.None
         Me.btnNuevo.ColorTable = DevComponents.DotNetBar.eButtonColor.BlueOrb
-        Me.btnNuevo.Font = New System.Drawing.Font("Arial", 8.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnNuevo.Font = New System.Drawing.Font("Arial", 7.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnNuevo.Image = Global.DinoM.My.Resources.Resources.add2
-        Me.btnNuevo.ImageFixedSize = New System.Drawing.Size(40, 42)
+        Me.btnNuevo.ImageFixedSize = New System.Drawing.Size(35, 38)
         Me.btnNuevo.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top
-        Me.btnNuevo.Location = New System.Drawing.Point(220, 3)
+        Me.btnNuevo.Location = New System.Drawing.Point(201, 3)
         Me.btnNuevo.Name = "btnNuevo"
         Me.btnNuevo.Padding = New System.Windows.Forms.Padding(0, 0, 0, 20)
-        Me.btnNuevo.Size = New System.Drawing.Size(71, 62)
+        Me.btnNuevo.Size = New System.Drawing.Size(65, 60)
         Me.btnNuevo.Style = DevComponents.DotNetBar.eDotNetBarStyle.Windows7
         Me.btnNuevo.TabIndex = 417
         Me.btnNuevo.Text = "NUEVO"
@@ -478,17 +498,17 @@ Partial Class F0_VentasSupermercado
         Me.btnExportar.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
         Me.btnExportar.Anchor = System.Windows.Forms.AnchorStyles.None
         Me.btnExportar.ColorTable = DevComponents.DotNetBar.eButtonColor.BlueOrb
-        Me.btnExportar.Font = New System.Drawing.Font("Arial", 8.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnExportar.Font = New System.Drawing.Font("Arial", 7.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnExportar.Image = Global.DinoM.My.Resources.Resources.sheets
-        Me.btnExportar.ImageFixedSize = New System.Drawing.Size(40, 42)
+        Me.btnExportar.ImageFixedSize = New System.Drawing.Size(30, 35)
         Me.btnExportar.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top
-        Me.btnExportar.Location = New System.Drawing.Point(135, 3)
+        Me.btnExportar.Location = New System.Drawing.Point(130, 3)
         Me.btnExportar.Name = "btnExportar"
         Me.btnExportar.Padding = New System.Windows.Forms.Padding(0, 0, 0, 20)
-        Me.btnExportar.Size = New System.Drawing.Size(71, 62)
+        Me.btnExportar.Size = New System.Drawing.Size(65, 60)
         Me.btnExportar.Style = DevComponents.DotNetBar.eDotNetBarStyle.Windows7
         Me.btnExportar.TabIndex = 416
-        Me.btnExportar.Text = "EXPORTAR"
+        Me.btnExportar.Text = "GRABAR Y EXPORTAR"
         Me.btnExportar.TextColor = System.Drawing.Color.White
         '
         'Label1Conn
@@ -975,4 +995,5 @@ Partial Class F0_VentasSupermercado
     Friend WithEvents swEstadoFacturas As DevComponents.DotNetBar.Controls.SwitchButton
     Friend WithEvents btnExportar As DevComponents.DotNetBar.ButtonX
     Friend WithEvents btnNuevo As DevComponents.DotNetBar.ButtonX
+    Friend WithEvents btnProforma As DevComponents.DotNetBar.ButtonX
 End Class

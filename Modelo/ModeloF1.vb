@@ -47,7 +47,7 @@ Public Class ModeloF1
                 If _MListEstBuscador.Item(i).visible = True Then
                     .Caption = _MListEstBuscador.Item(i).titulo
                     .Width = _MListEstBuscador.Item(i).tamano
-                    .HeaderAlignment = Janus.Windows.GridEX.TextAlignment.Center
+                    .HeaderAlignment = Janus.Windows.GridEX.TextAlignment.Near
 
                     Dim col As DataColumn = dtBuscador.Columns(campo)
                     Dim tipo As Type = col.DataType
@@ -384,10 +384,6 @@ Public Class ModeloF1
 
     Private Sub btnUltimo_Click(sender As Object, e As EventArgs) Handles btnUltimo.Click
         _PMUltimoRegistro()
-    End Sub
-
-    Private Sub ModeloF1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-
     End Sub
 
 #End Region

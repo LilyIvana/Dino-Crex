@@ -23,22 +23,25 @@ Public Class P_Principal
 
     End Sub
     Private Sub _prIniciarTodo()
-        'Leer Archivo de Configuración
-        _prLeerArchivoConfig()
+        Try
+            'Leer Archivo de Configuración
+            _prLeerArchivoConfig()
 
-        L_prAbrirConexion(gs_Ip, gs_UsuarioSql, gs_ClaveSql, gs_NombreBD)
-        L_prAbrirConexionBitacora(gs_Ip, gs_UsuarioSql, gs_ClaveSql, "BDDiconDinoCrex")
+            L_prAbrirConexion(gs_Ip, gs_UsuarioSql, gs_ClaveSql, gs_NombreBD)
+            L_prAbrirConexionBitacora(gs_Ip, gs_UsuarioSql, gs_ClaveSql, "BDDiconDinoCrex")
 
-        Me.WindowState = FormWindowState.Maximized
+            Me.WindowState = FormWindowState.Maximized
 
-        'iniciar login de usuario
-        _prLogin()
+            'iniciar login de usuario
+            _prLogin()
 
-        'If My.Computer.FileSystem.FileExists(gs_CarpetaRaiz + "\LogoIcoCrex.ico") Then
-        '    Me.Icon = Icon.ExtractAssociatedIcon(gs_CarpetaRaiz + "\LogoIcoCrex.ico")
-        'End If
+            'If My.Computer.FileSystem.FileExists(gs_CarpetaRaiz + "\LogoIcoCrex.ico") Then
+            '    Me.Icon = Icon.ExtractAssociatedIcon(gs_CarpetaRaiz + "\LogoIcoCrex.ico")
+            'End If
 
-
+        Catch ex As Exception
+            MsgBox(ex.Message)
+        End Try
 
     End Sub
     Private Sub _prCambiarStyle()

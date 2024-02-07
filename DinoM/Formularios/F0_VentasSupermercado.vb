@@ -2373,6 +2373,16 @@ Public Class F0_VentasSupermercado
                 objrep.SetParameterValue("Fecha", fecha)
                 objrep.SetParameterValue("ENombre", _Ds2.Tables(0).Rows(0).Item("scneg").ToString) '?
                 objrep.SetParameterValue("Literal1", li)
+            Case ENReporteTipo.PROFORMA_Ticket
+                objrep.SetDataSource(dt)
+                objrep.SetParameterValue("ECasaMatriz", _Ds2.Tables(0).Rows(0).Item("scsuc").ToString)
+                objrep.SetParameterValue("ECiudadPais", _Ds2.Tables(0).Rows(0).Item("scpai").ToString)
+                objrep.SetParameterValue("EDuenho", _Ds2.Tables(0).Rows(0).Item("scnom").ToString) '?
+                objrep.SetParameterValue("Direccionpr", _Ds2.Tables(0).Rows(0).Item("scdir").ToString)
+                objrep.SetParameterValue("Hora", _Hora)
+                objrep.SetParameterValue("Fecha", fecha)
+                objrep.SetParameterValue("ENombre", _Ds2.Tables(0).Rows(0).Item("scneg").ToString) '?
+                objrep.SetParameterValue("Literal1", li)
         End Select
         If (_Ds3.Tables(0).Rows(0).Item("cbvp")) Then 'Vista Previa de la Ventana de Vizualización 1 = True 0 = False
             P_Global.Visualizador.CrGeneral.ReportSource = objrep 'Comentar
@@ -4205,22 +4215,79 @@ Public Class F0_VentasSupermercado
     End Function
 
     Private Sub btnExportar_Click(sender As Object, e As EventArgs) Handles btnExportar.Click
-        P_GenerarReporte()
-        P_GenerarReporte()
-        _prCrearCarpetaReportes()
+        Try
+            Dim numi As String = ""
+            'For i = 0 To CType(grdetalle.DataSource, DataTable).Rows.Count - 1
+            '    Dim CodPro As Integer = CType(grdetalle.DataSource, DataTable).Rows(i).Item("iccprod")
+            '    Dim dt = L_prMovimientoListarUnProducto(1, CodPro)
+            '    If dt.Rows.Count > 0 Then
 
-        Dim img As Bitmap = New Bitmap(My.Resources.checked, 50, 50)
-        If (P_ExportarExcel(RutaGlobal + "\Reporte\Reporte Productos")) Then
-            ToastNotification.Show(Me, "EXPORTACIÓN DE VENTA-PRODUCTOS EXITOSA..!!!",
-                                       img, 2000,
-                                       eToastGlowColor.Green,
-                                       eToastPosition.BottomCenter)
-        Else
-            ToastNotification.Show(Me, "FALLÓ LA EXPORTACIÓN DE VENTA-PRODUCTOS..!!!",
-                                       My.Resources.WARNING, 2000,
-                                       eToastGlowColor.Red,
-                                       eToastPosition.BottomLeft)
-        End If
+            '        Dim stock As Double = dt.Rows(0).Item("stock")
+            '        If stock = 0 Then
+            '            Dim img1 As Bitmap = New Bitmap(My.Resources.mensaje, 50, 50)
+            '            ToastNotification.Show(Me, "El Producto: ".ToUpper + CodPro.ToString +
+            '                " tiene stock : ".ToUpper + Str(stock).Trim + " no se puede hacer salidas de este producto.".ToUpper,
+            '                  img1,
+            '                  5000,
+            '                  eToastGlowColor.Blue,
+            '                  eToastPosition.TopCenter)
+
+            '            Exit Sub
+            '        Else
+
+            '            If (CType(grdetalle.DataSource, DataTable).Rows(i).Item("estado") >= 0 And CType(grdetalle.DataSource, DataTable).Rows(i).Item("iccant") > stock) Then
+            '                Dim img As Bitmap = New Bitmap(My.Resources.mensaje, 50, 50)
+            '                ToastNotification.Show(Me, "La cantidad que se quiere sacar en el Producto: ".ToUpper + CodPro.ToString +
+            '                    " es mayor a la que existe en el stock solo puede Sacar : ".ToUpper + Str(stock).Trim,
+            '                      img,
+            '                      5000,
+            '                      eToastGlowColor.Blue,
+            '                      eToastPosition.TopCenter)
+
+            '                Exit Sub
+
+            '            Else
+
+            '            End If
+            '        End If
+            '    End If
+            'Next
+
+            Dim tabla As DataTable = CType(grdetalle.DataSource, DataTable).DefaultView.ToTable(False, "tbnumi", "tbtv1numi", "tbty5prod", "codigo", "producto", "ygcodsin", "ygcodu", "tbcmin", "tblote", "tbfechaVenc", "img", "estado", "stock")
+            If tabla.Rows.Count > 0 And tabla.Rows(0).Item("tbty5prod") > 0 Then
+
+                Dim res As Boolean = L_prMovimientoChoferGrabar(numi, Now.Date.ToString("yyyy/MM/dd"), 2, "VALE VENTA A FISCALIA", 1, 0, 0, tabla, 0)
+
+                If res Then
+                    P_GenerarReporte(Convert.ToInt32(ENReporte.NOTAVENTA))
+                    P_GenerarReporte(Convert.ToInt32(ENReporte.NOTAVENTA))
+                    _prCrearCarpetaReportes()
+
+                    Dim img As Bitmap = New Bitmap(My.Resources.checked, 50, 50)
+                    If (P_ExportarExcel(RutaGlobal + "\Reporte\Reporte Productos")) Then
+                        ToastNotification.Show(Me, "SE GRABÓ Y EXPORTÓ LA VENTA-PRODUCTOS DE FORMA EXITOSA..!!!",
+                                                   img, 3000,
+                                                   eToastGlowColor.Green,
+                                                   eToastPosition.BottomCenter)
+                    Else
+                        ToastNotification.Show(Me, "FALLÓ EL GRABADO Y LA EXPORTACIÓN DE VENTA-PRODUCTOS..!!!",
+                                                   My.Resources.WARNING, 3000,
+                                                   eToastGlowColor.Red,
+                                                   eToastPosition.BottomCenter)
+                    End If
+
+                    btnExportar.Enabled = False
+                End If
+            Else
+                ToastNotification.Show(Me, "NO EXISTE PRODUCTOS EN EL DETALLE, NO PUEDE GUARDAR Y EXPORTAR",
+                           My.Resources.WARNING, 3500,
+                           eToastGlowColor.Red,
+                           eToastPosition.BottomCenter)
+            End If
+        Catch ex As Exception
+            MsgBox(ex.Message)
+        End Try
+
     End Sub
     Private Sub _prCrearCarpetaReportes()
         Dim rutaDestino As String = RutaGlobal + "\Reporte\Reporte Productos\"
@@ -4242,7 +4309,7 @@ Public Class F0_VentasSupermercado
     Public Function P_ExportarExcel(_ruta As String) As Boolean
         Dim _ubicacion As String
 
-        If (1 = 1) Then 'If(_directorio.ShowDialog = Windows.Forms.DialogResult.OK) Then
+        If (1 = 1) Then
             _ubicacion = _ruta
             Try
                 Dim _stream As Stream
@@ -4307,7 +4374,7 @@ Public Class F0_VentasSupermercado
         End If
         Return False
     End Function
-    Private Sub P_GenerarReporte()
+    Private Sub P_GenerarReporte(TipoRep As Integer)
         Dim dt As DataTable = CType(grdetalle.DataSource, DataTable)
         dt = dt.Select("estado=0").CopyToDataTable
         If (gb_DetalleProducto) Then
@@ -4337,7 +4404,7 @@ Public Class F0_VentasSupermercado
         ParteDecimal2 = CDbl(ParteDecimal) * 100
 
         Dim lid As String = Facturacion.ConvertirLiteral.A_fnConvertirLiteral(CDbl(ParteEntera)) + " " +
-        IIf(ParteDecimal2.ToString.Equals("0"), "00", ParteDecimal2.ToString) + "/100 Dolares"
+        IIf(ParteDecimal2.ToString.Equals("0"), "00", ParteDecimal2.ToString) + "/100 Dólares"
         Dim _Hora As String = Now.Hour.ToString + ":" + Now.Minute.ToString
         Dim _Ds2 = L_Reporte_Factura_Cia("2")
         Dim dt2 As DataTable = L_fnNameReporte()
@@ -4365,7 +4432,7 @@ Public Class F0_VentasSupermercado
         _FechaPar = "Cochabamba, " + _Fecha(0).Trim + " De " + _Meses(_Fecha(1) - 1).Trim + " Del " + _Fecha(2).Trim
         Dim objrep As Object = Nothing
         Dim empresaId = ObtenerEmpresaHabilitada()
-        Dim empresaHabilitada As DataTable = ObtenerEmpresaTipoReporte(empresaId, Convert.ToInt32(ENReporte.NOTAVENTA))
+        Dim empresaHabilitada As DataTable = ObtenerEmpresaTipoReporte(empresaId, TipoRep)
         For Each fila As DataRow In empresaHabilitada.Rows
             Select Case fila.Item("TipoReporte").ToString
                 Case ENReporteTipo.NOTAVENTA_Carta
@@ -4374,6 +4441,10 @@ Public Class F0_VentasSupermercado
                 Case ENReporteTipo.NOTAVENTA_Ticket
                     objrep = New R_NotaVenta_7_5X100_2
                     SetParametrosNotaVenta(dt, total, li, _Hora, _Ds2, _Ds3, fila.Item("TipoReporte").ToString, objrep, fechaven)
+                Case ENReporteTipo.PROFORMA_Ticket
+                    objrep = New R_NotaVenta_7_5X100_3
+                    SetParametrosNotaVenta(dt, total, li, _Hora, _Ds2, _Ds3, fila.Item("TipoReporte").ToString, objrep, fechaven)
+
             End Select
         Next
     End Sub
@@ -4381,6 +4452,23 @@ Public Class F0_VentasSupermercado
     Private Sub btnNuevo_Click(sender As Object, e As EventArgs) Handles btnNuevo.Click
         _Limpiar()
         Table_Producto = Nothing
+        btnExportar.Enabled = True
+    End Sub
 
+    Private Sub btnProforma_Click(sender As Object, e As EventArgs) Handles btnProforma.Click
+        Try
+            Dim numi As String = ""
+            Dim tabla As DataTable = CType(grdetalle.DataSource, DataTable).DefaultView.ToTable(False, "tbnumi", "tbtv1numi", "tbty5prod", "codigo", "producto", "ygcodsin", "ygcodu", "tbcmin", "tblote", "tbfechaVenc", "img", "estado", "stock")
+            If tabla.Rows.Count > 0 And tabla.Rows(0).Item("tbty5prod") > 0 Then
+                P_GenerarReporte(Convert.ToInt32(ENReporte.PROFORMA))
+            Else
+                ToastNotification.Show(Me, "NO EXISTE PRODUCTOS EN EL DETALLE, NO PUEDE GENERAR PROFORMA",
+                           My.Resources.WARNING, 3500,
+                           eToastGlowColor.Red,
+                           eToastPosition.BottomCenter)
+            End If
+        Catch ex As Exception
+            MsgBox(ex.Message)
+        End Try
     End Sub
 End Class

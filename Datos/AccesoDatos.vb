@@ -1,5 +1,6 @@
 ﻿Imports System.Data
 Imports System.Data.SqlClient   'Lib para conexion con SQL Server
+Imports System.Windows.Forms
 'Imports System.Data.OleDb       'Lib para conexion con Access
 Public Class AccesoDatos
     Shared _comando As SqlCommand
@@ -7,8 +8,14 @@ Public Class AccesoDatos
     Shared _comandoProcedimientoHistorial As SqlCommand
 
     Public Shared Sub D_abrirConexion(Optional Ip As String = "", Optional UsuarioSql As String = "", Optional ClaveSql As String = "", Optional NombreBD As String = "")
+        'Try
         _comando = MetodoDatos.CrearComando(Ip, UsuarioSql, ClaveSql, NombreBD)
         _comandoProcedimiento = MetodoDatos.CrearComandoProcedimiento(Ip, UsuarioSql, ClaveSql, NombreBD)
+        'Catch ex As Exception
+        'MsgBox(ex.Message)
+        ''MessageBox.Show("Hubo algún inconveniente en la red, no se pudo conectar a la base de datos, espere un momento, si no se restablece cierre y vuelva a intentarlo".ToUpper())
+        'End Try
+
     End Sub
     Public Shared Sub D_abrirConexionHistorial(Optional Ip As String = "", Optional UsuarioSql As String = "", Optional ClaveSql As String = "", Optional NombreBD As String = "")
         _comandoProcedimientoHistorial = MetodoDatos.CrearComandoProcedimiento(Ip, UsuarioSql, ClaveSql, NombreBD)
