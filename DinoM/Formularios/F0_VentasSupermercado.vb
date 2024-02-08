@@ -51,8 +51,6 @@ Public Class F0_VentasSupermercado
     Dim dtDescuentos As DataTable = Nothing
     Public Programa As String
 
-
-
     'Token SIFAC
     Public tokenObtenido
     Public nFactIgual As Boolean
@@ -143,18 +141,14 @@ Public Class F0_VentasSupermercado
         For i As Integer = 0 To dt.Rows.Count - 1 Step 1
 
             If (dt.Rows(i).Item("estado") >= 0) Then
-
                 sumaDescuento += dt.Rows(i).Item("tbdesc")
-
             End If
-
         Next
 
         tbDescuento.Value = sumaDescuento
 
     End Sub
     'Public Sub CalcularDescuentos(ProductoId As Integer, Cantidad As Integer, Precio As Decimal, Posicion As Integer)
-
 
     '    Dim fila As DataRow() = dtDescuentos.Select("ProductoId=" + Str(ProductoId).ToString.Trim + "", "")
 
@@ -217,7 +211,6 @@ Public Class F0_VentasSupermercado
                     CType(grdetalle.DataSource, DataTable).Rows(Posicion).Item("tbdesc") = 0
                     CType(grdetalle.DataSource, DataTable).Rows(Posicion).Item("tbtotdesc") = Format((CType(grdetalle.DataSource, DataTable).Rows(Posicion).Item("tbpbas") * CType(grdetalle.DataSource, DataTable).Rows(Posicion).Item("tbcmin")), "#.#0")
 
-
                 End If
 
             Next
@@ -264,7 +257,6 @@ Public Class F0_VentasSupermercado
                 End If
             Next
         End If
-
 
     End Sub
 
@@ -316,7 +308,6 @@ Public Class F0_VentasSupermercado
             Next
         End If
 
-
     End Sub
 
     Private Sub AsignarClienteEmpleado()
@@ -354,13 +345,8 @@ Public Class F0_VentasSupermercado
             Else
                 G_Lote = False
             End If
-
         End If
     End Sub
-
-
-
-
 
     Private Sub _Limpiar()
         AsignarClienteEmpleado()
@@ -370,13 +356,10 @@ Public Class F0_VentasSupermercado
         lbCliente.Text = "S/N"
         lbNit.Text = "0"
 
-
         _prCargarDetalleVenta(-1)
 
         'txtCambio1.Value = 0
         'txtMontoPagado1.Value = 0
-
-
 
         If (GPanelProductos.Visible = True) Then
             GPanelProductos.Visible = False
@@ -391,16 +374,12 @@ Public Class F0_VentasSupermercado
         _prAddDetalleVenta()
 
         'tbCliente.Focus()
-
-
         FilaSelectLote = Nothing
 
         ' tbCliente.Focus()
         Table_Producto = Nothing
         tbDescripcion.Clear()
         tbPrecio.Text = ""
-
-
 
         tbDescuento.Value = 0
         dtDescuentos = L_fnListarDescuentosTodos()
@@ -3718,8 +3697,7 @@ Public Class F0_VentasSupermercado
     End Sub
 
 
-    'Funciones de conexion con sifac para facturacion
-
+    'Funciones de conexion con sifac para facturación
     Public Shared Function ObtToken()
 
         Dim api = New DBApi()
@@ -3727,7 +3705,6 @@ Public Class F0_VentasSupermercado
         Dim Lenvio = New LoginEnvio()
         Lenvio.email = gb_email
         Lenvio.password = gb_password
-
 
         Dim url = gb_url + "/api/v2/login"
 
@@ -3821,7 +3798,6 @@ Public Class F0_VentasSupermercado
             .DataSource = result.data
             .Refresh()
         End With
-
 
         Return ""
     End Function
@@ -4279,7 +4255,7 @@ Public Class F0_VentasSupermercado
                     btnExportar.Enabled = False
                 End If
             Else
-                ToastNotification.Show(Me, "NO EXISTE PRODUCTOS EN EL DETALLE, NO PUEDE GUARDAR Y EXPORTAR",
+                ToastNotification.Show(Me, "NO EXISTE PRODUCTOS EN EL DETALLE, NO PUEDE GRABAR Y EXPORTAR",
                            My.Resources.WARNING, 3500,
                            eToastGlowColor.Red,
                            eToastPosition.BottomCenter)

@@ -3897,7 +3897,6 @@ salirIf:
             Exit Sub
         End If
 
-
         Dim Succes As Integer = Emisor(tokenObtenido)
         If Succes = 200 Then
             _prGuardar()
