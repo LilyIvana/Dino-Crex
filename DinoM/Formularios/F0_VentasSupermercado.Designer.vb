@@ -469,7 +469,7 @@ Partial Class F0_VentasSupermercado
         Me.btnProforma.Location = New System.Drawing.Point(272, 3)
         Me.btnProforma.Name = "btnProforma"
         Me.btnProforma.Padding = New System.Windows.Forms.Padding(0, 0, 0, 20)
-        Me.btnProforma.Size = New System.Drawing.Size(65, 60)
+        Me.btnProforma.Size = New System.Drawing.Size(65, 65)
         Me.btnProforma.Style = DevComponents.DotNetBar.eDotNetBarStyle.Windows7
         Me.btnProforma.TabIndex = 418
         Me.btnProforma.Text = "PROFORMA"
@@ -487,7 +487,7 @@ Partial Class F0_VentasSupermercado
         Me.btnNuevo.Location = New System.Drawing.Point(201, 3)
         Me.btnNuevo.Name = "btnNuevo"
         Me.btnNuevo.Padding = New System.Windows.Forms.Padding(0, 0, 0, 20)
-        Me.btnNuevo.Size = New System.Drawing.Size(65, 60)
+        Me.btnNuevo.Size = New System.Drawing.Size(65, 65)
         Me.btnNuevo.Style = DevComponents.DotNetBar.eDotNetBarStyle.Windows7
         Me.btnNuevo.TabIndex = 417
         Me.btnNuevo.Text = "NUEVO"
@@ -500,15 +500,15 @@ Partial Class F0_VentasSupermercado
         Me.btnExportar.ColorTable = DevComponents.DotNetBar.eButtonColor.BlueOrb
         Me.btnExportar.Font = New System.Drawing.Font("Arial", 7.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnExportar.Image = Global.DinoM.My.Resources.Resources.sheets
-        Me.btnExportar.ImageFixedSize = New System.Drawing.Size(30, 35)
+        Me.btnExportar.ImageFixedSize = New System.Drawing.Size(25, 28)
         Me.btnExportar.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top
         Me.btnExportar.Location = New System.Drawing.Point(130, 3)
         Me.btnExportar.Name = "btnExportar"
         Me.btnExportar.Padding = New System.Windows.Forms.Padding(0, 0, 0, 20)
-        Me.btnExportar.Size = New System.Drawing.Size(65, 60)
+        Me.btnExportar.Size = New System.Drawing.Size(65, 65)
         Me.btnExportar.Style = DevComponents.DotNetBar.eDotNetBarStyle.Windows7
         Me.btnExportar.TabIndex = 416
-        Me.btnExportar.Text = "GRABAR Y EXPORTAR"
+        Me.btnExportar.Text = "GRABAR Y EXPORTAR VALE"
         Me.btnExportar.TextColor = System.Drawing.Color.White
         '
         'Label1Conn

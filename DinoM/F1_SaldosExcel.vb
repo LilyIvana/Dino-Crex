@@ -72,7 +72,6 @@ Public Class F1_SaldosExcel
     End Sub
 
 
-
     Private Sub _prCrearCarpetaReportes()
         Dim rutaDestino As String = RutaGlobal + "\Reporte\Reporte SaldoProductos\"
 

@@ -4240,7 +4240,7 @@ Public Class F0_VentasSupermercado
                     _prCrearCarpetaReportes()
 
                     Dim img As Bitmap = New Bitmap(My.Resources.checked, 50, 50)
-                    If (P_ExportarExcel(RutaGlobal + "\Reporte\Reporte Productos")) Then
+                    If (P_ExportarExcel(RutaGlobal + "\Reporte\Reporte Productos", "VentaProductos")) Then
                         ToastNotification.Show(Me, "SE GRABÓ Y EXPORTÓ LA VENTA-PRODUCTOS DE FORMA EXITOSA..!!!",
                                                    img, 3000,
                                                    eToastGlowColor.Green,
@@ -4282,7 +4282,7 @@ Public Class F0_VentasSupermercado
             End If
         End If
     End Sub
-    Public Function P_ExportarExcel(_ruta As String) As Boolean
+    Public Function P_ExportarExcel(_ruta As String, _nombre As String) As Boolean
         Dim _ubicacion As String
 
         If (1 = 1) Then
@@ -4292,7 +4292,7 @@ Public Class F0_VentasSupermercado
                 Dim _escritor As StreamWriter
                 Dim _fila As Integer = grdetalle.GetRows.Length
                 Dim _columna As Integer = grdetalle.RootTable.Columns.Count
-                Dim _archivo As String = _ubicacion & "\VentaProductos_" & Now.Date.Day &
+                Dim _archivo As String = _ubicacion & "\" & _nombre & "_" & Now.Date.Day &
                     "." & Now.Date.Month & "." & Now.Date.Year & "_" & Now.Hour & "." & Now.Minute & "." & Now.Second & ".csv"
                 Dim _linea As String = ""
                 Dim _filadata = 0, columndata As Int32 = 0
@@ -4437,6 +4437,21 @@ Public Class F0_VentasSupermercado
             Dim tabla As DataTable = CType(grdetalle.DataSource, DataTable).DefaultView.ToTable(False, "tbnumi", "tbtv1numi", "tbty5prod", "codigo", "producto", "ygcodsin", "ygcodu", "tbcmin", "tblote", "tbfechaVenc", "img", "estado", "stock")
             If tabla.Rows.Count > 0 And tabla.Rows(0).Item("tbty5prod") > 0 Then
                 P_GenerarReporte(Convert.ToInt32(ENReporte.PROFORMA))
+
+                _prCrearCarpetaReportes()
+
+                Dim img As Bitmap = New Bitmap(My.Resources.checked, 50, 50)
+                If (P_ExportarExcel(RutaGlobal + "\Reporte\Reporte Productos", "Proforma")) Then
+                    ToastNotification.Show(Me, "SE EXPORTÓ LA PROFORMA DE FORMA EXITOSA..!!!",
+                                               img, 3000,
+                                               eToastGlowColor.Green,
+                                               eToastPosition.BottomCenter)
+                Else
+                    ToastNotification.Show(Me, "FALLÓ LA EXPORTACIÓN DE LA PROFORMA..!!!",
+                                               My.Resources.WARNING, 3000,
+                                               eToastGlowColor.Red,
+                                               eToastPosition.BottomCenter)
+                End If
             Else
                 ToastNotification.Show(Me, "NO EXISTE PRODUCTOS EN EL DETALLE, NO PUEDE GENERAR PROFORMA",
                            My.Resources.WARNING, 3500,
