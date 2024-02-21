@@ -4240,7 +4240,7 @@ Public Class F0_VentasSupermercado
                     _prCrearCarpetaReportes()
 
                     Dim img As Bitmap = New Bitmap(My.Resources.checked, 50, 50)
-                    If (P_ExportarExcel(RutaGlobal + "\Reporte\Reporte Productos", "VentaProductos")) Then
+                    If (P_ExportarExcel(RutaGlobal + "\Reporte\Reporte Productos", "VentaProductosVale")) Then
                         ToastNotification.Show(Me, "SE GRABÓ Y EXPORTÓ LA VENTA-PRODUCTOS DE FORMA EXITOSA..!!!",
                                                    img, 3000,
                                                    eToastGlowColor.Green,
