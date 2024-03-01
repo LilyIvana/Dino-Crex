@@ -511,7 +511,8 @@ Public Class AccesoLogica
                                               _yfusup As Integer, _yfvsup As Double, _yfsmin As Integer, _yfap As Integer,
                                               _yfimg As String, TY0051 As DataTable, _yfdetpro As String, _yfgr5 As String,
                                               _ycodact As String, _ycodu As Integer, _ycodprosin As String, _ypreciosif As Double,
-                                              _yfprefijo As String, _yfconv2 As Double, _yfucompra As Integer) As Boolean
+                                              _yfprefijo As String, _yfconv2 As Double, _yfconv3 As Double, _yfucompra As Integer,
+                                              TY0053 As DataTable) As Boolean
         Dim _resultado As Boolean
         '@yfnumi ,@yfcprod ,@yfcbarra ,@yfcdprod1 ,@yfcdprod2 ,
         '			@yfgr1 ,@yfgr2 ,@yfgr3 ,@yfgr4 ,@yfMed ,@yfumin ,@yfusup ,@yfvsup ,
@@ -544,6 +545,7 @@ Public Class AccesoLogica
         _listParam.Add(New Datos.DParametro("@yfgr5", _yfgr5))
         _listParam.Add(New Datos.DParametro("@yfcampo1", _yfprefijo))
         _listParam.Add(New Datos.DParametro("@yfcampo2", _yfconv2))
+        _listParam.Add(New Datos.DParametro("@yfcampo3", _yfconv3))
         _listParam.Add(New Datos.DParametro("@yfresponsable", "NADIE"))
         _listParam.Add(New Datos.DParametro("@yflado", "S/L"))
         _listParam.Add(New Datos.DParametro("@yfordenacion", 0))
@@ -556,6 +558,7 @@ Public Class AccesoLogica
         _listParam.Add(New Datos.DParametro("@ypreciosif", _ypreciosif))
 
         _listParam.Add(New Datos.DParametro("@TY0051", "", TY0051))
+        _listParam.Add(New Datos.DParametro("@TY0053", "", TY0053))
         _Tabla = D_ProcedimientoConParam("sp_Mam_TY005", _listParam)
 
         If _Tabla.Rows.Count > 0 Then
@@ -573,7 +576,8 @@ Public Class AccesoLogica
                                                  _yfMed As Integer, _yfumin As Integer, _yfusup As Integer, _yfvsup As Double, _yfsmin As Integer,
                                                  _yfap As Integer, _yfimg As String, TY0051 As DataTable, _yfdetpro As String, _yfgr5 As String,
                                                  _ycodact As String, _ycodu As Integer, _ycodprosin As String, _ypreciosif As Double,
-                                                 _yfprefijo As String, _yfconv2 As Double, _yfucompra As Integer) As Boolean
+                                                 _yfprefijo As String, _yfconv2 As Double, _yfconv3 As Double, _yfucompra As Integer,
+                                                 TY0053 As DataTable) As Boolean
         Dim _resultado As Boolean
 
         Dim _Tabla As DataTable
@@ -605,6 +609,7 @@ Public Class AccesoLogica
         _listParam.Add(New Datos.DParametro("@yfgr5", _yfgr5))
         _listParam.Add(New Datos.DParametro("@yfcampo1", _yfprefijo))
         _listParam.Add(New Datos.DParametro("@yfcampo2", _yfconv2))
+        _listParam.Add(New Datos.DParametro("@yfcampo3", _yfconv3))
         _listParam.Add(New Datos.DParametro("@yfucompra", _yfucompra))
 
         _listParam.Add(New Datos.DParametro("@ycodact", _ycodact))
@@ -613,6 +618,7 @@ Public Class AccesoLogica
         _listParam.Add(New Datos.DParametro("@ypreciosif", _ypreciosif))
 
         _listParam.Add(New Datos.DParametro("@TY0051", "", TY0051))
+        _listParam.Add(New Datos.DParametro("@TY0053", "", TY0053))
         _Tabla = D_ProcedimientoConParam("sp_Mam_TY005", _listParam)
 
         If _Tabla.Rows.Count > 0 Then
@@ -7895,6 +7901,169 @@ Public Class AccesoLogica
         _listParam.Add(New Datos.DParametro("@ibuact", L_Usuario))
         _listParam.Add(New Datos.DParametro("@almacen", _deposito))
         _Tabla = D_ProcedimientoConParam("sp_Marco_TI002", _listParam)
+
+        Return _Tabla
+    End Function
+#End Region
+#Region "TABLA PARA ALMACENAR COMBOS TY0053"
+
+    Public Shared Function L_fnListarProductosActivos() As DataTable
+        Dim _Tabla As DataTable
+
+        Dim _listParam As New List(Of Datos.DParametro)
+
+
+        _listParam.Add(New Datos.DParametro("@tipo", 5))
+        _listParam.Add(New Datos.DParametro("@yfuact", L_Usuario))
+
+        _Tabla = D_ProcedimientoConParam("Proc_TY0053", _listParam)
+
+        Return _Tabla
+    End Function
+    Public Shared Function L_fnProductosCombo(codigo As String) As DataTable
+        Dim _Tabla As DataTable
+
+        Dim _listParam As New List(Of Datos.DParametro)
+
+        _listParam.Add(New Datos.DParametro("@tipo", 6))
+        _listParam.Add(New Datos.DParametro("@yfnumi", codigo))
+        _listParam.Add(New Datos.DParametro("@yfuact", L_Usuario))
+
+        _Tabla = D_ProcedimientoConParam("Proc_TY0053", _listParam)
+
+        Return _Tabla
+    End Function
+#End Region
+#Region "ARMAR Y DESARMAR COMBOS"
+
+    Public Shared Function L_fnMovimientoComboGrabar(ByRef id As String, fdoc As String, obs As String, codpack As String, cantP As Integer, pcosto As String,
+                                                    cantNP As Integer, est As String, alm As String, TI0051 As DataTable) As Boolean
+        Dim _resultado As Boolean
+
+        Dim _Tabla As DataTable
+        Dim _listParam As New List(Of Datos.DParametro)
+
+        _listParam.Add(New Datos.DParametro("@tipo", 1))
+        _listParam.Add(New Datos.DParametro("@id", id))
+        _listParam.Add(New Datos.DParametro("@fdoc", fdoc))
+        _listParam.Add(New Datos.DParametro("@obs", obs))
+        _listParam.Add(New Datos.DParametro("@codpack", codpack))
+        _listParam.Add(New Datos.DParametro("@cantP", cantP))
+        _listParam.Add(New Datos.DParametro("@pcosto", pcosto))
+        _listParam.Add(New Datos.DParametro("@cantNP", cantNP))
+        _listParam.Add(New Datos.DParametro("@est", 1))
+        _listParam.Add(New Datos.DParametro("@alm", alm))
+        _listParam.Add(New Datos.DParametro("@TI0051", "", TI0051))
+        _listParam.Add(New Datos.DParametro("@uact", L_Usuario))
+
+        _Tabla = D_ProcedimientoConParam("Proc_TI005", _listParam)
+
+        If _Tabla.Rows.Count > 0 Then
+            id = _Tabla.Rows(0).Item(0)
+            _resultado = True
+        Else
+            _resultado = False
+        End If
+
+        Return _resultado
+    End Function
+    Public Shared Function L_fnMovimientoComboGeneral() As DataTable
+        Dim _Tabla As DataTable
+
+        Dim _listParam As New List(Of Datos.DParametro)
+
+        _listParam.Add(New Datos.DParametro("@tipo", 3))
+        _listParam.Add(New Datos.DParametro("@uact", L_Usuario))
+        _Tabla = D_ProcedimientoConParam("Proc_TI005", _listParam)
+
+        Return _Tabla
+    End Function
+    Public Shared Function L_fnMovimientoComboDetalle(id As String) As DataTable
+        Dim _Tabla As DataTable
+
+        Dim _listParam As New List(Of Datos.DParametro)
+
+        _listParam.Add(New Datos.DParametro("@tipo", 4))
+        _listParam.Add(New Datos.DParametro("@id", id))
+        _listParam.Add(New Datos.DParametro("@uact", L_Usuario))
+
+        _Tabla = D_ProcedimientoConParam("Proc_TI005", _listParam)
+
+        Return _Tabla
+    End Function
+    Public Shared Function L_fnDetalleCombo(id As String) As DataTable
+        Dim _Tabla As DataTable
+
+        Dim _listParam As New List(Of Datos.DParametro)
+
+        _listParam.Add(New Datos.DParametro("@tipo", 5))
+        _listParam.Add(New Datos.DParametro("@id", id))
+        _listParam.Add(New Datos.DParametro("@uact", L_Usuario))
+
+        _Tabla = D_ProcedimientoConParam("Proc_TI005", _listParam)
+
+        Return _Tabla
+    End Function
+    Public Shared Function L_fnMovimientoComboDetalleTI0052(id As String) As DataTable
+        Dim _Tabla As DataTable
+
+        Dim _listParam As New List(Of Datos.DParametro)
+
+        _listParam.Add(New Datos.DParametro("@tipo", 6))
+        _listParam.Add(New Datos.DParametro("@id", id))
+        _listParam.Add(New Datos.DParametro("@uact", L_Usuario))
+
+        _Tabla = D_ProcedimientoConParam("Proc_TI005", _listParam)
+
+        Return _Tabla
+    End Function
+    Public Shared Function L_fnGrabarDesarmado(ByRef id As String, codpack As String, cantNP As Integer, fechaNP As String, TI0052 As DataTable) As Boolean
+        Dim _resultado As Boolean
+
+        Dim _Tabla As DataTable
+        Dim _listParam As New List(Of Datos.DParametro)
+
+        _listParam.Add(New Datos.DParametro("@tipo", 7))
+        _listParam.Add(New Datos.DParametro("@id", id))
+        _listParam.Add(New Datos.DParametro("@codpack", codpack))
+        _listParam.Add(New Datos.DParametro("@cantNP", cantNP))
+        _listParam.Add(New Datos.DParametro("@fechaNP", fechaNP))
+        _listParam.Add(New Datos.DParametro("@TI0052", "", TI0052))
+        _listParam.Add(New Datos.DParametro("@uact", L_Usuario))
+
+        _Tabla = D_ProcedimientoConParam("Proc_TI005", _listParam)
+
+        If _Tabla.Rows.Count > 0 Then
+            id = _Tabla.Rows(0).Item(0)
+            _resultado = True
+        Else
+            _resultado = False
+        End If
+
+        Return _resultado
+    End Function
+    Public Shared Function L_fnVerificarStockCombo(codpack As String) As DataTable
+        Dim _Tabla As DataTable
+
+        Dim _listParam As New List(Of Datos.DParametro)
+
+        _listParam.Add(New Datos.DParametro("@tipo", 8))
+        _listParam.Add(New Datos.DParametro("@codpack", codpack))
+        _listParam.Add(New Datos.DParametro("@uact", L_Usuario))
+
+        _Tabla = D_ProcedimientoConParam("Proc_TI005", _listParam)
+
+        Return _Tabla
+    End Function
+    Public Shared Function L_fnProductosCombo() As DataTable
+        Dim _Tabla As DataTable
+
+        Dim _listParam As New List(Of Datos.DParametro)
+
+        _listParam.Add(New Datos.DParametro("@tipo", 9))
+        _listParam.Add(New Datos.DParametro("@uact", L_Usuario))
+
+        _Tabla = D_ProcedimientoConParam("Proc_TI005", _listParam)
 
         Return _Tabla
     End Function

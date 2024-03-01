@@ -283,6 +283,16 @@ Namespace My.Resources
         '''<summary>
         '''  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         '''</summary>
+        Friend ReadOnly Property combo() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("combo", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        '''</summary>
         Friend ReadOnly Property compra() As System.Drawing.Bitmap
             Get
                 Dim obj As Object = ResourceManager.GetObject("compra", resourceCulture)
@@ -826,6 +836,16 @@ Namespace My.Resources
         Friend ReadOnly Property jpg() As System.Drawing.Bitmap
             Get
                 Dim obj As Object = ResourceManager.GetObject("jpg", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        '''</summary>
+        Friend ReadOnly Property Kardex1() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("Kardex1", resourceCulture)
                 Return CType(obj,System.Drawing.Bitmap)
             End Get
         End Property

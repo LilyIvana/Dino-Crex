@@ -12,12 +12,15 @@ Imports DinoM.HomologResp
 Imports DinoM.ListarPServResp
 
 Public Class F1_Productos
+    Private Const V As String = "yfccant"
     Dim _Inter As Integer = 0
 #Region "Variables Locales"
     Dim RutaGlobal As String = gs_CarpetaRaiz
     Dim RutaTemporal As String = "C:\Temporal"
     Dim Modificado As Boolean = False
     Dim nameImg As String = "Default.jpg"
+    Dim DtCombo As DataTable
+
     Public _nameButton As String
     Public _tab As SuperTabItem
     Public _modulo As SideNavItem
@@ -48,6 +51,7 @@ Public Class F1_Productos
         _prCargarComboLibreria(cbUnidMaxima, 1, 6)
         _prAsignarPermisos()
         armarGrillaDetalleProducto(0)
+        P_prArmarGrillaCombo(-1)
 
         ''Mostrar u ocultar el grupo 4(Familia)
         If gb_MostrarFamilia = 0 Then
@@ -68,6 +72,7 @@ Public Class F1_Productos
 
         btnImprimir.Visible = False
         SuperTabControl_Imagenes_DetalleProducto.SelectedTabIndex = 2
+        JGProdCombo.ContextMenuStrip = CmDetalle
     End Sub
 
     Private Sub armarGrillaDetalleProducto(numi As Integer)
@@ -275,6 +280,7 @@ Public Class F1_Productos
         cbUMed.ReadOnly = False
         cbUniCompra.ReadOnly = False
         swEstado.IsReadOnly = False
+        swCombo.IsReadOnly = False
         cbUniVenta.ReadOnly = False
         cbUnidMaxima.ReadOnly = False
         tbConversion1.IsInputReadOnly = False
@@ -313,6 +319,7 @@ Public Class F1_Productos
         cbUMed.ReadOnly = True
         cbUniCompra.ReadOnly = True
         swEstado.IsReadOnly = True
+        swCombo.IsReadOnly = True
         cbUniVenta.ReadOnly = True
         cbUnidMaxima.ReadOnly = True
         tbConversion1.IsInputReadOnly = True
@@ -369,11 +376,13 @@ Public Class F1_Productos
         tbConversion2.Value = 1
         tbStockMinimo.Value = 0
         tbRotacion.Text = "PN"
+        swCombo.Value = False
 
         tbCodProd.Focus()
         UsImg.pbImage.Image = My.Resources.pantalla
 
         armarGrillaDetalleProducto(0)
+        P_prArmarGrillaCombo(-1)
     End Sub
 
     Private Sub adicionarFilaDetalleProducto()
@@ -430,7 +439,7 @@ Public Class F1_Productos
                                                 quitarUltimaFilaVacia(CType(dgjDetalleProducto.DataSource, DataTable).DefaultView.ToTable(False, "yfanumi", "yfayfnumi", "yfasim", "yfadesc", "estado")),
                                                 tbDescDet.Text, cbgrupo5.Value, CbAeconomica.Value, CbUmedida.Value,
                                                 CbProdServ.Value, TbPrecioPsifac.Text, tbRotacion.Text.Trim, tbConversion2.Text,
-                                                cbUniCompra.Value)
+                                                IIf(swCombo.Value = True, 1, 0), cbUniCompra.Value, CType(JGProdCombo.DataSource, DataTable))
 
         'Else
         '    res = False
@@ -475,7 +484,8 @@ Public Class F1_Productos
                                         IIf(swEstado.Value = True, 1, 0), nameImage,
                                         quitarUltimaFilaVacia(CType(dgjDetalleProducto.DataSource, DataTable).DefaultView.ToTable(False, "yfanumi", "yfayfnumi", "yfasim", "yfadesc", "estado")),
                                         tbDescDet.Text, cbgrupo5.Value, CbAeconomica.Value, CbUmedida.Value, CbProdServ.Value,
-                                        TbPrecioPsifac.Text, tbRotacion.Text.Trim, tbConversion2.Text, cbUniCompra.Value)
+                                        TbPrecioPsifac.Text, tbRotacion.Text.Trim, tbConversion2.Text, IIf(swCombo.Value = True, 1, 0),
+                                        cbUniCompra.Value, CType(JGProdCombo.DataSource, DataTable))
         Else
             res = L_fnModificarProducto(tbCodigo.Text, tbCodProd.Text.Trim, tbCodBarra.Text.Trim, tbDescPro.Text.Trim, tbDescCort.Text.Trim,
                                         cbgrupo1.Value, cbgrupo2.Value, cbgrupo3.Value, cbgrupo4.Value, cbUMed.Value,
@@ -483,7 +493,8 @@ Public Class F1_Productos
                                         tbStockMinimo.Text, IIf(swEstado.Value = True, 1, 0), nameImg,
                                         quitarUltimaFilaVacia(CType(dgjDetalleProducto.DataSource, DataTable).DefaultView.ToTable(False, "yfanumi", "yfayfnumi", "yfasim", "yfadesc", "estado")),
                                         tbDescDet.Text, cbgrupo5.Value, CbAeconomica.Value, CbUmedida.Value, CbProdServ.Value,
-                                        TbPrecioPsifac.Text, tbRotacion.Text.Trim, tbConversion2.Text, cbUniCompra.Value)
+                                        TbPrecioPsifac.Text, tbRotacion.Text.Trim, tbConversion2.Text, IIf(swCombo.Value = True, 1, 0),
+                                        cbUniCompra.Value, CType(JGProdCombo.DataSource, DataTable))
         End If
         If res Then
 
@@ -766,6 +777,16 @@ Public Class F1_Productos
             MEP.SetError(swEstado, "")
         End If
 
+        If swCombo.Value = True Then
+            If JGProdCombo.RowCount < 2 Then
+                swCombo.BackColor = Color.Red
+                MEP.SetError(swCombo, "La cantidad de productos que componen el combo no puede ser menor a 2".ToUpper)
+                _ok = False
+            End If
+        Else
+            swCombo.BackColor = Color.White
+            MEP.SetError(swCombo, "")
+        End If
 
         MHighlighterFocus.UpdateHighlights()
         Return _ok
@@ -823,6 +844,8 @@ Public Class F1_Productos
         listEstCeldas.Add(New Modelo.Celda("yflado", True, "Lado".ToUpper, 100))
         listEstCeldas.Add(New Modelo.Celda("yfordenacion", True, "Ordenación".ToUpper, 90))
         listEstCeldas.Add(New Modelo.Celda("Estado", True, "Estado".ToUpper, 100))
+        listEstCeldas.Add(New Modelo.Celda("yfcampo3", False))
+
 
         Return listEstCeldas
     End Function
@@ -862,6 +885,7 @@ Public Class F1_Productos
             lbHora.Text = .GetValue("yfhact").ToString
             lbUsuario.Text = .GetValue("yfuact").ToString
             tbResponsable.Text = .GetValue("yfresponsable").ToString
+            swCombo.Value = .GetValue("yfcampo3")
 
             CbAeconomica.Value = .GetValue("ygcodact")
             CbUmedida.Value = .GetValue("ygcodu")
@@ -885,6 +909,9 @@ Public Class F1_Productos
 
             End If
         End If
+        ''Para mostrar los productos que componen el Combo
+        P_prArmarGrillaCombo(tbCodigo.Text)
+
         If (gb_DetalleProducto) Then
             armarGrillaDetalleProducto(CInt(tbCodigo.Text))
         End If
@@ -1376,6 +1403,7 @@ Public Class F1_Productos
 
     Private Sub btnModificar_Click(sender As Object, e As EventArgs) Handles btnModificar.Click
         CodBarras = tbCodBarra.Text
+        P_prAddFilaDetalle()
     End Sub
 
 
@@ -1654,4 +1682,261 @@ Public Class F1_Productos
         End If
     End Sub
 
+    Private Sub JGProdCombo_CellEdited(sender As Object, e As ColumnActionEventArgs) Handles JGProdCombo.CellEdited
+        If (e.Column.Key.Equals("yfccant")) Then
+            If (JGProdCombo.GetValue("yfcnumi") <> 0) Then
+                JGProdCombo.SetValue("estado", 2)
+            End If
+        End If
+    End Sub
+
+    Private Sub JGProdCombo_EditingCell(sender As Object, e As EditingCellEventArgs) Handles JGProdCombo.EditingCell
+        If (e.Column.Key.Equals("yfccant")) Then
+            e.Cancel = False
+        Else
+            e.Cancel = True
+        End If
+    End Sub
+
+    Private Sub JGProdCombo_KeyDown(sender As Object, e As KeyEventArgs) Handles JGProdCombo.KeyDown
+        Try
+            If swCombo.Value = True Then
+
+                If (e.KeyData = Keys.Control + Keys.Enter) Then
+                    Dim dt As DataTable
+
+                    dt = L_fnListarProductosActivos()
+
+                    Dim listEstCeldas As New List(Of Modelo.Celda)
+                    listEstCeldas.Add(New Modelo.Celda("yfnumi", True, "COD. DYN", 80))
+                    listEstCeldas.Add(New Modelo.Celda("yfcprod", True, "COD. DELTA", 90))
+                    listEstCeldas.Add(New Modelo.Celda("yfcbarra", True, "COD. BARRAS", 110))
+                    listEstCeldas.Add(New Modelo.Celda("producto", True, "PRODUCTO", 520))
+
+                    Dim ef = New Efecto
+                    ef.tipo = 3
+                    ef.dt = dt
+                    ef.SeleclCol = 2
+                    ef.listEstCeldas = listEstCeldas
+                    ef.alto = 150
+                    ef.ancho = 250
+                    ef.Context = "Seleccione Producto".ToUpper
+                    ef.ShowDialog()
+                    Dim bandera As Boolean = False
+                    bandera = ef.band
+                    If (bandera = True) Then
+                        Dim pos As Integer = -1
+                        JGProdCombo.Row = JGProdCombo.RowCount - 1
+                        _fnObtenerFilaDetalle(pos, JGProdCombo.GetValue("yfcnumi"))
+                        Dim Row As Janus.Windows.GridEX.GridEXRow = ef.Row
+
+                        JGProdCombo.Col = JGProdCombo.RootTable.Columns("yfccant").Index
+                        DtCombo.Rows(pos).Item("yfcyfnumi1") = Row.Cells("yfnumi").Value
+                        DtCombo.Rows(pos).Item("yfcdprod1") = Row.Cells("producto").Value
+
+                    End If
+                ElseIf (e.KeyData = Keys.Enter And JGProdCombo.Col = JGProdCombo.RootTable.Columns("yfccant").Index) Then
+
+                    Dim filIndex As Integer = JGProdCombo.Row
+                    'Dim filIndex As Integer = JGProdCombo.CurrentRow.RowIndex
+
+                    If (filIndex = JGProdCombo.RowCount - 1) Then
+                        P_prAddFilaDetalle()
+                        Dim dt As DataTable
+                        dt = L_fnListarProductosActivos()
+
+                        Dim listEstCeldas As New List(Of Modelo.Celda)
+                        listEstCeldas.Add(New Modelo.Celda("yfnumi", True, "COD. DYN", 80))
+                        listEstCeldas.Add(New Modelo.Celda("yfcprod", True, "COD. DELTA", 90))
+                        listEstCeldas.Add(New Modelo.Celda("yfcbarra", True, "COD. BARRAS", 110))
+                        listEstCeldas.Add(New Modelo.Celda("producto", True, "PRODUCTO", 520))
+
+                        Dim ef = New Efecto
+                        ef.tipo = 3
+                        ef.dt = dt
+                        ef.SeleclCol = 2
+                        ef.listEstCeldas = listEstCeldas
+                        ef.alto = 50
+                        ef.ancho = 250
+                        ef.Context = "Seleccione Producto".ToUpper
+                        ef.ShowDialog()
+                        Dim bandera As Boolean = False
+                        bandera = ef.band
+                        If (bandera = True) Then
+                            Dim pos As Integer = -1
+                            JGProdCombo.Row = JGProdCombo.RowCount - 1
+                            _fnObtenerFilaDetalle(pos, JGProdCombo.GetValue("yfcnumi"))
+                            Dim Row As Janus.Windows.GridEX.GridEXRow = ef.Row
+
+                            'JGProdCombo.Row = filIndex + 1
+                            'JGProdCombo.Row = JGProdCombo.CurrentRow.RowIndex
+                            JGProdCombo.Col = JGProdCombo.RootTable.Columns("yfccant").Index
+
+                            DtCombo.Rows(pos).Item("yfcyfnumi1") = Row.Cells("yfnumi").Value
+                            DtCombo.Rows(pos).Item("yfcdprod1") = Row.Cells("producto").Value
+                        End If
+
+                    End If
+                End If
+            Else
+                Dim img As Bitmap = New Bitmap(My.Resources.cancel, 50, 50)
+                ToastNotification.Show(Me, "No puede elegir productos que contendrá el combo si la opción combo no está en 'si'".ToUpper,
+                                       img, 3500, eToastGlowColor.Red, eToastPosition.TopCenter)
+            End If
+        Catch ex As Exception
+            MsgBox(ex.Message)
+        End Try
+    End Sub
+    Private Sub P_prAddFilaDetalle()
+        Dim fil As DataRow
+        fil = DtCombo.NewRow
+        fil.Item("yfcnumi") = _fnSiguienteNumi() + 1
+        fil.Item("yfcyfnumi") = 0
+        fil.Item("yfcyfnumi1") = 0
+        fil.Item("yfcdprod1") = "Nuevo"
+        fil.Item("yfccant") = 1
+        fil.Item("estado") = 0
+        DtCombo.Rows.Add(fil)
+    End Sub
+    Private Sub P_prArmarGrillaCombo(id_prod As String)
+        DtCombo = New DataTable
+        DtCombo = L_fnProductosCombo(id_prod)
+
+        JGProdCombo.BoundMode = Janus.Data.BoundMode.Bound
+        JGProdCombo.DataSource = DtCombo
+        JGProdCombo.RetrieveStructure()
+
+        'dar formato a las columnas
+        With JGProdCombo.RootTable.Columns(0)
+            .Caption = "Código"
+            .Key = "yfcnumi"
+            .Width = 80
+            .HeaderAlignment = Janus.Windows.GridEX.TextAlignment.Center
+            .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far
+            .Visible = False
+        End With
+        With JGProdCombo.RootTable.Columns(1)
+            .Caption = "Cod.Prod"
+            .Key = "yfcyfnumi"
+            .Width = 70
+            .HeaderAlignment = Janus.Windows.GridEX.TextAlignment.Center
+            .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far
+            .Visible = False
+        End With
+        With JGProdCombo.RootTable.Columns(2)
+            .Caption = "Cod. Dynasys"
+            .Key = "yfcyfnumi1"
+            .Width = 70
+            .HeaderAlignment = Janus.Windows.GridEX.TextAlignment.Center
+            .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Near
+            .Visible = True
+        End With
+        With JGProdCombo.RootTable.Columns(3)
+            .Caption = "Producto"
+            .Key = "yfcdprod1"
+            .Width = 250
+            .HeaderAlignment = Janus.Windows.GridEX.TextAlignment.Center
+            .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Near
+            .Visible = True
+        End With
+        With JGProdCombo.RootTable.Columns(4)
+            .Caption = "Cantidad"
+            .Key = "yfccant"
+            .Width = 60
+            .HeaderAlignment = Janus.Windows.GridEX.TextAlignment.Center
+            .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Near
+            .Visible = True
+        End With
+        With JGProdCombo.RootTable.Columns(5)
+            .Caption = "Estado"
+            .Key = "estado"
+            .Width = 90
+            .HeaderAlignment = Janus.Windows.GridEX.TextAlignment.Center
+            .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Near
+            .Visible = False
+        End With
+        'Habilitar Filtradores
+        With JGProdCombo
+            .GroupByBoxVisible = False
+            '.FilterRowFormatStyle.BackColor = Color.Blue
+            .DefaultFilterRowComparison = FilterConditionOperator.Contains
+            '.FilterMode = FilterMode.Automatic
+            .FilterRowUpdateMode = FilterRowUpdateMode.WhenValueChanges
+            'Diseño de la tabla
+            .VisualStyle = VisualStyle.Office2007
+            .SelectionMode = SelectionMode.MultipleSelection
+            .AlternatingColors = True
+            .RecordNavigator = True
+        End With
+    End Sub
+
+    Private Sub swCombo_ValueChanged(sender As Object, e As EventArgs) Handles swCombo.ValueChanged
+        If swCombo.Value = True Then
+            SuperTabControl_Imagenes_DetalleProducto.SelectedTabIndex = 3
+            JGProdCombo.Select()
+            JGProdCombo.Col = 2
+        Else
+            SuperTabControl_Imagenes_DetalleProducto.SelectedTabIndex = 2
+        End If
+    End Sub
+
+    Private Sub btnNuevo_Click(sender As Object, e As EventArgs) Handles btnNuevo.Click
+        P_prAddFilaDetalle()
+    End Sub
+
+    Private Sub CmDetalle_Click(sender As Object, e As EventArgs) Handles CmDetalle.Click
+        Try
+            'JGProdCombo.CurrentRow.EndEdit()
+            'JGProdCombo.CurrentRow.Delete()
+            'JGProdCombo.Refetch()
+            'JGProdCombo.Refresh()
+
+            If (JGProdCombo.Row >= 0) Then
+                If (JGProdCombo.RowCount >= 2) Then
+                    Dim estado As Integer = JGProdCombo.GetValue("estado")
+                    Dim pos As Integer = -1
+                    Dim lin As Integer = JGProdCombo.GetValue("yfcnumi")
+                    _fnObtenerFilaDetalle(pos, lin)
+                    If (estado = 0) Then
+                        CType(JGProdCombo.DataSource, DataTable).Rows(pos).Item("estado") = -2
+
+                    End If
+                    If (estado = 1) Then
+                        CType(JGProdCombo.DataSource, DataTable).Rows(pos).Item("estado") = -1
+                    End If
+                    JGProdCombo.RootTable.ApplyFilter(New Janus.Windows.GridEX.GridEXFilterCondition(JGProdCombo.RootTable.Columns("estado"), Janus.Windows.GridEX.ConditionOperator.GreaterThanOrEqualTo, 0))
+
+                    JGProdCombo.Select()
+                    JGProdCombo.Col = 4
+                    JGProdCombo.Row = JGProdCombo.RowCount - 1
+                End If
+            End If
+
+        Catch ex As Exception
+            'sms
+            'MsgBox(ex)
+        End Try
+    End Sub
+    Public Sub _fnObtenerFilaDetalle(ByRef pos As Integer, numi As Integer)
+        For i As Integer = 0 To CType(JGProdCombo.DataSource, DataTable).Rows.Count - 1 Step 1
+            Dim _numi As Integer = CType(JGProdCombo.DataSource, DataTable).Rows(i).Item("yfcnumi")
+            If (_numi = numi) Then
+                pos = i
+                Return
+            End If
+        Next
+
+    End Sub
+    Public Function _fnSiguienteNumi()
+        Dim dt As DataTable = CType(JGProdCombo.DataSource, DataTable)
+        Dim mayor As Integer = 0
+        For i As Integer = 0 To dt.Rows.Count - 1 Step 1
+            Dim data As Integer = IIf(IsDBNull(CType(JGProdCombo.DataSource, DataTable).Rows(i).Item("yfcnumi")), 0, CType(JGProdCombo.DataSource, DataTable).Rows(i).Item("yfcnumi"))
+            If (data > mayor) Then
+                mayor = data
+
+            End If
+        Next
+        Return mayor
+    End Function
 End Class

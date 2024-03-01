@@ -10,6 +10,7 @@ Module P_Global
     Public Visualizador As Visualizador
     Public RutaGlobal As String = gs_CarpetaRaiz
 
+    Public gi_fuenteTamano As Integer = 8
 
 #End Region
 
@@ -28,6 +29,8 @@ Module P_Global
     Public gs_ClaveSql As String = "123"
     Public gs_NombreBD As String = "DBDinoM"
     Public gs_CarpetaRaiz As String = "C:\BD"
+
+    Public gb_ConexionAbierta As Boolean = False
 
 #End Region
 

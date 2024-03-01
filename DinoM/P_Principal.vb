@@ -1319,6 +1319,14 @@ Public Class P_Principal
         frm.Show()
     End Sub
 
+    Private Sub btInvArmDesarmCombo_Click(sender As Object, e As EventArgs) Handles btInvArmDesarmCombo.Click
+        Dim frm As New F0_ArmadoDesarmadoCombo
+        frm._nameButton = btInvArmDesarmCombo.Name
+        frm._modulo = FP_INVENTARIO
+        frm.Show()
+    End Sub
+
+
 
 
 
