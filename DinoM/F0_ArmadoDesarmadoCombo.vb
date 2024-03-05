@@ -305,7 +305,13 @@ Public Class F0_ArmadoDesarmadoCombo
         End With
 
         With dgjBusqueda.RootTable.Columns("cantNP")
-            .Visible = False
+            .Caption = "Cantidad Desarmada"
+            .Width = 120
+            .HeaderStyle.Font = FtTitulo
+            .HeaderAlignment = Janus.Windows.GridEX.TextAlignment.Center
+            .CellStyle.Font = FtNormal
+            .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far
+            .Visible = True
         End With
         With dgjBusqueda.RootTable.Columns("fechaNP")
             .Visible = False

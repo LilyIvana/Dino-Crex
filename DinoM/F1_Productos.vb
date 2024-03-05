@@ -728,7 +728,6 @@ Public Class F1_Productos
         End If
 
 
-
         ''Sifac
         If CbAeconomica.SelectedIndex < 0 Then
             CbAeconomica.BackColor = Color.Red
@@ -765,20 +764,26 @@ Public Class F1_Productos
 
         If swEstado.Value = False Then
             Dim hora = Now.ToShortTimeString
-
             If tbResponsable.Text <> "NADIE" And hora <= "15:00" Then
                 swEstado.BackColor = Color.Red
                 MEP.SetError(swEstado, "No puede pasivar este producto hasta las 15:00 horas".ToUpper)
                 _ok = False
             End If
-
         Else
             swEstado.BackColor = Color.White
             MEP.SetError(swEstado, "")
         End If
 
         If swCombo.Value = True Then
-            If JGProdCombo.RowCount < 2 Then
+            Dim dt As DataTable = CType(JGProdCombo.DataSource, DataTable)
+            Dim dt1 As DataTable
+            If dt.Select("yfcyfnumi1>0").Count = 0 Then
+                dt1 = New DataTable
+            Else
+                dt1 = dt.Select("yfcyfnumi1>0").CopyToDataTable
+            End If
+
+            If dt1.Rows.Count < 2 Then
                 swCombo.BackColor = Color.Red
                 MEP.SetError(swCombo, "La cantidad de productos que componen el combo no puede ser menor a 2".ToUpper)
                 _ok = False
@@ -1685,7 +1690,11 @@ Public Class F1_Productos
     Private Sub JGProdCombo_CellEdited(sender As Object, e As ColumnActionEventArgs) Handles JGProdCombo.CellEdited
         If (e.Column.Key.Equals("yfccant")) Then
             If (JGProdCombo.GetValue("yfcnumi") <> 0) Then
-                JGProdCombo.SetValue("estado", 2)
+                Dim estado As Integer = JGProdCombo.GetValue("estado")
+                If (estado = 1) Then
+                    JGProdCombo.SetValue("estado", 2)
+                End If
+
             End If
         End If
     End Sub
@@ -1834,17 +1843,19 @@ Public Class F1_Productos
         With JGProdCombo.RootTable.Columns(3)
             .Caption = "Producto"
             .Key = "yfcdprod1"
-            .Width = 250
+            .Width = 270
             .HeaderAlignment = Janus.Windows.GridEX.TextAlignment.Center
             .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Near
             .Visible = True
+            .WordWrap = True
+            .MaxLines = 2
         End With
         With JGProdCombo.RootTable.Columns(4)
             .Caption = "Cantidad"
             .Key = "yfccant"
             .Width = 60
             .HeaderAlignment = Janus.Windows.GridEX.TextAlignment.Center
-            .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Near
+            .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far
             .Visible = True
         End With
         With JGProdCombo.RootTable.Columns(5)
@@ -1939,4 +1950,6 @@ Public Class F1_Productos
         Next
         Return mayor
     End Function
+
+
 End Class

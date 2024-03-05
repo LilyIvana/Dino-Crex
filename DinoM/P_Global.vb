@@ -10,7 +10,7 @@ Module P_Global
     Public Visualizador As Visualizador
     Public RutaGlobal As String = gs_CarpetaRaiz
 
-    Public gi_fuenteTamano As Integer = 8
+    Public gi_fuenteTamano As Integer = 9
 
 #End Region
 
