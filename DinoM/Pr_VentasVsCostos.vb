@@ -187,7 +187,7 @@ Public Class Pr_VentasVsCostos
                 Dim ef = New Efecto
                 ef.tipo = 3
                 ef.dt = dt
-                ef.SeleclCol = 1
+                ef.SeleclCol = 2
                 ef.listEstCeldas = listEstCeldas
                 ef.alto = 50
                 ef.ancho = 350

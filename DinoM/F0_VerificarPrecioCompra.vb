@@ -647,12 +647,11 @@ Public Class F0_VerificarPrecioCompra
                 Dim ef = New Efecto
                 ef.tipo = 3
                 ef.dt = dt
-                ef.SeleclCol = 1
+                ef.SeleclCol = 5
                 ef.listEstCeldas = listEstCeldas
                 ef.alto = 50
                 ef.ancho = 200
                 ef.Context = "Seleccione Compra".ToUpper
-                ef.SeleclCol = 1
                 ef.ShowDialog()
                 Dim bandera As Boolean = False
                 bandera = ef.band

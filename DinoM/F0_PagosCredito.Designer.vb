@@ -51,6 +51,7 @@ Partial Class F0_PagosCredito
         Me.GroupPanel5 = New DevComponents.DotNetBar.Controls.GroupPanel()
         Me.grcobranza = New Janus.Windows.GridEX.GridEX()
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
+        Me.LabelX6 = New DevComponents.DotNetBar.LabelX()
         Me.PanelSuperior.SuspendLayout()
         Me.PanelInferior.SuspendLayout()
         CType(Me.BubbleBarUsuario, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -165,9 +166,6 @@ Partial Class F0_PagosCredito
         'btnModificar
         '
         '
-        'btnNuevo
-        '
-        '
         'PanelToolBar2
         '
         Me.PanelToolBar2.Location = New System.Drawing.Point(1282, 0)
@@ -259,6 +257,9 @@ Partial Class F0_PagosCredito
         '
         Me.PictureBox1.Location = New System.Drawing.Point(1089, 0)
         '
+        'btnNuevo
+        '
+        '
         'Panel2
         '
         Me.Panel2.Controls.Add(Me.GroupPanel2)
@@ -331,6 +332,7 @@ Partial Class F0_PagosCredito
         '
         Me.GroupPanel1.CanvasColor = System.Drawing.SystemColors.Control
         Me.GroupPanel1.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.Office2007
+        Me.GroupPanel1.Controls.Add(Me.LabelX6)
         Me.GroupPanel1.Controls.Add(Me.lbNroCaja)
         Me.GroupPanel1.Controls.Add(Me.LabelX5)
         Me.GroupPanel1.Controls.Add(Me.cbbanco)
@@ -383,7 +385,7 @@ Partial Class F0_PagosCredito
         '
         Me.lbNroCaja.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold)
         Me.lbNroCaja.ForeColor = System.Drawing.Color.FromArgb(CType(CType(45, Byte), Integer), CType(CType(59, Byte), Integer), CType(CType(66, Byte), Integer))
-        Me.lbNroCaja.Location = New System.Drawing.Point(336, 52)
+        Me.lbNroCaja.Location = New System.Drawing.Point(337, 21)
         Me.lbNroCaja.Name = "lbNroCaja"
         Me.lbNroCaja.Size = New System.Drawing.Size(60, 17)
         Me.lbNroCaja.TabIndex = 382
@@ -400,7 +402,7 @@ Partial Class F0_PagosCredito
         Me.LabelX5.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.LabelX5.Font = New System.Drawing.Font("Georgia", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.LabelX5.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(85, Byte), Integer), CType(CType(139, Byte), Integer))
-        Me.LabelX5.Location = New System.Drawing.Point(269, 53)
+        Me.LabelX5.Location = New System.Drawing.Point(270, 22)
         Me.LabelX5.Name = "LabelX5"
         Me.LabelX5.SingleLineColor = System.Drawing.SystemColors.Control
         Me.LabelX5.Size = New System.Drawing.Size(65, 16)
@@ -411,7 +413,7 @@ Partial Class F0_PagosCredito
         '
         cbbanco_DesignTimeLayout.LayoutString = resources.GetString("cbbanco_DesignTimeLayout.LayoutString")
         Me.cbbanco.DesignTimeLayout = cbbanco_DesignTimeLayout
-        Me.cbbanco.Location = New System.Drawing.Point(383, 23)
+        Me.cbbanco.Location = New System.Drawing.Point(428, 53)
         Me.cbbanco.Margin = New System.Windows.Forms.Padding(2)
         Me.cbbanco.Name = "cbbanco"
         Me.cbbanco.SelectedIndex = -1
@@ -821,6 +823,23 @@ Partial Class F0_PagosCredito
         Me.Timer1.Enabled = True
         Me.Timer1.Interval = 500
         '
+        'LabelX6
+        '
+        Me.LabelX6.AutoSize = True
+        Me.LabelX6.BackColor = System.Drawing.Color.Transparent
+        '
+        '
+        '
+        Me.LabelX6.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.LabelX6.Font = New System.Drawing.Font("Georgia", 7.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LabelX6.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(85, Byte), Integer), CType(CType(139, Byte), Integer))
+        Me.LabelX6.Location = New System.Drawing.Point(341, 66)
+        Me.LabelX6.Name = "LabelX6"
+        Me.LabelX6.SingleLineColor = System.Drawing.SystemColors.Control
+        Me.LabelX6.Size = New System.Drawing.Size(55, 13)
+        Me.LabelX6.TabIndex = 383
+        Me.LabelX6.Text = "Ctrl+Enter"
+        '
         'F0_PagosCredito
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -893,4 +912,5 @@ Partial Class F0_PagosCredito
     Friend WithEvents Timer1 As Timer
     Friend WithEvents LabelX5 As DevComponents.DotNetBar.LabelX
     Friend WithEvents lbNroCaja As Label
+    Friend WithEvents LabelX6 As DevComponents.DotNetBar.LabelX
 End Class

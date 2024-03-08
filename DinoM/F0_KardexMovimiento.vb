@@ -137,7 +137,7 @@ Public Class F0_KardexMovimiento
             Dim ef = New Efecto
             ef.tipo = 3
             ef.dt = dt
-            ef.SeleclCol = 2
+            ef.SeleclCol = 1
             ef.listEstCeldas = listEstCeldas
             ef.alto = 50
             ef.ancho = 250

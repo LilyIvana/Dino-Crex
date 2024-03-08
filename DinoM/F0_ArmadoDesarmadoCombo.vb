@@ -742,7 +742,7 @@ Public Class F0_ArmadoDesarmadoCombo
                     BoNavegar = False
                     P_prArmarGrillaBusqueda()
                     tbCodPack.Select()
-                    'BoNavegar = True
+                    BoNavegar = True
 
                     ToastNotification.Show(Me, "Desarmado de Combo ".ToUpper + tbCodigo.Text + " Grabado con éxito.".ToUpper,
                                    My.Resources.GRABACION_EXITOSA,

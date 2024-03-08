@@ -1725,7 +1725,7 @@ Public Class F1_Productos
                     Dim ef = New Efecto
                     ef.tipo = 3
                     ef.dt = dt
-                    ef.SeleclCol = 2
+                    ef.SeleclCol = 3
                     ef.listEstCeldas = listEstCeldas
                     ef.alto = 150
                     ef.ancho = 250

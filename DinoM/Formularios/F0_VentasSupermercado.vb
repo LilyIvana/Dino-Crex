@@ -2592,7 +2592,7 @@ Public Class F0_VentasSupermercado
             Dim ef = New Efecto
             ef.tipo = 3
             ef.dt = dt
-            ef.SeleclCol = 2
+            ef.SeleclCol = 3
             ef.listEstCeldas = listEstCeldas
             ef.alto = 50
             ef.ancho = 200
@@ -3054,7 +3054,7 @@ Public Class F0_VentasSupermercado
                 Else
 
                     Dim img As Bitmap = New Bitmap(My.Resources.mensaje, 50, 50)
-                    ToastNotification.Show(Me, "La cantidad del producto es superior a la cantidad disponible que es: ".ToUpper + Str(fila(0).Item("stock")) + " , Primero se debe regularizar el stock".ToUpper, img, 7000, eToastGlowColor.Red, eToastPosition.TopCenter)
+                    ToastNotification.Show(Me, "La cantidad del producto es superior a la cantidad disponible que es: ".ToUpper + fila(0).Item("stock").ToString + " , Primero se debe regularizar el stock".ToUpper, img, 7000, eToastGlowColor.Red, eToastPosition.TopCenter)
                 End If
 
             End If
@@ -3312,6 +3312,7 @@ Public Class F0_VentasSupermercado
         ef.tipo = 7
 
         Dim fila As DataRow()
+
         If (tbProducto.Text.Trim.Length <= 0) Then
             fila = CType(grdetalle.DataSource, DataTable).Select("tbnumi=" + txtNumi.Text.Trim + " and estado=0", "")
         Else

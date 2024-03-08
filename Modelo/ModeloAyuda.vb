@@ -34,16 +34,22 @@ Public Class ModeloAyuda
         _PMCargarBuscador()
         'grJBuscador.Row = grJBuscador.FilterRow.RowIndex
         'grJBuscador.Col = 1
-        Columna = 2
+        'Columna = 2
 
     End Sub
     Public Sub _prSeleccionar()
         If (Columna >= 0) Then
-            grJBuscador.Select()
-            ''  grJBuscador.Focus()
-            grJBuscador.MoveTo(grJBuscador.FilterRow)
+            'grJBuscador.Select()
+            '''  grJBuscador.Focus()
+            'grJBuscador.MoveTo(grJBuscador.FilterRow)
+            'grJBuscador.Col = Columna
+            'grJBuscador.Row = 0
 
+            ''No hace caso lo controlo por el evento enter de la grilla
+            grJBuscador.Focus()
             grJBuscador.Col = Columna
+            grJBuscador.Row = 0
+            grJBuscador.MoveTo(grJBuscador.FilterRow)
         End If
     End Sub
 
@@ -105,6 +111,7 @@ Public Class ModeloAyuda
             e.Handled = True
             Me.Close()
         End If
+
     End Sub
 
     Private Sub grJBuscador_KeyDown(sender As Object, e As KeyEventArgs) Handles grJBuscador.KeyDown
@@ -120,5 +127,10 @@ Public Class ModeloAyuda
         End If
     End Sub
 
-
+    Private Sub grJBuscador_Enter(sender As Object, e As EventArgs) Handles grJBuscador.Enter
+        grJBuscador.Select()
+        grJBuscador.Col = Columna
+        grJBuscador.Row = 0
+        grJBuscador.MoveTo(grJBuscador.FilterRow)
+    End Sub
 End Class
