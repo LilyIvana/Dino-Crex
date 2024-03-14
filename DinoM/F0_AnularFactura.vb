@@ -364,6 +364,8 @@ Public Class F0_AnularFactura
                 If Succes = 200 Then
                     'Primero modifica factura correspondiente a la venta
                     L_Modificar_Factura("fvanumi = " + Tb1Codigo.Text + " and fvanfac = " + NroFactura + " and fvaautoriz = '" + NroAutorizacion + "'", "", "", "", IIf(Sb1Estado.Value, "1", "0"))
+                    'Para registrar fecha de anulación
+                    L_fnRegistrarTFV0012(Tb1Codigo.Text)
                     'Luego anula venta
                     Dim mensajeError As String = ""
                     Dim res As Boolean = L_fnEliminarVenta(Tb1Codigo.Text, mensajeError, Programa)
@@ -371,7 +373,7 @@ Public Class F0_AnularFactura
                     P_LlenarDatosGrilla()
                     ToastNotification.Show(Me, "La Factura: " + Tb2NroFactura.Text + " y Venta con código: " + Tb1Codigo.Text + " Se ANULARON correctamente",
                                        My.Resources.OK, _DuracionSms * 1000,
-                                       eToastGlowColor.Blue, eToastPosition.BottomLeft)
+                                       eToastGlowColor.Blue, eToastPosition.TopCenter)
                 End If
 
 

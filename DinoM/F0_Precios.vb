@@ -750,7 +750,6 @@ Public Class F0_Precios
         _Inter = _Inter + 1
         If _Inter = 1 Then
             Me.WindowState = FormWindowState.Normal
-
         Else
             Me.Opacity = 100
             Timer1.Enabled = False
@@ -761,10 +760,11 @@ Public Class F0_Precios
         _prCargarTablaPrecios(True)
 
         Dim img As Bitmap = New Bitmap(My.Resources.checked, 50, 50)
-        ToastNotification.Show(Me, "Precios Actualizados con éxito.".ToUpper,
+        ToastNotification.Show(Me, "Datos actualizados!!!".ToUpper,
                                   img, 2000,
                                   eToastGlowColor.Green,
                                   eToastPosition.TopCenter
                                   )
+
     End Sub
 End Class

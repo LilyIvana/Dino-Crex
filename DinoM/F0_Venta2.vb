@@ -576,7 +576,7 @@ Public Class F0_Venta2
         End With
 
         With grdetalle.RootTable.Columns("yfcbarra")
-            .Caption = "C.B.".ToUpper
+            .Caption = "Cod.Barra".ToUpper
             .Width = 90
             .Visible = gb_CodigoBarra
 
@@ -1965,7 +1965,7 @@ Public Class F0_Venta2
         Else
             If (existe) Then
                 Dim img As Bitmap = New Bitmap(My.Resources.mensaje, 50, 50)
-                ToastNotification.Show(Me, "El producto ya existe en el detalle".ToUpper, img, 2000, eToastGlowColor.Red, eToastPosition.BottomCenter)
+                ToastNotification.Show(Me, "El producto ya existe en el detalle, modifique la cantidad".ToUpper, img, 2500, eToastGlowColor.Red, eToastPosition.BottomCenter)
             End If
         End If
     End Sub
@@ -3140,7 +3140,7 @@ Public Class F0_Venta2
                                     End If
                                 Else
                                     grdetalle.DataChanged = False
-                                    ToastNotification.Show(Me, "El código de barra del producto no existe".ToUpper, My.Resources.WARNING, 3000, eToastGlowColor.Red, eToastPosition.TopCenter)
+                                    ToastNotification.Show(Me, "El código de barra del producto no existe o no tiene stock".ToUpper, My.Resources.WARNING, 3000, eToastGlowColor.Red, eToastPosition.TopCenter)
                                 End If
 
 
@@ -3701,9 +3701,7 @@ salirIf:
 
                             CType(grdetalle.DataSource, DataTable).Rows(pos).Item("tbptot2") = grdetalle.GetValue("tbpcos") * grdetalle.GetValue("tbcmin")
 
-
                             CalcularDescuentos(grdetalle.GetValue("tbty5prod"), grdetalle.GetValue("tbcmin"), grdetalle.GetValue("tbpbas"), pos)
-
 
                             P_PonerTotal(rowIndex)
                             CalculoDescuentoXProveedor()

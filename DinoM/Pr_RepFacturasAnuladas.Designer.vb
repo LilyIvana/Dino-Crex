@@ -30,6 +30,7 @@ Partial Class Pr_RepFacturasAnuladas
         Me.LabelX4 = New DevComponents.DotNetBar.LabelX()
         Me.tbFechaI = New DevComponents.Editors.DateTimeAdv.DateTimeInput()
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
+        Me.swTipoFecha = New DevComponents.DotNetBar.Controls.SwitchButton()
         CType(Me.SuperTabPrincipal, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuperTabPrincipal.SuspendLayout()
         Me.SuperTabControlPanelRegistro.SuspendLayout()
@@ -187,6 +188,7 @@ Partial Class Pr_RepFacturasAnuladas
         'GroupBox2
         '
         Me.GroupBox2.BackColor = System.Drawing.Color.Transparent
+        Me.GroupBox2.Controls.Add(Me.swTipoFecha)
         Me.GroupBox2.Controls.Add(Me.LabelX1)
         Me.GroupBox2.Controls.Add(Me.tbFechaF)
         Me.GroupBox2.Controls.Add(Me.LabelX4)
@@ -209,7 +211,7 @@ Partial Class Pr_RepFacturasAnuladas
         Me.LabelX1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.LabelX1.Font = New System.Drawing.Font("Georgia", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.LabelX1.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(85, Byte), Integer), CType(CType(139, Byte), Integer))
-        Me.LabelX1.Location = New System.Drawing.Point(69, 49)
+        Me.LabelX1.Location = New System.Drawing.Point(69, 109)
         Me.LabelX1.Name = "LabelX1"
         Me.LabelX1.SingleLineColor = System.Drawing.SystemColors.Control
         Me.LabelX1.Size = New System.Drawing.Size(52, 23)
@@ -227,7 +229,7 @@ Partial Class Pr_RepFacturasAnuladas
         Me.tbFechaF.ButtonDropDown.Visible = True
         Me.tbFechaF.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.tbFechaF.IsPopupCalendarOpen = False
-        Me.tbFechaF.Location = New System.Drawing.Point(145, 49)
+        Me.tbFechaF.Location = New System.Drawing.Point(145, 109)
         '
         '
         '
@@ -271,7 +273,7 @@ Partial Class Pr_RepFacturasAnuladas
         Me.LabelX4.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.LabelX4.Font = New System.Drawing.Font("Georgia", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.LabelX4.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(85, Byte), Integer), CType(CType(139, Byte), Integer))
-        Me.LabelX4.Location = New System.Drawing.Point(66, 17)
+        Me.LabelX4.Location = New System.Drawing.Point(66, 77)
         Me.LabelX4.Name = "LabelX4"
         Me.LabelX4.SingleLineColor = System.Drawing.SystemColors.Control
         Me.LabelX4.Size = New System.Drawing.Size(74, 23)
@@ -289,7 +291,7 @@ Partial Class Pr_RepFacturasAnuladas
         Me.tbFechaI.ButtonDropDown.Visible = True
         Me.tbFechaI.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.tbFechaI.IsPopupCalendarOpen = False
-        Me.tbFechaI.Location = New System.Drawing.Point(145, 18)
+        Me.tbFechaI.Location = New System.Drawing.Point(145, 78)
         '
         '
         '
@@ -329,6 +331,26 @@ Partial Class Pr_RepFacturasAnuladas
         Me.Timer1.Enabled = True
         Me.Timer1.Interval = 500
         '
+        'swTipoFecha
+        '
+        '
+        '
+        '
+        Me.swTipoFecha.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.swTipoFecha.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.swTipoFecha.Location = New System.Drawing.Point(65, 31)
+        Me.swTipoFecha.Name = "swTipoFecha"
+        Me.swTipoFecha.OffBackColor = System.Drawing.Color.SteelBlue
+        Me.swTipoFecha.OffText = "FECHA EMISIÓN"
+        Me.swTipoFecha.OffTextColor = System.Drawing.Color.White
+        Me.swTipoFecha.OnBackColor = System.Drawing.Color.Gold
+        Me.swTipoFecha.OnText = "FECHA ANULACIÓN"
+        Me.swTipoFecha.Size = New System.Drawing.Size(200, 22)
+        Me.swTipoFecha.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+        Me.swTipoFecha.TabIndex = 254
+        Me.swTipoFecha.Value = True
+        Me.swTipoFecha.ValueObject = "Y"
+        '
         'Pr_RepFacturasAnuladas
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -365,4 +387,5 @@ Partial Class Pr_RepFacturasAnuladas
     Friend WithEvents LabelX4 As DevComponents.DotNetBar.LabelX
     Friend WithEvents tbFechaI As DevComponents.Editors.DateTimeAdv.DateTimeInput
     Friend WithEvents Timer1 As Timer
+    Friend WithEvents swTipoFecha As DevComponents.DotNetBar.Controls.SwitchButton
 End Class

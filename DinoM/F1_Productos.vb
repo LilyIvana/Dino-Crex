@@ -1878,6 +1878,7 @@ Public Class F1_Productos
             .SelectionMode = SelectionMode.MultipleSelection
             .AlternatingColors = True
             .RecordNavigator = True
+            .RecordNavigatorText = "Productos"
         End With
     End Sub
 

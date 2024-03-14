@@ -458,4 +458,15 @@ Public Class DescuentosCajeros
         End If
         Return False
     End Function
+
+    Private Sub btActualizar_Click(sender As Object, e As EventArgs) Handles btActualizar.Click
+        _PIniciarTodo()
+
+        Dim img As Bitmap = New Bitmap(My.Resources.checked, 50, 50)
+        ToastNotification.Show(Me, "Datos actualizados!!!".ToUpper,
+                                  img, 2000,
+                                  eToastGlowColor.Green,
+                                  eToastPosition.TopCenter
+                                  )
+    End Sub
 End Class

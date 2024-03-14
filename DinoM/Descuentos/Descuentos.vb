@@ -356,6 +356,13 @@ Public Class Descuentos
 
     Private Sub btActualizar_Click(sender As Object, e As EventArgs) Handles btActualizar.Click
         _prCargarProductos()
+        Dim img As Bitmap = New Bitmap(My.Resources.checked, 50, 50)
+        ToastNotification.Show(Me, "Datos actualizados!!!".ToUpper,
+                                  img, 2000,
+                                  eToastGlowColor.Green,
+                                  eToastPosition.TopCenter
+                                  )
+
     End Sub
 
     Private Sub btnExportar_Click(sender As Object, e As EventArgs) Handles btnExportar.Click

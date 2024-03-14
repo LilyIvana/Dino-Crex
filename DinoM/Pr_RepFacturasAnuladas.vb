@@ -16,7 +16,11 @@ Public Class Pr_RepFacturasAnuladas
 
     Private Sub _prCargarReporte()
         Dim _dt As New DataTable
-        _dt = L_FacturasAnuladas(tbFechaI.Value.ToString("dd/MM/yyyy"), tbFechaF.Value.ToString("dd/MM/yyyy"))
+        If swTipoFecha.Value = True Then
+            _dt = L_FacturasAnuladasFechaAnul(tbFechaI.Value.ToString("dd/MM/yyyy"), tbFechaF.Value.ToString("dd/MM/yyyy"))
+        Else
+            _dt = L_FacturasAnuladas(tbFechaI.Value.ToString("dd/MM/yyyy"), tbFechaF.Value.ToString("dd/MM/yyyy"))
+        End If
 
         If (_dt.Rows.Count > 0) Then
 
