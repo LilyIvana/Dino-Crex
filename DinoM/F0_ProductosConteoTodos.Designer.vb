@@ -144,10 +144,6 @@ Partial Class F0_ProductosConteoTodos
         'btnModificar
         '
         '
-        'btnNuevo
-        '
-        Me.btnNuevo.Visible = False
-        '
         'PanelToolBar2
         '
         Me.PanelToolBar2.Location = New System.Drawing.Point(1264, 0)
@@ -167,6 +163,10 @@ Partial Class F0_ProductosConteoTodos
         Me.btnImprimir.Image = Global.DinoM.My.Resources.Resources.sheets
         Me.btnImprimir.Text = "EXPORTAR"
         '
+        'PanelNavegacion
+        '
+        Me.PanelNavegacion.Visible = False
+        '
         'btnUltimo
         '
         Me.btnUltimo.Margin = New System.Windows.Forms.Padding(2)
@@ -175,6 +175,7 @@ Partial Class F0_ProductosConteoTodos
         '
         Me.MPanelUserAct.Location = New System.Drawing.Point(1144, 0)
         Me.MPanelUserAct.Margin = New System.Windows.Forms.Padding(4)
+        Me.MPanelUserAct.Visible = False
         '
         'LblPaginacion
         '
@@ -229,6 +230,10 @@ Partial Class F0_ProductosConteoTodos
         '
         Me.PictureBox1.Location = New System.Drawing.Point(1071, 0)
         Me.PictureBox1.Margin = New System.Windows.Forms.Padding(4)
+        '
+        'btnNuevo
+        '
+        Me.btnNuevo.Visible = False
         '
         'PanelPrecios
         '

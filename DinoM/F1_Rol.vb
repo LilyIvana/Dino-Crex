@@ -230,7 +230,7 @@ Public Class F1_Rol
     Public Overrides Function _PMOGrabarRegistro() As Boolean
 
         Dim dtDetalle As DataTable = CType(grDetalle.DataSource, DataTable).DefaultView.ToTable(True, "ycline", "ycnumi", "ycyanumi", "ycshow", "ycadd", "ycmod", "ycdel", "estado")
-        Dim res As Boolean = L_prRolGrabar(tbNumi.Text, tbRol.Text, dtDetalle)
+        Dim res As Boolean = L_prRolGrabar(tbNumi.Text, tbRol.Text, dtDetalle, gs_VersionSistema, gs_IPMaquina, gs_UsuMaquina)
         If res Then
             ToastNotification.Show(Me, "Codigo de Rol ".ToUpper + tbNumi.Text + " Grabado con Exito.".ToUpper, My.Resources.GRABACION_EXITOSA, 5000, eToastGlowColor.Green, eToastPosition.TopCenter)
         End If
@@ -241,7 +241,7 @@ Public Class F1_Rol
     Public Overrides Function _PMOModificarRegistro() As Boolean
 
         Dim dtDetalle As DataTable = CType(grDetalle.DataSource, DataTable).DefaultView.ToTable(True, "ycline", "ycnumi", "ycyanumi", "ycshow", "ycadd", "ycmod", "ycdel", "estado")
-        Dim res As Boolean = L_prRolModificar(tbNumi.Text, tbRol.Text, dtDetalle)
+        Dim res As Boolean = L_prRolModificar(tbNumi.Text, tbRol.Text, dtDetalle, gs_VersionSistema, gs_IPMaquina, gs_UsuMaquina)
         If res Then
 
             ToastNotification.Show(Me, "Codigo de Personal ".ToUpper + tbNumi.Text + " modificado con Exito.".ToUpper, My.Resources.GRABACION_EXITOSA, 5000, eToastGlowColor.Green, eToastPosition.TopCenter)
@@ -256,7 +256,7 @@ Public Class F1_Rol
         Dim result As eTaskDialogResult = TaskDialog.Show(info)
         If result = eTaskDialogResult.Yes Then
             Dim mensajeError As String = ""
-            Dim res As Boolean = L_prRolBorrar(tbNumi.Text, mensajeError)
+            Dim res As Boolean = L_prRolBorrar(tbNumi.Text, mensajeError, gs_VersionSistema, gs_IPMaquina, gs_UsuMaquina)
             If res Then
                 ToastNotification.Show(Me, "Codigo de Rol ".ToUpper + tbNumi.Text + " eliminado con Exito.".ToUpper, My.Resources.GRABACION_EXITOSA, 5000, eToastGlowColor.Green, eToastPosition.TopCenter)
                 _PMFiltrar()

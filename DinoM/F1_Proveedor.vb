@@ -378,7 +378,7 @@ Public Class F1_Proveedor
         Dim res As Boolean = L_fnGrabarCLiente(tbCodigoOriginal.Text, tbCodCliente.Text, "", tbNombre.Text, NumiVendedor, cbZona.Value, cbTipoDoc.Value, tbNdoc.Text,
                                                tbDireccion.Text, tbTelf1.Text, tbTelf2.Text, 70, IIf(swEstado.Value = True, 1, 0), _latitud, _longitud, tbObs.Text,
                                                tbFnac.Value.ToString("yyyy/MM/dd"), "", _Tipo, "", 0, 0, tbFIngr.Value.ToString("yyyy/MM/dd"),
-                                               tbUltVenta.Value.ToString("yyyy/MM/dd"), nameImg, 1, "", "")
+                                               tbUltVenta.Value.ToString("yyyy/MM/dd"), nameImg, 1, "", "", gs_VersionSistema, gs_IPMaquina, gs_UsuMaquina)
         If res Then
             Modificado = False
             _fnMoverImagenRuta(RutaGlobal + "\Imagenes\Imagenes ClienteDino", nameImg)
@@ -407,10 +407,18 @@ Public Class F1_Proveedor
 
         Dim nameImage As String = JGrM_Buscador.GetValue("ydimg")
         If (Modificado = False) Then
-            res = L_fnModificarClientes(tbCodigoOriginal.Text, tbCodCliente.Text, "", tbNombre.Text, NumiVendedor, cbZona.Value, cbTipoDoc.Value, tbNdoc.Text, tbDireccion.Text, tbTelf1.Text, tbTelf2.Text, 1, IIf(swEstado.Value = True, 1, 0), _latitud, _longitud, tbObs.Text, tbFnac.Value.ToString("yyyy/MM/dd"), "", _Tipo, "", 0, 0, tbFIngr.Value.ToString("yyyy/MM/dd"), tbUltVenta.Value.ToString("yyyy/MM/dd"), nameImage, 1)
+            res = L_fnModificarClientes(tbCodigoOriginal.Text, tbCodCliente.Text, "", tbNombre.Text, NumiVendedor, cbZona.Value,
+                                        cbTipoDoc.Value, tbNdoc.Text, tbDireccion.Text, tbTelf1.Text, tbTelf2.Text, 1,
+                                        IIf(swEstado.Value = True, 1, 0), _latitud, _longitud, tbObs.Text, tbFnac.Value.ToString("yyyy/MM/dd"),
+                                        "", _Tipo, "", 0, 0, tbFIngr.Value.ToString("yyyy/MM/dd"), tbUltVenta.Value.ToString("yyyy/MM/dd"),
+                                        nameImage, 1, gs_VersionSistema, gs_IPMaquina, gs_UsuMaquina)
 
         Else
-            res = L_fnModificarClientes(tbCodigoOriginal.Text, tbCodCliente.Text, "", tbNombre.Text, NumiVendedor, cbZona.Value, cbTipoDoc.Value, tbNdoc.Text, tbDireccion.Text, tbTelf1.Text, tbTelf2.Text, 1, IIf(swEstado.Value = True, 1, 0), _latitud, _longitud, tbObs.Text, tbFnac.Value.ToString("yyyy/MM/dd"), "", _Tipo, "", 0, 0, tbFIngr.Value.ToString("yyyy/MM/dd"), tbUltVenta.Value.ToString("yyyy/MM/dd"), nameImg, 1)
+            res = L_fnModificarClientes(tbCodigoOriginal.Text, tbCodCliente.Text, "", tbNombre.Text, NumiVendedor, cbZona.Value,
+                                        cbTipoDoc.Value, tbNdoc.Text, tbDireccion.Text, tbTelf1.Text, tbTelf2.Text, 1,
+                                        IIf(swEstado.Value = True, 1, 0), _latitud, _longitud, tbObs.Text, tbFnac.Value.ToString("yyyy/MM/dd"),
+                                        "", _Tipo, "", 0, 0, tbFIngr.Value.ToString("yyyy/MM/dd"), tbUltVenta.Value.ToString("yyyy/MM/dd"),
+                                        nameImg, 1, gs_VersionSistema, gs_IPMaquina, gs_UsuMaquina)
 
 
 

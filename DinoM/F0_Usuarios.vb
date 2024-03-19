@@ -477,7 +477,10 @@ Public Class F0_Usuarios
             End If
 
             If _Nuevo Then
-                L_Usuario_Grabar(Tb_Id.Text, Tb_Nombre.Text, TextBoxX1.Text, JMC_Categoria.Value, Tb_Estado.Value, Tb_DiasPedidos.Value, IIf(Tb_Cajero.Value = False, 0, 1), tbSuc.Value, IIf(tbTodasSucursales.Value = True, "1", "0"), NumiVendedor)
+                L_Usuario_Grabar(Tb_Id.Text, Tb_Nombre.Text, TextBoxX1.Text, JMC_Categoria.Value, Tb_Estado.Value,
+                                 Tb_DiasPedidos.Value, IIf(Tb_Cajero.Value = False, 0, 1), tbSuc.Value,
+                                 IIf(tbTodasSucursales.Value = True, "1", "0"), NumiVendedor, gs_VersionSistema,
+                                 gs_IPMaquina, gs_UsuMaquina)
 
                 Tb_Nombre.Focus()
                 ToastNotification.Show(Me, "Codigo Usuario ".ToUpper + Tb_Id.Text + " Grabado con Exito.".ToUpper, My.Resources.GRABACION_EXITOSA, 5000, eToastGlowColor.Green, eToastPosition.TopCenter)
@@ -486,7 +489,10 @@ Public Class F0_Usuarios
                 _PCargarBuscador()
                 _PLimpiar()
             Else
-                L_Usuario_Modificar(Tb_Id.Text, Tb_Nombre.Text, TextBoxX1.Text, JMC_Categoria.Value, Tb_Estado.Value, Tb_DiasPedidos.Value, IIf(Tb_Cajero.Value = False, 0, 1), tbSuc.Value, IIf(tbTodasSucursales.Value = True, "1", "0"), NumiVendedor)
+                L_Usuario_Modificar(Tb_Id.Text, Tb_Nombre.Text, TextBoxX1.Text, JMC_Categoria.Value, Tb_Estado.Value,
+                                    Tb_DiasPedidos.Value, IIf(Tb_Cajero.Value = False, 0, 1), tbSuc.Value,
+                                    IIf(tbTodasSucursales.Value = True, "1", "0"), NumiVendedor, gs_VersionSistema,
+                                    gs_IPMaquina, gs_UsuMaquina)
 
                 ToastNotification.Show(Me, "Codigo Usuario ".ToUpper + Tb_Id.Text + " Modificado con Exito.".ToUpper, My.Resources.GRABACION_EXITOSA, 5000, eToastGlowColor.Green, eToastPosition.TopCenter)
 
@@ -557,7 +563,7 @@ Public Class F0_Usuarios
             Else
 
                 Dim t As String = Tb_Id.Text
-                L_Usuario_Borrar(Tb_Id.Text)
+                L_Usuario_Borrar(Tb_Id.Text, gs_VersionSistema, gs_IPMaquina, gs_UsuMaquina)
 
                 _PInhabilitar()
                 _PFiltrar()

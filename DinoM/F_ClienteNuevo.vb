@@ -101,9 +101,11 @@ Public Class F_ClienteNuevo
     Private Sub btnguardar_Click(sender As Object, e As EventArgs) Handles btnguardar.Click
         If (_prValidar()) Then
 
-            Dim res As Boolean = L_fnGrabarCLiente("", "", tbRazonSocial.Text, tbNombre.Text, 1, 1, CbTDoc.Value, "", "", "", "", 1100, 1, 0, 0, "", Now.Date.ToString("yyyy/MM/dd"),
-                                                   tbRazonSocial.Text, 1, tbNit.Text, 0, 0, Now.Date.ToString("yyyy/MM/dd"),
-                                                   Now.Date.ToString("yyyy/MM/dd"), "Default.jpg", 1, TbEmailN.Text, CbTDoc.Value)
+            Dim res As Boolean = L_fnGrabarCLiente("", "", tbRazonSocial.Text, tbNombre.Text, 1, 1, CbTDoc.Value, "", "", "",
+                                                   "", 1100, 1, 0, 0, "", Now.Date.ToString("yyyy/MM/dd"), tbRazonSocial.Text,
+                                                   1, tbNit.Text, 0, 0, Now.Date.ToString("yyyy/MM/dd"), Now.Date.ToString("yyyy/MM/dd"),
+                                                   "Default.jpg", 1, TbEmailN.Text, CbTDoc.Value, gs_VersionSistema, gs_IPMaquina,
+                                                   gs_UsuMaquina)
             If res Then
                 ToastNotification.Show(Me, "El Cliente : ".ToUpper + tbNombre.Text + " Grabado con Exito.".ToUpper, My.Resources.GRABACION_EXITOSA, 5000, eToastGlowColor.Green, eToastPosition.TopCenter)
                 Cliente = True

@@ -439,7 +439,8 @@ Public Class F1_Productos
                                                 quitarUltimaFilaVacia(CType(dgjDetalleProducto.DataSource, DataTable).DefaultView.ToTable(False, "yfanumi", "yfayfnumi", "yfasim", "yfadesc", "estado")),
                                                 tbDescDet.Text, cbgrupo5.Value, CbAeconomica.Value, CbUmedida.Value,
                                                 CbProdServ.Value, TbPrecioPsifac.Text, tbRotacion.Text.Trim, tbConversion2.Text,
-                                                IIf(swCombo.Value = True, 1, 0), cbUniCompra.Value, CType(JGProdCombo.DataSource, DataTable))
+                                                IIf(swCombo.Value = True, 1, 0), cbUniCompra.Value, CType(JGProdCombo.DataSource, DataTable),
+                                                gs_VersionSistema, gs_IPMaquina, gs_UsuMaquina)
 
         'Else
         '    res = False
@@ -485,7 +486,8 @@ Public Class F1_Productos
                                         quitarUltimaFilaVacia(CType(dgjDetalleProducto.DataSource, DataTable).DefaultView.ToTable(False, "yfanumi", "yfayfnumi", "yfasim", "yfadesc", "estado")),
                                         tbDescDet.Text, cbgrupo5.Value, CbAeconomica.Value, CbUmedida.Value, CbProdServ.Value,
                                         TbPrecioPsifac.Text, tbRotacion.Text.Trim, tbConversion2.Text, IIf(swCombo.Value = True, 1, 0),
-                                        cbUniCompra.Value, CType(JGProdCombo.DataSource, DataTable))
+                                        cbUniCompra.Value, CType(JGProdCombo.DataSource, DataTable), gs_VersionSistema,
+                                        gs_IPMaquina, gs_UsuMaquina)
         Else
             res = L_fnModificarProducto(tbCodigo.Text, tbCodProd.Text.Trim, tbCodBarra.Text.Trim, tbDescPro.Text.Trim, tbDescCort.Text.Trim,
                                         cbgrupo1.Value, cbgrupo2.Value, cbgrupo3.Value, cbgrupo4.Value, cbUMed.Value,
@@ -494,7 +496,8 @@ Public Class F1_Productos
                                         quitarUltimaFilaVacia(CType(dgjDetalleProducto.DataSource, DataTable).DefaultView.ToTable(False, "yfanumi", "yfayfnumi", "yfasim", "yfadesc", "estado")),
                                         tbDescDet.Text, cbgrupo5.Value, CbAeconomica.Value, CbUmedida.Value, CbProdServ.Value,
                                         TbPrecioPsifac.Text, tbRotacion.Text.Trim, tbConversion2.Text, IIf(swCombo.Value = True, 1, 0),
-                                        cbUniCompra.Value, CType(JGProdCombo.DataSource, DataTable))
+                                        cbUniCompra.Value, CType(JGProdCombo.DataSource, DataTable), gs_VersionSistema,
+                                        gs_IPMaquina, gs_UsuMaquina)
         End If
         If res Then
 
@@ -584,7 +587,7 @@ Public Class F1_Productos
         bandera = ef.band
         If (bandera = True) Then
             Dim mensajeError As String = ""
-            Dim res As Boolean = L_fnEliminarProducto(tbCodigo.Text, mensajeError)
+            Dim res As Boolean = L_fnEliminarProducto(tbCodigo.Text, mensajeError, gs_VersionSistema, gs_IPMaquina, gs_UsuMaquina)
             If res Then
                 _PrEliminarImage()
 

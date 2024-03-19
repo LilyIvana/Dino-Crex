@@ -4,6 +4,7 @@ Imports DevComponents.DotNetBar.Controls
 Imports DevComponents.DotNetBar.Metro
 Imports DevComponents.DotNetBar
 Imports DevComponents.DotNetBar.Rendering
+Imports System.Net
 
 Public Class P_Principal
 
@@ -31,7 +32,7 @@ Public Class P_Principal
             L_prAbrirConexionBitacora(gs_Ip, gs_UsuarioSql, gs_ClaveSql, "BDDiconDinoCrex")
 
             Me.WindowState = FormWindowState.Maximized
-
+            DatosBitacora()
             'iniciar login de usuario
             _prLogin()
 
@@ -42,6 +43,16 @@ Public Class P_Principal
         Catch ex As Exception
             MsgBox(ex.Message)
         End Try
+
+    End Sub
+    Private Sub DatosBitacora()
+
+        Dim valorIp As String
+
+        valorIp = Dns.GetHostEntry(My.Computer.Name).AddressList.FirstOrDefault(Function(i) i.AddressFamily = Sockets.AddressFamily.InterNetwork).ToString()
+        gs_IPMaquina = valorIp
+        gs_UsuMaquina = My.Computer.Name
+        gs_VersionSistema = lbVersion.Text
 
     End Sub
     Private Sub _prCambiarStyle()

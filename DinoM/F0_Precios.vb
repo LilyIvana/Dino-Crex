@@ -564,7 +564,7 @@ Public Class F0_Precios
     End Sub
     Private Sub btnGrabar_Click(sender As Object, e As EventArgs) Handles btnGrabar.Click
 
-        Dim grabar As Boolean = L_fnGrabarPrecios("", cbAlmacen.Value, precio)
+        Dim grabar As Boolean = L_fnGrabarPrecios("", cbAlmacen.Value, precio, gs_VersionSistema, gs_IPMaquina, gs_UsuMaquina)
         If (grabar) Then
             Dim img As Bitmap = New Bitmap(My.Resources.checked, 50, 50)
             ToastNotification.Show(Me, "Precios actualizados con éxito.".ToUpper,

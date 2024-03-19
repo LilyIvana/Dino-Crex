@@ -144,6 +144,12 @@ Module P_Global
     'configuracion del sistema tabla TCG011
     Public gd_notaAproTeo As Double = 0
     Public gs_NroCaja As Integer = 1
+
+    ''
+    Public gs_IPMaquina As String = "0.0.0.0"
+    Public gs_UsuMaquina As String = "DEFAULT"
+    Public gs_VersionSistema As String = "VERSIÓN 0.0.0"
+
 #End Region
 
 #Region "Toast"

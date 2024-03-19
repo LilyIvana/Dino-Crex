@@ -282,9 +282,11 @@ Public Class F1_ProductosConteo
 
         Dim nameImage As String = JGrM_Buscador.GetValue("yfimg")
         If (Modificado = False) Then
-            res = L_fnModificarProductoConteo(tbCodigo.Text, tbResponsable.Text.Trim, cbLado.Text.Trim, tbOrden.Value)
+            res = L_fnModificarProductoConteo(tbCodigo.Text, tbResponsable.Text.Trim, cbLado.Text.Trim, tbOrden.Value,
+                                              gs_VersionSistema, gs_IPMaquina, gs_UsuMaquina)
         Else
-            res = L_fnModificarProductoConteo(tbCodigo.Text, tbResponsable.Text.Trim, cbLado.Text.Trim, tbOrden.Value)
+            res = L_fnModificarProductoConteo(tbCodigo.Text, tbResponsable.Text.Trim, cbLado.Text.Trim, tbOrden.Value,
+                                              gs_VersionSistema, gs_IPMaquina, gs_UsuMaquina)
         End If
         If res Then
 

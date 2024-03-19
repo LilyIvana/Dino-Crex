@@ -26,6 +26,7 @@ Public Class F0_ProductosConteoTodos
     Public _nameButton As String
     Public _modulo As SideNavItem
     Public _tab As SuperTabItem
+    Public _MPos As Integer
 #End Region
 #Region "MEtodos Privados"
     Private Sub _IniciarTodo()
@@ -290,7 +291,7 @@ Public Class F0_ProductosConteoTodos
     End Sub
     Private Sub btnGrabar_Click(sender As Object, e As EventArgs) Handles btnGrabar.Click
 
-        Dim grabar As Boolean = L_fnActualizarProductoTY005("", CType(grproductos.DataSource, DataTable))
+        Dim grabar As Boolean = L_fnActualizarProductoTY005("", CType(grproductos.DataSource, DataTable), gs_VersionSistema, gs_IPMaquina, gs_UsuMaquina)
         If (grabar) Then
             Dim img As Bitmap = New Bitmap(My.Resources.checked, 50, 50)
             ToastNotification.Show(Me, "Asignación de Productos Conteo Actualizados con éxito".ToUpper,
@@ -469,5 +470,6 @@ Public Class F0_ProductosConteoTodos
         Next
 
     End Sub
+
 
 End Class
