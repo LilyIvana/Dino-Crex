@@ -238,7 +238,8 @@ Public Class DescuentoXProveedor
                 estadoDescripcion = "Desc. Esp."
                 estado = 2
             End If
-            Dim res As Boolean = L_fnGrabarCategoriaProveedorDescuentos(numi, grProducto.GetValue("ProveedorID"), tbDesde.Value, tbHasta.Value, tbPrecio.Value, estadoDescripcion, estado)
+            Dim res As Boolean = L_fnGrabarCategoriaProveedorDescuentos(numi, grProducto.GetValue("ProveedorID"), tbDesde.Value, tbHasta.Value,
+                                                                        tbPrecio.Value, estadoDescripcion, estado, gs_VersionSistema, gs_IPMaquina, gs_UsuMaquina)
 
             If (res) Then
                 ToastNotification.Show(Me, "Descuento por Categoria de Proveedor Grabado con éxito.".ToUpper,
@@ -277,7 +278,7 @@ Public Class DescuentoXProveedor
 
     Private Sub EliminarToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles EliminarToolStripMenuItem.Click
         If (grdetalle.Row >= 0) Then
-            L_fnEliminarCategoriaProveedorDescuento(grdetalle.GetValue("id"))
+            L_fnEliminarCategoriaProveedorDescuento(grdetalle.GetValue("id"), grdetalle.GetValue("ProveedorId"), gs_VersionSistema, gs_IPMaquina, gs_UsuMaquina)
 
             ToastNotification.Show(Me, "Descuento Eliminado Correctamente.".ToUpper,
                                 My.Resources.GRABACION_EXITOSA,

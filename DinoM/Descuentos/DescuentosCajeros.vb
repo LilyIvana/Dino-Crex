@@ -32,7 +32,7 @@ Public Class DescuentosCajeros
         'L_prAbrirConexion()
 
 
-        Me.Text = "LISTA  PRECIOS  CAJEROS "
+        Me.Text = "CONSULTA  PRECIOS  CAJEROS "
         'Me.WindowState = FormWindowState.Maximized
         _prCargarProductos()
 
@@ -298,7 +298,8 @@ Public Class DescuentosCajeros
         Dim numi As String = ""
         If (_ValidarCampos()) Then
             'Grabar
-            Dim res As Boolean = L_fnGrabarPreciosDescuentos(numi, grProducto.GetValue("ProductoId"), tbDesde.Value, tbHasta.Value, tbPrecio.Value)
+            Dim res As Boolean = L_fnGrabarPreciosDescuentos(numi, grProducto.GetValue("ProductoId"), tbDesde.Value, tbHasta.Value,
+                                                             tbPrecio.Value, gs_VersionSistema, gs_IPMaquina, gs_UsuMaquina)
 
             If (res) Then
                 ToastNotification.Show(Me, "Descuento de Producto Grabado con éxito.".ToUpper,
@@ -341,7 +342,7 @@ Public Class DescuentosCajeros
 
     Private Sub EliminarToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles EliminarToolStripMenuItem.Click
         If (grdetalle.Row >= 0) Then
-            L_fnEliminarDescuento(grdetalle.GetValue("id"))
+            L_fnEliminarDescuento(grdetalle.GetValue("id"), grdetalle.GetValue("ProductoId"), gs_VersionSistema, gs_IPMaquina, gs_UsuMaquina)
 
 
 
@@ -360,6 +361,7 @@ Public Class DescuentosCajeros
         _prCrearCarpetaReportes()
         Dim img As Bitmap = New Bitmap(My.Resources.checked, 50, 50)
         If (P_ExportarExcel(RutaGlobal + "\Reporte\Reporte Productos")) Then
+            L_fnRepConsultaPreciosCajerosExcel(gs_VersionSistema, gs_IPMaquina, gs_UsuMaquina)
             ToastNotification.Show(Me, "EXPORTACIÓN DE LISTA DE PRODUCTOS EXITOSA..!!!",
                                        img, 2000,
                                        eToastGlowColor.Green,

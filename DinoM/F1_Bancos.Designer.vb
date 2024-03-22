@@ -84,7 +84,7 @@ Partial Class F1_Bancos
         Me.SuperTabPrincipal.ControlBox.MenuBox.Name = ""
         Me.SuperTabPrincipal.ControlBox.Name = ""
         Me.SuperTabPrincipal.ControlBox.SubItems.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.SuperTabPrincipal.ControlBox.MenuBox, Me.SuperTabPrincipal.ControlBox.CloseBox})
-        Me.SuperTabPrincipal.Size = New System.Drawing.Size(1362, 741)
+        Me.SuperTabPrincipal.Size = New System.Drawing.Size(1344, 701)
         Me.SuperTabPrincipal.Controls.SetChildIndex(Me.SuperTabControlPanelBuscador, 0)
         Me.SuperTabPrincipal.Controls.SetChildIndex(Me.SuperTabControlPanelRegistro, 0)
         '
@@ -95,14 +95,14 @@ Partial Class F1_Bancos
         '
         'SuperTabControlPanelRegistro
         '
-        Me.SuperTabControlPanelRegistro.Size = New System.Drawing.Size(1330, 741)
+        Me.SuperTabControlPanelRegistro.Size = New System.Drawing.Size(1312, 701)
         Me.SuperTabControlPanelRegistro.Controls.SetChildIndex(Me.PanelSuperior, 0)
         Me.SuperTabControlPanelRegistro.Controls.SetChildIndex(Me.PanelInferior, 0)
         Me.SuperTabControlPanelRegistro.Controls.SetChildIndex(Me.PanelPrincipal, 0)
         '
         'PanelSuperior
         '
-        Me.PanelSuperior.Size = New System.Drawing.Size(1330, 72)
+        Me.PanelSuperior.Size = New System.Drawing.Size(1312, 72)
         Me.PanelSuperior.Style.Alignment = System.Drawing.StringAlignment.Center
         Me.PanelSuperior.Style.BackColor1.Color = System.Drawing.Color.DarkSlateGray
         Me.PanelSuperior.Style.BackColor2.Color = System.Drawing.Color.DarkSlateGray
@@ -114,8 +114,8 @@ Partial Class F1_Bancos
         '
         'PanelInferior
         '
-        Me.PanelInferior.Location = New System.Drawing.Point(0, 705)
-        Me.PanelInferior.Size = New System.Drawing.Size(1330, 36)
+        Me.PanelInferior.Location = New System.Drawing.Point(0, 665)
+        Me.PanelInferior.Size = New System.Drawing.Size(1312, 36)
         Me.PanelInferior.Style.Alignment = System.Drawing.StringAlignment.Center
         Me.PanelInferior.Style.BackColor1.Color = System.Drawing.Color.DarkSlateGray
         Me.PanelInferior.Style.BackColor2.Color = System.Drawing.Color.DarkSlateGray
@@ -156,23 +156,23 @@ Partial Class F1_Bancos
         '
         'PanelToolBar2
         '
-        Me.PanelToolBar2.Location = New System.Drawing.Point(1250, 0)
+        Me.PanelToolBar2.Location = New System.Drawing.Point(1232, 0)
         '
         'MPanelSup
         '
         Me.MPanelSup.Controls.Add(Me.Panel1)
-        Me.MPanelSup.Size = New System.Drawing.Size(1330, 284)
+        Me.MPanelSup.Size = New System.Drawing.Size(1312, 284)
         Me.MPanelSup.Controls.SetChildIndex(Me.PanelUsuario, 0)
         Me.MPanelSup.Controls.SetChildIndex(Me.Panel1, 0)
         '
         'PanelPrincipal
         '
-        Me.PanelPrincipal.Size = New System.Drawing.Size(1330, 633)
+        Me.PanelPrincipal.Size = New System.Drawing.Size(1312, 593)
         '
         'GroupPanelBuscador
         '
         Me.GroupPanelBuscador.Location = New System.Drawing.Point(0, 284)
-        Me.GroupPanelBuscador.Size = New System.Drawing.Size(1330, 349)
+        Me.GroupPanelBuscador.Size = New System.Drawing.Size(1312, 309)
         '
         '
         '
@@ -210,7 +210,7 @@ Partial Class F1_Bancos
         Me.JGrM_Buscador.SelectedFormatStyle.BackColor = System.Drawing.Color.DodgerBlue
         Me.JGrM_Buscador.SelectedFormatStyle.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.JGrM_Buscador.SelectedFormatStyle.ForeColor = System.Drawing.Color.White
-        Me.JGrM_Buscador.Size = New System.Drawing.Size(1324, 326)
+        Me.JGrM_Buscador.Size = New System.Drawing.Size(1306, 286)
         '
         'btnImprimir
         '
@@ -218,7 +218,7 @@ Partial Class F1_Bancos
         '
         'MPanelUserAct
         '
-        Me.MPanelUserAct.Location = New System.Drawing.Point(1130, 0)
+        Me.MPanelUserAct.Location = New System.Drawing.Point(1112, 0)
         '
         'Panel1
         '
@@ -227,7 +227,7 @@ Partial Class F1_Bancos
         Me.Panel1.Location = New System.Drawing.Point(0, 0)
         Me.Panel1.Margin = New System.Windows.Forms.Padding(2)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(1330, 284)
+        Me.Panel1.Size = New System.Drawing.Size(1312, 284)
         Me.Panel1.TabIndex = 22
         '
         'TableLayoutPanel1
@@ -242,7 +242,7 @@ Partial Class F1_Bancos
         Me.TableLayoutPanel1.Name = "TableLayoutPanel1"
         Me.TableLayoutPanel1.RowCount = 1
         Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
-        Me.TableLayoutPanel1.Size = New System.Drawing.Size(1330, 284)
+        Me.TableLayoutPanel1.Size = New System.Drawing.Size(1312, 284)
         Me.TableLayoutPanel1.TabIndex = 228
         '
         'GroupPanel1
@@ -256,7 +256,7 @@ Partial Class F1_Bancos
         Me.GroupPanel1.ImeMode = System.Windows.Forms.ImeMode.NoControl
         Me.GroupPanel1.Location = New System.Drawing.Point(3, 3)
         Me.GroupPanel1.Name = "GroupPanel1"
-        Me.GroupPanel1.Size = New System.Drawing.Size(710, 278)
+        Me.GroupPanel1.Size = New System.Drawing.Size(700, 278)
         '
         '
         '
@@ -304,7 +304,7 @@ Partial Class F1_Bancos
         Me.Panel3.Dock = System.Windows.Forms.DockStyle.Fill
         Me.Panel3.Location = New System.Drawing.Point(0, 0)
         Me.Panel3.Name = "Panel3"
-        Me.Panel3.Size = New System.Drawing.Size(704, 255)
+        Me.Panel3.Size = New System.Drawing.Size(694, 255)
         Me.Panel3.TabIndex = 227
         '
         'LabelX5
@@ -478,9 +478,9 @@ Partial Class F1_Bancos
         Me.GroupPanel3.DisabledBackColor = System.Drawing.Color.Empty
         Me.GroupPanel3.Dock = System.Windows.Forms.DockStyle.Fill
         Me.GroupPanel3.Font = New System.Drawing.Font("Georgia", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.GroupPanel3.Location = New System.Drawing.Point(719, 3)
+        Me.GroupPanel3.Location = New System.Drawing.Point(709, 3)
         Me.GroupPanel3.Name = "GroupPanel3"
-        Me.GroupPanel3.Size = New System.Drawing.Size(608, 278)
+        Me.GroupPanel3.Size = New System.Drawing.Size(600, 278)
         '
         '
         '
@@ -523,7 +523,7 @@ Partial Class F1_Bancos
         Me.Panel2.Dock = System.Windows.Forms.DockStyle.Fill
         Me.Panel2.Location = New System.Drawing.Point(0, 0)
         Me.Panel2.Name = "Panel2"
-        Me.Panel2.Size = New System.Drawing.Size(602, 255)
+        Me.Panel2.Size = New System.Drawing.Size(594, 255)
         Me.Panel2.TabIndex = 223
         '
         'pbImg
@@ -580,7 +580,7 @@ Partial Class F1_Bancos
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1362, 741)
+        Me.ClientSize = New System.Drawing.Size(1344, 701)
         Me.Location = New System.Drawing.Point(0, 0)
         Me.Name = "F1_Bancos"
         Me.Text = "F1_Bancos"

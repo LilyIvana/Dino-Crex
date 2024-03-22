@@ -186,6 +186,10 @@ Partial Class F0_Precios
         Me.btnImprimir.Size = New System.Drawing.Size(85, 72)
         Me.btnImprimir.Text = "EXPORTAR"
         '
+        'PanelNavegacion
+        '
+        Me.PanelNavegacion.Visible = False
+        '
         'btnUltimo
         '
         Me.btnUltimo.Margin = New System.Windows.Forms.Padding(2)
@@ -194,6 +198,7 @@ Partial Class F0_Precios
         '
         Me.MPanelUserAct.Location = New System.Drawing.Point(1144, 0)
         Me.MPanelUserAct.Margin = New System.Windows.Forms.Padding(4)
+        Me.MPanelUserAct.Visible = False
         '
         'LblPaginacion
         '

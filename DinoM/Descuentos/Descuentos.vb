@@ -296,7 +296,8 @@ Public Class Descuentos
         Dim numi As String = ""
         If (_ValidarCampos()) Then
             'Grabar
-            Dim res As Boolean = L_fnGrabarPreciosDescuentos(numi, grProducto.GetValue("ProductoId"), tbDesde.Value, tbHasta.Value, tbPrecio.Value)
+            Dim res As Boolean = L_fnGrabarPreciosDescuentos(numi, grProducto.GetValue("ProductoId"), tbDesde.Value, tbHasta.Value,
+                                                             tbPrecio.Value, gs_VersionSistema, gs_IPMaquina, gs_UsuMaquina)
 
             If (res) Then
                 ToastNotification.Show(Me, "Descuento de Producto Grabado con éxito.".ToUpper,
@@ -339,7 +340,7 @@ Public Class Descuentos
 
     Private Sub EliminarToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles EliminarToolStripMenuItem.Click
         If (grdetalle.Row >= 0) Then
-            L_fnEliminarDescuento(grdetalle.GetValue("id"))
+            L_fnEliminarDescuento(grdetalle.GetValue("id"), grdetalle.GetValue("ProductoId"), gs_VersionSistema, gs_IPMaquina, gs_UsuMaquina)
 
 
 

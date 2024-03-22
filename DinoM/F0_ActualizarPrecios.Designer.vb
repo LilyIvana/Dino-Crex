@@ -139,10 +139,6 @@ Partial Class F0_ActualizarPrecios
         'btnModificar
         '
         '
-        'btnNuevo
-        '
-        Me.btnNuevo.Visible = False
-        '
         'PanelToolBar2
         '
         Me.PanelToolBar2.Controls.Add(Me.btActPrecios)
@@ -230,6 +226,10 @@ Partial Class F0_ActualizarPrecios
         '
         Me.PictureBox1.Location = New System.Drawing.Point(991, 0)
         Me.PictureBox1.Margin = New System.Windows.Forms.Padding(4)
+        '
+        'btnNuevo
+        '
+        Me.btnNuevo.Visible = False
         '
         'PanelPrecios
         '

@@ -338,7 +338,8 @@ Public Class F1_Bancos
 
 
         Dim estado As Integer = IIf(swEstado.Value = True, 1, 0)
-        Dim res As Boolean = L_prBancoGrabar(tbcodigo.Text, tbNombre.Text, tbnroCuentaBancaria.Text, tbObservacion.Text, nameImg, estado)
+        Dim res As Boolean = L_prBancoGrabar(tbcodigo.Text, tbNombre.Text, tbnroCuentaBancaria.Text, tbObservacion.Text, nameImg, estado,
+                                            gs_VersionSistema, gs_IPMaquina, gs_UsuMaquina)
         If res Then
 
             Modificado = False
@@ -358,19 +359,15 @@ Public Class F1_Bancos
 
         Dim estado As Integer = IIf(swEstado.Value = True, 1, 0)
         If (Modificado = False) Then
-            res = L_prBancoModificar(tbcodigo.Text, tbNombre.Text, tbnroCuentaBancaria.Text, tbObservacion.Text, nameImg, estado)
+            res = L_prBancoModificar(tbcodigo.Text, tbNombre.Text, tbnroCuentaBancaria.Text, tbObservacion.Text, nameImg, estado,
+                                     gs_VersionSistema, gs_IPMaquina, gs_UsuMaquina)
 
         Else
-            res = L_prBancoModificar(tbcodigo.Text, tbNombre.Text, tbnroCuentaBancaria.Text, tbObservacion.Text, nameImg, estado)
+            res = L_prBancoModificar(tbcodigo.Text, tbNombre.Text, tbnroCuentaBancaria.Text, tbObservacion.Text, nameImg, estado,
+                                     gs_VersionSistema, gs_IPMaquina, gs_UsuMaquina)
         End If
 
-
-
-
-
         If res Then
-
-
             If (Modificado = True) Then
                 _fnMoverImagenRuta(RutaGlobal + "\Imagenes\Imagenes Banco", nameImg)
 
@@ -393,7 +390,6 @@ Public Class F1_Bancos
 
             End Try
 
-
         End If
     End Sub
 
@@ -402,7 +398,7 @@ Public Class F1_Bancos
         Dim result As eTaskDialogResult = TaskDialog.Show(info)
         If result = eTaskDialogResult.Yes Then
             Dim mensajeError As String = ""
-            Dim res As Boolean = L_prBancoBorrar(tbcodigo.Text, mensajeError)
+            Dim res As Boolean = L_prBancoBorrar(tbcodigo.Text, mensajeError, gs_VersionSistema, gs_IPMaquina, gs_UsuMaquina)
             If res Then
 
                 _PrEliminarImage()

@@ -1199,6 +1199,7 @@ Public Class P_Principal
 
     Private Sub btConfDescuentosCajeros_Click(sender As Object, e As EventArgs) Handles btConfDescuentosCajeros.Click
         Dim frm As New DescuentosCajeros
+        L_fnRepConsultaPreciosCajeros(gs_VersionSistema, gs_IPMaquina, gs_UsuMaquina)
         frm.Show()
     End Sub
 

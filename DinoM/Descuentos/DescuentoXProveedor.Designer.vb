@@ -30,6 +30,8 @@ Partial Class DescuentoXProveedor
         Me.grProducto = New Janus.Windows.GridEX.GridEX()
         Me.GroupPanel1 = New DevComponents.DotNetBar.Controls.GroupPanel()
         Me.grdetalle = New Janus.Windows.GridEX.GridEX()
+        Me.MenuEliminar = New System.Windows.Forms.ContextMenuStrip(Me.components)
+        Me.EliminarToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.Panel3 = New System.Windows.Forms.Panel()
         Me.lbProducto = New DevComponents.DotNetBar.LabelX()
         Me.tbPrecio = New DevComponents.Editors.DoubleInput()
@@ -40,19 +42,17 @@ Partial Class DescuentoXProveedor
         Me.LabelX2 = New DevComponents.DotNetBar.LabelX()
         Me.btnGrabar = New DevComponents.DotNetBar.ButtonX()
         Me.btnNuevo = New DevComponents.DotNetBar.ButtonX()
-        Me.MenuEliminar = New System.Windows.Forms.ContextMenuStrip(Me.components)
-        Me.EliminarToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.Panel1.SuspendLayout()
         Me.Panel2.SuspendLayout()
         Me.GroupPanel2.SuspendLayout()
         CType(Me.grProducto, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupPanel1.SuspendLayout()
         CType(Me.grdetalle, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.MenuEliminar.SuspendLayout()
         Me.Panel3.SuspendLayout()
         CType(Me.tbPrecio, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.tbHasta, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.tbDesde, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.MenuEliminar.SuspendLayout()
         Me.SuspendLayout()
         '
         'Panel1
@@ -63,7 +63,7 @@ Partial Class DescuentoXProveedor
         Me.Panel1.Location = New System.Drawing.Point(0, 0)
         Me.Panel1.Margin = New System.Windows.Forms.Padding(2)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(800, 61)
+        Me.Panel1.Size = New System.Drawing.Size(1344, 61)
         Me.Panel1.TabIndex = 1
         '
         'ButtonX1
@@ -92,7 +92,7 @@ Partial Class DescuentoXProveedor
         Me.Panel2.Location = New System.Drawing.Point(0, 61)
         Me.Panel2.Margin = New System.Windows.Forms.Padding(2)
         Me.Panel2.Name = "Panel2"
-        Me.Panel2.Size = New System.Drawing.Size(800, 389)
+        Me.Panel2.Size = New System.Drawing.Size(1344, 640)
         Me.Panel2.TabIndex = 2
         '
         'GroupPanel2
@@ -105,7 +105,7 @@ Partial Class DescuentoXProveedor
         Me.GroupPanel2.Location = New System.Drawing.Point(0, 0)
         Me.GroupPanel2.Margin = New System.Windows.Forms.Padding(2)
         Me.GroupPanel2.Name = "GroupPanel2"
-        Me.GroupPanel2.Size = New System.Drawing.Size(364, 389)
+        Me.GroupPanel2.Size = New System.Drawing.Size(908, 640)
         '
         '
         '
@@ -147,7 +147,7 @@ Partial Class DescuentoXProveedor
         Me.grProducto.Name = "grProducto"
         Me.grProducto.Office2007ColorScheme = Janus.Windows.GridEX.Office2007ColorScheme.Custom
         Me.grProducto.Office2007CustomColor = System.Drawing.Color.DodgerBlue
-        Me.grProducto.Size = New System.Drawing.Size(358, 363)
+        Me.grProducto.Size = New System.Drawing.Size(902, 614)
         Me.grProducto.TabIndex = 0
         '
         'GroupPanel1
@@ -159,10 +159,10 @@ Partial Class DescuentoXProveedor
         Me.GroupPanel1.DisabledBackColor = System.Drawing.Color.Empty
         Me.GroupPanel1.Dock = System.Windows.Forms.DockStyle.Right
         Me.GroupPanel1.Font = New System.Drawing.Font("Calibri", 10.2!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.GroupPanel1.Location = New System.Drawing.Point(364, 0)
+        Me.GroupPanel1.Location = New System.Drawing.Point(908, 0)
         Me.GroupPanel1.Margin = New System.Windows.Forms.Padding(2)
         Me.GroupPanel1.Name = "GroupPanel1"
-        Me.GroupPanel1.Size = New System.Drawing.Size(436, 389)
+        Me.GroupPanel1.Size = New System.Drawing.Size(436, 640)
         '
         '
         '
@@ -204,8 +204,22 @@ Partial Class DescuentoXProveedor
         Me.grdetalle.Location = New System.Drawing.Point(0, 188)
         Me.grdetalle.Margin = New System.Windows.Forms.Padding(2)
         Me.grdetalle.Name = "grdetalle"
-        Me.grdetalle.Size = New System.Drawing.Size(430, 173)
+        Me.grdetalle.Size = New System.Drawing.Size(430, 424)
         Me.grdetalle.TabIndex = 1
+        '
+        'MenuEliminar
+        '
+        Me.MenuEliminar.ImageScalingSize = New System.Drawing.Size(20, 20)
+        Me.MenuEliminar.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.EliminarToolStripMenuItem})
+        Me.MenuEliminar.Name = "MenuEliminar"
+        Me.MenuEliminar.Size = New System.Drawing.Size(122, 30)
+        '
+        'EliminarToolStripMenuItem
+        '
+        Me.EliminarToolStripMenuItem.Image = Global.DinoM.My.Resources.Resources.trash
+        Me.EliminarToolStripMenuItem.Name = "EliminarToolStripMenuItem"
+        Me.EliminarToolStripMenuItem.Size = New System.Drawing.Size(121, 26)
+        Me.EliminarToolStripMenuItem.Text = "Eliminar"
         '
         'Panel3
         '
@@ -372,25 +386,11 @@ Partial Class DescuentoXProveedor
         Me.btnNuevo.Text = "Nuevo"
         Me.btnNuevo.TextColor = System.Drawing.Color.MidnightBlue
         '
-        'MenuEliminar
-        '
-        Me.MenuEliminar.ImageScalingSize = New System.Drawing.Size(20, 20)
-        Me.MenuEliminar.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.EliminarToolStripMenuItem})
-        Me.MenuEliminar.Name = "MenuEliminar"
-        Me.MenuEliminar.Size = New System.Drawing.Size(122, 30)
-        '
-        'EliminarToolStripMenuItem
-        '
-        Me.EliminarToolStripMenuItem.Image = Global.DinoM.My.Resources.Resources.trash
-        Me.EliminarToolStripMenuItem.Name = "EliminarToolStripMenuItem"
-        Me.EliminarToolStripMenuItem.Size = New System.Drawing.Size(121, 26)
-        Me.EliminarToolStripMenuItem.Text = "Eliminar"
-        '
         'DescuentoXProveedor
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(800, 450)
+        Me.ClientSize = New System.Drawing.Size(1344, 701)
         Me.Controls.Add(Me.Panel2)
         Me.Controls.Add(Me.Panel1)
         Me.Name = "DescuentoXProveedor"
@@ -403,12 +403,12 @@ Partial Class DescuentoXProveedor
         CType(Me.grProducto, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupPanel1.ResumeLayout(False)
         CType(Me.grdetalle, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.MenuEliminar.ResumeLayout(False)
         Me.Panel3.ResumeLayout(False)
         Me.Panel3.PerformLayout()
         CType(Me.tbPrecio, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.tbHasta, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.tbDesde, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.MenuEliminar.ResumeLayout(False)
         Me.ResumeLayout(False)
 
     End Sub

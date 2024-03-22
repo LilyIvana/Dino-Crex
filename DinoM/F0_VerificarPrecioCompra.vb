@@ -379,7 +379,8 @@ Public Class F0_VerificarPrecioCompra
     End Sub
     Private Sub btnGrabar_Click(sender As Object, e As EventArgs) Handles btnGrabar.Click
 
-        Dim grabar As Boolean = L_fnActualizarTC0011a(tbCodCompra.Text, CType(grprecio.DataSource, DataTable))
+        Dim grabar As Boolean = L_fnActualizarTC0011a(tbCodCompra.Text, CType(grprecio.DataSource, DataTable), gs_VersionSistema,
+                                                      gs_IPMaquina, gs_UsuMaquina)
         If (grabar) Then
             Dim img As Bitmap = New Bitmap(My.Resources.checked, 50, 50)
             ToastNotification.Show(Me, "Precios de Costo actualizados con éxito".ToUpper,

@@ -155,7 +155,7 @@ Public Class F1_PesajeProductos
 
         res = L_fnGrabarPesajeProducto(tbCodigo.Text, dtFecha.Value, tbCodProd.Text, tbPrecio.Text, tbPesoReal.Value,
                                        dtFechaVenc.Value, tbPesoSistema.Value, tbTotal.Value, tbCodBarraSist.Text,
-                                       tbCodBarraImp.Text)
+                                       tbCodBarraImp.Text, gs_VersionSistema, gs_IPMaquina, gs_UsuMaquina)
         If res Then
 
             Dim img As Bitmap = New Bitmap(My.Resources.checked, 50, 50)
@@ -180,7 +180,7 @@ Public Class F1_PesajeProductos
         Dim res As Boolean
         res = L_fnModificarPesajeProducto(tbCodigo.Text, dtFecha.Value, tbCodProd.Text, tbPrecio.Text, tbPesoReal.Value,
                                        dtFechaVenc.Value, tbPesoSistema.Value, tbTotal.Value, tbCodBarraSist.Text,
-                                       tbCodBarraImp.Text)
+                                       tbCodBarraImp.Text, gs_VersionSistema, gs_IPMaquina, gs_UsuMaquina)
 
         If res Then
 
@@ -214,7 +214,7 @@ Public Class F1_PesajeProductos
         bandera = ef.band
         If (bandera = True) Then
             Dim mensajeError As String = ""
-            Dim res As Boolean = L_fnEliminarPesajeProducto(tbCodigo.Text, mensajeError)
+            Dim res As Boolean = L_fnEliminarPesajeProducto(tbCodigo.Text, mensajeError, gs_VersionSistema, gs_IPMaquina, gs_UsuMaquina)
             If res Then
                 Dim img As Bitmap = New Bitmap(My.Resources.checked, 50, 50)
 
