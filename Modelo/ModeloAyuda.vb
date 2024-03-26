@@ -48,7 +48,7 @@ Public Class ModeloAyuda
             ''No hace caso lo controlo por el evento enter de la grilla
             grJBuscador.Focus()
             grJBuscador.Col = Columna
-            grJBuscador.Row = 0
+            'grJBuscador.Row = 0
             grJBuscador.MoveTo(grJBuscador.FilterRow)
         End If
     End Sub
@@ -130,7 +130,7 @@ Public Class ModeloAyuda
     Private Sub grJBuscador_Enter(sender As Object, e As EventArgs) Handles grJBuscador.Enter
         grJBuscador.Select()
         grJBuscador.Col = Columna
-        grJBuscador.Row = 0
+        'grJBuscador.Row = 0
         grJBuscador.MoveTo(grJBuscador.FilterRow)
     End Sub
 End Class

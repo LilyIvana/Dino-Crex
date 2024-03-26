@@ -75,6 +75,7 @@ Public Class F1_ListaClientesCel
         Else
             dt = L_ClientesCel(0) ''Clientes desde el módulo de Clientes
         End If
+        L_fnRepConsultaListaClientesCel(gs_VersionSistema, gs_IPMaquina, gs_UsuMaquina)
 
         If dt.Rows.Count > 0 Then
             JGrM_Buscador.DataSource = dt
@@ -265,16 +266,26 @@ Public Class F1_ListaClientesCel
         Else
             nombre = "ListaClientesBaseDeDatos"
         End If
-        If (P_ExportarExcel(RutaGlobal + "\Reporte\Reporte ClienteDino", nombre)) Then
-            ToastNotification.Show(Me, "EXPORTACIÓN DE CLIENTES EXITOSA..!!!",
+        If JGrM_Buscador.RowCount > 0 Then
+
+            If (P_ExportarExcel(RutaGlobal + "\Reporte\Reporte ClienteDino", nombre)) Then
+                L_fnExcelListaClientesCel(gs_VersionSistema, gs_IPMaquina, gs_UsuMaquina)
+                ToastNotification.Show(Me, "EXPORTACIÓN DE CLIENTES EXITOSA..!!!",
                                        img, 2000,
                                        eToastGlowColor.Green,
                                        eToastPosition.BottomCenter)
-        Else
-            ToastNotification.Show(Me, "FALLÓ LA EXPORTACIÓN DE CLIENTES..!!!",
+            Else
+                ToastNotification.Show(Me, "FALLÓ LA EXPORTACIÓN DE CLIENTES..!!!",
                                        My.Resources.WARNING, 2000,
                                        eToastGlowColor.Red,
                                        eToastPosition.BottomLeft)
+            End If
+        Else
+            ToastNotification.Show(Me, "NO PUEDE EXPORTAR SI NO HAY DATOS GENERADOS",
+                        My.Resources.WARNING, 2000,
+                        eToastGlowColor.Red,
+                        eToastPosition.TopCenter)
+
         End If
     End Sub
 End Class

@@ -894,32 +894,40 @@ Public Class F0_ArmadoDesarmadoCombo
         If (e.KeyData = Keys.Control + Keys.Enter) Then
             Dim dt As DataTable
             dt = L_fnProductosCombo()
+            If dt.Rows.Count > 0 Then
 
-            Dim listEstCeldas As New List(Of Modelo.Celda)
-            listEstCeldas.Add(New Modelo.Celda("yfnumi", True, "COD. DYN", 80))
-            listEstCeldas.Add(New Modelo.Celda("yfcprod", True, "COD. DELTA", 90))
-            listEstCeldas.Add(New Modelo.Celda("producto", True, "PRODUCTO", 520))
+                Dim listEstCeldas As New List(Of Modelo.Celda)
+                listEstCeldas.Add(New Modelo.Celda("yfnumi", True, "COD. DYN", 80))
+                listEstCeldas.Add(New Modelo.Celda("yfcprod", True, "COD. DELTA", 90))
+                listEstCeldas.Add(New Modelo.Celda("producto", True, "PRODUCTO", 520))
 
-            Dim ef = New Efecto
-            ef.tipo = 3
-            ef.dt = dt
-            ef.SeleclCol = 2
-            ef.listEstCeldas = listEstCeldas
-            ef.alto = 150
-            ef.ancho = 250
-            ef.Context = "Seleccione Productos".ToUpper
-            ef.ShowDialog()
-            Dim bandera As Boolean = False
-            bandera = ef.band
-            If (bandera = True) Then
-                Dim Row As Janus.Windows.GridEX.GridEXRow = ef.Row
-                tbCodPack.ReadOnly = True
-                tbProdPack.ReadOnly = True
-                tbPcosto.ReadOnly = True
-                tbCodPack.Text = Row.Cells("yfnumi").Value
-                tbProdPack.Text = Row.Cells("producto").Value
-                _prCargarProductoCombo(Row.Cells("yfnumi").Value)
+                Dim ef = New Efecto
+                ef.tipo = 3
+                ef.dt = dt
+                ef.SeleclCol = 2
+                ef.listEstCeldas = listEstCeldas
+                ef.alto = 150
+                ef.ancho = 250
+                ef.Context = "Seleccione Productos".ToUpper
+                ef.ShowDialog()
+                Dim bandera As Boolean = False
+                bandera = ef.band
+                If (bandera = True) Then
+                    Dim Row As Janus.Windows.GridEX.GridEXRow = ef.Row
+                    tbCodPack.ReadOnly = True
+                    tbProdPack.ReadOnly = True
+                    tbPcosto.ReadOnly = True
+                    tbCodPack.Text = Row.Cells("yfnumi").Value
+                    tbProdPack.Text = Row.Cells("producto").Value
+                    _prCargarProductoCombo(Row.Cells("yfnumi").Value)
+                End If
+            Else
+                ToastNotification.Show(Me, "NO EXISTE AÚN PRODUCTOS COMBO!!!",
+                                 My.Resources.WARNING, 2000,
+                                 eToastGlowColor.Red,
+                                 eToastPosition.TopCenter)
             End If
+
         End If
     End Sub
 

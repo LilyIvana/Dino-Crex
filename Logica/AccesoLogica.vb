@@ -8240,4 +8240,75 @@ Public Class AccesoLogica
 
         Return _Tabla
     End Function
+    Public Shared Function L_fnExcelTodasLasCompras(_version As String, _ip As String, _usumaquina As String) As DataTable
+        Dim _Tabla As DataTable
+
+        Dim _listParam As New List(Of Datos.DParametro)
+
+        _listParam.Add(New Datos.DParametro("@tipo", 3))
+        _listParam.Add(New Datos.DParametro("@version", _version))
+        _listParam.Add(New Datos.DParametro("@ip", _ip))
+        _listParam.Add(New Datos.DParametro("@usumaquina", _usumaquina))
+        _listParam.Add(New Datos.DParametro("@uact", L_Usuario))
+        _Tabla = D_ProcedimientoConParam("Proc_ReportesGenerados", _listParam)
+
+        Return _Tabla
+    End Function
+    Public Shared Function L_fnRepConsultaPVentaMenorPCosto(_version As String, _ip As String, _usumaquina As String) As DataTable
+        Dim _Tabla As DataTable
+
+        Dim _listParam As New List(Of Datos.DParametro)
+
+        _listParam.Add(New Datos.DParametro("@tipo", 4))
+        _listParam.Add(New Datos.DParametro("@version", _version))
+        _listParam.Add(New Datos.DParametro("@ip", _ip))
+        _listParam.Add(New Datos.DParametro("@usumaquina", _usumaquina))
+        _listParam.Add(New Datos.DParametro("@uact", L_Usuario))
+        _Tabla = D_ProcedimientoConParam("Proc_ReportesGenerados", _listParam)
+
+        Return _Tabla
+    End Function
+    Public Shared Function L_fnExcelPVentaMenorPCosto(_version As String, _ip As String, _usumaquina As String) As DataTable
+        Dim _Tabla As DataTable
+
+        Dim _listParam As New List(Of Datos.DParametro)
+
+        _listParam.Add(New Datos.DParametro("@tipo", 5))
+        _listParam.Add(New Datos.DParametro("@version", _version))
+        _listParam.Add(New Datos.DParametro("@ip", _ip))
+        _listParam.Add(New Datos.DParametro("@usumaquina", _usumaquina))
+        _listParam.Add(New Datos.DParametro("@uact", L_Usuario))
+        _Tabla = D_ProcedimientoConParam("Proc_ReportesGenerados", _listParam)
+
+        Return _Tabla
+    End Function
+
+    Public Shared Function L_fnRepConsultaListaClientesCel(_version As String, _ip As String, _usumaquina As String) As DataTable
+        Dim _Tabla As DataTable
+
+        Dim _listParam As New List(Of Datos.DParametro)
+
+        _listParam.Add(New Datos.DParametro("@tipo", 6))
+        _listParam.Add(New Datos.DParametro("@version", _version))
+        _listParam.Add(New Datos.DParametro("@ip", _ip))
+        _listParam.Add(New Datos.DParametro("@usumaquina", _usumaquina))
+        _listParam.Add(New Datos.DParametro("@uact", L_Usuario))
+        _Tabla = D_ProcedimientoConParam("Proc_ReportesGenerados", _listParam)
+
+        Return _Tabla
+    End Function
+    Public Shared Function L_fnExcelListaClientesCel(_version As String, _ip As String, _usumaquina As String) As DataTable
+        Dim _Tabla As DataTable
+
+        Dim _listParam As New List(Of Datos.DParametro)
+
+        _listParam.Add(New Datos.DParametro("@tipo", 7))
+        _listParam.Add(New Datos.DParametro("@version", _version))
+        _listParam.Add(New Datos.DParametro("@ip", _ip))
+        _listParam.Add(New Datos.DParametro("@usumaquina", _usumaquina))
+        _listParam.Add(New Datos.DParametro("@uact", L_Usuario))
+        _Tabla = D_ProcedimientoConParam("Proc_ReportesGenerados", _listParam)
+
+        Return _Tabla
+    End Function
 End Class

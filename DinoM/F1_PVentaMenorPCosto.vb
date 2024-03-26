@@ -90,6 +90,7 @@ Public Class F1_PVentaMenorPCosto
     Private Sub _prCargarDescuentosProd()
 
         Dim dt As DataTable = L_PrecioVentaMenorPrecioCosto(IIf(swEstado.Value = True, 1, 0))
+        L_fnRepConsultaPVentaMenorPCosto(gs_VersionSistema, gs_IPMaquina, gs_UsuMaquina)
 
         If dt.Rows.Count > 0 Then
             JGrM_Buscador.DataSource = dt
@@ -276,18 +277,27 @@ Public Class F1_PVentaMenorPCosto
     End Sub
 
     Private Sub btnExportarExcel_Click(sender As Object, e As EventArgs) Handles btnExportarExcel.Click
-        _prCrearCarpetaReportes()
-        Dim img As Bitmap = New Bitmap(My.Resources.checked, 50, 50)
-        If (P_ExportarExcel(RutaGlobal + "\Reporte\Reporte Productos")) Then
-            ToastNotification.Show(Me, "EXPORTACIÓN DE COMPARACIÓN PRECIOS DE PRODUCTOS EXITOSA..!!!",
+        If JGrM_Buscador.RowCount > 0 Then
+
+            _prCrearCarpetaReportes()
+            Dim img As Bitmap = New Bitmap(My.Resources.checked, 50, 50)
+            If (P_ExportarExcel(RutaGlobal + "\Reporte\Reporte Productos")) Then
+                L_fnExcelPVentaMenorPCosto(gs_VersionSistema, gs_IPMaquina, gs_UsuMaquina)
+                ToastNotification.Show(Me, "EXPORTACIÓN DE COMPARACIÓN PRECIOS DE PRODUCTOS EXITOSA..!!!",
                                        img, 2000,
                                        eToastGlowColor.Green,
                                        eToastPosition.BottomCenter)
-        Else
-            ToastNotification.Show(Me, "FALLÓ LA EXPORTACIÓN DE COMPARACIÓN DE PRECIOS DE PRODUCTOS..!!!",
+            Else
+                ToastNotification.Show(Me, "FALLÓ LA EXPORTACIÓN DE COMPARACIÓN DE PRECIOS DE PRODUCTOS..!!!",
                                        My.Resources.WARNING, 2000,
                                        eToastGlowColor.Red,
                                        eToastPosition.BottomLeft)
+            End If
+        Else
+            ToastNotification.Show(Me, "NO PUEDE EXPORTAR SI NO HAY DATOS GENERADOS",
+                                    My.Resources.WARNING, 2000,
+                                    eToastGlowColor.Red,
+                                    eToastPosition.TopCenter)
         End If
     End Sub
 End Class

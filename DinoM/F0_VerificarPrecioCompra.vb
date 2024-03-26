@@ -634,42 +634,47 @@ Public Class F0_VerificarPrecioCompra
             If (_fnAccesible()) Then
 
                 Dim dt As DataTable
-
                 dt = L_fnMostrarComprasSinActualizarPrecios()
+                If dt.Rows.Count > 0 Then
 
-                Dim listEstCeldas As New List(Of Modelo.Celda)
-                listEstCeldas.Add(New Modelo.Celda("canumi,", True, "Cód. Compra", 120))
-                listEstCeldas.Add(New Modelo.Celda("caalm", False, "", 50))
-                listEstCeldas.Add(New Modelo.Celda("canumemis", True, "Nro. Factura", 100))
-                listEstCeldas.Add(New Modelo.Celda("cafdoc", True, "Fecha", 100))
-                listEstCeldas.Add(New Modelo.Celda("caty4prov", False, "", 50))
-                listEstCeldas.Add(New Modelo.Celda("proveedor", True, "Proveedor", 350))
+                    Dim listEstCeldas As New List(Of Modelo.Celda)
+                    listEstCeldas.Add(New Modelo.Celda("canumi,", True, "Cód. Compra", 120))
+                    listEstCeldas.Add(New Modelo.Celda("caalm", False, "", 50))
+                    listEstCeldas.Add(New Modelo.Celda("canumemis", True, "Nro. Factura", 100))
+                    listEstCeldas.Add(New Modelo.Celda("cafdoc", True, "Fecha", 100))
+                    listEstCeldas.Add(New Modelo.Celda("caty4prov", False, "", 50))
+                    listEstCeldas.Add(New Modelo.Celda("proveedor", True, "Proveedor", 350))
 
-                Dim ef = New Efecto
-                ef.tipo = 3
-                ef.dt = dt
-                ef.SeleclCol = 5
-                ef.listEstCeldas = listEstCeldas
-                ef.alto = 50
-                ef.ancho = 200
-                ef.Context = "Seleccione Compra".ToUpper
-                ef.ShowDialog()
-                Dim bandera As Boolean = False
-                bandera = ef.band
-                If (bandera = True) Then
-                    Dim Row As Janus.Windows.GridEX.GridEXRow = ef.Row
-                    If (IsNothing(Row)) Then
-                        tbCodCompra.Focus()
-                        Return
+                    Dim ef = New Efecto
+                    ef.tipo = 3
+                    ef.dt = dt
+                    ef.SeleclCol = 5
+                    ef.listEstCeldas = listEstCeldas
+                    ef.alto = 50
+                    ef.ancho = 200
+                    ef.Context = "Seleccione Compra".ToUpper
+                    ef.ShowDialog()
+                    Dim bandera As Boolean = False
+                    bandera = ef.band
+                    If (bandera = True) Then
+                        Dim Row As Janus.Windows.GridEX.GridEXRow = ef.Row
+                        If (IsNothing(Row)) Then
+                            tbCodCompra.Focus()
+                            Return
+                        End If
+
+                        tbCodCompra.Text = Row.Cells("canumi").Value
+                        tbProveedor.Text = Row.Cells("proveedor").Value
+
+                        _prCargarTabla(True, cbAlmacen.Value, tbCodCompra.Text)
+
                     End If
-
-                    tbCodCompra.Text = Row.Cells("canumi").Value
-                    tbProveedor.Text = Row.Cells("proveedor").Value
-
-                    _prCargarTabla(True, cbAlmacen.Value, tbCodCompra.Text)
-
+                Else
+                    ToastNotification.Show(Me, "NO EXISTE COMPRAS POR VERIFICAR!!!",
+                               My.Resources.WARNING, 2000,
+                               eToastGlowColor.Red,
+                               eToastPosition.TopCenter)
                 End If
-
             End If
         Catch ex As Exception
             MostrarMensajeError(ex.Message)
@@ -699,17 +704,26 @@ Public Class F0_VerificarPrecioCompra
     Private Sub btTodasCompras_Click(sender As Object, e As EventArgs) Handles btTodasCompras.Click
         _prCargarTodasLasCompras()
         _prCrearCarpetaReportes()
-        Dim img As Bitmap = New Bitmap(My.Resources.checked, 50, 50)
-        If (P_ExportarExcelSubidaPrecios(RutaGlobal + "\Reporte\Reporte PreciosCosto")) Then
-            ToastNotification.Show(Me, "EXPORTACIÓN DE LISTA DE SUBIDA DE PRECIOS DE COSTO EXITOSA..!!!",
-                                       img, 2000,
-                                       eToastGlowColor.Green,
-                                       eToastPosition.BottomCenter)
+        If grTodasCompras.RowCount > 0 Then
+
+            Dim img As Bitmap = New Bitmap(My.Resources.checked, 50, 50)
+            If (P_ExportarExcelSubidaPrecios(RutaGlobal + "\Reporte\Reporte PreciosCosto")) Then
+                L_fnExcelTodasLasCompras(gs_VersionSistema, gs_IPMaquina, gs_UsuMaquina)
+                ToastNotification.Show(Me, "EXPORTACIÓN DE LISTA DE SUBIDA DE PRECIOS DE COSTO EXITOSA..!!!",
+                                           img, 2000,
+                                           eToastGlowColor.Green,
+                                           eToastPosition.BottomCenter)
+            Else
+                ToastNotification.Show(Me, "FALLÓ LA EXPORTACIÓN DE LISTA DE SUBIDA DE PRECIOS DE COSTO..!!!",
+                                           My.Resources.WARNING, 2000,
+                                           eToastGlowColor.Red,
+                                           eToastPosition.BottomLeft)
+            End If
         Else
-            ToastNotification.Show(Me, "FALLÓ LA EXPORTACIÓN DE LISTA DE SUBIDA DE PRECIOS DE COSTO..!!!",
-                                       My.Resources.WARNING, 2000,
-                                       eToastGlowColor.Red,
-                                       eToastPosition.BottomLeft)
+            ToastNotification.Show(Me, "NO PUEDE EXPORTAR, NO HAY DATOS GENERADOS",
+                                  My.Resources.WARNING, 2000,
+                                  eToastGlowColor.Red,
+                                  eToastPosition.TopCenter)
         End If
     End Sub
 End Class
