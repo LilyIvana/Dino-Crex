@@ -4233,7 +4233,7 @@ Public Class F0_VentasSupermercado
             Dim tabla As DataTable = CType(grdetalle.DataSource, DataTable).DefaultView.ToTable(False, "tbnumi", "tbtv1numi", "tbty5prod", "codigo", "producto", "ygcodsin", "ygcodu", "tbcmin", "tblote", "tbfechaVenc", "img", "estado", "stock")
             If tabla.Rows.Count > 0 And tabla.Rows(0).Item("tbty5prod") > 0 Then
 
-                Dim res As Boolean = L_prMovimientoChoferGrabar(numi, Now.Date.ToString("yyyy/MM/dd"), 2, "VALE VENTA A FISCALIA", 1, 0, 0, tabla, 0)
+                Dim res As Boolean = L_prMovimientoChoferGrabar(numi, Now.Date.ToString("yyyy/MM/dd"), 2, "VALE VENTA A FISCALIA", 1, 0, 0, tabla, 0) ''falta determinar el cod de motivo para vale
 
                 If res Then
                     P_GenerarReporte(Convert.ToInt32(ENReporte.NOTAVENTA))

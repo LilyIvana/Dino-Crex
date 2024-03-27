@@ -32,12 +32,11 @@ Public Class F0_Movimiento
         btnGrabar.Enabled = False ''Para controlar que no cambie el motivo según lo seleccionado
         'Me.WindowState = FormWindowState.Maximized
         _prCargarComboLibreriaConcepto(cbConcepto)
-        _prCargarComboLibreriaMotivo(cbMotivo, 10, 1)
+        '_prCargarComboLibreriaMotivo(cbMotivo, 10, 1)
         _prCargarComboLibreriaDeposito(cbAlmacenOrigen)
         _prCargarComboLibreriaDeposito(cbDepositoDestino)
         _prCargarVenta()
         _prInhabiliitar()
-
 
         'Dim blah As New Bitmap(New Bitmap(My.Resources.compra), 20, 20)
         'Dim ico As Icon = Icon.FromHandle(blah.GetHicon())
@@ -171,7 +170,7 @@ Public Class F0_Movimiento
         If (tbCodigo.Text.Length > 0) Then
             cbAlmacenOrigen.ReadOnly = True
             cbConcepto.ReadOnly = True
-            cbMotivo.ReadOnly = True
+            cbMotivo.ReadOnly = False
         Else
             cbAlmacenOrigen.ReadOnly = False
             cbConcepto.ReadOnly = False
@@ -244,7 +243,27 @@ Public Class F0_Movimiento
             cbDepositoDestino.Value = IIf(IsDBNull(.GetValue("ibdepdest")), 0, .GetValue("ibdepdest"))
         End With
 
+        If (cbConcepto.Value = 1) Then ''''Movimiento 1=Ingreso
+            _prCargarComboLibreriaMotivo(cbMotivo, 10, 2)
+            Dim dtMotivo = L_fnMotivoIngresoSalida(tbCodigo.Text, 10, 2, cbConcepto.Value)
+            If dtMotivo.Rows.Count > 0 Then
+                cbMotivo.Value = dtMotivo.Rows(0).Item("iemotivo")
+            Else
+                cbMotivo.SelectedIndex = -1
+            End If
+        End If
+        If (cbConcepto.Value = 2) Then ''''Movimiento 2=Salida
+            _prCargarComboLibreriaMotivo(cbMotivo, 10, 3)
+            Dim dtMotivo = L_fnMotivoIngresoSalida(tbCodigo.Text, 10, 3, cbConcepto.Value)
+            If dtMotivo.Rows.Count > 0 Then
+                cbMotivo.Value = dtMotivo.Rows(0).Item("iemotivo")
+            Else
+                cbMotivo.SelectedIndex = -1
+            End If
+        End If
+        
         If (cbConcepto.Value = 6) Then ''''Movimiento 6=Traspaso Salida
+            _prCargarComboLibreriaMotivo(cbMotivo, 10, 1)
             btnModificar.Enabled = False
             Dim dtMotivo = L_fnMotivoTraspaso(tbCodigo.Text)
             If dtMotivo.Rows.Count > 0 Then
@@ -269,14 +288,11 @@ Public Class F0_Movimiento
         grdetalle.DataSource = dt
         grdetalle.RetrieveStructure()
         grdetalle.AlternatingColors = True
-        'a.icid ,a.icibid ,a.iccprod ,b.yfcdprod1  as producto,a.iccant ,
-        '	a.iclot ,a.icfvenc ,Cast(null as image ) as img,1 as estado,
-        '	(Sum(inv.iccven )+a.iccant  ) as stock
+
         With grdetalle.RootTable.Columns("icid")
             .Width = 100
             .Caption = "CODIGO"
             .Visible = False
-
         End With
         With grdetalle.RootTable.Columns("iccprod")
             .Width = 120
@@ -771,14 +787,13 @@ Public Class F0_Movimiento
             cbConcepto.Focus()
             Return False
         End If
-        If cbConcepto.Value = 6 Then ''Concepto Traspaso
-            If (cbMotivo.SelectedIndex < 0) Then
+
+        If (cbMotivo.SelectedIndex < 0) Then
                 Dim img As Bitmap = New Bitmap(My.Resources.mensaje, 50, 50)
                 ToastNotification.Show(Me, "Por Favor Seleccione un Motivo".ToUpper, img, 2000, eToastGlowColor.Red, eToastPosition.BottomCenter)
                 cbMotivo.Focus()
                 Return False
             End If
-        End If
 
         If (cbAlmacenOrigen.SelectedIndex < 0) Then
             Dim img As Bitmap = New Bitmap(My.Resources.mensaje, 50, 50)
@@ -874,8 +889,6 @@ Public Class F0_Movimiento
             End If
         End If
 
-
-
         Return True
     End Function
 
@@ -918,7 +931,7 @@ Public Class F0_Movimiento
 
         End If
         Dim numi As String = ""
-        Dim res As Boolean = L_prMovimientoChoferGrabar(numi, tbFecha.Value.ToString("yyyy/MM/dd"), cbConcepto.Value, tbObservacion.Text.Trim, cbAlmacenOrigen.Value, 0, 0, CType(grdetalle.DataSource, DataTable), 0)
+        Dim res As Boolean = L_prMovimientoChoferGrabar(numi, tbFecha.Value.ToString("yyyy/MM/dd"), cbConcepto.Value, tbObservacion.Text.Trim, cbAlmacenOrigen.Value, 0, 0, CType(grdetalle.DataSource, DataTable), cbMotivo.Value)
         If res Then
 
             _prCargarVenta()
@@ -938,7 +951,8 @@ Public Class F0_Movimiento
 
     End Sub
     Private Sub _prGuardarModificado()
-        Dim res As Boolean = L_prMovimientoModificar(tbCodigo.Text, tbFecha.Value.ToString("yyyy/MM/dd"), cbConcepto.Value, tbObservacion.Text, cbAlmacenOrigen.Value, CType(grdetalle.DataSource, DataTable))
+        Dim res As Boolean = L_prMovimientoModificar(tbCodigo.Text, tbFecha.Value.ToString("yyyy/MM/dd"), cbConcepto.Value, tbObservacion.Text,
+                                                     cbAlmacenOrigen.Value, CType(grdetalle.DataSource, DataTable), cbMotivo.Value)
         If res Then
 
             _prCargarVenta()
@@ -1526,7 +1540,6 @@ salirIf:
 
     Private Sub cbConcepto_ValueChanged(sender As Object, e As EventArgs) Handles cbConcepto.ValueChanged
 
-
         If (cbConcepto.SelectedIndex >= 0) Then
             If (cbConcepto.Value = 6) Then ''''Movimiento 6=Traspaso Salida
                 If (CType(cbAlmacenOrigen.DataSource, DataTable).Rows.Count > 1) Then
@@ -1542,6 +1555,7 @@ salirIf:
                     lbMotivo.Visible = True
                     cbMotivo.Visible = True
 
+                    _prCargarComboLibreriaMotivo(cbMotivo, 10, 1)
 
                 Else
                     lbDepositoDestino.Visible = False
@@ -1553,16 +1567,25 @@ salirIf:
                     lbMotivo.Visible = False
                     cbMotivo.Visible = False
                 End If
-            Else
+            ElseIf cbConcepto.Value = 1 Then ''''Movimiento 1=Ingreso
                 btnModificar.Enabled = True
                 lbDepositoDestino.Visible = False
                 cbDepositoDestino.Visible = False
                 lbDepositoOrigen.Text = "Almacén:"
 
-                lbMotivo.Visible = False
-                cbMotivo.Visible = False
+                _prCargarComboLibreriaMotivo(cbMotivo, 10, 2)
+            ElseIf cbConcepto.Value = 2 Then    ''''Movimiento 2=Salida     
+                btnModificar.Enabled = True
+                lbDepositoDestino.Visible = False
+                cbDepositoDestino.Visible = False
+                lbDepositoOrigen.Text = "Almacén:"
 
+                _prCargarComboLibreriaMotivo(cbMotivo, 10, 3)
+                'lbMotivo.Visible = False
+                'cbMotivo.Visible = False
             End If
+
+
             If (_fnAccesible() And tbCodigo.Text = String.Empty) Then
                 CType(grdetalle.DataSource, DataTable).Rows.Clear()
                 _prAddDetalleVenta()
@@ -1628,14 +1651,10 @@ salirIf:
 
     Private Sub cbMotivo_ValueChanged(sender As Object, e As EventArgs) Handles cbMotivo.ValueChanged
         If btnGrabar.Enabled = True Then
-            If (cbConcepto.Value = 6) Then ''''Movimiento 6=Traspaso Salida
-                If cbMotivo.Text <> String.Empty Then
-                    tbObservacion.Text = cbMotivo.Text
-                End If
-
+            If cbMotivo.Text <> String.Empty Then
+                tbObservacion.Text = cbMotivo.Text
             End If
         End If
-
     End Sub
 
     Private Sub btnMovXpeso_Click(sender As Object, e As EventArgs) Handles btnMovXpeso.Click
