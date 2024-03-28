@@ -894,11 +894,15 @@ Public Class F0_Movimiento
 
     Sub _prGuardarTraspaso()
         Dim numi As String = ""
-        Dim res As Boolean = L_prMovimientoChoferGrabar(numi, tbFecha.Value.ToString("yyyy/MM/dd"), cbConcepto.Value, tbObservacion.Text, cbAlmacenOrigen.Value, cbDepositoDestino.Value, 0, CType(grdetalle.DataSource, DataTable), cbMotivo.Value)
+        Dim res As Boolean = L_prMovimientoChoferGrabar(numi, tbFecha.Value.ToString("yyyy/MM/dd"), cbConcepto.Value, tbObservacion.Text,
+                                                        cbAlmacenOrigen.Value, cbDepositoDestino.Value, 0, CType(grdetalle.DataSource, DataTable),
+                                                        cbMotivo.Value, gs_VersionSistema, gs_IPMaquina, gs_UsuMaquina)
         If res Then
 
             Dim numDestino As String = ""
-            Dim resDestino As Boolean = L_prMovimientoChoferGrabar(numDestino, tbFecha.Value.ToString("yyyy/MM/dd"), 5, tbObservacion.Text, cbDepositoDestino.Value, cbAlmacenOrigen.Value, numi, CType(grdetalle.DataSource, DataTable), cbMotivo.Value)
+            Dim resDestino As Boolean = L_prMovimientoChoferGrabar(numDestino, tbFecha.Value.ToString("yyyy/MM/dd"), 5, tbObservacion.Text,
+                                                                   cbDepositoDestino.Value, cbAlmacenOrigen.Value, numi, CType(grdetalle.DataSource, DataTable),
+                                                                   cbMotivo.Value, gs_VersionSistema, gs_IPMaquina, gs_UsuMaquina)
             If resDestino Then
 
                 _prCargarVenta()
@@ -931,7 +935,9 @@ Public Class F0_Movimiento
 
         End If
         Dim numi As String = ""
-        Dim res As Boolean = L_prMovimientoChoferGrabar(numi, tbFecha.Value.ToString("yyyy/MM/dd"), cbConcepto.Value, tbObservacion.Text.Trim, cbAlmacenOrigen.Value, 0, 0, CType(grdetalle.DataSource, DataTable), cbMotivo.Value)
+        Dim res As Boolean = L_prMovimientoChoferGrabar(numi, tbFecha.Value.ToString("yyyy/MM/dd"), cbConcepto.Value, tbObservacion.Text.Trim,
+                                                        cbAlmacenOrigen.Value, 0, 0, CType(grdetalle.DataSource, DataTable), cbMotivo.Value,
+                                                        gs_VersionSistema, gs_IPMaquina, gs_UsuMaquina)
         If res Then
 
             _prCargarVenta()

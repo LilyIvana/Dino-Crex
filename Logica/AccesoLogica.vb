@@ -4634,7 +4634,8 @@ Public Class AccesoLogica
 
     Public Shared Function L_prMovimientoChoferGrabar(ByRef _ibid As String, _ibfdoc As String, _ibconcep As Integer,
                                                       _ibobs As String, _almacen As Integer, _depositoDestino As Integer,
-                                                      _ibidOrigen As Integer, _detalle As DataTable, _motivo As Integer) As Boolean
+                                                      _ibidOrigen As Integer, _detalle As DataTable, _motivo As Integer,
+                                                       _version As String, _ip As String, _usumaquina As String) As Boolean
         Dim _resultado As Boolean
         Dim _Tabla As DataTable
         Dim _listParam As New List(Of Datos.DParametro)
@@ -4649,6 +4650,9 @@ Public Class AccesoLogica
         _listParam.Add(New Datos.DParametro("@ibiddc", 0))
         _listParam.Add(New Datos.DParametro("@ibidOrigen", _ibidOrigen))
         _listParam.Add(New Datos.DParametro("@motivo", _motivo))
+        _listParam.Add(New Datos.DParametro("@version", _version))
+        _listParam.Add(New Datos.DParametro("@ip", _ip))
+        _listParam.Add(New Datos.DParametro("@usumaquina", _usumaquina))
 
         _listParam.Add(New Datos.DParametro("@TI0021", "", _detalle))
         _listParam.Add(New Datos.DParametro("@ibuact", L_Usuario))
