@@ -915,7 +915,7 @@ Public Class F0_Movimiento
                                           eToastPosition.TopCenter
                                           )
             Else
-                L_prMovimientoEliminar(numi)
+                L_prMovimientoEliminar(numi, cbConcepto.Value, gs_VersionSistema, gs_IPMaquina, gs_UsuMaquina)
                 Dim img As Bitmap = New Bitmap(My.Resources.cancel, 50, 50)
                 ToastNotification.Show(Me, "El Traspaso no pudo ser insertado, intente grabar nuevamente".ToUpper, img, 3500, eToastGlowColor.Red, eToastPosition.BottomCenter)
 
@@ -958,7 +958,8 @@ Public Class F0_Movimiento
     End Sub
     Private Sub _prGuardarModificado()
         Dim res As Boolean = L_prMovimientoModificar(tbCodigo.Text, tbFecha.Value.ToString("yyyy/MM/dd"), cbConcepto.Value, tbObservacion.Text,
-                                                     cbAlmacenOrigen.Value, CType(grdetalle.DataSource, DataTable), cbMotivo.Value)
+                                                     cbAlmacenOrigen.Value, CType(grdetalle.DataSource, DataTable), cbMotivo.Value,
+                                                     gs_VersionSistema, gs_IPMaquina, gs_UsuMaquina)
         If res Then
 
             _prCargarVenta()
@@ -1459,7 +1460,7 @@ salirIf:
         bandera = ef.band
         If (bandera = True) Then
             Dim mensajeError As String = ""
-            Dim res As Boolean = L_prMovimientoEliminar(tbCodigo.Text)
+            Dim res As Boolean = L_prMovimientoEliminar(tbCodigo.Text, cbConcepto.Value, gs_VersionSistema, gs_IPMaquina, gs_UsuMaquina)
             If res Then
 
 

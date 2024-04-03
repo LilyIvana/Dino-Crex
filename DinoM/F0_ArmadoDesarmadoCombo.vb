@@ -707,7 +707,8 @@ Public Class F0_ArmadoDesarmadoCombo
                 dt = CType(dgjDetalle.DataSource, DataTable).DefaultView.ToTable(False, "ilid", "iligid", "ilcodpro", "yfcdprod1", "ilcant", "iltotcant", "ilpcosto", "stock", "estado")
 
                 'Grabar
-                Dim res As Boolean = L_fnMovimientoComboGrabar(id, fdoc, obs, codpack, cantP, pcosto, cantNP, est, alm, dt)
+                Dim res As Boolean = L_fnMovimientoComboGrabar(id, fdoc, obs, codpack, cantP, pcosto, cantNP, est, alm, dt,
+                                                               gs_VersionSistema, gs_IPMaquina, gs_UsuMaquina)
 
                 If (res) Then
                     P_prLimpiar()
@@ -735,7 +736,8 @@ Public Class F0_ArmadoDesarmadoCombo
                 dt = CType(dgjDesArmPack.DataSource, DataTable).DefaultView.ToTable(False, "imid", "imigid", "imcodpro", "yfcdprod1", "imcant", "imtotcant", "impcosto", "stock", "estado")
 
                 'Grabar
-                Dim res As Boolean = L_fnGrabarDesarmado(tbCodigo.Text, tbCodPack.Text, tbCantNP.Value, dtiFechaDesarm.Value, dt)
+                Dim res As Boolean = L_fnGrabarDesarmado(tbCodigo.Text, tbCodPack.Text, tbCantNP.Value, dtiFechaDesarm.Value, dt,
+                                                         gs_VersionSistema, gs_IPMaquina, gs_UsuMaquina)
 
                 If (res) Then
                     P_prLimpiar()

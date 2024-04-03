@@ -177,6 +177,7 @@ Public Class F0_KardexMovimiento
 
     Private Sub P_GenerarKardexCliente()
         P_ArmarGrillaDatos()
+        L_fnGenerarKardex(gs_VersionSistema, gs_IPMaquina, gs_UsuMaquina, tbCodigo.Text)
     End Sub
     Private Sub P_ArmarKardex()
 
@@ -561,6 +562,7 @@ Public Class F0_KardexMovimiento
     Private Sub btImprimir_Click(sender As Object, e As EventArgs) Handles btImprimir.Click
         If (Dgj1Datos.GetRows.Count > 0) Then
             P_GenerarReporte()
+            L_fnImpresionKardex(gs_VersionSistema, gs_IPMaquina, gs_UsuMaquina, tbCodigo.Text)
         Else
             ToastNotification.Show(Me, "No hay kardex para el rango de fecha".ToUpper,
                        My.Resources.INFORMATION,
@@ -751,6 +753,7 @@ Public Class F0_KardexMovimiento
         _prCrearCarpetaReportes()
         Dim img As Bitmap = New Bitmap(My.Resources.checked, 50, 50)
         If (P_ExportarExcel(RutaGlobal + "\Reporte\Reporte Productos")) Then
+            L_fnExportarKardex(gs_VersionSistema, gs_IPMaquina, gs_UsuMaquina, tbCodigo.Text)
             ToastNotification.Show(Me, "EXPORTACIÓN DE KARDEX DE PRODUCTOS EXITOSA..!!!",
                                        img, 2000,
                                        eToastGlowColor.Green,

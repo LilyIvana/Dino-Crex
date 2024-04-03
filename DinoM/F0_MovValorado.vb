@@ -882,15 +882,18 @@ Public Class F0_MovValorado
 
     Sub _prGuardarTraspaso()
         Dim numi As String = ""
-        Dim res As Boolean = L_prMovimientoChoferGrabar(numi, tbFecha.Value.ToString("yyyy/MM/dd"), cbConcepto.Value, tbObservacion.Text, cbAlmacenOrigen.Value, cbDepositoDestino.Value, 0, CType(grdetalle.DataSource, DataTable), cbMotivo.Value)
+        Dim res As Boolean = L_prMovimientoChoferGrabar(numi, tbFecha.Value.ToString("yyyy/MM/dd"), cbConcepto.Value, tbObservacion.Text,
+                                                        cbAlmacenOrigen.Value, cbDepositoDestino.Value, 0, CType(grdetalle.DataSource, DataTable),
+                                                        cbMotivo.Value, gs_VersionSistema, gs_IPMaquina, gs_UsuMaquina)
         If res Then
 
             Dim numDestino As String = ""
-            Dim resDestino As Boolean = L_prMovimientoChoferGrabar(numDestino, tbFecha.Value.ToString("yyyy/MM/dd"), 5, tbObservacion.Text, cbDepositoDestino.Value, cbAlmacenOrigen.Value, numi, CType(grdetalle.DataSource, DataTable), cbMotivo.Value)
+            Dim resDestino As Boolean = L_prMovimientoChoferGrabar(numDestino, tbFecha.Value.ToString("yyyy/MM/dd"), 5, tbObservacion.Text,
+                                                                   cbDepositoDestino.Value, cbAlmacenOrigen.Value, numi, CType(grdetalle.DataSource, DataTable),
+                                                                   cbMotivo.Value, gs_VersionSistema, gs_IPMaquina, gs_UsuMaquina)
             If resDestino Then
 
                 _prCargarVenta()
-
                 _Limpiar()
                 Dim img As Bitmap = New Bitmap(My.Resources.checked, 50, 50)
                 ToastNotification.Show(Me, "Código de Movimiento ".ToUpper + tbCodigo.Text + " Grabado con Exito.".ToUpper,
@@ -899,7 +902,7 @@ Public Class F0_MovValorado
                                           eToastPosition.TopCenter
                                           )
             Else
-                L_prMovimientoEliminar(numi)
+                L_prMovimientoEliminar(numi, cbConcepto.Value, gs_VersionSistema, gs_IPMaquina, gs_UsuMaquina)
                 Dim img As Bitmap = New Bitmap(My.Resources.cancel, 50, 50)
                 ToastNotification.Show(Me, "El Traspaso no pudo ser insertado, intente grabar nuevamente".ToUpper, img, 3500, eToastGlowColor.Red, eToastPosition.BottomCenter)
 
@@ -916,14 +919,14 @@ Public Class F0_MovValorado
         If (cbConcepto.Value = 6) Then
             _prGuardarTraspaso()
             Return
-
         End If
         Dim numi As String = ""
-        Dim res As Boolean = L_prMovimientoChoferGrabar(numi, tbFecha.Value.ToString("yyyy/MM/dd"), cbConcepto.Value, tbObservacion.Text.Trim, cbAlmacenOrigen.Value, 0, 0, CType(grdetalle.DataSource, DataTable), 0)
+        Dim res As Boolean = L_prMovimientoChoferGrabar(numi, tbFecha.Value.ToString("yyyy/MM/dd"), cbConcepto.Value, tbObservacion.Text.Trim,
+                                                        cbAlmacenOrigen.Value, 0, 0, CType(grdetalle.DataSource, DataTable), 0,
+                                                        gs_VersionSistema, gs_IPMaquina, gs_UsuMaquina)
         If res Then
 
             _prCargarVenta()
-
             _Limpiar()
             Dim img As Bitmap = New Bitmap(My.Resources.checked, 50, 50)
             ToastNotification.Show(Me, "Código de Movimiento ".ToUpper + tbCodigo.Text + " Grabado con Exito.".ToUpper,
@@ -939,7 +942,9 @@ Public Class F0_MovValorado
 
     End Sub
     Private Sub _prGuardarModificado()
-        Dim res As Boolean = L_prMovimientoModificar(tbCodigo.Text, tbFecha.Value.ToString("yyyy/MM/dd"), cbConcepto.Value, tbObservacion.Text, cbAlmacenOrigen.Value, CType(grdetalle.DataSource, DataTable), 0)
+        Dim res As Boolean = L_prMovimientoModificar(tbCodigo.Text, tbFecha.Value.ToString("yyyy/MM/dd"), cbConcepto.Value, tbObservacion.Text,
+                                                     cbAlmacenOrigen.Value, CType(grdetalle.DataSource, DataTable), 0, gs_VersionSistema,
+                                                     gs_IPMaquina, gs_UsuMaquina)
         If res Then
 
             _prCargarVenta()
@@ -1440,7 +1445,7 @@ salirIf:
         bandera = ef.band
         If (bandera = True) Then
             Dim mensajeError As String = ""
-            Dim res As Boolean = L_prMovimientoEliminar(tbCodigo.Text)
+            Dim res As Boolean = L_prMovimientoEliminar(tbCodigo.Text, cbConcepto.Value, gs_VersionSistema, gs_IPMaquina, gs_UsuMaquina)
             If res Then
 
 
