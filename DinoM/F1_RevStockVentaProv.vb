@@ -156,6 +156,7 @@ Public Class F1_RevStockVentaProv
                 .FormatString = "0.00"
                 .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far
             End With
+
             With JGrM_Buscador.RootTable.Columns("VentasxSem")
                 .Width = 150
                 .Caption = "VENTAS X SEMANA"
@@ -219,7 +220,13 @@ Public Class F1_RevStockVentaProv
                 .Visible = True
                 .Caption = "ESTADO"
             End With
-
+            With JGrM_Buscador.RootTable.Columns("cantVentasShow")
+                .Width = 150
+                .Caption = "VENTAS SHOWROOM"
+                .Visible = True
+                .FormatString = "0.00"
+                .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far
+            End With
 
             With JGrM_Buscador
                 .DefaultFilterRowComparison = FilterConditionOperator.Contains

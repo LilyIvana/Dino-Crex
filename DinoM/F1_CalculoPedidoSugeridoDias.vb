@@ -175,6 +175,13 @@ Public Class F1_CalculoPedidoSugeridoDias
                 .FormatString = "0.00"
                 .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far
             End With
+            With JGrM_Buscador.RootTable.Columns("cantVentasShow")
+                .Width = 150
+                .Caption = "VENTAS SHOWROOM"
+                .Visible = True
+                .FormatString = "0.00"
+                .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far
+            End With
             With JGrM_Buscador.RootTable.Columns("DiasConStock0")
                 .Width = 150
                 .Caption = "DIAS CON STOCK 0"
