@@ -225,7 +225,7 @@ Public Class F1_CalculoPedidoSugeridoDias
 
             With JGrM_Buscador.RootTable.Columns("PedSugeridoUniNuevo")
                 .Width = 150
-                .Caption = "FALTANTES POR UNIDAD INICIAL"
+                .Caption = "SUGERIDO INICIAL POR UNIDAD "
                 .Visible = True
                 .FormatString = "0.00"
                 .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far
@@ -246,14 +246,14 @@ Public Class F1_CalculoPedidoSugeridoDias
             End With
             With JGrM_Buscador.RootTable.Columns("PedidoFinalUni")
                 .Width = 120
-                .Caption = "FALTANTES POR UNIDAD FINAL"
+                .Caption = "SUGERIDO FINAL POR UNIDAD "
                 .Visible = True
                 .FormatString = "0.00"
                 .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far
             End With
             With JGrM_Buscador.RootTable.Columns("PedidoFinalDisp")
                 .Width = 120
-                .Caption = "FALTANTES POR DISPLAY FINAL"
+                .Caption = "SUGERIDO FINAL POR DISPLAY "
                 .Visible = True
                 .FormatString = "0.00"
                 .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far
@@ -272,7 +272,7 @@ Public Class F1_CalculoPedidoSugeridoDias
             End With
             With JGrM_Buscador.RootTable.Columns("TotalNuevo")
                 .Width = 120
-                .Caption = "TOTAL EMPAQUE APROX."
+                .Caption = "COSTO TOTAL SUGERIDO APROX."
                 .Visible = True
                 .FormatString = "0.00"
                 .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far
@@ -288,7 +288,6 @@ Public Class F1_CalculoPedidoSugeridoDias
                 .Visible = True
                 .Caption = "ESTADO"
             End With
-
 
             With JGrM_Buscador
                 .DefaultFilterRowComparison = FilterConditionOperator.Contains

@@ -98,6 +98,7 @@ Public Class Pr_SAldosPorAlmacenLinea
         Dim _dt As New DataTable
         _prInterpretarDatos(_dt)
         If (_dt.Rows.Count > 0) Then
+            L_fnRepConsultaSaldoProd(gs_VersionSistema, gs_IPMaquina, gs_UsuMaquina)
 
             Dim objrep As New R_SaldosPorLinea
             objrep.SetDataSource(_dt)
@@ -106,8 +107,6 @@ Public Class Pr_SAldosPorAlmacenLinea
             MReportViewer.ReportSource = objrep
             MReportViewer.Show()
             MReportViewer.BringToFront()
-
-
 
         Else
             ToastNotification.Show(Me, "NO HAY DATOS PARA LOS PARAMETROS SELECCIONADOS..!!!",

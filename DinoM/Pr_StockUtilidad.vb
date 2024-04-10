@@ -90,6 +90,8 @@ Public Class Pr_StockUtilidad
 
         If (_dt.Rows.Count > 0) Then
 
+            L_fnRepConsultaSaldosValorados(gs_VersionSistema, gs_IPMaquina, gs_UsuMaquina)
+
             Dim objrep As New R_StockActualUtilidad
             objrep.SetDataSource(_dt)
 

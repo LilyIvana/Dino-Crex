@@ -57,15 +57,14 @@ Partial Class Pr_StockMinimo
         Me.cbAlmacen.DesignTimeLayout = cbAlmacen_DesignTimeLayout
         Me.cbAlmacen.DisabledBackColor = System.Drawing.Color.White
         Me.cbAlmacen.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.cbAlmacen.Location = New System.Drawing.Point(106, 17)
-        Me.cbAlmacen.Margin = New System.Windows.Forms.Padding(4)
+        Me.cbAlmacen.Location = New System.Drawing.Point(80, 14)
         Me.cbAlmacen.Name = "cbAlmacen"
         Me.cbAlmacen.Office2007ColorScheme = Janus.Windows.GridEX.Office2007ColorScheme.Custom
         Me.cbAlmacen.Office2007CustomColor = System.Drawing.Color.DodgerBlue
         Me.cbAlmacen.ReadOnly = True
         Me.cbAlmacen.SelectedIndex = -1
         Me.cbAlmacen.SelectedItem = Nothing
-        Me.cbAlmacen.Size = New System.Drawing.Size(219, 26)
+        Me.cbAlmacen.Size = New System.Drawing.Size(164, 22)
         Me.cbAlmacen.TabIndex = 248
         Me.cbAlmacen.VisualStyle = Janus.Windows.GridEX.VisualStyle.Office2007
         '
@@ -76,15 +75,14 @@ Partial Class Pr_StockMinimo
         Me.cbGrupos.DesignTimeLayout = cbGrupos_DesignTimeLayout
         Me.cbGrupos.DisabledBackColor = System.Drawing.Color.White
         Me.cbGrupos.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.cbGrupos.Location = New System.Drawing.Point(105, 88)
-        Me.cbGrupos.Margin = New System.Windows.Forms.Padding(4)
+        Me.cbGrupos.Location = New System.Drawing.Point(79, 72)
         Me.cbGrupos.Name = "cbGrupos"
         Me.cbGrupos.Office2007ColorScheme = Janus.Windows.GridEX.Office2007ColorScheme.Custom
         Me.cbGrupos.Office2007CustomColor = System.Drawing.Color.DodgerBlue
         Me.cbGrupos.ReadOnly = True
         Me.cbGrupos.SelectedIndex = -1
         Me.cbGrupos.SelectedItem = Nothing
-        Me.cbGrupos.Size = New System.Drawing.Size(219, 26)
+        Me.cbGrupos.Size = New System.Drawing.Size(164, 22)
         Me.cbGrupos.TabIndex = 250
         Me.cbGrupos.VisualStyle = Janus.Windows.GridEX.VisualStyle.Office2007
         '
@@ -92,10 +90,10 @@ Partial Class Pr_StockMinimo
         '
         Me.Panel1.Controls.Add(Me.CheckTodosAlmacen)
         Me.Panel1.Controls.Add(Me.checkUnaAlmacen)
-        Me.Panel1.Location = New System.Drawing.Point(326, 6)
-        Me.Panel1.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
+        Me.Panel1.Location = New System.Drawing.Point(244, 5)
+        Me.Panel1.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(160, 43)
+        Me.Panel1.Size = New System.Drawing.Size(120, 35)
         Me.Panel1.TabIndex = 256
         '
         'CheckTodosAlmacen
@@ -108,10 +106,9 @@ Partial Class Pr_StockMinimo
         Me.CheckTodosAlmacen.Checked = True
         Me.CheckTodosAlmacen.CheckState = System.Windows.Forms.CheckState.Checked
         Me.CheckTodosAlmacen.CheckValue = "Y"
-        Me.CheckTodosAlmacen.Location = New System.Drawing.Point(83, 9)
-        Me.CheckTodosAlmacen.Margin = New System.Windows.Forms.Padding(4)
+        Me.CheckTodosAlmacen.Location = New System.Drawing.Point(62, 7)
         Me.CheckTodosAlmacen.Name = "CheckTodosAlmacen"
-        Me.CheckTodosAlmacen.Size = New System.Drawing.Size(73, 28)
+        Me.CheckTodosAlmacen.Size = New System.Drawing.Size(55, 23)
         Me.CheckTodosAlmacen.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
         Me.CheckTodosAlmacen.TabIndex = 252
         Me.CheckTodosAlmacen.Text = "Todos"
@@ -123,10 +120,9 @@ Partial Class Pr_StockMinimo
         '
         Me.checkUnaAlmacen.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.checkUnaAlmacen.CheckBoxStyle = DevComponents.DotNetBar.eCheckBoxStyle.RadioButton
-        Me.checkUnaAlmacen.Location = New System.Drawing.Point(16, 9)
-        Me.checkUnaAlmacen.Margin = New System.Windows.Forms.Padding(4)
+        Me.checkUnaAlmacen.Location = New System.Drawing.Point(12, 7)
         Me.checkUnaAlmacen.Name = "checkUnaAlmacen"
-        Me.checkUnaAlmacen.Size = New System.Drawing.Size(59, 28)
+        Me.checkUnaAlmacen.Size = New System.Drawing.Size(44, 23)
         Me.checkUnaAlmacen.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
         Me.checkUnaAlmacen.TabIndex = 251
         Me.checkUnaAlmacen.Text = "Una"
@@ -135,10 +131,10 @@ Partial Class Pr_StockMinimo
         '
         Me.Panel2.Controls.Add(Me.checkTodosGrupos)
         Me.Panel2.Controls.Add(Me.checkUnaGrupo)
-        Me.Panel2.Location = New System.Drawing.Point(325, 76)
-        Me.Panel2.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
+        Me.Panel2.Location = New System.Drawing.Point(244, 62)
+        Me.Panel2.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.Panel2.Name = "Panel2"
-        Me.Panel2.Size = New System.Drawing.Size(159, 43)
+        Me.Panel2.Size = New System.Drawing.Size(119, 35)
         Me.Panel2.TabIndex = 257
         '
         'checkTodosGrupos
@@ -151,10 +147,9 @@ Partial Class Pr_StockMinimo
         Me.checkTodosGrupos.Checked = True
         Me.checkTodosGrupos.CheckState = System.Windows.Forms.CheckState.Checked
         Me.checkTodosGrupos.CheckValue = "Y"
-        Me.checkTodosGrupos.Location = New System.Drawing.Point(80, 9)
-        Me.checkTodosGrupos.Margin = New System.Windows.Forms.Padding(4)
+        Me.checkTodosGrupos.Location = New System.Drawing.Point(60, 7)
         Me.checkTodosGrupos.Name = "checkTodosGrupos"
-        Me.checkTodosGrupos.Size = New System.Drawing.Size(73, 28)
+        Me.checkTodosGrupos.Size = New System.Drawing.Size(55, 23)
         Me.checkTodosGrupos.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
         Me.checkTodosGrupos.TabIndex = 252
         Me.checkTodosGrupos.Text = "Todos"
@@ -166,10 +161,9 @@ Partial Class Pr_StockMinimo
         '
         Me.checkUnaGrupo.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.checkUnaGrupo.CheckBoxStyle = DevComponents.DotNetBar.eCheckBoxStyle.RadioButton
-        Me.checkUnaGrupo.Location = New System.Drawing.Point(13, 9)
-        Me.checkUnaGrupo.Margin = New System.Windows.Forms.Padding(4)
+        Me.checkUnaGrupo.Location = New System.Drawing.Point(10, 7)
         Me.checkUnaGrupo.Name = "checkUnaGrupo"
-        Me.checkUnaGrupo.Size = New System.Drawing.Size(59, 28)
+        Me.checkUnaGrupo.Size = New System.Drawing.Size(44, 23)
         Me.checkUnaGrupo.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
         Me.checkUnaGrupo.TabIndex = 251
         Me.checkUnaGrupo.Text = "Una"
@@ -184,11 +178,10 @@ Partial Class Pr_StockMinimo
         Me.LabelX1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.LabelX1.Font = New System.Drawing.Font("Georgia", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.LabelX1.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(85, Byte), Integer), CType(CType(139, Byte), Integer))
-        Me.LabelX1.Location = New System.Drawing.Point(8, 90)
-        Me.LabelX1.Margin = New System.Windows.Forms.Padding(4)
+        Me.LabelX1.Location = New System.Drawing.Point(6, 73)
         Me.LabelX1.Name = "LabelX1"
         Me.LabelX1.SingleLineColor = System.Drawing.SystemColors.Control
-        Me.LabelX1.Size = New System.Drawing.Size(89, 20)
+        Me.LabelX1.Size = New System.Drawing.Size(72, 16)
         Me.LabelX1.TabIndex = 259
         Me.LabelX1.Text = "Proveedor:"
         '
@@ -202,11 +195,10 @@ Partial Class Pr_StockMinimo
         Me.LabelX3.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.LabelX3.Font = New System.Drawing.Font("Georgia", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.LabelX3.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(85, Byte), Integer), CType(CType(139, Byte), Integer))
-        Me.LabelX3.Location = New System.Drawing.Point(5, 20)
-        Me.LabelX3.Margin = New System.Windows.Forms.Padding(4)
+        Me.LabelX3.Location = New System.Drawing.Point(4, 16)
         Me.LabelX3.Name = "LabelX3"
         Me.LabelX3.SingleLineColor = System.Drawing.SystemColors.Control
-        Me.LabelX3.Size = New System.Drawing.Size(76, 20)
+        Me.LabelX3.Size = New System.Drawing.Size(61, 16)
         Me.LabelX3.TabIndex = 258
         Me.LabelX3.Text = "Almacen:"
         '
@@ -216,12 +208,10 @@ Partial Class Pr_StockMinimo
         Me.MReportViewer.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.MReportViewer.Cursor = System.Windows.Forms.Cursors.Default
         Me.MReportViewer.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.MReportViewer.Location = New System.Drawing.Point(503, 0)
-        Me.MReportViewer.Margin = New System.Windows.Forms.Padding(4)
+        Me.MReportViewer.Location = New System.Drawing.Point(377, 0)
         Me.MReportViewer.Name = "MReportViewer"
-        Me.MReportViewer.Size = New System.Drawing.Size(806, 730)
+        Me.MReportViewer.Size = New System.Drawing.Size(605, 593)
         Me.MReportViewer.TabIndex = 0
-        Me.MReportViewer.ToolPanelWidth = 267
         '
         'Panel5
         '
@@ -232,10 +222,9 @@ Partial Class Pr_StockMinimo
         Me.Panel5.Controls.Add(Me.Panel1)
         Me.Panel5.Controls.Add(Me.cbGrupos)
         Me.Panel5.Controls.Add(Me.cbAlmacen)
-        Me.Panel5.Location = New System.Drawing.Point(0, 136)
-        Me.Panel5.Margin = New System.Windows.Forms.Padding(4)
+        Me.Panel5.Location = New System.Drawing.Point(0, 110)
         Me.Panel5.Name = "Panel5"
-        Me.Panel5.Size = New System.Drawing.Size(503, 594)
+        Me.Panel5.Size = New System.Drawing.Size(377, 483)
         Me.Panel5.TabIndex = 264
         '
         'Panel6
@@ -244,9 +233,8 @@ Partial Class Pr_StockMinimo
         Me.Panel6.Controls.Add(Me.Panel4)
         Me.Panel6.Dock = System.Windows.Forms.DockStyle.Left
         Me.Panel6.Location = New System.Drawing.Point(0, 0)
-        Me.Panel6.Margin = New System.Windows.Forms.Padding(4)
         Me.Panel6.Name = "Panel6"
-        Me.Panel6.Size = New System.Drawing.Size(503, 730)
+        Me.Panel6.Size = New System.Drawing.Size(377, 593)
         Me.Panel6.TabIndex = 1
         '
         'Panel4
@@ -257,9 +245,8 @@ Partial Class Pr_StockMinimo
         Me.Panel4.Controls.Add(Me.btn_Salir)
         Me.Panel4.Controls.Add(Me.btn_Generar)
         Me.Panel4.Location = New System.Drawing.Point(0, 0)
-        Me.Panel4.Margin = New System.Windows.Forms.Padding(4)
         Me.Panel4.Name = "Panel4"
-        Me.Panel4.Size = New System.Drawing.Size(503, 730)
+        Me.Panel4.Size = New System.Drawing.Size(378, 594)
         Me.Panel4.TabIndex = 263
         '
         'btn_Salir
@@ -270,10 +257,9 @@ Partial Class Pr_StockMinimo
         Me.btn_Salir.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btn_Salir.ForeColor = System.Drawing.Color.White
         Me.btn_Salir.Image = Global.DinoM.My.Resources.Resources.atras1
-        Me.btn_Salir.Location = New System.Drawing.Point(231, -2)
-        Me.btn_Salir.Margin = New System.Windows.Forms.Padding(4)
+        Me.btn_Salir.Location = New System.Drawing.Point(173, -1)
         Me.btn_Salir.Name = "btn_Salir"
-        Me.btn_Salir.Size = New System.Drawing.Size(96, 121)
+        Me.btn_Salir.Size = New System.Drawing.Size(72, 98)
         Me.btn_Salir.TabIndex = 262
         Me.btn_Salir.Text = "SALIR"
         Me.btn_Salir.TextAlign = System.Drawing.ContentAlignment.BottomCenter
@@ -286,10 +272,9 @@ Partial Class Pr_StockMinimo
         Me.btn_Generar.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btn_Generar.ForeColor = System.Drawing.Color.White
         Me.btn_Generar.Image = Global.DinoM.My.Resources.Resources.pie_chart1
-        Me.btn_Generar.Location = New System.Drawing.Point(106, 0)
-        Me.btn_Generar.Margin = New System.Windows.Forms.Padding(4)
+        Me.btn_Generar.Location = New System.Drawing.Point(80, 7)
         Me.btn_Generar.Name = "btn_Generar"
-        Me.btn_Generar.Size = New System.Drawing.Size(122, 127)
+        Me.btn_Generar.Size = New System.Drawing.Size(85, 90)
         Me.btn_Generar.TabIndex = 261
         Me.btn_Generar.Text = "GENERAR"
         Me.btn_Generar.TextAlign = System.Drawing.ContentAlignment.BottomCenter
@@ -298,12 +283,11 @@ Partial Class Pr_StockMinimo
         '
         'Pr_StockMinimo
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1309, 730)
+        Me.ClientSize = New System.Drawing.Size(982, 593)
         Me.Controls.Add(Me.MReportViewer)
         Me.Controls.Add(Me.Panel6)
-        Me.Margin = New System.Windows.Forms.Padding(4)
         Me.Name = "Pr_StockMinimo"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Pr_StockMinimo"

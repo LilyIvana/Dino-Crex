@@ -127,6 +127,8 @@ Public Class F1_SaldosExcel
 
 
         If table.Rows.Count > 0 Then
+            L_fnRepConsultaSaldosExcel(gs_VersionSistema, gs_IPMaquina, gs_UsuMaquina)
+
             JGrM_Buscador.DataSource = table
             JGrM_Buscador.RetrieveStructure()
             JGrM_Buscador.AlternatingColors = True
@@ -361,6 +363,7 @@ Public Class F1_SaldosExcel
         _prCrearCarpetaReportes()
         Dim img As Bitmap = New Bitmap(My.Resources.checked, 50, 50)
         If (P_ExportarExcel(RutaGlobal + "\Reporte\Reporte SaldoProductos")) Then
+            L_fnExcelSaldosValorados(gs_VersionSistema, gs_IPMaquina, gs_UsuMaquina)
             ToastNotification.Show(Me, "EXPORTACIÓN DE SALDO DE PRODUCTOS EXITOSA..!!!",
                                        img, 2000,
                                        eToastGlowColor.Green,

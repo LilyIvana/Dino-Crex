@@ -126,6 +126,7 @@ Public Class Pr_StockMinimo
         Dim _dt As New DataTable
         _prInterpretarDatos(_dt)
         If (_dt.Rows.Count > 0) Then
+            L_fnRepConsultaSaldosMenores(gs_VersionSistema, gs_IPMaquina, gs_UsuMaquina)
             Dim objrep
 
             If CheckTodosAlmacen.Checked Then
