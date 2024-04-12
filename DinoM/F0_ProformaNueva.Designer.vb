@@ -465,7 +465,7 @@ Partial Class F0_ProformaNueva
         Me.btnProforma.Size = New System.Drawing.Size(65, 65)
         Me.btnProforma.Style = DevComponents.DotNetBar.eDotNetBarStyle.Windows7
         Me.btnProforma.TabIndex = 418
-        Me.btnProforma.Text = "PROFORMA"
+        Me.btnProforma.Text = "IMPRIMIR Y EXPORTAR"
         Me.btnProforma.TextColor = System.Drawing.Color.White
         '
         'btnNuevo

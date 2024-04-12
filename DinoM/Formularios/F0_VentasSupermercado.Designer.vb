@@ -474,6 +474,7 @@ Partial Class F0_VentasSupermercado
         Me.btnProforma.TabIndex = 418
         Me.btnProforma.Text = "PROFORMA"
         Me.btnProforma.TextColor = System.Drawing.Color.White
+        Me.btnProforma.Visible = False
         '
         'btnNuevo
         '

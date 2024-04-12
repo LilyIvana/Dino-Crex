@@ -363,7 +363,7 @@ Public Class F0_ProformaNueva
         With grdetalle.RootTable.Columns("yfcbarra")
             .Caption = "C.B.".ToUpper
             .Width = 40
-            .Visible = False
+            .Visible = True
         End With
 
         With grdetalle.RootTable.Columns("producto")
@@ -426,7 +426,7 @@ Public Class F0_ProformaNueva
             .Caption = "Desct.".ToUpper
         End With
         With grdetalle.RootTable.Columns("tbtotdesc")
-            .Width = 70
+            .Width = 90
             .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far
             .Visible = True
             .FormatString = "0.00"
@@ -757,6 +757,9 @@ Public Class F0_ProformaNueva
             .GroupByBoxVisible = False
             'diseño de la grilla
             .VisualStyle = VisualStyle.Office2007
+
+            .RecordNavigator = True
+            .RecordNavigatorText = "Productos"
         End With
         _prAplicarCondiccionJanusSinLote()
     End Sub
