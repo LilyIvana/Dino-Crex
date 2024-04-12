@@ -360,6 +360,12 @@
     <Compile Include="F0_ExpImpStockFisico.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="F0_ProformaNueva.Designer.vb">
+      <DependentUpon>F0_ProformaNueva.vb</DependentUpon>
+    </Compile>
+    <Compile Include="F0_ProformaNueva.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="F0_VerificarPrecioCompra.Designer.vb">
       <DependentUpon>F0_VerificarPrecioCompra.vb</DependentUpon>
     </Compile>
@@ -725,6 +731,12 @@
       <DependentUpon>F1_Servicios.vb</DependentUpon>
     </Compile>
     <Compile Include="Formularios\F1_Servicios.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\F_CantidadProforma.Designer.vb">
+      <DependentUpon>F_CantidadProforma.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\F_CantidadProforma.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Formularios\F_Cantidad.Designer.vb">
@@ -1519,6 +1531,9 @@
     <EmbeddedResource Include="F0_ExpImpStockFisico.resx">
       <DependentUpon>F0_ExpImpStockFisico.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="F0_ProformaNueva.resx">
+      <DependentUpon>F0_ProformaNueva.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="F0_VerificarPrecioCompra.resx">
       <DependentUpon>F0_VerificarPrecioCompra.vb</DependentUpon>
     </EmbeddedResource>
@@ -1701,6 +1716,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\F1_Servicios.resx">
       <DependentUpon>F1_Servicios.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\F_CantidadProforma.resx">
+      <DependentUpon>F_CantidadProforma.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\F_Cantidad.resx">
       <DependentUpon>F_Cantidad.vb</DependentUpon>

@@ -116,9 +116,8 @@ Public Class F1_CalculoPedidoSugeridoDias
 
                 dt.Rows(i).Item("PedidoFinalUni") = IIf(dt.Rows(i).Item("Conversion2") > 1, 0, PedConv1 * dt.Rows(i).Item("Conversion1"))
                 dt.Rows(i).Item("PedidoFinalDisp") = IIf(dt.Rows(i).Item("Conversion2") = 1, 0, PedConv1)
-                dt.Rows(i).Item("TotalNuevo") = Math.Round((IIf(dt.Rows(i).Item("Conversion2") = 1, (dt.Rows(i).Item("PedidoFinalUni") * dt.Rows(i).Item("CostoNuevo")), (dt.Rows(i).Item("PedidoFinalDisp") * dt.Rows(i).Item("CostoNuevo")))), 2)
-                'Dim AUX = Math.Ceiling(1.1)
-                'Dim B = Format(1.45, "0")
+                'dt.Rows(i).Item("TotalNuevo") = Math.Round((IIf(dt.Rows(i).Item("Conversion2") = 1, (dt.Rows(i).Item("PedidoFinalUni") * dt.Rows(i).Item("CostoNuevo")), (dt.Rows(i).Item("PedidoFinalDisp") * dt.Rows(i).Item("CostoNuevo")))), 2)
+
             Next
 
             JGrM_Buscador.DataSource = dt
@@ -265,7 +264,7 @@ Public Class F1_CalculoPedidoSugeridoDias
             End With
             With JGrM_Buscador.RootTable.Columns("CostoNuevo")
                 .Width = 120
-                .Caption = "COSTO EMPAQUE APROX."
+                .Caption = "COSTO UNIDAD VENTA"
                 .Visible = True
                 .FormatString = "0.00"
                 .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far
@@ -273,7 +272,7 @@ Public Class F1_CalculoPedidoSugeridoDias
             With JGrM_Buscador.RootTable.Columns("TotalNuevo")
                 .Width = 120
                 .Caption = "COSTO TOTAL SUGERIDO APROX."
-                .Visible = True
+                .Visible = False
                 .FormatString = "0.00"
                 .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far
                 .AggregateFunction = AggregateFunction.Sum

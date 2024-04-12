@@ -64,6 +64,8 @@ Public Class Efecto
                 _prMostrarAyudaDetalleServicio()
             Case 4
                 _prLogin()
+            Case 9
+                _prMostrarAyudaVentaCantidadProforma()
         End Select
     End Sub
     Public Sub _prLogin()
@@ -184,6 +186,28 @@ Public Class Efecto
 
             Cantidad = frmAyuda.Cantidad
 
+            band = True
+            Me.Close()
+        Else
+            band = False
+            Me.Close()
+        End If
+
+    End Sub
+    Sub _prMostrarAyudaVentaCantidadProforma()
+
+        Dim frmAyuda As F_CantidadProforma
+        frmAyuda = New F_CantidadProforma
+
+        frmAyuda.Stock = Stock
+        frmAyuda.Cantidad = Cantidad
+        frmAyuda.Producto = NameProducto
+        frmAyuda.Conversion = Conversion
+        frmAyuda.CantidadPrevia = CantidadPrevia
+        frmAyuda.ShowDialog()
+        If frmAyuda.bandera = True Then
+
+            Cantidad = frmAyuda.Cantidad
             band = True
             Me.Close()
         Else

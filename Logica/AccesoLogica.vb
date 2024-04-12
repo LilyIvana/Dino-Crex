@@ -1976,6 +1976,20 @@ Public Class AccesoLogica
 
         Return _Tabla
     End Function
+
+    Public Shared Function L_fnListarProductosSinLoteUltProforma(_almacen As String, _cliente As String, _detalle As DataTable) As DataTable
+        Dim _Tabla As DataTable
+
+        Dim _listParam As New List(Of Datos.DParametro)
+
+        _listParam.Add(New Datos.DParametro("@tipo", 10))
+        _listParam.Add(New Datos.DParametro("@almacen", _almacen))
+        _listParam.Add(New Datos.DParametro("@cliente", _cliente))
+        _listParam.Add(New Datos.DParametro("@tauact", L_Usuario))
+        _Tabla = D_ProcedimientoConParam("BuscarProd", _listParam)
+
+        Return _Tabla
+    End Function
     Public Shared Function L_fnListarProductosSinLoteNuevo(_almacen As String, _cliente As String, _detalle As DataTable) As DataTable
         Dim _Tabla As DataTable
 

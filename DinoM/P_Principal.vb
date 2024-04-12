@@ -844,10 +844,8 @@ Public Class P_Principal
     Private Sub btVentProforma_Click(sender As Object, e As EventArgs) Handles btVentProforma.Click
         'SideNav1.IsMenuExpanded = False
         'Ventana.Select()
-        Dim frm As New F0_Proforma
+        Dim frm As New F0_ProformaNueva
         frm._nameButton = btVentProforma.Name
-        Dim tab3 As SuperTabItem = superTabControl3.CreateTab(frm.Text)
-        frm._tab = tab3
         frm._modulo = FP_VENTAS
         'Dim panel As Panel = P_Global._fnCrearPanelVentanas(frm)
         'superTabControl3.SelectedTabIndex = superTabControl3.Tabs.Count - 1
