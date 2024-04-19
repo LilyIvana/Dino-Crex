@@ -1375,7 +1375,7 @@ Public Class F0_ProformaNueva
     End Sub
 
 
-    Private Sub SetParametrosNotaVenta(dt As DataTable, total As Decimal, li As String, _Hora As String, _Ds2 As DataSet, _Ds3 As DataSet, tipoReporte As String, objrep As Object, fecha As String)
+    Private Sub SetParametrosNotaVenta(dt As DataTable, total As Decimal, li As String, _Hora As String, _Ds2 As DataSet, _Ds3 As DataSet, tipoReporte As String, objrep As Object, fecha As String, nombre As String)
 
         Select Case tipoReporte
             Case ENReporteTipo.NOTAVENTA_Carta
@@ -1404,6 +1404,7 @@ Public Class F0_ProformaNueva
                 objrep.SetParameterValue("Direccionpr", _Ds2.Tables(0).Rows(0).Item("scdir").ToString)
                 objrep.SetParameterValue("Hora", _Hora)
                 objrep.SetParameterValue("Fecha", fecha)
+                objrep.SetParameterValue("nombreCliente", nombre)
                 objrep.SetParameterValue("ENombre", _Ds2.Tables(0).Rows(0).Item("scneg").ToString) '?
                 objrep.SetParameterValue("Literal1", li)
         End Select
@@ -2694,7 +2695,7 @@ Public Class F0_ProformaNueva
         End If
         Return False
     End Function
-    Private Sub P_GenerarReporte(TipoRep As Integer)
+    Private Sub P_GenerarReporte(TipoRep As Integer, nombre As String)
         Dim dt As DataTable = CType(grdetalle.DataSource, DataTable)
         dt = dt.Select("estado=0").CopyToDataTable
         If (gb_DetalleProducto) Then
@@ -2757,13 +2758,13 @@ Public Class F0_ProformaNueva
             Select Case fila.Item("TipoReporte").ToString
                 Case ENReporteTipo.NOTAVENTA_Carta
                     objrep = New R_NotaVenta_Carta
-                    SetParametrosNotaVenta(dt, total, li, _Hora, _Ds2, _Ds3, fila.Item("TipoReporte").ToString, objrep, fechaven)
+                    SetParametrosNotaVenta(dt, total, li, _Hora, _Ds2, _Ds3, fila.Item("TipoReporte").ToString, objrep, fechaven, nombre)
                 Case ENReporteTipo.NOTAVENTA_Ticket
                     objrep = New R_NotaVenta_7_5X100_2
-                    SetParametrosNotaVenta(dt, total, li, _Hora, _Ds2, _Ds3, fila.Item("TipoReporte").ToString, objrep, fechaven)
+                    SetParametrosNotaVenta(dt, total, li, _Hora, _Ds2, _Ds3, fila.Item("TipoReporte").ToString, objrep, fechaven, nombre)
                 Case ENReporteTipo.PROFORMA_Ticket
                     objrep = New R_NotaVenta_7_5X100_3
-                    SetParametrosNotaVenta(dt, total, li, _Hora, _Ds2, _Ds3, fila.Item("TipoReporte").ToString, objrep, fechaven)
+                    SetParametrosNotaVenta(dt, total, li, _Hora, _Ds2, _Ds3, fila.Item("TipoReporte").ToString, objrep, fechaven, nombre)
 
             End Select
         Next
@@ -2779,8 +2780,12 @@ Public Class F0_ProformaNueva
             Dim numi As String = ""
             Dim tabla As DataTable = CType(grdetalle.DataSource, DataTable).DefaultView.ToTable(False, "tbnumi", "tbtv1numi", "tbty5prod", "codigo", "producto", "ygcodsin", "ygcodu", "tbcmin", "tblote", "tbfechaVenc", "img", "estado", "stock")
             If tabla.Rows.Count > 0 And tabla.Rows(0).Item("tbty5prod") > 0 Then
-                P_GenerarReporte(Convert.ToInt32(ENReporte.PROFORMA))
+                Dim frm As New F_NombreProforma
+                Dim nomProforma As String
+                frm.ShowDialog()
+                nomProforma = frm.NombreProforma
 
+                P_GenerarReporte(Convert.ToInt32(ENReporte.PROFORMA), nomProforma)
                 _prCrearCarpetaReportes()
 
                 Dim img As Bitmap = New Bitmap(My.Resources.checked, 50, 50)
@@ -2799,7 +2804,7 @@ Public Class F0_ProformaNueva
                 ToastNotification.Show(Me, "NO EXISTE PRODUCTOS EN EL DETALLE, NO PUEDE GENERAR PROFORMA",
                            My.Resources.WARNING, 3500,
                            eToastGlowColor.Red,
-                           eToastPosition.BottomCenter)
+                           eToastPosition.TopCenter)
             End If
         Catch ex As Exception
             MsgBox(ex.Message)

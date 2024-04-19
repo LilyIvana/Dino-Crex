@@ -1051,6 +1051,7 @@ Public Class F1_Clientes
         _prCrearCarpetaReportes()
         Dim img As Bitmap = New Bitmap(My.Resources.checked, 50, 50)
         If (P_ExportarExcel(RutaGlobal + "\Reporte\Reporte ClienteDino")) Then
+            L_fnExcelClientes(gs_VersionSistema, gs_IPMaquina, gs_UsuMaquina)
             ToastNotification.Show(Me, "EXPORTACIÓN DE LISTA DE CLIENTES EXITOSA..!!!",
                                        img, 2000,
                                        eToastGlowColor.Green,

@@ -108,6 +108,8 @@ Public Class F1_StockSistVsFisico
         Dim dt As DataTable = L_fnStockSistemavsFisico(fecha)
 
         If dt.Rows.Count > 0 Then
+            L_fnRepStockSistVsFisico(gs_VersionSistema, gs_IPMaquina, gs_UsuMaquina)
+
             JGrM_Buscador.DataSource = dt
             JGrM_Buscador.RetrieveStructure()
             JGrM_Buscador.AlternatingColors = True
@@ -387,6 +389,7 @@ Public Class F1_StockSistVsFisico
         _prCrearCarpetaReportes()
         Dim img As Bitmap = New Bitmap(My.Resources.checked, 50, 50)
         If (P_ExportarExcel(RutaGlobal + "\Reporte\Reporte Productos")) Then
+            L_fnExcelStockSistVsFisico(gs_VersionSistema, gs_IPMaquina, gs_UsuMaquina)
             ToastNotification.Show(Me, "EXPORTACIÓN DE STOCK SISTEMA VS. FÍSICO EXITOSA..!!!",
                                        img, 2000,
                                        eToastGlowColor.Green,

@@ -417,6 +417,7 @@ Public Class F0_ProductosConteoTodos
         _prCrearCarpetaReportes()
         Dim img As Bitmap = New Bitmap(My.Resources.checked, 50, 50)
         If (P_ExportarExcel(RutaGlobal + "\Reporte\Reporte Productos")) Then
+            L_fnExcelProductosConteoLote(gs_VersionSistema, gs_IPMaquina, gs_UsuMaquina)
             ToastNotification.Show(Me, "EXPORTACIÓN DE LISTA DE PRODUCTOS CONTEO EXITOSA..!!!",
                                        img, 2000,
                                        eToastGlowColor.Green,

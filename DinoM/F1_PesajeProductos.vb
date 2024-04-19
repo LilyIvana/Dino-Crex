@@ -448,6 +448,7 @@ Public Class F1_PesajeProductos
         _prCrearCarpetaReportes()
         Dim img As Bitmap = New Bitmap(My.Resources.checked, 50, 50)
         If (P_ExportarExcel(RutaGlobal + "\Reporte\Reporte Productos")) Then
+            L_fnExportarPesaje(gs_VersionSistema, gs_IPMaquina, gs_UsuMaquina)
             ToastNotification.Show(Me, "EXPORTACIÓN DE PESAJE DE PRODUCTOS EXITOSA..!!!",
                                        img, 2000,
                                        eToastGlowColor.Green,
@@ -591,6 +592,7 @@ Public Class F1_PesajeProductos
     End Sub
     Private Sub P_GenerarReporte()
         ImprimirCodigoBarras(tbCodigo.Text)
+        L_fnImpresionPesaje(gs_VersionSistema, gs_IPMaquina, gs_UsuMaquina, tbCodigo.Text)
     End Sub
     Private Sub codigoBarrasImprimir()
         Dim dt As DataTable

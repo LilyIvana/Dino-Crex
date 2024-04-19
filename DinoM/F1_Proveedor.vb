@@ -162,6 +162,7 @@ Public Class F1_Proveedor
             .DataSource = dt
             .Refresh()
         End With
+
     End Sub
     Private Sub _prCargarComboLibreriaZona(mCombo As Janus.Windows.GridEX.EditControls.MultiColumnCombo)
         Dim dt As New DataTable
@@ -352,10 +353,13 @@ Public Class F1_Proveedor
             If (CType(cbTipoDoc.DataSource, DataTable).Rows.Count > 0) Then
                 cbTipoDoc.SelectedIndex = 0
             End If
+        Else
+            If (CType(cbTipoDoc.DataSource, DataTable).Rows.Count > 0) Then
+                cbTipoDoc.Value = CType(cbTipoDoc.DataSource, DataTable).Rows.Count
+            End If
         End If
 
         NumiVendedor = 0
-
 
     End Sub
 
@@ -366,14 +370,6 @@ Public Class F1_Proveedor
     End Sub
 
     Public Overrides Function _PMOGrabarRegistro() As Boolean
-
-        'ByRef _ydnumi As String, _ydcod As String,
-        '                                       _yddesc As String, _ydzona As Integer,
-        '                                       _yddct As Integer, _yddctnum As String,
-        '                                       _yddirec As String, _ydtelf1 As String,
-        '                                       _ydtelf2 As String, _ydcat As Integer, _ydest As Integer, _ydlat As Double, _ydlongi As Double, _ydobs As String,
-        '                                       _ydfnac As String, _ydnomfac As String,
-        '                                       _ydtip As Integer, _ydnit As String, _ydfecing As String, _ydultvent As String, _ydimg As String
 
         Dim res As Boolean = L_fnGrabarCLiente(tbCodigoOriginal.Text, tbCodCliente.Text, "", tbNombre.Text, NumiVendedor, cbZona.Value, cbTipoDoc.Value, tbNdoc.Text,
                                                tbDireccion.Text, tbTelf1.Text, tbTelf2.Text, 70, IIf(swEstado.Value = True, 1, 0), _latitud, _longitud, tbObs.Text,
@@ -479,7 +475,7 @@ Public Class F1_Proveedor
         bandera = ef.band
         If (bandera = True) Then
             Dim mensajeError As String = ""
-            Dim res As Boolean = L_fnEliminarProveedores(tbCodigoOriginal.Text, mensajeError)
+            Dim res As Boolean = L_fnEliminarProveedores(tbCodigoOriginal.Text, mensajeError, gs_VersionSistema, gs_IPMaquina, gs_UsuMaquina)
             If res Then
                 _PrEliminarImage()
 
@@ -689,8 +685,6 @@ Public Class F1_Proveedor
     End Sub
 
 #End Region
-
-
 
     Private Sub F1_Clientes_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         _prIniciarTodo()

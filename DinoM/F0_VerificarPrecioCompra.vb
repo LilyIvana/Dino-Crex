@@ -580,6 +580,7 @@ Public Class F0_VerificarPrecioCompra
         _prCrearCarpetaReportes()
         Dim img As Bitmap = New Bitmap(My.Resources.checked, 50, 50)
         If (P_ExportarExcel(RutaGlobal + "\Reporte\Reporte PreciosCosto")) Then
+            L_fnExcelUnaCompra(gs_VersionSistema, gs_IPMaquina, gs_UsuMaquina, tbCodCompra.Text)
             ToastNotification.Show(Me, "EXPORTACIÓN DE LISTA DE PRECIOS DE COSTO EXITOSA..!!!",
                                        img, 2000,
                                        eToastGlowColor.Green,

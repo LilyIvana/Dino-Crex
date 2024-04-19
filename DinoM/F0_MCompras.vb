@@ -1575,7 +1575,8 @@ Public Class F0_MCompras
                                                   tbDescPro.Value, tbIce.Value, tbtotal.Value, CType(grdetalle.DataSource, DataTable),
                                                   _detalleCompras, IIf(swEmision.Value = True, 1, 0),
                                                   tbNFactura.Text, IIf(swConsigna.Value = True, 1, 0),
-                                                  IIf(swRetencion.Value = True, 1, 0), IIf(swMoneda.Value = True, 1, tbTipoCambio.Value))
+                                                  IIf(swRetencion.Value = True, 1, 0), IIf(swMoneda.Value = True, 1, tbTipoCambio.Value),
+                                                  gs_VersionSistema, gs_IPMaquina, gs_UsuMaquina)
             If res Then
 
                 Dim img As Bitmap = New Bitmap(My.Resources.checked, 50, 50)
@@ -1699,7 +1700,7 @@ Public Class F0_MCompras
                                                  tbSubtotalC.Value, tbMdesc.Value, tbDescPro.Value, tbIce.Value, tbtotal.Value,
                                                  CType(grdetalle.DataSource, DataTable), _detalleCompras, IIf(swEmision.Value = True, 1, 0),
                                                  tbNFactura.Text, IIf(swConsigna.Value = True, 1, 0), IIf(swRetencion.Value = True, 1, 0),
-                                                 IIf(swMoneda.Value = True, 1, tbTipoCambio.Value))
+                                                 IIf(swMoneda.Value = True, 1, tbTipoCambio.Value), gs_VersionSistema, gs_IPMaquina, gs_UsuMaquina)
         If res Then
 
             Dim img As Bitmap = New Bitmap(My.Resources.checked, 50, 50)
@@ -2453,7 +2454,7 @@ salirIf:
         bandera = ef.band
         If (bandera = True) Then
             Dim mensajeError As String = ""
-            Dim res As Boolean = L_fnEliminarCompra(tbCodigo.Text, mensajeError)
+            Dim res As Boolean = L_fnEliminarCompra(tbCodigo.Text, mensajeError, gs_VersionSistema, gs_IPMaquina, gs_UsuMaquina)
             If res Then
 
                 Dim img As Bitmap = New Bitmap(My.Resources.checked, 50, 50)
@@ -2608,6 +2609,7 @@ salirIf:
 
     Private Sub btnImprimir_Click(sender As Object, e As EventArgs) Handles btnImprimir.Click
         P_GenerarReporteCompra()
+        L_fnImpresionCompra(gs_VersionSistema, gs_IPMaquina, gs_UsuMaquina, tbCodigo.Text)
     End Sub
 
     Private Sub cbSucursal_ValueChanged(sender As Object, e As EventArgs) Handles cbSucursal.ValueChanged
@@ -2793,6 +2795,7 @@ salirIf:
         _prCrearCarpetaReportes()
         Dim img As Bitmap = New Bitmap(My.Resources.checked, 50, 50)
         If (P_ExportarExcel(RutaGlobal + "\Reporte\Reporte Compras")) Then
+            L_fnExcelCompra(gs_VersionSistema, gs_IPMaquina, gs_UsuMaquina, tbCodigo.Text)
             ToastNotification.Show(Me, "EXPORTACIÓN DE DETALLE DE LA COMPRA EXITOSA...!!!",
                                        img, 2000,
                                        eToastGlowColor.Green,
@@ -2924,19 +2927,30 @@ salirIf:
                 End If
             Next
 
-            Dim frm As New F0_MovimientoProdPeso
-            frm._nameButton = P_Principal.btInvMovimientoProdPeso.Name
-            frm.DesdeModulo = True
-            frm._modulo = P_Principal.FP_INVENTARIO
-            'frm.dtCompra = CType(grdetalle.DataSource, DataTable).Copy
-            frm.dtCompra = dt2.Copy
-            frm.prog = 1
-            frm._IniciarTodo()
-            frm.Observ = "INGRESO DESDE COMPRA " + tbCodigo.Text + "-" + tbProveedor.Text
+            If dt2.Rows.Count > 0 Then
+                L_fnMovProdxPeso(gs_VersionSistema, gs_IPMaquina, gs_UsuMaquina, tbCodigo.Text)
+                Dim frm As New F0_MovimientoProdPeso
+                frm._nameButton = P_Principal.btInvMovimientoProdPeso.Name
+                frm.DesdeModulo = True
+                frm._modulo = P_Principal.FP_INVENTARIO
+                'frm.dtCompra = CType(grdetalle.DataSource, DataTable).Copy
+                frm.dtCompra = dt2.Copy
+                frm.prog = 1
+                frm._IniciarTodo()
+                frm.Observ = "INGRESO DESDE COMPRA " + tbCodigo.Text + "-" + tbProveedor.Text
 
-            frm.StartPosition = FormStartPosition.WindowsDefaultLocation
-            frm.WindowState = FormWindowState.Minimized
-            frm.ShowDialog()
+                frm.StartPosition = FormStartPosition.WindowsDefaultLocation
+                frm.WindowState = FormWindowState.Minimized
+                frm.ShowDialog()
+
+            Else
+                ToastNotification.Show(Me, "NO EXISTE PRODUCTOS X KILO PARA REGISTRAR..!!!",
+                       My.Resources.WARNING, 2000,
+                       eToastGlowColor.Red,
+                       eToastPosition.TopCenter)
+            End If
+
+
 
         Catch ex As Exception
             MostrarMensajeError(ex.Message)

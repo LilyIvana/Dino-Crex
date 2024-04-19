@@ -881,11 +881,12 @@ Public Class F0_MovimientoProdPeso
 
     Public Sub _GuardarNuevo()
         If (cbConcepto.Value = 6) Then
-            '_prGuardarTraspaso()
             Return
         End If
         Dim numi As String = ""
-        Dim res As Boolean = L_prMovimientoChoferGrabarTI003(numi, tbFecha.Value.ToString("yyyy/MM/dd"), cbConcepto.Value, tbObservacion.Text.Trim, cbAlmacenOrigen.Value, 0, 0, CType(grdetalle.DataSource, DataTable), 0)
+        Dim res As Boolean = L_prMovimientoChoferGrabarTI003(numi, tbFecha.Value.ToString("yyyy/MM/dd"), cbConcepto.Value, tbObservacion.Text.Trim,
+                                                             cbAlmacenOrigen.Value, 0, 0, CType(grdetalle.DataSource, DataTable), 0,
+                                                             gs_VersionSistema, gs_IPMaquina, gs_UsuMaquina)
         If res Then
             _prCargarMovimiento()
             _Limpiar()
@@ -902,7 +903,9 @@ Public Class F0_MovimientoProdPeso
 
     End Sub
     Private Sub _prGuardarModificado()
-        Dim res As Boolean = L_prMovimientoModificarTI003(tbCodigo.Text, tbFecha.Value.ToString("yyyy/MM/dd"), cbConcepto.Value, tbObservacion.Text, cbAlmacenOrigen.Value, CType(grdetalle.DataSource, DataTable))
+        Dim res As Boolean = L_prMovimientoModificarTI003(tbCodigo.Text, tbFecha.Value.ToString("yyyy/MM/dd"), cbConcepto.Value,
+                                                          tbObservacion.Text.Trim, cbAlmacenOrigen.Value, CType(grdetalle.DataSource, DataTable),
+                                                          gs_VersionSistema, gs_IPMaquina, gs_UsuMaquina)
         If res Then
             _prCargarMovimiento()
             Modificar = False
@@ -1329,7 +1332,7 @@ salirIf:
         bandera = ef.band
         If (bandera = True) Then
             Dim mensajeError As String = ""
-            Dim res As Boolean = L_prMovimientoEliminarTI003(tbCodigo.Text)
+            Dim res As Boolean = L_prMovimientoEliminarTI003(tbCodigo.Text, gs_VersionSistema, gs_IPMaquina, gs_UsuMaquina)
             If res Then
                 Dim img As Bitmap = New Bitmap(My.Resources.checked, 50, 50)
                 ToastNotification.Show(Me, "Código de Movimiento ".ToUpper + tbCodigo.Text + " eliminado con Exito.".ToUpper,

@@ -1880,7 +1880,7 @@ Public Class F0_Venta2
         Dim dtDetalle As DataTable = rearmarDetalle()
         Dim res As Boolean = L_fnModificarVenta(tbCodigo.Text, tbFechaVenta.Value.ToString("yyyy/MM/dd"), _CodEmpleado, IIf(swTipoVenta.Value = True, 1, 0),
                                                 IIf(swTipoVenta.Value = True, Now.Date.ToString("yyyy/MM/dd"), tbFechaVenc.Value.ToString("yyyy/MM/dd")),
-                                                _CodCliente, IIf(swMoneda.Value = True, 1, 0), tbObservacion.Text, tbMdesc.Value, tbIce.Value, tbTotalBs.Text, dtDetalle, cbSucursal.Value, 0, tabla)
+                                                _CodCliente, IIf(swMoneda.Value = True, 1, 0), tbObservacion.Text.Trim, tbMdesc.Value, tbIce.Value, tbTotalBs.Text, dtDetalle, cbSucursal.Value, 0, tabla)
         If res Then
             If (gb_FacturaEmite) Then
                 L_fnEliminarDatos("TFV001", "fvanumi=" + tbCodigo.Text.Trim)

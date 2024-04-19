@@ -957,7 +957,7 @@ Public Class F0_Movimiento
 
     End Sub
     Private Sub _prGuardarModificado()
-        Dim res As Boolean = L_prMovimientoModificar(tbCodigo.Text, tbFecha.Value.ToString("yyyy/MM/dd"), cbConcepto.Value, tbObservacion.Text,
+        Dim res As Boolean = L_prMovimientoModificar(tbCodigo.Text, tbFecha.Value.ToString("yyyy/MM/dd"), cbConcepto.Value, tbObservacion.Text.Trim,
                                                      cbAlmacenOrigen.Value, CType(grdetalle.DataSource, DataTable), cbMotivo.Value,
                                                      gs_VersionSistema, gs_IPMaquina, gs_UsuMaquina)
         If res Then
@@ -983,15 +983,11 @@ Public Class F0_Movimiento
         If btnGrabar.Enabled = True Then
             _prInhabiliitar()
             If grmovimiento.RowCount > 0 Then
-
                 _prMostrarRegistro(0)
-
             End If
         Else
-
             _modulo.Select()
             Me.Close()
-
         End If
     End Sub
     Public Sub _prCargarIconELiminar()
@@ -1025,9 +1021,7 @@ Public Class F0_Movimiento
                 If (cbConcepto.Value = 2 Or cbConcepto.Value = 6) And grproducto.GetValue("stock") = 0 Then
                     Dim img As Bitmap = New Bitmap(My.Resources.mensaje, 50, 50)
                     ToastNotification.Show(Me, "No puede elegir un producto que tiene stock 0".ToUpper, img, 2500, eToastGlowColor.Red, eToastPosition.BottomCenter)
-
                 Else
-
                     CType(grdetalle.DataSource, DataTable).Rows(pos).Item("iccprod") = grproducto.GetValue("yfnumi")
                     CType(grdetalle.DataSource, DataTable).Rows(pos).Item("producto") = grproducto.GetValue("yfcdprod1")
                     CType(grdetalle.DataSource, DataTable).Rows(pos).Item("stock") = grproducto.GetValue("stock")
@@ -1035,9 +1029,7 @@ Public Class F0_Movimiento
                     CType(grdetalle.DataSource, DataTable).Rows(pos).Item("Presentacion") = grproducto.GetValue("Presentacion")
                     CType(grdetalle.DataSource, DataTable).Rows(pos).Item("yfcprod") = grproducto.GetValue("yfcprod")
                     CType(grdetalle.DataSource, DataTable).Rows(pos).Item("iccant") = 1
-
                     ''    _DesHabilitarProductos()
-
                     _prAddDetalleVenta()
 
                     _prCargarProductos()
@@ -1045,9 +1037,7 @@ Public Class F0_Movimiento
                     grproducto.Focus()
                     grproducto.MoveTo(grproducto.FilterRow)
                     grproducto.Col = 1
-
                 End If
-
             Else
                 If (existe) Then
                     Dim img As Bitmap = New Bitmap(My.Resources.mensaje, 50, 50)

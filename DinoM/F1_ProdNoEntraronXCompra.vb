@@ -74,6 +74,8 @@ Public Class F1_ProdNoEntraronXCompra
         dt = L_ProdQueNoEntraronXCompra()
 
         If dt.Rows.Count > 0 Then
+            L_fnRepProdNoEntraronCompra(gs_VersionSistema, gs_IPMaquina, gs_UsuMaquina)
+
             JGrM_Buscador.DataSource = dt
             JGrM_Buscador.RetrieveStructure()
             JGrM_Buscador.AlternatingColors = True
@@ -239,7 +241,8 @@ Public Class F1_ProdNoEntraronXCompra
 
         nombre = "ListaProdNoEntraronXCompra"
 
-        If (P_ExportarExcel(RutaGlobal + "\Reporte\Reporte Reporte Productos", nombre)) Then
+        If (P_ExportarExcel(RutaGlobal + "\Reporte\Reporte Productos", nombre)) Then
+            L_fnExcelProdNoEntraronCompra(gs_VersionSistema, gs_IPMaquina, gs_UsuMaquina)
             ToastNotification.Show(Me, "EXPORTACIÓN DE PRODUCTOS QUE NO ENTRARON POR COMPRA EXITOSA..!!!",
                                        img, 2000,
                                        eToastGlowColor.Green,

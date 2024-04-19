@@ -109,6 +109,8 @@ Public Class F1_CalculoPedidoSugerido
         Dim dt As DataTable = L_CalculoPedidoSugerido(fechaDesde, fechaHasta, tbCodProv.Text, tbCantSemVentas.Value, tbCantSemPedido.Value)
 
         If dt.Rows.Count > 0 Then
+            L_fnRepPedidoSugeridoSemanas(gs_VersionSistema, gs_IPMaquina, gs_UsuMaquina, tbCodProv.Text)
+
             JGrM_Buscador.DataSource = dt
             JGrM_Buscador.RetrieveStructure()
             JGrM_Buscador.AlternatingColors = True
@@ -364,6 +366,7 @@ Public Class F1_CalculoPedidoSugerido
         _prCrearCarpetaReportes()
         Dim img As Bitmap = New Bitmap(My.Resources.checked, 50, 50)
         If (P_ExportarExcel(RutaGlobal + "\Reporte\Reporte Productos", tbProveedor.Text)) Then
+            L_fnExcelPedidoSugeridoSemanas(gs_VersionSistema, gs_IPMaquina, gs_UsuMaquina, tbCodProv.Text)
             ToastNotification.Show(Me, "EXPORTACIÓN DE PEDIDOS SUGERIDO EXITOSA..!!!",
                                        img, 2000,
                                        eToastGlowColor.Green,

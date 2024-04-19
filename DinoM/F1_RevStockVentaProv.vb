@@ -109,6 +109,8 @@ Public Class F1_RevStockVentaProv
         Dim dt As DataTable = L_RevStockVentaProv(fechaDesde, fechaHasta, tbCantSemVentas.Value, tbCantSemPedido.Value)
 
         If dt.Rows.Count > 0 Then
+            L_fnRepRevStockVentaProv(gs_VersionSistema, gs_IPMaquina, gs_UsuMaquina)
+
             JGrM_Buscador.DataSource = dt
             JGrM_Buscador.RetrieveStructure()
             JGrM_Buscador.AlternatingColors = True
@@ -364,6 +366,7 @@ Public Class F1_RevStockVentaProv
         _prCrearCarpetaReportes()
         Dim img As Bitmap = New Bitmap(My.Resources.checked, 50, 50)
         If (P_ExportarExcel(RutaGlobal + "\Reporte\Reporte Productos")) Then
+            L_fnExcelRevStockVentaProv(gs_VersionSistema, gs_IPMaquina, gs_UsuMaquina)
             ToastNotification.Show(Me, "EXPORTACIÓN DE REV. STOCK-VENTA PROVEEDORES EXITOSA..!!!",
                                        img, 2500,
                                        eToastGlowColor.Green,

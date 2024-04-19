@@ -1207,7 +1207,7 @@ salirIf:
         bandera = ef.band
         If (bandera = True) Then
             Dim mensajeError As String = ""
-            Dim res As Boolean = L_fnEliminarCompra(tbCodigo.Text, mensajeError)
+            Dim res As Boolean = L_fnEliminarCompra(tbCodigo.Text, mensajeError, gs_VersionSistema, gs_IPMaquina, gs_UsuMaquina)
             If res Then
 
 

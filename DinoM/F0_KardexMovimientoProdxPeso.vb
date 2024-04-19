@@ -175,6 +175,7 @@ Public Class F0_KardexMovimientoProdxPeso
 
     Private Sub P_GenerarKardexCliente()
         P_ArmarGrillaDatos()
+        L_fnGenerarKardexProdxPeso(gs_VersionSistema, gs_IPMaquina, gs_UsuMaquina, tbCodigo.Text)
     End Sub
     Private Sub P_ArmarKardex()
 
@@ -659,6 +660,7 @@ Public Class F0_KardexMovimientoProdxPeso
         _prCrearCarpetaReportes()
         Dim img As Bitmap = New Bitmap(My.Resources.checked, 50, 50)
         If (P_ExportarExcel(RutaGlobal + "\Reporte\Reporte Productos")) Then
+            L_fnExportarKardexProdxPeso(gs_VersionSistema, gs_IPMaquina, gs_UsuMaquina, tbCodigo.Text)
             ToastNotification.Show(Me, "EXPORTACIÓN DE KARDEX DE PRODUCTOS POR PESO EXITOSA..!!!",
                                        img, 2000,
                                        eToastGlowColor.Green,

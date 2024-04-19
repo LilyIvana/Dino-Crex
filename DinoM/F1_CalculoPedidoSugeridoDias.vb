@@ -109,6 +109,7 @@ Public Class F1_CalculoPedidoSugeridoDias
         Dim dt As DataTable = L_CalculoPedidoSugeridoDias(fechaDesde, fechaHasta, tbCodProv.Text, tbCantDiasVentas.Value, tbCantDiasPedido.Value)
 
         If dt.Rows.Count > 0 Then
+            L_fnRepPedidoSugeridoDias(gs_VersionSistema, gs_IPMaquina, gs_UsuMaquina, tbCodProv.Text)
 
             For i = 0 To dt.Rows.Count - 1
                 'Dim PedConv1 = Math.Round((dt.Rows(i).Item("PedSugeridoUniNuevo") / dt.Rows(i).Item("Conversion1")), 0)
@@ -117,7 +118,6 @@ Public Class F1_CalculoPedidoSugeridoDias
                 dt.Rows(i).Item("PedidoFinalUni") = IIf(dt.Rows(i).Item("Conversion2") > 1, 0, PedConv1 * dt.Rows(i).Item("Conversion1"))
                 dt.Rows(i).Item("PedidoFinalDisp") = IIf(dt.Rows(i).Item("Conversion2") = 1, 0, PedConv1)
                 'dt.Rows(i).Item("TotalNuevo") = Math.Round((IIf(dt.Rows(i).Item("Conversion2") = 1, (dt.Rows(i).Item("PedidoFinalUni") * dt.Rows(i).Item("CostoNuevo")), (dt.Rows(i).Item("PedidoFinalDisp") * dt.Rows(i).Item("CostoNuevo")))), 2)
-
             Next
 
             JGrM_Buscador.DataSource = dt
@@ -424,6 +424,7 @@ Public Class F1_CalculoPedidoSugeridoDias
         _prCrearCarpetaReportes()
         Dim img As Bitmap = New Bitmap(My.Resources.checked, 50, 50)
         If (P_ExportarExcel(RutaGlobal + "\Reporte\Reporte Productos", tbProveedor.Text)) Then
+            L_fnExcelPedidoSugeridoDias(gs_VersionSistema, gs_IPMaquina, gs_UsuMaquina, tbCodProv.Text)
             ToastNotification.Show(Me, "EXPORTACIÓN DE PEDIDOS SUGERIDO EXITOSA..!!!",
                                        img, 2000,
                                        eToastGlowColor.Green,

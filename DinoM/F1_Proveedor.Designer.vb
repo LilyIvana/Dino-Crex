@@ -50,7 +50,6 @@ Partial Class F1_Proveedor
         Me.SuperTabItem1 = New DevComponents.DotNetBar.SuperTabItem()
         Me.SuperTabControlPanel3 = New DevComponents.DotNetBar.SuperTabControlPanel()
         Me.Panel2 = New System.Windows.Forms.Panel()
-        Me.UsImg = New DinoM.UCImg()
         Me.BtAdicionar = New DevComponents.DotNetBar.ButtonX()
         Me.LabelX15 = New DevComponents.DotNetBar.LabelX()
         Me.SuperTabItem3 = New DevComponents.DotNetBar.SuperTabItem()
@@ -77,6 +76,7 @@ Partial Class F1_Proveedor
         Me.cbZona = New Janus.Windows.GridEX.EditControls.MultiColumnCombo()
         Me.cbTipoDoc = New Janus.Windows.GridEX.EditControls.MultiColumnCombo()
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
+        Me.UsImg = New DinoM.UCImg()
         CType(Me.SuperTabPrincipal, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuperTabPrincipal.SuspendLayout()
         Me.SuperTabControlPanelRegistro.SuspendLayout()
@@ -205,7 +205,7 @@ Partial Class F1_Proveedor
         '
         Me.btnGrabar.TabIndex = 0
         '
-        'btnEliminar
+        'btnNuevo
         '
         '
         'PanelToolBar2
@@ -730,16 +730,6 @@ Partial Class F1_Proveedor
         Me.Panel2.Size = New System.Drawing.Size(430, 284)
         Me.Panel2.TabIndex = 223
         '
-        'UsImg
-        '
-        Me.UsImg.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
-        Me.UsImg.BackColor = System.Drawing.Color.Transparent
-        Me.UsImg.Location = New System.Drawing.Point(100, 14)
-        Me.UsImg.Margin = New System.Windows.Forms.Padding(4)
-        Me.UsImg.Name = "UsImg"
-        Me.UsImg.Size = New System.Drawing.Size(310, 257)
-        Me.UsImg.TabIndex = 222
-        '
         'BtAdicionar
         '
         Me.BtAdicionar.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
@@ -1101,7 +1091,7 @@ Partial Class F1_Proveedor
         Me.btTipoDoc.ColorTable = DevComponents.DotNetBar.eButtonColor.Flat
         Me.btTipoDoc.Image = Global.DinoM.My.Resources.Resources.add
         Me.btTipoDoc.ImageFixedSize = New System.Drawing.Size(25, 23)
-        Me.btTipoDoc.Location = New System.Drawing.Point(290, 48)
+        Me.btTipoDoc.Location = New System.Drawing.Point(387, 48)
         Me.btTipoDoc.Name = "btTipoDoc"
         Me.btTipoDoc.Size = New System.Drawing.Size(28, 23)
         Me.btTipoDoc.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
@@ -1121,7 +1111,7 @@ Partial Class F1_Proveedor
         Me.cbZona.Office2007CustomColor = System.Drawing.Color.DodgerBlue
         Me.cbZona.SelectedIndex = -1
         Me.cbZona.SelectedItem = Nothing
-        Me.cbZona.Size = New System.Drawing.Size(220, 22)
+        Me.cbZona.Size = New System.Drawing.Size(240, 22)
         Me.cbZona.TabIndex = 0
         Me.cbZona.VisualStyle = Janus.Windows.GridEX.VisualStyle.Office2007
         '
@@ -1136,7 +1126,7 @@ Partial Class F1_Proveedor
         Me.cbTipoDoc.Office2007CustomColor = System.Drawing.Color.DodgerBlue
         Me.cbTipoDoc.SelectedIndex = -1
         Me.cbTipoDoc.SelectedItem = Nothing
-        Me.cbTipoDoc.Size = New System.Drawing.Size(144, 22)
+        Me.cbTipoDoc.Size = New System.Drawing.Size(240, 22)
         Me.cbTipoDoc.TabIndex = 2
         Me.cbTipoDoc.VisualStyle = Janus.Windows.GridEX.VisualStyle.Office2007
         '
@@ -1144,6 +1134,16 @@ Partial Class F1_Proveedor
         '
         Me.Timer1.Enabled = True
         Me.Timer1.Interval = 500
+        '
+        'UsImg
+        '
+        Me.UsImg.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
+        Me.UsImg.BackColor = System.Drawing.Color.Transparent
+        Me.UsImg.Location = New System.Drawing.Point(100, 14)
+        Me.UsImg.Margin = New System.Windows.Forms.Padding(4)
+        Me.UsImg.Name = "UsImg"
+        Me.UsImg.Size = New System.Drawing.Size(310, 257)
+        Me.UsImg.TabIndex = 222
         '
         'F1_Proveedor
         '

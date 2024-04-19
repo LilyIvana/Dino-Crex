@@ -642,13 +642,10 @@ Public Class F0_ExpImpStockFisico
 
     Private Sub btnImprimir_Click(sender As Object, e As EventArgs) Handles btnImprimir.Click
         If grDatos.RowCount > 0 Then
-
             _prCrearCarpetaReportes()
             Dim img As Bitmap = New Bitmap(My.Resources.checked, 50, 50)
-
             If (P_ExportarExcel(RutaGlobal + "\Reporte\Reporte Productos", tbUsuario.Text)) Then
-
-
+                L_fnExcelConteoFisico(gs_VersionSistema, gs_IPMaquina, gs_UsuMaquina)
                 ToastNotification.Show(Me, "EXPORTACIÓN DE LISTA DE PRODUCTOS EXITOSA..!!!",
                                        img, 2000,
                                        eToastGlowColor.Green,
@@ -705,8 +702,9 @@ Public Class F0_ExpImpStockFisico
                 grDatos.ClearStructure()
                 Exit Sub
             Else
-                Dim importar As Boolean = L_fnImportarInventarioFisico(InventarioImport)
+                Dim importar As Boolean = L_fnImportarInventarioFisico(InventarioImport, gs_VersionSistema, gs_IPMaquina, gs_UsuMaquina)
                 If importar Then
+
                     ToastNotification.Show(Me, "IMPORTACIÓN DEL INVENTARIO FÍSICO EXITOSA!!! ",
                               My.Resources.OK, 5000,
                               eToastGlowColor.Green,

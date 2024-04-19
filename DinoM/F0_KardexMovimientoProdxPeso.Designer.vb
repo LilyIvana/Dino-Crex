@@ -304,7 +304,7 @@ Partial Class F0_KardexMovimientoProdxPeso
         Me.btExportar.Font = New System.Drawing.Font("Georgia", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btExportar.Image = Global.DinoM.My.Resources.Resources.sheets
         Me.btExportar.ImageFixedSize = New System.Drawing.Size(35, 35)
-        Me.btExportar.Location = New System.Drawing.Point(313, 121)
+        Me.btExportar.Location = New System.Drawing.Point(288, 121)
         Me.btExportar.Name = "btExportar"
         Me.btExportar.Shape = New DevComponents.DotNetBar.RoundRectangleShapeDescriptor(4)
         Me.btExportar.Size = New System.Drawing.Size(126, 49)

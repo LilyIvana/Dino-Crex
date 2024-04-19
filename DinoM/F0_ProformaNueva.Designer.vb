@@ -456,8 +456,8 @@ Partial Class F0_ProformaNueva
         Me.btnProforma.Anchor = System.Windows.Forms.AnchorStyles.None
         Me.btnProforma.ColorTable = DevComponents.DotNetBar.eButtonColor.BlueOrb
         Me.btnProforma.Font = New System.Drawing.Font("Arial", 7.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnProforma.Image = Global.DinoM.My.Resources.Resources.hojaruta
-        Me.btnProforma.ImageFixedSize = New System.Drawing.Size(35, 38)
+        Me.btnProforma.Image = Global.DinoM.My.Resources.Resources.sheets
+        Me.btnProforma.ImageFixedSize = New System.Drawing.Size(32, 35)
         Me.btnProforma.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top
         Me.btnProforma.Location = New System.Drawing.Point(133, 3)
         Me.btnProforma.Name = "btnProforma"

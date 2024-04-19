@@ -426,7 +426,7 @@ Partial Class F1_PesajeProductos
         Me.tbCodigo.Location = New System.Drawing.Point(168, 13)
         Me.tbCodigo.Name = "tbCodigo"
         Me.tbCodigo.PreventEnterBeep = True
-        Me.tbCodigo.Size = New System.Drawing.Size(63, 21)
+        Me.tbCodigo.Size = New System.Drawing.Size(125, 21)
         Me.tbCodigo.TabIndex = 0
         Me.tbCodigo.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         '
