@@ -1617,6 +1617,7 @@ salirIf:
     Private Sub P_GenerarReporte()
         Try
             Dim dtDetalle As DataTable = L_fnDetalleMovimiento(tbCodigo.Text)
+            L_fnBotonImprimir(gs_VersionSistema, gs_IPMaquina, gs_UsuMaquina, tbCodigo.Text, "TI002", "MOVIMIENTO")
 
             If Not IsNothing(P_Global.Visualizador) Then
                 P_Global.Visualizador.Close()
@@ -1657,7 +1658,6 @@ salirIf:
     Private Sub btnMovXpeso_Click(sender As Object, e As EventArgs) Handles btnMovXpeso.Click
         Try
             If cbConcepto.Value = 1 Or cbConcepto.Value = 2 Then
-
                 Dim dt As DataTable = CType(grdetalle.DataSource, DataTable)
                 If Not (dt.Columns.Contains("gramaje")) Then
                     dt.Columns.Add("gramaje")
@@ -1675,30 +1675,39 @@ salirIf:
                         dt2.Rows.Add(dt.Rows(i).ItemArray)
                     End If
                 Next
+                If dt2.Rows.Count > 0 Then
+                    L_fnBotonMovProdxPeso(gs_VersionSistema, gs_IPMaquina, gs_UsuMaquina, tbCodigo.Text, "TI002", "MOVIMIENTO")
 
-                Dim frm As New F0_MovimientoProdPeso
-                frm._nameButton = P_Principal.btInvMovimientoProdPeso.Name
-                frm.DesdeModulo = True
-                frm._modulo = P_Principal.FP_INVENTARIO
-                'frm.dtCompra = CType(grdetalle.DataSource, DataTable).Copy
-                frm.dtCompra = dt2.Copy
-                If cbConcepto.Value = 1 Then ''1=INGRESO
-                    frm.prog = 3
-                ElseIf cbConcepto.Value = 2 Then ''2=SALIDA
-                    frm.prog = 4
+                    Dim frm As New F0_MovimientoProdPeso
+                    frm._nameButton = P_Principal.btInvMovimientoProdPeso.Name
+                    frm.DesdeModulo = True
+                    frm._modulo = P_Principal.FP_INVENTARIO
+                    'frm.dtCompra = CType(grdetalle.DataSource, DataTable).Copy
+                    frm.dtCompra = dt2.Copy
+                    If cbConcepto.Value = 1 Then ''1=INGRESO
+                        frm.prog = 3
+                    ElseIf cbConcepto.Value = 2 Then ''2=SALIDA
+                        frm.prog = 4
+                    End If
+
+                    frm._IniciarTodo()
+                    If cbConcepto.Value = 1 Then ''1=INGRESO
+                        frm.Observ = "DESDE MOVIMIENTO INGRESO " + tbCodigo.Text
+                    ElseIf cbConcepto.Value = 2 Then ''2=SALIDA
+                        frm.Observ = "DESDE MOVIMIENTO SALIDA " + tbCodigo.Text
+                    End If
+
+                    frm.StartPosition = FormStartPosition.WindowsDefaultLocation
+                    frm.WindowState = FormWindowState.Minimized
+
+                    frm.ShowDialog()
+                Else
+                    ToastNotification.Show(Me, "NO EXISTE PRODUCTOS X KILO PARA REGISTRAR..!!!",
+                    My.Resources.WARNING, 2000,
+                    eToastGlowColor.Red,
+                    eToastPosition.TopCenter)
                 End If
 
-                frm._IniciarTodo()
-                If cbConcepto.Value = 1 Then ''1=INGRESO
-                    frm.Observ = "DESDE MOVIMIENTO INGRESO " + tbCodigo.Text
-                ElseIf cbConcepto.Value = 2 Then ''2=SALIDA
-                    frm.Observ = "DESDE MOVIMIENTO SALIDA " + tbCodigo.Text
-                End If
-
-                frm.StartPosition = FormStartPosition.WindowsDefaultLocation
-                frm.WindowState = FormWindowState.Minimized
-
-                frm.ShowDialog()
             Else
                 MostrarMensajeError("NO SE PUEDE REGISTRAR MOVIMIENTO DE PRODUCTOS POR PESO  CUANDO EL CONCEPTO ES TRASPASO SALIDA")
             End If
@@ -1713,6 +1722,7 @@ salirIf:
             _prCrearCarpetaReportes()
             Dim img As Bitmap = New Bitmap(My.Resources.checked, 50, 50)
             If (P_ExportarExcel(RutaGlobal + "\Reporte\Reporte Productos")) Then
+                L_fnBotonExportar(gs_VersionSistema, gs_IPMaquina, gs_UsuMaquina, tbCodigo.Text, "TI002", "MOVIMIENTO")
                 ToastNotification.Show(Me, "EXPORTACIÓN DE DETALLE DE MOVIMIENTO EXITOSA..!!!",
                                            img, 2000,
                                            eToastGlowColor.Green,

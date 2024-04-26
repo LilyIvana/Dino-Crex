@@ -85,6 +85,7 @@ Public Class Pr_EstadoCuentasProveedores
 
                 Dim objrep As New R_EstadoCuentasCompra
                 objrep.SetDataSource(_dt)
+                L_fnBotonGenerar(gs_VersionSistema, gs_IPMaquina, gs_UsuMaquina, tbCodigoProveedor.Text, "ESTADO CUENTAS PROVEEDORES", "ESTADO CUENTAS PROVEEDORES")
                 Dim fechaI As String = tbFechaI.Value.ToString("dd/MM/yyyy")
                 Dim fechaF As String = tbFechaF.Value.ToString("dd/MM/yyyy")
                 objrep.SetParameterValue("usuario", L_Usuario)

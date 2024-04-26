@@ -1479,7 +1479,7 @@ salirIf:
     Private Sub P_GenerarReporte()
         Try
             Dim dtDetalle As DataTable = L_fnDetalleMovimientoTI003(tbCodigo.Text)
-
+            L_fnBotonImprimir(gs_VersionSistema, gs_IPMaquina, gs_UsuMaquina, tbCodigo.Text, "TI003", "MOVIMIENTO DE PROD. POR PESO")
             If Not IsNothing(P_Global.Visualizador) Then
                 P_Global.Visualizador.Close()
             End If
@@ -1525,6 +1525,7 @@ salirIf:
             _prCrearCarpetaReportes()
             Dim img As Bitmap = New Bitmap(My.Resources.checked, 50, 50)
             If (P_ExportarExcel(RutaGlobal + "\Reporte\Reporte Productos")) Then
+                L_fnBotonExportar(gs_VersionSistema, gs_IPMaquina, gs_UsuMaquina, tbCodigo.Text, "TI003", "MOVIMIENTO DE PROD. POR PESO")
                 ToastNotification.Show(Me, "EXPORTACIÓN DE DETALLE DE MOVIMIENTO EXITOSA..!!!",
                                            img, 2000,
                                            eToastGlowColor.Green,

@@ -634,7 +634,10 @@ Public Class F0_CierreCaja
             Dim numi As String = ""
             Dim res As Boolean = L_fnGrabarCaja(numi, tbFecha.Value.ToString("yyyy/MM/dd"), tbTotalGral.Value, tbTCredito.Value,
                                                 tbTTarjeta.Value, tbTQR.Value, tbTContado.Value, tbTDeposito.Value, tbTEfectivo.Value,
-                                                tbTDiferencia.Value, tbTPagos.Value, cbTurno.Text, tbMontoInicial.Value, tbTIngresos.Value, tbTEgresos.Value, IIf(swEstado.Value = True, 1, 0), Tb_TipoCambio.Value, tbObservacion.Text, CType(Dgv_Cortes.DataSource, DataTable), CType(Dgv_Depositos.DataSource, DataTable), gs_NroCaja)
+                                                tbTDiferencia.Value, tbTPagos.Value, cbTurno.Text, tbMontoInicial.Value, tbTIngresos.Value,
+                                                tbTEgresos.Value, IIf(swEstado.Value = True, 1, 0), Tb_TipoCambio.Value, tbObservacion.Text.Trim,
+                                                CType(Dgv_Cortes.DataSource, DataTable), CType(Dgv_Depositos.DataSource, DataTable), gs_NroCaja,
+                                                gs_VersionSistema, gs_IPMaquina, gs_UsuMaquina)
             If res Then
 
                 Dim img As Bitmap = New Bitmap(My.Resources.checked, 50, 50)
@@ -673,7 +676,10 @@ Public Class F0_CierreCaja
                 Dim TContado As Double = tbTContado.Value - tbTTarjeta.Value - tbTQR.Value
                 Dim res As Boolean = L_fnModificarCaja(TbCodigo.Text, tbFecha.Value.ToString("yyyy/MM/dd"), tbTotalGral.Value, tbTCredito.Value,
                                                     tbTTarjeta.Value, tbTQR.Value, TContado, tbTDeposito.Value, tbTEfectivo.Value,
-                                                    tbTDiferencia.Value, tbTPagos.Value, cbTurno.Text, tbMontoInicial.Value, tbTIngresos.Value, tbTEgresos.Value, Tb_TipoCambio.Value, tbObservacion.Text, CType(Dgv_Cortes.DataSource, DataTable), CType(Dgv_Depositos.DataSource, DataTable), dtventas, gs_NroCaja)
+                                                    tbTDiferencia.Value, tbTPagos.Value, cbTurno.Text, tbMontoInicial.Value, tbTIngresos.Value,
+                                                    tbTEgresos.Value, Tb_TipoCambio.Value, tbObservacion.Text.Trim,
+                                                    CType(Dgv_Cortes.DataSource, DataTable), CType(Dgv_Depositos.DataSource, DataTable),
+                                                    dtventas, gs_NroCaja, gs_VersionSistema, gs_IPMaquina, gs_UsuMaquina)
                 If res Then
 
                     Dim img As Bitmap = New Bitmap(My.Resources.checked, 50, 50)
@@ -960,6 +966,7 @@ Public Class F0_CierreCaja
     Private Sub _prGenerarReporte()
         Try
             Dim dtCortes As DataTable = CType(Dgv_Cortes.DataSource, DataTable)
+            L_fnBotonImprimir(gs_VersionSistema, gs_IPMaquina, gs_UsuMaquina, TbCodigo.Text, "TCC001", "CIERRE DE CAJA")
             If Not IsNothing(P_Global.Visualizador) Then
                 P_Global.Visualizador.Close()
             End If
@@ -1232,7 +1239,7 @@ Public Class F0_CierreCaja
                 bandera = ef.band
                 If (bandera = True) Then
                     Dim mensajeError As String = ""
-                    Dim res As Boolean = L_fnEliminarCaja(TbCodigo.Text, tbFecha.Value)
+                    Dim res As Boolean = L_fnEliminarCaja(TbCodigo.Text, tbFecha.Value, gs_VersionSistema, gs_IPMaquina, gs_UsuMaquina)
                     If res Then
                         Dim img As Bitmap = New Bitmap(My.Resources.checked, 50, 50)
                         ToastNotification.Show(Me, "Código de Caja ".ToUpper + TbCodigo.Text + " eliminado con Exito.".ToUpper,

@@ -67,6 +67,7 @@ Public Class Pr_EstadoCuentasProveedoresTodos
             _prInterpretarDatos(_dt)
 
             If (_dt.Rows.Count > 0) Then
+                L_fnBotonGenerar(gs_VersionSistema, gs_IPMaquina, gs_UsuMaquina, tbCodigoProveedor.Text, "ESTADO CUENTAS  TODOS", "ESTADO CUENTAS  TODOS")
 
                 Dim objrep As New R_EstadoCuentasCompraTodos
                 objrep.SetDataSource(_dt)

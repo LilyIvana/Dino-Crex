@@ -2383,6 +2383,7 @@ Partial Class F0_Venta2
         Me.btnBitacora.TabIndex = 18
         Me.btnBitacora.Text = "DESCUENTOS"
         Me.btnBitacora.TextColor = System.Drawing.Color.White
+        Me.btnBitacora.Visible = False
         '
         'SwDescuentoProveedor
         '

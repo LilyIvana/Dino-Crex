@@ -2790,6 +2790,7 @@ Public Class F0_ProformaNueva
 
                 Dim img As Bitmap = New Bitmap(My.Resources.checked, 50, 50)
                 If (P_ExportarExcel(RutaGlobal + "\Reporte\Reporte Productos", "Proforma")) Then
+                    L_fnBotonImprimirExportar(gs_VersionSistema, gs_IPMaquina, gs_UsuMaquina, 0, "PROFORMA", "PROFORMA")
                     ToastNotification.Show(Me, "SE EXPORTÓ LA PROFORMA DE FORMA EXITOSA..!!!",
                                                img, 3000,
                                                eToastGlowColor.Green,

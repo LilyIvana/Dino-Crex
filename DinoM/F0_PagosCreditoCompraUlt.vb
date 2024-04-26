@@ -739,7 +739,8 @@ Public Class F0_PagosCreditoCompraUlt
         Dim numi As String = ""
         Dim dtCobro As DataTable = L_fnCobranzasObtenerLosPagosCompra(-1)
         _prInterpretarDatosCobranza(dtCobro)
-        Dim res As Boolean = L_fnGrabarCobranzaCompras(numi, tbfecha.Value.ToString("yyyy/MM/dd"), 0, tbObservacion.Text, dtCobro)
+        Dim res As Boolean = L_fnGrabarCobranzaCompras(numi, tbfecha.Value.ToString("yyyy/MM/dd"), 0, tbObservacion.Text, dtCobro,
+                                                       gs_VersionSistema, gs_IPMaquina, gs_UsuMaquina)
 
 
         If res Then
@@ -797,6 +798,8 @@ Public Class F0_PagosCreditoCompraUlt
     End Sub
     Private Sub P_GenerarReporte()
         Dim dt As DataTable = L_fnCobranzasReporteCompras(tbnrodoc.Text)
+        L_fnBotonImprimir(gs_VersionSistema, gs_IPMaquina, gs_UsuMaquina, tbnrodoc.Text, "TC0013", "PAGOS COMPRA A CRÉDITO")
+
         Dim total As Double = dt.Compute("SUM(importe)", "")
         If Not IsNothing(P_Global.Visualizador) Then
             P_Global.Visualizador.Close()
@@ -945,8 +948,8 @@ Public Class F0_PagosCreditoCompraUlt
             bandera = ef.band
             If (bandera = True) Then
                 Dim mensajeError As String = ""
-                Dim res As Boolean = L_fnEliminarCobranzaCompras(tbnrodoc.Text, mensajeError)
-                If res Then
+            Dim res As Boolean = L_fnEliminarCobranzaCompras(tbnrodoc.Text, mensajeError, gs_VersionSistema, gs_IPMaquina, gs_UsuMaquina)
+            If res Then
 
                 Dim img As Bitmap = New Bitmap(My.Resources.checked, 50, 50)
 
@@ -1140,7 +1143,13 @@ Public Class F0_PagosCreditoCompraUlt
 
     Private Sub btnImprimir_Click(sender As Object, e As EventArgs) Handles btnImprimir.Click
         If (Not _fnAccesible()) Then
-            P_GenerarReporte()
+            If tbnrodoc.Text <> String.Empty Then
+                P_GenerarReporte()
+            Else
+                Dim img As Bitmap = New Bitmap(My.Resources.mensaje, 50, 50)
+                ToastNotification.Show(Me, "No puede imprimir porque no existe pagos grabados".ToUpper, img, 2000,
+                                       eToastGlowColor.Red, eToastPosition.BottomCenter)
+            End If
         End If
     End Sub
    

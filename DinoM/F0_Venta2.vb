@@ -1792,7 +1792,9 @@ Public Class F0_Venta2
                                                  TbEmail.Text, CbTipoDoc.Value, 1, tbComplemento.Text, tbCel.Text, NroFact, gb_cufSifac, "A-" + _CodCliente.ToString,
                                                  CStr(Format(a, "####0.00")), CStr(Format(b, "####0.00")), CStr(Format(c, "####0.00")), CStr(Format(d, "####0.00")),
                                                  CStr(Format(e, "####0.00")), CStr(Format(f, "####0.00")), CStr(Format(g, "####0.00")), CStr(Format(h, "####0.00")),
-                                                 QrUrl, FactUrl, SegundaLeyenda, TerceraLeyenda, Cudf, Anhio, IIf(gb_FacturaEmite = True, 1, 0))
+                                                 QrUrl, FactUrl, SegundaLeyenda, TerceraLeyenda, Cudf, Anhio, IIf(gb_FacturaEmite = True, 1, 0), gs_VersionSistema,
+                                                 gs_IPMaquina, gs_UsuMaquina)
+
             If res Then
                 'Emite factura
                 If (gb_FacturaEmite) Then
@@ -4109,7 +4111,7 @@ salirIf:
             bandera = ef.band
             If (bandera = True) Then
                 Dim mensajeError As String = ""
-                Dim res As Boolean = L_fnEliminarVenta(tbCodigo.Text, mensajeError, Programa)
+                Dim res As Boolean = L_fnEliminarVenta(tbCodigo.Text, mensajeError, Programa, gs_VersionSistema, gs_IPMaquina, gs_UsuMaquina)
                 If res Then
                     Dim img As Bitmap = New Bitmap(My.Resources.checked, 50, 50)
                     ToastNotification.Show(Me, "Código de Venta ".ToUpper + tbCodigo.Text + " eliminado con Exito.".ToUpper,
@@ -4221,22 +4223,14 @@ salirIf:
     Private Sub btnImprimir_Click(sender As Object, e As EventArgs) Handles btnImprimir.Click
         Try
             If (Not _fnAccesible()) Then
-
                 'Dim dt As DataTable = L_fnRecuperarFactura(tbCodigo.Text)
-
                 'Dim url As String = dt.Rows(0).Item("fvaFactUrl").ToString
                 'System.Diagnostics.Process.Start(url)
-
                 '_prImiprimirNotaVenta(tbCodigo.Text)
 
-
-
-
-
                 F0_VentasSupermercado.P_prImprimirFacturaNueva(tbCodigo.Text, True, False)
-
                 _prImiprimirNotaVenta(tbCodigo.Text)
-
+                L_fnBotonImprimir(gs_VersionSistema, gs_IPMaquina, gs_UsuMaquina, tbCodigo.Text, "TV001", "VENTA")
 
                 'If (gb_FacturaEmite) Then
                 '    If tbCodigo.Text = String.Empty Then
@@ -4986,8 +4980,6 @@ salirIf:
             NumFactura = maxNFac + 1
         End If
 
-
-
         Emenvio.numeroFactura = NumFactura
         Emenvio.nombreRazonSocial = TbNombre1.Text.ToString()
         Emenvio.codigoTipoDocumentoIdentidad = TDoc
@@ -5092,7 +5084,7 @@ salirIf:
                     NumFactura = maxNFac + 2
                 Else
                     Dim maxNFac As Integer = dtmax.Rows(0).Item("fvanfac")
-                    NumFactura = 108
+                    NumFactura = maxNFac + 2
                 End If
 
                 Dim FechaI = Date.Today.AddDays(-1).ToString("yyyy-MM-dd")
@@ -5422,21 +5414,29 @@ salirIf:
                 End If
             Next
 
+            If dt2.Rows.Count > 0 Then
+                L_fnBotonMovProdxPeso(gs_VersionSistema, gs_IPMaquina, gs_UsuMaquina, tbCodigo.Text, "TV001", "VENTA")
 
-            Dim frm As New F0_MovimientoProdPeso
-            frm._nameButton = P_Principal.btInvMovimientoProdPeso.Name
-            frm.DesdeModulo = True
-            frm._modulo = P_Principal.FP_INVENTARIO
-            'frm.dtCompra = CType(grdetalle.DataSource, DataTable).Copy
-            frm.dtCompra = dt2.Copy
-            frm.prog = 2
-            frm._IniciarTodo()
-            frm.Observ = "SALIDA DESDE VENTA " + tbCodigo.Text
+                Dim frm As New F0_MovimientoProdPeso
+                frm._nameButton = P_Principal.btInvMovimientoProdPeso.Name
+                frm.DesdeModulo = True
+                frm._modulo = P_Principal.FP_INVENTARIO
+                'frm.dtCompra = CType(grdetalle.DataSource, DataTable).Copy
+                frm.dtCompra = dt2.Copy
+                frm.prog = 2
+                frm._IniciarTodo()
+                frm.Observ = "SALIDA DESDE VENTA " + tbCodigo.Text
 
-            frm.StartPosition = FormStartPosition.WindowsDefaultLocation
-            frm.WindowState = FormWindowState.Minimized
+                frm.StartPosition = FormStartPosition.WindowsDefaultLocation
+                frm.WindowState = FormWindowState.Minimized
 
-            frm.ShowDialog()
+                frm.ShowDialog()
+            Else
+                ToastNotification.Show(Me, "NO EXISTE PRODUCTOS X KILO PARA REGISTRAR..!!!",
+                My.Resources.WARNING, 2000,
+                eToastGlowColor.Red,
+                eToastPosition.TopCenter)
+            End If
 
         Catch ex As Exception
             MostrarMensajeError(ex.Message)

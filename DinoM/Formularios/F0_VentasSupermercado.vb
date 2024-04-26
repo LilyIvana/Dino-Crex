@@ -1442,7 +1442,9 @@ Public Class F0_VentasSupermercado
                                                  NroFact, gb_cufSifac, "B-" + IdNit, CStr(Format(a, "####0.00")),
                                                  CStr(Format(b, "####0.00")), CStr(Format(c, "####0.00")), CStr(Format(d, "####0.00")), CStr(Format(e, "####0.00")),
                                                  CStr(Format(f, "####0.00")), CStr(Format(g, "####0.00")), CStr(Format(h, "####0.00")), QrUrl, FactUrl,
-                                                 SegundaLeyenda, TerceraLeyenda, Cudf, Anhio, IIf(gb_FacturaEmite = True, 1, 0))
+                                                 SegundaLeyenda, TerceraLeyenda, Cudf, Anhio, IIf(gb_FacturaEmite = True, 1, 0), gs_VersionSistema,
+                                                 gs_IPMaquina, gs_UsuMaquina)
+
             If res Then
                 'Emite factura
                 If (gb_FacturaEmite) Then
@@ -4144,54 +4146,59 @@ Public Class F0_VentasSupermercado
     End Function
 
     Public Function ListarFacturas(tokenObtenido As String, NPventa As String, fechaI As String, fechaF As String) As List(Of ListarFacturas.Data)
-        Dim pagina = "1"
-        Dim cantpag = "1000"
-        Dim api = New DBApi()
+        Try
+            Dim pagina = "1"
+            Dim cantpag = "1000"
+            Dim api = New DBApi()
 
-        'Dim url = gb_url + "/api/v2/facturas-emitidas/1/471110/1/100"
-        Dim url = gb_url + "/api/v2/facturas/" + NPventa + "/471110/1/" + fechaI + "/" + fechaF + "/1/1000"
+            'Dim url = gb_url + "/api/v2/facturas-emitidas/1/471110/1/100"
+            Dim url = gb_url + "/api/v2/facturas/" + NPventa + "/471110/1/" + fechaI + "/" + fechaF + "/1/1000"
 
 
-        Dim headers = New List(Of Parametro) From {
+            Dim headers = New List(Of Parametro) From {
             New Parametro("Authorization", "Bearer " + tokenObtenido),
             New Parametro("Content-Type", "Accept:application/json; charset=utf-8")
         }
 
-        Dim parametros = New List(Of Parametro)
+            Dim parametros = New List(Of Parametro)
 
-        Dim response = api.MGet(url, headers, parametros)
+            Dim response = api.MGet(url, headers, parametros)
 
-        Dim result = JsonConvert.DeserializeObject(Of RespListarFacturas)(response)
-        Dim resultError = JsonConvert.DeserializeObject(Of ListarFacturasError)(response)
+            Dim result = JsonConvert.DeserializeObject(Of RespListarFacturas)(response)
+            Dim resultError = JsonConvert.DeserializeObject(Of ListarFacturasError)(response)
 
-        Dim codigo = result.meta.code
-        Dim dt = result.data
-
-
-        'If codigo = 200 Then
+            Dim codigo = result.meta.code
+            Dim dt = result.data
 
 
-        'ElseIf codigo = 406 Or codigo = 409 Or codigo = 500 Then
+            'If codigo = 200 Then
 
-        '    Dim details = JsonConvert.SerializeObject(resultError.errors.details)
-        '    Dim notifi = New notifi
 
-        '    notifi.tipo = 2
-        '    notifi.Context = "SIFAC".ToUpper
-        '    notifi.Header = "Error de solicitud - Código: " + codigo.ToString() & vbCrLf & " " & vbCrLf & details & vbCrLf & vbCrLf & " " & vbCrLf & "Espere".ToUpper
-        '    notifi.ShowDialog()
-        '    'MsgBox("Error de solicitud: " + codigo.ToString() & vbCrLf & " " & vbCrLf & details & vbCrLf & siat & vbCrLf & " " & vbCrLf & "La factura no pudo enviarse al Siat")
-        'ElseIf codigo = 400 Or codigo = 401 Or codigo = 404 Or codigo = 405 Or codigo = 422 Then
-        '    Dim details = JsonConvert.SerializeObject(resultError.errors.details)
-        '    Dim notifi = New notifi
+            'ElseIf codigo = 406 Or codigo = 409 Or codigo = 500 Then
 
-        '    notifi.tipo = 2
-        '    notifi.Context = "SIFAC".ToUpper
-        '    notifi.Header = "Error de solicitud - Código: " + codigo.ToString() & vbCrLf & " " & vbCrLf & details & vbCrLf & " " & vbCrLf & "Espere".ToUpper
-        '    notifi.ShowDialog()
-        '    'MsgBox("Error de solicitud: " + codigo.ToString() & vbCrLf & " " & vbCrLf & details & vbCrLf & " " & vbCrLf & "La factura no pudo enviarse al Siat")
-        'End If
-        Return dt
+            '    Dim details = JsonConvert.SerializeObject(resultError.errors.details)
+            '    Dim notifi = New notifi
+
+            '    notifi.tipo = 2
+            '    notifi.Context = "SIFAC".ToUpper
+            '    notifi.Header = "Error de solicitud - Código: " + codigo.ToString() & vbCrLf & " " & vbCrLf & details & vbCrLf & vbCrLf & " " & vbCrLf & "Espere".ToUpper
+            '    notifi.ShowDialog()
+            '    'MsgBox("Error de solicitud: " + codigo.ToString() & vbCrLf & " " & vbCrLf & details & vbCrLf & siat & vbCrLf & " " & vbCrLf & "La factura no pudo enviarse al Siat")
+            'ElseIf codigo = 400 Or codigo = 401 Or codigo = 404 Or codigo = 405 Or codigo = 422 Then
+            '    Dim details = JsonConvert.SerializeObject(resultError.errors.details)
+            '    Dim notifi = New notifi
+
+            '    notifi.tipo = 2
+            '    notifi.Context = "SIFAC".ToUpper
+            '    notifi.Header = "Error de solicitud - Código: " + codigo.ToString() & vbCrLf & " " & vbCrLf & details & vbCrLf & " " & vbCrLf & "Espere".ToUpper
+            '    notifi.ShowDialog()
+            '    'MsgBox("Error de solicitud: " + codigo.ToString() & vbCrLf & " " & vbCrLf & details & vbCrLf & " " & vbCrLf & "La factura no pudo enviarse al Siat")
+            'End If
+            Return dt
+        Catch ex As Exception
+            MsgBox(ex.Message)
+        End Try
+
     End Function
 
     Private Sub btnExportar_Click(sender As Object, e As EventArgs) Handles btnExportar.Click

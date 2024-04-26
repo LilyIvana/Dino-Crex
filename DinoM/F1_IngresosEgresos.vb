@@ -242,7 +242,8 @@ Public Class F1_IngresosEgresos
     Public Overrides Function _PMOGrabarRegistro() As Boolean
 
         Dim tipo As Integer = IIf(swTipo.Value = True, 1, 0)
-        Dim res As Boolean = L_prIngresoEgresoGrabar(tbcodigo.Text, dpFecha.Value, tipo, tbDescripcion.Text, cbConcepto.Value, tbMonto.Value, tbObservacion.Text, gs_NroCaja)
+        Dim res As Boolean = L_prIngresoEgresoGrabar(tbcodigo.Text, dpFecha.Value, tipo, tbDescripcion.Text, cbConcepto.Value, tbMonto.Value,
+                                                     tbObservacion.Text.Trim, gs_NroCaja, gs_VersionSistema, gs_IPMaquina, gs_UsuMaquina)
         If res Then
             Modificado = False
             _PMOLimpiar()
@@ -255,10 +256,12 @@ Public Class F1_IngresosEgresos
         Dim res As Boolean
         Dim tipo As Integer = IIf(swTipo.Value = True, 1, 0)
         If (Modificado = False) Then
-            res = L_prIngresoEgresoModificar(tbcodigo.Text, dpFecha.Value, tipo, tbDescripcion.Text, cbConcepto.Value, tbMonto.Value, tbObservacion.Text)
+            res = L_prIngresoEgresoModificar(tbcodigo.Text, dpFecha.Value, tipo, tbDescripcion.Text, cbConcepto.Value, tbMonto.Value,
+                                             tbObservacion.Text.Trim, gs_VersionSistema, gs_IPMaquina, gs_UsuMaquina)
 
         Else
-            res = L_prIngresoEgresoModificar(tbcodigo.Text, dpFecha.Value, tipo, tbDescripcion.Text, cbConcepto.Value, tbMonto.Value, tbObservacion.Text)
+            res = L_prIngresoEgresoModificar(tbcodigo.Text, dpFecha.Value, tipo, tbDescripcion.Text, cbConcepto.Value, tbMonto.Value,
+                                             tbObservacion.Text.Trim, gs_VersionSistema, gs_IPMaquina, gs_UsuMaquina)
         End If
         If res Then
             Modificado = False
@@ -277,7 +280,7 @@ Public Class F1_IngresosEgresos
             Dim result As eTaskDialogResult = TaskDialog.Show(info)
             If result = eTaskDialogResult.Yes Then
                 Dim mensajeError As String = ""
-                Dim res As Boolean = L_prIngresoEgresoBorrar(tbcodigo.Text, mensajeError)
+                Dim res As Boolean = L_prIngresoEgresoBorrar(tbcodigo.Text, mensajeError, gs_VersionSistema, gs_IPMaquina, gs_UsuMaquina)
                 If res Then
                     ToastNotification.Show(Me, "Codigo de Ingreso/Egreso ".ToUpper + tbcodigo.Text + " eliminado con Exito.".ToUpper, My.Resources.GRABACION_EXITOSA, 5000, eToastGlowColor.Green, eToastPosition.TopCenter)
                     _PMFiltrar()
@@ -350,6 +353,8 @@ Public Class F1_IngresosEgresos
         End If
 
     End Sub
+
+
 
 
 

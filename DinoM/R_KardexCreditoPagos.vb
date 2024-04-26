@@ -65,6 +65,7 @@ Public Class R_KardexCreditoPagos
         End If
         _prInterpretarDatos(_dt)
         If (_dt.Rows.Count > 0) Then
+            L_fnBotonGenerar(gs_VersionSistema, gs_IPMaquina, gs_UsuMaquina, 0, "ESTADO CUENTAS COMPRAS", "ESTADO CUENTAS COMPRAS")
 
             Dim objrep As New R_HisotorialCobrosVentasCredito
             objrep.SetDataSource(_dt)

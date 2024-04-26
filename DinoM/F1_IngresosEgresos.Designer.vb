@@ -29,6 +29,8 @@ Partial Class F1_IngresosEgresos
         Me.TableLayoutPanel1 = New System.Windows.Forms.TableLayoutPanel()
         Me.GroupPanel1 = New DevComponents.DotNetBar.Controls.GroupPanel()
         Me.Panel3 = New System.Windows.Forms.Panel()
+        Me.lbNroCaja = New System.Windows.Forms.Label()
+        Me.LabelX6 = New DevComponents.DotNetBar.LabelX()
         Me.LabelX4 = New DevComponents.DotNetBar.LabelX()
         Me.tbIdCaja = New DevComponents.DotNetBar.Controls.TextBoxX()
         Me.btConcepto = New DevComponents.DotNetBar.ButtonX()
@@ -47,8 +49,6 @@ Partial Class F1_IngresosEgresos
         Me.swTipo = New DevComponents.DotNetBar.Controls.SwitchButton()
         Me.LabelX9 = New DevComponents.DotNetBar.LabelX()
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
-        Me.lbNroCaja = New System.Windows.Forms.Label()
-        Me.LabelX6 = New DevComponents.DotNetBar.LabelX()
         CType(Me.SuperTabPrincipal, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuperTabPrincipal.SuspendLayout()
         Me.SuperTabControlPanelRegistro.SuspendLayout()
@@ -321,6 +321,34 @@ Partial Class F1_IngresosEgresos
         Me.Panel3.Name = "Panel3"
         Me.Panel3.Size = New System.Drawing.Size(1310, 191)
         Me.Panel3.TabIndex = 227
+        '
+        'lbNroCaja
+        '
+        Me.lbNroCaja.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold)
+        Me.lbNroCaja.ForeColor = System.Drawing.Color.FromArgb(CType(CType(45, Byte), Integer), CType(CType(59, Byte), Integer), CType(CType(66, Byte), Integer))
+        Me.lbNroCaja.Location = New System.Drawing.Point(186, 160)
+        Me.lbNroCaja.Name = "lbNroCaja"
+        Me.lbNroCaja.Size = New System.Drawing.Size(60, 17)
+        Me.lbNroCaja.TabIndex = 384
+        Me.lbNroCaja.Text = "Label1"
+        Me.lbNroCaja.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        '
+        'LabelX6
+        '
+        Me.LabelX6.AutoSize = True
+        Me.LabelX6.BackColor = System.Drawing.Color.Transparent
+        '
+        '
+        '
+        Me.LabelX6.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.LabelX6.Font = New System.Drawing.Font("Georgia", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LabelX6.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(85, Byte), Integer), CType(CType(139, Byte), Integer))
+        Me.LabelX6.Location = New System.Drawing.Point(43, 160)
+        Me.LabelX6.Name = "LabelX6"
+        Me.LabelX6.SingleLineColor = System.Drawing.SystemColors.Control
+        Me.LabelX6.Size = New System.Drawing.Size(65, 16)
+        Me.LabelX6.TabIndex = 383
+        Me.LabelX6.Text = "Nro. Caja:"
         '
         'LabelX4
         '
@@ -595,34 +623,6 @@ Partial Class F1_IngresosEgresos
         '
         Me.Timer1.Enabled = True
         Me.Timer1.Interval = 500
-        '
-        'lbNroCaja
-        '
-        Me.lbNroCaja.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold)
-        Me.lbNroCaja.ForeColor = System.Drawing.Color.FromArgb(CType(CType(45, Byte), Integer), CType(CType(59, Byte), Integer), CType(CType(66, Byte), Integer))
-        Me.lbNroCaja.Location = New System.Drawing.Point(186, 160)
-        Me.lbNroCaja.Name = "lbNroCaja"
-        Me.lbNroCaja.Size = New System.Drawing.Size(60, 17)
-        Me.lbNroCaja.TabIndex = 384
-        Me.lbNroCaja.Text = "Label1"
-        Me.lbNroCaja.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
-        '
-        'LabelX6
-        '
-        Me.LabelX6.AutoSize = True
-        Me.LabelX6.BackColor = System.Drawing.Color.Transparent
-        '
-        '
-        '
-        Me.LabelX6.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.LabelX6.Font = New System.Drawing.Font("Georgia", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelX6.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(85, Byte), Integer), CType(CType(139, Byte), Integer))
-        Me.LabelX6.Location = New System.Drawing.Point(43, 160)
-        Me.LabelX6.Name = "LabelX6"
-        Me.LabelX6.SingleLineColor = System.Drawing.SystemColors.Control
-        Me.LabelX6.Size = New System.Drawing.Size(65, 16)
-        Me.LabelX6.TabIndex = 383
-        Me.LabelX6.Text = "Nro. Caja:"
         '
         'F1_IngresosEgresos
         '

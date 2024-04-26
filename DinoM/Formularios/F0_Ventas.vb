@@ -2294,12 +2294,9 @@ salirIf:
         bandera = ef.band
         If (bandera = True) Then
             Dim mensajeError As String = ""
-            Dim res As Boolean = L_fnEliminarVenta(tbCodigo.Text, mensajeError, P_Principal.btVentaServicios.Text)
+            Dim res As Boolean = L_fnEliminarVenta(tbCodigo.Text, mensajeError, P_Principal.btVentaServicios.Text, gs_VersionSistema, gs_IPMaquina, gs_UsuMaquina)
             If res Then
-
-
                 Dim img As Bitmap = New Bitmap(My.Resources.checked, 50, 50)
-
                 ToastNotification.Show(Me, "Código de Venta ".ToUpper + tbCodigo.Text + " eliminado con Exito.".ToUpper,
                                           img, 2000,
                                           eToastGlowColor.Green,

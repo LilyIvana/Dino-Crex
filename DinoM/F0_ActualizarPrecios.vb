@@ -397,7 +397,7 @@ Public Class F0_ActualizarPrecios
     End Sub
 
     Private Sub btActPrecios_Click(sender As Object, e As EventArgs) Handles btActPrecios.Click
-        Dim grabar As Boolean = L_fnActualizarPreciosEnLote()
+        Dim grabar As Boolean = L_fnActualizarPreciosEnLote(gs_VersionSistema, gs_IPMaquina, gs_UsuMaquina)
         If (grabar) Then
             Dim img As Bitmap = New Bitmap(My.Resources.checked, 50, 50)
             ToastNotification.Show(Me, "Precio PDV y Especial actualizados con éxito".ToUpper,
