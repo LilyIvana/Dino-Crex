@@ -45,6 +45,7 @@ Public Class Pr_ProductosVentas
         Dim _dt As New DataTable
         _prInterpretarDatos(_dt)
         If (_dt.Rows.Count > 0) Then
+            L_fnBotonGenerar(gs_VersionSistema, gs_IPMaquina, gs_UsuMaquina, 0, "REPORTE PRODUCTOS", "REPORTE PRODUCTOS")
             If (swTipoVenta.Value = True) Then
                 Dim objrep As New R_VentasProductos
                 objrep.SetDataSource(_dt)
@@ -84,12 +85,10 @@ Public Class Pr_ProductosVentas
     End Sub
     Private Sub btnGenerar_Click(sender As Object, e As EventArgs) Handles btnGenerar.Click
         _prCargarReporte()
-
     End Sub
 
     Private Sub Pr_VentasAtendidas_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         _prIniciarTodo()
-
     End Sub
 
     Private Sub CheckUnaALmacen_CheckValueChanged(sender As Object, e As EventArgs) Handles CheckUnaALmacen.CheckValueChanged

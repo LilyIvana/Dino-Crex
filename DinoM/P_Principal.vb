@@ -1109,7 +1109,6 @@ Public Class P_Principal
 
     Private Sub btnVentaRapida_Click(sender As Object, e As EventArgs) Handles btnVentaRapida.Click
         Dim frm As New F0_VentasSupermercado
-
         frm.Show()
     End Sub
 

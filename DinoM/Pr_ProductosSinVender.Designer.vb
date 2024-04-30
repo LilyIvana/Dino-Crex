@@ -234,7 +234,7 @@ Partial Class Pr_ProductosSinVender
         cbProveedor_DesignTimeLayout.LayoutString = resources.GetString("cbProveedor_DesignTimeLayout.LayoutString")
         Me.cbProveedor.DesignTimeLayout = cbProveedor_DesignTimeLayout
         Me.cbProveedor.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.cbProveedor.Location = New System.Drawing.Point(69, 154)
+        Me.cbProveedor.Location = New System.Drawing.Point(69, 156)
         Me.cbProveedor.Name = "cbProveedor"
         Me.cbProveedor.Office2007ColorScheme = Janus.Windows.GridEX.Office2007ColorScheme.Custom
         Me.cbProveedor.Office2007CustomColor = System.Drawing.Color.DodgerBlue
@@ -250,7 +250,7 @@ Partial Class Pr_ProductosSinVender
         '
         '
         Me.CheckTodosProveedor.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.CheckTodosProveedor.Location = New System.Drawing.Point(291, 156)
+        Me.CheckTodosProveedor.Location = New System.Drawing.Point(291, 158)
         Me.CheckTodosProveedor.Name = "CheckTodosProveedor"
         Me.CheckTodosProveedor.Size = New System.Drawing.Size(55, 23)
         Me.CheckTodosProveedor.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
@@ -263,7 +263,7 @@ Partial Class Pr_ProductosSinVender
         '
         '
         Me.CheckUnaProveedor.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.CheckUnaProveedor.Location = New System.Drawing.Point(241, 156)
+        Me.CheckUnaProveedor.Location = New System.Drawing.Point(241, 158)
         Me.CheckUnaProveedor.Name = "CheckUnaProveedor"
         Me.CheckUnaProveedor.Size = New System.Drawing.Size(44, 23)
         Me.CheckUnaProveedor.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
@@ -279,7 +279,7 @@ Partial Class Pr_ProductosSinVender
         Me.LabelX2.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.LabelX2.Font = New System.Drawing.Font("Georgia", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.LabelX2.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(85, Byte), Integer), CType(CType(139, Byte), Integer))
-        Me.LabelX2.Location = New System.Drawing.Point(4, 130)
+        Me.LabelX2.Location = New System.Drawing.Point(4, 132)
         Me.LabelX2.Name = "LabelX2"
         Me.LabelX2.SingleLineColor = System.Drawing.SystemColors.Control
         Me.LabelX2.Size = New System.Drawing.Size(74, 23)
@@ -292,7 +292,7 @@ Partial Class Pr_ProductosSinVender
         tbAlmacen_DesignTimeLayout.LayoutString = resources.GetString("tbAlmacen_DesignTimeLayout.LayoutString")
         Me.tbAlmacen.DesignTimeLayout = tbAlmacen_DesignTimeLayout
         Me.tbAlmacen.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.tbAlmacen.Location = New System.Drawing.Point(72, 98)
+        Me.tbAlmacen.Location = New System.Drawing.Point(72, 100)
         Me.tbAlmacen.Name = "tbAlmacen"
         Me.tbAlmacen.Office2007ColorScheme = Janus.Windows.GridEX.Office2007ColorScheme.Custom
         Me.tbAlmacen.Office2007CustomColor = System.Drawing.Color.DodgerBlue
@@ -309,7 +309,7 @@ Partial Class Pr_ProductosSinVender
         '
         '
         Me.CheckTodosAlmacen.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.CheckTodosAlmacen.Location = New System.Drawing.Point(294, 100)
+        Me.CheckTodosAlmacen.Location = New System.Drawing.Point(294, 102)
         Me.CheckTodosAlmacen.Name = "CheckTodosAlmacen"
         Me.CheckTodosAlmacen.Size = New System.Drawing.Size(55, 23)
         Me.CheckTodosAlmacen.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
@@ -323,7 +323,7 @@ Partial Class Pr_ProductosSinVender
         '
         '
         Me.CheckUnaALmacen.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.CheckUnaALmacen.Location = New System.Drawing.Point(244, 100)
+        Me.CheckUnaALmacen.Location = New System.Drawing.Point(244, 102)
         Me.CheckUnaALmacen.Name = "CheckUnaALmacen"
         Me.CheckUnaALmacen.Size = New System.Drawing.Size(44, 23)
         Me.CheckUnaALmacen.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
@@ -340,7 +340,7 @@ Partial Class Pr_ProductosSinVender
         Me.tbCodAlmacen.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.tbCodAlmacen.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.tbCodAlmacen.ForeColor = System.Drawing.Color.FromArgb(CType(CType(45, Byte), Integer), CType(CType(59, Byte), Integer), CType(CType(66, Byte), Integer))
-        Me.tbCodAlmacen.Location = New System.Drawing.Point(42, 98)
+        Me.tbCodAlmacen.Location = New System.Drawing.Point(42, 100)
         Me.tbCodAlmacen.Name = "tbCodAlmacen"
         Me.tbCodAlmacen.PreventEnterBeep = True
         Me.tbCodAlmacen.Size = New System.Drawing.Size(22, 22)
@@ -357,7 +357,7 @@ Partial Class Pr_ProductosSinVender
         Me.LabelX3.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.LabelX3.Font = New System.Drawing.Font("Georgia", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.LabelX3.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(85, Byte), Integer), CType(CType(139, Byte), Integer))
-        Me.LabelX3.Location = New System.Drawing.Point(7, 74)
+        Me.LabelX3.Location = New System.Drawing.Point(7, 76)
         Me.LabelX3.Name = "LabelX3"
         Me.LabelX3.SingleLineColor = System.Drawing.SystemColors.Control
         Me.LabelX3.Size = New System.Drawing.Size(74, 23)

@@ -602,7 +602,7 @@ Partial Class P_Principal
         Me.btVentVenta.ItemAlignment = DevComponents.DotNetBar.eItemAlignment.Center
         Me.btVentVenta.Name = "btVentVenta"
         Me.btVentVenta.SymbolColor = System.Drawing.Color.Empty
-        Me.btVentVenta.Text = "DESPACHO"
+        Me.btVentVenta.Text = "VENTA"
         Me.btVentVenta.TileColor = DevComponents.DotNetBar.Metro.eMetroTileColor.Plum
         Me.btVentVenta.TileSize = New System.Drawing.Size(250, 135)
         '
@@ -938,7 +938,7 @@ Partial Class P_Principal
         Me.btVentasCajeras.ItemAlignment = DevComponents.DotNetBar.eItemAlignment.Center
         Me.btVentasCajeras.Name = "btVentasCajeras"
         Me.btVentasCajeras.SymbolColor = System.Drawing.Color.Empty
-        Me.btVentasCajeras.Text = "REPORTE VENTAS CAJERAS-PROV."
+        Me.btVentasCajeras.Text = "REPORTE VENTAS CAJAS-PROVEEDOR"
         Me.btVentasCajeras.TileColor = DevComponents.DotNetBar.Metro.eMetroTileColor.DarkBlue
         Me.btVentasCajeras.TileSize = New System.Drawing.Size(250, 135)
         '
@@ -959,7 +959,7 @@ Partial Class P_Principal
         Me.btVentasExportar.ItemAlignment = DevComponents.DotNetBar.eItemAlignment.Center
         Me.btVentasExportar.Name = "btVentasExportar"
         Me.btVentasExportar.SymbolColor = System.Drawing.Color.Empty
-        Me.btVentasExportar.Text = "VENTAS POR PRODUCTO"
+        Me.btVentasExportar.Text = "VENTAS DETALLADAS POR PRODUCTO"
         Me.btVentasExportar.TileColor = DevComponents.DotNetBar.Metro.eMetroTileColor.DarkBlue
         Me.btVentasExportar.TileSize = New System.Drawing.Size(250, 135)
         '

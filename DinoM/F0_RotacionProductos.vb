@@ -127,7 +127,7 @@ Public Class F0_RotacionProductos
             .Refresh()
         End With
         If (CType(cbAlmacen.DataSource, DataTable).Rows.Count > 0) Then
-            cbAlmacen.Value = 50
+            cbAlmacen.Value = 1
         End If
     End Sub
     Private Sub F0_RotacionProductos_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -529,7 +529,7 @@ Public Class F0_RotacionProductos
             P_ArmarGrillaRotacion()
             P_LlenarRotacion()
             P_Graficar()
-
+            L_fnBotonGenerar(gs_VersionSistema, gs_IPMaquina, gs_UsuMaquina, 0, "ROTACION DE PRODUCTOS", "ROTACION DE PRODUCTOS")
 
             'Dim panel As GridPanel = Dgs_Rotacion.PrimaryGrid
 

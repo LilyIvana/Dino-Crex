@@ -71,6 +71,7 @@ Public Class Pr_VentasAtendidas2
         Dim _ventasAtendidas As New DataTable
         _ventasAtendidas = _prValidadrFiltros()
         If (_ventasAtendidas.Rows.Count > 0) Then
+            L_fnBotonGenerar(gs_VersionSistema, gs_IPMaquina, gs_UsuMaquina, 0, "REPORTE VENTAS", "REPORTE VENTAS")
             If (swTipoVenta.Value = True) Then
                 If swMostrar.Value = True Then
                     Dim objrep As New R_VentasAtendidasAlmacenVendedor

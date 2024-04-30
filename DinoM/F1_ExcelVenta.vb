@@ -19,7 +19,7 @@ Public Class F1_ExcelVenta
 #End Region
 #Region "Metodos Privados"
     Private Sub _prIniciarTodo()
-        Me.Text = "VENTAS DETALLADAS POR PRODUCTOS PARA EXPORTAR"
+        Me.Text = "VENTAS DETALLADAS POR PRODUCTO"
         tbFechaI.Value = Now.Date
         tbFechaF.Value = Now.Date
 
@@ -109,6 +109,8 @@ Public Class F1_ExcelVenta
         Dim dt As DataTable = L_VentasProductos(fechaDesde, fechaHasta)
 
         If dt.Rows.Count > 0 Then
+            L_fnBotonGenerar(gs_VersionSistema, gs_IPMaquina, gs_UsuMaquina, 0, "VENTAS DETALLADAS POR PRODUCTO", "VENTAS DETALLADAS POR PRODUCTO")
+
             JGrM_Buscador.DataSource = dt
             JGrM_Buscador.RetrieveStructure()
             JGrM_Buscador.AlternatingColors = True
@@ -443,6 +445,7 @@ Public Class F1_ExcelVenta
         _prCrearCarpetaReportes()
         Dim img As Bitmap = New Bitmap(My.Resources.checked, 50, 50)
         If (P_ExportarExcel(RutaGlobal + "\Reporte\Reporte Productos")) Then
+            L_fnBotonExportar(gs_VersionSistema, gs_IPMaquina, gs_UsuMaquina, 0, "VENTAS DETALLADAS POR PRODUCTO", "VENTAS DETALLADAS POR PRODUCTO")
             ToastNotification.Show(Me, "EXPORTACIÓN DE VENTA-PRODUCTOS EXITOSA..!!!",
                                        img, 2000,
                                        eToastGlowColor.Green,

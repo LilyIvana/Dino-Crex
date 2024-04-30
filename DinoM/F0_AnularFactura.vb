@@ -368,7 +368,7 @@ Public Class F0_AnularFactura
                     L_fnRegistrarTFV0012(Tb1Codigo.Text)
                     'Luego anula venta
                     Dim mensajeError As String = ""
-                    Dim res As Boolean = L_fnEliminarVenta(Tb1Codigo.Text, mensajeError, Programa, gs_VersionSistema, gs_IPMaquina, gs_UsuMaquina)
+                    Dim res As Boolean = L_fnEliminarVenta(Tb1Codigo.Text, mensajeError, Programa, gs_VersionSistema, gs_IPMaquina, gs_UsuMaquina, Tb2NroFactura.Text)
 
                     P_LlenarDatosGrilla()
                     ToastNotification.Show(Me, "La Factura: " + Tb2NroFactura.Text + " y Venta con código: " + Tb1Codigo.Text + " Se ANULARON correctamente",

@@ -1041,7 +1041,8 @@ Public Class AccesoLogica
         End If
         Return _resultado
     End Function
-    Public Shared Function L_fnEliminarClientesConDetalleZona(numi As String, ByRef mensaje As String) As Boolean
+    Public Shared Function L_fnEliminarClientesConDetalleZona(numi As String, ByRef mensaje As String, _version As String, _ip As String,
+                                                              _usumaquina As String) As Boolean
         Dim _resultado As Boolean
         If L_fnbValidarEliminacion(numi, "TY004", "ydnumi", mensaje) = True Then
             Dim _Tabla As DataTable
@@ -1049,6 +1050,9 @@ Public Class AccesoLogica
 
             _listParam.Add(New Datos.DParametro("@tipo", 7))
             _listParam.Add(New Datos.DParametro("@ydnumi", numi))
+            _listParam.Add(New Datos.DParametro("@version", _version))
+            _listParam.Add(New Datos.DParametro("@ip", _ip))
+            _listParam.Add(New Datos.DParametro("@usumaquina", _usumaquina))
             _listParam.Add(New Datos.DParametro("@yduact", L_Usuario))
 
             _Tabla = D_ProcedimientoConParam("sp_Mam_TY004", _listParam)
@@ -1128,14 +1132,18 @@ Public Class AccesoLogica
     End Function
 
 
-    Public Shared Function L_fnGrabarCLienteConDetalleZonas(ByRef _ydnumi As String, _ydcod As String, _yddesc As String, _ydnumiVendedor As Integer, _ydzona As Integer, _yddct As Integer, _yddctnum As String, _yddirec As String, _ydtelf1 As String, _ydtelf2 As String, _ydcat As Integer, _ydest As Integer, _ydlat As Double, _ydlongi As Double, _ydobs As String, _ydfnac As String, _ydnomfac As String, _ydtip As Integer, _ydnit As String, _ydfecing As String, _ydultvent As String, _ydimg As String, _detalle As DataTable) As Boolean
+    Public Shared Function L_fnGrabarCLienteConDetalleZonas(ByRef _ydnumi As String, _ydcod As String, _yddesc As String, _ydnumiVendedor As Integer,
+                                                            _ydzona As Integer, _yddct As Integer, _yddctnum As String, _yddirec As String,
+                                                            _ydtelf1 As String, _ydtelf2 As String, _ydcat As Integer, _ydest As Integer,
+                                                            _ydlat As Double, _ydlongi As Double, _ydobs As String, _ydfnac As String,
+                                                            _ydnomfac As String, _ydtip As Integer, _ydnit As String, _ydfecing As String,
+                                                            _ydultvent As String, _ydimg As String, _detalle As DataTable,
+                                                            _version As String, _ip As String, _usumaquina As String) As Boolean
         Dim _resultado As Boolean
 
         Dim _Tabla As DataTable
         Dim _listParam As New List(Of Datos.DParametro)
-        ' @ydnumi ,@ydcod  ,@yddesc  ,@ydzona  ,@yddct  ,
-        '@yddctnum  ,@yddirec  ,@ydtelf1  ,@ydtelf2  ,@ydcat  ,@ydest  ,@ydlat  ,@ydlongi  ,
-        '@ydprconsu  ,@ydobs  ,@ydfnac  ,@ydnomfac  ,@ydtip,@ydnit ,@ydfecing ,@ydultvent,@ydimg ,@newFecha,@newHora,@yduact
+
         _listParam.Add(New Datos.DParametro("@tipo", 5))
         _listParam.Add(New Datos.DParametro("@ydnumi", _ydnumi))
         _listParam.Add(New Datos.DParametro("@ydcod", _ydcod))
@@ -1160,6 +1168,9 @@ Public Class AccesoLogica
         _listParam.Add(New Datos.DParametro("@ydfecing", _ydfecing))
         _listParam.Add(New Datos.DParametro("@ydultvent", _ydultvent))
         _listParam.Add(New Datos.DParametro("@ydimg", _ydimg))
+        _listParam.Add(New Datos.DParametro("@version", _version))
+        _listParam.Add(New Datos.DParametro("@ip", _ip))
+        _listParam.Add(New Datos.DParametro("@usumaquina", _usumaquina))
         _listParam.Add(New Datos.DParametro("@TZ0013", "", _detalle))
         _listParam.Add(New Datos.DParametro("@yduact", L_Usuario))
         _Tabla = D_ProcedimientoConParam("sp_Mam_TY004", _listParam)
@@ -1173,14 +1184,12 @@ Public Class AccesoLogica
 
         Return _resultado
     End Function
-    Public Shared Function L_fnModificarClientesConDetalleZonas(ByRef _ydnumi As String, _ydcod As String,
-                                            _yddesc As String, _ydnumiVendedor As Integer, _ydzona As Integer,
-                                            _yddct As Integer, _yddctnum As String,
-                                            _yddirec As String, _ydtelf1 As String,
+    Public Shared Function L_fnModificarClientesConDetalleZonas(ByRef _ydnumi As String, _ydcod As String, _yddesc As String, _ydnumiVendedor As Integer,
+                                            _ydzona As Integer, _yddct As Integer, _yddctnum As String, _yddirec As String, _ydtelf1 As String,
                                             _ydtelf2 As String, _ydcat As Integer, _ydest As Integer, _ydlat As Double, _ydlongi As Double, _ydobs As String,
-                                            _ydfnac As String, _ydnomfac As String,
-                                            _ydtip As Integer, _ydnit As String, _ydfecing As String, _ydultvent As String, _ydimg As String,
-                                            _detalle As DataTable) As Boolean
+                                            _ydfnac As String, _ydnomfac As String, _ydtip As Integer, _ydnit As String, _ydfecing As String,
+                                            _ydultvent As String, _ydimg As String, _detalle As DataTable, _version As String, _ip As String,
+                                            _usumaquina As String) As Boolean
         Dim _resultado As Boolean
 
         Dim _Tabla As DataTable
@@ -1210,6 +1219,9 @@ Public Class AccesoLogica
         _listParam.Add(New Datos.DParametro("@ydfecing", _ydfecing))
         _listParam.Add(New Datos.DParametro("@ydultvent", _ydultvent))
         _listParam.Add(New Datos.DParametro("@ydimg", _ydimg))
+        _listParam.Add(New Datos.DParametro("@version", _version))
+        _listParam.Add(New Datos.DParametro("@ip", _ip))
+        _listParam.Add(New Datos.DParametro("@usumaquina", _usumaquina))
         _listParam.Add(New Datos.DParametro("@yduact", L_Usuario))
         _listParam.Add(New Datos.DParametro("@TZ0013", "", _detalle))
         _Tabla = D_ProcedimientoConParam("sp_Mam_TY004", _listParam)
@@ -2327,7 +2339,8 @@ Public Class AccesoLogica
         Return _resultado
     End Function
 
-    Public Shared Function L_fnEliminarVenta(numi As String, ByRef mensaje As String, programa As String, _version As String, _ip As String, _usumaquina As String) As Boolean
+    Public Shared Function L_fnEliminarVenta(numi As String, ByRef mensaje As String, programa As String, _version As String, _ip As String,
+                                             _usumaquina As String, NroFact As String) As Boolean
         Dim _resultado As Boolean
         If L_fnbValidarEliminacion(numi, "TV001", "tanumi", mensaje) = True Then
             Dim _Tabla As DataTable
@@ -2339,6 +2352,7 @@ Public Class AccesoLogica
             _listParam.Add(New Datos.DParametro("@version", _version))
             _listParam.Add(New Datos.DParametro("@ip", _ip))
             _listParam.Add(New Datos.DParametro("@usumaquina", _usumaquina))
+            _listParam.Add(New Datos.DParametro("@Nfac", NroFact))
             _listParam.Add(New Datos.DParametro("@tauact", L_Usuario))
             _Tabla = D_ProcedimientoConParam("sp_Mam_TV001", _listParam)
 

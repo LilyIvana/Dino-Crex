@@ -89,7 +89,7 @@ Public Class Pr_ReporteVentasGrafico
         _dt = L_prVentasGraficaVendedorMes(FechaIVendedor.SelectionRange.Start.ToString("dd/MM/yyyy"),
                                            FechaFVendedor.SelectionRange.Start.ToString("dd/MM/yyyy"))
         If (_dt.Rows.Count > 0) Then
-
+            L_fnBotonGenerar(gs_VersionSistema, gs_IPMaquina, gs_UsuMaquina, 0, "GRÁFICA DE VENTAS", "GRÁFICA DE VENTAS")
             Dim objrep As New R_GraficaVendedorVentas
             objrep.SetDataSource(_dt)
             Dim fechaI As String = FechaIVendedor.SelectionRange.Start.ToString("dd/MM/yyyy")
@@ -114,7 +114,7 @@ Public Class Pr_ReporteVentasGrafico
         _dt = L_prVentasGraficaVendedorAlmacen(FechaIAlmacen.SelectionRange.Start.ToString("dd/MM/yyyy"),
                                            FechaFAlmacen.SelectionRange.Start.ToString("dd/MM/yyyy"))
         If (_dt.Rows.Count > 0) Then
-
+            L_fnBotonGenerar(gs_VersionSistema, gs_IPMaquina, gs_UsuMaquina, 0, "GRÁFICA DE VENTAS", "GRÁFICA DE VENTAS")
             Dim objrep As New R_GraficaVendedorVentasAlmacen
             objrep.SetDataSource(_dt)
             Dim fechaI As String = FechaIAlmacen.SelectionRange.Start.ToString("dd/MM/yyyy")
@@ -140,7 +140,7 @@ Public Class Pr_ReporteVentasGrafico
                                            FechaFRendimiento.Value.ToString("dd/MM/yyyy"),
                                            CType(grvendedor.DataSource, DataTable))
         If (_dt.Rows.Count > 0) Then
-
+            L_fnBotonGenerar(gs_VersionSistema, gs_IPMaquina, gs_UsuMaquina, 0, "GRÁFICA DE VENTAS", "GRÁFICA DE VENTAS")
             Dim objrep As New R_GraficaVendedorVentasRendimiento
             objrep.SetDataSource(_dt)
             Dim fechaI As String = FechaIRendimiento.Value.ToString("dd/MM/yyyy")

@@ -88,10 +88,11 @@ Public Class F1_DescuentoProd
         End If
     End Sub
     Private Sub _prCargarDescuentosProd()
-
         Dim dt As DataTable = L_DescuentoProductos()
 
         If dt.Rows.Count > 0 Then
+            L_fnBotonGenerar(gs_VersionSistema, gs_IPMaquina, gs_UsuMaquina, 0, "DESCUENTO DE PRODUCTOS", "DESCUENTO DE PRODUCTOS")
+
             JGrM_Buscador.DataSource = dt
             JGrM_Buscador.RetrieveStructure()
             JGrM_Buscador.AlternatingColors = True
@@ -341,6 +342,7 @@ Public Class F1_DescuentoProd
         _prCrearCarpetaReportes()
         Dim img As Bitmap = New Bitmap(My.Resources.checked, 50, 50)
         If (P_ExportarExcel(RutaGlobal + "\Reporte\Reporte Productos")) Then
+            L_fnBotonExportar(gs_VersionSistema, gs_IPMaquina, gs_UsuMaquina, 0, "DESCUENTO DE PRODUCTOS", "DESCUENTO DE PRODUCTOS")
             ToastNotification.Show(Me, "EXPORTACIÓN DE DESCUENTOS DE PRODUCTOS EXITOSA..!!!",
                                        img, 2000,
                                        eToastGlowColor.Green,

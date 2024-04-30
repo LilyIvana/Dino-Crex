@@ -279,6 +279,8 @@ Public Class Pr_Ventas12Meses
 
         _prInterpretarDatos(_dt)
         If (_dt.Rows.Count > 0) Then
+            L_fnBotonGenerar(gs_VersionSistema, gs_IPMaquina, gs_UsuMaquina, 0, "REPORTE ESTADÍSTICO VENTA", "REPORTE ESTADÍSTICO VENTA")
+
             _dt.DefaultView.Sort = "total DESC"
             _dt = _dt.DefaultView.ToTable
             Dim objrep As New R_VentasVendedor12Meses
@@ -314,7 +316,6 @@ Public Class Pr_Ventas12Meses
 
     Private Sub Pr_VentasAtendidas_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         _prIniciarTodo()
-
     End Sub
 
 

@@ -516,10 +516,10 @@ Public Class F0_LibroVenta2
         'Next
         If _DsLV.Rows.Count > 0 Then
             DgdLCV.PrimaryGrid.Rows.Clear()
-
             DgdLCV.PrimaryGrid.DataSource = _DsLV
-
             DgdLCV.PrimaryGrid.SetActiveRow(CType(DgdLCV.PrimaryGrid.ActiveRow, GridRow))
+
+            L_fnBotonGenerar(gs_VersionSistema, gs_IPMaquina, gs_UsuMaquina, 0, "LIBRO DE VENTA", "LIBRO DE VENTA")
         Else
             DgdLCV.PrimaryGrid.Rows.Clear()
             ToastNotification.Show(Me, "NO HAY DATOS PARA MOSTRAR...!!!",
@@ -604,6 +604,7 @@ Public Class F0_LibroVenta2
 
     Private Sub P_GenerarExcel()
         If (P_ExportarExcel()) Then
+            L_fnBotonExportar(gs_VersionSistema, gs_IPMaquina, gs_UsuMaquina, 0, "LIBRO DE VENTA", "LIBRO DE VENTA")
             ToastNotification.Show(Me, "EXPORTACIÓN DE LISTA DE PRECIOS EXITOSA..!!!",
                                        My.Resources.OK, _DuracionSms * 1000,
                                        eToastGlowColor.Green,

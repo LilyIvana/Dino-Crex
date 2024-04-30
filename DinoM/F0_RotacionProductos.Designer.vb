@@ -83,9 +83,9 @@ Partial Class F0_RotacionProductos
         Me.Panel1.Controls.Add(Me.SuperTabControl1)
         Me.Panel1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.Panel1.Location = New System.Drawing.Point(0, 0)
-        Me.Panel1.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.Panel1.Margin = New System.Windows.Forms.Padding(2)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(1362, 741)
+        Me.Panel1.Size = New System.Drawing.Size(1344, 701)
         Me.Panel1.TabIndex = 0
         '
         'SuperTabControl1
@@ -108,12 +108,12 @@ Partial Class F0_RotacionProductos
         Me.SuperTabControl1.Controls.Add(Me.SuperTabControlPanel3)
         Me.SuperTabControl1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.SuperTabControl1.Location = New System.Drawing.Point(0, 0)
-        Me.SuperTabControl1.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.SuperTabControl1.Margin = New System.Windows.Forms.Padding(2)
         Me.SuperTabControl1.Name = "SuperTabControl1"
         Me.SuperTabControl1.ReorderTabsEnabled = True
         Me.SuperTabControl1.SelectedTabFont = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Bold)
         Me.SuperTabControl1.SelectedTabIndex = 0
-        Me.SuperTabControl1.Size = New System.Drawing.Size(1362, 741)
+        Me.SuperTabControl1.Size = New System.Drawing.Size(1344, 701)
         Me.SuperTabControl1.TabFont = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.SuperTabControl1.TabIndex = 0
         Me.SuperTabControl1.Tabs.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.SuperTabItem1, Me.SuperTabItem2, Me.SuperTabItem3})
@@ -125,9 +125,9 @@ Partial Class F0_RotacionProductos
         Me.SuperTabControlPanel1.Controls.Add(Me.Panel2)
         Me.SuperTabControlPanel1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.SuperTabControlPanel1.Location = New System.Drawing.Point(0, 22)
-        Me.SuperTabControlPanel1.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.SuperTabControlPanel1.Margin = New System.Windows.Forms.Padding(2)
         Me.SuperTabControlPanel1.Name = "SuperTabControlPanel1"
-        Me.SuperTabControlPanel1.Size = New System.Drawing.Size(1362, 719)
+        Me.SuperTabControlPanel1.Size = New System.Drawing.Size(1344, 679)
         Me.SuperTabControlPanel1.TabIndex = 1
         Me.SuperTabControlPanel1.TabItem = Me.SuperTabItem1
         '
@@ -137,9 +137,9 @@ Partial Class F0_RotacionProductos
         Me.Panel2.Controls.Add(Me.GroupPanel1)
         Me.Panel2.Dock = System.Windows.Forms.DockStyle.Fill
         Me.Panel2.Location = New System.Drawing.Point(0, 0)
-        Me.Panel2.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.Panel2.Margin = New System.Windows.Forms.Padding(2)
         Me.Panel2.Name = "Panel2"
-        Me.Panel2.Size = New System.Drawing.Size(1362, 719)
+        Me.Panel2.Size = New System.Drawing.Size(1344, 679)
         Me.Panel2.TabIndex = 0
         '
         'GroupPanel2
@@ -151,9 +151,9 @@ Partial Class F0_RotacionProductos
         Me.GroupPanel2.Dock = System.Windows.Forms.DockStyle.Fill
         Me.GroupPanel2.Font = New System.Drawing.Font("Georgia", 10.2!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GroupPanel2.Location = New System.Drawing.Point(0, 107)
-        Me.GroupPanel2.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.GroupPanel2.Margin = New System.Windows.Forms.Padding(2)
         Me.GroupPanel2.Name = "GroupPanel2"
-        Me.GroupPanel2.Size = New System.Drawing.Size(1362, 612)
+        Me.GroupPanel2.Size = New System.Drawing.Size(1344, 572)
         '
         '
         '
@@ -191,13 +191,13 @@ Partial Class F0_RotacionProductos
         Me.Dgs_Rotacion.Dock = System.Windows.Forms.DockStyle.Fill
         Me.Dgs_Rotacion.FilterExprColors.SysFunction = System.Drawing.Color.DarkRed
         Me.Dgs_Rotacion.Location = New System.Drawing.Point(0, 0)
-        Me.Dgs_Rotacion.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.Dgs_Rotacion.Margin = New System.Windows.Forms.Padding(2)
         Me.Dgs_Rotacion.Name = "Dgs_Rotacion"
         '
         '
         '
-        Me.Dgs_Rotacion.PrimaryGrid.DefaultVisualStyles.HeaderStyles.Default.Font = New System.Drawing.Font("Open Sans", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Dgs_Rotacion.Size = New System.Drawing.Size(1356, 588)
+        Me.Dgs_Rotacion.PrimaryGrid.DefaultVisualStyles.HeaderStyles.Default.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Dgs_Rotacion.Size = New System.Drawing.Size(1338, 548)
         Me.Dgs_Rotacion.TabIndex = 0
         Me.Dgs_Rotacion.Text = "SuperGridControl1"
         '
@@ -220,9 +220,9 @@ Partial Class F0_RotacionProductos
         Me.GroupPanel1.Dock = System.Windows.Forms.DockStyle.Top
         Me.GroupPanel1.Font = New System.Drawing.Font("Georgia", 10.2!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GroupPanel1.Location = New System.Drawing.Point(0, 0)
-        Me.GroupPanel1.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.GroupPanel1.Margin = New System.Windows.Forms.Padding(2)
         Me.GroupPanel1.Name = "GroupPanel1"
-        Me.GroupPanel1.Size = New System.Drawing.Size(1362, 107)
+        Me.GroupPanel1.Size = New System.Drawing.Size(1344, 107)
         '
         '
         '
@@ -279,11 +279,11 @@ Partial Class F0_RotacionProductos
         Me.tbCantProducto.BackgroundStyle.Class = "DateTimeInputBackground"
         Me.tbCantProducto.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.tbCantProducto.ButtonFreeText.Shortcut = DevComponents.DotNetBar.eShortcut.F2
-        Me.tbCantProducto.Font = New System.Drawing.Font("Open Sans", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.tbCantProducto.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.tbCantProducto.Location = New System.Drawing.Point(849, 21)
-        Me.tbCantProducto.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.tbCantProducto.Margin = New System.Windows.Forms.Padding(2)
         Me.tbCantProducto.Name = "tbCantProducto"
-        Me.tbCantProducto.Size = New System.Drawing.Size(53, 26)
+        Me.tbCantProducto.Size = New System.Drawing.Size(53, 23)
         Me.tbCantProducto.TabIndex = 256
         '
         'LabelX5
@@ -311,11 +311,11 @@ Partial Class F0_RotacionProductos
         Me.tbcantMeses.BackgroundStyle.Class = "DateTimeInputBackground"
         Me.tbcantMeses.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.tbcantMeses.ButtonFreeText.Shortcut = DevComponents.DotNetBar.eShortcut.F2
-        Me.tbcantMeses.Font = New System.Drawing.Font("Open Sans", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.tbcantMeses.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.tbcantMeses.Location = New System.Drawing.Point(693, 21)
-        Me.tbcantMeses.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.tbcantMeses.Margin = New System.Windows.Forms.Padding(2)
         Me.tbcantMeses.Name = "tbcantMeses"
-        Me.tbcantMeses.Size = New System.Drawing.Size(56, 26)
+        Me.tbcantMeses.Size = New System.Drawing.Size(56, 23)
         Me.tbcantMeses.TabIndex = 254
         '
         'LabelX3
@@ -340,14 +340,14 @@ Partial Class F0_RotacionProductos
         Me.cbAno.BackColor = System.Drawing.Color.White
         cbAno_DesignTimeLayout.LayoutString = resources.GetString("cbAno_DesignTimeLayout.LayoutString")
         Me.cbAno.DesignTimeLayout = cbAno_DesignTimeLayout
-        Me.cbAno.Font = New System.Drawing.Font("Open Sans Light", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cbAno.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cbAno.Location = New System.Drawing.Point(528, 21)
         Me.cbAno.Name = "cbAno"
         Me.cbAno.Office2007ColorScheme = Janus.Windows.GridEX.Office2007ColorScheme.Custom
         Me.cbAno.Office2007CustomColor = System.Drawing.Color.DodgerBlue
         Me.cbAno.SelectedIndex = -1
         Me.cbAno.SelectedItem = Nothing
-        Me.cbAno.Size = New System.Drawing.Size(75, 25)
+        Me.cbAno.Size = New System.Drawing.Size(75, 22)
         Me.cbAno.TabIndex = 252
         Me.cbAno.VisualStyle = Janus.Windows.GridEX.VisualStyle.Office2007
         '
@@ -373,14 +373,14 @@ Partial Class F0_RotacionProductos
         Me.cbMeses.BackColor = System.Drawing.Color.White
         cbMeses_DesignTimeLayout.LayoutString = resources.GetString("cbMeses_DesignTimeLayout.LayoutString")
         Me.cbMeses.DesignTimeLayout = cbMeses_DesignTimeLayout
-        Me.cbMeses.Font = New System.Drawing.Font("Open Sans Light", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cbMeses.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cbMeses.Location = New System.Drawing.Point(335, 21)
         Me.cbMeses.Name = "cbMeses"
         Me.cbMeses.Office2007ColorScheme = Janus.Windows.GridEX.Office2007ColorScheme.Custom
         Me.cbMeses.Office2007CustomColor = System.Drawing.Color.DodgerBlue
         Me.cbMeses.SelectedIndex = -1
         Me.cbMeses.SelectedItem = Nothing
-        Me.cbMeses.Size = New System.Drawing.Size(150, 25)
+        Me.cbMeses.Size = New System.Drawing.Size(150, 22)
         Me.cbMeses.TabIndex = 250
         Me.cbMeses.VisualStyle = Janus.Windows.GridEX.VisualStyle.Office2007
         '
@@ -406,14 +406,15 @@ Partial Class F0_RotacionProductos
         Me.cbAlmacen.BackColor = System.Drawing.Color.White
         cbAlmacen_DesignTimeLayout.LayoutString = resources.GetString("cbAlmacen_DesignTimeLayout.LayoutString")
         Me.cbAlmacen.DesignTimeLayout = cbAlmacen_DesignTimeLayout
-        Me.cbAlmacen.Font = New System.Drawing.Font("Open Sans Light", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cbAlmacen.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cbAlmacen.Location = New System.Drawing.Point(73, 21)
         Me.cbAlmacen.Name = "cbAlmacen"
         Me.cbAlmacen.Office2007ColorScheme = Janus.Windows.GridEX.Office2007ColorScheme.Custom
         Me.cbAlmacen.Office2007CustomColor = System.Drawing.Color.DodgerBlue
+        Me.cbAlmacen.ReadOnly = True
         Me.cbAlmacen.SelectedIndex = -1
         Me.cbAlmacen.SelectedItem = Nothing
-        Me.cbAlmacen.Size = New System.Drawing.Size(164, 25)
+        Me.cbAlmacen.Size = New System.Drawing.Size(164, 22)
         Me.cbAlmacen.TabIndex = 248
         Me.cbAlmacen.VisualStyle = Janus.Windows.GridEX.VisualStyle.Office2007
         '
@@ -446,7 +447,7 @@ Partial Class F0_RotacionProductos
         Me.SuperTabControlPanel2.Controls.Add(Me.Ch_Pie)
         Me.SuperTabControlPanel2.Dock = System.Windows.Forms.DockStyle.Fill
         Me.SuperTabControlPanel2.Location = New System.Drawing.Point(0, 20)
-        Me.SuperTabControlPanel2.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.SuperTabControlPanel2.Margin = New System.Windows.Forms.Padding(2)
         Me.SuperTabControlPanel2.Name = "SuperTabControlPanel2"
         Me.SuperTabControlPanel2.Size = New System.Drawing.Size(1280, 457)
         Me.SuperTabControlPanel2.TabIndex = 0
@@ -460,7 +461,7 @@ Partial Class F0_RotacionProductos
         Legend1.Name = "Legend1"
         Me.Ch_Pie.Legends.Add(Legend1)
         Me.Ch_Pie.Location = New System.Drawing.Point(0, 0)
-        Me.Ch_Pie.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.Ch_Pie.Margin = New System.Windows.Forms.Padding(2)
         Me.Ch_Pie.Name = "Ch_Pie"
         Series1.ChartArea = "ChartArea1"
         Series1.Legend = "Legend1"
@@ -482,7 +483,7 @@ Partial Class F0_RotacionProductos
         Me.SuperTabControlPanel3.Controls.Add(Me.Ch_Barra)
         Me.SuperTabControlPanel3.Dock = System.Windows.Forms.DockStyle.Fill
         Me.SuperTabControlPanel3.Location = New System.Drawing.Point(0, 20)
-        Me.SuperTabControlPanel3.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.SuperTabControlPanel3.Margin = New System.Windows.Forms.Padding(2)
         Me.SuperTabControlPanel3.Name = "SuperTabControlPanel3"
         Me.SuperTabControlPanel3.Size = New System.Drawing.Size(1280, 457)
         Me.SuperTabControlPanel3.TabIndex = 0
@@ -496,7 +497,7 @@ Partial Class F0_RotacionProductos
         Legend2.Name = "Legend1"
         Me.Ch_Barra.Legends.Add(Legend2)
         Me.Ch_Barra.Location = New System.Drawing.Point(0, 0)
-        Me.Ch_Barra.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.Ch_Barra.Margin = New System.Windows.Forms.Padding(2)
         Me.Ch_Barra.Name = "Ch_Barra"
         Series2.ChartArea = "ChartArea1"
         Series2.Legend = "Legend1"
@@ -523,11 +524,12 @@ Partial Class F0_RotacionProductos
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.White
-        Me.ClientSize = New System.Drawing.Size(1362, 741)
+        Me.ClientSize = New System.Drawing.Size(1344, 701)
         Me.Controls.Add(Me.Panel1)
-        Me.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.Margin = New System.Windows.Forms.Padding(2)
         Me.Name = "F0_RotacionProductos"
         Me.Opacity = 0.05R
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "F0_RotacionProductos"
         Me.WindowState = System.Windows.Forms.FormWindowState.Minimized
         Me.Panel1.ResumeLayout(False)

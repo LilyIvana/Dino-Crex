@@ -13,7 +13,7 @@ Public Class Pr_VentasVsCostos
         tbFechaF.Value = Now.Date
         _PMIniciarTodo()
         'L_prAbrirConexion(gs_Ip, gs_UsuarioSql, gs_ClaveSql, gs_NombreBD)
-        Me.Text = "REPORTE VENTAS VS COSTOS"
+        Me.Text = "REPORTE VENTAS Y COSTOS"
         MReportViewer.ToolPanelView = CrystalDecisions.Windows.Forms.ToolPanelViewType.None
         _IniciarComponentes()
     End Sub
@@ -55,6 +55,7 @@ Public Class Pr_VentasVsCostos
         Dim _dt As New DataTable
         _prInterpretarDatos(_dt)
         If (_dt.Rows.Count > 0) Then
+            L_fnBotonGenerar(gs_VersionSistema, gs_IPMaquina, gs_UsuMaquina, 0, "REPORTE DE VENTAS Y COSTOS", "REPORTE DE VENTAS Y COSTOS")
             If (swTipoVenta.Value = True) Then
                 Dim objrep As New R_VentasCostosAlmacenVendedor
                 objrep.SetDataSource(_dt)
@@ -94,12 +95,10 @@ Public Class Pr_VentasVsCostos
     End Sub
     Private Sub btnGenerar_Click(sender As Object, e As EventArgs) Handles btnGenerar.Click
         _prCargarReporte()
-
     End Sub
 
     Private Sub Pr_VentasAtendidas_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         _prIniciarTodo()
-
     End Sub
 
 

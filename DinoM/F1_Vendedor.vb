@@ -446,7 +446,12 @@ Public Class F1_Vendedor
         '                                       _ydfnac As String, _ydnomfac As String,
         '                                       _ydtip As Integer, _ydnit As String, _ydfecing As String, _ydultvent As String, _ydimg As String
 
-        Dim res As Boolean = L_fnGrabarCLienteConDetalleZonas(tbCodigoOriginal.Text, tbCodCliente.Text, tbNombre.Text, 0, zona, cbTipoDoc.Value, tbNdoc.Text, tbDireccion.Text, tbTelf1.Text, tbTelf2.Text, catpre, IIf(swEstado.Value = True, 1, 0), _latitud, _longitud, tbObs.Text, tbFnac.Value.ToString("yyyy/MM/dd"), "", _Tipo, "", tbFIngr.Value.ToString("yyyy/MM/dd"), tbUltVenta.Value.ToString("yyyy/MM/dd"), nameImg, CType(grZonas.DataSource, DataTable))
+        Dim res As Boolean = L_fnGrabarCLienteConDetalleZonas(tbCodigoOriginal.Text, tbCodCliente.Text, tbNombre.Text, 0, zona,
+                                                              cbTipoDoc.Value, tbNdoc.Text, tbDireccion.Text, tbTelf1.Text, tbTelf2.Text,
+                                                              catpre, IIf(swEstado.Value = True, 1, 0), _latitud, _longitud, tbObs.Text,
+                                                              tbFnac.Value.ToString("yyyy/MM/dd"), "", _Tipo, "", tbFIngr.Value.ToString("yyyy/MM/dd"),
+                                                              tbUltVenta.Value.ToString("yyyy/MM/dd"), nameImg, CType(grZonas.DataSource, DataTable),
+                                                              gs_VersionSistema, gs_IPMaquina, gs_UsuMaquina)
 
 
         If res Then
@@ -478,10 +483,20 @@ Public Class F1_Vendedor
         _prObtenerZonaCatPrecio(zona, catpre)
         Dim nameImage As String = JGrM_Buscador.GetValue("ydimg")
         If (Modificado = False) Then
-            res = L_fnModificarClientesConDetalleZonas(tbCodigoOriginal.Text, tbCodCliente.Text, tbNombre.Text, 0, zona, cbTipoDoc.Value, tbNdoc.Text, tbDireccion.Text, tbTelf1.Text, tbTelf2.Text, catpre, IIf(swEstado.Value = True, 1, 0), _latitud, _longitud, tbObs.Text, tbFnac.Value.ToString("yyyy/MM/dd"), "", _Tipo, "", tbFIngr.Value.ToString("yyyy/MM/dd"), tbUltVenta.Value.ToString("yyyy/MM/dd"), nameImage, CType(grZonas.DataSource, DataTable))
+            res = L_fnModificarClientesConDetalleZonas(tbCodigoOriginal.Text, tbCodCliente.Text, tbNombre.Text, 0, zona, cbTipoDoc.Value,
+                                                       tbNdoc.Text, tbDireccion.Text, tbTelf1.Text, tbTelf2.Text, catpre,
+                                                       IIf(swEstado.Value = True, 1, 0), _latitud, _longitud, tbObs.Text,
+                                                       tbFnac.Value.ToString("yyyy/MM/dd"), "", _Tipo, "", tbFIngr.Value.ToString("yyyy/MM/dd"),
+                                                       tbUltVenta.Value.ToString("yyyy/MM/dd"), nameImage, CType(grZonas.DataSource, DataTable),
+                                                       gs_VersionSistema, gs_IPMaquina, gs_UsuMaquina)
 
         Else
-            res = L_fnModificarClientesConDetalleZonas(tbCodigoOriginal.Text, tbCodCliente.Text, tbNombre.Text, 0, zona, cbTipoDoc.Value, tbNdoc.Text, tbDireccion.Text, tbTelf1.Text, tbTelf2.Text, catpre, IIf(swEstado.Value = True, 1, 0), _latitud, _longitud, tbObs.Text, tbFnac.Value.ToString("yyyy/MM/dd"), "", _Tipo, "", tbFIngr.Value.ToString("yyyy/MM/dd"), tbUltVenta.Value.ToString("yyyy/MM/dd"), nameImg, CType(grZonas.DataSource, DataTable))
+            res = L_fnModificarClientesConDetalleZonas(tbCodigoOriginal.Text, tbCodCliente.Text, tbNombre.Text, 0, zona, cbTipoDoc.Value,
+                                                       tbNdoc.Text, tbDireccion.Text, tbTelf1.Text, tbTelf2.Text, catpre,
+                                                       IIf(swEstado.Value = True, 1, 0), _latitud, _longitud, tbObs.Text,
+                                                       tbFnac.Value.ToString("yyyy/MM/dd"), "", _Tipo, "", tbFIngr.Value.ToString("yyyy/MM/dd"),
+                                                       tbUltVenta.Value.ToString("yyyy/MM/dd"), nameImg, CType(grZonas.DataSource, DataTable),
+                                                       gs_VersionSistema, gs_IPMaquina, gs_UsuMaquina)
         End If
         If res Then
 
@@ -496,6 +511,7 @@ Public Class F1_Vendedor
                                       img, 2000,
                                       eToastGlowColor.Green,
                                       eToastPosition.TopCenter)
+            PanelNavegacion.Enabled = True
             _PMInhabilitar()
             _PMPrimerRegistro()
         Else
@@ -538,7 +554,8 @@ Public Class F1_Vendedor
         bandera = ef.band
         If (bandera = True) Then
             Dim mensajeError As String = ""
-            Dim res As Boolean = L_fnEliminarClientesConDetalleZona(tbCodigoOriginal.Text, mensajeError)
+            Dim res As Boolean = L_fnEliminarClientesConDetalleZona(tbCodigoOriginal.Text, mensajeError, gs_VersionSistema, gs_IPMaquina,
+                                                                    gs_UsuMaquina)
             If res Then
                 _PrEliminarImage()
 
@@ -813,7 +830,7 @@ Public Class F1_Vendedor
         If btnGrabar.Enabled = True Then
             _PMInhabilitar()
             _PMPrimerRegistro()
-
+            PanelNavegacion.Enabled = True
         Else
             '  Public _modulo As SideNavItem
             _modulo.Select()
@@ -821,9 +838,6 @@ Public Class F1_Vendedor
         End If
     End Sub
 
-    Private Sub btnGrabar_Click(sender As Object, e As EventArgs) Handles btnGrabar.Click
-
-    End Sub
 
     Private Sub JGrM_Buscador_KeyDown(sender As Object, e As KeyEventArgs) Handles JGrM_Buscador.KeyDown
         If e.KeyData = Keys.Enter Then
