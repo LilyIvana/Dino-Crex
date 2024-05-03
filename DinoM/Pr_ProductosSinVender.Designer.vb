@@ -41,6 +41,8 @@ Partial Class Pr_ProductosSinVender
         Me.LabelX4 = New DevComponents.DotNetBar.LabelX()
         Me.tbFechaI = New DevComponents.Editors.DateTimeAdv.DateTimeInput()
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
+        Me.swStock = New DevComponents.DotNetBar.Controls.SwitchButton()
+        Me.LabelX5 = New DevComponents.DotNetBar.LabelX()
         CType(Me.SuperTabPrincipal, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuperTabPrincipal.SuspendLayout()
         Me.SuperTabControlPanelRegistro.SuspendLayout()
@@ -206,6 +208,8 @@ Partial Class Pr_ProductosSinVender
         'GroupBox2
         '
         Me.GroupBox2.BackColor = System.Drawing.Color.Transparent
+        Me.GroupBox2.Controls.Add(Me.LabelX5)
+        Me.GroupBox2.Controls.Add(Me.swStock)
         Me.GroupBox2.Controls.Add(Me.cbProveedor)
         Me.GroupBox2.Controls.Add(Me.CheckTodosProveedor)
         Me.GroupBox2.Controls.Add(Me.CheckUnaProveedor)
@@ -292,7 +296,7 @@ Partial Class Pr_ProductosSinVender
         tbAlmacen_DesignTimeLayout.LayoutString = resources.GetString("tbAlmacen_DesignTimeLayout.LayoutString")
         Me.tbAlmacen.DesignTimeLayout = tbAlmacen_DesignTimeLayout
         Me.tbAlmacen.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.tbAlmacen.Location = New System.Drawing.Point(72, 100)
+        Me.tbAlmacen.Location = New System.Drawing.Point(69, 103)
         Me.tbAlmacen.Name = "tbAlmacen"
         Me.tbAlmacen.Office2007ColorScheme = Janus.Windows.GridEX.Office2007ColorScheme.Custom
         Me.tbAlmacen.Office2007CustomColor = System.Drawing.Color.DodgerBlue
@@ -494,6 +498,40 @@ Partial Class Pr_ProductosSinVender
         Me.Timer1.Enabled = True
         Me.Timer1.Interval = 500
         '
+        'swStock
+        '
+        '
+        '
+        '
+        Me.swStock.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.swStock.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.swStock.Location = New System.Drawing.Point(69, 200)
+        Me.swStock.Name = "swStock"
+        Me.swStock.OffBackColor = System.Drawing.Color.DarkSlateGray
+        Me.swStock.OffText = "MAYOR A 0"
+        Me.swStock.OffTextColor = System.Drawing.Color.White
+        Me.swStock.OnBackColor = System.Drawing.Color.Gold
+        Me.swStock.OnText = "TODOS"
+        Me.swStock.Size = New System.Drawing.Size(150, 22)
+        Me.swStock.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+        Me.swStock.TabIndex = 254
+        '
+        'LabelX5
+        '
+        Me.LabelX5.BackColor = System.Drawing.Color.Transparent
+        '
+        '
+        '
+        Me.LabelX5.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.LabelX5.Font = New System.Drawing.Font("Georgia", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LabelX5.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(85, Byte), Integer), CType(CType(139, Byte), Integer))
+        Me.LabelX5.Location = New System.Drawing.Point(4, 199)
+        Me.LabelX5.Name = "LabelX5"
+        Me.LabelX5.SingleLineColor = System.Drawing.SystemColors.Control
+        Me.LabelX5.Size = New System.Drawing.Size(54, 23)
+        Me.LabelX5.TabIndex = 255
+        Me.LabelX5.Text = "Stock:"
+        '
         'Pr_ProductosSinVender
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -543,4 +581,6 @@ Partial Class Pr_ProductosSinVender
     Friend WithEvents CheckTodosProveedor As DevComponents.DotNetBar.Controls.CheckBoxX
     Friend WithEvents CheckUnaProveedor As DevComponents.DotNetBar.Controls.CheckBoxX
     Friend WithEvents LabelX2 As DevComponents.DotNetBar.LabelX
+    Friend WithEvents LabelX5 As DevComponents.DotNetBar.LabelX
+    Friend WithEvents swStock As DevComponents.DotNetBar.Controls.SwitchButton
 End Class

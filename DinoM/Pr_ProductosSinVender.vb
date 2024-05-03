@@ -34,23 +34,28 @@ Public Class Pr_ProductosSinVender
 
         If tbAlmacen.SelectedIndex <> 0 Then idAlmacen = tbAlmacen.Value
         If cbProveedor.SelectedIndex <> -1 Then idProveedor = cbProveedor.Value
-        _dt = L_prProductosNoVendidos(fechaDesde, fechaHasta, idProveedor)
+        If swStock.Value = True Then
+            _dt = L_prProductosNoVendidos(fechaDesde, fechaHasta, idProveedor)
+        Else
+            '_dt = L_prProductosNoVendidos(fechaDesde, fechaHasta, idProveedor)
+            '_dt = _dt.Select("Stock > 0").CopyToDataTable
+            _dt = L_prProductosNoVendidosStockMayor0(fechaDesde, fechaHasta, idProveedor)
+        End If
 
     End Sub
     Private Sub _prCargarReporte()
         Dim _dt As New DataTable
         _prInterpretarDatos(_dt)
         If (_dt.Rows.Count > 0) Then
-
             Dim objrep As New R_ProductosNoVendidos2
             objrep.SetDataSource(_dt)
             Dim fechaI As String = tbFechaI.Value.ToString("dd/MM/yyyy")
             Dim fechaF As String = tbFechaF.Value.ToString("dd/MM/yyyy")
             objrep.SetParameterValue("usuario", L_Usuario)
-                objrep.SetParameterValue("fechaI", fechaI)
-                objrep.SetParameterValue("fechaF", fechaF)
-                MReportViewer.ReportSource = objrep
-                MReportViewer.Show()
+            objrep.SetParameterValue("fechaI", fechaI)
+            objrep.SetParameterValue("fechaF", fechaF)
+            MReportViewer.ReportSource = objrep
+            MReportViewer.Show()
             MReportViewer.BringToFront()
         Else
             ToastNotification.Show(Me, "NO HAY DATOS PARA LOS PARAMETROS SELECCIONADOS..!!!",
@@ -59,20 +64,13 @@ Public Class Pr_ProductosSinVender
                                        eToastPosition.BottomLeft)
             MReportViewer.ReportSource = Nothing
         End If
-
-
-
-
-
     End Sub
     Private Sub btnGenerar_Click(sender As Object, e As EventArgs) Handles btnGenerar.Click
         _prCargarReporte()
-
     End Sub
 
     Private Sub Pr_VentasAtendidas_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         _prIniciarTodo()
-
     End Sub
 
     Private Sub CheckUnaALmacen_CheckValueChanged(sender As Object, e As EventArgs) Handles CheckUnaALmacen.CheckValueChanged

@@ -1699,7 +1699,6 @@ salirIf:
 
                     frm.StartPosition = FormStartPosition.WindowsDefaultLocation
                     frm.WindowState = FormWindowState.Minimized
-
                     frm.ShowDialog()
                 Else
                     ToastNotification.Show(Me, "NO EXISTE PRODUCTOS X KILO PARA REGISTRAR..!!!",
@@ -1707,11 +1706,9 @@ salirIf:
                     eToastGlowColor.Red,
                     eToastPosition.TopCenter)
                 End If
-
             Else
                 MostrarMensajeError("NO SE PUEDE REGISTRAR MOVIMIENTO DE PRODUCTOS POR PESO  CUANDO EL CONCEPTO ES TRASPASO SALIDA")
             End If
-
         Catch ex As Exception
             MostrarMensajeError(ex.Message)
         End Try

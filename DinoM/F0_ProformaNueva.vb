@@ -1378,15 +1378,7 @@ Public Class F0_ProformaNueva
     Private Sub SetParametrosNotaVenta(dt As DataTable, total As Decimal, li As String, _Hora As String, _Ds2 As DataSet, _Ds3 As DataSet, tipoReporte As String, objrep As Object, fecha As String, nombre As String)
 
         Select Case tipoReporte
-            Case ENReporteTipo.NOTAVENTA_Carta
-                objrep.SetDataSource(dt)
-                objrep.SetParameterValue("Literal", li)
-                objrep.SetParameterValue("TipoVenta", "CONTADO")
-                objrep.SetParameterValue("Logo", gb_UbiLogo)
-                objrep.SetParameterValue("NotaAdicional1", gb_NotaAdicional)
-                objrep.SetParameterValue("Descuento", "0")
-                objrep.SetParameterValue("Total", total)
-            Case ENReporteTipo.NOTAVENTA_Ticket
+            Case ENReporteTipo.PROFORMA_Ticket
                 objrep.SetDataSource(dt)
                 objrep.SetParameterValue("ECasaMatriz", _Ds2.Tables(0).Rows(0).Item("scsuc").ToString)
                 objrep.SetParameterValue("ECiudadPais", _Ds2.Tables(0).Rows(0).Item("scpai").ToString)
@@ -1394,9 +1386,10 @@ Public Class F0_ProformaNueva
                 objrep.SetParameterValue("Direccionpr", _Ds2.Tables(0).Rows(0).Item("scdir").ToString)
                 objrep.SetParameterValue("Hora", _Hora)
                 objrep.SetParameterValue("Fecha", fecha)
+                objrep.SetParameterValue("nombreCliente", nombre)
                 objrep.SetParameterValue("ENombre", _Ds2.Tables(0).Rows(0).Item("scneg").ToString) '?
                 objrep.SetParameterValue("Literal1", li)
-            Case ENReporteTipo.PROFORMA_Ticket
+            Case ENReporteTipo.PROFORMA_Carta
                 objrep.SetDataSource(dt)
                 objrep.SetParameterValue("ECasaMatriz", _Ds2.Tables(0).Rows(0).Item("scsuc").ToString)
                 objrep.SetParameterValue("ECiudadPais", _Ds2.Tables(0).Rows(0).Item("scpai").ToString)
@@ -2740,7 +2733,7 @@ Public Class F0_ProformaNueva
             ParEmp4 = dt2.Rows(0).Item("Empresa4").ToString
         End If
 
-        Dim _Ds3 = L_ObtenerRutaImpresora("2") ' Datos de Impresion de Facturación
+        Dim _Ds3 = L_ObtenerRutaImpresora("4") ' Datos de Impresion de Facturación
         If (_Ds3.Tables(0).Rows(0).Item("cbvp")) Then 'Vista Previa de la Ventana de Vizualización 1 = True 0 = False
             P_Global.Visualizador = New Visualizador 'Comentar
         End If
@@ -2756,14 +2749,11 @@ Public Class F0_ProformaNueva
         Dim empresaHabilitada As DataTable = ObtenerEmpresaTipoReporte(empresaId, TipoRep)
         For Each fila As DataRow In empresaHabilitada.Rows
             Select Case fila.Item("TipoReporte").ToString
-                Case ENReporteTipo.NOTAVENTA_Carta
-                    objrep = New R_NotaVenta_Carta
-                    SetParametrosNotaVenta(dt, total, li, _Hora, _Ds2, _Ds3, fila.Item("TipoReporte").ToString, objrep, fechaven, nombre)
-                Case ENReporteTipo.NOTAVENTA_Ticket
-                    objrep = New R_NotaVenta_7_5X100_2
-                    SetParametrosNotaVenta(dt, total, li, _Hora, _Ds2, _Ds3, fila.Item("TipoReporte").ToString, objrep, fechaven, nombre)
                 Case ENReporteTipo.PROFORMA_Ticket
                     objrep = New R_NotaVenta_7_5X100_3
+                    SetParametrosNotaVenta(dt, total, li, _Hora, _Ds2, _Ds3, fila.Item("TipoReporte").ToString, objrep, fechaven, nombre)
+                Case ENReporteTipo.PROFORMA_Carta
+                    objrep = New R_Proforma1
                     SetParametrosNotaVenta(dt, total, li, _Hora, _Ds2, _Ds3, fila.Item("TipoReporte").ToString, objrep, fechaven, nombre)
 
             End Select
