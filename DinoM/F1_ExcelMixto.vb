@@ -161,6 +161,9 @@ Public Class F1_ExcelMixto
 
 
         If dt.Rows.Count > 0 Then
+            L_fnBotonGenerar(gs_VersionSistema, gs_IPMaquina, gs_UsuMaquina, Tipo, "REPORTE MIXTO DETALLADO", "REPORTE MIXTO DETALLADO")
+
+
             JGrM_Buscador.DataSource = dt
             JGrM_Buscador.RetrieveStructure()
             JGrM_Buscador.AlternatingColors = True
@@ -565,6 +568,8 @@ Public Class F1_ExcelMixto
 
         End Select
         If (P_ExportarExcel((RutaGlobal + "\Reporte\Reporte Productos"), nombre)) Then
+            L_fnBotonExportar(gs_VersionSistema, gs_IPMaquina, gs_UsuMaquina, Tipo, "REPORTE MIXTO DETALLADO", "REPORTE MIXTO DETALLADO")
+
             ToastNotification.Show(Me, "EXPORTACIÓN A EXCEL EXITOSA...!!!",
                                        img, 2000,
                                        eToastGlowColor.Green,

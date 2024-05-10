@@ -115,6 +115,8 @@ Public Class F1_ExcelCierresCaja
         End If
 
         If dt.Rows.Count > 0 And swTipo.Value = True Then
+            L_fnBotonGenerar(gs_VersionSistema, gs_IPMaquina, gs_UsuMaquina, 0, "RESÚMEN CIERRES DE CAJA", "RESÚMEN CIERRES DE CAJA")
+
             JGrM_Buscador.DataSource = dt
             JGrM_Buscador.RetrieveStructure()
             JGrM_Buscador.AlternatingColors = True
@@ -483,6 +485,8 @@ Public Class F1_ExcelCierresCaja
         _prCrearCarpetaReportes()
         Dim img As Bitmap = New Bitmap(My.Resources.checked, 50, 50)
         If (P_ExportarExcel(RutaGlobal + "\Reporte\Reporte Cierrecajas")) Then
+            L_fnBotonExportar(gs_VersionSistema, gs_IPMaquina, gs_UsuMaquina, 0, "RESÚMEN CIERRES DE CAJA", "RESÚMEN CIERRES DE CAJA")
+
             ToastNotification.Show(Me, "EXPORTACIÓN DE REP. CIERRE DE CAJA EXITOSA...!!!",
                                        img, 2000,
                                        eToastGlowColor.Green,
