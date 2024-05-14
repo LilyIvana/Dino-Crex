@@ -1035,7 +1035,6 @@ Public Class F0_PagosCredito
             If (tbnrodoc.Text <> String.Empty) Then
                 _prGuardarModificado()
                 ''    _prInhabiliitar()
-
             End If
         End If
     End Sub
@@ -1137,6 +1136,19 @@ Public Class F0_PagosCredito
                 Return False
             End If
         End If
+
+        Dim dtcobro As DataTable = CType(grfactura.DataSource, DataTable)
+        For i As Integer = 0 To dtcobro.Rows.Count - 1 Step 1
+            Dim pago As Double = dtcobro.Rows(i).Item("PagoAc")
+            Dim estado As Double = dtcobro.Rows(i).Item("estado")
+            If (estado = 0) Then
+                If (pago <= 0) Then
+                    Dim img As Bitmap = New Bitmap(My.Resources.mensaje, 50, 50)
+                    ToastNotification.Show(Me, "El total cobrado de la fila: ".ToUpper + (i + 1).ToString + ", debe ser mayor a 0 ".ToUpper, img, 2500, eToastGlowColor.Red, eToastPosition.TopCenter)
+                    Return False
+                End If
+            End If
+        Next
 
         Return True
     End Function
