@@ -1337,15 +1337,6 @@ Public Class P_Principal
 
 
 
-
-
-
-
-
-
-
-
-
     'Private Sub btnCredPagoCliente_Click(sender As Object, e As EventArgs) Handles btnCredPagoCliente.Click
     '    SideNav1.IsMenuExpanded = False
     '    Ventana.Select()

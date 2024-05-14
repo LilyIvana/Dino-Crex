@@ -109,6 +109,8 @@ Public Class F1_ProductosVales
         Dim dt As DataTable = L_ProductosVendidosConVales(fechaDesde, fechaHasta)
 
         If dt.Rows.Count > 0 Then
+            L_fnBotonGenerar(gs_VersionSistema, gs_IPMaquina, gs_UsuMaquina, 0, "REP. PROD. VENDIDOS POR VALES", "REP. PROD. VENDIDOS POR VALES")
+
             JGrM_Buscador.DataSource = dt
             JGrM_Buscador.RetrieveStructure()
             JGrM_Buscador.AlternatingColors = True
@@ -285,6 +287,7 @@ Public Class F1_ProductosVales
         _prCrearCarpetaReportes()
         Dim img As Bitmap = New Bitmap(My.Resources.checked, 50, 50)
         If (P_ExportarExcel(RutaGlobal + "\Reporte\Reporte Productos")) Then
+            L_fnBotonExportar(gs_VersionSistema, gs_IPMaquina, gs_UsuMaquina, 0, "REP. PROD. VENDIDOS POR VALES", "REP. PROD. VENDIDOS POR VALES")
             ToastNotification.Show(Me, "EXPORTACIÓN DE PRODUCTOS CON VALES EXITOSA..!!!",
                                        img, 2000,
                                        eToastGlowColor.Green,

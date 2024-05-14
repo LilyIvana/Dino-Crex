@@ -1405,6 +1405,7 @@ Public Class F0_ProformaNueva
                 objrep.SetParameterValue("Obs", obs)
                 objrep.SetParameterValue("ENombre", _Ds2.Tables(0).Rows(0).Item("scneg").ToString) '?
                 objrep.SetParameterValue("Literal1", li)
+                objrep.SetParameterValue("Usuario", L_Usuario)
         End Select
         If (_Ds3.Tables(0).Rows(0).Item("cbvp")) Then 'Vista Previa de la Ventana de Vizualización 1 = True 0 = False
             P_Global.Visualizador.CrGeneral.ReportSource = objrep 'Comentar

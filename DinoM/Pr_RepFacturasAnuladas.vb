@@ -23,6 +23,7 @@ Public Class Pr_RepFacturasAnuladas
         End If
 
         If (_dt.Rows.Count > 0) Then
+            L_fnBotonGenerar(gs_VersionSistema, gs_IPMaquina, gs_UsuMaquina, 0, "REPORTE FACTURAS ANULADAS", "REPORTE FACTURAS ANULADAS")
 
             Dim objrep As New R_FacturasAnuladas
             objrep.SetDataSource(_dt)

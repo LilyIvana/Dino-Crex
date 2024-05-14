@@ -130,10 +130,11 @@ Public Class F1_ConsignacionFlow
         End If
     End Sub
     Private Sub _prCargarProductos()
-
         Dim dt As DataTable = L_ProductosConsignacionFlow(cbConsignación.Value)
 
         If dt.Rows.Count > 0 Then
+            L_fnBotonGenerar(gs_VersionSistema, gs_IPMaquina, gs_UsuMaquina, cbConsignación.Value, "REPORTE CONSIGNACIÓN FLOW", "REPORTE CONSIGNACIÓN FLOW")
+
             JGrM_Buscador.DataSource = dt
             JGrM_Buscador.RetrieveStructure()
             JGrM_Buscador.AlternatingColors = True
@@ -347,6 +348,7 @@ Public Class F1_ConsignacionFlow
         End If
         Dim img As Bitmap = New Bitmap(My.Resources.checked, 50, 50)
         If (P_ExportarExcel(RutaGlobal + "\Reporte\Reporte Productos", nombre)) Then
+            L_fnBotonExportar(gs_VersionSistema, gs_IPMaquina, gs_UsuMaquina, cbConsignación.Value, "REPORTE CONSIGNACIÓN FLOW", "REPORTE CONSIGNACIÓN FLOW")
             ToastNotification.Show(Me, "EXPORTACIÓN DE PRODUCTOS DE CONSIGNACIÓN FLOW EXITOSA..!!!",
                                        img, 2000,
                                        eToastGlowColor.Green,

@@ -88,10 +88,11 @@ Public Class F1_PreciosProdExcel
         End If
     End Sub
     Private Sub _prCargarDescuentosProd()
-
         Dim dt As DataTable = L_PreciosProductosCajeros()
 
         If dt.Rows.Count > 0 Then
+            L_fnBotonGenerar(gs_VersionSistema, gs_IPMaquina, gs_UsuMaquina, 0, "PRECIOS DE PRODUCTOS-CAJEROS", "PRECIOS DE PRODUCTOS-CAJEROS")
+
             JGrM_Buscador.DataSource = dt
             JGrM_Buscador.RetrieveStructure()
             JGrM_Buscador.AlternatingColors = True
@@ -224,6 +225,9 @@ Public Class F1_PreciosProdExcel
                 '.TotalRowFormatStyle.BackColor = Color.Gold
                 '.TotalRowPosition = TotalRowPosition.BottomFixed
                 'diseño de la grilla
+
+                .RecordNavigator = True
+                .RecordNavigatorText = "Datos"
             End With
 
         Else
@@ -343,6 +347,7 @@ Public Class F1_PreciosProdExcel
         _prCrearCarpetaReportes()
         Dim img As Bitmap = New Bitmap(My.Resources.checked, 50, 50)
         If (P_ExportarExcel(RutaGlobal + "\Reporte\Reporte Productos")) Then
+            L_fnBotonExportar(gs_VersionSistema, gs_IPMaquina, gs_UsuMaquina, 0, "PRECIOS DE PRODUCTOS-CAJEROS", "PRECIOS DE PRODUCTOS-CAJEROS")
             ToastNotification.Show(Me, "EXPORTACIÓN DE DESCUENTOS DE PRODUCTOS EXITOSA..!!!",
                                        img, 2000,
                                        eToastGlowColor.Green,

@@ -807,26 +807,20 @@ Public Class F0_PagosCredito
 
         If (bandera = True) Then
             Dim mensajeError As String = ""
-            Dim res As Boolean = L_fnEliminarCobranza(tbnrodoc.Text, mensajeError)
+            Dim res As Boolean = L_fnEliminarCobranza(tbnrodoc.Text, mensajeError, gs_VersionSistema, gs_IPMaquina, gs_UsuMaquina)
             If res Then
 
-
                 Dim img As Bitmap = New Bitmap(My.Resources.checked, 50, 50)
-
                 ToastNotification.Show(Me, "Código de COBRANZA ".ToUpper + tbnrodoc.Text + " eliminado con Exito.".ToUpper,
                                               img, 2000,
                                               eToastGlowColor.Green,
                                               eToastPosition.TopCenter)
-
                 _prFiltrar()
-
             Else
                 Dim img As Bitmap = New Bitmap(My.Resources.cancel, 50, 50)
                 ToastNotification.Show(Me, mensajeError, img, 2000, eToastGlowColor.Red, eToastPosition.BottomCenter)
             End If
         End If
-
-
 
     End Sub
     Function _fnAccesible() As Boolean
@@ -912,10 +906,7 @@ Public Class F0_PagosCredito
 
         End If
         If (e.KeyData = Keys.Escape And grfactura.Row >= 0) Then
-
             _prELiminarFila()
-
-
         End If
 
     End Sub
@@ -1109,29 +1100,24 @@ Public Class F0_PagosCredito
     End Function
     Public Sub _GuardarNuevo()
 
-        '_tenumi As String, _tefdoc As String, _tety4vend As Integer, _teobs As String, detalle As DataTable
         Dim numi As String = ""
         Dim dtCobro As DataTable = L_fnCobranzasObtenerLosPagos(-1)
         _prInterpretarDatosCobranza(dtCobro)
-        Dim res As Boolean = L_fnGrabarCobranza(numi, tbfecha.Value.ToString("yyyy/MM/dd"), tbcodVendedor.Text, tbObservacion.Text, dtCobro, gs_NroCaja)
-
+        Dim res As Boolean = L_fnGrabarCobranza(numi, tbfecha.Value.ToString("yyyy/MM/dd"), tbcodVendedor.Text, tbObservacion.Text, dtCobro,
+                                                gs_NroCaja, gs_VersionSistema, gs_IPMaquina, gs_UsuMaquina)
 
         If res Then
-
             Dim img As Bitmap = New Bitmap(My.Resources.checked, 50, 50)
             ToastNotification.Show(Me, "Código de Compra ".ToUpper + tbnrodoc.Text + " Grabado con Exito.".ToUpper,
                                       img, 2000,
                                       eToastGlowColor.Green,
                                       eToastPosition.TopCenter
                                       )
-
             _prCargarCobranza()
             _Limpiar()
-
         Else
             Dim img As Bitmap = New Bitmap(My.Resources.cancel, 50, 50)
             ToastNotification.Show(Me, "La Compra no pudo ser insertado".ToUpper, img, 2000, eToastGlowColor.Red, eToastPosition.BottomCenter)
-
         End If
 
     End Sub
@@ -1141,7 +1127,6 @@ Public Class F0_PagosCredito
             ToastNotification.Show(Me, "Por Favor Seleccione un Cobrador con Ctrl+Enter".ToUpper, img, 2000, eToastGlowColor.Red, eToastPosition.BottomCenter)
             tbcobrador.Focus()
             Return False
-
         End If
 
         If (grfactura.RowCount > 0) Then
@@ -1151,7 +1136,6 @@ Public Class F0_PagosCredito
                 ToastNotification.Show(Me, "Por Favor Seleccione  un detalle de Pagos".ToUpper, img, 2000, eToastGlowColor.Red, eToastPosition.BottomCenter)
                 Return False
             End If
-
         End If
 
         Return True
@@ -1159,7 +1143,6 @@ Public Class F0_PagosCredito
 
     Private Sub grcobranza_SelectionChanged(sender As Object, e As EventArgs) Handles grcobranza.SelectionChanged
         If (grcobranza.RowCount >= 0 And grcobranza.Row >= 0) Then
-
             _prMostrarRegistro(grcobranza.Row)
         End If
     End Sub
@@ -1210,9 +1193,7 @@ Public Class F0_PagosCredito
         If btnGrabar.Enabled = True Then
             _prInhabiliitar()
             If grcobranza.RowCount > 0 Then
-
                 _prMostrarRegistro(0)
-
             End If
         Else
             Me.Close()
@@ -1238,9 +1219,7 @@ Public Class F0_PagosCredito
     End Sub
 
     Private Sub grcobranza_DoubleClick(sender As Object, e As EventArgs) Handles grcobranza.DoubleClick
-
         MSuperTabControl.SelectedTabIndex = 0
-
     End Sub
 
     Private Sub btnImprimir_Click(sender As Object, e As EventArgs) Handles btnImprimir.Click
@@ -1250,6 +1229,8 @@ Public Class F0_PagosCredito
     End Sub
     Private Sub P_GenerarReporte()
         Dim dt As DataTable = L_fnCobranzasReporte(tbnrodoc.Text)
+        L_fnBotonImprimir(gs_VersionSistema, gs_IPMaquina, gs_UsuMaquina, tbnrodoc.Text, "TV0013", "REALIZAR PAGOS")
+
         Dim total As Double = dt.Compute("SUM(importe)", "")
         If Not IsNothing(P_Global.Visualizador) Then
             P_Global.Visualizador.Close()
@@ -1274,8 +1255,6 @@ Public Class F0_PagosCredito
         P_Global.Visualizador.CrGeneral.ReportSource = objrep 'Comentar
         P_Global.Visualizador.Show() 'Comentar
         P_Global.Visualizador.BringToFront() 'Comentar
-
-
     End Sub
 
     Private Sub tbObservacion_Leave(sender As Object, e As EventArgs) Handles tbObservacion.Leave
@@ -1286,7 +1265,6 @@ Public Class F0_PagosCredito
         _Inter = _Inter + 1
         If _Inter = 1 Then
             Me.WindowState = FormWindowState.Normal
-
         Else
             Me.Opacity = 100
             Timer1.Enabled = False

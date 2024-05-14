@@ -4226,7 +4226,7 @@ Public Class AccesoLogica
 
         Return _Tabla
     End Function
-    Public Shared Function L_fnEliminarCobranza(numi As String, ByRef mensaje As String) As Boolean
+    Public Shared Function L_fnEliminarCobranza(numi As String, ByRef mensaje As String, _version As String, _ip As String, _usumaquina As String) As Boolean
         Dim _resultado As Boolean
         If L_fnbValidarEliminacion(numi, "TV0013", "tenumi", mensaje) = True Then
             Dim _Tabla As DataTable
@@ -4234,6 +4234,9 @@ Public Class AccesoLogica
 
             _listParam.Add(New Datos.DParametro("@tipo", -1))
             _listParam.Add(New Datos.DParametro("@tenumi", numi))
+            _listParam.Add(New Datos.DParametro("@version", _version))
+            _listParam.Add(New Datos.DParametro("@ip", _ip))
+            _listParam.Add(New Datos.DParametro("@usumaquina", _usumaquina))
             _listParam.Add(New Datos.DParametro("@teuact", L_Usuario))
 
             _Tabla = D_ProcedimientoConParam("sp_Mam_TV00121Cheque", _listParam)
@@ -4249,8 +4252,8 @@ Public Class AccesoLogica
         Return _resultado
     End Function
     '@tenumi ,@tefdoc,@tety4vend ,@teobs ,@newFecha ,@newHora ,@teuact 
-    Public Shared Function L_fnGrabarCobranza(_tenumi As String, _tefdoc As String, _tety4vend As Integer, _teobs As String,
-                                              detalle As DataTable, _Nrocaja As Integer) As Boolean
+    Public Shared Function L_fnGrabarCobranza(_tenumi As String, _tefdoc As String, _tety4vend As Integer, _teobs As String, detalle As DataTable,
+                                              _Nrocaja As Integer, _version As String, _ip As String, _usumaquina As String) As Boolean
         Dim _Tabla As DataTable
         Dim _resultado As Boolean
         Dim _listParam As New List(Of Datos.DParametro)
@@ -4263,6 +4266,10 @@ Public Class AccesoLogica
         _listParam.Add(New Datos.DParametro("@teobs", _teobs))
         _listParam.Add(New Datos.DParametro("@teuact", L_Usuario))
         _listParam.Add(New Datos.DParametro("@teNrocaja", _Nrocaja))
+        _listParam.Add(New Datos.DParametro("@version", _version))
+        _listParam.Add(New Datos.DParametro("@ip", _ip))
+        _listParam.Add(New Datos.DParametro("@usumaquina", _usumaquina))
+
         _listParam.Add(New Datos.DParametro("@TV00121", "", detalle))
         _Tabla = D_ProcedimientoConParam("sp_Mam_TV00121Cheque", _listParam)
 

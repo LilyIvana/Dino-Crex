@@ -530,7 +530,8 @@ Public Class F0_Cobrar_Vendedor
             Return
         End If
 
-        Dim res As Boolean = L_fnGrabarCobranza(numi, tbFechaVenta.Value.ToString("yyyy/MM/dd"), tbCodigo.Text, "", dtCobro, gs_NroCaja)
+        Dim res As Boolean = L_fnGrabarCobranza(numi, tbFechaVenta.Value.ToString("yyyy/MM/dd"), tbCodigo.Text, "", dtCobro, gs_NroCaja,
+                                                gs_VersionSistema, gs_IPMaquina, gs_UsuMaquina)
 
 
         If res Then
