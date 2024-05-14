@@ -532,7 +532,7 @@ Partial Class P_Principal
         Me.lbVersion.SingleLineColor = System.Drawing.Color.Transparent
         Me.lbVersion.Size = New System.Drawing.Size(127, 18)
         Me.lbVersion.TabIndex = 5
-        Me.lbVersion.Text = "Versión 4.8.0.240516"
+        Me.lbVersion.Text = "Versión 4.8.0.240517"
         Me.lbVersion.TextAlignment = System.Drawing.StringAlignment.Center
         '
         'SideNav1
@@ -540,13 +540,13 @@ Partial Class P_Principal
         Me.SideNav1.BackColor = System.Drawing.Color.FromArgb(CType(CType(49, Byte), Integer), CType(CType(59, Byte), Integer), CType(CType(66, Byte), Integer))
         Me.SideNav1.BackgroundImage = Global.DinoM.My.Resources.Resources.Fondo_empresarial
         Me.SideNav1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.SideNav1.Controls.Add(Me.SideNavPanel4)
         Me.SideNav1.Controls.Add(Me.SideNavPanel7)
         Me.SideNav1.Controls.Add(Me.SideNav_Ventas)
         Me.SideNav1.Controls.Add(Me.SideNavPanel6)
         Me.SideNav1.Controls.Add(Me.SideNavPanel5)
         Me.SideNav1.Controls.Add(Me.SideNav_Conf)
         Me.SideNav1.Controls.Add(Me.SideNavPanel3)
-        Me.SideNav1.Controls.Add(Me.SideNavPanel4)
         Me.SideNav1.Controls.Add(Me.SideNav_Logistica)
         Me.SideNav1.Controls.Add(Me.SideNavPanel1)
         Me.SideNav1.Controls.Add(Me.SideNavPanel2)
@@ -567,6 +567,7 @@ Partial Class P_Principal
         Me.SideNavPanel7.Name = "SideNavPanel7"
         Me.SideNavPanel7.Size = New System.Drawing.Size(848, 524)
         Me.SideNavPanel7.TabIndex = 162
+        Me.SideNavPanel7.Visible = False
         '
         'MenuCreditos
         '
@@ -2459,7 +2460,6 @@ Partial Class P_Principal
         Me.SideNavPanel4.Name = "SideNavPanel4"
         Me.SideNavPanel4.Size = New System.Drawing.Size(848, 524)
         Me.SideNavPanel4.TabIndex = 77
-        Me.SideNavPanel4.Visible = False
         '
         'MetroTilePanel5
         '
@@ -3083,7 +3083,6 @@ Partial Class P_Principal
         '
         'FP_CREDITOS
         '
-        Me.FP_CREDITOS.Checked = True
         Me.FP_CREDITOS.Name = "FP_CREDITOS"
         Me.FP_CREDITOS.Panel = Me.SideNavPanel7
         Me.FP_CREDITOS.Symbol = ""
@@ -3109,6 +3108,7 @@ Partial Class P_Principal
         '
         'SideNavItem3
         '
+        Me.SideNavItem3.Checked = True
         Me.SideNavItem3.Name = "SideNavItem3"
         Me.SideNavItem3.Panel = Me.SideNavPanel4
         Me.SideNavItem3.Symbol = ""
