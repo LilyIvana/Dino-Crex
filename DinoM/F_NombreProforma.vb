@@ -11,6 +11,7 @@ Public Class F_NombreProforma
     Public NombreContacto As String = ""
     Public TelfContacto As String = ""
     Public Obs As String = ""
+    Public Aceptar As Boolean = False
 
     Public Sub _priniciarTodo()
 
@@ -75,6 +76,7 @@ Public Class F_NombreProforma
             NombreContacto = tbNombreContacto.Text
             TelfContacto = tbTelfContacto.Text
             Obs = tbObs.Text
+            Aceptar = True
             Me.Close()
         End If
     End Sub
@@ -90,4 +92,8 @@ Public Class F_NombreProforma
         HabilitarEnter(sender, e)
     End Sub
 
+    Private Sub btnCancelar_Click(sender As Object, e As EventArgs) Handles btnCancelar.Click
+        Aceptar = False
+        Me.Close()
+    End Sub
 End Class

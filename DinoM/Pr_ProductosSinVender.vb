@@ -59,6 +59,7 @@ Public Class Pr_ProductosSinVender
             objrep.SetParameterValue("usuario", L_Usuario)
             objrep.SetParameterValue("fechaI", fechaI)
             objrep.SetParameterValue("fechaF", fechaF)
+            objrep.SetParameterValue("conteo", _dt.Rows.Count)
             MReportViewer.ReportSource = objrep
             MReportViewer.Show()
             MReportViewer.BringToFront()

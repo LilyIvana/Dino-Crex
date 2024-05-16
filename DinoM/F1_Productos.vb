@@ -49,6 +49,7 @@ Public Class F1_Productos
         _prCargarComboLibreria(cbUMed, 1, 5)
         _prCargarComboLibreria(cbUniVenta, 1, 6)
         _prCargarComboLibreria(cbUnidMaxima, 1, 6)
+        _prCargarComboCanje(cbCanje)
         _prAsignarPermisos()
         armarGrillaDetalleProducto(0)
         P_prArmarGrillaCombo(-1)
@@ -168,6 +169,29 @@ Public Class F1_Productos
             .Refresh()
         End With
     End Sub
+    Private Sub _prCargarComboCanje(mCombo As Janus.Windows.GridEX.EditControls.MultiColumnCombo)
+        Dim dt As New DataTable
+        'dt = L_fnGeneralSucursales()
+        'dt.Rows.Clear()
+        dt.Columns.Add("nombre")
+        dt.Rows.Add("SI")
+        dt.Rows.Add("NO")
+        dt.Rows.Add("NINGUNO")
+
+        With mCombo
+            .DropDownList.Columns.Clear()
+            .DropDownList.Columns.Add("nombre").Width = 110
+            .DropDownList.Columns("nombre").Caption = "DESCRIPCIÓN"
+            .ValueMember = "nombre"
+            .DisplayMember = "nombre"
+            .DataSource = dt
+            .Refresh()
+        End With
+
+        If dt.Rows.Count > 0 Then
+            mCombo.SelectedIndex = 2
+        End If
+    End Sub
     Private Sub _prAsignarPermisos()
 
         Dim dtRolUsu As DataTable = L_prRolDetalleGeneral(gi_userRol, _nameButton)
@@ -285,6 +309,7 @@ Public Class F1_Productos
         cbUnidMaxima.ReadOnly = False
         tbConversion1.IsInputReadOnly = False
         tbConversion2.IsInputReadOnly = False
+        cbCanje.ReadOnly = False
 
         CbAeconomica.ReadOnly = False
         CbUmedida.ReadOnly = False
@@ -324,6 +349,7 @@ Public Class F1_Productos
         cbUnidMaxima.ReadOnly = True
         tbConversion1.IsInputReadOnly = True
         tbConversion2.IsInputReadOnly = True
+        cbCanje.ReadOnly = True
         tbStockMinimo.IsInputReadOnly = True
         BtAdicionar.Visible = False
 
@@ -377,6 +403,7 @@ Public Class F1_Productos
         tbStockMinimo.Value = 0
         tbRotacion.Text = "PN"
         swCombo.Value = False
+        cbCanje.SelectedIndex = 2
 
         tbCodProd.Focus()
         UsImg.pbImage.Image = My.Resources.pantalla
@@ -440,7 +467,7 @@ Public Class F1_Productos
                                                 tbDescDet.Text, cbgrupo5.Value, CbAeconomica.Value, CbUmedida.Value,
                                                 CbProdServ.Value, TbPrecioPsifac.Text, tbRotacion.Text.Trim, tbConversion2.Text,
                                                 IIf(swCombo.Value = True, 1, 0), cbUniCompra.Value, CType(JGProdCombo.DataSource, DataTable),
-                                                gs_VersionSistema, gs_IPMaquina, gs_UsuMaquina)
+                                                cbCanje.Value, gs_VersionSistema, gs_IPMaquina, gs_UsuMaquina)
 
         'Else
         '    res = False
@@ -474,8 +501,6 @@ Public Class F1_Productos
             tbCodBarra.Text = GenerarCBarraPeso(tbCodigo.Text, "")
         End If
 
-
-
         Dim nameImage As String = JGrM_Buscador.GetValue("yfimg")
         If (Modificado = False) Then
             res = L_fnModificarProducto(tbCodigo.Text, tbCodProd.Text.Trim, tbCodBarra.Text.Trim, tbDescPro.Text.Trim, tbDescCort.Text.Trim,
@@ -486,7 +511,7 @@ Public Class F1_Productos
                                         quitarUltimaFilaVacia(CType(dgjDetalleProducto.DataSource, DataTable).DefaultView.ToTable(False, "yfanumi", "yfayfnumi", "yfasim", "yfadesc", "estado")),
                                         tbDescDet.Text, cbgrupo5.Value, CbAeconomica.Value, CbUmedida.Value, CbProdServ.Value,
                                         TbPrecioPsifac.Text, tbRotacion.Text.Trim, tbConversion2.Text, IIf(swCombo.Value = True, 1, 0),
-                                        cbUniCompra.Value, CType(JGProdCombo.DataSource, DataTable), gs_VersionSistema,
+                                        cbUniCompra.Value, CType(JGProdCombo.DataSource, DataTable), cbCanje.Value, gs_VersionSistema,
                                         gs_IPMaquina, gs_UsuMaquina)
         Else
             res = L_fnModificarProducto(tbCodigo.Text, tbCodProd.Text.Trim, tbCodBarra.Text.Trim, tbDescPro.Text.Trim, tbDescCort.Text.Trim,
@@ -496,7 +521,7 @@ Public Class F1_Productos
                                         quitarUltimaFilaVacia(CType(dgjDetalleProducto.DataSource, DataTable).DefaultView.ToTable(False, "yfanumi", "yfayfnumi", "yfasim", "yfadesc", "estado")),
                                         tbDescDet.Text, cbgrupo5.Value, CbAeconomica.Value, CbUmedida.Value, CbProdServ.Value,
                                         TbPrecioPsifac.Text, tbRotacion.Text.Trim, tbConversion2.Text, IIf(swCombo.Value = True, 1, 0),
-                                        cbUniCompra.Value, CType(JGProdCombo.DataSource, DataTable), gs_VersionSistema,
+                                        cbUniCompra.Value, CType(JGProdCombo.DataSource, DataTable), cbCanje.Value, gs_VersionSistema,
                                         gs_IPMaquina, gs_UsuMaquina)
         End If
         If res Then
@@ -851,17 +876,15 @@ Public Class F1_Productos
         listEstCeldas.Add(New Modelo.Celda("yfresponsable", True, "Responsable".ToUpper, 130))
         listEstCeldas.Add(New Modelo.Celda("yflado", True, "Lado".ToUpper, 100))
         listEstCeldas.Add(New Modelo.Celda("yfordenacion", True, "Ordenación".ToUpper, 90))
+        listEstCeldas.Add(New Modelo.Celda("yfcampo4", True, "Canje".ToUpper, 90))
         listEstCeldas.Add(New Modelo.Celda("Estado", True, "Estado".ToUpper, 100))
         listEstCeldas.Add(New Modelo.Celda("yfcampo3", False))
-
 
         Return listEstCeldas
     End Function
 
     Public Overrides Sub _PMOMostrarRegistro(_N As Integer)
         JGrM_Buscador.Row = _MPos
-        'a.yfnumi, a.yfcprod, a.yfcbarra, a.yfcdprod1, a.yfcdprod2, a.yfgr1, a.yfgr2, a.yfgr3, a.yfgr4,
-        'a.yfMed, a.yfumin, a.yfusup,yfvsup, a.yfmstk, a.yfclot, a.yfsmin, a.yfap, a.yfimg, a.yffact, a.yfhact, a.yfuact
         Dim dt As DataTable = CType(JGrM_Buscador.DataSource, DataTable)
         Try
             tbCodigo.Text = JGrM_Buscador.GetValue("yfnumi").ToString
@@ -894,6 +917,7 @@ Public Class F1_Productos
             lbUsuario.Text = .GetValue("yfuact").ToString
             tbResponsable.Text = .GetValue("yfresponsable").ToString
             swCombo.Value = .GetValue("yfcampo3")
+            cbCanje.Value = .GetValue("yfcampo4")
 
             CbAeconomica.Value = .GetValue("ygcodact")
             CbUmedida.Value = .GetValue("ygcodu")

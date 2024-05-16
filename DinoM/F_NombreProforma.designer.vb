@@ -39,6 +39,7 @@ Partial Class F_NombreProforma
         Me.LabelX2 = New DevComponents.DotNetBar.LabelX()
         Me.tbObs = New DevComponents.DotNetBar.Controls.TextBoxX()
         Me.LabelX3 = New DevComponents.DotNetBar.LabelX()
+        Me.btnCancelar = New DevComponents.DotNetBar.ButtonX()
         Me.Panel1.SuspendLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.MEP, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -122,7 +123,7 @@ Partial Class F_NombreProforma
         Me.btnAceptar.Image = Global.DinoM.My.Resources.Resources.checked
         Me.btnAceptar.ImageFixedSize = New System.Drawing.Size(20, 20)
         Me.btnAceptar.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top
-        Me.btnAceptar.Location = New System.Drawing.Point(232, 294)
+        Me.btnAceptar.Location = New System.Drawing.Point(174, 294)
         Me.btnAceptar.Name = "btnAceptar"
         Me.btnAceptar.RightToLeft = System.Windows.Forms.RightToLeft.Yes
         Me.btnAceptar.Shape = New DevComponents.DotNetBar.RoundRectangleShapeDescriptor(2)
@@ -234,10 +235,32 @@ Partial Class F_NombreProforma
         Me.LabelX3.TabIndex = 163
         Me.LabelX3.Text = "OBSERVACIONES:"
         '
+        'btnCancelar
+        '
+        Me.btnCancelar.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
+        Me.btnCancelar.BackColor = System.Drawing.Color.Transparent
+        Me.btnCancelar.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground
+        Me.btnCancelar.FadeEffect = False
+        Me.btnCancelar.FocusCuesEnabled = False
+        Me.btnCancelar.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnCancelar.Image = Global.DinoM.My.Resources.Resources.cancel
+        Me.btnCancelar.ImageFixedSize = New System.Drawing.Size(20, 20)
+        Me.btnCancelar.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top
+        Me.btnCancelar.Location = New System.Drawing.Point(324, 294)
+        Me.btnCancelar.Name = "btnCancelar"
+        Me.btnCancelar.RightToLeft = System.Windows.Forms.RightToLeft.Yes
+        Me.btnCancelar.Shape = New DevComponents.DotNetBar.RoundRectangleShapeDescriptor(2)
+        Me.btnCancelar.Size = New System.Drawing.Size(134, 42)
+        Me.btnCancelar.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+        Me.btnCancelar.TabIndex = 164
+        Me.btnCancelar.Text = "CANCELAR"
+        Me.btnCancelar.TextColor = System.Drawing.Color.FromArgb(CType(CType(49, Byte), Integer), CType(CType(59, Byte), Integer), CType(CType(66, Byte), Integer))
+        '
         'F_NombreProforma
         '
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None
         Me.ClientSize = New System.Drawing.Size(616, 358)
+        Me.Controls.Add(Me.btnCancelar)
         Me.Controls.Add(Me.tbObs)
         Me.Controls.Add(Me.LabelX3)
         Me.Controls.Add(Me.tbTelfContacto)
@@ -273,4 +296,5 @@ Partial Class F_NombreProforma
     Friend WithEvents LabelX1 As DevComponents.DotNetBar.LabelX
     Friend WithEvents tbObs As DevComponents.DotNetBar.Controls.TextBoxX
     Friend WithEvents LabelX3 As DevComponents.DotNetBar.LabelX
+    Friend WithEvents btnCancelar As DevComponents.DotNetBar.ButtonX
 End Class

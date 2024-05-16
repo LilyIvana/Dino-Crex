@@ -542,7 +542,7 @@ Public Class AccesoLogica
                                               _yfimg As String, TY0051 As DataTable, _yfdetpro As String, _yfgr5 As String,
                                               _ycodact As String, _ycodu As Integer, _ycodprosin As String, _ypreciosif As Double,
                                               _yfprefijo As String, _yfconv2 As Double, _yfconv3 As Double, _yfucompra As Integer,
-                                              TY0053 As DataTable, _version As String, _ip As String, _usumaquina As String) As Boolean
+                                              TY0053 As DataTable, _canje As String, _version As String, _ip As String, _usumaquina As String) As Boolean
         Dim _resultado As Boolean
         Dim _Tabla As DataTable
         Dim _listParam As New List(Of Datos.DParametro)
@@ -576,9 +576,11 @@ Public Class AccesoLogica
         _listParam.Add(New Datos.DParametro("@yflado", "S/L"))
         _listParam.Add(New Datos.DParametro("@yfordenacion", 0))
         _listParam.Add(New Datos.DParametro("@yfucompra", _yfucompra))
+        _listParam.Add(New Datos.DParametro("@yfcampo4", _canje))
         _listParam.Add(New Datos.DParametro("@version", _version))
         _listParam.Add(New Datos.DParametro("@ip", _ip))
         _listParam.Add(New Datos.DParametro("@usumaquina", _usumaquina))
+
 
         _listParam.Add(New Datos.DParametro("@ycodact", _ycodact))
         _listParam.Add(New Datos.DParametro("@ygcodu", _ycodu))
@@ -605,7 +607,7 @@ Public Class AccesoLogica
                                                  _yfap As Integer, _yfimg As String, TY0051 As DataTable, _yfdetpro As String, _yfgr5 As String,
                                                  _ycodact As String, _ycodu As Integer, _ycodprosin As String, _ypreciosif As Double,
                                                  _yfprefijo As String, _yfconv2 As Double, _yfconv3 As Double, _yfucompra As Integer,
-                                                 TY0053 As DataTable, _version As String, _ip As String, _usumaquina As String) As Boolean
+                                                 TY0053 As DataTable, _canje As String, _version As String, _ip As String, _usumaquina As String) As Boolean
         Dim _resultado As Boolean
 
         Dim _Tabla As DataTable
@@ -637,6 +639,7 @@ Public Class AccesoLogica
         _listParam.Add(New Datos.DParametro("@yfcampo2", _yfconv2))
         _listParam.Add(New Datos.DParametro("@yfcampo3", _yfconv3))
         _listParam.Add(New Datos.DParametro("@yfucompra", _yfucompra))
+        _listParam.Add(New Datos.DParametro("@yfcampo4", _canje))
         _listParam.Add(New Datos.DParametro("@version", _version))
         _listParam.Add(New Datos.DParametro("@ip", _ip))
         _listParam.Add(New Datos.DParametro("@usumaquina", _usumaquina))
