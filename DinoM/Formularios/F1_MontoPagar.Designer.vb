@@ -53,6 +53,8 @@ Partial Class F1_MontoPagar
         Me.tbMontoDolar = New DevComponents.Editors.DoubleInput()
         Me.LabelX6 = New DevComponents.DotNetBar.LabelX()
         Me.GroupBox3 = New System.Windows.Forms.GroupBox()
+        Me.LabelX7 = New DevComponents.DotNetBar.LabelX()
+        Me.tbCel = New DevComponents.DotNetBar.Controls.TextBoxX()
         Me.tbComplemento = New System.Windows.Forms.TextBox()
         Me.LabelX2 = New DevComponents.DotNetBar.LabelX()
         Me.LabelX1 = New DevComponents.DotNetBar.LabelX()
@@ -64,8 +66,6 @@ Partial Class F1_MontoPagar
         Me.tbNit = New System.Windows.Forms.TextBox()
         Me.LabelX3 = New DevComponents.DotNetBar.LabelX()
         Me.LabelX4 = New DevComponents.DotNetBar.LabelX()
-        Me.LabelX7 = New DevComponents.DotNetBar.LabelX()
-        Me.tbCel = New DevComponents.DotNetBar.Controls.TextBoxX()
         Me.GroupBox2.SuspendLayout()
         Me.GroupBox1.SuspendLayout()
         CType(Me.tbMontoQR, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -568,6 +568,38 @@ Partial Class F1_MontoPagar
         Me.GroupBox3.TabStop = False
         Me.GroupBox3.Text = "Datos de Factura"
         '
+        'LabelX7
+        '
+        Me.LabelX7.BackColor = System.Drawing.Color.Transparent
+        '
+        '
+        '
+        Me.LabelX7.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.LabelX7.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Bold)
+        Me.LabelX7.ForeColor = System.Drawing.Color.White
+        Me.LabelX7.Location = New System.Drawing.Point(9, 134)
+        Me.LabelX7.Name = "LabelX7"
+        Me.LabelX7.SingleLineColor = System.Drawing.SystemColors.Control
+        Me.LabelX7.Size = New System.Drawing.Size(70, 23)
+        Me.LabelX7.TabIndex = 428
+        Me.LabelX7.Text = "Celular:"
+        '
+        'tbCel
+        '
+        Me.tbCel.BackColor = System.Drawing.Color.White
+        '
+        '
+        '
+        Me.tbCel.Border.Class = "TextBoxBorder"
+        Me.tbCel.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.tbCel.Font = New System.Drawing.Font("Georgia", 10.0!, System.Drawing.FontStyle.Bold)
+        Me.tbCel.ForeColor = System.Drawing.Color.FromArgb(CType(CType(45, Byte), Integer), CType(CType(59, Byte), Integer), CType(CType(66, Byte), Integer))
+        Me.tbCel.Location = New System.Drawing.Point(124, 134)
+        Me.tbCel.Name = "tbCel"
+        Me.tbCel.PreventEnterBeep = True
+        Me.tbCel.Size = New System.Drawing.Size(354, 23)
+        Me.tbCel.TabIndex = 427
+        '
         'tbComplemento
         '
         Me.tbComplemento.AcceptsTab = True
@@ -636,6 +668,7 @@ Partial Class F1_MontoPagar
         '
         Me.TbEmail.Border.Class = "TextBoxBorder"
         Me.TbEmail.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.TbEmail.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
         Me.TbEmail.Font = New System.Drawing.Font("Georgia", 10.0!, System.Drawing.FontStyle.Bold)
         Me.TbEmail.ForeColor = System.Drawing.Color.FromArgb(CType(CType(45, Byte), Integer), CType(CType(59, Byte), Integer), CType(CType(66, Byte), Integer))
         Me.TbEmail.Location = New System.Drawing.Point(124, 106)
@@ -730,38 +763,6 @@ Partial Class F1_MontoPagar
         Me.LabelX4.Size = New System.Drawing.Size(89, 18)
         Me.LabelX4.TabIndex = 366
         Me.LabelX4.Text = "Razón Social:"
-        '
-        'LabelX7
-        '
-        Me.LabelX7.BackColor = System.Drawing.Color.Transparent
-        '
-        '
-        '
-        Me.LabelX7.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.LabelX7.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Bold)
-        Me.LabelX7.ForeColor = System.Drawing.Color.White
-        Me.LabelX7.Location = New System.Drawing.Point(9, 134)
-        Me.LabelX7.Name = "LabelX7"
-        Me.LabelX7.SingleLineColor = System.Drawing.SystemColors.Control
-        Me.LabelX7.Size = New System.Drawing.Size(70, 23)
-        Me.LabelX7.TabIndex = 428
-        Me.LabelX7.Text = "Celular:"
-        '
-        'tbCel
-        '
-        Me.tbCel.BackColor = System.Drawing.Color.White
-        '
-        '
-        '
-        Me.tbCel.Border.Class = "TextBoxBorder"
-        Me.tbCel.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.tbCel.Font = New System.Drawing.Font("Georgia", 10.0!, System.Drawing.FontStyle.Bold)
-        Me.tbCel.ForeColor = System.Drawing.Color.FromArgb(CType(CType(45, Byte), Integer), CType(CType(59, Byte), Integer), CType(CType(66, Byte), Integer))
-        Me.tbCel.Location = New System.Drawing.Point(124, 134)
-        Me.tbCel.Name = "tbCel"
-        Me.tbCel.PreventEnterBeep = True
-        Me.tbCel.Size = New System.Drawing.Size(354, 23)
-        Me.tbCel.TabIndex = 427
         '
         'F1_MontoPagar
         '

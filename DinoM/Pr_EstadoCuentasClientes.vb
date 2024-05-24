@@ -75,16 +75,16 @@ Public Class Pr_EstadoCuentasClientes
                            My.Resources.INFORMATION,
                             3500,
                            eToastGlowColor.Blue,
-                           eToastPosition.BottomLeft)
+                           eToastPosition.TopCenter)
                 Exit Sub
-
-
             Else
 
                 P_ArmarDatos()
 
                 Dim objrep As New R_EstadoCuentasClientes
                 objrep.SetDataSource(_dt)
+                L_fnBotonGenerar(gs_VersionSistema, gs_IPMaquina, gs_UsuMaquina, 0, "ESTADO CUENTAS CLIENTES", "ESTADO CUENTAS CLIENTES")
+
                 Dim fechaI As String = tbFechaI.Value.ToString("dd/MM/yyyy")
                 Dim fechaF As String = tbFechaF.Value.ToString("dd/MM/yyyy")
                 objrep.SetParameterValue("usuario", L_Usuario)

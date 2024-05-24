@@ -237,8 +237,6 @@ Public Class F1_MontoPagar
             TotalTarjeta = 0
             Bandera = False
             Me.Close()
-
-
         End If
         If (e.KeyData = Keys.Control + Keys.S) Then
             If (tbMontoTarej.Value + tbMontoDolar.Value + tbMontoBs.Value >= TotalVenta) Then
@@ -250,7 +248,6 @@ Public Class F1_MontoPagar
                 Nit = tbNit.Text
                 RazonSocial = tbRazonSocial.Text
                 Me.Close()
-
             Else
                 ToastNotification.Show(Me, "Debe Ingresar un Monto a Cobrar Valido igual o mayor A = " + Str(TotalVenta), My.Resources.WARNING, 4000, eToastGlowColor.Red, eToastPosition.TopCenter)
             End If
@@ -273,7 +270,6 @@ Public Class F1_MontoPagar
                 'tbRazonSocial.Focus()
                 L_Validar_Nit(tbNit.Text.Trim, nom1, nom2, correo, tipoDoc, id, complemento, cel)
                 IdNit = id
-
             Else
                 tbRazonSocial.Text = nom1
                 TbEmail.Text = correo

@@ -76,17 +76,18 @@ Partial Class Pr_KardexCredito
         Me.SuperTabPrincipal.ControlBox.MenuBox.Name = ""
         Me.SuperTabPrincipal.ControlBox.Name = ""
         Me.SuperTabPrincipal.ControlBox.SubItems.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.SuperTabPrincipal.ControlBox.MenuBox, Me.SuperTabPrincipal.ControlBox.CloseBox})
+        Me.SuperTabPrincipal.Size = New System.Drawing.Size(1362, 741)
         Me.SuperTabPrincipal.Controls.SetChildIndex(Me.SuperTabControlPanelBuscador, 0)
         Me.SuperTabPrincipal.Controls.SetChildIndex(Me.SuperTabControlPanelRegistro, 0)
         '
         'SuperTabControlPanelBuscador
         '
-        Me.SuperTabControlPanelBuscador.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.SuperTabControlPanelBuscador.Margin = New System.Windows.Forms.Padding(4)
         Me.SuperTabControlPanelBuscador.Size = New System.Drawing.Size(858, 561)
         '
         'SuperTabControlPanelRegistro
         '
-        Me.SuperTabControlPanelRegistro.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.SuperTabControlPanelRegistro.Margin = New System.Windows.Forms.Padding(4)
         Me.SuperTabControlPanelRegistro.Size = New System.Drawing.Size(1330, 741)
         Me.SuperTabControlPanelRegistro.Controls.SetChildIndex(Me.PanelInferior, 0)
         Me.SuperTabControlPanelRegistro.Controls.SetChildIndex(Me.PanelIzq, 0)
@@ -105,7 +106,8 @@ Partial Class Pr_KardexCredito
         '
         'PanelInferior
         '
-        Me.PanelInferior.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.PanelInferior.Location = New System.Drawing.Point(0, 705)
+        Me.PanelInferior.Margin = New System.Windows.Forms.Padding(4)
         Me.PanelInferior.Size = New System.Drawing.Size(1330, 36)
         Me.PanelInferior.Style.Alignment = System.Drawing.StringAlignment.Center
         Me.PanelInferior.Style.BackColor1.Color = System.Drawing.Color.Gold
@@ -147,23 +149,25 @@ Partial Class Pr_KardexCredito
         '
         'PanelPrincipal
         '
-        Me.PanelPrincipal.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.PanelPrincipal.Margin = New System.Windows.Forms.Padding(4)
         Me.PanelPrincipal.Size = New System.Drawing.Size(967, 705)
         '
         'MPanelUserAct
         '
         Me.MPanelUserAct.Location = New System.Drawing.Point(1130, 0)
-        Me.MPanelUserAct.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.MPanelUserAct.Margin = New System.Windows.Forms.Padding(4)
         '
         'MReportViewer
         '
-        Me.MReportViewer.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.MReportViewer.Margin = New System.Windows.Forms.Padding(4)
         Me.MReportViewer.Size = New System.Drawing.Size(967, 705)
+        Me.MReportViewer.ToolPanelWidth = 200
         '
         'MGPFiltros
         '
         Me.MGPFiltros.Controls.Add(Me.GroupBox2)
         Me.MGPFiltros.Controls.Add(Me.GroupBox1)
+        Me.MGPFiltros.Size = New System.Drawing.Size(363, 633)
         '
         '
         '
@@ -192,6 +196,10 @@ Partial Class Pr_KardexCredito
         '
         '
         Me.MGPFiltros.StyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        '
+        'PanelIzq
+        '
+        Me.PanelIzq.Size = New System.Drawing.Size(363, 705)
         Me.PanelIzq.Controls.SetChildIndex(Me.PanelSuperior, 0)
         Me.PanelIzq.Controls.SetChildIndex(Me.MGPFiltros, 0)
         '
@@ -228,6 +236,7 @@ Partial Class Pr_KardexCredito
         Me.swdetresum.TabIndex = 247
         Me.swdetresum.Value = True
         Me.swdetresum.ValueObject = "Y"
+        Me.swdetresum.Visible = False
         '
         'swCreditoCliente
         '
@@ -532,7 +541,7 @@ Partial Class Pr_KardexCredito
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1362, 741)
         Me.Location = New System.Drawing.Point(0, 0)
-        Me.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.Margin = New System.Windows.Forms.Padding(4)
         Me.Name = "Pr_KardexCredito"
         Me.Text = "ESTADO DE CUENTAS"
         Me.Controls.SetChildIndex(Me.SuperTabPrincipal, 0)

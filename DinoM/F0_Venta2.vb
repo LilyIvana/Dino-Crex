@@ -34,6 +34,7 @@ Public Class F0_Venta2
     Dim FilaSelectLote As DataRow = Nothing
     Dim Table_Producto As DataTable
     Dim G_Lote As Boolean = False '1=igual a mostrar las columnas de lote y fecha de Vencimiento
+    Public CodigoFicha As String
 
     Dim dtDescuentos As DataTable = Nothing
     Dim ConfiguracionDescuentoEsXCantidad As Boolean = True
@@ -80,6 +81,7 @@ Public Class F0_Venta2
         swMoneda.Visible = False
         P_prCargarVariablesIndispensables()
         btnGrabar.Enabled = False
+        _prCargarComboCanje(cbCanje)
         _prCargarVenta()
         _prInhabiliitar()
         grVentas.Focus()
@@ -107,12 +109,38 @@ Public Class F0_Venta2
         Dim dtFact As DataTable = L_fnConfParametrosFacturacion()
         gb_OnOff = dtFact.Rows(0).Item("OnOff")
 
+
     End Sub
 
     Public Sub _prCargarNameLabel()
         Dim dt As DataTable = L_fnNameLabel()
         If (dt.Rows.Count > 0) Then
             _codeBar = 1 'dt.Rows(0).Item("codeBar")
+        End If
+    End Sub
+    Private Sub _prCargarComboCanje(mCombo As Janus.Windows.GridEX.EditControls.MultiColumnCombo)
+        Dim dt As New DataTable
+
+        dt.Columns.Add("cod")
+        dt.Columns.Add("desc")
+        dt.Rows.Add(1, "SI")
+        dt.Rows.Add(2, "NO")
+        dt.Rows.Add(3, "AMBOS")
+
+        With mCombo
+            .DropDownList.Columns.Clear()
+            .DropDownList.Columns.Add("cod").Width = 35
+            .DropDownList.Columns("cod").Caption = "COD"
+            .DropDownList.Columns.Add("desc").Width = 90
+            .DropDownList.Columns("desc").Caption = "DESCRIPCION"
+            .ValueMember = "cod"
+            .DisplayMember = "desc"
+            .DataSource = dt
+            .Refresh()
+        End With
+
+        If dt.Rows.Count > 0 Then
+            mCombo.SelectedIndex = 1
         End If
     End Sub
     Sub _prValidadFactura()
@@ -184,7 +212,7 @@ Public Class F0_Venta2
         swTipoVenta.IsReadOnly = True
         txtEstado.ReadOnly = True
         ''swMostrar.IsReadOnly = True
-
+        cbCanje.ReadOnly = True
         cbCambioDolar.ReadOnly = True
 
         CbTipoDoc.ReadOnly = True
@@ -255,7 +283,9 @@ Public Class F0_Venta2
         tbFechaVenta.IsInputReadOnly = False
         tbFechaVenta.Enabled = True
         swMoneda.IsReadOnly = False
+
         ''swMostrar.IsReadOnly = False
+        cbCanje.ReadOnly = False
 
         btnGrabar.Enabled = True
 
@@ -344,6 +374,7 @@ Public Class F0_Venta2
         tbMontoTarej.Enabled = False
         tbMontoQR.Value = 0
         tbMontoQR.Enabled = False
+
         'txtCambio1.Value = 0
         'txtMontoPagado1.Value = 0
         txtCambio1.Text = "0.00"
@@ -360,8 +391,6 @@ Public Class F0_Venta2
         tbNroTarjeta1.Visible = False
         tbNroTarjeta2.Visible = False
         tbNroTarjeta3.Visible = False
-
-
 
         txtEstado.BackColor = Color.White
         txtEstado.Clear()
@@ -407,14 +436,9 @@ Public Class F0_Venta2
         swPulperia.Visible = True
         lbPulperia.Visible = True
         swPulperia.Value = False
-
+        cbCanje.SelectedIndex = 1
     End Sub
     Public Sub _prMostrarRegistro(_N As Integer)
-        '' grVentas.Row = _N
-        '     a.tanumi ,a.taalm ,a.tafdoc ,a.taven ,vendedor .yddesc as vendedor ,a.tatven ,a.tafvcr ,a.taclpr,
-        'cliente.yddesc as cliente ,a.tamon ,IIF(tamon=1,'Boliviano','Dolar') as moneda,a.taest ,a.taobs ,
-        'a.tadesc ,a.tafact ,a.tahact ,a.tauact,(Sum(b.tbptot)-a.tadesc ) as total,taproforma
-
         With grVentas
             cbSucursal.Value = .GetValue("taalm")
             tbCodigo.Text = .GetValue("tanumi")
@@ -481,7 +505,6 @@ Public Class F0_Venta2
         'Calcular montos
         Dim tMonto As DataTable = L_fnMostrarMontos(tbCodigo.Text)
         If tMonto.Rows.Count > 0 Then
-
             tbMontoTarej.Value = tMonto.Rows(0).Item("tgMontTare").ToString
             tbMontoQR.Value = tMonto.Rows(0).Item("tgMontQR").ToString
             cbCambioDolar.Text = tMonto.Rows(0).Item("tgCambioDol").ToString
@@ -490,7 +513,6 @@ Public Class F0_Venta2
             tbNroTarjeta1.Text = Mid(tMonto.Rows(0).Item("tgNroTarjeta").ToString, 1, 4)
             tbNroTarjeta2.Text = "00000000"
             tbNroTarjeta3.Text = Mid(tMonto.Rows(0).Item("tgNroTarjeta").ToString, 13, 4)
-
 
             txtMontoPagado1.Text = tbMontoBs.Value + (tbMontoDolar.Value * IIf(cbCambioDolar.Text = "", 0, Convert.ToDecimal(cbCambioDolar.Text))) + tbMontoTarej.Value + tbMontoQR.Value
 
@@ -526,6 +548,14 @@ Public Class F0_Venta2
             End If
 
         End If
+        ''Combo Canje
+        Dim tCanje As DataTable = L_fnMostrarCanje(tbCodigo.Text)
+        If tCanje.Rows.Count > 0 Then
+            cbCanje.Value = tCanje.Rows(0).Item("thtipocanje").ToString
+        Else
+            cbCanje.Value = "2" ''2 es NO
+        End If
+
         LblPaginacion.Text = Str(grVentas.Row + 1) + "/" + grVentas.RowCount.ToString
 
     End Sub
@@ -949,7 +979,7 @@ Public Class F0_Venta2
             dt = L_fnListarProductos(cbSucursal.Value, _cliente)
         Else
             'dt = L_fnListarProductosSinLote(cbSucursal.Value, _cliente, CType(grdetalle.DataSource, DataTable))
-            dt = L_fnListarProductosSinLoteUlt(cbSucursal.Value, _cliente, CType(grdetalle.DataSource, DataTable))
+            dt = L_fnListarProductosSinLoteUlt(cbSucursal.Value, _cliente, CType(grdetalle.DataSource, DataTable), cbCanje.Value)
         End If
 
         grProductos.DataSource = dt
@@ -1584,7 +1614,13 @@ Public Class F0_Venta2
                     Return False
                 End If
             End If
-
+            If cbCanje.Value = 1 Or cbCanje.Value = 3 Then
+                If CodigoFicha = String.Empty Then
+                    Dim img As Bitmap = New Bitmap(My.Resources.mensaje, 50, 50)
+                    ToastNotification.Show(Me, "El código de la ficha esta vacío, vuelva a colocarlo".ToUpper, img, 2000, eToastGlowColor.Red, eToastPosition.TopCenter)
+                    Return False
+                End If
+            End If
             ''Validación para controlar caducidad de Dosificacion
             'If tbNit.Text <> String.Empty Then
             '    Dim fecha As String = Now.Date
@@ -1793,7 +1829,7 @@ Public Class F0_Venta2
                                                  CStr(Format(a, "####0.00")), CStr(Format(b, "####0.00")), CStr(Format(c, "####0.00")), CStr(Format(d, "####0.00")),
                                                  CStr(Format(e, "####0.00")), CStr(Format(f, "####0.00")), CStr(Format(g, "####0.00")), CStr(Format(h, "####0.00")),
                                                  QrUrl, FactUrl, SegundaLeyenda, TerceraLeyenda, Cudf, Anhio, IIf(gb_FacturaEmite = True, 1, 0), gs_VersionSistema,
-                                                 gs_IPMaquina, gs_UsuMaquina)
+                                                 gs_IPMaquina, gs_UsuMaquina, cbCanje.Value, CodigoFicha)
 
             If res Then
                 'Emite factura
@@ -1835,7 +1871,11 @@ Public Class F0_Venta2
                 'System.Diagnostics.Process.Start(FactUrl)
 
                 _prCargarVenta()
+                'btnNuevo.PerformClick()
                 _Limpiar()
+                btnEliminar.Enabled = False
+                AsignarClienteEmpleado()
+                tbCliente.Select()
                 Table_Producto = Nothing
 
             Else
@@ -4410,24 +4450,20 @@ salirIf:
 
     Private Sub tbMontoDolar_KeyDown(sender As Object, e As KeyEventArgs) Handles tbMontoDolar.KeyDown
         If (e.KeyData = Keys.Control + Keys.A) Then
-            _prGuardar()
+            btnGrabar.PerformClick()
+            '_prGuardar()
         End If
     End Sub
     Private Sub tbMontoTarej_KeyDown(sender As Object, e As KeyEventArgs) Handles tbMontoTarej.KeyDown
         If (e.KeyData = Keys.Control + Keys.A) Then
-            _prGuardar()
+            btnGrabar.PerformClick()
+            '_prGuardar()
         End If
     End Sub
-
-    Private Sub txtMontoPagado1_KeyDown(sender As Object, e As KeyEventArgs) Handles txtMontoPagado1.KeyDown
+    Private Sub tbMontoQR_KeyDown(sender As Object, e As KeyEventArgs) Handles tbMontoQR.KeyDown
         If (e.KeyData = Keys.Control + Keys.A) Then
-            _prGuardar()
-        End If
-    End Sub
-
-    Private Sub txtCambio1_KeyDown(sender As Object, e As KeyEventArgs) Handles txtCambio1.KeyDown
-        If (e.KeyData = Keys.Control + Keys.A) Then
-            _prGuardar()
+            btnGrabar.PerformClick()
+            '_prGuardar()
         End If
     End Sub
 
@@ -5443,6 +5479,27 @@ salirIf:
         End Try
 
     End Sub
+
+    Private Sub cbCanje_ValueChanged(sender As Object, e As EventArgs) Handles cbCanje.ValueChanged
+        If btnGrabar.Enabled = True Then
+            If cbCanje.Value = 1 Or cbCanje.Value = 3 Then ''1 es SI, 3 es AMBOS
+                Dim frm As New F_CodigoFicha
+                frm.ShowDialog()
+                If frm.Aceptar = True Then
+                    CodigoFicha = frm.Codigo
+                    grdetalle.Select()
+                Else
+                    grdetalle.Select()
+                End If
+            Else
+                CodigoFicha = ""
+                grdetalle.Select()
+            End If
+        End If
+
+    End Sub
+
+
 
 
 

@@ -47,6 +47,7 @@ Public Class Pr_ReporteMorosidadGeneral
         Dim _dt As New DataTable
         _prInterpretarDatos(_dt)
         If (_dt.Rows.Count > 0) Then
+            L_fnBotonGenerar(gs_VersionSistema, gs_IPMaquina, gs_UsuMaquina, 0, "INFORME DE MOROSIDAD", "INFORME DE MOROSIDAD")
 
             Dim objrep As New R_MorosidadCredito
             objrep.SetDataSource(_dt)
@@ -56,32 +57,22 @@ Public Class Pr_ReporteMorosidadGeneral
             MReportViewer.ReportSource = objrep
             MReportViewer.Show()
             MReportViewer.BringToFront()
-
-
         Else
             ToastNotification.Show(Me, "NO HAY DATOS PARA LOS PARAMETROS SELECCIONADOS..!!!",
                                        My.Resources.INFORMATION, 2000,
                                        eToastGlowColor.Blue,
-                                       eToastPosition.BottomLeft)
+                                       eToastPosition.TopCenter)
             MReportViewer.ReportSource = Nothing
         End If
-
-
-
-
 
     End Sub
     Private Sub btnGenerar_Click(sender As Object, e As EventArgs) Handles btnGenerar.Click
         _prCargarReporte()
-
     End Sub
 
     Private Sub Pr_VentasAtendidas_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         _prIniciarTodo()
-
     End Sub
-
-
 
     Private Sub checkUnaVendedor_CheckValueChanged(sender As Object, e As EventArgs) Handles checkUnaVendedor.CheckValueChanged
         If (checkUnaVendedor.Checked) Then
@@ -89,7 +80,6 @@ Public Class Pr_ReporteMorosidadGeneral
             tbVendedor.Enabled = True
             tbVendedor.BackColor = Color.White
             tbVendedor.Focus()
-
         End If
     End Sub
 
@@ -100,7 +90,6 @@ Public Class Pr_ReporteMorosidadGeneral
             tbVendedor.BackColor = Color.Gainsboro
             tbVendedor.Clear()
             tbCodigoVendedor.Clear()
-
         End If
     End Sub
 

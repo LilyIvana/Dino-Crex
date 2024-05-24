@@ -1479,9 +1479,14 @@ Public Class F0_MCompras
 
         End If
         If (cbSucursal.SelectedIndex < 0) Then
-
             Dim img As Bitmap = New Bitmap(My.Resources.mensaje, 50, 50)
             ToastNotification.Show(Me, "Por Favor Seleccione un Almacén".ToUpper, img, 2000, eToastGlowColor.Red, eToastPosition.BottomCenter)
+            tbProveedor.Focus()
+            Return False
+        End If
+        If tbFechaVenta.Value > Now.Date Then
+            Dim img As Bitmap = New Bitmap(My.Resources.mensaje, 50, 50)
+            ToastNotification.Show(Me, "La fecha de compra no puede ser mayor a la fecha actual".ToUpper, img, 2000, eToastGlowColor.Red, eToastPosition.BottomCenter)
             tbProveedor.Focus()
             Return False
         End If

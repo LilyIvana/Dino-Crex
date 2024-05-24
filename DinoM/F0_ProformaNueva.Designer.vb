@@ -827,6 +827,7 @@ Partial Class F0_ProformaNueva
         Me.Controls.Add(Me.PanelDatos)
         Me.Margin = New System.Windows.Forms.Padding(2)
         Me.Name = "F0_ProformaNueva"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Proforma"
         Me.WindowState = System.Windows.Forms.FormWindowState.Maximized
         Me.PanelImagen.ResumeLayout(False)

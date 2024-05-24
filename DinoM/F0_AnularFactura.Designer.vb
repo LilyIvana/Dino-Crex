@@ -944,7 +944,7 @@ Partial Class F0_AnularFactura
         'Timer1
         '
         Me.Timer1.Enabled = True
-        Me.Timer1.Interval = 1000
+        Me.Timer1.Interval = 500
         '
         'F0_AnularFactura
         '

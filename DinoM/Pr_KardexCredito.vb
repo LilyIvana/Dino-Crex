@@ -61,6 +61,7 @@ Public Class Pr_KardexCredito
         Dim _dt As New DataTable
         _prInterpretarDatos(_dt)
         If (_dt.Rows.Count > 0) Then
+            L_fnBotonGenerar(gs_VersionSistema, gs_IPMaquina, gs_UsuMaquina, 0, "ESTADO CUENTAS", "ESTADO CUENTAS")
 
             Dim objrep As New R_HisotorialCobrosVentasCredito
             objrep.SetDataSource(_dt)
@@ -93,7 +94,7 @@ Public Class Pr_KardexCredito
             ToastNotification.Show(Me, "NO HAY DATOS PARA LOS PARAMETROS SELECCIONADOS..!!!",
                                        My.Resources.INFORMATION, 2000,
                                        eToastGlowColor.Blue,
-                                       eToastPosition.BottomLeft)
+                                       eToastPosition.TopCenter)
             MReportViewer.ReportSource = Nothing
         End If
     End Sub
@@ -101,6 +102,8 @@ Public Class Pr_KardexCredito
         Dim _dt As New DataTable
         _prInterpretarDatos2(_dt)
         If (_dt.Rows.Count > 0) Then
+            L_fnBotonGenerar(gs_VersionSistema, gs_IPMaquina, gs_UsuMaquina, 0, "ESTADO CUENTAS", "ESTADO CUENTAS")
+
             Dim dt2 As DataTable = L_fnNameReporte()
             Dim ParEmp1 As String = ""
             Dim ParEmp2 As String = ""
@@ -131,7 +134,7 @@ Public Class Pr_KardexCredito
             ToastNotification.Show(Me, "NO HAY DATOS PARA LOS PARAMETROS SELECCIONADOS..!!!",
                                        My.Resources.INFORMATION, 2000,
                                        eToastGlowColor.Blue,
-                                       eToastPosition.BottomLeft)
+                                       eToastPosition.TopCenter)
             MReportViewer.ReportSource = Nothing
         End If
     End Sub

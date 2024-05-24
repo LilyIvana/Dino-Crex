@@ -757,6 +757,12 @@
     <Compile Include="F_CiNitNuevo.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="F_CodigoFicha.designer.vb">
+      <DependentUpon>F_CodigoFicha.vb</DependentUpon>
+    </Compile>
+    <Compile Include="F_CodigoFicha.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="F_NombreProforma.designer.vb">
       <DependentUpon>F_NombreProforma.vb</DependentUpon>
     </Compile>
@@ -1740,6 +1746,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="F_CiNitNuevo.resx">
       <DependentUpon>F_CiNitNuevo.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="F_CodigoFicha.resx">
+      <DependentUpon>F_CodigoFicha.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="F_NombreProforma.resx">
       <DependentUpon>F_NombreProforma.vb</DependentUpon>

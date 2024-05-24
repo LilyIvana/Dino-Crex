@@ -24,12 +24,15 @@ Partial Class F0_Venta2
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
+        Dim cbCanje_DesignTimeLayout As Janus.Windows.GridEX.GridEXLayout = New Janus.Windows.GridEX.GridEXLayout()
         Dim cbSucursal_DesignTimeLayout As Janus.Windows.GridEX.GridEXLayout = New Janus.Windows.GridEX.GridEXLayout()
         Dim cbCambioDolar_DesignTimeLayout As Janus.Windows.GridEX.GridEXLayout = New Janus.Windows.GridEX.GridEXLayout()
         Dim CbTipoDoc_DesignTimeLayout As Janus.Windows.GridEX.GridEXLayout = New Janus.Windows.GridEX.GridEXLayout()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(F0_Venta2))
         Me.GroupPanel2 = New DevComponents.DotNetBar.Controls.GroupPanel()
         Me.Panel2 = New System.Windows.Forms.Panel()
+        Me.cbCanje = New Janus.Windows.GridEX.EditControls.MultiColumnCombo()
+        Me.LabelX30 = New DevComponents.DotNetBar.LabelX()
         Me.LabelX29 = New DevComponents.DotNetBar.LabelX()
         Me.swMostrar = New DevComponents.DotNetBar.Controls.SwitchButton()
         Me.lbPulperia = New DevComponents.DotNetBar.LabelX()
@@ -159,6 +162,7 @@ Partial Class F0_Venta2
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupPanel2.SuspendLayout()
         Me.Panel2.SuspendLayout()
+        CType(Me.cbCanje, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.tbFechaVenc, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.QrFactura, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.cbSucursal, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -444,6 +448,8 @@ Partial Class F0_Venta2
         '
         'Panel2
         '
+        Me.Panel2.Controls.Add(Me.cbCanje)
+        Me.Panel2.Controls.Add(Me.LabelX30)
         Me.Panel2.Controls.Add(Me.LabelX29)
         Me.Panel2.Controls.Add(Me.swMostrar)
         Me.Panel2.Controls.Add(Me.lbPulperia)
@@ -481,6 +487,39 @@ Partial Class F0_Venta2
         Me.Panel2.Name = "Panel2"
         Me.Panel2.Size = New System.Drawing.Size(1305, 107)
         Me.Panel2.TabIndex = 0
+        '
+        'cbCanje
+        '
+        Me.cbCanje.BorderStyle = Janus.Windows.GridEX.BorderStyle.Flat
+        Me.cbCanje.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
+        cbCanje_DesignTimeLayout.LayoutString = resources.GetString("cbCanje_DesignTimeLayout.LayoutString")
+        Me.cbCanje.DesignTimeLayout = cbCanje_DesignTimeLayout
+        Me.cbCanje.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cbCanje.Location = New System.Drawing.Point(1212, 8)
+        Me.cbCanje.Name = "cbCanje"
+        Me.cbCanje.Office2007ColorScheme = Janus.Windows.GridEX.Office2007ColorScheme.Custom
+        Me.cbCanje.Office2007CustomColor = System.Drawing.Color.DodgerBlue
+        Me.cbCanje.SelectedIndex = -1
+        Me.cbCanje.SelectedItem = Nothing
+        Me.cbCanje.Size = New System.Drawing.Size(66, 18)
+        Me.cbCanje.TabIndex = 427
+        Me.cbCanje.VisualStyle = Janus.Windows.GridEX.VisualStyle.Office2007
+        '
+        'LabelX30
+        '
+        Me.LabelX30.BackColor = System.Drawing.Color.Transparent
+        '
+        '
+        '
+        Me.LabelX30.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.LabelX30.Font = New System.Drawing.Font("Georgia", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LabelX30.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(85, Byte), Integer), CType(CType(139, Byte), Integer))
+        Me.LabelX30.Location = New System.Drawing.Point(1165, 5)
+        Me.LabelX30.Name = "LabelX30"
+        Me.LabelX30.SingleLineColor = System.Drawing.SystemColors.Control
+        Me.LabelX30.Size = New System.Drawing.Size(42, 23)
+        Me.LabelX30.TabIndex = 426
+        Me.LabelX30.Text = "Canje:"
         '
         'LabelX29
         '
@@ -2335,7 +2374,7 @@ Partial Class F0_Venta2
         'Timer1
         '
         Me.Timer1.Enabled = True
-        Me.Timer1.Interval = 1000
+        Me.Timer1.Interval = 500
         '
         'PanelFondoDetalle
         '
@@ -2561,6 +2600,7 @@ Partial Class F0_Venta2
         Me.GroupPanel2.ResumeLayout(False)
         Me.Panel2.ResumeLayout(False)
         Me.Panel2.PerformLayout()
+        CType(Me.cbCanje, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.tbFechaVenc, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.QrFactura, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.cbSucursal, System.ComponentModel.ISupportInitialize).EndInit()
@@ -2714,4 +2754,6 @@ Partial Class F0_Venta2
     Friend WithEvents swMostrar As DevComponents.DotNetBar.Controls.SwitchButton
     Friend WithEvents LabelX29 As DevComponents.DotNetBar.LabelX
     Friend WithEvents btnMovXpeso As DevComponents.DotNetBar.ButtonX
+    Friend WithEvents LabelX30 As DevComponents.DotNetBar.LabelX
+    Public WithEvents cbCanje As Janus.Windows.GridEX.EditControls.MultiColumnCombo
 End Class

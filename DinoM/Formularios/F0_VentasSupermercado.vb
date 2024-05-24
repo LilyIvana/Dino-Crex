@@ -39,6 +39,7 @@ Public Class F0_VentasSupermercado
     Dim OcultarFact As Integer = 0
     Dim _codeBar As Integer = 1
     Dim _dias As Integer = 0
+    Public CodigoFicha As String
 
     Public TotalBs As Double = 0
     Public TotalSus As Double = 0
@@ -90,6 +91,7 @@ Public Class F0_VentasSupermercado
         _prValidarLote()
         'lbTipoMoneda.Visible = False
         P_prCargarVariablesIndispensables()
+        _prCargarComboCanje(cbCanje)
         Dim blah As New Bitmap(New Bitmap(My.Resources.compra), 20, 20)
         Dim ico As Icon = Icon.FromHandle(blah.GetHicon())
         Me.Icon = ico
@@ -131,6 +133,31 @@ Public Class F0_VentasSupermercado
         Catch ex As Exception
             MessageBox.Show("No se encontro el logo en la ubicación específicada" + ubicacion)
         End Try
+    End Sub
+    Private Sub _prCargarComboCanje(mCombo As Janus.Windows.GridEX.EditControls.MultiColumnCombo)
+        Dim dt As New DataTable
+
+        dt.Columns.Add("cod")
+        dt.Columns.Add("desc")
+        dt.Rows.Add(1, "SI")
+        dt.Rows.Add(2, "NO")
+        dt.Rows.Add(3, "AMBOS")
+
+        With mCombo
+            .DropDownList.Columns.Clear()
+            .DropDownList.Columns.Add("cod").Width = 35
+            .DropDownList.Columns("cod").Caption = "COD"
+            .DropDownList.Columns.Add("desc").Width = 90
+            .DropDownList.Columns("desc").Caption = "DESCRIPCION"
+            .ValueMember = "cod"
+            .DisplayMember = "desc"
+            .DataSource = dt
+            .Refresh()
+        End With
+
+        If dt.Rows.Count > 0 Then
+            mCombo.SelectedIndex = 1
+        End If
     End Sub
     Public Sub CalcularDescuentosTotal()
 
@@ -355,6 +382,7 @@ Public Class F0_VentasSupermercado
         lbFecha.Text = Now.Date.ToString("dd/MM/yyyy")
         lbCliente.Text = "S/N"
         lbNit.Text = "0"
+        cbCanje.SelectedIndex = 1
 
         _prCargarDetalleVenta(-1)
 
@@ -363,7 +391,6 @@ Public Class F0_VentasSupermercado
 
         If (GPanelProductos.Visible = True) Then
             GPanelProductos.Visible = False
-
         End If
         With grdetalle.RootTable.Columns("img")
             .Width = 55
@@ -383,7 +410,6 @@ Public Class F0_VentasSupermercado
 
         tbDescuento.Value = 0
         dtDescuentos = L_fnListarDescuentosTodos()
-
     End Sub
 
 
@@ -651,7 +677,7 @@ Public Class F0_VentasSupermercado
             'Table_Producto = dt.Copy
         Else
             'dt = L_fnListarProductosSinLote(Sucursal, _cliente, CType(grdetalle.DataSource, DataTable))  ''1=Almacen
-            dt = L_fnListarProductosSinLoteUlt(Sucursal, _cliente, CType(grdetalle.DataSource, DataTable))
+            dt = L_fnListarProductosSinLoteUlt(Sucursal, _cliente, CType(grdetalle.DataSource, DataTable), cbCanje.Value)
 
             'dt = L_fnListarProductosSinLoteNuevo(Sucursal, _cliente, CType(grdetalle.DataSource, DataTable))  ''1=Almacen
             'Table_Producto = dt.Copy
@@ -1219,7 +1245,13 @@ Public Class F0_VentasSupermercado
                 End If
 
             End If
-
+            If cbCanje.Value = 1 Or cbCanje.Value = 3 Then
+                If CodigoFicha = String.Empty Then
+                    Dim img As Bitmap = New Bitmap(My.Resources.mensaje, 50, 50)
+                    ToastNotification.Show(Me, "El código de la ficha esta vacío, vuelva a colocarlo".ToUpper, img, 2000, eToastGlowColor.Red, eToastPosition.TopCenter)
+                    Return False
+                End If
+            End If
             ''Validación para controlar caducidad de Dosificacion
             'If lbNit.Text <> String.Empty Then
             '    Dim fecha As String = Now.Date
@@ -1443,7 +1475,7 @@ Public Class F0_VentasSupermercado
                                                  CStr(Format(b, "####0.00")), CStr(Format(c, "####0.00")), CStr(Format(d, "####0.00")), CStr(Format(e, "####0.00")),
                                                  CStr(Format(f, "####0.00")), CStr(Format(g, "####0.00")), CStr(Format(h, "####0.00")), QrUrl, FactUrl,
                                                  SegundaLeyenda, TerceraLeyenda, Cudf, Anhio, IIf(gb_FacturaEmite = True, 1, 0), gs_VersionSistema,
-                                                 gs_IPMaquina, gs_UsuMaquina)
+                                                 gs_IPMaquina, gs_UsuMaquina, cbCanje.Value, CodigoFicha)
 
             If res Then
                 'Emite factura
@@ -3087,7 +3119,7 @@ Public Class F0_VentasSupermercado
             Table_Producto = dt.Copy
         Else
             'dt = L_fnListarProductosSinLote(Sucursal, Str(_CodCliente), CType(grdetalle.DataSource, DataTable).Clone)  ''1=Almacen
-            dt = L_fnListarProductosSinLoteUlt(Sucursal, Str(_CodCliente), CType(grdetalle.DataSource, DataTable).Clone)  ''1=Almacen
+            dt = L_fnListarProductosSinLoteUlt(Sucursal, Str(_CodCliente), CType(grdetalle.DataSource, DataTable).Clone, cbCanje.Value)  ''1=Almacen
             Table_Producto = dt.Copy
         End If
     End Sub
@@ -4473,5 +4505,34 @@ Public Class F0_VentasSupermercado
         Catch ex As Exception
             MsgBox(ex.Message)
         End Try
+    End Sub
+
+    Private Sub swCanje_ValueChanged(sender As Object, e As EventArgs)
+        'If swCanje.Value = True Then
+        '    Dim frm As New F_CodigoFicha
+        '    'Dim dt As DataTable
+        '    frm.ShowDialog()
+        '    If frm.Aceptar = True Then
+        '        CodigoFicha = frm.Codigo
+        '        tbProducto.Focus()
+        '    End If
+        'Else
+        '    CodigoFicha = ""
+        '    tbProducto.Focus()
+        'End If
+    End Sub
+
+    Private Sub cbCanje_ValueChanged(sender As Object, e As EventArgs) Handles cbCanje.ValueChanged
+        If cbCanje.Value = 1 Or cbCanje.Value = 3 Then ''1 es SI, 3 es AMBOS
+            Dim frm As New F_CodigoFicha
+            frm.ShowDialog()
+            If frm.Aceptar = True Then
+                CodigoFicha = frm.Codigo
+                tbProducto.Focus()
+            End If
+        Else
+            CodigoFicha = ""
+            tbProducto.Focus()
+        End If
     End Sub
 End Class

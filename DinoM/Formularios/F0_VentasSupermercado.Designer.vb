@@ -23,8 +23,9 @@ Partial Class F0_VentasSupermercado
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim CbTDoc_DesignTimeLayout As Janus.Windows.GridEX.GridEXLayout = New Janus.Windows.GridEX.GridEXLayout()
+        Dim cbCanje_DesignTimeLayout As Janus.Windows.GridEX.GridEXLayout = New Janus.Windows.GridEX.GridEXLayout()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(F0_VentasSupermercado))
+        Dim CbTDoc_DesignTimeLayout As Janus.Windows.GridEX.GridEXLayout = New Janus.Windows.GridEX.GridEXLayout()
         Me.PanelImagen = New System.Windows.Forms.Panel()
         Me.PanelRight = New System.Windows.Forms.Panel()
         Me.PanelC = New System.Windows.Forms.Panel()
@@ -48,6 +49,7 @@ Partial Class F0_VentasSupermercado
         Me.grdetalle = New Janus.Windows.GridEX.GridEX()
         Me.PanelButtom = New System.Windows.Forms.Panel()
         Me.PanelTotal = New System.Windows.Forms.Panel()
+        Me.swEstadoFacturas = New DevComponents.DotNetBar.Controls.SwitchButton()
         Me.btnProforma = New DevComponents.DotNetBar.ButtonX()
         Me.btnNuevo = New DevComponents.DotNetBar.ButtonX()
         Me.btnExportar = New DevComponents.DotNetBar.ButtonX()
@@ -57,7 +59,8 @@ Partial Class F0_VentasSupermercado
         Me.tbTotal = New DevComponents.Editors.DoubleInput()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Panel1 = New System.Windows.Forms.Panel()
-        Me.swEstadoFacturas = New DevComponents.DotNetBar.Controls.SwitchButton()
+        Me.cbCanje = New Janus.Windows.GridEX.EditControls.MultiColumnCombo()
+        Me.Label13 = New System.Windows.Forms.Label()
         Me.lbNombreCliente = New System.Windows.Forms.Label()
         Me.Label12 = New System.Windows.Forms.Label()
         Me.Label11 = New System.Windows.Forms.Label()
@@ -98,6 +101,7 @@ Partial Class F0_VentasSupermercado
         CType(Me.tbDescuento, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.tbTotal, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel1.SuspendLayout()
+        CType(Me.cbCanje, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.CbTDoc, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.PanelTop.SuspendLayout()
         CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -442,6 +446,7 @@ Partial Class F0_VentasSupermercado
         '
         Me.PanelTotal.BackColor = System.Drawing.SystemColors.Desktop
         Me.PanelTotal.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.PanelTotal.Controls.Add(Me.swEstadoFacturas)
         Me.PanelTotal.Controls.Add(Me.btnProforma)
         Me.PanelTotal.Controls.Add(Me.btnNuevo)
         Me.PanelTotal.Controls.Add(Me.btnExportar)
@@ -457,6 +462,27 @@ Partial Class F0_VentasSupermercado
         Me.PanelTotal.Size = New System.Drawing.Size(595, 115)
         Me.PanelTotal.TabIndex = 0
         '
+        'swEstadoFacturas
+        '
+        '
+        '
+        '
+        Me.swEstadoFacturas.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.swEstadoFacturas.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.5!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.swEstadoFacturas.Location = New System.Drawing.Point(135, 92)
+        Me.swEstadoFacturas.Name = "swEstadoFacturas"
+        Me.swEstadoFacturas.OffBackColor = System.Drawing.Color.Red
+        Me.swEstadoFacturas.OffText = "FACTURAS OFFLINE"
+        Me.swEstadoFacturas.OffTextColor = System.Drawing.Color.White
+        Me.swEstadoFacturas.OnBackColor = System.Drawing.Color.Green
+        Me.swEstadoFacturas.OnText = "FACTURAS ONLINE"
+        Me.swEstadoFacturas.OnTextColor = System.Drawing.Color.White
+        Me.swEstadoFacturas.Size = New System.Drawing.Size(170, 20)
+        Me.swEstadoFacturas.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+        Me.swEstadoFacturas.TabIndex = 5
+        Me.swEstadoFacturas.Value = True
+        Me.swEstadoFacturas.ValueObject = "Y"
+        '
         'btnProforma
         '
         Me.btnProforma.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
@@ -466,7 +492,7 @@ Partial Class F0_VentasSupermercado
         Me.btnProforma.Image = Global.DinoM.My.Resources.Resources.hojaruta
         Me.btnProforma.ImageFixedSize = New System.Drawing.Size(35, 38)
         Me.btnProforma.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top
-        Me.btnProforma.Location = New System.Drawing.Point(272, 3)
+        Me.btnProforma.Location = New System.Drawing.Point(277, 3)
         Me.btnProforma.Name = "btnProforma"
         Me.btnProforma.Padding = New System.Windows.Forms.Padding(0, 0, 0, 20)
         Me.btnProforma.Size = New System.Drawing.Size(65, 65)
@@ -485,7 +511,7 @@ Partial Class F0_VentasSupermercado
         Me.btnNuevo.Image = Global.DinoM.My.Resources.Resources.add2
         Me.btnNuevo.ImageFixedSize = New System.Drawing.Size(35, 38)
         Me.btnNuevo.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top
-        Me.btnNuevo.Location = New System.Drawing.Point(201, 3)
+        Me.btnNuevo.Location = New System.Drawing.Point(206, 3)
         Me.btnNuevo.Name = "btnNuevo"
         Me.btnNuevo.Padding = New System.Windows.Forms.Padding(0, 0, 0, 20)
         Me.btnNuevo.Size = New System.Drawing.Size(65, 65)
@@ -503,7 +529,7 @@ Partial Class F0_VentasSupermercado
         Me.btnExportar.Image = Global.DinoM.My.Resources.Resources.sheets
         Me.btnExportar.ImageFixedSize = New System.Drawing.Size(25, 28)
         Me.btnExportar.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top
-        Me.btnExportar.Location = New System.Drawing.Point(130, 3)
+        Me.btnExportar.Location = New System.Drawing.Point(135, 3)
         Me.btnExportar.Name = "btnExportar"
         Me.btnExportar.Padding = New System.Windows.Forms.Padding(0, 0, 0, 20)
         Me.btnExportar.Size = New System.Drawing.Size(65, 65)
@@ -518,7 +544,7 @@ Partial Class F0_VentasSupermercado
         Me.Label1Conn.BackColor = System.Drawing.Color.Green
         Me.Label1Conn.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.5!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label1Conn.ForeColor = System.Drawing.Color.White
-        Me.Label1Conn.Location = New System.Drawing.Point(202, 92)
+        Me.Label1Conn.Location = New System.Drawing.Point(22, 95)
         Me.Label1Conn.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label1Conn.Name = "Label1Conn"
         Me.Label1Conn.Size = New System.Drawing.Size(11, 15)
@@ -597,7 +623,8 @@ Partial Class F0_VentasSupermercado
         '
         Me.Panel1.BackColor = System.Drawing.Color.Azure
         Me.Panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.Panel1.Controls.Add(Me.swEstadoFacturas)
+        Me.Panel1.Controls.Add(Me.cbCanje)
+        Me.Panel1.Controls.Add(Me.Label13)
         Me.Panel1.Controls.Add(Me.lbNombreCliente)
         Me.Panel1.Controls.Add(Me.Label12)
         Me.Panel1.Controls.Add(Me.Label11)
@@ -623,26 +650,33 @@ Partial Class F0_VentasSupermercado
         Me.Panel1.Size = New System.Drawing.Size(595, 56)
         Me.Panel1.TabIndex = 9
         '
-        'swEstadoFacturas
+        'cbCanje
         '
+        Me.cbCanje.BorderStyle = Janus.Windows.GridEX.BorderStyle.Flat
+        Me.cbCanje.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
+        cbCanje_DesignTimeLayout.LayoutString = resources.GetString("cbCanje_DesignTimeLayout.LayoutString")
+        Me.cbCanje.DesignTimeLayout = cbCanje_DesignTimeLayout
+        Me.cbCanje.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cbCanje.Location = New System.Drawing.Point(287, 32)
+        Me.cbCanje.Name = "cbCanje"
+        Me.cbCanje.Office2007ColorScheme = Janus.Windows.GridEX.Office2007ColorScheme.Custom
+        Me.cbCanje.Office2007CustomColor = System.Drawing.Color.DodgerBlue
+        Me.cbCanje.SelectedIndex = -1
+        Me.cbCanje.SelectedItem = Nothing
+        Me.cbCanje.Size = New System.Drawing.Size(66, 18)
+        Me.cbCanje.TabIndex = 426
+        Me.cbCanje.VisualStyle = Janus.Windows.GridEX.VisualStyle.Office2007
         '
+        'Label13
         '
-        '
-        Me.swEstadoFacturas.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.swEstadoFacturas.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.swEstadoFacturas.Location = New System.Drawing.Point(199, 27)
-        Me.swEstadoFacturas.Name = "swEstadoFacturas"
-        Me.swEstadoFacturas.OffBackColor = System.Drawing.Color.Red
-        Me.swEstadoFacturas.OffText = "FACTURAS OFFLINE"
-        Me.swEstadoFacturas.OffTextColor = System.Drawing.Color.White
-        Me.swEstadoFacturas.OnBackColor = System.Drawing.Color.Green
-        Me.swEstadoFacturas.OnText = "FACTURAS ONLINE"
-        Me.swEstadoFacturas.OnTextColor = System.Drawing.Color.White
-        Me.swEstadoFacturas.Size = New System.Drawing.Size(200, 22)
-        Me.swEstadoFacturas.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-        Me.swEstadoFacturas.TabIndex = 5
-        Me.swEstadoFacturas.Value = True
-        Me.swEstadoFacturas.ValueObject = "Y"
+        Me.Label13.AutoSize = True
+        Me.Label13.Font = New System.Drawing.Font("Calibri", 8.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label13.Location = New System.Drawing.Point(225, 35)
+        Me.Label13.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.Label13.Name = "Label13"
+        Me.Label13.Size = New System.Drawing.Size(36, 13)
+        Me.Label13.TabIndex = 424
+        Me.Label13.Text = "Canje:"
         '
         'lbNombreCliente
         '
@@ -935,6 +969,7 @@ Partial Class F0_VentasSupermercado
         CType(Me.tbTotal, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Panel1.ResumeLayout(False)
         Me.Panel1.PerformLayout()
+        CType(Me.cbCanje, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.CbTDoc, System.ComponentModel.ISupportInitialize).EndInit()
         Me.PanelTop.ResumeLayout(False)
         CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).EndInit()
@@ -997,4 +1032,6 @@ Partial Class F0_VentasSupermercado
     Friend WithEvents btnExportar As DevComponents.DotNetBar.ButtonX
     Friend WithEvents btnNuevo As DevComponents.DotNetBar.ButtonX
     Friend WithEvents btnProforma As DevComponents.DotNetBar.ButtonX
+    Friend WithEvents Label13 As Label
+    Public WithEvents cbCanje As Janus.Windows.GridEX.EditControls.MultiColumnCombo
 End Class

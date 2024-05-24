@@ -2055,7 +2055,7 @@ Public Class AccesoLogica
         Return _Tabla
     End Function
 
-    Public Shared Function L_fnListarProductosSinLoteUlt(_almacen As String, _cliente As String, _detalle As DataTable) As DataTable
+    Public Shared Function L_fnListarProductosSinLoteUlt(_almacen As String, _cliente As String, _detalle As DataTable, _canje As Integer) As DataTable
         Dim _Tabla As DataTable
 
         Dim _listParam As New List(Of Datos.DParametro)
@@ -2063,6 +2063,7 @@ Public Class AccesoLogica
         _listParam.Add(New Datos.DParametro("@tipo", 9))
         _listParam.Add(New Datos.DParametro("@almacen", _almacen))
         _listParam.Add(New Datos.DParametro("@cliente", _cliente))
+        _listParam.Add(New Datos.DParametro("@canje", _canje))
         _listParam.Add(New Datos.DParametro("@tauact", L_Usuario))
         _Tabla = D_ProcedimientoConParam("BuscarProd", _listParam)
 
@@ -2078,7 +2079,7 @@ Public Class AccesoLogica
         _listParam.Add(New Datos.DParametro("@almacen", _almacen))
         _listParam.Add(New Datos.DParametro("@cliente", _cliente))
         _listParam.Add(New Datos.DParametro("@tauact", L_Usuario))
-        _Tabla = D_ProcedimientoConParam("BuscarProd", _listParam)
+        _Tabla = D_ProcedimientoConParam("BuscarProdProforma", _listParam)
 
         Return _Tabla
     End Function
@@ -2156,12 +2157,11 @@ Public Class AccesoLogica
                                            _C As String, _D As String, _E As String, _F As String, _G As String, _H As String,
                                            _qrurl As String, _facturl As String, _2leyenda As String, _3leyenda As String,
                                            _cufd As String, _anhio As String, _FacturaEmite As String, _version As String,
-                                           _ip As String, _usumaquina As String) As Boolean
+                                           _ip As String, _usumaquina As String, _canje As Integer, _codigoficha As String) As Boolean
         Dim _Tabla As DataTable
         Dim _resultado As Boolean
         Dim _listParam As New List(Of Datos.DParametro)
-        '    @tanumi ,@taalm,@tafdoc ,@taven  ,@tatven,
-        '@tafvcr ,@taclpr,@tamon ,@taest  ,@taobs ,@tadesc ,@newFecha,@newHora,@tauact,@taproforma
+
         _listParam.Add(New Datos.DParametro("@tipo", 1))
         _listParam.Add(New Datos.DParametro("@tanumi", _tanumi))
         _listParam.Add(New Datos.DParametro("@taproforma", _taprforma))
@@ -2191,6 +2191,8 @@ Public Class AccesoLogica
         _listParam.Add(New Datos.DParametro("@version", _version))
         _listParam.Add(New Datos.DParametro("@ip", _ip))
         _listParam.Add(New Datos.DParametro("@usumaquina", _usumaquina))
+        _listParam.Add(New Datos.DParametro("@canje", _canje))
+        _listParam.Add(New Datos.DParametro("@codficha", _codigoficha))
         ''Datos Factura
         _listParam.Add(New Datos.DParametro("@Nfac", _Nfac))
         _listParam.Add(New Datos.DParametro("@NAutoriz", _NAutoriz))
@@ -2527,6 +2529,15 @@ Public Class AccesoLogica
         _listParam.Add(New Datos.DParametro("@tipo", 28))
         _listParam.Add(New Datos.DParametro("@fechaI", fechaI))
         _listParam.Add(New Datos.DParametro("@fechaF", fechaF))
+        _listParam.Add(New Datos.DParametro("@tauact", L_Usuario))
+        _Tabla = D_ProcedimientoConParam("sp_Mam_TV001", _listParam)
+        Return _Tabla
+    End Function
+    Public Shared Function L_fnMostrarCanje(tanumi As Integer) As DataTable
+        Dim _Tabla As DataTable
+        Dim _listParam As New List(Of Datos.DParametro)
+        _listParam.Add(New Datos.DParametro("@tipo", 29))
+        _listParam.Add(New Datos.DParametro("@tanumi", tanumi))
         _listParam.Add(New Datos.DParametro("@tauact", L_Usuario))
         _Tabla = D_ProcedimientoConParam("sp_Mam_TV001", _listParam)
         Return _Tabla
