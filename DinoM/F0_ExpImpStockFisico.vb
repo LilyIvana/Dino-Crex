@@ -171,35 +171,35 @@ Public Class F0_ExpImpStockFisico
             With grDatos.RootTable.Columns("cant2")
                 .Caption = "CANTIDAD2"
                 .Width = 120
-                .Visible = True
+                .Visible = False
                 .FormatString = "0.00"
             End With
             With grDatos.RootTable.Columns("fecha2")
                 .Caption = "FECHA2"
                 .Width = 120
-                .Visible = True
+                .Visible = False
             End With
             With grDatos.RootTable.Columns("cant3")
                 .Caption = "CANTIDAD3"
                 .Width = 120
-                .Visible = True
+                .Visible = False
                 .FormatString = "0.00"
             End With
             With grDatos.RootTable.Columns("fecha3")
                 .Caption = "FECHA3"
                 .Width = 120
-                .Visible = True
+                .Visible = False
             End With
             With grDatos.RootTable.Columns("cant4")
                 .Caption = "CANTIDAD4"
                 .Width = 120
-                .Visible = True
+                .Visible = False
                 .FormatString = "0.00"
             End With
             With grDatos.RootTable.Columns("fecha4")
                 .Caption = "FECHA4"
                 .Width = 120
-                .Visible = True
+                .Visible = False
             End With
             With grDatos.RootTable.Columns("responsable")
                 .Caption = "RESPONSABLE"
@@ -502,7 +502,7 @@ Public Class F0_ExpImpStockFisico
 
                 Else
                     InventarioImport.Reset()
-                    ToastNotification.Show(Me, "No puede importar porque el excel tiene que tener solo 25 columnas, usted modificó el excel, corrija por favor".ToUpper,
+                    ToastNotification.Show(Me, "No puede importar porque el excel tiene que tener 25 columnas, usted modificó el excel, corrija por favor".ToUpper,
                                          My.Resources.WARNING, 7000, eToastGlowColor.Green, eToastPosition.TopCenter)
                 End If
             Else

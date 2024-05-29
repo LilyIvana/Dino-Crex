@@ -61,7 +61,7 @@ Public Class Pr_KardexCredito
         Dim _dt As New DataTable
         _prInterpretarDatos(_dt)
         If (_dt.Rows.Count > 0) Then
-            L_fnBotonGenerar(gs_VersionSistema, gs_IPMaquina, gs_UsuMaquina, 0, "ESTADO CUENTAS", "ESTADO CUENTAS")
+            L_fnBotonGenerar(gs_VersionSistema, gs_IPMaquina, gs_UsuMaquina, IIf(tbCodigoCliente.Text = String.Empty, 0, tbCodigoCliente.Text), "ESTADO CUENTAS", "ESTADO CUENTAS")
 
             Dim objrep As New R_HisotorialCobrosVentasCredito
             objrep.SetDataSource(_dt)
@@ -102,7 +102,7 @@ Public Class Pr_KardexCredito
         Dim _dt As New DataTable
         _prInterpretarDatos2(_dt)
         If (_dt.Rows.Count > 0) Then
-            L_fnBotonGenerar(gs_VersionSistema, gs_IPMaquina, gs_UsuMaquina, 0, "ESTADO CUENTAS", "ESTADO CUENTAS")
+            L_fnBotonGenerar(gs_VersionSistema, gs_IPMaquina, gs_UsuMaquina, IIf(tbCodigoCliente.Text = String.Empty, 0, tbCodigoCliente.Text), "ESTADO CUENTAS", "ESTADO CUENTAS")
 
             Dim dt2 As DataTable = L_fnNameReporte()
             Dim ParEmp1 As String = ""

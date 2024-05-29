@@ -83,7 +83,7 @@ Public Class Pr_EstadoCuentasClientes
 
                 Dim objrep As New R_EstadoCuentasClientes
                 objrep.SetDataSource(_dt)
-                L_fnBotonGenerar(gs_VersionSistema, gs_IPMaquina, gs_UsuMaquina, 0, "ESTADO CUENTAS CLIENTES", "ESTADO CUENTAS CLIENTES")
+                L_fnBotonGenerar(gs_VersionSistema, gs_IPMaquina, gs_UsuMaquina, IIf(tbCodigoCliente.Text = String.Empty, 0, tbCodigoCliente.Text), "ESTADO CUENTAS CLIENTES", "ESTADO CUENTAS CLIENTES")
 
                 Dim fechaI As String = tbFechaI.Value.ToString("dd/MM/yyyy")
                 Dim fechaF As String = tbFechaF.Value.ToString("dd/MM/yyyy")
