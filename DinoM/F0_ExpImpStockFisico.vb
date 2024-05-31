@@ -34,9 +34,6 @@ Public Class F0_ExpImpStockFisico
 #End Region
 #Region "MEtodos Privados"
     Private Sub _IniciarTodo()
-
-        'Me.WindowState = FormWindowState.Maximized
-
         _prAsignarPermisos()
         Me.Text = "CONTEO  FÍSICO  DE  PRODUCTOS"
         tbFechaInv.Value = Now.Date
@@ -177,7 +174,7 @@ Public Class F0_ExpImpStockFisico
             With grDatos.RootTable.Columns("fecha2")
                 .Caption = "FECHA2"
                 .Width = 120
-                .Visible = False
+                .Visible = True
             End With
             With grDatos.RootTable.Columns("cant3")
                 .Caption = "CANTIDAD3"
@@ -188,7 +185,7 @@ Public Class F0_ExpImpStockFisico
             With grDatos.RootTable.Columns("fecha3")
                 .Caption = "FECHA3"
                 .Width = 120
-                .Visible = False
+                .Visible = True
             End With
             With grDatos.RootTable.Columns("cant4")
                 .Caption = "CANTIDAD4"
@@ -199,7 +196,7 @@ Public Class F0_ExpImpStockFisico
             With grDatos.RootTable.Columns("fecha4")
                 .Caption = "FECHA4"
                 .Width = 120
-                .Visible = False
+                .Visible = True
             End With
             With grDatos.RootTable.Columns("responsable")
                 .Caption = "RESPONSABLE"
@@ -288,11 +285,6 @@ Public Class F0_ExpImpStockFisico
                 _escritor.WriteLine(_linea)
                 _linea = Nothing
 
-                'Pbx_Precios.Visible = True
-                'Pbx_Precios.Minimum = 1
-                'Pbx_Precios.Maximum = Dgv_Precios.RowCount
-                'Pbx_Precios.Value = 1
-
                 For Each _fil As GridEXRow In grDatos.GetRows
                     For Each _col As GridEXColumn In grDatos.RootTable.Columns
                         If (_col.Visible) Then
@@ -304,10 +296,10 @@ Public Class F0_ExpImpStockFisico
                     _linea = Mid(CStr(_linea), 1, _linea.Length - 1)
                     _escritor.WriteLine(_linea)
                     _linea = Nothing
-                    'Pbx_Precios.Value += 1
+
                 Next
                 _escritor.Close()
-                'Pbx_Precios.Visible = False
+
                 Try
                     Dim ef = New Efecto
                     ef._archivo = _archivo
@@ -322,9 +314,6 @@ Public Class F0_ExpImpStockFisico
                         Process.Start(_archivo)
                     End If
 
-                    'If (MessageBox.Show("Su archivo ha sido Guardado en la ruta: " + _archivo + vbLf + "DESEA ABRIR EL ARCHIVO?", "PREGUNTA", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = Windows.Forms.DialogResult.Yes) Then
-                    '    Process.Start(_archivo)
-                    'End If
                     Return True
                 Catch ex As Exception
                     MsgBox(ex.Message)
@@ -441,7 +430,7 @@ Public Class F0_ExpImpStockFisico
         Try
             If InventarioImport.Rows.Count > 0 Then
 
-                If InventarioImport.Columns.Count = 25 Then
+                If InventarioImport.Columns.Count = 22 Then
 
                     Dim resp = InventarioImport.Rows(0).Item("RESPONSABLE")
                     Dim TablaProductos As DataTable = L_fnMostrarProductosXresponsable(resp)
@@ -469,10 +458,10 @@ Public Class F0_ExpImpStockFisico
                                IsDBNull(InventarioImport.Rows(i).Item("RACK")) Or (IIf(InventarioImport.Rows(i).Item("RACK").ToString = String.Empty, 0, InventarioImport.Rows(i).Item("RACK")) < 0) Or
                                IsDBNull(InventarioImport.Rows(i).Item("ESTAN")) Or (IIf(InventarioImport.Rows(i).Item("ESTAN").ToString = String.Empty, 0, InventarioImport.Rows(i).Item("ESTAN")) < 0) Or
                                IsDBNull(InventarioImport.Rows(i).Item("PAQ")) Or (IIf(InventarioImport.Rows(i).Item("PAQ").ToString = String.Empty, 0, InventarioImport.Rows(i).Item("PAQ")) < 0) Or
-                               IsDBNull(InventarioImport.Rows(i).Item("CANTIDAD1")) Or (IIf(InventarioImport.Rows(i).Item("CANTIDAD1").ToString = String.Empty, 0, InventarioImport.Rows(i).Item("CANTIDAD1")) < 0) Or
-                               IsDBNull(InventarioImport.Rows(i).Item("CANTIDAD2")) Or (IIf(InventarioImport.Rows(i).Item("CANTIDAD2").ToString = String.Empty, 0, InventarioImport.Rows(i).Item("CANTIDAD2")) < 0) Or
-                               IsDBNull(InventarioImport.Rows(i).Item("CANTIDAD3")) Or (IIf(InventarioImport.Rows(i).Item("CANTIDAD3").ToString = String.Empty, 0, InventarioImport.Rows(i).Item("CANTIDAD3")) < 0) Or
-                               IsDBNull(InventarioImport.Rows(i).Item("CANTIDAD4")) Or (IIf(InventarioImport.Rows(i).Item("CANTIDAD4").ToString = String.Empty, 0, InventarioImport.Rows(i).Item("CANTIDAD4")) < 0) Then
+                               IsDBNull(InventarioImport.Rows(i).Item("CANTIDAD1")) Or (IIf(InventarioImport.Rows(i).Item("CANTIDAD1").ToString = String.Empty, 0, InventarioImport.Rows(i).Item("CANTIDAD1")) < 0) Then
+                                ' Or IsDBNull(InventarioImport.Rows(i).Item("CANTIDAD2")) Or (IIf(InventarioImport.Rows(i).Item("CANTIDAD2").ToString = String.Empty, 0, InventarioImport.Rows(i).Item("CANTIDAD2")) < 0) Or
+                                'IsDBNull(InventarioImport.Rows(i).Item("CANTIDAD3")) Or (IIf(InventarioImport.Rows(i).Item("CANTIDAD3").ToString = String.Empty, 0, InventarioImport.Rows(i).Item("CANTIDAD3")) < 0) Or
+                                'IsDBNull(InventarioImport.Rows(i).Item("CANTIDAD4")) Or (IIf(InventarioImport.Rows(i).Item("CANTIDAD4").ToString = String.Empty, 0, InventarioImport.Rows(i).Item("CANTIDAD4")) < 0) Then
                                 ToastNotification.Show(Me, "No se puede realizar la importación porque el codigo Dynasys: ".ToUpper & InventarioImport.Rows(i).Item("COD DYNASYS") & " tiene una de las cantidades con valor negativo, vacío o con letra, corrija por favor".ToUpper,
                                                        My.Resources.WARNING, 7500, eToastGlowColor.Green, eToastPosition.BottomCenter)
                                 Exit Sub
@@ -502,7 +491,7 @@ Public Class F0_ExpImpStockFisico
 
                 Else
                     InventarioImport.Reset()
-                    ToastNotification.Show(Me, "No puede importar porque el excel tiene que tener 25 columnas, usted modificó el excel, corrija por favor".ToUpper,
+                    ToastNotification.Show(Me, "No puede importar porque el excel tiene que tener 22 columnas, usted modificó el excel, corrija por favor".ToUpper,
                                          My.Resources.WARNING, 7000, eToastGlowColor.Green, eToastPosition.TopCenter)
                 End If
             Else
@@ -517,7 +506,6 @@ Public Class F0_ExpImpStockFisico
     End Sub
 
     Public Sub _prCargarTablaImport(dtImport As DataTable) ''Bandera = true si es que haiq cargar denuevo la tabla de Precio Bandera =false si solo cargar datos al Janus con el precio antepuesto
-
 
         grDatos.BoundMode = Janus.Data.BoundMode.Bound
         grDatos.DataSource = dtImport
@@ -554,12 +542,7 @@ Public Class F0_ExpImpStockFisico
             .Width = 350
             .Visible = True
         End With
-        'With grDatos.RootTable.Columns("FECHA1")
-        '    .Caption = "FECHA1"
-        '    .Width = 100
-        '    '.FormatString = "dd-MM-yyyy"
-        '    .Visible = True
-        'End With
+
         'Habilitar Filtradores
         With grDatos
             .GroupByBoxVisible = False
@@ -585,7 +568,6 @@ Public Class F0_ExpImpStockFisico
                                5500,
                                eToastGlowColor.Red,
                                eToastPosition.TopCenter)
-
     End Sub
 
 
@@ -600,7 +582,6 @@ Public Class F0_ExpImpStockFisico
     Private Sub btnModificar_Click(sender As Object, e As EventArgs) Handles btnModificar.Click
         _prhabilitar()
         btnModificar.Enabled = False
-
     End Sub
 
     Private Sub btnSalir_Click(sender As Object, e As EventArgs) Handles btnSalir.Click
@@ -611,31 +592,6 @@ Public Class F0_ExpImpStockFisico
             Me.Close()
         End If
     End Sub
-
-
-
-
-    'Private Sub grprecio_EditingCell(sender As Object, e As EditingCellEventArgs) Handles grDatos.EditingCell
-
-    '    If btnGrabar.Enabled = False Then
-    '        e.Cancel = True
-    '        Return
-    '    End If
-    '    If (_fnAccesible() And IsNothing(grDatos.DataSource) = False) Then
-    '        'Deshabilitar la columna de Productos y solo habilitar la de los precios
-    '        If (e.Column.Index = grDatos.RootTable.Columns("yfcdprod1").Index Or
-    '           e.Column.Index = grDatos.RootTable.Columns("yfcprod").Index Or
-    '            e.Column.Index = grDatos.RootTable.Columns("yfnumi").Index Or
-    '            e.Column.Index = grDatos.RootTable.Columns("yfcbarra").Index) Then
-    '            e.Cancel = True
-    '        Else
-    '            e.Cancel = False
-    '        End If
-    '    Else
-    '        e.Cancel = True
-    '    End If
-    'End Sub
-
 
 #End Region
 
@@ -668,7 +624,6 @@ Public Class F0_ExpImpStockFisico
         _Inter = _Inter + 1
         If _Inter = 1 Then
             Me.WindowState = FormWindowState.Normal
-
         Else
             Me.Opacity = 100
             Timer1.Enabled = False
@@ -678,7 +633,6 @@ Public Class F0_ExpImpStockFisico
     Private Sub btnSearch_Click(sender As Object, e As EventArgs) Handles btnSearch.Click
         Buscador()
     End Sub
-
 
     Private Sub btnImportar_Click(sender As Object, e As EventArgs) Handles btnImportar.Click
         InventarioImport.Reset()
@@ -723,7 +677,6 @@ Public Class F0_ExpImpStockFisico
                              My.Resources.WARNING, 4000,
                              eToastGlowColor.Red,
                              eToastPosition.TopCenter)
-
         End If
 
     End Sub

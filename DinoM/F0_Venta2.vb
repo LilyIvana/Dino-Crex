@@ -3372,7 +3372,8 @@ salirIf:
             dt = L_fnListarProductos(cbSucursal.Value, Str(_CodCliente))  ''1=Almacen
             Table_Producto = dt.Copy
         Else
-            dt = L_fnListarProductosSinLote(cbSucursal.Value, Str(_CodCliente), CType(grdetalle.DataSource, DataTable).Clone)  ''1=Almacen
+            'dt = L_fnListarProductosSinLote(cbSucursal.Value, Str(_CodCliente), CType(grdetalle.DataSource, DataTable).Clone)  ''1=Almacen
+            dt = L_fnListarProductosSinLoteUlt(cbSucursal.Value, Str(_CodCliente), CType(grdetalle.DataSource, DataTable), cbCanje.Value)
             Table_Producto = dt.Copy
         End If
     End Sub
