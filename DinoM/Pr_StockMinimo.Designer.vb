@@ -56,6 +56,7 @@ Partial Class Pr_StockMinimo
         cbAlmacen_DesignTimeLayout.LayoutString = resources.GetString("cbAlmacen_DesignTimeLayout.LayoutString")
         Me.cbAlmacen.DesignTimeLayout = cbAlmacen_DesignTimeLayout
         Me.cbAlmacen.DisabledBackColor = System.Drawing.Color.White
+        Me.cbAlmacen.Enabled = False
         Me.cbAlmacen.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cbAlmacen.Location = New System.Drawing.Point(80, 14)
         Me.cbAlmacen.Name = "cbAlmacen"
@@ -91,10 +92,11 @@ Partial Class Pr_StockMinimo
         Me.Panel1.Controls.Add(Me.CheckTodosAlmacen)
         Me.Panel1.Controls.Add(Me.checkUnaAlmacen)
         Me.Panel1.Location = New System.Drawing.Point(244, 5)
-        Me.Panel1.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.Panel1.Margin = New System.Windows.Forms.Padding(2)
         Me.Panel1.Name = "Panel1"
         Me.Panel1.Size = New System.Drawing.Size(120, 35)
         Me.Panel1.TabIndex = 256
+        Me.Panel1.Visible = False
         '
         'CheckTodosAlmacen
         '
@@ -103,9 +105,6 @@ Partial Class Pr_StockMinimo
         '
         Me.CheckTodosAlmacen.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.CheckTodosAlmacen.CheckBoxStyle = DevComponents.DotNetBar.eCheckBoxStyle.RadioButton
-        Me.CheckTodosAlmacen.Checked = True
-        Me.CheckTodosAlmacen.CheckState = System.Windows.Forms.CheckState.Checked
-        Me.CheckTodosAlmacen.CheckValue = "Y"
         Me.CheckTodosAlmacen.Location = New System.Drawing.Point(62, 7)
         Me.CheckTodosAlmacen.Name = "CheckTodosAlmacen"
         Me.CheckTodosAlmacen.Size = New System.Drawing.Size(55, 23)
@@ -120,6 +119,9 @@ Partial Class Pr_StockMinimo
         '
         Me.checkUnaAlmacen.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.checkUnaAlmacen.CheckBoxStyle = DevComponents.DotNetBar.eCheckBoxStyle.RadioButton
+        Me.checkUnaAlmacen.Checked = True
+        Me.checkUnaAlmacen.CheckState = System.Windows.Forms.CheckState.Checked
+        Me.checkUnaAlmacen.CheckValue = "Y"
         Me.checkUnaAlmacen.Location = New System.Drawing.Point(12, 7)
         Me.checkUnaAlmacen.Name = "checkUnaAlmacen"
         Me.checkUnaAlmacen.Size = New System.Drawing.Size(44, 23)
@@ -132,7 +134,7 @@ Partial Class Pr_StockMinimo
         Me.Panel2.Controls.Add(Me.checkTodosGrupos)
         Me.Panel2.Controls.Add(Me.checkUnaGrupo)
         Me.Panel2.Location = New System.Drawing.Point(244, 62)
-        Me.Panel2.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.Panel2.Margin = New System.Windows.Forms.Padding(2)
         Me.Panel2.Name = "Panel2"
         Me.Panel2.Size = New System.Drawing.Size(119, 35)
         Me.Panel2.TabIndex = 257
@@ -210,7 +212,7 @@ Partial Class Pr_StockMinimo
         Me.MReportViewer.Dock = System.Windows.Forms.DockStyle.Fill
         Me.MReportViewer.Location = New System.Drawing.Point(377, 0)
         Me.MReportViewer.Name = "MReportViewer"
-        Me.MReportViewer.Size = New System.Drawing.Size(605, 593)
+        Me.MReportViewer.Size = New System.Drawing.Size(967, 696)
         Me.MReportViewer.TabIndex = 0
         '
         'Panel5
@@ -224,7 +226,7 @@ Partial Class Pr_StockMinimo
         Me.Panel5.Controls.Add(Me.cbAlmacen)
         Me.Panel5.Location = New System.Drawing.Point(0, 110)
         Me.Panel5.Name = "Panel5"
-        Me.Panel5.Size = New System.Drawing.Size(377, 483)
+        Me.Panel5.Size = New System.Drawing.Size(377, 591)
         Me.Panel5.TabIndex = 264
         '
         'Panel6
@@ -234,7 +236,7 @@ Partial Class Pr_StockMinimo
         Me.Panel6.Dock = System.Windows.Forms.DockStyle.Left
         Me.Panel6.Location = New System.Drawing.Point(0, 0)
         Me.Panel6.Name = "Panel6"
-        Me.Panel6.Size = New System.Drawing.Size(377, 593)
+        Me.Panel6.Size = New System.Drawing.Size(377, 696)
         Me.Panel6.TabIndex = 1
         '
         'Panel4
@@ -257,9 +259,9 @@ Partial Class Pr_StockMinimo
         Me.btn_Salir.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btn_Salir.ForeColor = System.Drawing.Color.White
         Me.btn_Salir.Image = Global.DinoM.My.Resources.Resources.atras1
-        Me.btn_Salir.Location = New System.Drawing.Point(173, -1)
+        Me.btn_Salir.Location = New System.Drawing.Point(179, 5)
         Me.btn_Salir.Name = "btn_Salir"
-        Me.btn_Salir.Size = New System.Drawing.Size(72, 98)
+        Me.btn_Salir.Size = New System.Drawing.Size(80, 92)
         Me.btn_Salir.TabIndex = 262
         Me.btn_Salir.Text = "SALIR"
         Me.btn_Salir.TextAlign = System.Drawing.ContentAlignment.BottomCenter
@@ -272,9 +274,9 @@ Partial Class Pr_StockMinimo
         Me.btn_Generar.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btn_Generar.ForeColor = System.Drawing.Color.White
         Me.btn_Generar.Image = Global.DinoM.My.Resources.Resources.pie_chart1
-        Me.btn_Generar.Location = New System.Drawing.Point(80, 7)
+        Me.btn_Generar.Location = New System.Drawing.Point(86, 12)
         Me.btn_Generar.Name = "btn_Generar"
-        Me.btn_Generar.Size = New System.Drawing.Size(85, 90)
+        Me.btn_Generar.Size = New System.Drawing.Size(80, 85)
         Me.btn_Generar.TabIndex = 261
         Me.btn_Generar.Text = "GENERAR"
         Me.btn_Generar.TextAlign = System.Drawing.ContentAlignment.BottomCenter
@@ -285,7 +287,7 @@ Partial Class Pr_StockMinimo
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(982, 593)
+        Me.ClientSize = New System.Drawing.Size(1344, 696)
         Me.Controls.Add(Me.MReportViewer)
         Me.Controls.Add(Me.Panel6)
         Me.Name = "Pr_StockMinimo"

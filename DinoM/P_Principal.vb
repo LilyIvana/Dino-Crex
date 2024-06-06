@@ -963,20 +963,26 @@ Public Class P_Principal
 
 
     Private Sub btlvSaldoMinimo_Click(sender As Object, e As EventArgs) Handles btlvSaldoMinimo.Click
-        SideNav1.IsMenuExpanded = False
-        Ventana.Select()
+        'SideNav1.IsMenuExpanded = False
+        'Ventana.Select()
+        'Dim frm As New Pr_StockMinimo
+        'Dim tab3 As SuperTabItem = superTabControl3.CreateTab(frm.Text)
+        'frm._tab = tab3
+        'Dim panel As Panel = P_Global._fnCrearPanelVentanas(frm)
+        'superTabControl3.SelectedTabIndex = superTabControl3.Tabs.Count - 1
+        'tab3.AttachedControl.Controls.Add(panel)
+        'frm.Show()
+
+        'tab3.Text = "SALDOS MENORES AL STOCK MIN."
+        'Dim blah As New Bitmap(New Bitmap(My.Resources.check_mark), 20, 20)
+        'Dim ico As Icon = Icon.FromHandle(blah.GetHicon())
+        'tab3.Icon = ico
+
+
         Dim frm As New Pr_StockMinimo
-        Dim tab3 As SuperTabItem = superTabControl3.CreateTab(frm.Text)
-        frm._tab = tab3
-        Dim panel As Panel = P_Global._fnCrearPanelVentanas(frm)
-        superTabControl3.SelectedTabIndex = superTabControl3.Tabs.Count - 1
-        tab3.AttachedControl.Controls.Add(panel)
+        frm._nameButton = btlvSaldoMinimo.Name
         frm.Show()
 
-        tab3.Text = "SALDOS MENORES AL STOCK MIN."
-        Dim blah As New Bitmap(New Bitmap(My.Resources.check_mark), 20, 20)
-        Dim ico As Icon = Icon.FromHandle(blah.GetHicon())
-        tab3.Icon = ico
     End Sub
 
     Private Sub btnCredPagoCliente_Click(sender As Object, e As EventArgs) Handles btnCredPagoCliente.Click

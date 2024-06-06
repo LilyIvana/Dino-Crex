@@ -213,7 +213,7 @@ Public Class F1_StockSistVsFisico
             With JGrM_Buscador.RootTable.Columns("cant2")
                 .Width = 100
                 .Caption = "CANTIDAD2"
-                .Visible = True
+                .Visible = False
                 .FormatString = "0.00"
                 .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far
             End With
@@ -225,7 +225,7 @@ Public Class F1_StockSistVsFisico
             With JGrM_Buscador.RootTable.Columns("cant3")
                 .Width = 100
                 .Caption = "CANTIDAD3"
-                .Visible = True
+                .Visible = False
                 .FormatString = "0.00"
                 .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far
             End With
@@ -236,7 +236,7 @@ Public Class F1_StockSistVsFisico
             End With
             With JGrM_Buscador.RootTable.Columns("cant4")
                 .Width = 100
-                .Visible = True
+                .Visible = False
                 .Caption = "CANTIDAD4"
                 .FormatString = "0.00"
                 .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far
