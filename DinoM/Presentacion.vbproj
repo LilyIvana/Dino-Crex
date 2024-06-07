@@ -306,6 +306,12 @@
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="CustomersRow.vb" />
+    <Compile Include="Descuentos\ConsultaPrecios.Designer.vb">
+      <DependentUpon>ConsultaPrecios.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Descuentos\ConsultaPrecios.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Descuentos\DescuentosCajeros.Designer.vb">
       <DependentUpon>DescuentosCajeros.vb</DependentUpon>
     </Compile>
@@ -538,6 +544,12 @@
       <DependentUpon>F1_CalculoPedidoSugeridoDias.vb</DependentUpon>
     </Compile>
     <Compile Include="F1_CalculoPedidoSugeridoDias.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="F1_Bitacora.Designer.vb">
+      <DependentUpon>F1_Bitacora.vb</DependentUpon>
+    </Compile>
+    <Compile Include="F1_Bitacora.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="F1_ProductosVales.Designer.vb">
@@ -1522,6 +1534,9 @@
     <EmbeddedResource Include="Control\UCImg.resx">
       <DependentUpon>UCImg.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Descuentos\ConsultaPrecios.resx">
+      <DependentUpon>ConsultaPrecios.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Descuentos\DescuentosCajeros.resx">
       <DependentUpon>DescuentosCajeros.vb</DependentUpon>
     </EmbeddedResource>
@@ -1638,6 +1653,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="F1_CalculoPedidoSugeridoDias.resx">
       <DependentUpon>F1_CalculoPedidoSugeridoDias.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="F1_Bitacora.resx">
+      <DependentUpon>F1_Bitacora.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="F1_ProductosVales.resx">
       <DependentUpon>F1_ProductosVales.vb</DependentUpon>

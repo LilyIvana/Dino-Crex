@@ -6,7 +6,7 @@ Imports DevComponents.DotNetBar.Controls
 Imports System.IO
 
 
-Public Class DescuentosCajeros
+Public Class ConsultaPrecios
     Dim _inter As Integer = 0
 #Region "Variables Globales"
 
@@ -29,7 +29,8 @@ Public Class DescuentosCajeros
 #End Region
     Private Sub _PIniciarTodo()
         'L_prAbrirConexion()
-        Me.Text = "CONSULTA  PRECIOS  CAJEROS "
+
+        Me.Text = "CONSULTA  PRECIOS"
 
         _prCargarProductos()
 
@@ -50,7 +51,7 @@ Public Class DescuentosCajeros
         grProducto.AlternatingColors = True
 
         If dt.Rows.Count > 0 Then
-            L_fnRepConsultaPreciosCajeros(gs_VersionSistema, gs_IPMaquina, gs_UsuMaquina)
+            L_fnBotonGenerar(gs_VersionSistema, gs_IPMaquina, gs_UsuMaquina, 0, "CONSULTA PRECIOS", "CONSULTA PRECIOS")
 
             With grProducto.RootTable.Columns("ProductoId")
                 .Width = 50
@@ -95,26 +96,26 @@ Public Class DescuentosCajeros
                 .FormatString = "0.00"
             End With
             With grProducto.RootTable.Columns("PrecioCosto")
-                .Caption = "Precio Costo"
-                .Width = 50
-                .Visible = False
+                .Caption = "P. Costo"
+                .Width = 60
+                .Visible = True
                 .FormatString = "0.00"
             End With
             With grProducto.RootTable.Columns("PrecioVenta")
-                .Caption = "Precio Wholesale"
+                .Caption = "P. Wholesale"
                 .Width = 60
                 .Visible = True
                 .FormatString = "0.00"
             End With
             With grProducto.RootTable.Columns("PrecioEspecial")
-                .Caption = "Precio Preferencial"
+                .Caption = "P. Preferencial"
                 .Width = 60
                 .Visible = True
                 .FormatString = "0.00"
             End With
             With grProducto.RootTable.Columns("PrecioPDV")
-                .Caption = "Precio PDV"
-                .Width = 50
+                .Caption = "P. PDV"
+                .Width = 60
                 .Visible = True
                 .FormatString = "0.00"
             End With
@@ -132,7 +133,6 @@ Public Class DescuentosCajeros
                 .RecordNavigatorText = "Productos"
             End With
         Else
-
             grProducto.ClearStructure()
             Dim img As Bitmap = New Bitmap(My.Resources.mensaje, 50, 50)
             ToastNotification.Show(Me, "No existe datos para mostrar".ToUpper, img, 2000, eToastGlowColor.Red, eToastPosition.TopCenter)
@@ -365,13 +365,14 @@ Public Class DescuentosCajeros
         _prCrearCarpetaReportes()
         Dim img As Bitmap = New Bitmap(My.Resources.checked, 50, 50)
         If (P_ExportarExcel(RutaGlobal + "\Reporte\Reporte Productos")) Then
-            L_fnRepConsultaPreciosCajerosExcel(gs_VersionSistema, gs_IPMaquina, gs_UsuMaquina)
-            ToastNotification.Show(Me, "EXPORTACIÓN DE CONSULTA DE PRECIOS CAJEROS EXITOSA..!!!",
+            L_fnBotonExportar(gs_VersionSistema, gs_IPMaquina, gs_UsuMaquina, 0, "CONSULTA PRECIOS", "CONSULTA PRECIOS")
+
+            ToastNotification.Show(Me, "EXPORTACIÓN DE CONSULTA DE PRECIOS EXITOSA..!!!",
                                        img, 2000,
                                        eToastGlowColor.Green,
                                        eToastPosition.TopCenter)
         Else
-            ToastNotification.Show(Me, "FALLÓ LA EXPORTACIÓN DE CONSULTA DE PRECIOS CAJEROS..!!!",
+            ToastNotification.Show(Me, "FALLÓ LA EXPORTACIÓN DE CONSULTA DE PRECIOS..!!!",
                                        My.Resources.WARNING, 2000,
                                        eToastGlowColor.Red,
                                        eToastPosition.TopCenter)
@@ -405,7 +406,7 @@ Public Class DescuentosCajeros
                 Dim _escritor As StreamWriter
                 Dim _fila As Integer = grProducto.GetRows.Length
                 Dim _columna As Integer = grProducto.RootTable.Columns.Count
-                Dim _archivo As String = _ubicacion & "\ListaDePreciosCajeros_" & Now.Date.Day &
+                Dim _archivo As String = _ubicacion & "\ListaDePrecios_" & Now.Date.Day &
                     "." & Now.Date.Month & "." & Now.Date.Year & "_" & Now.Hour & "." & Now.Minute & "." & Now.Second & ".csv"
                 Dim _linea As String = ""
                 Dim _filadata = 0, columndata As Int32 = 0

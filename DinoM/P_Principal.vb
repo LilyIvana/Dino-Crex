@@ -1202,7 +1202,6 @@ Public Class P_Principal
 
     Private Sub btConfDescuentosCajeros_Click(sender As Object, e As EventArgs) Handles btConfDescuentosCajeros.Click
         Dim frm As New DescuentosCajeros
-        L_fnRepConsultaPreciosCajeros(gs_VersionSistema, gs_IPMaquina, gs_UsuMaquina)
         frm.Show()
     End Sub
 
@@ -1341,6 +1340,19 @@ Public Class P_Principal
         frm.Show()
     End Sub
 
+    Private Sub btBitacora_Click(sender As Object, e As EventArgs) Handles btBitacora.Click
+        Dim frm As New F1_Bitacora
+        frm._nameButton = btBitacora.Name
+        frm._modulo = FP_Configuracion
+        frm.Show()
+    End Sub
+
+    Private Sub btConsultaPrecios_Click(sender As Object, e As EventArgs) Handles btConsultaPrecios.Click
+        Dim frm As New ConsultaPrecios
+        frm._nameButton = btConsultaPrecios.Name
+        frm._modulo = FP_Configuracion
+        frm.Show()
+    End Sub
 
 
     'Private Sub btnCredPagoCliente_Click(sender As Object, e As EventArgs) Handles btnCredPagoCliente.Click

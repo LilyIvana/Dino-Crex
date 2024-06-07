@@ -573,12 +573,12 @@ Public Class F1_ExcelMixto
             ToastNotification.Show(Me, "EXPORTACIÓN A EXCEL EXITOSA...!!!",
                                        img, 2000,
                                        eToastGlowColor.Green,
-                                       eToastPosition.BottomCenter)
+                                       eToastPosition.TopCenter)
         Else
             ToastNotification.Show(Me, "FALLÓ LA EXPORTACIÓN A EXCEL...!!!",
                                        My.Resources.WARNING, 2000,
                                        eToastGlowColor.Red,
-                                       eToastPosition.BottomLeft)
+                                       eToastPosition.TopCenter)
         End If
     End Sub
 End Class

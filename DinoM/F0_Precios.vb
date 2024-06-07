@@ -102,17 +102,15 @@ Public Class F0_Precios
                 End With
 
                 With grprecio.RootTable.Columns(columnprecio)
-                    .Caption = fc.Item("ygcod").ToString
-                    .Width = 80
+                    .Caption = fc.Item("ygdesc").ToString
+                    .Width = 100
                     .HeaderAlignment = Janus.Windows.GridEX.TextAlignment.Center
                     .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far
                     .Visible = True
                     .FormatString = "0.00"
                 End With
-
             Next
 
-            'a.yfcprod ,a.yfnumi ,a.yfcdprod1,gr3.ycdes3 as Laboratorio,gr4.ycdes3 as Presentacion 
             With grprecio.RootTable.Columns("yfcprod")
                 .Caption = "COD DELTA"
                 .Width = 85
@@ -125,7 +123,7 @@ Public Class F0_Precios
             End With
             With grprecio.RootTable.Columns("yfcdprod1")
                 .Caption = "PRODUCTO"
-                .Width = 360
+                .Width = 320
                 .WordWrap = True
                 .MaxLines = 3
                 .Visible = True
@@ -221,7 +219,7 @@ Public Class F0_Precios
 
         With grcategoria.RootTable.Columns("ygdesc")
             .Caption = "DESCRIPCION"
-            .Width = 185
+            .Width = 150
             .Visible = True
 
         End With

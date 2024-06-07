@@ -2793,15 +2793,12 @@ salirIf:
                 frm.StartPosition = FormStartPosition.WindowsDefaultLocation
                 frm.WindowState = FormWindowState.Minimized
                 frm.ShowDialog()
-
             Else
                 ToastNotification.Show(Me, "NO EXISTE PRODUCTOS X KILO PARA REGISTRAR..!!!",
                        My.Resources.WARNING, 2000,
                        eToastGlowColor.Red,
                        eToastPosition.TopCenter)
             End If
-
-
 
         Catch ex As Exception
             MostrarMensajeError(ex.Message)

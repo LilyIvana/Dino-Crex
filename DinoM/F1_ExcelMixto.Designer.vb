@@ -195,7 +195,7 @@ Partial Class F1_ExcelMixto
         '
         '
         Me.GroupPanelBuscador.StyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.GroupPanelBuscador.Text = "VENTAS"
+        Me.GroupPanelBuscador.Text = "DATOS GENERADOS"
         '
         'JGrM_Buscador
         '
