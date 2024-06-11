@@ -35,7 +35,7 @@ Public Class F0_PagosCreditoCompraUlt
 
         'Me.WindowState = FormWindowState.Maximized
         _prAsignarPermisos()
-        Me.Text = "PAGO DE COMPRAS A CREDITOS"
+        Me.Text = "PAGO DE COMPRAS A CRÉDITO"
         Dim blah As New Bitmap(New Bitmap(My.Resources.cobro), 20, 20)
         Dim ico As Icon = Icon.FromHandle(blah.GetHicon())
         Me.Icon = ico

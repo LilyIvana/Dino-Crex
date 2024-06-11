@@ -189,7 +189,7 @@ Partial Class F1_DescuentoProd
         '
         '
         Me.GroupPanelBuscador.StyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.GroupPanelBuscador.Text = "VENTAS"
+        Me.GroupPanelBuscador.Text = "DESCUENTO DE PRODUCTOS"
         '
         'JGrM_Buscador
         '

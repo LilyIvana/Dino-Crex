@@ -14,34 +14,26 @@ Public Class ConsultaPrecios
     Dim _Nuevo As Boolean
     Dim _Dsencabezado As DataSet
 
-    Dim _BindingSource As BindingSource
     Dim _Modificar As Boolean
-
     Dim modif As Boolean = True
 
     Public _nameButton As String
     Public _tab As SuperTabItem
     Public _modulo As SideNavItem
 
-    Dim dtPreciosDesc As New DataTable
     Dim RutaGlobal As String = gs_CarpetaRaiz
 
 #End Region
     Private Sub _PIniciarTodo()
         'L_prAbrirConexion()
-
         Me.Text = "CONSULTA  PRECIOS"
 
         _prCargarProductos()
-
         btnGrabar.Visible = False
         btnNuevo.Visible = False
-
         tbDesde.IsInputReadOnly = True
         tbHasta.IsInputReadOnly = True
         tbPrecio.IsInputReadOnly = True
-
-
     End Sub
     Private Sub _prCargarProductos()
         Dim dt As New DataTable
@@ -147,10 +139,8 @@ Public Class ConsultaPrecios
         Dim dt As New DataTable
         dt = L_fnListarDescuentos(ProductoId)
         grdetalle.DataSource = dt
-
         grdetalle.RetrieveStructure()
         grdetalle.AlternatingColors = True
-
 
         With grdetalle.RootTable.Columns("id")
             .Width = 100
@@ -164,31 +154,24 @@ Public Class ConsultaPrecios
             .Width = 100
             .Visible = False
         End With
-
         With grdetalle.RootTable.Columns("CantidadInicial")
             .Caption = "Desde"
             .Width = 100
             .Visible = True
             .FormatString = "0"
         End With
-
-
         With grdetalle.RootTable.Columns("CantidadFinal")
             .Caption = "Hasta"
             .Width = 100
             .Visible = True
             .FormatString = "0"
         End With
-
         With grdetalle.RootTable.Columns("Precio")
             .Caption = "Precio"
             .Width = 100
             .Visible = True
             .FormatString = "0.00"
         End With
-
-
-
         With grdetalle.RootTable.Columns("FechaDesde")
             .Width = 90
             .Visible = False
@@ -207,16 +190,12 @@ Public Class ConsultaPrecios
             .VisualStyle = VisualStyle.Office2007
         End With
 
-
-
     End Sub
 
     Private Sub grProducto_SelectionChanged(sender As Object, e As EventArgs) Handles grProducto.SelectionChanged
         If (grProducto.Row >= 0) Then
-
             lbProducto.Text = grProducto.GetValue("NombreProducto")
             _prCargarDescuentos(grProducto.GetValue("ProductoId"))
-
         End If
     End Sub
 
@@ -225,7 +204,6 @@ Public Class ConsultaPrecios
         tbHasta.IsInputReadOnly = False
         tbPrecio.IsInputReadOnly = False
 
-
         tbDesde.Value = 0
         tbHasta.Value = 0
         tbPrecio.Value = 0
@@ -233,7 +211,6 @@ Public Class ConsultaPrecios
 
         btnNuevo.Visible = False
         btnGrabar.Visible = True
-
     End Sub
 
     Function validarDescuento(ByRef posicion As Integer) As Boolean
@@ -253,11 +230,8 @@ Public Class ConsultaPrecios
                     Return True
                 End If
             End If
-
         Next
         Return False
-
-
 
     End Function
     Public Function _ValidarCampos() As Boolean
@@ -269,13 +243,8 @@ Public Class ConsultaPrecios
         If (tbDesde.Value > tbHasta.Value) Then
             Dim img As Bitmap = New Bitmap(My.Resources.cancel, 50, 50)
             ToastNotification.Show(Me, "La cantidad Hasta es mayor al Desde".ToUpper, img, 3000, eToastGlowColor.Red, eToastPosition.BottomCenter)
-
             Return False
-
         End If
-
-
-
         If tbDesde.Value.ToString = String.Empty Or tbHasta.Value.ToString = String.Empty Or tbPrecio.Value.ToString = String.Empty Then
             Dim img As Bitmap = New Bitmap(My.Resources.mensaje, 50, 50)
             ToastNotification.Show(Me, "Los campos no pueden estar vacios por favor coloque datos mayores a 0".ToUpper, img, 4000, eToastGlowColor.Red, eToastPosition.BottomCenter)
@@ -290,7 +259,6 @@ Public Class ConsultaPrecios
         Dim posicion As Integer = -1
         If (validarDescuento(posicion)) Then
             Dim dt As DataTable = CType(grdetalle.DataSource, DataTable)
-
             Dim img As Bitmap = New Bitmap(My.Resources.cancel, 50, 50)
             ToastNotification.Show(Me, "Ya existe un Descuento Programado con los datos a Insertar, Desde = " + Str(dt.Rows(posicion).Item("CantidadInicial")) + "  Hasta " + Str(dt.Rows(posicion).Item("CantidadFinal")), img, 4500, eToastGlowColor.Red, eToastPosition.BottomCenter)
             Return False
@@ -305,16 +273,12 @@ Public Class ConsultaPrecios
             'Grabar
             Dim res As Boolean = L_fnGrabarPreciosDescuentos(numi, grProducto.GetValue("ProductoId"), tbDesde.Value, tbHasta.Value,
                                                              tbPrecio.Value, gs_VersionSistema, gs_IPMaquina, gs_UsuMaquina)
-
             If (res) Then
                 ToastNotification.Show(Me, "Descuento de Producto Grabado con éxito.".ToUpper,
                                    My.Resources.GRABACION_EXITOSA,
                                    3000,
                                    eToastGlowColor.Green,
                                    eToastPosition.TopCenter)
-
-
-
 
                 btnNuevo.Visible = True
                 btnGrabar.Visible = False
@@ -324,7 +288,6 @@ Public Class ConsultaPrecios
                 tbPrecio.Value = 0
 
                 _prCargarDescuentos(grProducto.GetValue("ProductoId"))
-
             Else
                 ToastNotification.Show(Me, "No se pudo grabar los descuentos.".ToUpper,
                                    My.Resources.WARNING,
@@ -337,7 +300,6 @@ Public Class ConsultaPrecios
 
     Private Sub ButtonX1_Click(sender As Object, e As EventArgs) Handles ButtonX1.Click
         Me.Close()
-
     End Sub
 
     Private Sub Descuentos_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -348,8 +310,6 @@ Public Class ConsultaPrecios
         If (grdetalle.Row >= 0) Then
             L_fnEliminarDescuento(grdetalle.GetValue("id"), grdetalle.GetValue("ProductoId"), gs_VersionSistema, gs_IPMaquina, gs_UsuMaquina)
 
-
-
             ToastNotification.Show(Me, "Descuento Eliminado Correctamente.".ToUpper,
                                 My.Resources.GRABACION_EXITOSA,
                                 3000,
@@ -357,7 +317,6 @@ Public Class ConsultaPrecios
                                 eToastPosition.TopCenter)
 
             _prCargarDescuentos(grProducto.GetValue("ProductoId"))
-
         End If
     End Sub
 
@@ -380,7 +339,6 @@ Public Class ConsultaPrecios
     End Sub
     Private Sub _prCrearCarpetaReportes()
         Dim rutaDestino As String = RutaGlobal + "\Reporte\Reporte Productos\"
-
         If System.IO.Directory.Exists(RutaGlobal + "\Reporte\Reporte Productos\") = False Then
             If System.IO.Directory.Exists(RutaGlobal + "\Reporte") = False Then
                 System.IO.Directory.CreateDirectory(RutaGlobal + "\Reporte")
@@ -423,7 +381,6 @@ Public Class ConsultaPrecios
                 _escritor.WriteLine(_linea)
                 _linea = Nothing
 
-
                 For Each _fil As GridEXRow In grProducto.GetRows
                     For Each _col As GridEXColumn In grProducto.RootTable.Columns
                         If (_col.Visible) Then
@@ -435,7 +392,6 @@ Public Class ConsultaPrecios
                     _linea = Mid(CStr(_linea), 1, _linea.Length - 1)
                     _escritor.WriteLine(_linea)
                     _linea = Nothing
-
                 Next
                 _escritor.Close()
 
@@ -468,7 +424,6 @@ Public Class ConsultaPrecios
 
     Private Sub btActualizar_Click(sender As Object, e As EventArgs) Handles btActualizar.Click
         _PIniciarTodo()
-
         Dim img As Bitmap = New Bitmap(My.Resources.checked, 50, 50)
         ToastNotification.Show(Me, "Datos actualizados!!!".ToUpper,
                                   img, 2000,

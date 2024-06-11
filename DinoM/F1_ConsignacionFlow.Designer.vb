@@ -30,10 +30,10 @@ Partial Class F1_ConsignacionFlow
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         Me.GroupPanel2 = New DevComponents.DotNetBar.Controls.GroupPanel()
         Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.cbConsignación = New Janus.Windows.GridEX.EditControls.MultiColumnCombo()
         Me.LabelX4 = New DevComponents.DotNetBar.LabelX()
         Me.btnExportarExcel = New DevComponents.DotNetBar.ButtonX()
         Me.btnGenerar = New DevComponents.DotNetBar.ButtonX()
-        Me.cbConsignación = New Janus.Windows.GridEX.EditControls.MultiColumnCombo()
         CType(Me.SuperTabPrincipal, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuperTabPrincipal.SuspendLayout()
         Me.SuperTabControlPanelRegistro.SuspendLayout()
@@ -193,7 +193,7 @@ Partial Class F1_ConsignacionFlow
         '
         '
         Me.GroupPanelBuscador.StyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.GroupPanelBuscador.Text = "PRODUCTOS"
+        Me.GroupPanelBuscador.Text = "PRODUCTOS CONSIGNACIÓN FLOW"
         '
         'JGrM_Buscador
         '
@@ -319,6 +319,22 @@ Partial Class F1_ConsignacionFlow
         Me.Panel1.Size = New System.Drawing.Size(1316, 77)
         Me.Panel1.TabIndex = 227
         '
+        'cbConsignación
+        '
+        Me.cbConsignación.BackColor = System.Drawing.Color.White
+        cbConsignación_DesignTimeLayout.LayoutString = resources.GetString("cbConsignación_DesignTimeLayout.LayoutString")
+        Me.cbConsignación.DesignTimeLayout = cbConsignación_DesignTimeLayout
+        Me.cbConsignación.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cbConsignación.Location = New System.Drawing.Point(481, 27)
+        Me.cbConsignación.Name = "cbConsignación"
+        Me.cbConsignación.Office2007ColorScheme = Janus.Windows.GridEX.Office2007ColorScheme.Custom
+        Me.cbConsignación.Office2007CustomColor = System.Drawing.Color.DodgerBlue
+        Me.cbConsignación.SelectedIndex = -1
+        Me.cbConsignación.SelectedItem = Nothing
+        Me.cbConsignación.Size = New System.Drawing.Size(205, 22)
+        Me.cbConsignación.TabIndex = 374
+        Me.cbConsignación.VisualStyle = Janus.Windows.GridEX.VisualStyle.Office2007
+        '
         'LabelX4
         '
         Me.LabelX4.BackColor = System.Drawing.Color.Transparent
@@ -364,22 +380,6 @@ Partial Class F1_ConsignacionFlow
         Me.btnGenerar.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
         Me.btnGenerar.TabIndex = 240
         Me.btnGenerar.Text = "Generar"
-        '
-        'cbConsignación
-        '
-        Me.cbConsignación.BackColor = System.Drawing.Color.White
-        cbConsignación_DesignTimeLayout.LayoutString = resources.GetString("cbConsignación_DesignTimeLayout.LayoutString")
-        Me.cbConsignación.DesignTimeLayout = cbConsignación_DesignTimeLayout
-        Me.cbConsignación.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.cbConsignación.Location = New System.Drawing.Point(481, 27)
-        Me.cbConsignación.Name = "cbConsignación"
-        Me.cbConsignación.Office2007ColorScheme = Janus.Windows.GridEX.Office2007ColorScheme.Custom
-        Me.cbConsignación.Office2007CustomColor = System.Drawing.Color.DodgerBlue
-        Me.cbConsignación.SelectedIndex = -1
-        Me.cbConsignación.SelectedItem = Nothing
-        Me.cbConsignación.Size = New System.Drawing.Size(205, 22)
-        Me.cbConsignación.TabIndex = 374
-        Me.cbConsignación.VisualStyle = Janus.Windows.GridEX.VisualStyle.Office2007
         '
         'F1_ConsignacionFlow
         '

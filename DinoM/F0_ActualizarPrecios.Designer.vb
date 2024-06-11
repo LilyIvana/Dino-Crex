@@ -283,7 +283,7 @@ Partial Class F0_ActualizarPrecios
         '
         Me.GroupPanel4.StyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.GroupPanel4.TabIndex = 1
-        Me.GroupPanel4.Text = "PRECIOS PRODUCTOS"
+        Me.GroupPanel4.Text = "DATOS DE PRODUCTOS"
         '
         'Panel5
         '

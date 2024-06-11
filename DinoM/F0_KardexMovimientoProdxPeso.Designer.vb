@@ -680,7 +680,7 @@ Partial Class F0_KardexMovimientoProdxPeso
         '
         Me.GroupPanelKardex.StyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.GroupPanelKardex.TabIndex = 1
-        Me.GroupPanelKardex.Text = "KARDEX PROD. POR PESO"
+        Me.GroupPanelKardex.Text = "KARDEX PRODUCTO POR PESO"
         '
         'Dgj1Datos
         '

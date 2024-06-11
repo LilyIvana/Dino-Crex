@@ -60,6 +60,8 @@ Partial Class F0_CierreCaja
         Me.Panel2 = New System.Windows.Forms.Panel()
         Me.GroupPanel5 = New DevComponents.DotNetBar.Controls.GroupPanel()
         Me.Panel6 = New System.Windows.Forms.Panel()
+        Me.tbTQR = New DevComponents.Editors.DoubleInput()
+        Me.LabelX20 = New DevComponents.DotNetBar.LabelX()
         Me.LabelX17 = New DevComponents.DotNetBar.LabelX()
         Me.LabelX18 = New DevComponents.DotNetBar.LabelX()
         Me.tbTIngresos = New DevComponents.Editors.DoubleInput()
@@ -88,8 +90,6 @@ Partial Class F0_CierreCaja
         Me.GroupPanel1 = New DevComponents.DotNetBar.Controls.GroupPanel()
         Me.Dgv_Buscador = New Janus.Windows.GridEX.GridEX()
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
-        Me.tbTQR = New DevComponents.Editors.DoubleInput()
-        Me.LabelX20 = New DevComponents.DotNetBar.LabelX()
         Me.PanelSuperior.SuspendLayout()
         Me.PanelInferior.SuspendLayout()
         CType(Me.BubbleBarUsuario, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -126,6 +126,7 @@ Partial Class F0_CierreCaja
         Me.Panel2.SuspendLayout()
         Me.GroupPanel5.SuspendLayout()
         Me.Panel6.SuspendLayout()
+        CType(Me.tbTQR, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.tbTIngresos, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.tbTEgresos, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.tbMontoI, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -141,7 +142,6 @@ Partial Class F0_CierreCaja
         Me.Panel4.SuspendLayout()
         Me.GroupPanel1.SuspendLayout()
         CType(Me.Dgv_Buscador, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.tbTQR, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'PanelSuperior
@@ -212,9 +212,6 @@ Partial Class F0_CierreCaja
         '
         '
         'btnModificar
-        '
-        '
-        'btnNuevo
         '
         '
         'PanelToolBar2
@@ -295,6 +292,9 @@ Partial Class F0_CierreCaja
         'PictureBox1
         '
         Me.PictureBox1.Location = New System.Drawing.Point(1089, 0)
+        '
+        'btnNuevo
+        '
         '
         'Panel3
         '
@@ -949,6 +949,38 @@ Partial Class F0_CierreCaja
         Me.Panel6.Size = New System.Drawing.Size(389, 342)
         Me.Panel6.TabIndex = 65
         '
+        'tbTQR
+        '
+        Me.tbTQR.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
+        '
+        '
+        '
+        Me.tbTQR.BackgroundStyle.Class = "DateTimeInputBackground"
+        Me.tbTQR.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.tbTQR.ButtonFreeText.Shortcut = DevComponents.DotNetBar.eShortcut.F2
+        Me.tbTQR.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.tbTQR.Increment = 1.0R
+        Me.tbTQR.Location = New System.Drawing.Point(177, 258)
+        Me.tbTQR.Name = "tbTQR"
+        Me.tbTQR.Size = New System.Drawing.Size(120, 23)
+        Me.tbTQR.TabIndex = 69
+        '
+        'LabelX20
+        '
+        Me.LabelX20.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
+        Me.LabelX20.BackColor = System.Drawing.Color.Transparent
+        '
+        '
+        '
+        Me.LabelX20.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.LabelX20.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LabelX20.ForeColor = System.Drawing.Color.DarkCyan
+        Me.LabelX20.Location = New System.Drawing.Point(22, 258)
+        Me.LabelX20.Name = "LabelX20"
+        Me.LabelX20.Size = New System.Drawing.Size(90, 23)
+        Me.LabelX20.TabIndex = 70
+        Me.LabelX20.Text = "Total QR"
+        '
         'LabelX17
         '
         Me.LabelX17.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
@@ -1379,38 +1411,6 @@ Partial Class F0_CierreCaja
         Me.Timer1.Enabled = True
         Me.Timer1.Interval = 500
         '
-        'tbTQR
-        '
-        Me.tbTQR.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
-        '
-        '
-        '
-        Me.tbTQR.BackgroundStyle.Class = "DateTimeInputBackground"
-        Me.tbTQR.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.tbTQR.ButtonFreeText.Shortcut = DevComponents.DotNetBar.eShortcut.F2
-        Me.tbTQR.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.tbTQR.Increment = 1.0R
-        Me.tbTQR.Location = New System.Drawing.Point(177, 258)
-        Me.tbTQR.Name = "tbTQR"
-        Me.tbTQR.Size = New System.Drawing.Size(120, 23)
-        Me.tbTQR.TabIndex = 69
-        '
-        'LabelX20
-        '
-        Me.LabelX20.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
-        Me.LabelX20.BackColor = System.Drawing.Color.Transparent
-        '
-        '
-        '
-        Me.LabelX20.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.LabelX20.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelX20.ForeColor = System.Drawing.Color.DarkCyan
-        Me.LabelX20.Location = New System.Drawing.Point(22, 258)
-        Me.LabelX20.Name = "LabelX20"
-        Me.LabelX20.Size = New System.Drawing.Size(90, 23)
-        Me.LabelX20.TabIndex = 70
-        Me.LabelX20.Text = "Total QR"
-        '
         'F0_CierreCaja
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -1459,6 +1459,7 @@ Partial Class F0_CierreCaja
         Me.Panel2.ResumeLayout(False)
         Me.GroupPanel5.ResumeLayout(False)
         Me.Panel6.ResumeLayout(False)
+        CType(Me.tbTQR, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.tbTIngresos, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.tbTEgresos, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.tbMontoI, System.ComponentModel.ISupportInitialize).EndInit()
@@ -1474,7 +1475,6 @@ Partial Class F0_CierreCaja
         Me.Panel4.ResumeLayout(False)
         Me.GroupPanel1.ResumeLayout(False)
         CType(Me.Dgv_Buscador, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.tbTQR, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub

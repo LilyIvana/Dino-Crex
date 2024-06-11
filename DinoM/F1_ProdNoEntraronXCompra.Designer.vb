@@ -185,7 +185,7 @@ Partial Class F1_ProdNoEntraronXCompra
         '
         '
         Me.GroupPanelBuscador.StyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.GroupPanelBuscador.Text = "PRODUCTOS"
+        Me.GroupPanelBuscador.Text = "PRODUCTOS QUE NO ENTRARON POR COMPRA"
         '
         'JGrM_Buscador
         '

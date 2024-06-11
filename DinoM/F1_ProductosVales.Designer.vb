@@ -195,7 +195,7 @@ Partial Class F1_ProductosVales
         '
         '
         Me.GroupPanelBuscador.StyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.GroupPanelBuscador.Text = "PRODUCTOS VENDIDOS"
+        Me.GroupPanelBuscador.Text = "PRODUCTOS VENDIDOS POR VALES"
         '
         'JGrM_Buscador
         '

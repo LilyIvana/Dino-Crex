@@ -95,25 +95,25 @@ Public Class DescuentosCajeros
                 .FormatString = "0.00"
             End With
             With grProducto.RootTable.Columns("PrecioCosto")
-                .Caption = "Precio Costo"
+                .Caption = "P. Costo"
                 .Width = 50
                 .Visible = False
                 .FormatString = "0.00"
             End With
             With grProducto.RootTable.Columns("PrecioVenta")
-                .Caption = "Precio Wholesale"
+                .Caption = "P. Wholesale"
                 .Width = 60
                 .Visible = True
                 .FormatString = "0.00"
             End With
             With grProducto.RootTable.Columns("PrecioEspecial")
-                .Caption = "Precio Preferencial"
+                .Caption = "P. Preferencial"
                 .Width = 60
                 .Visible = True
                 .FormatString = "0.00"
             End With
             With grProducto.RootTable.Columns("PrecioPDV")
-                .Caption = "Precio PDV"
+                .Caption = "P. PDV"
                 .Width = 50
                 .Visible = True
                 .FormatString = "0.00"
@@ -127,7 +127,6 @@ Public Class DescuentosCajeros
 
                 'diseño de la grilla
                 .VisualStyle = VisualStyle.Office2007
-
                 .RecordNavigator = True
                 .RecordNavigatorText = "Productos"
             End With
@@ -147,10 +146,8 @@ Public Class DescuentosCajeros
         Dim dt As New DataTable
         dt = L_fnListarDescuentos(ProductoId)
         grdetalle.DataSource = dt
-
         grdetalle.RetrieveStructure()
         grdetalle.AlternatingColors = True
-
 
         With grdetalle.RootTable.Columns("id")
             .Width = 100
@@ -171,24 +168,18 @@ Public Class DescuentosCajeros
             .Visible = True
             .FormatString = "0"
         End With
-
-
         With grdetalle.RootTable.Columns("CantidadFinal")
             .Caption = "Hasta"
             .Width = 100
             .Visible = True
             .FormatString = "0"
         End With
-
         With grdetalle.RootTable.Columns("Precio")
             .Caption = "Precio"
             .Width = 100
             .Visible = True
             .FormatString = "0.00"
         End With
-
-
-
         With grdetalle.RootTable.Columns("FechaDesde")
             .Width = 90
             .Visible = False
@@ -206,8 +197,6 @@ Public Class DescuentosCajeros
             'diseño de la grilla
             .VisualStyle = VisualStyle.Office2007
         End With
-
-
 
     End Sub
 

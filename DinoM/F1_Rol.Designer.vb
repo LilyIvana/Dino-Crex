@@ -82,14 +82,14 @@ Partial Class F1_Rol
         Me.SuperTabPrincipal.ControlBox.SubItems.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.SuperTabPrincipal.ControlBox.MenuBox, Me.SuperTabPrincipal.ControlBox.CloseBox})
         Me.SuperTabPrincipal.SelectedTabIndex = 1
         Me.SuperTabPrincipal.Size = New System.Drawing.Size(1350, 701)
-        Me.SuperTabPrincipal.Controls.SetChildIndex(Me.SuperTabControlPanelBuscador, 0)
         Me.SuperTabPrincipal.Controls.SetChildIndex(Me.SuperTabControlPanelRegistro, 0)
+        Me.SuperTabPrincipal.Controls.SetChildIndex(Me.SuperTabControlPanelBuscador, 0)
         '
         'SuperTabControlPanelBuscador
         '
         Me.SuperTabControlPanelBuscador.Location = New System.Drawing.Point(0, 0)
         Me.SuperTabControlPanelBuscador.Margin = New System.Windows.Forms.Padding(4)
-        Me.SuperTabControlPanelBuscador.Size = New System.Drawing.Size(826, 507)
+        Me.SuperTabControlPanelBuscador.Size = New System.Drawing.Size(1318, 701)
         '
         'SupTabItemBusqueda
         '
@@ -158,9 +158,6 @@ Partial Class F1_Rol
         Me.TxtNombreUsu.Margin = New System.Windows.Forms.Padding(4)
         '
         'btnSalir
-        '
-        '
-        'btnGrabar
         '
         '
         'PanelToolBar2

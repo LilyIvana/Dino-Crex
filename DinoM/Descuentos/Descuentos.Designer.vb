@@ -41,9 +41,9 @@ Partial Class Descuentos
         Me.btnGrabar = New DevComponents.DotNetBar.ButtonX()
         Me.btnNuevo = New DevComponents.DotNetBar.ButtonX()
         Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.btnExportar = New DevComponents.DotNetBar.ButtonX()
         Me.btActualizar = New DevComponents.DotNetBar.ButtonX()
         Me.ButtonX1 = New DevComponents.DotNetBar.ButtonX()
-        Me.btnExportar = New DevComponents.DotNetBar.ButtonX()
         Me.Panel2.SuspendLayout()
         Me.GroupPanel2.SuspendLayout()
         CType(Me.grProducto, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -98,6 +98,7 @@ Partial Class Descuentos
         Me.GroupPanel2.Style.CornerDiameter = 4
         Me.GroupPanel2.Style.CornerType = DevComponents.DotNetBar.eCornerType.Rounded
         Me.GroupPanel2.Style.Font = New System.Drawing.Font("Calibri", 10.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.GroupPanel2.Style.TextAlignment = DevComponents.DotNetBar.eStyleTextAlignment.Center
         Me.GroupPanel2.Style.TextColor = System.Drawing.Color.White
         '
         '
@@ -108,7 +109,7 @@ Partial Class Descuentos
         '
         Me.GroupPanel2.StyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.GroupPanel2.TabIndex = 1
-        Me.GroupPanel2.Text = "LISTADO DE PRODUCTOS"
+        Me.GroupPanel2.Text = "LISTADO DE PRODUCTOS CON SUS DESCUENTOS"
         '
         'grProducto
         '
@@ -375,6 +376,25 @@ Partial Class Descuentos
         Me.Panel1.Size = New System.Drawing.Size(1284, 61)
         Me.Panel1.TabIndex = 0
         '
+        'btnExportar
+        '
+        Me.btnExportar.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
+        Me.btnExportar.BackColor = System.Drawing.Color.Transparent
+        Me.btnExportar.ColorTable = DevComponents.DotNetBar.eButtonColor.Flat
+        Me.btnExportar.Dock = System.Windows.Forms.DockStyle.Right
+        Me.btnExportar.Font = New System.Drawing.Font("Arial", 8.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnExportar.Image = Global.DinoM.My.Resources.Resources.sheets
+        Me.btnExportar.ImageFixedSize = New System.Drawing.Size(38, 42)
+        Me.btnExportar.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top
+        Me.btnExportar.Location = New System.Drawing.Point(1134, 0)
+        Me.btnExportar.Name = "btnExportar"
+        Me.btnExportar.Padding = New System.Windows.Forms.Padding(0, 0, 0, 20)
+        Me.btnExportar.Size = New System.Drawing.Size(75, 61)
+        Me.btnExportar.Style = DevComponents.DotNetBar.eDotNetBarStyle.OfficeMobile2014
+        Me.btnExportar.TabIndex = 16
+        Me.btnExportar.Text = "EXPORTAR"
+        Me.btnExportar.TextColor = System.Drawing.Color.White
+        '
         'btActualizar
         '
         Me.btActualizar.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
@@ -410,25 +430,6 @@ Partial Class Descuentos
         Me.ButtonX1.TabIndex = 5
         Me.ButtonX1.Text = "Salir"
         Me.ButtonX1.TextColor = System.Drawing.Color.White
-        '
-        'btnExportar
-        '
-        Me.btnExportar.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
-        Me.btnExportar.BackColor = System.Drawing.Color.Transparent
-        Me.btnExportar.ColorTable = DevComponents.DotNetBar.eButtonColor.Flat
-        Me.btnExportar.Dock = System.Windows.Forms.DockStyle.Right
-        Me.btnExportar.Font = New System.Drawing.Font("Arial", 8.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnExportar.Image = Global.DinoM.My.Resources.Resources.sheets
-        Me.btnExportar.ImageFixedSize = New System.Drawing.Size(38, 42)
-        Me.btnExportar.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top
-        Me.btnExportar.Location = New System.Drawing.Point(1134, 0)
-        Me.btnExportar.Name = "btnExportar"
-        Me.btnExportar.Padding = New System.Windows.Forms.Padding(0, 0, 0, 20)
-        Me.btnExportar.Size = New System.Drawing.Size(75, 61)
-        Me.btnExportar.Style = DevComponents.DotNetBar.eDotNetBarStyle.OfficeMobile2014
-        Me.btnExportar.TabIndex = 16
-        Me.btnExportar.Text = "EXPORTAR"
-        Me.btnExportar.TextColor = System.Drawing.Color.White
         '
         'Descuentos
         '

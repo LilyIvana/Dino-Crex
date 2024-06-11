@@ -29,13 +29,13 @@ Partial Class F1_ExcelCierresCaja
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         Me.GroupPanel2 = New DevComponents.DotNetBar.Controls.GroupPanel()
         Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.swTipo = New DevComponents.DotNetBar.Controls.SwitchButton()
         Me.btnExportarExcel = New DevComponents.DotNetBar.ButtonX()
         Me.btnGenerar = New DevComponents.DotNetBar.ButtonX()
         Me.LabelX1 = New DevComponents.DotNetBar.LabelX()
         Me.tbFechaF = New DevComponents.Editors.DateTimeAdv.DateTimeInput()
         Me.LabelX4 = New DevComponents.DotNetBar.LabelX()
         Me.tbFechaI = New DevComponents.Editors.DateTimeAdv.DateTimeInput()
-        Me.swTipo = New DevComponents.DotNetBar.Controls.SwitchButton()
         CType(Me.SuperTabPrincipal, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuperTabPrincipal.SuspendLayout()
         Me.SuperTabControlPanelRegistro.SuspendLayout()
@@ -196,7 +196,7 @@ Partial Class F1_ExcelCierresCaja
         '
         '
         Me.GroupPanelBuscador.StyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.GroupPanelBuscador.Text = "VENTAS"
+        Me.GroupPanelBuscador.Text = "CIERRES DE CAJA"
         '
         'JGrM_Buscador
         '
@@ -324,6 +324,26 @@ Partial Class F1_ExcelCierresCaja
         Me.Panel1.Name = "Panel1"
         Me.Panel1.Size = New System.Drawing.Size(1316, 77)
         Me.Panel1.TabIndex = 227
+        '
+        'swTipo
+        '
+        '
+        '
+        '
+        Me.swTipo.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.swTipo.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.swTipo.Location = New System.Drawing.Point(172, 43)
+        Me.swTipo.Name = "swTipo"
+        Me.swTipo.OffBackColor = System.Drawing.Color.SteelBlue
+        Me.swTipo.OffText = "Detallado"
+        Me.swTipo.OffTextColor = System.Drawing.Color.White
+        Me.swTipo.OnBackColor = System.Drawing.Color.Gold
+        Me.swTipo.OnText = "Resúmen"
+        Me.swTipo.Size = New System.Drawing.Size(142, 22)
+        Me.swTipo.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+        Me.swTipo.TabIndex = 242
+        Me.swTipo.Value = True
+        Me.swTipo.ValueObject = "Y"
         '
         'btnExportarExcel
         '
@@ -478,26 +498,6 @@ Partial Class F1_ExcelCierresCaja
         Me.tbFechaI.Size = New System.Drawing.Size(120, 22)
         Me.tbFechaI.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
         Me.tbFechaI.TabIndex = 236
-        '
-        'swTipo
-        '
-        '
-        '
-        '
-        Me.swTipo.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.swTipo.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.swTipo.Location = New System.Drawing.Point(172, 43)
-        Me.swTipo.Name = "swTipo"
-        Me.swTipo.OffBackColor = System.Drawing.Color.SteelBlue
-        Me.swTipo.OffText = "Detallado"
-        Me.swTipo.OffTextColor = System.Drawing.Color.White
-        Me.swTipo.OnBackColor = System.Drawing.Color.Gold
-        Me.swTipo.OnText = "Resúmen"
-        Me.swTipo.Size = New System.Drawing.Size(142, 22)
-        Me.swTipo.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-        Me.swTipo.TabIndex = 242
-        Me.swTipo.Value = True
-        Me.swTipo.ValueObject = "Y"
         '
         'F1_ExcelCierresCaja
         '

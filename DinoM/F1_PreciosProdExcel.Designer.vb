@@ -189,7 +189,7 @@ Partial Class F1_PreciosProdExcel
         '
         '
         Me.GroupPanelBuscador.StyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.GroupPanelBuscador.Text = "VENTAS"
+        Me.GroupPanelBuscador.Text = "PRECIOS DE PRODUCTOS"
         '
         'JGrM_Buscador
         '

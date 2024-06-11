@@ -122,7 +122,7 @@ Public Class F1_Bitacora
                 .Visible = False
             End With
             With JGrM_Buscador.RootTable.Columns("bdmodulo")
-                .Width = 250
+                .Width = 380
                 .Visible = True
                 .Caption = "MÓDULO"
             End With
@@ -130,17 +130,17 @@ Public Class F1_Bitacora
                 .Visible = False
             End With
             With JGrM_Buscador.RootTable.Columns("bdaccion")
-                .Width = 200
+                .Width = 170
                 .Caption = "ACCIÓN"
                 .Visible = True
             End With
             With JGrM_Buscador.RootTable.Columns("bdcodigo")
-                .Width = 100
+                .Width = 80
                 .Visible = True
                 .Caption = "CÓDIGO"
             End With
             With JGrM_Buscador.RootTable.Columns("bdversion")
-                .Width = 100
+                .Width = 160
                 .Caption = "VERSIÓN"
                 .Visible = True
             End With
@@ -150,24 +150,24 @@ Public Class F1_Bitacora
                 .Visible = True
             End With
             With JGrM_Buscador.RootTable.Columns("bdusumaquina")
-                .Width = 200
+                .Width = 180
                 .Caption = "NOMBRE MÁQUINA"
                 .Visible = True
             End With
             With JGrM_Buscador.RootTable.Columns("bdfecha")
-                .Width = 100
+                .Width = 90
                 .Caption = "FECHA"
                 .Visible = True
                 .TextAlignment = TextAlignment.Far
             End With
             With JGrM_Buscador.RootTable.Columns("bdhora")
-                .Width = 100
+                .Width = 60
                 .Caption = "HORA"
                 .Visible = True
                 .TextAlignment = TextAlignment.Far
             End With
             With JGrM_Buscador.RootTable.Columns("bdusuario")
-                .Width = 100
+                .Width = 90
                 .Caption = "USUARIO"
                 .Visible = True
                 .TextAlignment = TextAlignment.Far
