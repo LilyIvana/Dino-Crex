@@ -98,7 +98,7 @@ Partial Class ModeloF0
         Me.PanelPrincipal.Dock = System.Windows.Forms.DockStyle.Fill
         Me.PanelPrincipal.Location = New System.Drawing.Point(0, 0)
         Me.PanelPrincipal.Name = "PanelPrincipal"
-        Me.PanelPrincipal.Size = New System.Drawing.Size(1350, 729)
+        Me.PanelPrincipal.Size = New System.Drawing.Size(1350, 701)
         Me.PanelPrincipal.TabIndex = 0
         '
         'Panel1
@@ -108,7 +108,7 @@ Partial Class ModeloF0
         Me.Panel1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.Panel1.Location = New System.Drawing.Point(0, 72)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(1350, 618)
+        Me.Panel1.Size = New System.Drawing.Size(1350, 590)
         Me.Panel1.TabIndex = 20
         '
         'MSuperTabControl
@@ -136,7 +136,7 @@ Partial Class ModeloF0
         Me.MSuperTabControl.RightToLeft = System.Windows.Forms.RightToLeft.No
         Me.MSuperTabControl.SelectedTabFont = New System.Drawing.Font("Georgia", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.MSuperTabControl.SelectedTabIndex = 0
-        Me.MSuperTabControl.Size = New System.Drawing.Size(1350, 618)
+        Me.MSuperTabControl.Size = New System.Drawing.Size(1350, 590)
         Me.MSuperTabControl.TabAlignment = DevComponents.DotNetBar.eTabStripAlignment.Right
         Me.MSuperTabControl.TabFont = New System.Drawing.Font("Georgia", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.MSuperTabControl.TabIndex = 0
@@ -153,7 +153,7 @@ Partial Class ModeloF0
         Me.MSuperTabControlPanel1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.MSuperTabControlPanel1.Location = New System.Drawing.Point(0, 0)
         Me.MSuperTabControlPanel1.Name = "MSuperTabControlPanel1"
-        Me.MSuperTabControlPanel1.Size = New System.Drawing.Size(1317, 618)
+        Me.MSuperTabControlPanel1.Size = New System.Drawing.Size(1317, 590)
         Me.MSuperTabControlPanel1.TabIndex = 1
         Me.MSuperTabControlPanel1.TabItem = Me.MSuperTabItem1
         '
@@ -163,7 +163,7 @@ Partial Class ModeloF0
         Me.PanelContent.Dock = System.Windows.Forms.DockStyle.Fill
         Me.PanelContent.Location = New System.Drawing.Point(0, 0)
         Me.PanelContent.Name = "PanelContent"
-        Me.PanelContent.Size = New System.Drawing.Size(1317, 618)
+        Me.PanelContent.Size = New System.Drawing.Size(1317, 590)
         Me.PanelContent.TabIndex = 0
         '
         'MSuperTabItem1
@@ -441,7 +441,7 @@ Partial Class ModeloF0
         Me.PanelInferior.Controls.Add(Me.PanelNavegacion)
         Me.PanelInferior.DisabledBackColor = System.Drawing.Color.Empty
         Me.PanelInferior.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.PanelInferior.Location = New System.Drawing.Point(0, 690)
+        Me.PanelInferior.Location = New System.Drawing.Point(0, 662)
         Me.PanelInferior.Name = "PanelInferior"
         Me.PanelInferior.Size = New System.Drawing.Size(1350, 39)
         Me.PanelInferior.Style.Alignment = System.Drawing.StringAlignment.Center
@@ -654,7 +654,7 @@ Partial Class ModeloF0
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1350, 729)
+        Me.ClientSize = New System.Drawing.Size(1350, 701)
         Me.Controls.Add(Me.PanelPrincipal)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
         Me.KeyPreview = True

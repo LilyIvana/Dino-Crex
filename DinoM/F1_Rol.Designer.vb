@@ -1,9 +1,9 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class F1_Rol
     Inherits Modelo.ModeloF1
 
     'Form reemplaza a Dispose para limpiar la lista de componentes.
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
             If disposing AndAlso components IsNot Nothing Then
@@ -20,7 +20,7 @@ Partial Class F1_Rol
     'NOTA: el Diseñador de Windows Forms necesita el siguiente procedimiento
     'Se puede modificar usando el Diseñador de Windows Forms.  
     'No lo modifique con el editor de código.
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(F1_Rol))
@@ -82,18 +82,14 @@ Partial Class F1_Rol
         Me.SuperTabPrincipal.ControlBox.SubItems.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.SuperTabPrincipal.ControlBox.MenuBox, Me.SuperTabPrincipal.ControlBox.CloseBox})
         Me.SuperTabPrincipal.SelectedTabIndex = 1
         Me.SuperTabPrincipal.Size = New System.Drawing.Size(1350, 701)
-        Me.SuperTabPrincipal.Controls.SetChildIndex(Me.SuperTabControlPanelRegistro, 0)
         Me.SuperTabPrincipal.Controls.SetChildIndex(Me.SuperTabControlPanelBuscador, 0)
+        Me.SuperTabPrincipal.Controls.SetChildIndex(Me.SuperTabControlPanelRegistro, 0)
         '
         'SuperTabControlPanelBuscador
         '
         Me.SuperTabControlPanelBuscador.Location = New System.Drawing.Point(0, 0)
         Me.SuperTabControlPanelBuscador.Margin = New System.Windows.Forms.Padding(4)
         Me.SuperTabControlPanelBuscador.Size = New System.Drawing.Size(1318, 701)
-        '
-        'SupTabItemBusqueda
-        '
-        Me.SupTabItemBusqueda.Visible = False
         '
         'SuperTabControlPanelRegistro
         '
@@ -184,9 +180,10 @@ Partial Class F1_Rol
         'GroupPanelBuscador
         '
         Me.GroupPanelBuscador.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.GroupPanelBuscador.Location = New System.Drawing.Point(0, 549)
+        Me.GroupPanelBuscador.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.GroupPanelBuscador.Location = New System.Drawing.Point(0, 454)
         Me.GroupPanelBuscador.Margin = New System.Windows.Forms.Padding(4)
-        Me.GroupPanelBuscador.Size = New System.Drawing.Size(1318, 44)
+        Me.GroupPanelBuscador.Size = New System.Drawing.Size(1318, 139)
         '
         '
         '
@@ -216,7 +213,6 @@ Partial Class F1_Rol
         '
         '
         Me.GroupPanelBuscador.StyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.GroupPanelBuscador.Visible = False
         '
         'JGrM_Buscador
         '
@@ -226,7 +222,7 @@ Partial Class F1_Rol
         Me.JGrM_Buscador.SelectedFormatStyle.BackColor = System.Drawing.Color.DodgerBlue
         Me.JGrM_Buscador.SelectedFormatStyle.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.JGrM_Buscador.SelectedFormatStyle.ForeColor = System.Drawing.Color.White
-        Me.JGrM_Buscador.Size = New System.Drawing.Size(1312, 21)
+        Me.JGrM_Buscador.Size = New System.Drawing.Size(1312, 116)
         '
         'PanelUsuario
         '
@@ -285,7 +281,7 @@ Partial Class F1_Rol
         Me.GroupPanel1.Font = New System.Drawing.Font("Georgia", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GroupPanel1.Location = New System.Drawing.Point(0, 0)
         Me.GroupPanel1.Name = "GroupPanel1"
-        Me.GroupPanel1.Size = New System.Drawing.Size(257, 490)
+        Me.GroupPanel1.Size = New System.Drawing.Size(257, 352)
         '
         '
         '
@@ -338,7 +334,7 @@ Partial Class F1_Rol
         Me.grModulos.SelectedFormatStyle.BackColor = System.Drawing.Color.DodgerBlue
         Me.grModulos.SelectedFormatStyle.ForeColor = System.Drawing.Color.White
         Me.grModulos.SelectedInactiveFormatStyle.ForeColor = System.Drawing.Color.FromArgb(CType(CType(49, Byte), Integer), CType(CType(59, Byte), Integer), CType(CType(66, Byte), Integer))
-        Me.grModulos.Size = New System.Drawing.Size(251, 467)
+        Me.grModulos.Size = New System.Drawing.Size(251, 329)
         Me.grModulos.TabIndex = 1
         Me.grModulos.VisualStyle = Janus.Windows.GridEX.VisualStyle.Office2007
         '
@@ -346,10 +342,10 @@ Partial Class F1_Rol
         '
         Me.Panel1.Controls.Add(Me.GroupPanel2)
         Me.Panel1.Controls.Add(Me.GroupPanel1)
-        Me.Panel1.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.Panel1.Dock = System.Windows.Forms.DockStyle.Top
         Me.Panel1.Location = New System.Drawing.Point(0, 103)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(1318, 490)
+        Me.Panel1.Size = New System.Drawing.Size(1318, 352)
         Me.Panel1.TabIndex = 25
         '
         'GroupPanel2
@@ -362,7 +358,7 @@ Partial Class F1_Rol
         Me.GroupPanel2.Font = New System.Drawing.Font("Georgia", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GroupPanel2.Location = New System.Drawing.Point(257, 0)
         Me.GroupPanel2.Name = "GroupPanel2"
-        Me.GroupPanel2.Size = New System.Drawing.Size(1061, 490)
+        Me.GroupPanel2.Size = New System.Drawing.Size(1061, 352)
         '
         '
         '
@@ -404,7 +400,7 @@ Partial Class F1_Rol
         Me.grDetalle.Name = "grDetalle"
         Me.grDetalle.Office2007ColorScheme = Janus.Windows.GridEX.Office2007ColorScheme.Custom
         Me.grDetalle.Office2007CustomColor = System.Drawing.Color.DodgerBlue
-        Me.grDetalle.Size = New System.Drawing.Size(1055, 464)
+        Me.grDetalle.Size = New System.Drawing.Size(1055, 326)
         Me.grDetalle.TabIndex = 0
         Me.grDetalle.VisualStyle = Janus.Windows.GridEX.VisualStyle.Office2007
         '

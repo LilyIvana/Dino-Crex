@@ -25,6 +25,7 @@ Public Class F1_Rol
         Dim ico As Icon = Icon.FromHandle(blah.GetHicon())
         Me.Icon = ico
         tbRol.MaxLength = 30
+
     End Sub
 
     Private Sub _prAsignarPermisos()
@@ -199,7 +200,6 @@ Public Class F1_Rol
 
 #Region "METODOS SOBRECARGADOS"
     Public Overrides Sub _PMOHabilitar()
-
         tbRol.ReadOnly = False
 
         grModulos.ContextMenuStrip = msModulos
@@ -290,11 +290,11 @@ Public Class F1_Rol
 
     Public Overrides Function _PMOGetListEstructuraBuscador() As List(Of Modelo.Celda)
         Dim listEstCeldas As New List(Of Modelo.Celda)
-        listEstCeldas.Add(New Modelo.Celda("ybnumi", True, "ID", 70))
-        listEstCeldas.Add(New Modelo.Celda("ybrol", True, "ROL", 120))
-        listEstCeldas.Add(New Modelo.Celda("ybfact", False))
-        listEstCeldas.Add(New Modelo.Celda("ybhact", False))
-        listEstCeldas.Add(New Modelo.Celda("ybuact", False))
+        listEstCeldas.Add(New Modelo.Celda("ybnumi", True, "CÓDIGO", 100))
+        listEstCeldas.Add(New Modelo.Celda("ybrol", True, "ROL", 750))
+        listEstCeldas.Add(New Modelo.Celda("ybfact", True, "FECHA", 120))
+        listEstCeldas.Add(New Modelo.Celda("ybhact", True, "HORA", 120))
+        listEstCeldas.Add(New Modelo.Celda("ybuact", True, "USUARIO", 120))
         Return listEstCeldas
     End Function
 
@@ -317,8 +317,9 @@ Public Class F1_Rol
         LblPaginacion.Text = Str(_MPos + 1) + "/" + JGrM_Buscador.RowCount.ToString
 
     End Sub
-    Public Overrides Sub _PMOHabilitarFocus()
 
+
+    Public Overrides Sub _PMOHabilitarFocus()
 
     End Sub
 
@@ -399,5 +400,6 @@ Public Class F1_Rol
             Timer1.Enabled = False
         End If
     End Sub
+
 
 End Class
