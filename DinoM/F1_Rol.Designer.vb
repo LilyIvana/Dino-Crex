@@ -216,6 +216,7 @@ Partial Class F1_Rol
         '
         'JGrM_Buscador
         '
+        Me.JGrM_Buscador.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.5!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.JGrM_Buscador.HeaderFormatStyle.Font = New System.Drawing.Font("Georgia", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.JGrM_Buscador.HeaderFormatStyle.ForeColor = System.Drawing.Color.FromArgb(CType(CType(15, Byte), Integer), CType(CType(72, Byte), Integer), CType(CType(127, Byte), Integer))
         Me.JGrM_Buscador.Margin = New System.Windows.Forms.Padding(4)
@@ -321,7 +322,7 @@ Partial Class F1_Rol
         Me.grModulos.FlatBorderColor = System.Drawing.Color.DodgerBlue
         Me.grModulos.FocusCellDisplayMode = Janus.Windows.GridEX.FocusCellDisplayMode.UseSelectedFormatStyle
         Me.grModulos.FocusCellFormatStyle.ForeColor = System.Drawing.Color.White
-        Me.grModulos.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.grModulos.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.grModulos.GridLineColor = System.Drawing.Color.DodgerBlue
         Me.grModulos.HeaderFormatStyle.Font = New System.Drawing.Font("Georgia", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.grModulos.HideSelection = Janus.Windows.GridEX.HideSelection.Highlight
@@ -394,7 +395,7 @@ Partial Class F1_Rol
         '
         Me.grDetalle.BackColor = System.Drawing.Color.WhiteSmoke
         Me.grDetalle.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.grDetalle.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.grDetalle.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.5!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.grDetalle.HeaderFormatStyle.Font = New System.Drawing.Font("Georgia", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.grDetalle.Location = New System.Drawing.Point(0, 0)
         Me.grDetalle.Name = "grDetalle"

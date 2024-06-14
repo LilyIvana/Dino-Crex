@@ -37,17 +37,24 @@ Partial Class Pr_StockMinimo
         Me.LabelX3 = New DevComponents.DotNetBar.LabelX()
         Me.MReportViewer = New CrystalDecisions.Windows.Forms.CrystalReportViewer()
         Me.Panel5 = New System.Windows.Forms.Panel()
+        Me.GroupPanelBuscador = New DevComponents.DotNetBar.Controls.GroupPanel()
+        Me.grBuscador = New Janus.Windows.GridEX.GridEX()
         Me.Panel6 = New System.Windows.Forms.Panel()
         Me.Panel4 = New System.Windows.Forms.Panel()
-        Me.btn_Salir = New System.Windows.Forms.Button()
-        Me.btn_Generar = New System.Windows.Forms.Button()
+        Me.Panel3 = New System.Windows.Forms.Panel()
+        Me.btn_Generar = New DevComponents.DotNetBar.ButtonX()
+        Me.btn_Salir = New DevComponents.DotNetBar.ButtonX()
+        Me.btnExportar = New DevComponents.DotNetBar.ButtonX()
         CType(Me.cbAlmacen, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.cbGrupos, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel1.SuspendLayout()
         Me.Panel2.SuspendLayout()
         Me.Panel5.SuspendLayout()
+        Me.GroupPanelBuscador.SuspendLayout()
+        CType(Me.grBuscador, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel6.SuspendLayout()
         Me.Panel4.SuspendLayout()
+        Me.Panel3.SuspendLayout()
         Me.SuspendLayout()
         '
         'cbAlmacen
@@ -218,6 +225,7 @@ Partial Class Pr_StockMinimo
         'Panel5
         '
         Me.Panel5.BackColor = System.Drawing.Color.Gainsboro
+        Me.Panel5.Controls.Add(Me.GroupPanelBuscador)
         Me.Panel5.Controls.Add(Me.LabelX1)
         Me.Panel5.Controls.Add(Me.LabelX3)
         Me.Panel5.Controls.Add(Me.Panel2)
@@ -228,6 +236,65 @@ Partial Class Pr_StockMinimo
         Me.Panel5.Name = "Panel5"
         Me.Panel5.Size = New System.Drawing.Size(377, 591)
         Me.Panel5.TabIndex = 264
+        '
+        'GroupPanelBuscador
+        '
+        Me.GroupPanelBuscador.CanvasColor = System.Drawing.SystemColors.Control
+        Me.GroupPanelBuscador.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.Office2007
+        Me.GroupPanelBuscador.Controls.Add(Me.grBuscador)
+        Me.GroupPanelBuscador.DisabledBackColor = System.Drawing.Color.Empty
+        Me.GroupPanelBuscador.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.GroupPanelBuscador.Location = New System.Drawing.Point(87, 177)
+        Me.GroupPanelBuscador.Name = "GroupPanelBuscador"
+        Me.GroupPanelBuscador.Size = New System.Drawing.Size(200, 144)
+        '
+        '
+        '
+        Me.GroupPanelBuscador.Style.BackColor = System.Drawing.Color.FromArgb(CType(CType(15, Byte), Integer), CType(CType(72, Byte), Integer), CType(CType(127, Byte), Integer))
+        Me.GroupPanelBuscador.Style.BackColor2 = System.Drawing.Color.FromArgb(CType(CType(15, Byte), Integer), CType(CType(72, Byte), Integer), CType(CType(127, Byte), Integer))
+        Me.GroupPanelBuscador.Style.BackColorGradientAngle = 90
+        Me.GroupPanelBuscador.Style.BorderBottom = DevComponents.DotNetBar.eStyleBorderType.Solid
+        Me.GroupPanelBuscador.Style.BorderBottomWidth = 1
+        Me.GroupPanelBuscador.Style.BorderColor = System.Drawing.Color.FromArgb(CType(CType(15, Byte), Integer), CType(CType(72, Byte), Integer), CType(CType(127, Byte), Integer))
+        Me.GroupPanelBuscador.Style.BorderLeft = DevComponents.DotNetBar.eStyleBorderType.Solid
+        Me.GroupPanelBuscador.Style.BorderLeftWidth = 1
+        Me.GroupPanelBuscador.Style.BorderRight = DevComponents.DotNetBar.eStyleBorderType.Solid
+        Me.GroupPanelBuscador.Style.BorderRightWidth = 1
+        Me.GroupPanelBuscador.Style.BorderTop = DevComponents.DotNetBar.eStyleBorderType.Solid
+        Me.GroupPanelBuscador.Style.BorderTopWidth = 1
+        Me.GroupPanelBuscador.Style.CornerDiameter = 4
+        Me.GroupPanelBuscador.Style.CornerType = DevComponents.DotNetBar.eCornerType.Rounded
+        Me.GroupPanelBuscador.Style.Font = New System.Drawing.Font("Georgia", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.GroupPanelBuscador.Style.TextAlignment = DevComponents.DotNetBar.eStyleTextAlignment.Center
+        Me.GroupPanelBuscador.Style.TextColor = System.Drawing.Color.White
+        Me.GroupPanelBuscador.Style.TextLineAlignment = DevComponents.DotNetBar.eStyleTextAlignment.Near
+        '
+        '
+        '
+        Me.GroupPanelBuscador.StyleMouseDown.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        '
+        '
+        '
+        Me.GroupPanelBuscador.StyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.GroupPanelBuscador.TabIndex = 260
+        Me.GroupPanelBuscador.Text = "B U S C A D O R"
+        Me.GroupPanelBuscador.Visible = False
+        '
+        'grBuscador
+        '
+        Me.grBuscador.BackColor = System.Drawing.Color.WhiteSmoke
+        Me.grBuscador.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.grBuscador.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.grBuscador.HeaderFormatStyle.Font = New System.Drawing.Font("Georgia", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.grBuscador.HeaderFormatStyle.ForeColor = System.Drawing.Color.FromArgb(CType(CType(15, Byte), Integer), CType(CType(72, Byte), Integer), CType(CType(127, Byte), Integer))
+        Me.grBuscador.HideSelection = Janus.Windows.GridEX.HideSelection.Highlight
+        Me.grBuscador.Location = New System.Drawing.Point(0, 0)
+        Me.grBuscador.Name = "grBuscador"
+        Me.grBuscador.SelectedFormatStyle.BackColor = System.Drawing.Color.DodgerBlue
+        Me.grBuscador.SelectedFormatStyle.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.grBuscador.SelectedFormatStyle.ForeColor = System.Drawing.Color.White
+        Me.grBuscador.Size = New System.Drawing.Size(194, 121)
+        Me.grBuscador.TabIndex = 0
         '
         'Panel6
         '
@@ -244,44 +311,69 @@ Partial Class Pr_StockMinimo
         Me.Panel4.BackColor = System.Drawing.Color.Transparent
         Me.Panel4.BackgroundImage = Global.DinoM.My.Resources.Resources.fondo1
         Me.Panel4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.Panel4.Controls.Add(Me.btn_Salir)
-        Me.Panel4.Controls.Add(Me.btn_Generar)
+        Me.Panel4.Controls.Add(Me.Panel3)
         Me.Panel4.Location = New System.Drawing.Point(0, 0)
         Me.Panel4.Name = "Panel4"
         Me.Panel4.Size = New System.Drawing.Size(378, 594)
         Me.Panel4.TabIndex = 263
         '
-        'btn_Salir
+        'Panel3
         '
-        Me.btn_Salir.BackColor = System.Drawing.Color.Transparent
-        Me.btn_Salir.FlatAppearance.BorderSize = 0
-        Me.btn_Salir.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btn_Salir.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btn_Salir.ForeColor = System.Drawing.Color.White
-        Me.btn_Salir.Image = Global.DinoM.My.Resources.Resources.atras1
-        Me.btn_Salir.Location = New System.Drawing.Point(179, 5)
-        Me.btn_Salir.Name = "btn_Salir"
-        Me.btn_Salir.Size = New System.Drawing.Size(80, 92)
-        Me.btn_Salir.TabIndex = 262
-        Me.btn_Salir.Text = "SALIR"
-        Me.btn_Salir.TextAlign = System.Drawing.ContentAlignment.BottomCenter
-        Me.btn_Salir.UseVisualStyleBackColor = False
+        Me.Panel3.Controls.Add(Me.btn_Generar)
+        Me.Panel3.Controls.Add(Me.btn_Salir)
+        Me.Panel3.Controls.Add(Me.btnExportar)
+        Me.Panel3.Location = New System.Drawing.Point(34, 3)
+        Me.Panel3.Name = "Panel3"
+        Me.Panel3.Size = New System.Drawing.Size(303, 100)
+        Me.Panel3.TabIndex = 263
         '
         'btn_Generar
         '
-        Me.btn_Generar.FlatAppearance.BorderSize = 0
-        Me.btn_Generar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btn_Generar.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btn_Generar.ForeColor = System.Drawing.Color.White
+        Me.btn_Generar.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
+        Me.btn_Generar.ColorTable = DevComponents.DotNetBar.eButtonColor.Orange
+        Me.btn_Generar.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btn_Generar.Image = Global.DinoM.My.Resources.Resources.pie_chart1
-        Me.btn_Generar.Location = New System.Drawing.Point(86, 12)
+        Me.btn_Generar.ImageFixedSize = New System.Drawing.Size(55, 50)
+        Me.btn_Generar.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top
+        Me.btn_Generar.Location = New System.Drawing.Point(23, 12)
         Me.btn_Generar.Name = "btn_Generar"
         Me.btn_Generar.Size = New System.Drawing.Size(80, 85)
-        Me.btn_Generar.TabIndex = 261
+        Me.btn_Generar.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+        Me.btn_Generar.TabIndex = 265
         Me.btn_Generar.Text = "GENERAR"
-        Me.btn_Generar.TextAlign = System.Drawing.ContentAlignment.BottomCenter
-        Me.btn_Generar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText
-        Me.btn_Generar.UseVisualStyleBackColor = True
+        Me.btn_Generar.TextColor = System.Drawing.Color.White
+        '
+        'btn_Salir
+        '
+        Me.btn_Salir.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
+        Me.btn_Salir.ColorTable = DevComponents.DotNetBar.eButtonColor.Orange
+        Me.btn_Salir.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btn_Salir.Image = Global.DinoM.My.Resources.Resources.atras1
+        Me.btn_Salir.ImageFixedSize = New System.Drawing.Size(55, 50)
+        Me.btn_Salir.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top
+        Me.btn_Salir.Location = New System.Drawing.Point(201, 13)
+        Me.btn_Salir.Name = "btn_Salir"
+        Me.btn_Salir.Size = New System.Drawing.Size(80, 85)
+        Me.btn_Salir.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+        Me.btn_Salir.TabIndex = 264
+        Me.btn_Salir.Text = "SALIR"
+        Me.btn_Salir.TextColor = System.Drawing.Color.White
+        '
+        'btnExportar
+        '
+        Me.btnExportar.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
+        Me.btnExportar.ColorTable = DevComponents.DotNetBar.eButtonColor.Orange
+        Me.btnExportar.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnExportar.Image = Global.DinoM.My.Resources.Resources.sheets
+        Me.btnExportar.ImageFixedSize = New System.Drawing.Size(44, 48)
+        Me.btnExportar.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top
+        Me.btnExportar.Location = New System.Drawing.Point(110, 14)
+        Me.btnExportar.Name = "btnExportar"
+        Me.btnExportar.Size = New System.Drawing.Size(80, 85)
+        Me.btnExportar.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+        Me.btnExportar.TabIndex = 263
+        Me.btnExportar.Text = "EXPORTAR"
+        Me.btnExportar.TextColor = System.Drawing.Color.White
         '
         'Pr_StockMinimo
         '
@@ -299,8 +391,11 @@ Partial Class Pr_StockMinimo
         Me.Panel2.ResumeLayout(False)
         Me.Panel5.ResumeLayout(False)
         Me.Panel5.PerformLayout()
+        Me.GroupPanelBuscador.ResumeLayout(False)
+        CType(Me.grBuscador, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Panel6.ResumeLayout(False)
         Me.Panel4.ResumeLayout(False)
+        Me.Panel3.ResumeLayout(False)
         Me.ResumeLayout(False)
 
     End Sub
@@ -316,9 +411,13 @@ Partial Class Pr_StockMinimo
     Friend WithEvents LabelX1 As DevComponents.DotNetBar.LabelX
     Friend WithEvents LabelX3 As DevComponents.DotNetBar.LabelX
     Friend WithEvents MReportViewer As CrystalDecisions.Windows.Forms.CrystalReportViewer
-    Friend WithEvents btn_Generar As Button
-    Friend WithEvents btn_Salir As Button
     Friend WithEvents Panel4 As Panel
     Friend WithEvents Panel5 As Panel
     Friend WithEvents Panel6 As Panel
+    Protected WithEvents GroupPanelBuscador As DevComponents.DotNetBar.Controls.GroupPanel
+    Protected WithEvents grBuscador As Janus.Windows.GridEX.GridEX
+    Friend WithEvents Panel3 As Panel
+    Protected WithEvents btnExportar As DevComponents.DotNetBar.ButtonX
+    Protected WithEvents btn_Salir As DevComponents.DotNetBar.ButtonX
+    Protected WithEvents btn_Generar As DevComponents.DotNetBar.ButtonX
 End Class

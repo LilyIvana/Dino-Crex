@@ -25,6 +25,7 @@ Partial Class F1_Productos
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(F1_Productos))
+        Dim cbCanje_DesignTimeLayout As Janus.Windows.GridEX.GridEXLayout = New Janus.Windows.GridEX.GridEXLayout()
         Dim cbUniCompra_DesignTimeLayout As Janus.Windows.GridEX.GridEXLayout = New Janus.Windows.GridEX.GridEXLayout()
         Dim cbUniVenta_DesignTimeLayout As Janus.Windows.GridEX.GridEXLayout = New Janus.Windows.GridEX.GridEXLayout()
         Dim cbUnidMaxima_DesignTimeLayout As Janus.Windows.GridEX.GridEXLayout = New Janus.Windows.GridEX.GridEXLayout()
@@ -37,9 +38,10 @@ Partial Class F1_Productos
         Dim CbProdServ_DesignTimeLayout As Janus.Windows.GridEX.GridEXLayout = New Janus.Windows.GridEX.GridEXLayout()
         Dim CbUmedida_DesignTimeLayout As Janus.Windows.GridEX.GridEXLayout = New Janus.Windows.GridEX.GridEXLayout()
         Dim CbAeconomica_DesignTimeLayout As Janus.Windows.GridEX.GridEXLayout = New Janus.Windows.GridEX.GridEXLayout()
-        Dim cbCanje_DesignTimeLayout As Janus.Windows.GridEX.GridEXLayout = New Janus.Windows.GridEX.GridEXLayout()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.Panel4 = New System.Windows.Forms.Panel()
+        Me.cbCanje = New Janus.Windows.GridEX.EditControls.MultiColumnCombo()
+        Me.LabelX22 = New DevComponents.DotNetBar.LabelX()
         Me.cbUniCompra = New Janus.Windows.GridEX.EditControls.MultiColumnCombo()
         Me.LabelX20 = New DevComponents.DotNetBar.LabelX()
         Me.btUniCompra = New DevComponents.DotNetBar.ButtonX()
@@ -131,8 +133,6 @@ Partial Class F1_Productos
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         Me.CmDetalle = New System.Windows.Forms.ContextMenuStrip(Me.components)
         Me.QuitarProductoToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.LabelX22 = New DevComponents.DotNetBar.LabelX()
-        Me.cbCanje = New Janus.Windows.GridEX.EditControls.MultiColumnCombo()
         CType(Me.SuperTabPrincipal, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuperTabPrincipal.SuspendLayout()
         Me.SuperTabControlPanelRegistro.SuspendLayout()
@@ -151,6 +151,7 @@ Partial Class F1_Productos
         CType(Me.MEP, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox1.SuspendLayout()
         Me.Panel4.SuspendLayout()
+        CType(Me.cbCanje, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.cbUniCompra, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.tbConversion2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.cbUniVenta, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -187,7 +188,6 @@ Partial Class F1_Productos
         CType(Me.dgjDetalleProducto, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TableLayoutPanel1.SuspendLayout()
         Me.CmDetalle.SuspendLayout()
-        CType(Me.cbCanje, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'SuperTabPrincipal
@@ -420,6 +420,38 @@ Partial Class F1_Productos
         Me.Panel4.Name = "Panel4"
         Me.Panel4.Size = New System.Drawing.Size(406, 96)
         Me.Panel4.TabIndex = 210
+        '
+        'cbCanje
+        '
+        cbCanje_DesignTimeLayout.LayoutString = resources.GetString("cbCanje_DesignTimeLayout.LayoutString")
+        Me.cbCanje.DesignTimeLayout = cbCanje_DesignTimeLayout
+        Me.cbCanje.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cbCanje.Location = New System.Drawing.Point(300, 67)
+        Me.cbCanje.Name = "cbCanje"
+        Me.cbCanje.Office2007ColorScheme = Janus.Windows.GridEX.Office2007ColorScheme.Custom
+        Me.cbCanje.Office2007CustomColor = System.Drawing.Color.DodgerBlue
+        Me.cbCanje.SelectedIndex = -1
+        Me.cbCanje.SelectedItem = Nothing
+        Me.cbCanje.Size = New System.Drawing.Size(100, 22)
+        Me.cbCanje.TabIndex = 216
+        Me.cbCanje.VisualStyle = Janus.Windows.GridEX.VisualStyle.Office2007
+        '
+        'LabelX22
+        '
+        Me.LabelX22.AutoSize = True
+        Me.LabelX22.BackColor = System.Drawing.Color.Transparent
+        '
+        '
+        '
+        Me.LabelX22.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.LabelX22.Font = New System.Drawing.Font("Georgia", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LabelX22.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(85, Byte), Integer), CType(CType(139, Byte), Integer))
+        Me.LabelX22.Location = New System.Drawing.Point(209, 70)
+        Me.LabelX22.Name = "LabelX22"
+        Me.LabelX22.SingleLineColor = System.Drawing.SystemColors.Control
+        Me.LabelX22.Size = New System.Drawing.Size(42, 16)
+        Me.LabelX22.TabIndex = 215
+        Me.LabelX22.Text = "Canje:"
         '
         'cbUniCompra
         '
@@ -1939,38 +1971,6 @@ Partial Class F1_Productos
         Me.QuitarProductoToolStripMenuItem.Size = New System.Drawing.Size(168, 32)
         Me.QuitarProductoToolStripMenuItem.Text = "Quitar Producto"
         '
-        'LabelX22
-        '
-        Me.LabelX22.AutoSize = True
-        Me.LabelX22.BackColor = System.Drawing.Color.Transparent
-        '
-        '
-        '
-        Me.LabelX22.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.LabelX22.Font = New System.Drawing.Font("Georgia", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelX22.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(85, Byte), Integer), CType(CType(139, Byte), Integer))
-        Me.LabelX22.Location = New System.Drawing.Point(209, 70)
-        Me.LabelX22.Name = "LabelX22"
-        Me.LabelX22.SingleLineColor = System.Drawing.SystemColors.Control
-        Me.LabelX22.Size = New System.Drawing.Size(42, 16)
-        Me.LabelX22.TabIndex = 215
-        Me.LabelX22.Text = "Canje:"
-        '
-        'cbCanje
-        '
-        cbCanje_DesignTimeLayout.LayoutString = resources.GetString("cbCanje_DesignTimeLayout.LayoutString")
-        Me.cbCanje.DesignTimeLayout = cbCanje_DesignTimeLayout
-        Me.cbCanje.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.cbCanje.Location = New System.Drawing.Point(300, 67)
-        Me.cbCanje.Name = "cbCanje"
-        Me.cbCanje.Office2007ColorScheme = Janus.Windows.GridEX.Office2007ColorScheme.Custom
-        Me.cbCanje.Office2007CustomColor = System.Drawing.Color.DodgerBlue
-        Me.cbCanje.SelectedIndex = -1
-        Me.cbCanje.SelectedItem = Nothing
-        Me.cbCanje.Size = New System.Drawing.Size(100, 22)
-        Me.cbCanje.TabIndex = 216
-        Me.cbCanje.VisualStyle = Janus.Windows.GridEX.VisualStyle.Office2007
-        '
         'F1_Productos
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -2002,6 +2002,7 @@ Partial Class F1_Productos
         Me.GroupBox1.PerformLayout()
         Me.Panel4.ResumeLayout(False)
         Me.Panel4.PerformLayout()
+        CType(Me.cbCanje, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.cbUniCompra, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.tbConversion2, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.cbUniVenta, System.ComponentModel.ISupportInitialize).EndInit()
@@ -2043,7 +2044,6 @@ Partial Class F1_Productos
         CType(Me.dgjDetalleProducto, System.ComponentModel.ISupportInitialize).EndInit()
         Me.TableLayoutPanel1.ResumeLayout(False)
         Me.CmDetalle.ResumeLayout(False)
-        CType(Me.cbCanje, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub

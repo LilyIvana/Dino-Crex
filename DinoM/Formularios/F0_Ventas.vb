@@ -2378,7 +2378,6 @@ salirIf:
 
         Try
             If (Not _fnAccesible()) Then
-
                 If (gb_FacturaEmite) Then
                     If tbCodigo.Text = String.Empty Then
                         Throw New Exception("Venta no encontrada")

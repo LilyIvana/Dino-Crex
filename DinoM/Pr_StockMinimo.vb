@@ -1,6 +1,9 @@
 ﻿Imports Logica.AccesoLogica
 Imports DevComponents.DotNetBar
 Imports System.Data.OleDb
+Imports System.IO
+Imports DevComponents.DotNetBar.Controls
+Imports Janus.Windows.GridEX
 Public Class Pr_StockMinimo
     Public _nameButton As String
     Public _tab As SuperTabItem
@@ -118,15 +121,12 @@ Public Class Pr_StockMinimo
         End If
     End Sub
 
-    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles btn_Generar.Click
-        _prCargarReporte()
-    End Sub
 
     Private Sub _prCargarReporte()
         Dim _dt As New DataTable
         _prInterpretarDatos(_dt)
         If (_dt.Rows.Count > 0) Then
-            L_fnRepConsultaSaldosMenores(gs_VersionSistema, gs_IPMaquina, gs_UsuMaquina)
+            L_fnBotonGenerar(gs_VersionSistema, gs_IPMaquina, gs_UsuMaquina, IIf(checkTodosGrupos.Checked = True, 0, cbGrupos.Value), "SALDOS MENORES", "SALDOS MENORES AL STOCK MIN.")
             Dim objrep
             If CheckTodosAlmacen.Checked Then
                 objrep = New R_StockMinimoTodosAlmacenes
@@ -140,6 +140,8 @@ Public Class Pr_StockMinimo
             MReportViewer.ReportSource = objrep
             MReportViewer.Show()
             MReportViewer.BringToFront()
+
+            CargarGrilla(_dt)
         Else
             ToastNotification.Show(Me, "NO HAY DATOS PARA LOS PARAMETROS SELECCIONADOS..!!!",
                                        My.Resources.INFORMATION, 2000,
@@ -177,10 +179,91 @@ Public Class Pr_StockMinimo
         'End If
     End Sub
 
-    Private Sub btn_Salir_Click(sender As Object, e As EventArgs) Handles btn_Salir.Click
-        Me.Close()
-    End Sub
+    Private Sub CargarGrilla(ByRef _dt As DataTable)
 
+        grBuscador.DataSource = _dt
+        grBuscador.RetrieveStructure()
+        grBuscador.AlternatingColors = True
+
+        With grBuscador.RootTable.Columns("proveedor")
+            .Width = 90
+            .Visible = True
+            .Caption = "PROVEEDOR"
+        End With
+        With grBuscador.RootTable.Columns("abnumi")
+            .Width = 90
+            .Visible = False
+        End With
+        With grBuscador.RootTable.Columns("almacen")
+            .Width = 90
+            .Visible = False
+
+        End With
+        With grBuscador.RootTable.Columns("CodigoProducto")
+            .Width = 90
+            .Visible = True
+            .Caption = "COD DYNASYS"
+        End With
+        With grBuscador.RootTable.Columns("CodLinea")
+            .Width = 90
+            .Visible = True
+            .Caption = "COD DELTA"
+        End With
+        With grBuscador.RootTable.Columns("Proveedor")
+            .Width = 90
+            .Visible = True
+            .Caption = "PROVEEDOR"
+        End With
+        With grBuscador.RootTable.Columns("yfcdprod1")
+            .Width = 90
+            .Visible = True
+            .Caption = "DESCRIPCIÓN"
+        End With
+        With grBuscador.RootTable.Columns("yfMed")
+            .Visible = False
+        End With
+        With grBuscador.RootTable.Columns("yfap")
+            .Visible = False
+        End With
+        With grBuscador.RootTable.Columns("iccprod")
+            .Visible = False
+        End With
+        With grBuscador.RootTable.Columns("iccven")
+            .Width = 90
+            .Visible = True
+            .Caption = "STOCK"
+            .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far
+        End With
+        With grBuscador.RootTable.Columns("yccod3")
+            .Visible = False
+        End With
+        With grBuscador.RootTable.Columns("ycdes3")
+            .Visible = False
+        End With
+        With grBuscador.RootTable.Columns("linea")
+            .Visible = False
+        End With
+        With grBuscador.RootTable.Columns("presentacion")
+            .Visible = False
+        End With
+        With grBuscador.RootTable.Columns("yfcprod")
+            .Visible = False
+        End With
+
+        With grBuscador
+            .DefaultFilterRowComparison = FilterConditionOperator.Contains
+            .FilterMode = FilterMode.Automatic
+            .FilterRowUpdateMode = FilterRowUpdateMode.WhenValueChanges
+            .GroupByBoxVisible = False
+            .TotalRow = InheritableBoolean.True
+            .TotalRowFormatStyle.BackColor = Color.Gold
+            .TotalRowPosition = TotalRowPosition.BottomFixed
+            'diseño de la grilla
+
+            .RecordNavigator = True
+            .RecordNavigatorText = "Datos"
+        End With
+    End Sub
     Private Sub checkUnaAlmacen_CheckedChanged(sender As Object, e As EventArgs) Handles checkUnaAlmacen.CheckedChanged
         cbAlmacen.ReadOnly = False
     End Sub
@@ -195,5 +278,37 @@ Public Class Pr_StockMinimo
 
     Private Sub checkTodosGrupos_CheckedChanged(sender As Object, e As EventArgs) Handles checkTodosGrupos.CheckedChanged
         cbGrupos.ReadOnly = True
+    End Sub
+
+    Private Sub btn_Salir_Click_1(sender As Object, e As EventArgs) Handles btn_Salir.Click
+        Me.Close()
+    End Sub
+
+    Private Sub btn_Generar_Click(sender As Object, e As EventArgs) Handles btn_Generar.Click
+        _prCargarReporte()
+    End Sub
+
+    Private Sub btnExportar_Click(sender As Object, e As EventArgs) Handles btnExportar.Click
+        If grBuscador.RowCount > 0 Then
+            _prCrearCarpetaReportes()
+            Dim img As Bitmap = New Bitmap(My.Resources.checked, 50, 50)
+            If (P_ExportarExcelGlobal(RutaGlobal + "\Reporte\Reporte Productos", grBuscador, "SaldosMenoresAlStockMin")) Then
+                L_fnBotonExportar(gs_VersionSistema, gs_IPMaquina, gs_UsuMaquina, IIf(checkTodosGrupos.Checked = True, 0, cbGrupos.Value), "SALDOS MENORES AL STOCK", "SALDOS MENORES AL STOCK MIN.")
+                ToastNotification.Show(Me, "EXPORTACIÓN DE SALDOS MENORES AL STOCK MIN. EXITOSA..!!!",
+                                           img, 2000,
+                                           eToastGlowColor.Green,
+                                           eToastPosition.BottomCenter)
+            Else
+                ToastNotification.Show(Me, "FALLÓ LA EXPORTACIÓN DE ALDOS MENORES AL STOCK MIN...!!!",
+                                           My.Resources.WARNING, 2000,
+                                           eToastGlowColor.Red,
+                                           eToastPosition.BottomLeft)
+            End If
+        Else
+            ToastNotification.Show(Me, "NO EXISTE DATOS PARA EXPORTAR, PRIMERO DEBE PRESIONAR EL BOTÓN GENERAR..!!!",
+                                           My.Resources.WARNING, 2000,
+                                           eToastGlowColor.Red,
+                                           eToastPosition.BottomLeft)
+        End If
     End Sub
 End Class

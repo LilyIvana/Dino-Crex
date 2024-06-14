@@ -1517,16 +1517,12 @@ Public Class F1_Productos
         }
 
         Dim parametros = New List(Of Parametro)
-
         Dim response = api.MGet(url, headers, parametros)
 
         Dim result = JsonConvert.DeserializeObject(Of ProServ)(response)
         Dim resultError = JsonConvert.DeserializeObject(Of ProServ1)(response)
 
         Dim codigo = result.meta.code
-
-
-
         'Dim json = JsonConvert.SerializeObject(result)
         'MsgBox(json)
         'For Each y In result.data
@@ -1548,8 +1544,6 @@ Public Class F1_Productos
                 .DataSource = result.data
                 .Refresh()
             End With
-
-
 
             'CbProdServ.DropDownList.FilterRow = " company_Type=1"
         ElseIf codigo = 406 Or codigo = 409 Or codigo = 500 Then

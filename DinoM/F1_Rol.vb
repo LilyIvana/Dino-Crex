@@ -352,9 +352,7 @@ Public Class F1_Rol
         Dim estado As Integer = grDetalle.GetValue("estado")
         If estado = 1 Then
             grDetalle.SetValue("estado", 2)
-
         End If
-
     End Sub
 
     Private Sub grDetalle_EditingCell(sender As Object, e As EditingCellEventArgs) Handles grDetalle.EditingCell
@@ -401,5 +399,14 @@ Public Class F1_Rol
         End If
     End Sub
 
+    Private Sub F1_Rol_Resize(sender As Object, e As EventArgs) Handles MyBase.Resize
+        'Dim Width = Screen.PrimaryScreen.Bounds.Width
+        'Dim Height = Screen.PrimaryScreen.Bounds.Height
 
+        If Width > 1366 And Height > 768 Then
+            Panel1.Height = 452
+        Else
+            Panel1.Height = 352
+        End If
+    End Sub
 End Class

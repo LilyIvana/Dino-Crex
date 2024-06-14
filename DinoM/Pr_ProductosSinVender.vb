@@ -51,7 +51,7 @@ Public Class Pr_ProductosSinVender
         _prInterpretarDatos(_dt)
         If (_dt.Rows.Count > 0) Then
             Dim objrep As New R_ProductosNoVendidos2
-            L_fnBotonGenerar(gs_VersionSistema, gs_IPMaquina, gs_UsuMaquina, 0, "PRODUCTOS SIN VENDER", "PRODUCTOS SIN VENDER")
+            L_fnBotonGenerar(gs_VersionSistema, gs_IPMaquina, gs_UsuMaquina, IIf(CheckTodosProveedor.Checked = True, 0, cbProveedor.Value), "PRODUCTOS SIN VENDER", "PRODUCTOS SIN VENDER")
 
             objrep.SetDataSource(_dt)
             Dim fechaI As String = tbFechaI.Value.ToString("dd/MM/yyyy")
@@ -280,20 +280,28 @@ Public Class Pr_ProductosSinVender
     End Sub
 
     Private Sub btnExportar_Click(sender As Object, e As EventArgs) Handles btnExportar.Click
-        _prCrearCarpetaReportes()
-        Dim img As Bitmap = New Bitmap(My.Resources.checked, 50, 50)
-        If (P_ExportarExcel(RutaGlobal + "\Reporte\Reporte Productos")) Then
-            L_fnBotonExportar(gs_VersionSistema, gs_IPMaquina, gs_UsuMaquina, 0, "PRODUCTOS SIN VENDER", "PRODUCTOS SIN VENDER")
-            ToastNotification.Show(Me, "EXPORTACIÓN DE PRODUCTOS SIN VENDER EXITOSA..!!!",
-                                       img, 2000,
-                                       eToastGlowColor.Green,
-                                       eToastPosition.BottomCenter)
+        If JGrM_Buscador.RowCount > 0 Then
+            _prCrearCarpetaReportes()
+            Dim img As Bitmap = New Bitmap(My.Resources.checked, 50, 50)
+            If (P_ExportarExcel(RutaGlobal + "\Reporte\Reporte Productos")) Then
+                L_fnBotonExportar(gs_VersionSistema, gs_IPMaquina, gs_UsuMaquina, IIf(CheckTodosProveedor.Checked = True, 0, cbProveedor.Value), "PRODUCTOS SIN VENDER", "PRODUCTOS SIN VENDER")
+                ToastNotification.Show(Me, "EXPORTACIÓN DE PRODUCTOS SIN VENDER EXITOSA..!!!",
+                                           img, 2000,
+                                           eToastGlowColor.Green,
+                                           eToastPosition.BottomCenter)
+            Else
+                ToastNotification.Show(Me, "FALLÓ LA EXPORTACIÓN DE PRODUCTOS SIN VENDER..!!!",
+                                           My.Resources.WARNING, 2000,
+                                           eToastGlowColor.Red,
+                                           eToastPosition.BottomLeft)
+            End If
         Else
-            ToastNotification.Show(Me, "FALLÓ LA EXPORTACIÓN DE PRODUCTOS SIN VENDER..!!!",
-                                       My.Resources.WARNING, 2000,
-                                       eToastGlowColor.Red,
-                                       eToastPosition.BottomLeft)
+            ToastNotification.Show(Me, "NO EXISTE DATOS PARA EXPORTAR, PRIMERO DEBE PRESIONAR EL BOTÓN GENERAR..!!!",
+                                           My.Resources.WARNING, 2000,
+                                           eToastGlowColor.Red,
+                                           eToastPosition.BottomLeft)
         End If
+
     End Sub
     Public Function P_ExportarExcel(_ruta As String) As Boolean
         Dim _ubicacion As String
