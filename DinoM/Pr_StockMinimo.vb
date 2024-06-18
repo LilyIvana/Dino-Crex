@@ -50,7 +50,6 @@ Public Class Pr_StockMinimo
 
         Catch ex As Exception
             Throw
-
         End Try
 
     End Function
@@ -144,10 +143,11 @@ Public Class Pr_StockMinimo
             CargarGrilla(_dt)
         Else
             ToastNotification.Show(Me, "NO HAY DATOS PARA LOS PARAMETROS SELECCIONADOS..!!!",
-                                       My.Resources.INFORMATION, 2000,
+                                       My.Resources.INFORMATION, 2500,
                                        eToastGlowColor.Blue,
-                                       eToastPosition.BottomLeft)
+                                       eToastPosition.TopCenter)
             MReportViewer.ReportSource = Nothing
+            grBuscador.ClearStructure()
         End If
 
     End Sub
@@ -168,7 +168,6 @@ Public Class Pr_StockMinimo
         'End If
         If (checkUnaGrupo.Checked And CheckTodosAlmacen.Checked) Then
             _dt = L_fnTodosAlmacenUnaLineasMenoresStock(cbGrupos.Value)
-
         End If
         If (checkUnaAlmacen.Checked And checkUnaGrupo.Checked) Then
             _dt = L_fnUnaAlmacenUnaLineasMenoresStock(cbGrupos.Value, cbAlmacen.Value)
@@ -290,25 +289,25 @@ Public Class Pr_StockMinimo
 
     Private Sub btnExportar_Click(sender As Object, e As EventArgs) Handles btnExportar.Click
         If grBuscador.RowCount > 0 Then
-            _prCrearCarpetaReportes()
+            _prCrearCarpetaReportesGlobal()
             Dim img As Bitmap = New Bitmap(My.Resources.checked, 50, 50)
             If (P_ExportarExcelGlobal(RutaGlobal + "\Reporte\Reporte Productos", grBuscador, "SaldosMenoresAlStockMin")) Then
                 L_fnBotonExportar(gs_VersionSistema, gs_IPMaquina, gs_UsuMaquina, IIf(checkTodosGrupos.Checked = True, 0, cbGrupos.Value), "SALDOS MENORES AL STOCK", "SALDOS MENORES AL STOCK MIN.")
                 ToastNotification.Show(Me, "EXPORTACIÓN DE SALDOS MENORES AL STOCK MIN. EXITOSA..!!!",
-                                           img, 2000,
+                                           img, 2500,
                                            eToastGlowColor.Green,
-                                           eToastPosition.BottomCenter)
+                                           eToastPosition.TopCenter)
             Else
-                ToastNotification.Show(Me, "FALLÓ LA EXPORTACIÓN DE ALDOS MENORES AL STOCK MIN...!!!",
-                                           My.Resources.WARNING, 2000,
+                ToastNotification.Show(Me, "FALLÓ LA EXPORTACIÓN DE SALDOS MENORES AL STOCK MIN...!!!",
+                                           My.Resources.WARNING, 2500,
                                            eToastGlowColor.Red,
-                                           eToastPosition.BottomLeft)
+                                           eToastPosition.TopCenter)
             End If
         Else
             ToastNotification.Show(Me, "NO EXISTE DATOS PARA EXPORTAR, PRIMERO DEBE PRESIONAR EL BOTÓN GENERAR..!!!",
-                                           My.Resources.WARNING, 2000,
+                                           My.Resources.WARNING, 2500,
                                            eToastGlowColor.Red,
-                                           eToastPosition.BottomLeft)
+                                           eToastPosition.TopCenter)
         End If
     End Sub
 End Class

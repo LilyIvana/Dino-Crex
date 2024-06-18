@@ -244,9 +244,9 @@ Partial Class Pr_StockMinimo
         Me.GroupPanelBuscador.Controls.Add(Me.grBuscador)
         Me.GroupPanelBuscador.DisabledBackColor = System.Drawing.Color.Empty
         Me.GroupPanelBuscador.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.GroupPanelBuscador.Location = New System.Drawing.Point(87, 177)
+        Me.GroupPanelBuscador.Location = New System.Drawing.Point(25, 134)
         Me.GroupPanelBuscador.Name = "GroupPanelBuscador"
-        Me.GroupPanelBuscador.Size = New System.Drawing.Size(200, 144)
+        Me.GroupPanelBuscador.Size = New System.Drawing.Size(326, 162)
         '
         '
         '
@@ -293,7 +293,7 @@ Partial Class Pr_StockMinimo
         Me.grBuscador.SelectedFormatStyle.BackColor = System.Drawing.Color.DodgerBlue
         Me.grBuscador.SelectedFormatStyle.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.grBuscador.SelectedFormatStyle.ForeColor = System.Drawing.Color.White
-        Me.grBuscador.Size = New System.Drawing.Size(194, 121)
+        Me.grBuscador.Size = New System.Drawing.Size(320, 139)
         Me.grBuscador.TabIndex = 0
         '
         'Panel6
@@ -312,9 +312,10 @@ Partial Class Pr_StockMinimo
         Me.Panel4.BackgroundImage = Global.DinoM.My.Resources.Resources.fondo1
         Me.Panel4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.Panel4.Controls.Add(Me.Panel3)
+        Me.Panel4.Dock = System.Windows.Forms.DockStyle.Fill
         Me.Panel4.Location = New System.Drawing.Point(0, 0)
         Me.Panel4.Name = "Panel4"
-        Me.Panel4.Size = New System.Drawing.Size(378, 594)
+        Me.Panel4.Size = New System.Drawing.Size(377, 696)
         Me.Panel4.TabIndex = 263
         '
         'Panel3

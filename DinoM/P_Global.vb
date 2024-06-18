@@ -115,7 +115,7 @@ Module P_Global
             .Refresh()
         End With
     End Sub
-    Public Sub _prCrearCarpetaReportes()
+    Public Sub _prCrearCarpetaReportesGlobal()
         Dim rutaDestino As String = RutaGlobal + "\Reporte\Reporte Productos\"
 
         If System.IO.Directory.Exists(RutaGlobal + "\Reporte\Reporte Productos\") = False Then
@@ -127,7 +127,6 @@ Module P_Global
             Else
                 If System.IO.Directory.Exists(RutaGlobal + "\Reporte\Reporte Productos") = False Then
                     System.IO.Directory.CreateDirectory(RutaGlobal + "\Reporte\Reporte Productos")
-
                 End If
             End If
         End If
@@ -136,7 +135,6 @@ Module P_Global
     Public Function P_ExportarExcelGlobal(_ruta As String, JGrM_Buscador As GridEX, nombre As String) As Boolean
         Dim _ubicacion As String
         If (1 = 1) Then 'If(_directorio.ShowDialog = Windows.Forms.DialogResult.OK) Then
-
             _ubicacion = _ruta
             Try
                 Dim _stream As Stream
@@ -217,7 +215,6 @@ Module P_Global
     Public gd_notaAproTeo As Double = 0
     Public gs_NroCaja As Integer = 1
 
-    ''
     Public gs_IPMaquina As String = "0.0.0.0"
     Public gs_UsuMaquina As String = "DEFAULT"
     Public gs_VersionSistema As String = "VERSIÓN 0.0.0"

@@ -403,8 +403,10 @@ Public Class F1_Rol
         'Dim Width = Screen.PrimaryScreen.Bounds.Width
         'Dim Height = Screen.PrimaryScreen.Bounds.Height
 
-        If Width > 1366 And Height > 768 Then
+        If (Width > 1366 And Width <= 1552) And (Height > 768 And Height <= 840) Then
             Panel1.Height = 452
+        ElseIf (Width > 1910 And Height > 1000) Then
+            Panel1.Height = 652
         Else
             Panel1.Height = 352
         End If

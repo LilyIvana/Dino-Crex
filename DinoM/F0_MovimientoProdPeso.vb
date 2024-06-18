@@ -1522,7 +1522,7 @@ salirIf:
 
     Private Sub btnExportar_Click(sender As Object, e As EventArgs) Handles btnExportar.Click
         Try
-            _prCrearCarpetaReportes()
+            _prCrearCarpetaReportesGlobal()
             Dim img As Bitmap = New Bitmap(My.Resources.checked, 50, 50)
             If (P_ExportarExcel(RutaGlobal + "\Reporte\Reporte Productos")) Then
                 L_fnBotonExportar(gs_VersionSistema, gs_IPMaquina, gs_UsuMaquina, tbCodigo.Text, "TI003", "MOVIMIENTO DE PROD. POR PESO")

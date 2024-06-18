@@ -167,7 +167,7 @@ Public Class F1_ExcelVenta
             End With
             With JGrM_Buscador.RootTable.Columns("tbty5prod")
                 .Width = 100
-                .Caption = "COD. ORIGINAL"
+                .Caption = "COD. DYNASYS"
                 .Visible = False
             End With
             With JGrM_Buscador.RootTable.Columns("CodDelta")
@@ -299,8 +299,6 @@ Public Class F1_ExcelVenta
                 .Caption = "OBSERVACIÓN"
             End With
 
-
-
             With JGrM_Buscador
                 .DefaultFilterRowComparison = FilterConditionOperator.Contains
                 .FilterMode = FilterMode.Automatic
@@ -309,8 +307,8 @@ Public Class F1_ExcelVenta
                 .TotalRow = InheritableBoolean.True
                 .TotalRowFormatStyle.BackColor = Color.Gold
                 .TotalRowPosition = TotalRowPosition.BottomFixed
-                'diseño de la grilla
 
+                'diseño de la grilla
                 .RecordNavigator = True
                 .RecordNavigatorText = "Datos"
             End With

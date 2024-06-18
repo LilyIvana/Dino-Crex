@@ -1134,8 +1134,6 @@ Public Class F0_Movimiento
 
 #Region "Eventos Formulario"
 
-
-
     Private Sub F0_Movimiento_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         _IniciarTodo()
     End Sub

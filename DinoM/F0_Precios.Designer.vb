@@ -107,7 +107,6 @@ Partial Class F0_Precios
         '
         'PanelInferior
         '
-        Me.PanelInferior.Location = New System.Drawing.Point(0, 662)
         Me.PanelInferior.Margin = New System.Windows.Forms.Padding(4)
         Me.PanelInferior.Size = New System.Drawing.Size(1344, 39)
         Me.PanelInferior.Style.Alignment = System.Drawing.StringAlignment.Center

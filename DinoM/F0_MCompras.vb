@@ -871,7 +871,7 @@ Public Class F0_MCompras
 
     Private Sub _prCargarCompra()
         Dim dt As New DataTable
-        dt = L_fnGeneralCompras()
+        dt = L_fnGeneralCompras(IIf(swMostrar.Value = True, 1, 0))
         grCompra.DataSource = dt
         grCompra.RetrieveStructure()
         grCompra.AlternatingColors = True
@@ -1654,7 +1654,6 @@ Public Class F0_MCompras
                 _prMostrarRegistro(0)
             End If
         Else
-            '  Public _modulo As SideNavItem
             Me.Close()
             _modulo.Select()
         End If
@@ -2805,5 +2804,7 @@ salirIf:
         End Try
     End Sub
 
-
+    Private Sub swMostrar_ValueChanged(sender As Object, e As EventArgs) Handles swMostrar.ValueChanged
+        _prCargarCompra()
+    End Sub
 End Class

@@ -367,17 +367,17 @@ Public Class Descuentos
     End Sub
 
     Private Sub btnExportar_Click(sender As Object, e As EventArgs) Handles btnExportar.Click
-        _prCrearCarpetaReportes()
+        _prCrearCarpetaReportesGlobal()
         Dim img As Bitmap = New Bitmap(My.Resources.checked, 50, 50)
         If (P_ExportarExcel(RutaGlobal + "\Reporte\Reporte Productos")) Then
             L_fnExcelDescuentos(gs_VersionSistema, gs_IPMaquina, gs_UsuMaquina)
             ToastNotification.Show(Me, "EXPORTACIÓN DE DESCUENTOS DE PRODUCTOS EXITOSA..!!!",
-                                       img, 2000,
+                                       img, 2500,
                                        eToastGlowColor.Green,
                                        eToastPosition.TopCenter)
         Else
             ToastNotification.Show(Me, "FALLÓ LA EXPORTACIÓN DE DESCUENTOS DE PRODUCTOS..!!!",
-                                       My.Resources.WARNING, 2000,
+                                       My.Resources.WARNING, 2500,
                                        eToastGlowColor.Red,
                                        eToastPosition.TopCenter)
         End If

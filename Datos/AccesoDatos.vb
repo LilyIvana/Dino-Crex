@@ -89,7 +89,6 @@ Public Class AccesoDatos
                 _comandoProcedimiento.Parameters.Add(nombre, SqlDbType.Structured)
                 _comandoProcedimiento.Parameters(nombre).Value = detalle
             End If
-
         Next
 
         Return MetodoDatos.EjecutarProcedimiento(_comandoProcedimiento)

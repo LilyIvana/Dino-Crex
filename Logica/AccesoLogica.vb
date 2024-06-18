@@ -2545,12 +2545,13 @@ Public Class AccesoLogica
 #End Region
 
 #Region "TC001 Compras"
-    Public Shared Function L_fnGeneralCompras() As DataTable
+    Public Shared Function L_fnGeneralCompras(mostrar As Integer) As DataTable
         Dim _Tabla As DataTable
 
         Dim _listParam As New List(Of Datos.DParametro)
 
         _listParam.Add(New Datos.DParametro("@tipo", 3))
+        _listParam.Add(New Datos.DParametro("@mostrar", mostrar))
         _listParam.Add(New Datos.DParametro("@cauact", L_Usuario))
         _Tabla = D_ProcedimientoConParam("sp_Mam_TC001", _listParam)
 

@@ -547,7 +547,7 @@ Public Class F0_MComprasAntiguo
 
     Private Sub _prCargarCompra()
         Dim dt As New DataTable
-        dt = L_fnGeneralCompras()
+        dt = L_fnGeneralCompras(1)
         grCompra.DataSource = dt
         grCompra.RetrieveStructure()
         grCompra.AlternatingColors = True

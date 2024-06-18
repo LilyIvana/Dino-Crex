@@ -105,6 +105,7 @@ Partial Class F0_MCompras
         Me.swMostrarProdProv = New DevComponents.DotNetBar.Controls.SwitchButton()
         Me.LabelX19 = New DevComponents.DotNetBar.LabelX()
         Me.btnMovXpeso = New DevComponents.DotNetBar.ButtonX()
+        Me.swMostrar = New DevComponents.DotNetBar.Controls.SwitchButton()
         Me.PanelSuperior.SuspendLayout()
         Me.PanelInferior.SuspendLayout()
         CType(Me.BubbleBarUsuario, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -156,6 +157,7 @@ Partial Class F0_MCompras
         '
         'PanelSuperior
         '
+        Me.PanelSuperior.Controls.Add(Me.swMostrar)
         Me.PanelSuperior.Controls.Add(Me.LabelX19)
         Me.PanelSuperior.Controls.Add(Me.swMostrarProdProv)
         Me.PanelSuperior.Style.Alignment = System.Drawing.StringAlignment.Center
@@ -177,10 +179,10 @@ Partial Class F0_MCompras
         Me.PanelSuperior.Controls.SetChildIndex(Me.PictureBox1, 0)
         Me.PanelSuperior.Controls.SetChildIndex(Me.swMostrarProdProv, 0)
         Me.PanelSuperior.Controls.SetChildIndex(Me.LabelX19, 0)
+        Me.PanelSuperior.Controls.SetChildIndex(Me.swMostrar, 0)
         '
         'PanelInferior
         '
-        Me.PanelInferior.Location = New System.Drawing.Point(0, 662)
         Me.PanelInferior.Style.Alignment = System.Drawing.StringAlignment.Center
         Me.PanelInferior.Style.BackColor1.Color = System.Drawing.Color.Transparent
         Me.PanelInferior.Style.BackColor2.Color = System.Drawing.Color.Transparent
@@ -243,10 +245,6 @@ Partial Class F0_MCompras
         Me.PanelToolBar2.Controls.SetChildIndex(Me.btnMovXpeso, 0)
         Me.PanelToolBar2.Controls.SetChildIndex(Me.btnExportar, 0)
         Me.PanelToolBar2.Controls.SetChildIndex(Me.btnImprimir, 0)
-        '
-        'PanelPrincipal
-        '
-        Me.PanelPrincipal.Size = New System.Drawing.Size(1350, 701)
         Me.PanelPrincipal.Controls.SetChildIndex(Me.PanelInferior, 0)
         Me.PanelPrincipal.Controls.SetChildIndex(Me.PanelUsuario, 0)
         Me.PanelPrincipal.Controls.SetChildIndex(Me.PanelSuperior, 0)
@@ -281,15 +279,6 @@ Partial Class F0_MCompras
         Me.PanelContent.Controls.Add(Me.PanelDetalle)
         Me.PanelContent.Controls.Add(Me.PanelTotal)
         Me.PanelContent.Controls.Add(Me.PanelContentSup)
-        Me.PanelContent.Size = New System.Drawing.Size(1317, 590)
-        '
-        'Panel1
-        '
-        Me.Panel1.Size = New System.Drawing.Size(1350, 590)
-        '
-        'MSuperTabControlPanel1
-        '
-        Me.MSuperTabControlPanel1.Size = New System.Drawing.Size(1317, 590)
         '
         'MSuperTabControl
         '
@@ -308,7 +297,6 @@ Partial Class F0_MCompras
         Me.MSuperTabControl.ControlBox.SubItems.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.MSuperTabControl.ControlBox.MenuBox, Me.MSuperTabControl.ControlBox.CloseBox})
         Me.MSuperTabControl.Controls.Add(Me.SuperTabControlPanel2)
         Me.MSuperTabControl.SelectedTabIndex = 1
-        Me.MSuperTabControl.Size = New System.Drawing.Size(1350, 590)
         Me.MSuperTabControl.Tabs.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.BUSCADOR})
         Me.MSuperTabControl.Controls.SetChildIndex(Me.SuperTabControlPanel2, 0)
         Me.MSuperTabControl.Controls.SetChildIndex(Me.MSuperTabControlPanel1, 0)
@@ -1783,6 +1771,22 @@ Partial Class F0_MCompras
         Me.btnMovXpeso.Text = "MOV. DE PROD. X PESO"
         Me.btnMovXpeso.TextColor = System.Drawing.Color.White
         '
+        'swMostrar
+        '
+        '
+        '
+        '
+        Me.swMostrar.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.swMostrar.Location = New System.Drawing.Point(721, 22)
+        Me.swMostrar.Name = "swMostrar"
+        Me.swMostrar.OffBackColor = System.Drawing.Color.LightSlateGray
+        Me.swMostrar.OffText = "MOSTRAR ÚLT. 1000"
+        Me.swMostrar.OnBackColor = System.Drawing.Color.ForestGreen
+        Me.swMostrar.OnText = "MOSTRAR TODOS"
+        Me.swMostrar.Size = New System.Drawing.Size(190, 22)
+        Me.swMostrar.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+        Me.swMostrar.TabIndex = 424
+        '
         'F0_MCompras
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -1925,4 +1929,5 @@ Partial Class F0_MCompras
     Friend WithEvents LabelX19 As DevComponents.DotNetBar.LabelX
     Friend WithEvents swMostrarProdProv As DevComponents.DotNetBar.Controls.SwitchButton
     Friend WithEvents btnMovXpeso As DevComponents.DotNetBar.ButtonX
+    Friend WithEvents swMostrar As DevComponents.DotNetBar.Controls.SwitchButton
 End Class

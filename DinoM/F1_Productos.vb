@@ -968,8 +968,6 @@ Public Class F1_Productos
         '    .SetHighlightOnFocus(cbUniVenta, DevComponents.DotNetBar.Validator.eHighlightColor.Blue)
         '    .SetHighlightOnFocus(cbUnidMaxima, DevComponents.DotNetBar.Validator.eHighlightColor.Blue)
         '    .SetHighlightOnFocus(tbConversion, DevComponents.DotNetBar.Validator.eHighlightColor.Blue)
-
-
         'End With
     End Sub
 
@@ -985,7 +983,6 @@ Public Class F1_Productos
         CbProdServ.SelectedIndex = -1
         _prIniciarTodo()
     End Sub
-
 
     Private Function _fnCopiarImagenRutaDefinida() As String
         'copio la imagen en la carpeta del sistema

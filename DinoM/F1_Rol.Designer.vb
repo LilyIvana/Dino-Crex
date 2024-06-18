@@ -181,9 +181,9 @@ Partial Class F1_Rol
         '
         Me.GroupPanelBuscador.Dock = System.Windows.Forms.DockStyle.Bottom
         Me.GroupPanelBuscador.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.GroupPanelBuscador.Location = New System.Drawing.Point(0, 454)
+        Me.GroupPanelBuscador.Location = New System.Drawing.Point(0, 435)
         Me.GroupPanelBuscador.Margin = New System.Windows.Forms.Padding(4)
-        Me.GroupPanelBuscador.Size = New System.Drawing.Size(1318, 139)
+        Me.GroupPanelBuscador.Size = New System.Drawing.Size(1318, 158)
         '
         '
         '
@@ -223,7 +223,7 @@ Partial Class F1_Rol
         Me.JGrM_Buscador.SelectedFormatStyle.BackColor = System.Drawing.Color.DodgerBlue
         Me.JGrM_Buscador.SelectedFormatStyle.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.JGrM_Buscador.SelectedFormatStyle.ForeColor = System.Drawing.Color.White
-        Me.JGrM_Buscador.Size = New System.Drawing.Size(1312, 116)
+        Me.JGrM_Buscador.Size = New System.Drawing.Size(1312, 135)
         '
         'PanelUsuario
         '
@@ -251,10 +251,10 @@ Partial Class F1_Rol
         Me.tbRol.Border.Class = "TextBoxBorder"
         Me.tbRol.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.tbRol.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.tbRol.Location = New System.Drawing.Point(97, 47)
+        Me.tbRol.Location = New System.Drawing.Point(97, 38)
         Me.tbRol.Name = "tbRol"
         Me.tbRol.PreventEnterBeep = True
-        Me.tbRol.Size = New System.Drawing.Size(203, 21)
+        Me.tbRol.Size = New System.Drawing.Size(250, 21)
         Me.tbRol.TabIndex = 23
         '
         'tbNumi
@@ -265,7 +265,7 @@ Partial Class F1_Rol
         Me.tbNumi.Border.Class = "TextBoxBorder"
         Me.tbNumi.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.tbNumi.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.tbNumi.Location = New System.Drawing.Point(97, 19)
+        Me.tbNumi.Location = New System.Drawing.Point(97, 12)
         Me.tbNumi.Name = "tbNumi"
         Me.tbNumi.PreventEnterBeep = True
         Me.tbNumi.Size = New System.Drawing.Size(100, 21)
@@ -344,7 +344,7 @@ Partial Class F1_Rol
         Me.Panel1.Controls.Add(Me.GroupPanel2)
         Me.Panel1.Controls.Add(Me.GroupPanel1)
         Me.Panel1.Dock = System.Windows.Forms.DockStyle.Top
-        Me.Panel1.Location = New System.Drawing.Point(0, 103)
+        Me.Panel1.Location = New System.Drawing.Point(0, 76)
         Me.Panel1.Name = "Panel1"
         Me.Panel1.Size = New System.Drawing.Size(1318, 352)
         Me.Panel1.TabIndex = 25
@@ -414,7 +414,7 @@ Partial Class F1_Rol
         Me.Panel2.Dock = System.Windows.Forms.DockStyle.Top
         Me.Panel2.Location = New System.Drawing.Point(0, 0)
         Me.Panel2.Name = "Panel2"
-        Me.Panel2.Size = New System.Drawing.Size(1318, 103)
+        Me.Panel2.Size = New System.Drawing.Size(1318, 76)
         Me.Panel2.TabIndex = 26
         '
         'LabelX2
@@ -426,7 +426,7 @@ Partial Class F1_Rol
         Me.LabelX2.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.LabelX2.Font = New System.Drawing.Font("Georgia", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.LabelX2.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(85, Byte), Integer), CType(CType(139, Byte), Integer))
-        Me.LabelX2.Location = New System.Drawing.Point(12, 20)
+        Me.LabelX2.Location = New System.Drawing.Point(12, 9)
         Me.LabelX2.Name = "LabelX2"
         Me.LabelX2.SingleLineColor = System.Drawing.SystemColors.Control
         Me.LabelX2.Size = New System.Drawing.Size(74, 23)
@@ -442,7 +442,7 @@ Partial Class F1_Rol
         Me.LabelX3.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.LabelX3.Font = New System.Drawing.Font("Georgia", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.LabelX3.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(85, Byte), Integer), CType(CType(139, Byte), Integer))
-        Me.LabelX3.Location = New System.Drawing.Point(13, 48)
+        Me.LabelX3.Location = New System.Drawing.Point(12, 37)
         Me.LabelX3.Name = "LabelX3"
         Me.LabelX3.SingleLineColor = System.Drawing.SystemColors.Control
         Me.LabelX3.Size = New System.Drawing.Size(50, 23)
