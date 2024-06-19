@@ -283,7 +283,6 @@ Public Class F1_Rol
     End Function
 
     Public Overrides Function _PMOGetTablaBuscador() As DataTable
-
         Dim dtBuscador As DataTable = L_prRolGeneral()
         Return dtBuscador
     End Function
@@ -291,9 +290,9 @@ Public Class F1_Rol
     Public Overrides Function _PMOGetListEstructuraBuscador() As List(Of Modelo.Celda)
         Dim listEstCeldas As New List(Of Modelo.Celda)
         listEstCeldas.Add(New Modelo.Celda("ybnumi", True, "CÓDIGO", 100))
-        listEstCeldas.Add(New Modelo.Celda("ybrol", True, "ROL", 750))
+        listEstCeldas.Add(New Modelo.Celda("ybrol", True, "ROL", 850))
         listEstCeldas.Add(New Modelo.Celda("ybfact", True, "FECHA", 120))
-        listEstCeldas.Add(New Modelo.Celda("ybhact", True, "HORA", 120))
+        listEstCeldas.Add(New Modelo.Celda("ybhact", False, "HORA", 120))
         listEstCeldas.Add(New Modelo.Celda("ybuact", True, "USUARIO", 120))
         Return listEstCeldas
     End Function

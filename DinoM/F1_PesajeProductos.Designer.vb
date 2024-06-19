@@ -55,6 +55,8 @@ Partial Class F1_PesajeProductos
         Me.btExcel = New DevComponents.DotNetBar.ButtonX()
         Me.TableLayoutPanel1 = New System.Windows.Forms.TableLayoutPanel()
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
+        Me.swMostrar = New DevComponents.DotNetBar.Controls.SwitchButton()
+        Me.LabelX20 = New DevComponents.DotNetBar.LabelX()
         CType(Me.SuperTabPrincipal, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuperTabPrincipal.SuspendLayout()
         Me.SuperTabControlPanelRegistro.SuspendLayout()
@@ -166,11 +168,15 @@ Partial Class F1_PesajeProductos
         '
         'PanelToolBar2
         '
+        Me.PanelToolBar2.Controls.Add(Me.LabelX20)
+        Me.PanelToolBar2.Controls.Add(Me.swMostrar)
         Me.PanelToolBar2.Controls.Add(Me.btExcel)
-        Me.PanelToolBar2.Location = New System.Drawing.Point(1152, 0)
-        Me.PanelToolBar2.Size = New System.Drawing.Size(160, 72)
-        Me.PanelToolBar2.Controls.SetChildIndex(Me.btnImprimir, 0)
+        Me.PanelToolBar2.Location = New System.Drawing.Point(862, 0)
+        Me.PanelToolBar2.Size = New System.Drawing.Size(450, 72)
         Me.PanelToolBar2.Controls.SetChildIndex(Me.btExcel, 0)
+        Me.PanelToolBar2.Controls.SetChildIndex(Me.swMostrar, 0)
+        Me.PanelToolBar2.Controls.SetChildIndex(Me.btnImprimir, 0)
+        Me.PanelToolBar2.Controls.SetChildIndex(Me.LabelX20, 0)
         '
         'MPanelSup
         '
@@ -254,8 +260,9 @@ Partial Class F1_PesajeProductos
         '
         'btnImprimir
         '
-        Me.btnImprimir.Dock = System.Windows.Forms.DockStyle.Left
+        Me.btnImprimir.Dock = System.Windows.Forms.DockStyle.Right
         Me.btnImprimir.Image = Global.DinoM.My.Resources.Resources.printee
+        Me.btnImprimir.Location = New System.Drawing.Point(295, 0)
         '
         'MPanelUserAct
         '
@@ -815,7 +822,7 @@ Partial Class F1_PesajeProductos
         Me.btExcel.Image = Global.DinoM.My.Resources.Resources.sheets
         Me.btExcel.ImageFixedSize = New System.Drawing.Size(45, 50)
         Me.btExcel.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top
-        Me.btExcel.Location = New System.Drawing.Point(85, 0)
+        Me.btExcel.Location = New System.Drawing.Point(375, 0)
         Me.btExcel.Name = "btExcel"
         Me.btExcel.Padding = New System.Windows.Forms.Padding(0, 0, 0, 20)
         Me.btExcel.Size = New System.Drawing.Size(75, 72)
@@ -843,6 +850,36 @@ Partial Class F1_PesajeProductos
         '
         Me.Timer1.Enabled = True
         Me.Timer1.Interval = 500
+        '
+        'swMostrar
+        '
+        '
+        '
+        '
+        Me.swMostrar.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.swMostrar.Location = New System.Drawing.Point(4, 33)
+        Me.swMostrar.Name = "swMostrar"
+        Me.swMostrar.OffBackColor = System.Drawing.Color.Gold
+        Me.swMostrar.OffText = "MOSTRAR ÚLT. 1000"
+        Me.swMostrar.OnBackColor = System.Drawing.Color.ForestGreen
+        Me.swMostrar.OnText = "MOSTRAR TODOS"
+        Me.swMostrar.Size = New System.Drawing.Size(190, 22)
+        Me.swMostrar.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+        Me.swMostrar.TabIndex = 425
+        '
+        'LabelX20
+        '
+        '
+        '
+        '
+        Me.LabelX20.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.LabelX20.Font = New System.Drawing.Font("Georgia", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LabelX20.ForeColor = System.Drawing.Color.White
+        Me.LabelX20.Location = New System.Drawing.Point(6, 12)
+        Me.LabelX20.Name = "LabelX20"
+        Me.LabelX20.Size = New System.Drawing.Size(147, 16)
+        Me.LabelX20.TabIndex = 426
+        Me.LabelX20.Text = "Nro. Registros:"
         '
         'F1_PesajeProductos
         '
@@ -914,4 +951,6 @@ Partial Class F1_PesajeProductos
     Friend WithEvents btnSearch As DevComponents.DotNetBar.ButtonX
     Friend WithEvents tbPesoReal As DevComponents.Editors.DoubleInput
     Friend WithEvents pbCodB As PictureBox
+    Friend WithEvents swMostrar As DevComponents.DotNetBar.Controls.SwitchButton
+    Friend WithEvents LabelX20 As DevComponents.DotNetBar.LabelX
 End Class

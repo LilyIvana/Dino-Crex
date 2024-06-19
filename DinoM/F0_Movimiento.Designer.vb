@@ -56,6 +56,7 @@ Partial Class F0_Movimiento
         Me.swMostrar = New DevComponents.DotNetBar.Controls.SwitchButton()
         Me.btnMovXpeso = New DevComponents.DotNetBar.ButtonX()
         Me.btnExportar = New DevComponents.DotNetBar.ButtonX()
+        Me.LabelX20 = New DevComponents.DotNetBar.LabelX()
         Me.PanelSuperior.SuspendLayout()
         Me.PanelInferior.SuspendLayout()
         CType(Me.BubbleBarUsuario, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -90,6 +91,7 @@ Partial Class F0_Movimiento
         '
         'PanelSuperior
         '
+        Me.PanelSuperior.Controls.Add(Me.LabelX20)
         Me.PanelSuperior.Controls.Add(Me.swMostrar)
         Me.PanelSuperior.Size = New System.Drawing.Size(1352, 72)
         Me.PanelSuperior.Style.Alignment = System.Drawing.StringAlignment.Center
@@ -110,6 +112,7 @@ Partial Class F0_Movimiento
         Me.PanelSuperior.Controls.SetChildIndex(Me.MRlAccion, 0)
         Me.PanelSuperior.Controls.SetChildIndex(Me.PictureBox1, 0)
         Me.PanelSuperior.Controls.SetChildIndex(Me.swMostrar, 0)
+        Me.PanelSuperior.Controls.SetChildIndex(Me.LabelX20, 0)
         '
         'PanelInferior
         '
@@ -800,9 +803,9 @@ Partial Class F0_Movimiento
         '
         '
         Me.swMostrar.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.swMostrar.Location = New System.Drawing.Point(433, 21)
+        Me.swMostrar.Location = New System.Drawing.Point(433, 33)
         Me.swMostrar.Name = "swMostrar"
-        Me.swMostrar.OffBackColor = System.Drawing.Color.LightSlateGray
+        Me.swMostrar.OffBackColor = System.Drawing.Color.Gold
         Me.swMostrar.OffText = "MOSTRAR ÚLT. 100"
         Me.swMostrar.OnBackColor = System.Drawing.Color.ForestGreen
         Me.swMostrar.OnText = "MOSTRAR TODOS"
@@ -845,6 +848,20 @@ Partial Class F0_Movimiento
         Me.btnExportar.TabIndex = 18
         Me.btnExportar.Text = "EXPORTAR"
         Me.btnExportar.TextColor = System.Drawing.Color.White
+        '
+        'LabelX20
+        '
+        '
+        '
+        '
+        Me.LabelX20.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.LabelX20.Font = New System.Drawing.Font("Georgia", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LabelX20.ForeColor = System.Drawing.Color.White
+        Me.LabelX20.Location = New System.Drawing.Point(433, 12)
+        Me.LabelX20.Name = "LabelX20"
+        Me.LabelX20.Size = New System.Drawing.Size(147, 16)
+        Me.LabelX20.TabIndex = 427
+        Me.LabelX20.Text = "Nro. Registros:"
         '
         'F0_Movimiento
         '
@@ -920,4 +937,5 @@ Partial Class F0_Movimiento
     Friend WithEvents lbMotivo As DevComponents.DotNetBar.LabelX
     Friend WithEvents btnMovXpeso As DevComponents.DotNetBar.ButtonX
     Friend WithEvents btnExportar As DevComponents.DotNetBar.ButtonX
+    Friend WithEvents LabelX20 As DevComponents.DotNetBar.LabelX
 End Class

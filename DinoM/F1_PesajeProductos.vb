@@ -270,7 +270,7 @@ Public Class F1_PesajeProductos
     End Function
 
     Public Overrides Function _PMOGetTablaBuscador() As DataTable
-        Dim dtBuscador As DataTable = L_fnGeneralPesajeProductos()
+        Dim dtBuscador As DataTable = L_fnGeneralPesajeProductos(IIf(swMostrar.Value = True, 1, 0))
 
         Return dtBuscador
     End Function
@@ -338,7 +338,7 @@ Public Class F1_PesajeProductos
     End Sub
     Private Sub _prCargarPesaje()
         Dim dt As New DataTable
-        dt = L_fnGeneralPesajeProductos()
+        dt = L_fnGeneralPesajeProductos(IIf(swMostrar.Value = True, 1, 0))
 
         JGrM_Buscador.DataSource = dt
         JGrM_Buscador.RetrieveStructure()
@@ -758,7 +758,7 @@ Public Class F1_PesajeProductos
                 tbTotal.Value = 0
                 tbCodBarraSist.Clear()
                 tbCodBarraImp.Clear()
-                
+
                 tbPesoReal.Focus()
             End If
 
@@ -819,5 +819,7 @@ Public Class F1_PesajeProductos
 
     End Sub
 
-
+    Private Sub swMostrar_ValueChanged(sender As Object, e As EventArgs) Handles swMostrar.ValueChanged
+        _prCargarPesaje()
+    End Sub
 End Class
