@@ -421,7 +421,7 @@ Partial Class F0_AnularFactura
         Me.swMostrar.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.swMostrar.Location = New System.Drawing.Point(17, 130)
         Me.swMostrar.Name = "swMostrar"
-        Me.swMostrar.OffBackColor = System.Drawing.Color.LightSlateGray
+        Me.swMostrar.OffBackColor = System.Drawing.Color.Gold
         Me.swMostrar.OffText = "MOSTRAR ÚLT. 1500"
         Me.swMostrar.OnBackColor = System.Drawing.Color.ForestGreen
         Me.swMostrar.OnText = "MOSTRAR TODOS"

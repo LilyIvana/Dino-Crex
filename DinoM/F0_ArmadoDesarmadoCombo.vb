@@ -131,7 +131,7 @@ Public Class F0_ArmadoDesarmadoCombo
         P_prArmarGrillaDetalleDesarmado("-1")
     End Sub
     Private Sub P_prActualizarPaginacion(ByVal index As Integer)
-        LblPaginacion.Text = "Reg. " & index + 1 & " de " & dgjBusqueda.GetRows.Count
+        LblPaginacion.Text = index + 1 & "/" & dgjBusqueda.GetRows.Count
     End Sub
     Private Sub P_prLlenarDatos(ByVal index As Integer)
         If (index <= dgjBusqueda.GetRows.Count - 1 And index >= 0) Then

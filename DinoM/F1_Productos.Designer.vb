@@ -133,6 +133,8 @@ Partial Class F1_Productos
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         Me.CmDetalle = New System.Windows.Forms.ContextMenuStrip(Me.components)
         Me.QuitarProductoToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.LabelX23 = New DevComponents.DotNetBar.LabelX()
+        Me.swMostrar = New DevComponents.DotNetBar.Controls.SwitchButton()
         CType(Me.SuperTabPrincipal, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuperTabPrincipal.SuspendLayout()
         Me.SuperTabControlPanelRegistro.SuspendLayout()
@@ -284,11 +286,15 @@ Partial Class F1_Productos
         '
         'PanelToolBar2
         '
+        Me.PanelToolBar2.Controls.Add(Me.LabelX23)
+        Me.PanelToolBar2.Controls.Add(Me.swMostrar)
         Me.PanelToolBar2.Controls.Add(Me.btExcel)
-        Me.PanelToolBar2.Location = New System.Drawing.Point(1163, 0)
-        Me.PanelToolBar2.Size = New System.Drawing.Size(155, 72)
+        Me.PanelToolBar2.Location = New System.Drawing.Point(924, 0)
+        Me.PanelToolBar2.Size = New System.Drawing.Size(394, 72)
         Me.PanelToolBar2.Controls.SetChildIndex(Me.btExcel, 0)
         Me.PanelToolBar2.Controls.SetChildIndex(Me.btnImprimir, 0)
+        Me.PanelToolBar2.Controls.SetChildIndex(Me.swMostrar, 0)
+        Me.PanelToolBar2.Controls.SetChildIndex(Me.LabelX23, 0)
         '
         'MPanelSup
         '
@@ -373,14 +379,23 @@ Partial Class F1_Productos
         '
         'btnImprimir
         '
-        Me.btnImprimir.Dock = System.Windows.Forms.DockStyle.Left
+        Me.btnImprimir.Dock = System.Windows.Forms.DockStyle.Right
         Me.btnImprimir.Image = Global.DinoM.My.Resources.Resources.codigobarra
+        Me.btnImprimir.Location = New System.Drawing.Point(239, 0)
         Me.btnImprimir.Text = "CDD. BARRAS"
         Me.btnImprimir.Visible = False
         '
         'MPanelUserAct
         '
         Me.MPanelUserAct.Location = New System.Drawing.Point(1118, 0)
+        '
+        'MRlAccion
+        '
+        '
+        '
+        '
+        Me.MRlAccion.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.MRlAccion.Size = New System.Drawing.Size(548, 72)
         '
         'GroupBox1
         '
@@ -1924,7 +1939,7 @@ Partial Class F1_Productos
         Me.btExcel.Image = Global.DinoM.My.Resources.Resources.sheets
         Me.btExcel.ImageFixedSize = New System.Drawing.Size(45, 50)
         Me.btExcel.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top
-        Me.btExcel.Location = New System.Drawing.Point(80, 0)
+        Me.btExcel.Location = New System.Drawing.Point(319, 0)
         Me.btExcel.Name = "btExcel"
         Me.btExcel.Padding = New System.Windows.Forms.Padding(0, 0, 0, 20)
         Me.btExcel.Size = New System.Drawing.Size(75, 72)
@@ -1970,6 +1985,36 @@ Partial Class F1_Productos
         Me.QuitarProductoToolStripMenuItem.Name = "QuitarProductoToolStripMenuItem"
         Me.QuitarProductoToolStripMenuItem.Size = New System.Drawing.Size(168, 32)
         Me.QuitarProductoToolStripMenuItem.Text = "Quitar Producto"
+        '
+        'LabelX23
+        '
+        '
+        '
+        '
+        Me.LabelX23.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.LabelX23.Font = New System.Drawing.Font("Georgia", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LabelX23.ForeColor = System.Drawing.Color.White
+        Me.LabelX23.Location = New System.Drawing.Point(12, 13)
+        Me.LabelX23.Name = "LabelX23"
+        Me.LabelX23.Size = New System.Drawing.Size(147, 16)
+        Me.LabelX23.TabIndex = 427
+        Me.LabelX23.Text = "Nro. Registros:"
+        '
+        'swMostrar
+        '
+        '
+        '
+        '
+        Me.swMostrar.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.swMostrar.Location = New System.Drawing.Point(12, 34)
+        Me.swMostrar.Name = "swMostrar"
+        Me.swMostrar.OffBackColor = System.Drawing.Color.Gold
+        Me.swMostrar.OffText = "MOSTRAR ÚLT. 5000"
+        Me.swMostrar.OnBackColor = System.Drawing.Color.ForestGreen
+        Me.swMostrar.OnText = "MOSTRAR TODOS"
+        Me.swMostrar.Size = New System.Drawing.Size(190, 22)
+        Me.swMostrar.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+        Me.swMostrar.TabIndex = 426
         '
         'F1_Productos
         '
@@ -2142,4 +2187,6 @@ Partial Class F1_Productos
     Friend WithEvents QuitarProductoToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents cbCanje As Janus.Windows.GridEX.EditControls.MultiColumnCombo
     Friend WithEvents LabelX22 As DevComponents.DotNetBar.LabelX
+    Friend WithEvents LabelX23 As DevComponents.DotNetBar.LabelX
+    Friend WithEvents swMostrar As DevComponents.DotNetBar.Controls.SwitchButton
 End Class

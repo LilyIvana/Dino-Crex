@@ -762,7 +762,7 @@ Partial Class ModeloF1
     Protected WithEvents MEP As System.Windows.Forms.ErrorProvider
     Protected WithEvents MHighlighterFocus As DevComponents.DotNetBar.Validator.Highlighter
     Protected WithEvents MFlyoutUsuario As DevComponents.DotNetBar.Controls.Flyout
-    Friend WithEvents MRlAccion As DevComponents.DotNetBar.Controls.ReflectionLabel
     Friend WithEvents PictureBox1 As System.Windows.Forms.PictureBox
     Friend WithEvents BubbleButton1 As DevComponents.DotNetBar.BubbleButton
+    Public WithEvents MRlAccion As DevComponents.DotNetBar.Controls.ReflectionLabel
 End Class

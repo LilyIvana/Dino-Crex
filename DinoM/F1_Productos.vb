@@ -71,7 +71,7 @@ Public Class F1_Productos
         Dim ico As Icon = Icon.FromHandle(blah.GetHicon())
         Me.Icon = ico
 
-        btnImprimir.Visible = False
+        'btnImprimir.Visible = False
         SuperTabControl_Imagenes_DetalleProducto.SelectedTabIndex = 2
         JGProdCombo.ContextMenuStrip = CmDetalle
     End Sub
@@ -321,7 +321,7 @@ Public Class F1_Productos
         BtAdicionar.Visible = True
         tbStockMinimo.IsInputReadOnly = False
         btExcel.Visible = False
-        btnImprimir.Visible = False
+        'btnImprimir.Visible = False
         dgjDetalleProducto.AllowEdit = InheritableBoolean.True
         dgjDetalleProducto.RootTable.Columns("delete").Visible = True
         adicionarFilaDetalleProducto()
@@ -362,7 +362,7 @@ Public Class F1_Productos
         JGrM_Buscador.Focus()
         Limpiar = False
         btExcel.Visible = True
-        btnImprimir.Visible = True
+        'btnImprimir.Visible = True
         dgjDetalleProducto.AllowEdit = InheritableBoolean.False
         dgjDetalleProducto.RootTable.Columns("delete").Visible = False
     End Sub
@@ -485,7 +485,7 @@ Public Class F1_Productos
                                       )
             tbCodigo.Focus()
             Limpiar = True
-            btnImprimir.Visible = False
+            'btnImprimir.Visible = False
         Else
             Dim img As Bitmap = New Bitmap(My.Resources.cancel, 50, 50)
             ToastNotification.Show(Me, "El producto no pudo ser insertado".ToUpper, img, 2000, eToastGlowColor.Red, eToastPosition.BottomCenter)
@@ -546,7 +546,7 @@ Public Class F1_Productos
         _PMInhabilitar()
         _PMPrimerRegistro()
         PanelNavegacion.Enabled = True
-        btnImprimir.Visible = False
+        'btnImprimir.Visible = False
         Return res
     End Function
     Public Function GenerarCBarraPeso(CodPro As String, CBarraPeso As String) As String
@@ -826,14 +826,13 @@ Public Class F1_Productos
     End Function
 
     Public Overrides Function _PMOGetTablaBuscador() As DataTable
-        Dim dtBuscador As DataTable = L_fnGeneralProductos()
+        Dim dtBuscador As DataTable = L_fnGeneralProductos(IIf(swMostrar.Value = True, 1, 0))
         Return dtBuscador
     End Function
 
     Public Overrides Function _PMOGetListEstructuraBuscador() As List(Of Modelo.Celda)
         Dim listEstCeldas As New List(Of Modelo.Celda)
-        'a.yfnumi, a.yfcprod, a.yfcbarra, a.yfcdprod1, a.yfcdprod2, a.yfgr1, a.yfgr2, a.yfgr3, a.yfgr4,
-        'a.yfMed, a.yfumin, a.yfusup, a.yfmstk, a.yfclot, a.yfsmin, a.yfap, a.yfimg, a.yffact, a.yfhact, a.yfuact
+
         listEstCeldas.Add(New Modelo.Celda("yfnumi", True, "Cod. Dynasys".ToUpper, 80))
         listEstCeldas.Add(New Modelo.Celda("yfcprod", True, "Cod. Delta".ToUpper, 80))
         listEstCeldas.Add(New Modelo.Celda("yfcdprod2", True, "Cod. Proveedor".ToUpper, 100))
@@ -950,7 +949,6 @@ Public Class F1_Productos
         LblPaginacion.Text = Str(_MPos + 1) + "/" + JGrM_Buscador.RowCount.ToString
     End Sub
     Public Overrides Sub _PMOHabilitarFocus()
-
         'With MHighlighterFocus
         '    .SetHighlightOnFocus(tbCodigo, DevComponents.DotNetBar.Validator.eHighlightColor.Blue)
         '    .SetHighlightOnFocus(tbCodProd, DevComponents.DotNetBar.Validator.eHighlightColor.Blue)
@@ -1301,7 +1299,7 @@ Public Class F1_Productos
             _PMInhabilitar()
             _PMPrimerRegistro()
             PanelNavegacion.Enabled = True
-            btnImprimir.Visible = False
+            'btnImprimir.Visible = False
         Else
             '  Public _modulo As SideNavItem
             _modulo.Select()
@@ -1971,5 +1969,7 @@ Public Class F1_Productos
         Return mayor
     End Function
 
-
+    Private Sub swMostrar_ValueChanged(sender As Object, e As EventArgs) Handles swMostrar.ValueChanged
+        _PMIniciarTodo()
+    End Sub
 End Class

@@ -962,6 +962,12 @@
     <Compile Include="Pr_VentasAtendidas.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="P_Acerca.Designer.vb">
+      <DependentUpon>P_Acerca.vb</DependentUpon>
+    </Compile>
+    <Compile Include="P_Acerca.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Reporte\LibroVenta3.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -1853,6 +1859,9 @@
     <EmbeddedResource Include="Pr_VentasAtendidas.resx">
       <DependentUpon>Pr_VentasAtendidas.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="P_Acerca.resx">
+      <DependentUpon>P_Acerca.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Reporte\LibroVenta3.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>LibroVenta3.vb</LastGenOutput>
@@ -2528,6 +2537,7 @@
     <None Include="Resources\BUSQUEDA1.png" />
     <None Include="Resources\bandeja-de-entrada.png" />
     <None Include="Resources\bandeja-de-salida1.png" />
+    <None Include="Resources\Banner.png" />
     <Content Include="Resources\check-mark.png" />
     <None Include="Resources\cobro.png" />
     <None Include="Resources\creditopagos.png" />

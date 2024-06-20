@@ -265,8 +265,8 @@ Public Class P_Principal
                 Case "btSalir"
                     Me.Close()
                 Case "btAbout"
-                    'Dim frm As New P_Acerca
-                    'frm.ShowDialog()
+                    Dim frm As New P_Acerca
+                    frm.ShowDialog()
             End Select
         End If
     End Sub

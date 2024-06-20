@@ -148,7 +148,7 @@ Partial Class F1_Clientes
         Me.SuperTabPrincipal.ControlBox.Name = ""
         Me.SuperTabPrincipal.ControlBox.SubItems.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.SuperTabPrincipal.ControlBox.MenuBox, Me.SuperTabPrincipal.ControlBox.CloseBox})
         Me.SuperTabPrincipal.Margin = New System.Windows.Forms.Padding(4)
-        Me.SuperTabPrincipal.Size = New System.Drawing.Size(1354, 709)
+        Me.SuperTabPrincipal.Size = New System.Drawing.Size(1354, 701)
         Me.SuperTabPrincipal.Controls.SetChildIndex(Me.SuperTabControlPanelBuscador, 0)
         Me.SuperTabPrincipal.Controls.SetChildIndex(Me.SuperTabControlPanelRegistro, 0)
         '
@@ -161,7 +161,7 @@ Partial Class F1_Clientes
         'SuperTabControlPanelRegistro
         '
         Me.SuperTabControlPanelRegistro.Margin = New System.Windows.Forms.Padding(4)
-        Me.SuperTabControlPanelRegistro.Size = New System.Drawing.Size(1322, 709)
+        Me.SuperTabControlPanelRegistro.Size = New System.Drawing.Size(1322, 701)
         Me.SuperTabControlPanelRegistro.Controls.SetChildIndex(Me.PanelSuperior, 0)
         Me.SuperTabControlPanelRegistro.Controls.SetChildIndex(Me.PanelInferior, 0)
         Me.SuperTabControlPanelRegistro.Controls.SetChildIndex(Me.PanelPrincipal, 0)
@@ -181,7 +181,7 @@ Partial Class F1_Clientes
         '
         'PanelInferior
         '
-        Me.PanelInferior.Location = New System.Drawing.Point(0, 673)
+        Me.PanelInferior.Location = New System.Drawing.Point(0, 665)
         Me.PanelInferior.Margin = New System.Windows.Forms.Padding(4)
         Me.PanelInferior.Size = New System.Drawing.Size(1322, 36)
         Me.PanelInferior.Style.Alignment = System.Drawing.StringAlignment.Center
@@ -227,9 +227,6 @@ Partial Class F1_Clientes
         '
         Me.btnGrabar.TabIndex = 0
         '
-        'btnEliminar
-        '
-        '
         'btnNuevo
         '
         '
@@ -253,13 +250,13 @@ Partial Class F1_Clientes
         'PanelPrincipal
         '
         Me.PanelPrincipal.Margin = New System.Windows.Forms.Padding(4)
-        Me.PanelPrincipal.Size = New System.Drawing.Size(1322, 601)
+        Me.PanelPrincipal.Size = New System.Drawing.Size(1322, 593)
         '
         'GroupPanelBuscador
         '
         Me.GroupPanelBuscador.Location = New System.Drawing.Point(0, 340)
         Me.GroupPanelBuscador.Margin = New System.Windows.Forms.Padding(4)
-        Me.GroupPanelBuscador.Size = New System.Drawing.Size(1322, 261)
+        Me.GroupPanelBuscador.Size = New System.Drawing.Size(1322, 253)
         '
         '
         '
@@ -308,7 +305,7 @@ Partial Class F1_Clientes
         Me.JGrM_Buscador.SelectedFormatStyle.BackColor = System.Drawing.Color.DodgerBlue
         Me.JGrM_Buscador.SelectedFormatStyle.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.JGrM_Buscador.SelectedFormatStyle.ForeColor = System.Drawing.Color.White
-        Me.JGrM_Buscador.Size = New System.Drawing.Size(1316, 238)
+        Me.JGrM_Buscador.Size = New System.Drawing.Size(1316, 230)
         Me.JGrM_Buscador.VisualStyle = Janus.Windows.GridEX.VisualStyle.Office2007
         '
         'PanelUsuario
@@ -329,6 +326,14 @@ Partial Class F1_Clientes
         '
         Me.MPanelUserAct.Location = New System.Drawing.Point(1122, 0)
         Me.MPanelUserAct.Margin = New System.Windows.Forms.Padding(4)
+        '
+        'MRlAccion
+        '
+        '
+        '
+        '
+        Me.MRlAccion.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.MRlAccion.Size = New System.Drawing.Size(786, 72)
         '
         'LabelX1
         '
@@ -1497,7 +1502,7 @@ Partial Class F1_Clientes
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1354, 709)
+        Me.ClientSize = New System.Drawing.Size(1354, 701)
         Me.Location = New System.Drawing.Point(0, 0)
         Me.Margin = New System.Windows.Forms.Padding(4)
         Me.Name = "F1_Clientes"
