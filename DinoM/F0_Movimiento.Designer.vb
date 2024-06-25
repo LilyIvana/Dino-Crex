@@ -806,7 +806,7 @@ Partial Class F0_Movimiento
         Me.swMostrar.Location = New System.Drawing.Point(433, 33)
         Me.swMostrar.Name = "swMostrar"
         Me.swMostrar.OffBackColor = System.Drawing.Color.Gold
-        Me.swMostrar.OffText = "MOSTRAR ÚLT. 100"
+        Me.swMostrar.OffText = "MOSTRAR ÚLT. 300"
         Me.swMostrar.OnBackColor = System.Drawing.Color.ForestGreen
         Me.swMostrar.OnText = "MOSTRAR TODOS"
         Me.swMostrar.Size = New System.Drawing.Size(190, 22)

@@ -1954,7 +1954,6 @@ Public Class F1_Productos
                 Return
             End If
         Next
-
     End Sub
     Public Function _fnSiguienteNumi()
         Dim dt As DataTable = CType(JGProdCombo.DataSource, DataTable)

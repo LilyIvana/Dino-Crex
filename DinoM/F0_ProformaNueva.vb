@@ -1295,7 +1295,7 @@ Public Class F0_ProformaNueva
 
                 CType(grdetalle.DataSource, DataTable).Rows(pos).Item("stock") = grProductos.GetValue("stock")
                 _prCalcularPrecioTotal()
-                '_DesHabilitarProductos()
+                _DesHabilitarProductos()
                 tbDescripcion.Text = grProductos.GetValue("yfcdprod1")
                 tbPrecio.Value = grProductos.GetValue("yhprecio")
 
@@ -1303,7 +1303,7 @@ Public Class F0_ProformaNueva
                 tbProducto.Text = CType(grdetalle.DataSource, DataTable).Rows(pos).Item("yfcbarra")
                 txtNumi.Text = CType(grdetalle.DataSource, DataTable).Rows(pos).Item("tbnumi")
                 VentanaCantidad(False)
-                'tbProducto.Focus()
+                tbProducto.Focus()
             End If
 
         Else
@@ -1322,7 +1322,7 @@ Public Class F0_ProformaNueva
                 CType(grdetalle.DataSource, DataTable).Rows(PosDataExistente).Item("stock") = grProductos.GetValue("stock")
 
                 _prCalcularPrecioTotal()
-                '_DesHabilitarProductos()
+                _DesHabilitarProductos()
 
 
                 tbDescripcion.Text = CType(grdetalle.DataSource, DataTable).Rows(PosDataExistente).Item("producto")
@@ -1332,7 +1332,7 @@ Public Class F0_ProformaNueva
                 tbProducto.Text = CType(grdetalle.DataSource, DataTable).Rows(PosDataExistente).Item("yfcbarra")
                 txtNumi.Text = CType(grdetalle.DataSource, DataTable).Rows(PosDataExistente).Item("tbnumi")
                 VentanaCantidad(True)
-                'tbProducto.Focus()
+                tbProducto.Focus()
             End If
         End If
     End Sub
@@ -2262,11 +2262,11 @@ Public Class F0_ProformaNueva
                 CalcularDescuentos(fila(0).Item("tbty5prod"), Cantidad, fila(0).Item("tbpbas"), pos)
 
                 _prCalcularPrecioTotal()
-                'tbProducto.Focus()
-                grProductos.Focus()
-                grProductos.MoveTo(grProductos.FilterRow)
-                grProductos.FilterRow.GetClipString()
-                grProductos.Col = 2
+                tbProducto.Focus()
+                'grProductos.Focus()
+                'grProductos.MoveTo(grProductos.FilterRow)
+                'grProductos.FilterRow.GetClipString()
+                'grProductos.Col = 2
             Else
                 Dim lin As Integer = fila(0).Item("tbnumi")
                 Dim pos As Integer = -1
@@ -2293,10 +2293,10 @@ Public Class F0_ProformaNueva
 
             'ToastNotification.Show(Me, "Se procederá a eliminar el producto".ToUpper, My.Resources.WARNING, 1200, eToastGlowColor.Red, eToastPosition.TopCenter)
         End If
-        'tbProducto.Focus()
-        grProductos.Focus()
-        grProductos.MoveTo(grProductos.FilterRow)
-        grProductos.Col = 2
+        tbProducto.Focus()
+        'grProductos.Focus()
+        'grProductos.MoveTo(grProductos.FilterRow)
+        'grProductos.Col = 2
 
     End Sub
     Private Sub grdetalle_CellValueChanged(sender As Object, e As ColumnActionEventArgs) Handles grdetalle.CellValueChanged

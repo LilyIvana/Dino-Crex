@@ -31,12 +31,14 @@ Partial Class P_Acerca
         Me.OKButton = New System.Windows.Forms.Button()
         Me.TextBoxDescription = New System.Windows.Forms.TextBox()
         Me.LogoPictureBox = New System.Windows.Forms.PictureBox()
+        Me.Label5 = New System.Windows.Forms.Label()
         Me.Panel1.SuspendLayout()
         CType(Me.LogoPictureBox, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'Panel1
         '
+        Me.Panel1.Controls.Add(Me.Label5)
         Me.Panel1.Controls.Add(Me.Label4)
         Me.Panel1.Controls.Add(Me.Label3)
         Me.Panel1.Controls.Add(Me.Label2)
@@ -64,7 +66,7 @@ Partial Class P_Acerca
         '
         Me.Label3.AutoSize = True
         Me.Label3.Font = New System.Drawing.Font("Palatino Linotype", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label3.Location = New System.Drawing.Point(269, 232)
+        Me.Label3.Location = New System.Drawing.Point(269, 266)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(214, 22)
         Me.Label3.TabIndex = 8
@@ -78,7 +80,7 @@ Partial Class P_Acerca
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(159, 20)
         Me.Label2.TabIndex = 7
-        Me.Label2.Text = "Versión: 4.10.0.240625"
+        Me.Label2.Text = "Versión: 4.10.0.240626"
         '
         'Label1
         '
@@ -128,6 +130,16 @@ Partial Class P_Acerca
         Me.LogoPictureBox.TabIndex = 1
         Me.LogoPictureBox.TabStop = False
         '
+        'Label5
+        '
+        Me.Label5.AutoSize = True
+        Me.Label5.Font = New System.Drawing.Font("Palatino Linotype", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label5.Location = New System.Drawing.Point(244, 215)
+        Me.Label5.Name = "Label5"
+        Me.Label5.Size = New System.Drawing.Size(245, 20)
+        Me.Label5.TabIndex = 10
+        Me.Label5.Text = "Mejoras: Ing. Lilian Calvetty Michel"
+        '
         'P_Acerca
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -153,4 +165,5 @@ Partial Class P_Acerca
     Friend WithEvents Label1 As Label
     Friend WithEvents OKButton As Button
     Friend WithEvents TextBoxDescription As TextBox
+    Friend WithEvents Label5 As Label
 End Class

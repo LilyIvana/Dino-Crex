@@ -58,9 +58,6 @@ Public Class F0_Libreria
             btnEliminar.Visible = False
         End If
     End Sub
-    Public Sub _prCargarPrecios()
-
-    End Sub
 
     Private Sub _prCargarComboLibreria(mCombo As Janus.Windows.GridEX.EditControls.MultiColumnCombo)
         Dim dt As New DataTable
@@ -146,7 +143,6 @@ Public Class F0_Libreria
         Dim dt As New DataTable
         If (cbPrograma.SelectedIndex < 0 And cbCategoria.SelectedIndex < 0) Then
             Return
-
         End If
         dt = L_fnGeneralDetalleLibrerias(cbPrograma.Value, cbCategoria.Value)
         _prCargarIconDelete(dt)
@@ -160,34 +156,28 @@ Public Class F0_Libreria
             .Width = 100
             .Caption = "CODIGO"
             .Visible = False
-
         End With
         With grLibreria.RootTable.Columns("yccod2")
             .Width = 100
             .Caption = "CODIGO"
             .Visible = False
-
         End With
-
         With grLibreria.RootTable.Columns("yccod3")
             .Width = 90
             .Visible = True
             .Caption = "CODIGO"
         End With
-
         With grLibreria.RootTable.Columns("ycdes3")
             .Caption = "DESCRIPCION"
             .Width = 200
             .Visible = True
             .MaxLength = 40
-
         End With
         With grLibreria.RootTable.Columns("estado")
             .Width = 50
             .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Near
             .Visible = False
         End With
-
         If (_fnAccesible()) Then
             With grLibreria.RootTable.Columns("img")
                 .Width = 80
@@ -204,8 +194,6 @@ Public Class F0_Libreria
             End With
         End If
 
-
-
         With grLibreria
             .DefaultFilterRowComparison = FilterConditionOperator.Contains
             .FilterMode = FilterMode.Automatic
@@ -216,16 +204,12 @@ Public Class F0_Libreria
             .RowHeaders = InheritableBoolean.True
             'diseño de la grilla
             grLibreria.VisualStyle = VisualStyle.Office2007
-
         End With
-
-
     End Sub
 
     Public Function _fnAccesible()
         Return btnGrabar.Enabled = True
     End Function
-
 
     Public Function _prValidarCategoria() As Boolean
         Dim _ok As Boolean = True
@@ -263,12 +247,10 @@ Public Class F0_Libreria
 
     End Sub
 
-
-
 #End Region
 
 
-#Region "MEtodoso Formulario"
+#Region "Métodos Formulario"
     Private Sub F0_Precios_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         _IniciarTodo()
         _prInhabiliitar()
@@ -289,8 +271,6 @@ Public Class F0_Libreria
     End Sub
     Private Sub btnAgregar_Click(sender As Object, e As EventArgs)
         _prGrabarCategorias()
-
-
     End Sub
     Private Sub TextBox_KeyDown(sender As Object, e As KeyEventArgs)
         Dim tb As TextBoxX = CType(sender, TextBoxX)
@@ -325,14 +305,12 @@ Public Class F0_Libreria
         If (grabar) Then
             Dim img As Bitmap = New Bitmap(My.Resources.checked, 50, 50)
             ToastNotification.Show(Me, "categoria Grabado con Exito.".ToUpper,
-                                      img, 2000,
+                                      img, 2400,
                                       eToastGlowColor.Green,
                                       eToastPosition.TopCenter
                                       )
 
-
             _prInhabiliitar()
-
         Else
             Dim img As Bitmap = New Bitmap(My.Resources.cancel, 50, 50)
             ToastNotification.Show(Me, "La categoria no pudo ser insertado".ToUpper, img, 2000, eToastGlowColor.Red, eToastPosition.BottomCenter)
@@ -340,13 +318,10 @@ Public Class F0_Libreria
 
     End Sub
 
-
 #End Region
-
 
     Private Sub cbCategoria_ValueChanged(sender As Object, e As EventArgs) Handles cbCategoria.ValueChanged
         _prCargarTablaLibrerias()
-
     End Sub
 
     Private Sub cbPrograma_ValueChanged(sender As Object, e As EventArgs) Handles cbPrograma.ValueChanged
@@ -359,7 +334,7 @@ Public Class F0_Libreria
             Dim img As New Bitmap(My.Resources.delete, 28, 28)
             img.Save(Bin, Imaging.ImageFormat.Png)
             'a.yccod1 ,a.yccod2 ,a.yccod3  ,a.ycdes3,1 as estado,Cast(null as image) as img   from TY0031 as a
-            CType(grLibreria.DataSource, DataTable).Rows.Add(Str(cbPrograma.Value), Str(cbCategoria.Value), _fnSiguienteNumi() + 1, tblibreria.Text, 0, Bin.ToArray())
+            CType(grLibreria.DataSource, DataTable).Rows.Add((cbPrograma.Value).ToString, (cbCategoria.Value).ToString, _fnSiguienteNumi() + 1, tblibreria.Text, 0, Bin.ToArray())
             tblibreria.Clear()
             tblibreria.Focus()
 
@@ -378,11 +353,10 @@ Public Class F0_Libreria
         _Inter = _Inter + 1
         If _Inter = 1 Then
             Me.WindowState = FormWindowState.Normal
-
         Else
             Me.Opacity = 100
             Timer1.Enabled = False
         End If
-
     End Sub
+
 End Class

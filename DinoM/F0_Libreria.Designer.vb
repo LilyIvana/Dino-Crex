@@ -77,8 +77,8 @@ Partial Class F0_Libreria
         '
         'PanelSuperior
         '
-        Me.PanelSuperior.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
-        Me.PanelSuperior.Size = New System.Drawing.Size(1816, 89)
+        Me.PanelSuperior.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.PanelSuperior.Size = New System.Drawing.Size(1362, 72)
         Me.PanelSuperior.Style.Alignment = System.Drawing.StringAlignment.Center
         Me.PanelSuperior.Style.BackColor1.Color = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(45, Byte), Integer), CType(CType(150, Byte), Integer))
         Me.PanelSuperior.Style.BackColor2.Color = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(45, Byte), Integer), CType(CType(150, Byte), Integer))
@@ -95,9 +95,9 @@ Partial Class F0_Libreria
         '
         'PanelInferior
         '
-        Me.PanelInferior.Location = New System.Drawing.Point(0, 702)
-        Me.PanelInferior.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
-        Me.PanelInferior.Size = New System.Drawing.Size(1816, 48)
+        Me.PanelInferior.Location = New System.Drawing.Point(0, 570)
+        Me.PanelInferior.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.PanelInferior.Size = New System.Drawing.Size(1362, 39)
         Me.PanelInferior.Style.Alignment = System.Drawing.StringAlignment.Center
         Me.PanelInferior.Style.BackColor1.Color = System.Drawing.Color.Transparent
         Me.PanelInferior.Style.BackColor2.Color = System.Drawing.Color.Transparent
@@ -132,9 +132,9 @@ Partial Class F0_Libreria
         '
         'TxtNombreUsu
         '
-        Me.TxtNombreUsu.Margin = New System.Windows.Forms.Padding(5)
+        Me.TxtNombreUsu.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.TxtNombreUsu.ReadOnly = True
-        Me.TxtNombreUsu.Size = New System.Drawing.Size(179, 38)
+        Me.TxtNombreUsu.Size = New System.Drawing.Size(135, 32)
         Me.TxtNombreUsu.Text = "DEFAULT"
         '
         'btnSalir
@@ -150,19 +150,15 @@ Partial Class F0_Libreria
         'btnModificar
         '
         '
-        'btnNuevo
-        '
-        Me.btnNuevo.Visible = False
-        '
         'PanelToolBar2
         '
-        Me.PanelToolBar2.Location = New System.Drawing.Point(1709, 0)
-        Me.PanelToolBar2.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
+        Me.PanelToolBar2.Location = New System.Drawing.Point(1282, 0)
+        Me.PanelToolBar2.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         '
         'PanelPrincipal
         '
-        Me.PanelPrincipal.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
-        Me.PanelPrincipal.Size = New System.Drawing.Size(1816, 750)
+        Me.PanelPrincipal.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.PanelPrincipal.Size = New System.Drawing.Size(1362, 609)
         Me.PanelPrincipal.Controls.SetChildIndex(Me.PanelInferior, 0)
         Me.PanelPrincipal.Controls.SetChildIndex(Me.PanelUsuario, 0)
         Me.PanelPrincipal.Controls.SetChildIndex(Me.PanelSuperior, 0)
@@ -170,13 +166,12 @@ Partial Class F0_Libreria
         '
         'btnUltimo
         '
-        Me.btnUltimo.Location = New System.Drawing.Point(171, 0)
         Me.btnUltimo.Margin = New System.Windows.Forms.Padding(2)
         '
         'MPanelUserAct
         '
-        Me.MPanelUserAct.Location = New System.Drawing.Point(1549, 0)
-        Me.MPanelUserAct.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
+        Me.MPanelUserAct.Location = New System.Drawing.Point(1162, 0)
+        Me.MPanelUserAct.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         '
         'LblPaginacion
         '
@@ -188,25 +183,25 @@ Partial Class F0_Libreria
         '
         '
         Me.MRlAccion.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.MRlAccion.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
-        Me.MRlAccion.Size = New System.Drawing.Size(1208, 89)
+        Me.MRlAccion.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.MRlAccion.Size = New System.Drawing.Size(906, 72)
         '
         'PanelContent
         '
         Me.PanelContent.Controls.Add(Me.PanelPrecios)
-        Me.PanelContent.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
-        Me.PanelContent.Size = New System.Drawing.Size(1779, 613)
+        Me.PanelContent.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.PanelContent.Size = New System.Drawing.Size(1329, 498)
         '
         'Panel1
         '
         Me.Panel1.BackColor = System.Drawing.Color.White
-        Me.Panel1.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
-        Me.Panel1.Size = New System.Drawing.Size(1816, 613)
+        Me.Panel1.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.Panel1.Size = New System.Drawing.Size(1362, 498)
         '
         'MSuperTabControlPanel1
         '
-        Me.MSuperTabControlPanel1.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
-        Me.MSuperTabControlPanel1.Size = New System.Drawing.Size(1779, 613)
+        Me.MSuperTabControlPanel1.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.MSuperTabControlPanel1.Size = New System.Drawing.Size(1329, 498)
         '
         'MSuperTabControl
         '
@@ -223,14 +218,18 @@ Partial Class F0_Libreria
         Me.MSuperTabControl.ControlBox.MenuBox.Name = ""
         Me.MSuperTabControl.ControlBox.Name = ""
         Me.MSuperTabControl.ControlBox.SubItems.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.MSuperTabControl.ControlBox.MenuBox, Me.MSuperTabControl.ControlBox.CloseBox})
-        Me.MSuperTabControl.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
-        Me.MSuperTabControl.Size = New System.Drawing.Size(1816, 613)
+        Me.MSuperTabControl.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.MSuperTabControl.Size = New System.Drawing.Size(1362, 498)
         Me.MSuperTabControl.Controls.SetChildIndex(Me.MSuperTabControlPanel1, 0)
         '
         'PictureBox1
         '
-        Me.PictureBox1.Location = New System.Drawing.Point(1452, 0)
-        Me.PictureBox1.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
+        Me.PictureBox1.Location = New System.Drawing.Point(1089, 0)
+        Me.PictureBox1.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        '
+        'btnNuevo
+        '
+        Me.btnNuevo.Visible = False
         '
         'PanelPrecios
         '
@@ -240,9 +239,8 @@ Partial Class F0_Libreria
         Me.PanelPrecios.Controls.Add(Me.GroupPanel3)
         Me.PanelPrecios.Dock = System.Windows.Forms.DockStyle.Fill
         Me.PanelPrecios.Location = New System.Drawing.Point(0, 0)
-        Me.PanelPrecios.Margin = New System.Windows.Forms.Padding(4)
         Me.PanelPrecios.Name = "PanelPrecios"
-        Me.PanelPrecios.Size = New System.Drawing.Size(1779, 613)
+        Me.PanelPrecios.Size = New System.Drawing.Size(1329, 498)
         Me.PanelPrecios.TabIndex = 1
         '
         'GroupPanel4
@@ -253,10 +251,9 @@ Partial Class F0_Libreria
         Me.GroupPanel4.DisabledBackColor = System.Drawing.Color.Empty
         Me.GroupPanel4.Dock = System.Windows.Forms.DockStyle.Fill
         Me.GroupPanel4.Font = New System.Drawing.Font("Georgia", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.GroupPanel4.Location = New System.Drawing.Point(0, 153)
-        Me.GroupPanel4.Margin = New System.Windows.Forms.Padding(4)
+        Me.GroupPanel4.Location = New System.Drawing.Point(0, 124)
         Me.GroupPanel4.Name = "GroupPanel4"
-        Me.GroupPanel4.Size = New System.Drawing.Size(1779, 460)
+        Me.GroupPanel4.Size = New System.Drawing.Size(1329, 374)
         '
         '
         '
@@ -294,9 +291,8 @@ Partial Class F0_Libreria
         Me.Panel5.Controls.Add(Me.grLibreria)
         Me.Panel5.Dock = System.Windows.Forms.DockStyle.Fill
         Me.Panel5.Location = New System.Drawing.Point(0, 0)
-        Me.Panel5.Margin = New System.Windows.Forms.Padding(4)
         Me.Panel5.Name = "Panel5"
-        Me.Panel5.Size = New System.Drawing.Size(1773, 433)
+        Me.Panel5.Size = New System.Drawing.Size(1323, 351)
         Me.Panel5.TabIndex = 0
         '
         'grLibreria
@@ -305,11 +301,10 @@ Partial Class F0_Libreria
         Me.grLibreria.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.grLibreria.HeaderFormatStyle.Font = New System.Drawing.Font("Georgia", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.grLibreria.Location = New System.Drawing.Point(0, 0)
-        Me.grLibreria.Margin = New System.Windows.Forms.Padding(4)
         Me.grLibreria.Name = "grLibreria"
         Me.grLibreria.Office2007ColorScheme = Janus.Windows.GridEX.Office2007ColorScheme.Custom
         Me.grLibreria.Office2007CustomColor = System.Drawing.Color.DodgerBlue
-        Me.grLibreria.Size = New System.Drawing.Size(1773, 433)
+        Me.grLibreria.Size = New System.Drawing.Size(1323, 351)
         Me.grLibreria.TabIndex = 0
         Me.grLibreria.VisualStyle = Janus.Windows.GridEX.VisualStyle.Office2007
         '
@@ -322,9 +317,8 @@ Partial Class F0_Libreria
         Me.GroupPanel3.Dock = System.Windows.Forms.DockStyle.Top
         Me.GroupPanel3.Font = New System.Drawing.Font("Georgia", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GroupPanel3.Location = New System.Drawing.Point(0, 0)
-        Me.GroupPanel3.Margin = New System.Windows.Forms.Padding(4)
         Me.GroupPanel3.Name = "GroupPanel3"
-        Me.GroupPanel3.Size = New System.Drawing.Size(1779, 153)
+        Me.GroupPanel3.Size = New System.Drawing.Size(1329, 124)
         '
         '
         '
@@ -363,9 +357,8 @@ Partial Class F0_Libreria
         Me.Panel4.Controls.Add(Me.TableLayoutPanel1)
         Me.Panel4.Dock = System.Windows.Forms.DockStyle.Fill
         Me.Panel4.Location = New System.Drawing.Point(0, 0)
-        Me.Panel4.Margin = New System.Windows.Forms.Padding(4)
         Me.Panel4.Name = "Panel4"
-        Me.Panel4.Size = New System.Drawing.Size(1773, 126)
+        Me.Panel4.Size = New System.Drawing.Size(1323, 101)
         Me.Panel4.TabIndex = 0
         '
         'TableLayoutPanel1
@@ -378,11 +371,10 @@ Partial Class F0_Libreria
         Me.TableLayoutPanel1.Controls.Add(Me.Panel6, 1, 0)
         Me.TableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.TableLayoutPanel1.Location = New System.Drawing.Point(0, 0)
-        Me.TableLayoutPanel1.Margin = New System.Windows.Forms.Padding(4)
         Me.TableLayoutPanel1.Name = "TableLayoutPanel1"
         Me.TableLayoutPanel1.RowCount = 1
         Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
-        Me.TableLayoutPanel1.Size = New System.Drawing.Size(1773, 126)
+        Me.TableLayoutPanel1.Size = New System.Drawing.Size(1323, 101)
         Me.TableLayoutPanel1.TabIndex = 236
         '
         'Panel2
@@ -393,10 +385,9 @@ Partial Class F0_Libreria
         Me.Panel2.Controls.Add(Me.tblibreria)
         Me.Panel2.Controls.Add(Me.lblibreria)
         Me.Panel2.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.Panel2.Location = New System.Drawing.Point(4, 4)
-        Me.Panel2.Margin = New System.Windows.Forms.Padding(4)
+        Me.Panel2.Location = New System.Drawing.Point(3, 3)
         Me.Panel2.Name = "Panel2"
-        Me.Panel2.Size = New System.Drawing.Size(523, 118)
+        Me.Panel2.Size = New System.Drawing.Size(390, 95)
         Me.Panel2.TabIndex = 35
         '
         'btnAgregarlibreria
@@ -407,11 +398,10 @@ Partial Class F0_Libreria
         Me.btnAgregarlibreria.Image = Global.DinoM.My.Resources.Resources.plus
         Me.btnAgregarlibreria.ImageFixedSize = New System.Drawing.Size(35, 30)
         Me.btnAgregarlibreria.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top
-        Me.btnAgregarlibreria.Location = New System.Drawing.Point(336, 25)
-        Me.btnAgregarlibreria.Margin = New System.Windows.Forms.Padding(4)
+        Me.btnAgregarlibreria.Location = New System.Drawing.Point(252, 20)
         Me.btnAgregarlibreria.Name = "btnAgregarlibreria"
         Me.btnAgregarlibreria.Shape = New DevComponents.DotNetBar.RoundRectangleShapeDescriptor(8)
-        Me.btnAgregarlibreria.Size = New System.Drawing.Size(123, 63)
+        Me.btnAgregarlibreria.Size = New System.Drawing.Size(92, 51)
         Me.btnAgregarlibreria.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
         Me.btnAgregarlibreria.TabIndex = 245
         Me.btnAgregarlibreria.Text = "Agregar"
@@ -425,11 +415,10 @@ Partial Class F0_Libreria
         Me.tblibreria.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.tblibreria.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.tblibreria.ForeColor = System.Drawing.Color.FromArgb(CType(CType(45, Byte), Integer), CType(CType(59, Byte), Integer), CType(CType(66, Byte), Integer))
-        Me.tblibreria.Location = New System.Drawing.Point(107, 30)
-        Me.tblibreria.Margin = New System.Windows.Forms.Padding(4)
+        Me.tblibreria.Location = New System.Drawing.Point(80, 24)
         Me.tblibreria.Name = "tblibreria"
         Me.tblibreria.PreventEnterBeep = True
-        Me.tblibreria.Size = New System.Drawing.Size(221, 24)
+        Me.tblibreria.Size = New System.Drawing.Size(166, 21)
         Me.tblibreria.TabIndex = 241
         '
         'lblibreria
@@ -442,11 +431,10 @@ Partial Class F0_Libreria
         Me.lblibreria.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.lblibreria.Font = New System.Drawing.Font("Georgia", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblibreria.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(85, Byte), Integer), CType(CType(139, Byte), Integer))
-        Me.lblibreria.Location = New System.Drawing.Point(5, 31)
-        Me.lblibreria.Margin = New System.Windows.Forms.Padding(4)
+        Me.lblibreria.Location = New System.Drawing.Point(4, 25)
         Me.lblibreria.Name = "lblibreria"
         Me.lblibreria.SingleLineColor = System.Drawing.SystemColors.Control
-        Me.lblibreria.Size = New System.Drawing.Size(101, 20)
+        Me.lblibreria.Size = New System.Drawing.Size(81, 16)
         Me.lblibreria.TabIndex = 244
         Me.lblibreria.Text = "Descripción:"
         '
@@ -458,11 +446,10 @@ Partial Class F0_Libreria
         Me.Panel6.Controls.Add(Me.cbPrograma)
         Me.Panel6.Controls.Add(Me.lbgrupo2)
         Me.Panel6.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.Panel6.Location = New System.Drawing.Point(535, 4)
-        Me.Panel6.Margin = New System.Windows.Forms.Padding(4)
+        Me.Panel6.Location = New System.Drawing.Point(399, 3)
         Me.Panel6.Name = "Panel6"
-        Me.Panel6.Padding = New System.Windows.Forms.Padding(0, 25, 0, 0)
-        Me.Panel6.Size = New System.Drawing.Size(701, 118)
+        Me.Panel6.Padding = New System.Windows.Forms.Padding(0, 20, 0, 0)
+        Me.Panel6.Size = New System.Drawing.Size(523, 95)
         Me.Panel6.TabIndex = 34
         '
         'LabelX1
@@ -475,12 +462,11 @@ Partial Class F0_Libreria
         Me.LabelX1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.LabelX1.Font = New System.Drawing.Font("Georgia", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.LabelX1.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(85, Byte), Integer), CType(CType(139, Byte), Integer))
-        Me.LabelX1.Location = New System.Drawing.Point(1, 62)
-        Me.LabelX1.Margin = New System.Windows.Forms.Padding(4)
+        Me.LabelX1.Location = New System.Drawing.Point(1, 50)
         Me.LabelX1.Name = "LabelX1"
         Me.LabelX1.PaddingTop = 4
         Me.LabelX1.SingleLineColor = System.Drawing.SystemColors.Control
-        Me.LabelX1.Size = New System.Drawing.Size(82, 24)
+        Me.LabelX1.Size = New System.Drawing.Size(66, 20)
         Me.LabelX1.TabIndex = 34
         Me.LabelX1.Text = "Categoria:"
         '
@@ -491,14 +477,13 @@ Partial Class F0_Libreria
         cbCategoria_DesignTimeLayout.LayoutString = resources.GetString("cbCategoria_DesignTimeLayout.LayoutString")
         Me.cbCategoria.DesignTimeLayout = cbCategoria_DesignTimeLayout
         Me.cbCategoria.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.cbCategoria.Location = New System.Drawing.Point(91, 62)
-        Me.cbCategoria.Margin = New System.Windows.Forms.Padding(4)
+        Me.cbCategoria.Location = New System.Drawing.Point(68, 50)
         Me.cbCategoria.Name = "cbCategoria"
         Me.cbCategoria.Office2007ColorScheme = Janus.Windows.GridEX.Office2007ColorScheme.Custom
         Me.cbCategoria.Office2007CustomColor = System.Drawing.Color.DodgerBlue
         Me.cbCategoria.SelectedIndex = -1
         Me.cbCategoria.SelectedItem = Nothing
-        Me.cbCategoria.Size = New System.Drawing.Size(221, 24)
+        Me.cbCategoria.Size = New System.Drawing.Size(166, 21)
         Me.cbCategoria.TabIndex = 33
         Me.cbCategoria.VisualStyle = Janus.Windows.GridEX.VisualStyle.Office2007
         '
@@ -510,14 +495,13 @@ Partial Class F0_Libreria
         Me.cbPrograma.DesignTimeLayout = cbPrograma_DesignTimeLayout
         Me.cbPrograma.Dock = System.Windows.Forms.DockStyle.Fill
         Me.cbPrograma.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.cbPrograma.Location = New System.Drawing.Point(85, 25)
-        Me.cbPrograma.Margin = New System.Windows.Forms.Padding(4)
+        Me.cbPrograma.Location = New System.Drawing.Point(69, 20)
         Me.cbPrograma.Name = "cbPrograma"
         Me.cbPrograma.Office2007ColorScheme = Janus.Windows.GridEX.Office2007ColorScheme.Custom
         Me.cbPrograma.Office2007CustomColor = System.Drawing.Color.DodgerBlue
         Me.cbPrograma.SelectedIndex = -1
         Me.cbPrograma.SelectedItem = Nothing
-        Me.cbPrograma.Size = New System.Drawing.Size(616, 24)
+        Me.cbPrograma.Size = New System.Drawing.Size(454, 21)
         Me.cbPrograma.TabIndex = 31
         Me.cbPrograma.VisualStyle = Janus.Windows.GridEX.VisualStyle.Office2007
         '
@@ -532,12 +516,11 @@ Partial Class F0_Libreria
         Me.lbgrupo2.Dock = System.Windows.Forms.DockStyle.Left
         Me.lbgrupo2.Font = New System.Drawing.Font("Georgia", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lbgrupo2.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(85, Byte), Integer), CType(CType(139, Byte), Integer))
-        Me.lbgrupo2.Location = New System.Drawing.Point(0, 25)
-        Me.lbgrupo2.Margin = New System.Windows.Forms.Padding(4)
+        Me.lbgrupo2.Location = New System.Drawing.Point(0, 20)
         Me.lbgrupo2.Name = "lbgrupo2"
         Me.lbgrupo2.PaddingTop = 4
         Me.lbgrupo2.SingleLineColor = System.Drawing.SystemColors.Control
-        Me.lbgrupo2.Size = New System.Drawing.Size(85, 24)
+        Me.lbgrupo2.Size = New System.Drawing.Size(69, 20)
         Me.lbgrupo2.TabIndex = 32
         Me.lbgrupo2.Text = "Programa:"
         '
@@ -546,14 +529,14 @@ Partial Class F0_Libreria
         Me.msModulos.ImageScalingSize = New System.Drawing.Size(20, 20)
         Me.msModulos.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.SELECCIONARTODOSDELToolStripMenuItem})
         Me.msModulos.Name = "msModulos"
-        Me.msModulos.Size = New System.Drawing.Size(241, 40)
+        Me.msModulos.Size = New System.Drawing.Size(207, 40)
         '
         'SELECCIONARTODOSDELToolStripMenuItem
         '
         Me.SELECCIONARTODOSDELToolStripMenuItem.Image = Global.DinoM.My.Resources.Resources.trash2
         Me.SELECCIONARTODOSDELToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
         Me.SELECCIONARTODOSDELToolStripMenuItem.Name = "SELECCIONARTODOSDELToolStripMenuItem"
-        Me.SELECCIONARTODOSDELToolStripMenuItem.Size = New System.Drawing.Size(240, 36)
+        Me.SELECCIONARTODOSDELToolStripMenuItem.Size = New System.Drawing.Size(206, 36)
         Me.SELECCIONARTODOSDELToolStripMenuItem.Text = "ELIMINAR CATEGORIA"
         '
         'Timer1
@@ -563,11 +546,11 @@ Partial Class F0_Libreria
         '
         'F0_Libreria
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1816, 750)
+        Me.ClientSize = New System.Drawing.Size(1362, 609)
         Me.Location = New System.Drawing.Point(0, 0)
-        Me.Margin = New System.Windows.Forms.Padding(5)
+        Me.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.Name = "F0_Libreria"
         Me.Text = "F0_Precios"
         Me.Controls.SetChildIndex(Me.PanelPrincipal, 0)
