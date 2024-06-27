@@ -531,7 +531,6 @@ Public Class F0_ExpImpStockFisico
             .Width = 150
             .Visible = True
         End With
-
         With grDatos.RootTable.Columns("COD PROVEEDOR")
             .Caption = "COD PROVEEDOR"
             .Width = 120

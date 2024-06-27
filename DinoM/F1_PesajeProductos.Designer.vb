@@ -166,6 +166,9 @@ Partial Class F1_PesajeProductos
         'btnSalir
         '
         '
+        'btnGrabar
+        '
+        '
         'PanelToolBar2
         '
         Me.PanelToolBar2.Controls.Add(Me.LabelX20)
@@ -267,6 +270,14 @@ Partial Class F1_PesajeProductos
         'MPanelUserAct
         '
         Me.MPanelUserAct.Location = New System.Drawing.Point(1112, 0)
+        '
+        'MRlAccion
+        '
+        '
+        '
+        '
+        Me.MRlAccion.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.MRlAccion.Size = New System.Drawing.Size(486, 72)
         '
         'tbCodProd
         '

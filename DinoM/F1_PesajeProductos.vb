@@ -124,8 +124,8 @@ Public Class F1_PesajeProductos
     End Sub
 
     Public Overrides Sub _PMOLimpiar()
-        _PMOMostrarRegistro(JGrM_Buscador.RowCount - 1)
-
+        ''_PMOMostrarRegistro(JGrM_Buscador.RowCount - 1)
+        _PMOMostrarRegistro(0)
 
         tbCodigo.Clear()
         dtFecha.Value = Now.Date
@@ -822,4 +822,6 @@ Public Class F1_PesajeProductos
     Private Sub swMostrar_ValueChanged(sender As Object, e As EventArgs) Handles swMostrar.ValueChanged
         _prCargarPesaje()
     End Sub
+
+
 End Class
