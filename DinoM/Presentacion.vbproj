@@ -998,6 +998,12 @@
       <DependentUpon>R_FacturasAnuladas.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Reporte\R_ImpresionPrecios.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>R_ImpresionPrecios.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Reporte\R_MovimientoProdXpeso.vb">
       <DependentUpon>R_MovimientoProdXpeso.rpt</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -1887,6 +1893,10 @@
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>R_FacturasAnuladas.vb</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="Reporte\R_ImpresionPrecios.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>R_ImpresionPrecios.vb</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Reporte\R_MovimientoProdXpeso.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>R_MovimientoProdXpeso.vb</LastGenOutput>
@@ -2584,6 +2594,9 @@
     <None Include="Resources\Kardex2.png" />
     <None Include="Resources\Kardex3.png" />
     <None Include="Resources\Kardex1.png" />
+    <None Include="Resources\IMPRIMIR.png" />
+    <None Include="Resources\impresora2.png" />
+    <None Include="Resources\impresora3.png" />
     <Content Include="Resources\man.png" />
     <None Include="Resources\pdf.png" />
     <None Include="Resources\txt.png" />

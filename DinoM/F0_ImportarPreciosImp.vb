@@ -35,7 +35,7 @@ Public Class F0_ImportarPreciosImp
 #Region "MEtodos Privados"
     Private Sub _IniciarTodo()
         _prAsignarPermisos()
-        Me.Text = "IMPORTAR PRODUCTOS PARA IMPRIMIR PRECIOS"
+        Me.Text = "PRODUCTOS PARA IMPRIMIR PRECIOS"
 
         Dim blah As New Bitmap(New Bitmap(My.Resources.hojaruta), 20, 20)
         Dim ico As Icon = Icon.FromHandle(blah.GetHicon())
@@ -61,178 +61,7 @@ Public Class F0_ImportarPreciosImp
         End If
     End Sub
 
-    Public Sub _prCargarTabla(Usuario As String, fecha As String) ''Bandera = true si es que haiq cargar denuevo la tabla de Precio Bandera =false si solo cargar datos al Janus con el precio antepuesto
 
-        Dim datos As DataTable = L_fnListarConteoUsuario(Usuario, fecha)
-
-        If datos.Rows.Count > 0 Then
-
-            grDatos.BoundMode = Janus.Data.BoundMode.Bound
-            grDatos.DataSource = datos
-            grDatos.RetrieveStructure()
-
-            With grDatos.RootTable.Columns("ordenacion")
-                .Caption = "ORDENACIÓN"
-                .Width = 70
-                .Visible = True
-            End With
-            With grDatos.RootTable.Columns("codDynasys")
-                .Caption = "COD DYNASYS"
-                .Width = 100
-                .Visible = True
-            End With
-            With grDatos.RootTable.Columns("codDelta")
-                .Caption = "COD DELTA"
-                .Width = 100
-                .Visible = True
-            End With
-            With grDatos.RootTable.Columns("codBarra")
-                .Caption = "COD BARRAS"
-                .Width = 150
-                .Visible = True
-            End With
-            With grDatos.RootTable.Columns("codProv")
-                .Caption = "COD PROVEEDOR"
-                .Width = 120
-                .Visible = True
-            End With
-            With grDatos.RootTable.Columns("prod")
-                .Caption = "PRODUCTO"
-                .Width = 350
-                .Visible = True
-            End With
-            With grDatos.RootTable.Columns("prov")
-                .Caption = "PROVEEDOR"
-                .Width = 120
-                .Visible = True
-            End With
-            With grDatos.RootTable.Columns("icental")
-                .Caption = "ISLA CENTRAL"
-                .Width = 120
-                .Visible = True
-                .FormatString = "0.00"
-            End With
-            With grDatos.RootTable.Columns("imedia")
-                .Caption = "ISLA MEDIA"
-                .Width = 120
-                .Visible = True
-                .FormatString = "0.00"
-            End With
-            With grDatos.RootTable.Columns("ifinal")
-                .Caption = "ISLA FINAL"
-                .Width = 120
-                .Visible = True
-                .FormatString = "0.00"
-            End With
-            With grDatos.RootTable.Columns("refri")
-                .Caption = "REFRI"
-                .Width = 120
-                .Visible = True
-                .FormatString = "0.00"
-            End With
-            With grDatos.RootTable.Columns("rack")
-                .Caption = "RACK"
-                .Width = 120
-                .Visible = True
-                .FormatString = "0.00"
-            End With
-            With grDatos.RootTable.Columns("estan")
-                .Caption = "ESTAN"
-                .Width = 120
-                .Visible = True
-                .FormatString = "0.00"
-            End With
-            With grDatos.RootTable.Columns("paq")
-                .Caption = "PAQ"
-                .Width = 120
-                .Visible = True
-                .FormatString = "0.00"
-            End With
-            With grDatos.RootTable.Columns("canttotal")
-                .Caption = "TOTAL CANTIDAD"
-                .Width = 120
-                .Visible = True
-                .FormatString = "0.00"
-            End With
-            With grDatos.RootTable.Columns("cant1")
-                .Caption = "CANTIDAD1"
-                .Width = 120
-                .Visible = True
-                .FormatString = "0.00"
-            End With
-            With grDatos.RootTable.Columns("fecha1")
-                .Caption = "FECHA1"
-                .Width = 120
-                .Visible = True
-            End With
-            With grDatos.RootTable.Columns("cant2")
-                .Caption = "CANTIDAD2"
-                .Width = 120
-                .Visible = False
-                .FormatString = "0.00"
-            End With
-            With grDatos.RootTable.Columns("fecha2")
-                .Caption = "FECHA2"
-                .Width = 120
-                .Visible = True
-            End With
-            With grDatos.RootTable.Columns("cant3")
-                .Caption = "CANTIDAD3"
-                .Width = 120
-                .Visible = False
-                .FormatString = "0.00"
-            End With
-            With grDatos.RootTable.Columns("fecha3")
-                .Caption = "FECHA3"
-                .Width = 120
-                .Visible = True
-            End With
-            With grDatos.RootTable.Columns("cant4")
-                .Caption = "CANTIDAD4"
-                .Width = 120
-                .Visible = False
-                .FormatString = "0.00"
-            End With
-            With grDatos.RootTable.Columns("fecha4")
-                .Caption = "FECHA4"
-                .Width = 120
-                .Visible = True
-            End With
-            With grDatos.RootTable.Columns("responsable")
-                .Caption = "RESPONSABLE"
-                .Width = 120
-                .Visible = True
-            End With
-            With grDatos.RootTable.Columns("lado")
-                .Caption = "LADO"
-                .Width = 120
-                .Visible = True
-            End With
-
-
-            'Habilitar Filtradores
-            With grDatos
-                .GroupByBoxVisible = False
-                '.FilterRowFormatStyle.BackColor = Color.Blue
-                .DefaultFilterRowComparison = FilterConditionOperator.Contains
-                '.FilterMode = FilterMode.Automatic
-                .FilterRowUpdateMode = FilterRowUpdateMode.WhenValueChanges
-                .FilterMode = FilterMode.Automatic
-                'Diseño de la tabla
-                .VisualStyle = VisualStyle.Office2007
-                .SelectionMode = SelectionMode.SingleSelection
-                .AlternatingColors = True
-
-                .RecordNavigator = True
-                .RecordNavigatorText = "Datos"
-            End With
-
-        Else
-            grDatos.ClearStructure()
-            ToastNotification.Show(Me, "No existe datos de la fecha elegida para: ".ToUpper,
-                           My.Resources.WARNING, 5000, eToastGlowColor.Green, eToastPosition.TopCenter)
-        End If
-    End Sub
 
     Private Sub _prInhabiliitar()
 
@@ -374,7 +203,7 @@ Public Class F0_ImportarPreciosImp
                     Return
                 End If
 
-                _prCargarTabla("", "")
+                '_prCargarTabla("", "")
 
             End If
 
@@ -452,30 +281,38 @@ Public Class F0_ImportarPreciosImp
         grDatos.DataSource = dtImport
         grDatos.RetrieveStructure()
 
-        With grDatos.RootTable.Columns("COD DYNASYS")
+        With grDatos.RootTable.Columns("CODIGO DYNASYS")
             .Caption = "COD DYNASYS"
             .Width = 100
             .Visible = True
         End With
-        With grDatos.RootTable.Columns("COD DELTA")
+        With grDatos.RootTable.Columns("CODIGO CREX")
             .Caption = "COD DELTA"
             .Width = 100
             .Visible = True
         End With
-        With grDatos.RootTable.Columns("COD BARRAS")
-            .Caption = "COD BARRAS"
-            .Width = 150
+        With grDatos.RootTable.Columns("DETALLE")
+            .Caption = "DETALLE"
+            .Width = 450
             .Visible = True
         End With
-        With grDatos.RootTable.Columns("COD PROVEEDOR")
-            .Caption = "COD PROVEEDOR"
-            .Width = 120
+        With grDatos.RootTable.Columns("PRECIO A")
+            .Caption = "PRECIO A"
+            .Width = 100
             .Visible = True
+            .TextAlignment = TextAlignment.Far
         End With
-        With grDatos.RootTable.Columns("PRODUCTO")
-            .Caption = "PRODUCTO"
-            .Width = 350
+        With grDatos.RootTable.Columns("PRECIO B")
+            .Caption = "PRECIO B"
+            .Width = 100
             .Visible = True
+            .TextAlignment = TextAlignment.Far
+        End With
+        With grDatos.RootTable.Columns("PRECIO C")
+            .Caption = "PRECIO C"
+            .Width = 100
+            .Visible = True
+            .TextAlignment = TextAlignment.Far
         End With
 
         'Habilitar Filtradores
@@ -533,9 +370,11 @@ Public Class F0_ImportarPreciosImp
 
     Private Sub btnImprimir_Click(sender As Object, e As EventArgs) Handles btnImprimir.Click
         If grDatos.RowCount > 0 Then
+            For i = 0 To grDatos.RowCount - 1
 
+            Next
         Else
-            ToastNotification.Show(Me, "NO EXISTE DATOS PARA EXPORTAR",
+            ToastNotification.Show(Me, "NO EXISTE DATOS PARA IMPRIMIR",
                        My.Resources.WARNING, 2000,
                        eToastGlowColor.Red,
                        eToastPosition.TopCenter)

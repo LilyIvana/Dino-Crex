@@ -71,7 +71,7 @@ Partial Class P_Principal
         Me.btPventaMenorPcosto = New DevComponents.DotNetBar.Metro.MetroTileItem()
         Me.btRepClientesCel = New DevComponents.DotNetBar.Metro.MetroTileItem()
         Me.btConsultaPrecios = New DevComponents.DotNetBar.Metro.MetroTileItem()
-        Me.MetroTileItem16 = New DevComponents.DotNetBar.Metro.MetroTileItem()
+        Me.btImpresionPrecios = New DevComponents.DotNetBar.Metro.MetroTileItem()
         Me.btBitacora = New DevComponents.DotNetBar.Metro.MetroTileItem()
         Me.PictureBox4 = New System.Windows.Forms.PictureBox()
         Me.SideNavPanel5 = New DevComponents.DotNetBar.Controls.SideNavPanel()
@@ -535,7 +535,7 @@ Partial Class P_Principal
         Me.lbVersion.SingleLineColor = System.Drawing.Color.Transparent
         Me.lbVersion.Size = New System.Drawing.Size(127, 18)
         Me.lbVersion.TabIndex = 5
-        Me.lbVersion.Text = "Versión 4.10.1.240627"
+        Me.lbVersion.Text = "Versión 4.11.0.240716"
         Me.lbVersion.TextAlignment = System.Drawing.StringAlignment.Center
         '
         'SideNav1
@@ -588,7 +588,7 @@ Partial Class P_Principal
         Me.MetroTilePanel1.DragDropSupport = True
         Me.MetroTilePanel1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.MetroTilePanel1.ForeColor = System.Drawing.Color.White
-        Me.MetroTilePanel1.Items.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.btConfRoles, Me.btConfUsuarios, Me.btConfCliente, Me.btConfProducto, Me.btConfProductoConteo, Me.btConfProdConteoTodos, Me.btConfPrecio, Me.btConfLibreria, Me.btConfDosificacion, Me.btnCodControl, Me.btZonas1, Me.btBancos, Me.btServicios, Me.btConfDescuentos, Me.btConfDescuentosProveedor, Me.btConfDescuentosCajeros, Me.btConfPesaje, Me.btConfActPrecios, Me.btConfVerificarPCosto, Me.btPventaMenorPcosto, Me.btRepClientesCel, Me.btConsultaPrecios, Me.MetroTileItem16, Me.btBitacora})
+        Me.MetroTilePanel1.Items.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.btConfRoles, Me.btConfUsuarios, Me.btConfCliente, Me.btConfProducto, Me.btConfProductoConteo, Me.btConfProdConteoTodos, Me.btConfPrecio, Me.btConfLibreria, Me.btConfDosificacion, Me.btnCodControl, Me.btZonas1, Me.btBancos, Me.btServicios, Me.btConfDescuentos, Me.btConfDescuentosProveedor, Me.btConfDescuentosCajeros, Me.btConfPesaje, Me.btConfActPrecios, Me.btConfVerificarPCosto, Me.btPventaMenorPcosto, Me.btRepClientesCel, Me.btConsultaPrecios, Me.btImpresionPrecios, Me.btBitacora})
         Me.MetroTilePanel1.ItemSpacing = 10
         Me.MetroTilePanel1.Location = New System.Drawing.Point(0, 0)
         Me.MetroTilePanel1.MultiLine = True
@@ -985,26 +985,26 @@ Partial Class P_Principal
         Me.btConsultaPrecios.TileStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.btConsultaPrecios.TitleText = "CONSULTA PRECIOS"
         '
-        'MetroTileItem16
+        'btImpresionPrecios
         '
-        Me.MetroTileItem16.Image = Global.DinoM.My.Resources.Resources.printee
-        Me.MetroTileItem16.ImageTextAlignment = System.Drawing.ContentAlignment.MiddleCenter
-        Me.MetroTileItem16.ItemAlignment = DevComponents.DotNetBar.eItemAlignment.Center
-        Me.MetroTileItem16.Name = "MetroTileItem16"
-        Me.MetroTileItem16.SymbolColor = System.Drawing.Color.Empty
-        Me.MetroTileItem16.Text = "PESAJE DE PRODUCTOS"
-        Me.MetroTileItem16.TileColor = DevComponents.DotNetBar.Metro.eMetroTileColor.Teal
-        Me.MetroTileItem16.TileSize = New System.Drawing.Size(250, 135)
+        Me.btImpresionPrecios.Image = Global.DinoM.My.Resources.Resources.impresora2
+        Me.btImpresionPrecios.ImageTextAlignment = System.Drawing.ContentAlignment.MiddleCenter
+        Me.btImpresionPrecios.ItemAlignment = DevComponents.DotNetBar.eItemAlignment.Center
+        Me.btImpresionPrecios.Name = "btImpresionPrecios"
+        Me.btImpresionPrecios.SymbolColor = System.Drawing.Color.Empty
+        Me.btImpresionPrecios.Text = "IMPRESIÓN DE PRECIOS"
+        Me.btImpresionPrecios.TileColor = DevComponents.DotNetBar.Metro.eMetroTileColor.Teal
+        Me.btImpresionPrecios.TileSize = New System.Drawing.Size(250, 135)
         '
         '
         '
-        Me.MetroTileItem16.TileStyle.BackColor = System.Drawing.Color.Blue
-        Me.MetroTileItem16.TileStyle.BackColor2 = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(30, Byte), Integer), CType(CType(144, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.MetroTileItem16.TileStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.MetroTileItem16.TileStyle.Font = New System.Drawing.Font("Georgia", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.MetroTileItem16.TileStyle.TextLineAlignment = DevComponents.DotNetBar.eStyleTextAlignment.Far
-        Me.MetroTileItem16.TitleTextAlignment = System.Drawing.ContentAlignment.BottomCenter
-        Me.MetroTileItem16.TitleTextColor = System.Drawing.Color.Red
+        Me.btImpresionPrecios.TileStyle.BackColor = System.Drawing.Color.Blue
+        Me.btImpresionPrecios.TileStyle.BackColor2 = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(30, Byte), Integer), CType(CType(144, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.btImpresionPrecios.TileStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.btImpresionPrecios.TileStyle.Font = New System.Drawing.Font("Georgia", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btImpresionPrecios.TileStyle.TextLineAlignment = DevComponents.DotNetBar.eStyleTextAlignment.Far
+        Me.btImpresionPrecios.TitleTextAlignment = System.Drawing.ContentAlignment.BottomCenter
+        Me.btImpresionPrecios.TitleTextColor = System.Drawing.Color.Red
         '
         'btBitacora
         '
@@ -3465,6 +3465,6 @@ Partial Class P_Principal
     Public WithEvents MetroTileItem15 As DevComponents.DotNetBar.Metro.MetroTileItem
     Friend WithEvents btBitacora As DevComponents.DotNetBar.Metro.MetroTileItem
     Friend WithEvents btConsultaPrecios As DevComponents.DotNetBar.Metro.MetroTileItem
-    Friend WithEvents MetroTileItem16 As DevComponents.DotNetBar.Metro.MetroTileItem
+    Friend WithEvents btImpresionPrecios As DevComponents.DotNetBar.Metro.MetroTileItem
     Public WithEvents FP_INVENTARIO As DevComponents.DotNetBar.Controls.SideNavItem
 End Class

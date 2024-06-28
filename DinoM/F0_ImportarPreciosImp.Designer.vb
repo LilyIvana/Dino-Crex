@@ -245,9 +245,9 @@ Partial Class F0_ImportarPreciosImp
         Me.GroupPanel4.DisabledBackColor = System.Drawing.Color.Empty
         Me.GroupPanel4.Dock = System.Windows.Forms.DockStyle.Fill
         Me.GroupPanel4.Font = New System.Drawing.Font("Georgia", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.GroupPanel4.Location = New System.Drawing.Point(0, 60)
+        Me.GroupPanel4.Location = New System.Drawing.Point(0, 40)
         Me.GroupPanel4.Name = "GroupPanel4"
-        Me.GroupPanel4.Size = New System.Drawing.Size(1311, 490)
+        Me.GroupPanel4.Size = New System.Drawing.Size(1311, 510)
         '
         '
         '
@@ -286,7 +286,7 @@ Partial Class F0_ImportarPreciosImp
         Me.Panel5.Dock = System.Windows.Forms.DockStyle.Fill
         Me.Panel5.Location = New System.Drawing.Point(0, 0)
         Me.Panel5.Name = "Panel5"
-        Me.Panel5.Size = New System.Drawing.Size(1305, 467)
+        Me.Panel5.Size = New System.Drawing.Size(1305, 487)
         Me.Panel5.TabIndex = 0
         '
         'grDatos
@@ -298,7 +298,7 @@ Partial Class F0_ImportarPreciosImp
         Me.grDatos.Name = "grDatos"
         Me.grDatos.Office2007ColorScheme = Janus.Windows.GridEX.Office2007ColorScheme.Custom
         Me.grDatos.Office2007CustomColor = System.Drawing.Color.DodgerBlue
-        Me.grDatos.Size = New System.Drawing.Size(1305, 467)
+        Me.grDatos.Size = New System.Drawing.Size(1305, 487)
         Me.grDatos.TabIndex = 0
         Me.grDatos.VisualStyle = Janus.Windows.GridEX.VisualStyle.Office2007
         '
@@ -312,7 +312,7 @@ Partial Class F0_ImportarPreciosImp
         Me.GroupPanel3.Font = New System.Drawing.Font("Georgia", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GroupPanel3.Location = New System.Drawing.Point(0, 0)
         Me.GroupPanel3.Name = "GroupPanel3"
-        Me.GroupPanel3.Size = New System.Drawing.Size(1311, 60)
+        Me.GroupPanel3.Size = New System.Drawing.Size(1311, 40)
         '
         '
         '
@@ -343,6 +343,7 @@ Partial Class F0_ImportarPreciosImp
         Me.GroupPanel3.StyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.GroupPanel3.TabIndex = 0
         Me.GroupPanel3.Text = "FILTROS"
+        Me.GroupPanel3.Visible = False
         '
         'Panel4
         '
@@ -351,7 +352,7 @@ Partial Class F0_ImportarPreciosImp
         Me.Panel4.Dock = System.Windows.Forms.DockStyle.Fill
         Me.Panel4.Location = New System.Drawing.Point(0, 0)
         Me.Panel4.Name = "Panel4"
-        Me.Panel4.Size = New System.Drawing.Size(1305, 37)
+        Me.Panel4.Size = New System.Drawing.Size(1305, 17)
         Me.Panel4.TabIndex = 0
         '
         'Timer1
@@ -384,7 +385,7 @@ Partial Class F0_ImportarPreciosImp
         Me.Location = New System.Drawing.Point(0, 0)
         Me.Margin = New System.Windows.Forms.Padding(4)
         Me.Name = "F0_ImportarPreciosImp"
-        Me.Text = "F0_ImportarPreciosImpresión"
+        Me.Text = "F0_ProductosParaImprimirPrecios"
         Me.Controls.SetChildIndex(Me.PanelPrincipal, 0)
         Me.PanelSuperior.ResumeLayout(False)
         Me.PanelInferior.ResumeLayout(False)

@@ -1354,6 +1354,13 @@ Public Class P_Principal
         frm.Show()
     End Sub
 
+    Private Sub btImpresionPrecios_Click(sender As Object, e As EventArgs) Handles btImpresionPrecios.Click
+        Dim frm As New F0_ImportarPreciosImp
+        frm._nameButton = btImpresionPrecios.Name
+        frm._modulo = FP_Configuracion
+        frm.Show()
+    End Sub
+
 
     'Private Sub btnCredPagoCliente_Click(sender As Object, e As EventArgs) Handles btnCredPagoCliente.Click
     '    SideNav1.IsMenuExpanded = False
