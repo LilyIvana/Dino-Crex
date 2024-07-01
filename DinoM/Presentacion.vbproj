@@ -998,10 +998,22 @@
       <DependentUpon>R_FacturasAnuladas.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Reporte\R_ImpresionPrecios.vb">
+    <Compile Include="Reporte\R_ImpresionPrecios3.vb">
+      <DependentUpon>R_ImpresionPrecios3.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Reporte\R_ImpresionPrecios2.vb">
+      <DependentUpon>R_ImpresionPrecios2.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Reporte\R_ImpresionPrecios1.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>R_ImpresionPrecios.rpt</DependentUpon>
+      <DependentUpon>R_ImpresionPrecios1.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Reporte\R_MovimientoProdXpeso.vb">
@@ -1893,9 +1905,17 @@
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>R_FacturasAnuladas.vb</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Reporte\R_ImpresionPrecios.rpt">
+    <EmbeddedResource Include="Reporte\R_ImpresionPrecios3.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>R_ImpresionPrecios.vb</LastGenOutput>
+      <LastGenOutput>R_ImpresionPrecios3.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reporte\R_ImpresionPrecios2.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>R_ImpresionPrecios2.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reporte\R_ImpresionPrecios1.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>R_ImpresionPrecios1.vb</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Reporte\R_MovimientoProdXpeso.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>

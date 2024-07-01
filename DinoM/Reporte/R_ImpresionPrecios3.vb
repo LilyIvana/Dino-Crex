@@ -18,7 +18,7 @@ Imports System
 Imports System.ComponentModel
 
 
-Public Class R_ImpresionPrecios
+Public Class R_ImpresionPrecios3
     Inherits ReportClass
     
     Public Sub New()
@@ -27,7 +27,7 @@ Public Class R_ImpresionPrecios
     
     Public Overrides Property ResourceName() As String
         Get
-            Return "R_ImpresionPrecios.rpt"
+            Return "R_ImpresionPrecios3.rpt"
         End Get
         Set
             'Do nothing
@@ -45,7 +45,7 @@ Public Class R_ImpresionPrecios
     
     Public Overrides Property FullResourceName() As String
         Get
-            Return "DinoM.R_ImpresionPrecios.rpt"
+            Return "DinoM.R_ImpresionPrecios3.rpt"
         End Get
         Set
             'Do nothing
@@ -94,7 +94,7 @@ Public Class R_ImpresionPrecios
 End Class
 
 <System.Drawing.ToolboxBitmapAttribute(GetType(CrystalDecisions.[Shared].ExportOptions), "report.bmp")>  _
-Public Class CachedR_ImpresionPrecios
+Public Class CachedR_ImpresionPrecios3
     Inherits Component
     Implements ICachedReport
     
@@ -136,7 +136,7 @@ Public Class CachedR_ImpresionPrecios
     End Property
     
     Public Overridable Function CreateReport() As CrystalDecisions.CrystalReports.Engine.ReportDocument Implements CrystalDecisions.ReportSource.ICachedReport.CreateReport
-        Dim rpt As R_ImpresionPrecios = New R_ImpresionPrecios()
+        Dim rpt As R_ImpresionPrecios3 = New R_ImpresionPrecios3()
         rpt.Site = Me.Site
         Return rpt
     End Function

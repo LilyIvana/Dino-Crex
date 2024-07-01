@@ -14,6 +14,7 @@ Imports DevComponents.DotNetBar.Controls
 Imports System.Threading
 Imports System.Drawing.Text
 Imports System.Data.OleDb
+Imports System.Drawing.Printing
 
 Imports System.Reflection
 Imports System.Runtime.InteropServices
@@ -371,16 +372,71 @@ Public Class F0_ImportarPreciosImp
     Private Sub btnImprimir_Click(sender As Object, e As EventArgs) Handles btnImprimir.Click
         If grDatos.RowCount > 0 Then
             For i = 0 To grDatos.RowCount - 1
+                Dim Cod As String = (CType(grDatos.DataSource, DataTable).Rows(i).Item("CODIGO DYNASYS")).ToString
+                Dim dt = L_fnImpresionPreciosUno(Cod)
+                Dim Ini As Integer = dt.Rows(0).Item("CantIni")
+                Dim Fin As Integer = dt.Rows(0).Item("CantFin")
 
+                If Ini = 0 And Fin = 0 Then
+                    P_GenerarReporte(3, dt) ''Imprime 1 precio
+                ElseIf Ini = Fin Then
+                    P_GenerarReporte(2, dt) ''Imprime 2 precios
+                ElseIf Ini <> Fin Then
+                    P_GenerarReporte(1, dt) ''Imprime 3 precios
+                End If
             Next
+            L_fnBotonImprimir(gs_VersionSistema, gs_IPMaquina, gs_UsuMaquina, 0, "IMPRESION DE PRECIOS", "IMPRESIÓN DE PRECIOS")
         Else
             ToastNotification.Show(Me, "NO EXISTE DATOS PARA IMPRIMIR",
-                       My.Resources.WARNING, 2000,
+                       My.Resources.WARNING, 2300,
                        eToastGlowColor.Red,
                        eToastPosition.TopCenter)
         End If
-    End Sub
 
+    End Sub
+    Private Sub P_GenerarReporte(tipoRep As Integer, dt As DataTable)
+        Try
+            Dim _Ds3 = L_ObtenerRutaImpresora("5") ' Datos de Impresion de Precios
+
+            If Not IsNothing(P_Global.Visualizador) Then
+                P_Global.Visualizador.Close()
+            End If
+            Dim objrep
+            P_Global.Visualizador = New Visualizador
+            If tipoRep = 1 Then
+                objrep = New R_ImpresionPrecios1
+            ElseIf tipoRep = 2 Then
+                objrep = New R_ImpresionPrecios2
+            ElseIf tipoRep = 3 Then
+                objrep = New R_ImpresionPrecios3
+            End If
+
+
+            objrep.SetDataSource(dt)
+
+
+            If (_Ds3.Tables(0).Rows(0).Item("cbvp")) Then 'Vista Previa de la Ventana de Vizualización 1 = True 0 = False
+                P_Global.Visualizador.CrGeneral.ReportSource = objrep
+                P_Global.Visualizador.ShowDialog()
+                P_Global.Visualizador.BringToFront()
+            Else
+                Dim pd As New PrintDocument()
+                pd.PrinterSettings.PrinterName = _Ds3.Tables(0).Rows(0).Item("cbrut").ToString
+                If (Not pd.PrinterSettings.IsValid) Then
+                    ToastNotification.Show(Me, "La Impresora ".ToUpper + _Ds3.Tables(0).Rows(0).Item("cbrut").ToString + Chr(13) + "No Existe".ToUpper,
+                                       My.Resources.WARNING, 4 * 1000,
+                                       eToastGlowColor.Blue, eToastPosition.BottomRight)
+                Else
+                    objrep.PrintOptions.PrinterName = _Ds3.Tables(0).Rows(0).Item("cbrut").ToString
+                    objrep.PrintOptions.PaperSource = 2
+                    objrep.PrintToPrinter(1, True, 0, 0)
+                End If
+            End If
+
+        Catch ex As Exception
+            MostrarMensajeError(ex.Message)
+        End Try
+    End Sub
     Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
         _Inter = _Inter + 1
         If _Inter = 1 Then

@@ -9046,4 +9046,31 @@ Public Class AccesoLogica
     End Function
 #End Region
 
+#Region "IMPRESIÓN DE PRECIOS"
+    Public Shared Function L_fnImpresionPrecios() As DataTable
+        Dim _Tabla As DataTable
+
+        Dim _listParam As New List(Of Datos.DParametro)
+
+        _listParam.Add(New Datos.DParametro("@tipo", 1))
+        _listParam.Add(New Datos.DParametro("@yguact", L_Usuario))
+        _Tabla = D_ProcedimientoConParam("Proc_Precios", _listParam)
+
+        Return _Tabla
+    End Function
+    Public Shared Function L_fnImpresionPreciosUno(codProd As String) As DataTable
+        Dim _Tabla As DataTable
+
+        Dim _listParam As New List(Of Datos.DParametro)
+
+        _listParam.Add(New Datos.DParametro("@tipo", 2))
+        _listParam.Add(New Datos.DParametro("@codProd", codProd))
+        _listParam.Add(New Datos.DParametro("@yguact", L_Usuario))
+        _Tabla = D_ProcedimientoConParam("Proc_Precios", _listParam)
+
+        Return _Tabla
+    End Function
+
+#End Region
+
 End Class
