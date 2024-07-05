@@ -386,5 +386,8 @@ Public Class ModeloF1
         _PMUltimoRegistro()
     End Sub
 
+
+
+
 #End Region
 End Class

@@ -503,9 +503,9 @@ Partial Class ModeloF1
         '
         Me.PictureBox1.BackColor = System.Drawing.Color.Transparent
         Me.PictureBox1.Dock = System.Windows.Forms.DockStyle.Right
-        Me.PictureBox1.Location = New System.Drawing.Point(974, 0)
+        Me.PictureBox1.Location = New System.Drawing.Point(1074, 0)
         Me.PictureBox1.Name = "PictureBox1"
-        Me.PictureBox1.Size = New System.Drawing.Size(264, 72)
+        Me.PictureBox1.Size = New System.Drawing.Size(164, 72)
         Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
         Me.PictureBox1.TabIndex = 8
         Me.PictureBox1.TabStop = False

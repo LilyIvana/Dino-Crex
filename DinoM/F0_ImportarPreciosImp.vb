@@ -63,155 +63,10 @@ Public Class F0_ImportarPreciosImp
     End Sub
 
 
-
-    Private Sub _prInhabiliitar()
-
-        btnModificar.Enabled = True
-        btnGrabar.Enabled = False
-        '_prCargarTabla(True)
-
-    End Sub
-    Private Sub _prhabilitar()
-        btnGrabar.Enabled = True
-    End Sub
-
     Public Function _fnAccesible()
         Return btnGrabar.Enabled = True
     End Function
 
-    Public Function _fnSiguienteNumero(num As Integer)
-        Return num + 1
-    End Function
-
-
-    Public Function P_ExportarExcel(_ruta As String, nombre As String) As Boolean
-        Dim _ubicacion As String
-        'Dim _directorio As New FolderBrowserDialog
-
-        If (1 = 1) Then 'If(_directorio.ShowDialog = Windows.Forms.DialogResult.OK) Then
-            '_ubicacion = _directorio.SelectedPath
-            _ubicacion = _ruta
-            Try
-                grDatos.HeaderFormatStyle.IsReadOnly()
-                Dim _stream As Stream
-                Dim _escritor As StreamWriter
-                Dim _fila As Integer = grDatos.GetRows.Length
-                Dim _columna As Integer = grDatos.RootTable.Columns.Count
-                Dim _archivo As String = _ubicacion & "\ListaConteo_" & nombre & "_" & Now.Date.Day &
-                    "." & Now.Date.Month & "." & Now.Date.Year & "_" & Now.Hour & "." & Now.Minute & "." & Now.Second & ".csv"
-                '"." & Now.Date.Month & "." & Now.Date.Year & "_" & Now.Hour & "." & Now.Minute & "." & Now.Second & ".csv"
-                Dim _linea As String = ""
-                Dim _filadata = 0, columndata As Int32 = 0
-                File.Delete(_archivo)
-                _stream = File.OpenWrite(_archivo)
-                _escritor = New StreamWriter(_stream, System.Text.Encoding.UTF8)
-
-                For Each _col As GridEXColumn In grDatos.RootTable.Columns
-                    If (_col.Visible) Then
-                        _linea = _linea & _col.Caption & ";"
-                    End If
-                Next
-                _linea = Mid(CStr(_linea), 1, _linea.Length - 1)
-                _escritor.WriteLine(_linea)
-                _linea = Nothing
-
-                For Each _fil As GridEXRow In grDatos.GetRows
-                    For Each _col As GridEXColumn In grDatos.RootTable.Columns
-                        If (_col.Visible) Then
-                            Dim data As String = CStr(_fil.Cells(_col.Key).Value)
-                            data = data.Replace(";", ",")
-                            _linea = _linea & data & ";"
-                        End If
-                    Next
-                    _linea = Mid(CStr(_linea), 1, _linea.Length - 1)
-                    _escritor.WriteLine(_linea)
-                    _linea = Nothing
-
-                Next
-                _escritor.Close()
-
-                Try
-                    Dim ef = New Efecto
-                    ef._archivo = _archivo
-
-                    ef.tipo = 1
-                    ef.Context = "Su archivo ha sido Guardado en la ruta: " + _archivo + vbLf + "DESEA ABRIR EL ARCHIVO?"
-                    ef.Header = "PREGUNTA"
-                    ef.ShowDialog()
-                    Dim bandera As Boolean = False
-                    bandera = ef.band
-                    If (bandera = True) Then
-                        Process.Start(_archivo)
-                    End If
-
-                    Return True
-                Catch ex As Exception
-                    MsgBox(ex.Message)
-                    Return False
-                End Try
-            Catch ex As Exception
-                MsgBox(ex.Message)
-                Return False
-            End Try
-        End If
-        Return False
-    End Function
-    Private Sub _prCrearCarpetaReportes()
-
-        Dim rutaDestino As String = RutaGlobal + "\Reporte\Reporte Precios\"
-
-        If System.IO.Directory.Exists(RutaGlobal + "\Reporte\Reporte Precios\") = False Then
-            If System.IO.Directory.Exists(RutaGlobal + "\Reporte") = False Then
-                System.IO.Directory.CreateDirectory(RutaGlobal + "\Reporte")
-                If System.IO.Directory.Exists(RutaGlobal + "\Reporte\Reporte Precios") = False Then
-                    System.IO.Directory.CreateDirectory(RutaGlobal + "\Reporte\Reporte Precios")
-                End If
-            Else
-                If System.IO.Directory.Exists(RutaGlobal + "\Reporte\Reporte Precios") = False Then
-                    System.IO.Directory.CreateDirectory(RutaGlobal + "\Reporte\Reporte Precios")
-
-                End If
-            End If
-        End If
-    End Sub
-
-    Private Sub Buscador()
-        Try
-            Dim dt As DataTable
-            dt = L_fnMostrarUsuariosConteo()
-
-            Dim listEstCeldas As New List(Of Modelo.Celda)
-            listEstCeldas.Add(New Modelo.Celda("ydnumi,", True, "COD USUARIO", 120))
-            listEstCeldas.Add(New Modelo.Celda("yduser", True, "USUARIO", 250))
-            listEstCeldas.Add(New Modelo.Celda("ydest", False, "ESTADO", 50))
-
-            Dim ef = New Efecto
-            ef.tipo = 3
-            ef.dt = dt
-            ef.SeleclCol = 1
-            ef.listEstCeldas = listEstCeldas
-            ef.alto = 150
-            ef.ancho = 200
-            ef.Context = "Seleccione Usuario".ToUpper
-            ef.SeleclCol = 1
-            ef.ShowDialog()
-            Dim bandera As Boolean = False
-            bandera = ef.band
-            If (bandera = True) Then
-                Dim Row As Janus.Windows.GridEX.GridEXRow = ef.Row
-                If (IsNothing(Row)) Then
-
-                    Return
-                End If
-
-                '_prCargarTabla("", "")
-
-            End If
-
-        Catch ex As Exception
-            MostrarMensajeError(ex.Message)
-        End Try
-    End Sub
     Private Sub MP_ImportarExcel()
         Try
             Dim folder As String = ""
@@ -260,7 +115,7 @@ Public Class F0_ImportarPreciosImp
             If ProductosImport.Rows.Count > 0 Then
                 If ProductosImport.Columns.Count = 6 Then
                     _prCargarTablaImport(ProductosImport)
-
+                    L_fnBotonImportar(gs_VersionSistema, gs_IPMaquina, gs_UsuMaquina, 0, "IMPRESION DE PRECIOS", "IMPRESIÓN DE PRECIOS")
                 Else
                     ProductosImport.Reset()
                     ToastNotification.Show(Me, "No puede importar porque el excel tiene que tener 6 columnas, usted modificó el excel, corrija por favor".ToUpper,
@@ -343,31 +198,15 @@ Public Class F0_ImportarPreciosImp
                                eToastPosition.TopCenter)
     End Sub
 
-
 #End Region
 
 
 #Region "Métodos Formulario"
     Private Sub F0_Precios_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         _IniciarTodo()
-        _prInhabiliitar()
-    End Sub
-    Private Sub btnModificar_Click(sender As Object, e As EventArgs) Handles btnModificar.Click
-        _prhabilitar()
-        btnModificar.Enabled = False
-    End Sub
-
-    Private Sub btnSalir_Click(sender As Object, e As EventArgs) Handles btnSalir.Click
-        If (_fnAccesible()) Then
-            _prInhabiliitar()
-        Else
-            _modulo.Select()
-            Me.Close()
-        End If
     End Sub
 
 #End Region
-
 
     Private Sub btnImprimir_Click(sender As Object, e As EventArgs) Handles btnImprimir.Click
         If grDatos.RowCount > 0 Then
@@ -378,11 +217,11 @@ Public Class F0_ImportarPreciosImp
                 Dim Fin As Integer = dt.Rows(0).Item("CantFin")
 
                 If Ini = 0 And Fin = 0 Then
-                    P_GenerarReporte(3, dt) ''Imprime 1 precio
+                    P_GenerarReporte(3, dt, "5", False) ''Imprime 1 precio
                 ElseIf Ini = Fin Then
-                    P_GenerarReporte(2, dt) ''Imprime 2 precios
+                    P_GenerarReporte(2, dt, "5", False) ''Imprime 2 precios
                 ElseIf Ini <> Fin Then
-                    P_GenerarReporte(1, dt) ''Imprime 3 precios
+                    P_GenerarReporte(1, dt, "5", False) ''Imprime 3 precios
                 End If
             Next
             L_fnBotonImprimir(gs_VersionSistema, gs_IPMaquina, gs_UsuMaquina, 0, "IMPRESION DE PRECIOS", "IMPRESIÓN DE PRECIOS")
@@ -392,30 +231,34 @@ Public Class F0_ImportarPreciosImp
                        eToastGlowColor.Red,
                        eToastPosition.TopCenter)
         End If
-
     End Sub
-    Private Sub P_GenerarReporte(tipoRep As Integer, dt As DataTable)
+    Public Sub P_GenerarReporte(tipoRep As Integer, dt As DataTable, nroImp As String, visualiza As Boolean)
         Try
-            Dim _Ds3 = L_ObtenerRutaImpresora("5") ' Datos de Impresion de Precios
-
+            Dim _Ds3 = L_ObtenerRutaImpresora(nroImp) ' Datos de Impresión de Precios
+            Dim visualizar As Boolean
             If Not IsNothing(P_Global.Visualizador) Then
                 P_Global.Visualizador.Close()
             End If
             Dim objrep
             P_Global.Visualizador = New Visualizador
-            If tipoRep = 1 Then
+            If tipoRep = 1 Then ''Imprime 3 precios
                 objrep = New R_ImpresionPrecios1
-            ElseIf tipoRep = 2 Then
+            ElseIf tipoRep = 2 Then ''Imprime 2 precios
                 objrep = New R_ImpresionPrecios2
-            ElseIf tipoRep = 3 Then
+            ElseIf tipoRep = 3 Then ''Imprime 1 precio
                 objrep = New R_ImpresionPrecios3
             End If
 
-
             objrep.SetDataSource(dt)
 
+            If visualiza Then
+                visualizar = True
+            Else
+                visualizar = _Ds3.Tables(0).Rows(0).Item("cbvp")
+            End If
 
-            If (_Ds3.Tables(0).Rows(0).Item("cbvp")) Then 'Vista Previa de la Ventana de Vizualización 1 = True 0 = False
+
+            If (visualizar) Then 'Vista Previa de la Ventana de Vizualización 1 = True 0 = False
                 P_Global.Visualizador.CrGeneral.ReportSource = objrep
                 P_Global.Visualizador.ShowDialog()
                 P_Global.Visualizador.BringToFront()
@@ -447,55 +290,11 @@ Public Class F0_ImportarPreciosImp
         End If
     End Sub
 
-    Private Sub btnSearch_Click(sender As Object, e As EventArgs)
-        Buscador()
-    End Sub
-
     Private Sub btnImportar_Click(sender As Object, e As EventArgs) Handles btnImportar.Click
         ProductosImport.Reset()
         ProductosImport.Clear()
         MP_ImportarExcel()
         MP_PasarDatos()
-    End Sub
-
-    Private Sub btnGrabarImp_Click(sender As Object, e As EventArgs)
-        If ProductosImport.Rows.Count > 0 Then
-
-            Dim respons As String = ProductosImport.Rows(0).Item("RESPONSABLE").ToString
-            Dim fecha As Date = Now.Date.ToString("dd/MM/yyyy")
-            Dim dtVerificar = L_fnVerificarGrabadoConteo(respons, fecha)
-            If dtVerificar.Rows.Count > 0 Then
-                ToastNotification.Show(Me, "YA EXISTE EL CONTEO DE HOY, NO PUEDE GRABAR 2 VECES!!!",
-              My.Resources.WARNING, 4000,
-              eToastGlowColor.Red,
-              eToastPosition.BottomCenter)
-
-                grDatos.ClearStructure()
-                Exit Sub
-            Else
-                Dim importar As Boolean = L_fnImportarInventarioFisico(ProductosImport, gs_VersionSistema, gs_IPMaquina, gs_UsuMaquina)
-                If importar Then
-
-                    ToastNotification.Show(Me, "IMPORTACIÓN DEL INVENTARIO FÍSICO EXITOSA!!! ",
-                              My.Resources.OK, 5000,
-                              eToastGlowColor.Green,
-                              eToastPosition.BottomCenter)
-
-                Else
-                    ToastNotification.Show(Me, "FALLÓ LA IMPORTACIÓN DEL INVENTARIO FÍSICO!!!",
-                              My.Resources.WARNING, 4000,
-                              eToastGlowColor.Red,
-                              eToastPosition.BottomCenter)
-                End If
-            End If
-
-        Else
-            ToastNotification.Show(Me, "NO PUEDE GRABAR SI NO HAY DATOS EN LA GRILLA!!!",
-                             My.Resources.WARNING, 4000,
-                             eToastGlowColor.Red,
-                             eToastPosition.TopCenter)
-        End If
-
     End Sub
 
     Private Sub grDatos_EditingCell(sender As Object, e As EditingCellEventArgs) Handles grDatos.EditingCell

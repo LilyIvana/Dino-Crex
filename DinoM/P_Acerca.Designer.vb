@@ -24,6 +24,7 @@ Partial Class P_Acerca
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(P_Acerca))
         Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.Label5 = New System.Windows.Forms.Label()
         Me.Label4 = New System.Windows.Forms.Label()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
@@ -31,7 +32,6 @@ Partial Class P_Acerca
         Me.OKButton = New System.Windows.Forms.Button()
         Me.TextBoxDescription = New System.Windows.Forms.TextBox()
         Me.LogoPictureBox = New System.Windows.Forms.PictureBox()
-        Me.Label5 = New System.Windows.Forms.Label()
         Me.Panel1.SuspendLayout()
         CType(Me.LogoPictureBox, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -51,6 +51,16 @@ Partial Class P_Acerca
         Me.Panel1.Name = "Panel1"
         Me.Panel1.Size = New System.Drawing.Size(524, 360)
         Me.Panel1.TabIndex = 0
+        '
+        'Label5
+        '
+        Me.Label5.AutoSize = True
+        Me.Label5.Font = New System.Drawing.Font("Palatino Linotype", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label5.Location = New System.Drawing.Point(244, 215)
+        Me.Label5.Name = "Label5"
+        Me.Label5.Size = New System.Drawing.Size(245, 20)
+        Me.Label5.TabIndex = 10
+        Me.Label5.Text = "Mejoras: Ing. Lilian Calvetty Michel"
         '
         'Label4
         '
@@ -80,7 +90,7 @@ Partial Class P_Acerca
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(159, 20)
         Me.Label2.TabIndex = 7
-        Me.Label2.Text = "Versión: 4.10.0.240626"
+        Me.Label2.Text = "Versión: 4.10.2.240709"
         '
         'Label1
         '
@@ -129,16 +139,6 @@ Partial Class P_Acerca
         Me.LogoPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
         Me.LogoPictureBox.TabIndex = 1
         Me.LogoPictureBox.TabStop = False
-        '
-        'Label5
-        '
-        Me.Label5.AutoSize = True
-        Me.Label5.Font = New System.Drawing.Font("Palatino Linotype", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label5.Location = New System.Drawing.Point(244, 215)
-        Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(245, 20)
-        Me.Label5.TabIndex = 10
-        Me.Label5.Text = "Mejoras: Ing. Lilian Calvetty Michel"
         '
         'P_Acerca
         '

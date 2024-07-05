@@ -4274,32 +4274,39 @@ Public Class F0_VentasSupermercado
 
             Dim tabla As DataTable = CType(grdetalle.DataSource, DataTable).DefaultView.ToTable(False, "tbnumi", "tbtv1numi", "tbty5prod", "codigo", "producto", "ygcodsin", "ygcodu", "tbcmin", "tblote", "tbfechaVenc", "img", "estado", "stock")
             If tabla.Rows.Count > 0 And tabla.Rows(0).Item("tbty5prod") > 0 Then
+                Dim frm As New F_NombreVale
+                Dim nomEmpresa As String
 
-                Dim res As Boolean = L_prMovimientoChoferGrabar(numi, Now.Date.ToString("yyyy/MM/dd"), 2, "VALE VENTA A FISCALIA", 1, 0, 0, tabla, 7, gs_VersionSistema, gs_IPMaquina, gs_UsuMaquina)
+                frm.ShowDialog()
+                nomEmpresa = frm.NombreEmpresa
 
-                If res Then
-                    P_GenerarReporte(Convert.ToInt32(ENReporte.NOTAVENTA))
-                    P_GenerarReporte(Convert.ToInt32(ENReporte.NOTAVENTA))
-                    _prCrearCarpetaReportes()
+                If frm.Aceptar = True Then
+                    Dim res As Boolean = L_prMovimientoChoferGrabar(numi, Now.Date.ToString("yyyy/MM/dd"), 2, "VALE VENTA A " + nomEmpresa, 1, 0, 0, tabla, 7, gs_VersionSistema, gs_IPMaquina, gs_UsuMaquina)
 
-                    Dim img As Bitmap = New Bitmap(My.Resources.checked, 50, 50)
-                    If (P_ExportarExcel(RutaGlobal + "\Reporte\Reporte Productos", "VentaProductosVale")) Then
-                        L_fnBotonImprimirExportar(gs_VersionSistema, gs_IPMaquina, gs_UsuMaquina, 0, "VALE VENTA", "VALE VENTA")
-                        ToastNotification.Show(Me, "SE GRABÓ Y EXPORTÓ LA VENTA-PRODUCTOS DE FORMA EXITOSA..!!!",
+                    If res Then
+                        P_GenerarReporte(Convert.ToInt32(ENReporte.NOTAVENTA))
+                        P_GenerarReporte(Convert.ToInt32(ENReporte.NOTAVENTA))
+                        _prCrearCarpetaReportes()
+
+                        Dim img As Bitmap = New Bitmap(My.Resources.checked, 50, 50)
+                        If (P_ExportarExcel(RutaGlobal + "\Reporte\Reporte Productos", "VENTAPRODUCTOSVALE" + nomEmpresa)) Then
+                            L_fnBotonImprimirExportar(gs_VersionSistema, gs_IPMaquina, gs_UsuMaquina, 0, "VALE VENTA", "VALE VENTA " + nomEmpresa)
+                            ToastNotification.Show(Me, "SE GRABÓ Y EXPORTÓ EL VALE VENTA DE PRODUCTOS DE FORMA EXITOSA..!!!",
                                                    img, 3000,
                                                    eToastGlowColor.Green,
                                                    eToastPosition.BottomCenter)
-                    Else
-                        ToastNotification.Show(Me, "FALLÓ EL GRABADO Y LA EXPORTACIÓN DE VENTA-PRODUCTOS..!!!",
+                        Else
+                            ToastNotification.Show(Me, "FALLÓ EL GRABADO Y LA EXPORTACIÓN DE EL VALE VENTA DE PRODUCTOS..!!!",
                                                    My.Resources.WARNING, 3000,
                                                    eToastGlowColor.Red,
                                                    eToastPosition.BottomCenter)
-                    End If
+                        End If
 
-                    btnExportar.Enabled = False
+                        btnExportar.Enabled = False
+                    End If
                 End If
             Else
-                ToastNotification.Show(Me, "NO EXISTE PRODUCTOS EN EL DETALLE, NO PUEDE GRABAR Y EXPORTAR",
+                    ToastNotification.Show(Me, "NO EXISTE PRODUCTOS EN EL DETALLE, NO PUEDE GRABAR Y EXPORTAR",
                            My.Resources.WARNING, 3500,
                            eToastGlowColor.Red,
                            eToastPosition.BottomCenter)

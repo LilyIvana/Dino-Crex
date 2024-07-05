@@ -1308,25 +1308,31 @@ Public Class F1_Productos
     End Sub
 
     Private Sub btnImprimir_Click(sender As Object, e As EventArgs) Handles btnImprimir.Click
-        P_GenerarReporte()
+        Imprimir()
     End Sub
-    Private Sub P_GenerarReporte()
-        'Dim dt As DataTable = L_fnReporteproducto()
+    Private Sub Imprimir()
+        If tbCodigo.Text <> String.Empty Then
 
-        'If Not IsNothing(P_Global.Visualizador) Then
-        '    P_Global.Visualizador.Close()
-        'End If
+            Dim Cod As String = tbCodigo.Text
+            Dim dt = L_fnImpresionPreciosUno(Cod)
+            Dim Ini As Integer = dt.Rows(0).Item("CantIni")
+            Dim Fin As Integer = dt.Rows(0).Item("CantFin")
 
-        'P_Global.Visualizador = New Visualizador
+            If Ini = 0 And Fin = 0 Then
+                F0_ImportarPreciosImp.P_GenerarReporte(3, dt, "6", swVisualizar.Value) ''Imprime 1 precio
+            ElseIf Ini = Fin Then
+                F0_ImportarPreciosImp.P_GenerarReporte(2, dt, "6", swVisualizar.Value) ''Imprime 2 precios
+            ElseIf Ini <> Fin Then
+                F0_ImportarPreciosImp.P_GenerarReporte(1, dt, "6", swVisualizar.Value) ''Imprime 3 precios
+            End If
 
-        'Dim objrep As New R_Productos
-        ''' GenerarNro(_dt)
-        '''objrep.SetDataSource(Dt1Kardex)
-        'objrep.SetDataSource(dt)
-
-        'P_Global.Visualizador.CrGeneral.ReportSource = objrep 'Comentar
-        'P_Global.Visualizador.Show() 'Comentar
-        'P_Global.Visualizador.BringToFront() 'Comentar
+            L_fnBotonImprimir(gs_VersionSistema, gs_IPMaquina, gs_UsuMaquina, tbCodigo.Text, "TY005", "PRODUCTOS-IMPRESIÓN DE PRECIOS")
+        Else
+            ToastNotification.Show(Me, "EL CODIGO DYNASYS ESTA VACÍO, NO PUEDE IMPRIMIR PRECIO",
+                       My.Resources.WARNING, 2500,
+                       eToastGlowColor.Red,
+                       eToastPosition.TopCenter)
+        End If
 
     End Sub
     Private Sub codigoBarrasImprimir()
@@ -1971,4 +1977,6 @@ Public Class F1_Productos
     Private Sub swMostrar_ValueChanged(sender As Object, e As EventArgs) Handles swMostrar.ValueChanged
         _PMIniciarTodo()
     End Sub
+
+
 End Class

@@ -9033,6 +9033,25 @@ Public Class AccesoLogica
 
         Return _Tabla
     End Function
+    Public Shared Function L_fnBotonImportar(_version As String, _ip As String, _usumaquina As String, _codPro As String, _tabla1 As String,
+                                             _modulo As String) As DataTable
+        Dim _Tabla As DataTable
+
+        Dim _listParam As New List(Of Datos.DParametro)
+
+        _listParam.Add(New Datos.DParametro("@tipo", 33))
+        _listParam.Add(New Datos.DParametro("@version", _version))
+        _listParam.Add(New Datos.DParametro("@ip", _ip))
+        _listParam.Add(New Datos.DParametro("@usumaquina", _usumaquina))
+        _listParam.Add(New Datos.DParametro("@cod", _codPro))
+        _listParam.Add(New Datos.DParametro("@tabla", _tabla1))
+        _listParam.Add(New Datos.DParametro("@modulo", _modulo))
+        _listParam.Add(New Datos.DParametro("@uact", L_Usuario))
+        _Tabla = D_ProcedimientoConParam("Proc_ReportesGenerados", _listParam)
+
+        Return _Tabla
+    End Function
+
 
     Public Shared Function L_RepBitacora(fechaI As String, fechaF As String) As DataTable
         Dim _Tabla As DataTable

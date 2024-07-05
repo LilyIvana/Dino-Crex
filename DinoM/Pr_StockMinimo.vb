@@ -136,6 +136,7 @@ Public Class Pr_StockMinimo
             objrep.SetDataSource(_dt)
             objrep.SetParameterValue("usuario", L_Usuario)
             objrep.SetParameterValue("almacen", cbAlmacen.Text)
+            objrep.SetParameterValue("conteo", _dt.Rows.Count)
             MReportViewer.ReportSource = objrep
             MReportViewer.Show()
             MReportViewer.BringToFront()

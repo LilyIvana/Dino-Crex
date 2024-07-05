@@ -27,9 +27,7 @@ Partial Class F_NombreProforma
         Me.tbNombre = New DevComponents.DotNetBar.Controls.TextBoxX()
         Me.LabelX6 = New DevComponents.DotNetBar.LabelX()
         Me.Panel1 = New System.Windows.Forms.Panel()
-        Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.ReflectionLabel1 = New DevComponents.DotNetBar.Controls.ReflectionLabel()
-        Me.btnAceptar = New DevComponents.DotNetBar.ButtonX()
         Me.MEP = New System.Windows.Forms.ErrorProvider(Me.components)
         Me.MHighlighterFocus = New DevComponents.DotNetBar.Validator.Highlighter()
         Me.MFlyoutUsuario = New DevComponents.DotNetBar.Controls.Flyout(Me.components)
@@ -40,9 +38,11 @@ Partial Class F_NombreProforma
         Me.tbObs = New DevComponents.DotNetBar.Controls.TextBoxX()
         Me.LabelX3 = New DevComponents.DotNetBar.LabelX()
         Me.btnCancelar = New DevComponents.DotNetBar.ButtonX()
+        Me.btnAceptar = New DevComponents.DotNetBar.ButtonX()
+        Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.Panel1.SuspendLayout()
-        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.MEP, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'tbNombre
@@ -86,17 +86,6 @@ Partial Class F_NombreProforma
         Me.Panel1.Size = New System.Drawing.Size(616, 63)
         Me.Panel1.TabIndex = 157
         '
-        'PictureBox1
-        '
-        Me.PictureBox1.Dock = System.Windows.Forms.DockStyle.Right
-        Me.PictureBox1.Image = Global.DinoM.My.Resources.Resources.man
-        Me.PictureBox1.Location = New System.Drawing.Point(552, 5)
-        Me.PictureBox1.Name = "PictureBox1"
-        Me.PictureBox1.Padding = New System.Windows.Forms.Padding(0, 8, 0, 0)
-        Me.PictureBox1.Size = New System.Drawing.Size(64, 53)
-        Me.PictureBox1.TabIndex = 1
-        Me.PictureBox1.TabStop = False
-        '
         'ReflectionLabel1
         '
         '
@@ -111,27 +100,6 @@ Partial Class F_NombreProforma
         Me.ReflectionLabel1.TabIndex = 0
         Me.ReflectionLabel1.Text = "<b><font size=""11""><font color=""#313b42"">NOMBRE CLIENTE PROFORMA</font></font></b" &
     ">"
-        '
-        'btnAceptar
-        '
-        Me.btnAceptar.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
-        Me.btnAceptar.BackColor = System.Drawing.Color.Transparent
-        Me.btnAceptar.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground
-        Me.btnAceptar.FadeEffect = False
-        Me.btnAceptar.FocusCuesEnabled = False
-        Me.btnAceptar.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnAceptar.Image = Global.DinoM.My.Resources.Resources.checked
-        Me.btnAceptar.ImageFixedSize = New System.Drawing.Size(20, 20)
-        Me.btnAceptar.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top
-        Me.btnAceptar.Location = New System.Drawing.Point(174, 294)
-        Me.btnAceptar.Name = "btnAceptar"
-        Me.btnAceptar.RightToLeft = System.Windows.Forms.RightToLeft.Yes
-        Me.btnAceptar.Shape = New DevComponents.DotNetBar.RoundRectangleShapeDescriptor(2)
-        Me.btnAceptar.Size = New System.Drawing.Size(134, 42)
-        Me.btnAceptar.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-        Me.btnAceptar.TabIndex = 4
-        Me.btnAceptar.Text = "ACEPTAR"
-        Me.btnAceptar.TextColor = System.Drawing.Color.FromArgb(CType(CType(49, Byte), Integer), CType(CType(59, Byte), Integer), CType(CType(66, Byte), Integer))
         '
         'MEP
         '
@@ -256,6 +224,38 @@ Partial Class F_NombreProforma
         Me.btnCancelar.Text = "CANCELAR"
         Me.btnCancelar.TextColor = System.Drawing.Color.FromArgb(CType(CType(49, Byte), Integer), CType(CType(59, Byte), Integer), CType(CType(66, Byte), Integer))
         '
+        'btnAceptar
+        '
+        Me.btnAceptar.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
+        Me.btnAceptar.BackColor = System.Drawing.Color.Transparent
+        Me.btnAceptar.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground
+        Me.btnAceptar.FadeEffect = False
+        Me.btnAceptar.FocusCuesEnabled = False
+        Me.btnAceptar.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnAceptar.Image = Global.DinoM.My.Resources.Resources.checked
+        Me.btnAceptar.ImageFixedSize = New System.Drawing.Size(20, 20)
+        Me.btnAceptar.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top
+        Me.btnAceptar.Location = New System.Drawing.Point(174, 294)
+        Me.btnAceptar.Name = "btnAceptar"
+        Me.btnAceptar.RightToLeft = System.Windows.Forms.RightToLeft.Yes
+        Me.btnAceptar.Shape = New DevComponents.DotNetBar.RoundRectangleShapeDescriptor(2)
+        Me.btnAceptar.Size = New System.Drawing.Size(134, 42)
+        Me.btnAceptar.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+        Me.btnAceptar.TabIndex = 4
+        Me.btnAceptar.Text = "ACEPTAR"
+        Me.btnAceptar.TextColor = System.Drawing.Color.FromArgb(CType(CType(49, Byte), Integer), CType(CType(59, Byte), Integer), CType(CType(66, Byte), Integer))
+        '
+        'PictureBox1
+        '
+        Me.PictureBox1.Image = Global.DinoM.My.Resources.Resources.CLIENTES
+        Me.PictureBox1.Location = New System.Drawing.Point(552, 5)
+        Me.PictureBox1.Name = "PictureBox1"
+        Me.PictureBox1.Padding = New System.Windows.Forms.Padding(0, 8, 0, 0)
+        Me.PictureBox1.Size = New System.Drawing.Size(64, 53)
+        Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
+        Me.PictureBox1.TabIndex = 1
+        Me.PictureBox1.TabStop = False
+        '
         'F_NombreProforma
         '
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None
@@ -276,8 +276,8 @@ Partial Class F_NombreProforma
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "CREAR NUEVO CLIENTE"
         Me.Panel1.ResumeLayout(False)
-        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.MEP, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub

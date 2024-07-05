@@ -781,6 +781,12 @@
     <Compile Include="F_CodigoFicha.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="F_NombreVale.designer.vb">
+      <DependentUpon>F_NombreVale.vb</DependentUpon>
+    </Compile>
+    <Compile Include="F_NombreVale.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="F_NombreProforma.designer.vb">
       <DependentUpon>F_NombreProforma.vb</DependentUpon>
     </Compile>
@@ -1801,6 +1807,9 @@
     <EmbeddedResource Include="F_CodigoFicha.resx">
       <DependentUpon>F_CodigoFicha.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="F_NombreVale.resx">
+      <DependentUpon>F_NombreVale.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="F_NombreProforma.resx">
       <DependentUpon>F_NombreProforma.vb</DependentUpon>
     </EmbeddedResource>
@@ -2586,6 +2595,7 @@
     <None Include="Resources\descuentos %281%29.png" />
     <None Include="Resources\descuentos2.png" />
     <None Include="Resources\combo.png" />
+    <None Include="Resources\CLIENTES.png" />
     <Content Include="Resources\dinases.png" />
     <None Include="Resources\MapaClientes.png" />
     <None Include="Resources\ventasCostos.png" />
@@ -2617,6 +2627,8 @@
     <None Include="Resources\IMPRIMIR.png" />
     <None Include="Resources\impresora2.png" />
     <None Include="Resources\impresora3.png" />
+    <None Include="Resources\EMPRESA2.png" />
+    <None Include="Resources\EMPRESA.png" />
     <Content Include="Resources\man.png" />
     <None Include="Resources\pdf.png" />
     <None Include="Resources\txt.png" />
