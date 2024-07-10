@@ -32,6 +32,7 @@ Partial Class F0_ImportarPreciosImp
         Me.Panel4 = New System.Windows.Forms.Panel()
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         Me.btnImportar = New DevComponents.DotNetBar.ButtonX()
+        Me.btnActualizarPrecios = New DevComponents.DotNetBar.ButtonX()
         Me.PanelSuperior.SuspendLayout()
         Me.PanelInferior.SuspendLayout()
         CType(Me.BubbleBarUsuario, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -135,12 +136,14 @@ Partial Class F0_ImportarPreciosImp
         '
         'PanelToolBar2
         '
+        Me.PanelToolBar2.Controls.Add(Me.btnActualizarPrecios)
         Me.PanelToolBar2.Controls.Add(Me.btnImportar)
-        Me.PanelToolBar2.Location = New System.Drawing.Point(1184, 0)
+        Me.PanelToolBar2.Location = New System.Drawing.Point(1104, 0)
         Me.PanelToolBar2.Margin = New System.Windows.Forms.Padding(4)
-        Me.PanelToolBar2.Size = New System.Drawing.Size(160, 72)
-        Me.PanelToolBar2.Controls.SetChildIndex(Me.btnImprimir, 0)
+        Me.PanelToolBar2.Size = New System.Drawing.Size(240, 72)
         Me.PanelToolBar2.Controls.SetChildIndex(Me.btnImportar, 0)
+        Me.PanelToolBar2.Controls.SetChildIndex(Me.btnImprimir, 0)
+        Me.PanelToolBar2.Controls.SetChildIndex(Me.btnActualizarPrecios, 0)
         '
         'PanelPrincipal
         '
@@ -156,7 +159,7 @@ Partial Class F0_ImportarPreciosImp
         Me.btnImprimir.Dock = System.Windows.Forms.DockStyle.Right
         Me.btnImprimir.Image = Global.DinoM.My.Resources.Resources.printee
         Me.btnImprimir.ImageFixedSize = New System.Drawing.Size(42, 45)
-        Me.btnImprimir.Location = New System.Drawing.Point(80, 0)
+        Me.btnImprimir.Location = New System.Drawing.Point(160, 0)
         '
         'btnUltimo
         '
@@ -178,7 +181,7 @@ Partial Class F0_ImportarPreciosImp
         '
         Me.MRlAccion.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.MRlAccion.Margin = New System.Windows.Forms.Padding(4)
-        Me.MRlAccion.Size = New System.Drawing.Size(808, 72)
+        Me.MRlAccion.Size = New System.Drawing.Size(728, 72)
         '
         'PanelContent
         '
@@ -218,7 +221,7 @@ Partial Class F0_ImportarPreciosImp
         '
         'PictureBox1
         '
-        Me.PictureBox1.Location = New System.Drawing.Point(991, 0)
+        Me.PictureBox1.Location = New System.Drawing.Point(911, 0)
         Me.PictureBox1.Margin = New System.Windows.Forms.Padding(4)
         '
         'btnNuevo
@@ -377,6 +380,24 @@ Partial Class F0_ImportarPreciosImp
         Me.btnImportar.Text = "IMPORTAR"
         Me.btnImportar.TextColor = System.Drawing.Color.White
         '
+        'btnActualizarPrecios
+        '
+        Me.btnActualizarPrecios.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
+        Me.btnActualizarPrecios.ColorTable = DevComponents.DotNetBar.eButtonColor.Flat
+        Me.btnActualizarPrecios.Dock = System.Windows.Forms.DockStyle.Right
+        Me.btnActualizarPrecios.Font = New System.Drawing.Font("Arial", 8.5!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnActualizarPrecios.Image = Global.DinoM.My.Resources.Resources.precio
+        Me.btnActualizarPrecios.ImageFixedSize = New System.Drawing.Size(40, 40)
+        Me.btnActualizarPrecios.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top
+        Me.btnActualizarPrecios.Location = New System.Drawing.Point(75, 0)
+        Me.btnActualizarPrecios.Name = "btnActualizarPrecios"
+        Me.btnActualizarPrecios.Padding = New System.Windows.Forms.Padding(0, 0, 0, 20)
+        Me.btnActualizarPrecios.Size = New System.Drawing.Size(85, 72)
+        Me.btnActualizarPrecios.Style = DevComponents.DotNetBar.eDotNetBarStyle.OfficeMobile2014
+        Me.btnActualizarPrecios.TabIndex = 14
+        Me.btnActualizarPrecios.Text = "RECARGAR PRECIOS"
+        Me.btnActualizarPrecios.TextColor = System.Drawing.Color.White
+        '
         'F0_ImportarPreciosImp
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -421,4 +442,5 @@ Partial Class F0_ImportarPreciosImp
     Friend WithEvents grDatos As Janus.Windows.GridEX.GridEX
     Friend WithEvents Timer1 As Timer
     Friend WithEvents btnImportar As DevComponents.DotNetBar.ButtonX
+    Friend WithEvents btnActualizarPrecios As DevComponents.DotNetBar.ButtonX
 End Class

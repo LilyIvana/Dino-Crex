@@ -257,7 +257,6 @@ Public Class F0_ImportarPreciosImp
                 visualizar = _Ds3.Tables(0).Rows(0).Item("cbvp")
             End If
 
-
             If (visualizar) Then 'Vista Previa de la Ventana de Vizualización 1 = True 0 = False
                 P_Global.Visualizador.CrGeneral.ReportSource = objrep
                 P_Global.Visualizador.ShowDialog()
@@ -299,5 +298,28 @@ Public Class F0_ImportarPreciosImp
 
     Private Sub grDatos_EditingCell(sender As Object, e As EditingCellEventArgs) Handles grDatos.EditingCell
         e.Cancel = True
+    End Sub
+
+    Private Sub btnActualizarPrecios_Click(sender As Object, e As EventArgs) Handles btnActualizarPrecios.Click
+        Try
+            If grDatos.RowCount > 0 Then
+                For i = 0 To grDatos.RowCount - 1
+                    Dim Cod As String = (CType(grDatos.DataSource, DataTable).Rows(i).Item("CODIGO DYNASYS")).ToString
+                    Dim dt = L_fnImpresionPreciosUno(Cod)
+
+                    CType(grDatos.DataSource, DataTable).Rows(i).Item("PRECIO A") = dt.Rows(0).Item("PrecioVenta")
+                    CType(grDatos.DataSource, DataTable).Rows(i).Item("PRECIO B") = dt.Rows(0).Item("PrecioEspecial")
+                    CType(grDatos.DataSource, DataTable).Rows(i).Item("PRECIO C") = dt.Rows(0).Item("PrecioPDV")
+                Next
+
+            Else
+                ToastNotification.Show(Me, "NO EXISTE DATOS PARA RECARGAR PRECIOS",
+                           My.Resources.WARNING, 2300,
+                           eToastGlowColor.Red,
+                           eToastPosition.TopCenter)
+            End If
+        Catch ex As Exception
+            MostrarMensajeError(ex.Message)
+        End Try
     End Sub
 End Class

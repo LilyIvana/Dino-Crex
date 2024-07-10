@@ -390,7 +390,6 @@ Partial Class F1_Productos
         Me.btnImprimir.ImageFixedSize = New System.Drawing.Size(40, 40)
         Me.btnImprimir.Location = New System.Drawing.Point(339, 0)
         Me.btnImprimir.Text = "IMPRIMIR PRECIOS"
-        Me.btnImprimir.Visible = False
         '
         'MPanelUserAct
         '
@@ -2037,7 +2036,6 @@ Partial Class F1_Productos
         Me.LabelX24.Size = New System.Drawing.Size(167, 12)
         Me.LabelX24.TabIndex = 429
         Me.LabelX24.Text = "Visualizar antes de Imprimir:"
-        Me.LabelX24.Visible = False
         '
         'swVisualizar
         '
@@ -2056,7 +2054,6 @@ Partial Class F1_Productos
         Me.swVisualizar.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
         Me.swVisualizar.SwitchWidth = 25
         Me.swVisualizar.TabIndex = 428
-        Me.swVisualizar.Visible = False
         '
         'F1_Productos
         '
