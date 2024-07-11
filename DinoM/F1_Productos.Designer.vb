@@ -389,7 +389,7 @@ Partial Class F1_Productos
         Me.btnImprimir.Image = Global.DinoM.My.Resources.Resources.printee
         Me.btnImprimir.ImageFixedSize = New System.Drawing.Size(40, 40)
         Me.btnImprimir.Location = New System.Drawing.Point(339, 0)
-        Me.btnImprimir.Text = "IMPRIMIR PRECIOS"
+        Me.btnImprimir.Text = "IMPRIMIR PRECIO"
         '
         'MPanelUserAct
         '

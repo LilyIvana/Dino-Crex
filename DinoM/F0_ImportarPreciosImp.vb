@@ -142,7 +142,7 @@ Public Class F0_ImportarPreciosImp
             .Width = 100
             .Visible = True
         End With
-        With grDatos.RootTable.Columns("CODIGO CREX")
+        With grDatos.RootTable.Columns("CODIGO DELTA")
             .Caption = "COD DELTA"
             .Width = 100
             .Visible = True
@@ -223,8 +223,10 @@ Public Class F0_ImportarPreciosImp
                 ElseIf Ini <> Fin Then
                     P_GenerarReporte(1, dt, "5", False) ''Imprime 3 precios
                 End If
+
+                L_fnBotonImprimir(gs_VersionSistema, gs_IPMaquina, gs_UsuMaquina, Cod, "IMPRESION DE PRECIOS", "IMPRESIÓN DE PRECIOS")
             Next
-            L_fnBotonImprimir(gs_VersionSistema, gs_IPMaquina, gs_UsuMaquina, 0, "IMPRESION DE PRECIOS", "IMPRESIÓN DE PRECIOS")
+
         Else
             ToastNotification.Show(Me, "NO EXISTE DATOS PARA IMPRIMIR",
                        My.Resources.WARNING, 2300,
@@ -290,7 +292,7 @@ Public Class F0_ImportarPreciosImp
     End Sub
 
     Private Sub btnImportar_Click(sender As Object, e As EventArgs) Handles btnImportar.Click
-        ProductosImport.Reset()
+        'ProductosImport.Reset()
         ProductosImport.Clear()
         MP_ImportarExcel()
         MP_PasarDatos()
@@ -307,6 +309,8 @@ Public Class F0_ImportarPreciosImp
                     Dim Cod As String = (CType(grDatos.DataSource, DataTable).Rows(i).Item("CODIGO DYNASYS")).ToString
                     Dim dt = L_fnImpresionPreciosUno(Cod)
 
+                    CType(grDatos.DataSource, DataTable).Rows(i).Item("CODIGO DELTA") = dt.Rows(0).Item("CodigoExterno")
+                    CType(grDatos.DataSource, DataTable).Rows(i).Item("DETALLE") = dt.Rows(0).Item("NombreProducto")
                     CType(grDatos.DataSource, DataTable).Rows(i).Item("PRECIO A") = dt.Rows(0).Item("PrecioVenta")
                     CType(grDatos.DataSource, DataTable).Rows(i).Item("PRECIO B") = dt.Rows(0).Item("PrecioEspecial")
                     CType(grDatos.DataSource, DataTable).Rows(i).Item("PRECIO C") = dt.Rows(0).Item("PrecioPDV")
