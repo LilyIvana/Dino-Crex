@@ -33,6 +33,8 @@ Partial Class F0_ImportarPreciosImp
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         Me.btnImportar = New DevComponents.DotNetBar.ButtonX()
         Me.btnActualizarPrecios = New DevComponents.DotNetBar.ButtonX()
+        Me.btnImprimirFrio2 = New DevComponents.DotNetBar.ButtonX()
+        Me.btnImprimirFrio1 = New DevComponents.DotNetBar.ButtonX()
         Me.PanelSuperior.SuspendLayout()
         Me.PanelInferior.SuspendLayout()
         CType(Me.BubbleBarUsuario, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -137,11 +139,15 @@ Partial Class F0_ImportarPreciosImp
         'PanelToolBar2
         '
         Me.PanelToolBar2.Controls.Add(Me.btnActualizarPrecios)
+        Me.PanelToolBar2.Controls.Add(Me.btnImprimirFrio1)
+        Me.PanelToolBar2.Controls.Add(Me.btnImprimirFrio2)
         Me.PanelToolBar2.Controls.Add(Me.btnImportar)
-        Me.PanelToolBar2.Location = New System.Drawing.Point(1104, 0)
+        Me.PanelToolBar2.Location = New System.Drawing.Point(934, 0)
         Me.PanelToolBar2.Margin = New System.Windows.Forms.Padding(4)
-        Me.PanelToolBar2.Size = New System.Drawing.Size(240, 72)
+        Me.PanelToolBar2.Size = New System.Drawing.Size(410, 72)
         Me.PanelToolBar2.Controls.SetChildIndex(Me.btnImportar, 0)
+        Me.PanelToolBar2.Controls.SetChildIndex(Me.btnImprimirFrio2, 0)
+        Me.PanelToolBar2.Controls.SetChildIndex(Me.btnImprimirFrio1, 0)
         Me.PanelToolBar2.Controls.SetChildIndex(Me.btnImprimir, 0)
         Me.PanelToolBar2.Controls.SetChildIndex(Me.btnActualizarPrecios, 0)
         '
@@ -181,7 +187,7 @@ Partial Class F0_ImportarPreciosImp
         '
         Me.MRlAccion.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.MRlAccion.Margin = New System.Windows.Forms.Padding(4)
-        Me.MRlAccion.Size = New System.Drawing.Size(728, 72)
+        Me.MRlAccion.Size = New System.Drawing.Size(558, 72)
         '
         'PanelContent
         '
@@ -221,7 +227,7 @@ Partial Class F0_ImportarPreciosImp
         '
         'PictureBox1
         '
-        Me.PictureBox1.Location = New System.Drawing.Point(911, 0)
+        Me.PictureBox1.Location = New System.Drawing.Point(741, 0)
         Me.PictureBox1.Margin = New System.Windows.Forms.Padding(4)
         '
         'btnNuevo
@@ -398,6 +404,42 @@ Partial Class F0_ImportarPreciosImp
         Me.btnActualizarPrecios.Text = "RECARGAR PRECIOS"
         Me.btnActualizarPrecios.TextColor = System.Drawing.Color.White
         '
+        'btnImprimirFrio2
+        '
+        Me.btnImprimirFrio2.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
+        Me.btnImprimirFrio2.ColorTable = DevComponents.DotNetBar.eButtonColor.Flat
+        Me.btnImprimirFrio2.Dock = System.Windows.Forms.DockStyle.Right
+        Me.btnImprimirFrio2.Font = New System.Drawing.Font("Arial", 8.5!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnImprimirFrio2.Image = Global.DinoM.My.Resources.Resources.impresora2
+        Me.btnImprimirFrio2.ImageFixedSize = New System.Drawing.Size(40, 40)
+        Me.btnImprimirFrio2.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top
+        Me.btnImprimirFrio2.Location = New System.Drawing.Point(325, 0)
+        Me.btnImprimirFrio2.Name = "btnImprimirFrio2"
+        Me.btnImprimirFrio2.Padding = New System.Windows.Forms.Padding(0, 0, 0, 20)
+        Me.btnImprimirFrio2.Size = New System.Drawing.Size(85, 72)
+        Me.btnImprimirFrio2.Style = DevComponents.DotNetBar.eDotNetBarStyle.OfficeMobile2014
+        Me.btnImprimirFrio2.TabIndex = 15
+        Me.btnImprimirFrio2.Text = "IMPRIMIR PRECIO FRIO2"
+        Me.btnImprimirFrio2.TextColor = System.Drawing.Color.White
+        '
+        'btnImprimirFrio1
+        '
+        Me.btnImprimirFrio1.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
+        Me.btnImprimirFrio1.ColorTable = DevComponents.DotNetBar.eButtonColor.Flat
+        Me.btnImprimirFrio1.Dock = System.Windows.Forms.DockStyle.Right
+        Me.btnImprimirFrio1.Font = New System.Drawing.Font("Arial", 8.5!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnImprimirFrio1.Image = Global.DinoM.My.Resources.Resources.impresora2
+        Me.btnImprimirFrio1.ImageFixedSize = New System.Drawing.Size(40, 40)
+        Me.btnImprimirFrio1.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top
+        Me.btnImprimirFrio1.Location = New System.Drawing.Point(240, 0)
+        Me.btnImprimirFrio1.Name = "btnImprimirFrio1"
+        Me.btnImprimirFrio1.Padding = New System.Windows.Forms.Padding(0, 0, 0, 20)
+        Me.btnImprimirFrio1.Size = New System.Drawing.Size(85, 72)
+        Me.btnImprimirFrio1.Style = DevComponents.DotNetBar.eDotNetBarStyle.OfficeMobile2014
+        Me.btnImprimirFrio1.TabIndex = 16
+        Me.btnImprimirFrio1.Text = "IMPRIMIR PRECIO FRIO1"
+        Me.btnImprimirFrio1.TextColor = System.Drawing.Color.White
+        '
         'F0_ImportarPreciosImp
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -443,4 +485,6 @@ Partial Class F0_ImportarPreciosImp
     Friend WithEvents Timer1 As Timer
     Friend WithEvents btnImportar As DevComponents.DotNetBar.ButtonX
     Friend WithEvents btnActualizarPrecios As DevComponents.DotNetBar.ButtonX
+    Friend WithEvents btnImprimirFrio1 As DevComponents.DotNetBar.ButtonX
+    Friend WithEvents btnImprimirFrio2 As DevComponents.DotNetBar.ButtonX
 End Class

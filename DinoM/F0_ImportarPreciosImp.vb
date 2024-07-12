@@ -20,6 +20,12 @@ Imports System.Reflection
 Imports System.Runtime.InteropServices
 Imports Microsoft.Office.Interop
 
+Imports System.Data
+Imports System.Configuration
+Imports System.Data.SqlClient
+Imports CrystalDecisions.CrystalReports.Engine
+Imports CrystalDecisions.Shared
+
 
 Public Class F0_ImportarPreciosImp
     Dim _Inter As Integer = 0
@@ -263,6 +269,25 @@ Public Class F0_ImportarPreciosImp
                 P_Global.Visualizador.CrGeneral.ReportSource = objrep
                 P_Global.Visualizador.ShowDialog()
                 P_Global.Visualizador.BringToFront()
+
+                _prCrearCarpetaReportesPrecios()
+                Dim ubicacion = RutaGlobal + "\Reporte\Reporte Precios"
+                Dim _archivo As String = ubicacion & "\Precio" & Now.Date.Day &
+                    "." & Now.Date.Month & "." & Now.Date.Year & "_" & Now.Hour & "." & Now.Minute & "." & Now.Second & ".doc"
+                objrep.ExportToDisk(ExportFormatType.WordForWindows, _archivo)
+
+                Dim ef = New Efecto
+                ef._archivo = _archivo
+
+                ef.tipo = 1
+                ef.Context = "Su archivo ha sido Guardado en la ruta: " + _archivo + vbLf + "DESEA ABRIR EL ARCHIVO?"
+                ef.Header = "PREGUNTA"
+                ef.ShowDialog()
+                Dim bandera As Boolean = False
+                bandera = ef.band
+                If (bandera = True) Then
+                    Process.Start(_archivo)
+                End If
             Else
                 Dim pd As New PrintDocument()
                 pd.PrinterSettings.PrinterName = _Ds3.Tables(0).Rows(0).Item("cbrut").ToString
@@ -280,6 +305,23 @@ Public Class F0_ImportarPreciosImp
         Catch ex As Exception
             MostrarMensajeError(ex.Message)
         End Try
+    End Sub
+    Private Sub _prCrearCarpetaReportesPrecios()
+        Dim rutaDestino As String = RutaGlobal + "\Reporte\Reporte Precios\"
+
+        If System.IO.Directory.Exists(RutaGlobal + "\Reporte\Reporte Precios\") = False Then
+            If System.IO.Directory.Exists(RutaGlobal + "\Reporte") = False Then
+                System.IO.Directory.CreateDirectory(RutaGlobal + "\Reporte")
+                If System.IO.Directory.Exists(RutaGlobal + "\Reporte\Reporte Precios") = False Then
+                    System.IO.Directory.CreateDirectory(RutaGlobal + "\Reporte\Reporte Precios")
+                End If
+            Else
+                If System.IO.Directory.Exists(RutaGlobal + "\Reporte\Reporte Precios") = False Then
+                    System.IO.Directory.CreateDirectory(RutaGlobal + "\Reporte\Reporte Precios")
+
+                End If
+            End If
+        End If
     End Sub
     Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
         _Inter = _Inter + 1
