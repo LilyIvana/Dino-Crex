@@ -306,6 +306,72 @@ Public Class F0_ImportarPreciosImp
             MostrarMensajeError(ex.Message)
         End Try
     End Sub
+
+    Public Sub P_GenerarReporteOtrosFormatos(tipoRep As Integer, dt As DataTable, nroImp As String, visualiza As Boolean)
+        Try
+            Dim _Ds3 = L_ObtenerRutaImpresora(nroImp) ' Datos de Impresión de Precios
+            Dim visualizar As Boolean
+            If Not IsNothing(P_Global.Visualizador) Then
+                P_Global.Visualizador.Close()
+            End If
+            Dim objrep
+            P_Global.Visualizador = New Visualizador
+            If tipoRep = 1 Then ''Imprime mas chico (7x1.5cm)
+                'objrep = New R_ImpresionPrecioFrio1Vertical
+                objrep = New R_ImpresionPrecios1Peq
+            ElseIf tipoRep = 2 Then ''Imprime mas chico (12.4x1.5cm)
+                objrep = New R_ImpresionPrecioFrio2Vertical
+            End If
+
+            objrep.SetDataSource(dt)
+
+            If visualiza Then
+                visualizar = True
+            Else
+                visualizar = _Ds3.Tables(0).Rows(0).Item("cbvp")
+            End If
+
+            If (visualizar) Then 'Vista Previa de la Ventana de Vizualización 1 = True 0 = False
+                P_Global.Visualizador.CrGeneral.ReportSource = objrep
+                P_Global.Visualizador.ShowDialog()
+                P_Global.Visualizador.BringToFront()
+
+                _prCrearCarpetaReportesPrecios()
+                Dim ubicacion = RutaGlobal + "\Reporte\Reporte Precios"
+                Dim _archivo As String = ubicacion & "\Precio" & Now.Date.Day &
+                    "." & Now.Date.Month & "." & Now.Date.Year & "_" & Now.Hour & "." & Now.Minute & "." & Now.Second & ".doc"
+                objrep.ExportToDisk(ExportFormatType.WordForWindows, _archivo)
+
+                Dim ef = New Efecto
+                ef._archivo = _archivo
+
+                ef.tipo = 1
+                ef.Context = "Su archivo ha sido Guardado en la ruta: " + _archivo + vbLf + "DESEA ABRIR EL ARCHIVO?"
+                ef.Header = "PREGUNTA"
+                ef.ShowDialog()
+                Dim bandera As Boolean = False
+                bandera = ef.band
+                If (bandera = True) Then
+                    Process.Start(_archivo)
+                End If
+            Else
+                Dim pd As New PrintDocument()
+                pd.PrinterSettings.PrinterName = _Ds3.Tables(0).Rows(0).Item("cbrut").ToString
+                If (Not pd.PrinterSettings.IsValid) Then
+                    ToastNotification.Show(Me, "La Impresora ".ToUpper + _Ds3.Tables(0).Rows(0).Item("cbrut").ToString + Chr(13) + "No Existe".ToUpper,
+                                       My.Resources.WARNING, 4 * 1000,
+                                       eToastGlowColor.Blue, eToastPosition.BottomRight)
+                Else
+                    objrep.PrintOptions.PrinterName = _Ds3.Tables(0).Rows(0).Item("cbrut").ToString
+                    objrep.PrintOptions.PaperSource = 3
+                    objrep.PrintToPrinter(1, True, 0, 0)
+                End If
+            End If
+
+        Catch ex As Exception
+            MostrarMensajeError(ex.Message)
+        End Try
+    End Sub
     Private Sub _prCrearCarpetaReportesPrecios()
         Dim rutaDestino As String = RutaGlobal + "\Reporte\Reporte Precios\"
 
@@ -367,5 +433,34 @@ Public Class F0_ImportarPreciosImp
         Catch ex As Exception
             MostrarMensajeError(ex.Message)
         End Try
+    End Sub
+
+    Private Sub btnImprimirFrio1_Click(sender As Object, e As EventArgs) Handles btnImprimirFrio.Click
+        If grDatos.RowCount > 0 Then
+            Dim dt, dtAux As DataTable
+            dt = L_fnImpresionPreciosUno(0)
+            dt.Clear()
+            For i = 0 To grDatos.RowCount - 1
+                Dim Cod As String = (CType(grDatos.DataSource, DataTable).Rows(i).Item("CODIGO DYNASYS")).ToString
+                dtAux = L_fnImpresionPreciosUno(Cod)
+                dt.Rows.Add(dtAux.Rows(0).ItemArray)
+                L_fnBotonImprimir(gs_VersionSistema, gs_IPMaquina, gs_UsuMaquina, Cod, "IMPRESION DE PRECIOS", "IMPRESIÓN DE PRECIOS FRIO")
+            Next
+            If swMedida.Value = True Then
+                P_GenerarReporteOtrosFormatos(1, dt, "5", False) ''Imprime mas chico (7x1.5cm)
+            Else
+                P_GenerarReporteOtrosFormatos(2, dt, "5", False) ''Imprime mas chico (12.4x1.5cm)
+            End If
+
+        Else
+            ToastNotification.Show(Me, "NO EXISTE DATOS PARA IMPRIMIR",
+                       My.Resources.WARNING, 2300,
+                       eToastGlowColor.Red,
+                       eToastPosition.TopCenter)
+        End If
+    End Sub
+
+    Private Sub btnImprimirPrecioPeq_Click(sender As Object, e As EventArgs) Handles btnImprimirPrecioPeq.Click
+
     End Sub
 End Class
