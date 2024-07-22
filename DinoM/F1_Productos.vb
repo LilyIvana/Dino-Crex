@@ -1319,11 +1319,11 @@ Public Class F1_Productos
             Dim Fin As Integer = dt.Rows(0).Item("CantFin")
 
             If Ini = 0 And Fin = 0 Then
-                F0_ImportarPreciosImp.P_GenerarReporte(3, dt, "6", swVisualizar.Value) ''Imprime 1 precio
+                F0_ImportarPreciosImp.P_GenerarReporte(1, dt, "6", swVisualizar.Value) ''Imprime 1 precio
             ElseIf Ini = Fin Then
                 F0_ImportarPreciosImp.P_GenerarReporte(2, dt, "6", swVisualizar.Value) ''Imprime 2 precios
             ElseIf Ini <> Fin Then
-                F0_ImportarPreciosImp.P_GenerarReporte(1, dt, "6", swVisualizar.Value) ''Imprime 3 precios
+                F0_ImportarPreciosImp.P_GenerarReporte(3, dt, "6", swVisualizar.Value) ''Imprime 3 precios
             End If
 
             L_fnBotonImprimir(gs_VersionSistema, gs_IPMaquina, gs_UsuMaquina, tbCodigo.Text, "TY005", "PRODUCTOS-IMPRESIÓN DE PRECIOS")

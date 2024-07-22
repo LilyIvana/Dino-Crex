@@ -223,11 +223,11 @@ Public Class F0_ImportarPreciosImp
                 Dim Fin As Integer = dt.Rows(0).Item("CantFin")
 
                 If Ini = 0 And Fin = 0 Then
-                    P_GenerarReporte(3, dt, "5", False) ''Imprime 1 precio
+                    P_GenerarReporte(1, dt, "5", False) ''Imprime 1 precio
                 ElseIf Ini = Fin Then
                     P_GenerarReporte(2, dt, "5", False) ''Imprime 2 precios
                 ElseIf Ini <> Fin Then
-                    P_GenerarReporte(1, dt, "5", False) ''Imprime 3 precios
+                    P_GenerarReporte(3, dt, "5", False) ''Imprime 3 precios
                 End If
 
                 L_fnBotonImprimir(gs_VersionSistema, gs_IPMaquina, gs_UsuMaquina, Cod, "IMPRESION DE PRECIOS", "IMPRESIÓN DE PRECIOS")
@@ -249,11 +249,11 @@ Public Class F0_ImportarPreciosImp
             End If
             Dim objrep
             P_Global.Visualizador = New Visualizador
-            If tipoRep = 1 Then ''Imprime 3 precios
+            If tipoRep = 1 Then ''Imprime 1 precio
                 objrep = New R_ImpresionPrecios1
             ElseIf tipoRep = 2 Then ''Imprime 2 precios
                 objrep = New R_ImpresionPrecios2
-            ElseIf tipoRep = 3 Then ''Imprime 1 precio
+            ElseIf tipoRep = 3 Then ''Imprime 3 precios
                 objrep = New R_ImpresionPrecios3
             End If
 
@@ -307,7 +307,7 @@ Public Class F0_ImportarPreciosImp
         End Try
     End Sub
 
-    Public Sub P_GenerarReporteOtrosFormatos(tipoRep As Integer, dt As DataTable, nroImp As String, visualiza As Boolean)
+    Public Sub P_GenerarReporteOtrosFormatos(tipoRep As Integer, dt As DataTable, nroImp As String, visualiza As Boolean, Optional ByVal tipo As Integer = 0)
         Try
             Dim _Ds3 = L_ObtenerRutaImpresora(nroImp) ' Datos de Impresión de Precios
             Dim visualizar As Boolean
@@ -316,11 +316,19 @@ Public Class F0_ImportarPreciosImp
             End If
             Dim objrep
             P_Global.Visualizador = New Visualizador
-            If tipoRep = 1 Then ''Imprime mas chico (7x1.5cm)
-                'objrep = New R_ImpresionPrecioFrio1Vertical
-                objrep = New R_ImpresionPrecios1Peq
-            ElseIf tipoRep = 2 Then ''Imprime mas chico (12.4x1.5cm)
+            If tipoRep = 1 Then ''Imprime nombres (7x1.5cm)
+                objrep = New R_ImpresionPrecioFrio1Vertical
+
+            ElseIf tipoRep = 2 Then ''Imprime nombres (12.4x1.5cm)
                 objrep = New R_ImpresionPrecioFrio2Vertical
+            ElseIf tipoRep = 3 Then ''Imprime precios (4.5 x 3.5cm)
+                If tipo = 1 Then ''Imprime 1 precio
+                    objrep = New R_ImpresionPrecios1Peq
+                ElseIf tipo = 2 Then ''Imprime 2 precios
+                    objrep = New R_ImpresionPrecios2Peq
+                ElseIf tipo = 3 Then ''Imprime 3 precios
+                    objrep = New R_ImpresionPrecios3Peq
+                End If
             End If
 
             objrep.SetDataSource(dt)
@@ -461,6 +469,54 @@ Public Class F0_ImportarPreciosImp
     End Sub
 
     Private Sub btnImprimirPrecioPeq_Click(sender As Object, e As EventArgs) Handles btnImprimirPrecioPeq.Click
+        If grDatos.RowCount > 0 Then
+            Dim dt1, dt2, dt3, dtAux As DataTable
+            dt1 = L_fnImpresionPreciosUno(0)
+            dt1.Clear()
+            dt2 = L_fnImpresionPreciosUno(0)
+            dt2.Clear()
+            dt3 = L_fnImpresionPreciosUno(0)
+            dt3.Clear()
+            For i = 0 To grDatos.RowCount - 1
+                Dim Cod As String = (CType(grDatos.DataSource, DataTable).Rows(i).Item("CODIGO DYNASYS")).ToString
+                dtAux = L_fnImpresionPreciosUno(Cod)
 
+                Dim Ini As Integer = dtAux.Rows(0).Item("CantIni")
+                Dim Fin As Integer = dtAux.Rows(0).Item("CantFin")
+
+                If Ini = 0 And Fin = 0 Then
+                    dt1.Rows.Add(dtAux.Rows(0).ItemArray) ''Imprime 1 precio
+                ElseIf Ini = Fin Then
+                    dt2.Rows.Add(dtAux.Rows(0).ItemArray) ''Imprime 2 precios
+                ElseIf Ini <> Fin Then
+
+                    dt3.Rows.Add(dtAux.Rows(0).ItemArray) ''Imprime 3 precios
+                End If
+
+                'dt.Rows.Add(dtAux.Rows(0).ItemArray)
+                L_fnBotonImprimir(gs_VersionSistema, gs_IPMaquina, gs_UsuMaquina, Cod, "IMPRESION DE PRECIOS", "IMPRESIÓN DE PRECIOS PEQUEÑOS")
+            Next
+
+            If dt1.Rows.Count > 0 Then
+                P_GenerarReporteOtrosFormatos(3, dt1, "5", False, 1) ''Imprime 1 precio (4.5 x 3.5cm)
+            End If
+
+            If dt2.Rows.Count > 0 Then
+                P_GenerarReporteOtrosFormatos(3, dt2, "5", False, 2) ''Imprime 2 precios (4.5 x 3.5cm)
+            End If
+
+            If dt3.Rows.Count > 0 Then
+                P_GenerarReporteOtrosFormatos(3, dt3, "5", False, 3) ''Imprime 3 precios (4.5 x 3.5cm)
+            End If
+
+
+
+
+        Else
+            ToastNotification.Show(Me, "NO EXISTE DATOS PARA IMPRIMIR",
+                       My.Resources.WARNING, 2300,
+                       eToastGlowColor.Red,
+                       eToastPosition.TopCenter)
+        End If
     End Sub
 End Class
