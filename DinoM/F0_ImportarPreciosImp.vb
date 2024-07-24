@@ -509,9 +509,6 @@ Public Class F0_ImportarPreciosImp
                 P_GenerarReporteOtrosFormatos(3, dt3, "5", False, 3) ''Imprime 3 precios (4.5 x 3.5cm)
             End If
 
-
-
-
         Else
             ToastNotification.Show(Me, "NO EXISTE DATOS PARA IMPRIMIR",
                        My.Resources.WARNING, 2300,

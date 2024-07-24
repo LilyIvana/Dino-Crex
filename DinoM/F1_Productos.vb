@@ -50,6 +50,7 @@ Public Class F1_Productos
         _prCargarComboLibreria(cbUniVenta, 1, 6)
         _prCargarComboLibreria(cbUnidMaxima, 1, 6)
         _prCargarComboCanje(cbCanje)
+        _prCargarComboFormato()
         _prAsignarPermisos()
         armarGrillaDetalleProducto(0)
         P_prArmarGrillaCombo(-1)
@@ -191,6 +192,30 @@ Public Class F1_Productos
         If dt.Rows.Count > 0 Then
             mCombo.SelectedIndex = 2
         End If
+    End Sub
+    Private Sub _prCargarComboFormato()
+        Dim dt As New DataTable
+        dt.Columns.Add("numi", GetType(Integer))
+        dt.Columns.Add("desc", GetType(String))
+
+        dt.Rows.Add({1, "7 x 1.5cm"})
+        dt.Rows.Add({2, "12.4 x 1.5cm"})
+        dt.Rows.Add({3, "4.5 x 3.5cm"})
+
+        With cbFormato
+            .DropDownList.Columns.Clear()
+            .DropDownList.Columns.Add("numi").Width = 30
+            .DropDownList.Columns("numi").Caption = "COD"
+            .DropDownList.Columns.Add("desc").Width = 80
+            .DropDownList.Columns("desc").Caption = "FORMATO"
+            .ValueMember = "numi"
+            .DisplayMember = "desc"
+            .DataSource = dt
+            .Refresh()
+
+            .SelectedIndex = 0
+        End With
+
     End Sub
     Private Sub _prAsignarPermisos()
 
@@ -1335,6 +1360,55 @@ Public Class F1_Productos
         End If
 
     End Sub
+    Private Sub ImprimirOtros()
+        Try
+            If tbCodigo.Text <> String.Empty Then
+                If (cbFormato.SelectedIndex >= 0) Then
+                    If cbFormato.Value.ToString = "1" Or cbFormato.Value.ToString = "2" Or cbFormato.Value.ToString = "3" Then
+                        Dim Cod As String = tbCodigo.Text
+                        Dim dt = L_fnImpresionPreciosUno(Cod)
+                        Dim Ini As Integer = dt.Rows(0).Item("CantIni")
+                        Dim Fin As Integer = dt.Rows(0).Item("CantFin")
+
+                        If cbFormato.Value = 1 Then
+                            F0_ImportarPreciosImp.P_GenerarReporteOtrosFormatos(1, dt, "6", swVisualizar.Value) ''Imprime mas chico (7x1.5cm)
+                            L_fnBotonImprimir(gs_VersionSistema, gs_IPMaquina, gs_UsuMaquina, tbCodigo.Text, "TY005", "PRODUCTOS-IMPRESIÓN DE PRECIO FRIO")
+                        ElseIf cbFormato.Value = 2 Then
+                            F0_ImportarPreciosImp.P_GenerarReporteOtrosFormatos(2, dt, "6", swVisualizar.Value) ''Imprime mas chico (12.4x1.5cm)
+                            L_fnBotonImprimir(gs_VersionSistema, gs_IPMaquina, gs_UsuMaquina, tbCodigo.Text, "TY005", "PRODUCTOS-IMPRESIÓN DE PRECIO FRIO")
+                        ElseIf cbFormato.Value = 3 Then
+                            If Ini = 0 And Fin = 0 Then
+                                F0_ImportarPreciosImp.P_GenerarReporteOtrosFormatos(3, dt, "6", swVisualizar.Value, 1) ''Imprime 1 precio (4.5 x 3.5cm)
+                            ElseIf Ini = Fin Then
+                                F0_ImportarPreciosImp.P_GenerarReporteOtrosFormatos(3, dt, "6", swVisualizar.Value, 2) ''Imprime 2 precios (4.5 x 3.5cm)
+                            ElseIf Ini <> Fin Then
+                                F0_ImportarPreciosImp.P_GenerarReporteOtrosFormatos(3, dt, "6", swVisualizar.Value, 3) ''Imprime 3 precios (4.5 x 3.5cm)
+                            End If
+                            L_fnBotonImprimir(gs_VersionSistema, gs_IPMaquina, gs_UsuMaquina, tbCodigo.Text, "TY005", "PRODUCTOS-IMPRESIÓN DE PRECIO PEQUEÑO")
+                        End If
+                    Else
+                        ToastNotification.Show(Me, "DEBE SELECCIONAR UN FORMATO DE IMPRESIÓN VÁLIDO",
+                 My.Resources.WARNING, 2500,
+                 eToastGlowColor.Red,
+                 eToastPosition.TopCenter)
+
+                    End If
+                Else
+                    ToastNotification.Show(Me, "DEBE SELECCIONAR UN FORMATO DE IMPRESIÓN VÁLIDO",
+                 My.Resources.WARNING, 3000,
+                 eToastGlowColor.Red,
+                 eToastPosition.TopCenter)
+                End If
+            Else
+            ToastNotification.Show(Me, "EL CODIGO DYNASYS ESTA VACÍO, NO PUEDE IMPRIMIR PRECIO",
+                       My.Resources.WARNING, 2500,
+                       eToastGlowColor.Red,
+                       eToastPosition.TopCenter)
+            End If
+        Catch ex As Exception
+            MsgBox(ex.Message)
+        End Try
+    End Sub
     Private Sub codigoBarrasImprimir()
         Dim dt As DataTable
         If (MessageBox.Show("DESEA IMPRIMIR CODIGO DE BARRAS PARA TODOS LOS PRODUCTOS?", "PREGUNTA...", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = Windows.Forms.DialogResult.Yes) Then
@@ -1978,5 +2052,7 @@ Public Class F1_Productos
         _PMIniciarTodo()
     End Sub
 
-
+    Private Sub btnImprimirOtros_Click(sender As Object, e As EventArgs) Handles btnImprimirOtros.Click
+        ImprimirOtros()
+    End Sub
 End Class

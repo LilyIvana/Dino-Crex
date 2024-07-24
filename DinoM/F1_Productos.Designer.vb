@@ -38,6 +38,7 @@ Partial Class F1_Productos
         Dim CbProdServ_DesignTimeLayout As Janus.Windows.GridEX.GridEXLayout = New Janus.Windows.GridEX.GridEXLayout()
         Dim CbUmedida_DesignTimeLayout As Janus.Windows.GridEX.GridEXLayout = New Janus.Windows.GridEX.GridEXLayout()
         Dim CbAeconomica_DesignTimeLayout As Janus.Windows.GridEX.GridEXLayout = New Janus.Windows.GridEX.GridEXLayout()
+        Dim cbFormato_DesignTimeLayout As Janus.Windows.GridEX.GridEXLayout = New Janus.Windows.GridEX.GridEXLayout()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.Panel4 = New System.Windows.Forms.Panel()
         Me.cbCanje = New Janus.Windows.GridEX.EditControls.MultiColumnCombo()
@@ -137,6 +138,9 @@ Partial Class F1_Productos
         Me.swMostrar = New DevComponents.DotNetBar.Controls.SwitchButton()
         Me.LabelX24 = New DevComponents.DotNetBar.LabelX()
         Me.swVisualizar = New DevComponents.DotNetBar.Controls.SwitchButton()
+        Me.btnImprimirOtros = New DevComponents.DotNetBar.ButtonX()
+        Me.cbFormato = New Janus.Windows.GridEX.EditControls.MultiColumnCombo()
+        Me.LabelX25 = New DevComponents.DotNetBar.LabelX()
         CType(Me.SuperTabPrincipal, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuperTabPrincipal.SuspendLayout()
         Me.SuperTabControlPanelRegistro.SuspendLayout()
@@ -192,6 +196,7 @@ Partial Class F1_Productos
         CType(Me.dgjDetalleProducto, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TableLayoutPanel1.SuspendLayout()
         Me.CmDetalle.SuspendLayout()
+        CType(Me.cbFormato, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'SuperTabPrincipal
@@ -288,19 +293,25 @@ Partial Class F1_Productos
         '
         'PanelToolBar2
         '
+        Me.PanelToolBar2.Controls.Add(Me.LabelX25)
+        Me.PanelToolBar2.Controls.Add(Me.cbFormato)
+        Me.PanelToolBar2.Controls.Add(Me.btnImprimirOtros)
         Me.PanelToolBar2.Controls.Add(Me.LabelX24)
         Me.PanelToolBar2.Controls.Add(Me.swVisualizar)
         Me.PanelToolBar2.Controls.Add(Me.LabelX23)
         Me.PanelToolBar2.Controls.Add(Me.swMostrar)
         Me.PanelToolBar2.Controls.Add(Me.btExcel)
-        Me.PanelToolBar2.Location = New System.Drawing.Point(824, 0)
-        Me.PanelToolBar2.Size = New System.Drawing.Size(494, 72)
+        Me.PanelToolBar2.Location = New System.Drawing.Point(754, 0)
+        Me.PanelToolBar2.Size = New System.Drawing.Size(564, 72)
         Me.PanelToolBar2.Controls.SetChildIndex(Me.btExcel, 0)
-        Me.PanelToolBar2.Controls.SetChildIndex(Me.btnImprimir, 0)
         Me.PanelToolBar2.Controls.SetChildIndex(Me.swMostrar, 0)
         Me.PanelToolBar2.Controls.SetChildIndex(Me.LabelX23, 0)
         Me.PanelToolBar2.Controls.SetChildIndex(Me.swVisualizar, 0)
         Me.PanelToolBar2.Controls.SetChildIndex(Me.LabelX24, 0)
+        Me.PanelToolBar2.Controls.SetChildIndex(Me.btnImprimirOtros, 0)
+        Me.PanelToolBar2.Controls.SetChildIndex(Me.btnImprimir, 0)
+        Me.PanelToolBar2.Controls.SetChildIndex(Me.cbFormato, 0)
+        Me.PanelToolBar2.Controls.SetChildIndex(Me.LabelX25, 0)
         '
         'MPanelSup
         '
@@ -388,7 +399,8 @@ Partial Class F1_Productos
         Me.btnImprimir.Dock = System.Windows.Forms.DockStyle.Right
         Me.btnImprimir.Image = Global.DinoM.My.Resources.Resources.printee
         Me.btnImprimir.ImageFixedSize = New System.Drawing.Size(40, 40)
-        Me.btnImprimir.Location = New System.Drawing.Point(339, 0)
+        Me.btnImprimir.Location = New System.Drawing.Point(359, 0)
+        Me.btnImprimir.Size = New System.Drawing.Size(70, 72)
         Me.btnImprimir.Text = "IMPRIMIR PRECIO"
         '
         'MPanelUserAct
@@ -401,7 +413,7 @@ Partial Class F1_Productos
         '
         '
         Me.MRlAccion.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.MRlAccion.Size = New System.Drawing.Size(448, 72)
+        Me.MRlAccion.Size = New System.Drawing.Size(378, 72)
         '
         'GroupBox1
         '
@@ -1941,14 +1953,14 @@ Partial Class F1_Productos
         Me.btExcel.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
         Me.btExcel.ColorTable = DevComponents.DotNetBar.eButtonColor.Flat
         Me.btExcel.Dock = System.Windows.Forms.DockStyle.Right
-        Me.btExcel.Font = New System.Drawing.Font("Arial", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btExcel.Font = New System.Drawing.Font("Arial", 8.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btExcel.Image = Global.DinoM.My.Resources.Resources.sheets
-        Me.btExcel.ImageFixedSize = New System.Drawing.Size(40, 45)
+        Me.btExcel.ImageFixedSize = New System.Drawing.Size(37, 45)
         Me.btExcel.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top
-        Me.btExcel.Location = New System.Drawing.Point(419, 0)
+        Me.btExcel.Location = New System.Drawing.Point(499, 0)
         Me.btExcel.Name = "btExcel"
         Me.btExcel.Padding = New System.Windows.Forms.Padding(0, 0, 0, 20)
-        Me.btExcel.Size = New System.Drawing.Size(75, 72)
+        Me.btExcel.Size = New System.Drawing.Size(65, 72)
         Me.btExcel.Style = DevComponents.DotNetBar.eDotNetBarStyle.OfficeMobile2014
         Me.btExcel.TabIndex = 9
         Me.btExcel.Text = "EXPORTAR"
@@ -2000,9 +2012,9 @@ Partial Class F1_Productos
         Me.LabelX23.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.LabelX23.Font = New System.Drawing.Font("Georgia", 8.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.LabelX23.ForeColor = System.Drawing.Color.White
-        Me.LabelX23.Location = New System.Drawing.Point(4, 14)
+        Me.LabelX23.Location = New System.Drawing.Point(4, 13)
         Me.LabelX23.Name = "LabelX23"
-        Me.LabelX23.Size = New System.Drawing.Size(147, 15)
+        Me.LabelX23.Size = New System.Drawing.Size(117, 15)
         Me.LabelX23.TabIndex = 427
         Me.LabelX23.Text = "Nro. Registros:"
         '
@@ -2012,15 +2024,16 @@ Partial Class F1_Productos
         '
         '
         Me.swMostrar.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.swMostrar.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.swMostrar.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.5!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.swMostrar.Location = New System.Drawing.Point(3, 32)
         Me.swMostrar.Name = "swMostrar"
         Me.swMostrar.OffBackColor = System.Drawing.Color.Gold
         Me.swMostrar.OffText = "MOSTRAR ÚLT. 5000"
         Me.swMostrar.OnBackColor = System.Drawing.Color.ForestGreen
         Me.swMostrar.OnText = "MOSTRAR TODOS"
-        Me.swMostrar.Size = New System.Drawing.Size(163, 22)
+        Me.swMostrar.Size = New System.Drawing.Size(136, 22)
         Me.swMostrar.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+        Me.swMostrar.SwitchWidth = 22
         Me.swMostrar.TabIndex = 426
         '
         'LabelX24
@@ -2029,13 +2042,13 @@ Partial Class F1_Productos
         '
         '
         Me.LabelX24.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.LabelX24.Font = New System.Drawing.Font("Georgia", 8.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LabelX24.Font = New System.Drawing.Font("Georgia", 7.9!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.LabelX24.ForeColor = System.Drawing.Color.White
-        Me.LabelX24.Location = New System.Drawing.Point(169, 12)
+        Me.LabelX24.Location = New System.Drawing.Point(140, 6)
         Me.LabelX24.Name = "LabelX24"
-        Me.LabelX24.Size = New System.Drawing.Size(167, 12)
+        Me.LabelX24.Size = New System.Drawing.Size(90, 22)
         Me.LabelX24.TabIndex = 429
-        Me.LabelX24.Text = "Visualizar antes de Imprimir:"
+        Me.LabelX24.Text = "Visualizar antes" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "  de Imprimir:"
         '
         'swVisualizar
         '
@@ -2044,7 +2057,7 @@ Partial Class F1_Productos
         '
         Me.swVisualizar.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.swVisualizar.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.swVisualizar.Location = New System.Drawing.Point(221, 32)
+        Me.swVisualizar.Location = New System.Drawing.Point(152, 32)
         Me.swVisualizar.Name = "swVisualizar"
         Me.swVisualizar.OffBackColor = System.Drawing.Color.Gold
         Me.swVisualizar.OffText = "NO"
@@ -2054,6 +2067,53 @@ Partial Class F1_Productos
         Me.swVisualizar.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
         Me.swVisualizar.SwitchWidth = 25
         Me.swVisualizar.TabIndex = 428
+        '
+        'btnImprimirOtros
+        '
+        Me.btnImprimirOtros.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
+        Me.btnImprimirOtros.ColorTable = DevComponents.DotNetBar.eButtonColor.Flat
+        Me.btnImprimirOtros.Dock = System.Windows.Forms.DockStyle.Right
+        Me.btnImprimirOtros.Font = New System.Drawing.Font("Arial", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnImprimirOtros.Image = Global.DinoM.My.Resources.Resources.impresora2
+        Me.btnImprimirOtros.ImageFixedSize = New System.Drawing.Size(40, 45)
+        Me.btnImprimirOtros.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top
+        Me.btnImprimirOtros.Location = New System.Drawing.Point(429, 0)
+        Me.btnImprimirOtros.Name = "btnImprimirOtros"
+        Me.btnImprimirOtros.Padding = New System.Windows.Forms.Padding(0, 0, 0, 20)
+        Me.btnImprimirOtros.Size = New System.Drawing.Size(70, 72)
+        Me.btnImprimirOtros.Style = DevComponents.DotNetBar.eDotNetBarStyle.OfficeMobile2014
+        Me.btnImprimirOtros.TabIndex = 430
+        Me.btnImprimirOtros.Text = "IMPRIMIR OTROS"
+        Me.btnImprimirOtros.TextColor = System.Drawing.Color.White
+        '
+        'cbFormato
+        '
+        cbFormato_DesignTimeLayout.LayoutString = resources.GetString("cbFormato_DesignTimeLayout.LayoutString")
+        Me.cbFormato.DesignTimeLayout = cbFormato_DesignTimeLayout
+        Me.cbFormato.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cbFormato.Location = New System.Drawing.Point(242, 33)
+        Me.cbFormato.Name = "cbFormato"
+        Me.cbFormato.Office2007ColorScheme = Janus.Windows.GridEX.Office2007ColorScheme.Custom
+        Me.cbFormato.Office2007CustomColor = System.Drawing.Color.DodgerBlue
+        Me.cbFormato.SelectedIndex = -1
+        Me.cbFormato.SelectedItem = Nothing
+        Me.cbFormato.Size = New System.Drawing.Size(111, 21)
+        Me.cbFormato.TabIndex = 431
+        Me.cbFormato.VisualStyle = Janus.Windows.GridEX.VisualStyle.Office2007
+        '
+        'LabelX25
+        '
+        '
+        '
+        '
+        Me.LabelX25.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.LabelX25.Font = New System.Drawing.Font("Georgia", 8.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LabelX25.ForeColor = System.Drawing.Color.White
+        Me.LabelX25.Location = New System.Drawing.Point(242, 6)
+        Me.LabelX25.Name = "LabelX25"
+        Me.LabelX25.Size = New System.Drawing.Size(84, 22)
+        Me.LabelX25.TabIndex = 432
+        Me.LabelX25.Text = "Formato" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Impresión:"
         '
         'F1_Productos
         '
@@ -2072,6 +2132,7 @@ Partial Class F1_Productos
         CType(Me.BubbleBarUsuario, System.ComponentModel.ISupportInitialize).EndInit()
         Me.PanelToolBar1.ResumeLayout(False)
         Me.PanelToolBar2.ResumeLayout(False)
+        Me.PanelToolBar2.PerformLayout()
         Me.MPanelSup.ResumeLayout(False)
         Me.PanelPrincipal.ResumeLayout(False)
         Me.GroupPanelBuscador.ResumeLayout(False)
@@ -2128,6 +2189,7 @@ Partial Class F1_Productos
         CType(Me.dgjDetalleProducto, System.ComponentModel.ISupportInitialize).EndInit()
         Me.TableLayoutPanel1.ResumeLayout(False)
         Me.CmDetalle.ResumeLayout(False)
+        CType(Me.cbFormato, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -2230,4 +2292,7 @@ Partial Class F1_Productos
     Friend WithEvents swMostrar As DevComponents.DotNetBar.Controls.SwitchButton
     Friend WithEvents LabelX24 As DevComponents.DotNetBar.LabelX
     Friend WithEvents swVisualizar As DevComponents.DotNetBar.Controls.SwitchButton
+    Friend WithEvents btnImprimirOtros As DevComponents.DotNetBar.ButtonX
+    Friend WithEvents LabelX25 As DevComponents.DotNetBar.LabelX
+    Friend WithEvents cbFormato As Janus.Windows.GridEX.EditControls.MultiColumnCombo
 End Class
