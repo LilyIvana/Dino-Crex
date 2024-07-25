@@ -323,11 +323,11 @@ Public Class F0_ImportarPreciosImp
                 objrep = New R_ImpresionPrecioFrio2Vertical
             ElseIf tipoRep = 3 Then ''Imprime precios (4.5 x 3.5cm)
                 If tipo = 1 Then ''Imprime 1 precio
-                    objrep = New R_ImpresionPrecios1Peq
+                    objrep = New R_ImpresionPrecios1Peq1
                 ElseIf tipo = 2 Then ''Imprime 2 precios
-                    objrep = New R_ImpresionPrecios2Peq
+                    objrep = New R_ImpresionPrecios2Peq1
                 ElseIf tipo = 3 Then ''Imprime 3 precios
-                    objrep = New R_ImpresionPrecios3Peq
+                    objrep = New R_ImpresionPrecios3Peq1
                 End If
             End If
 
