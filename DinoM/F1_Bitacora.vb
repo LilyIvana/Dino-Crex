@@ -122,7 +122,7 @@ Public Class F1_Bitacora
                 .Visible = False
             End With
             With JGrM_Buscador.RootTable.Columns("bdmodulo")
-                .Width = 380
+                .Width = 360
                 .Visible = True
                 .Caption = "MÓDULO"
             End With

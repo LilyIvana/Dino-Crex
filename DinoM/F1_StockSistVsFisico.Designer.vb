@@ -69,7 +69,7 @@ Partial Class F1_StockSistVsFisico
         Me.SuperTabPrincipal.ControlBox.MenuBox.Name = ""
         Me.SuperTabPrincipal.ControlBox.Name = ""
         Me.SuperTabPrincipal.ControlBox.SubItems.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.SuperTabPrincipal.ControlBox.MenuBox, Me.SuperTabPrincipal.ControlBox.CloseBox})
-        Me.SuperTabPrincipal.Size = New System.Drawing.Size(1354, 661)
+        Me.SuperTabPrincipal.Size = New System.Drawing.Size(1354, 701)
         Me.SuperTabPrincipal.Controls.SetChildIndex(Me.SuperTabControlPanelBuscador, 0)
         Me.SuperTabPrincipal.Controls.SetChildIndex(Me.SuperTabControlPanelRegistro, 0)
         '
@@ -84,7 +84,7 @@ Partial Class F1_StockSistVsFisico
         '
         'SuperTabControlPanelRegistro
         '
-        Me.SuperTabControlPanelRegistro.Size = New System.Drawing.Size(1322, 661)
+        Me.SuperTabControlPanelRegistro.Size = New System.Drawing.Size(1322, 701)
         Me.SuperTabControlPanelRegistro.Controls.SetChildIndex(Me.PanelSuperior, 0)
         Me.SuperTabControlPanelRegistro.Controls.SetChildIndex(Me.PanelInferior, 0)
         Me.SuperTabControlPanelRegistro.Controls.SetChildIndex(Me.PanelPrincipal, 0)
@@ -104,7 +104,7 @@ Partial Class F1_StockSistVsFisico
         '
         'PanelInferior
         '
-        Me.PanelInferior.Location = New System.Drawing.Point(0, 625)
+        Me.PanelInferior.Location = New System.Drawing.Point(0, 665)
         Me.PanelInferior.Size = New System.Drawing.Size(1322, 36)
         Me.PanelInferior.Style.Alignment = System.Drawing.StringAlignment.Center
         Me.PanelInferior.Style.BackColor1.Color = System.Drawing.Color.DarkSlateGray
@@ -156,13 +156,13 @@ Partial Class F1_StockSistVsFisico
         '
         'PanelPrincipal
         '
-        Me.PanelPrincipal.Size = New System.Drawing.Size(1322, 553)
+        Me.PanelPrincipal.Size = New System.Drawing.Size(1322, 593)
         '
         'GroupPanelBuscador
         '
         Me.GroupPanelBuscador.Font = New System.Drawing.Font("Georgia", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GroupPanelBuscador.Location = New System.Drawing.Point(0, 100)
-        Me.GroupPanelBuscador.Size = New System.Drawing.Size(1322, 453)
+        Me.GroupPanelBuscador.Size = New System.Drawing.Size(1322, 493)
         '
         '
         '
@@ -217,7 +217,7 @@ Partial Class F1_StockSistVsFisico
         Me.JGrM_Buscador.SelectedFormatStyle.BackColor = System.Drawing.Color.DodgerBlue
         Me.JGrM_Buscador.SelectedFormatStyle.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.JGrM_Buscador.SelectedFormatStyle.ForeColor = System.Drawing.Color.White
-        Me.JGrM_Buscador.Size = New System.Drawing.Size(1316, 430)
+        Me.JGrM_Buscador.Size = New System.Drawing.Size(1316, 470)
         Me.JGrM_Buscador.VisualStyle = Janus.Windows.GridEX.VisualStyle.Office2007
         '
         'PanelUsuario
@@ -238,6 +238,14 @@ Partial Class F1_StockSistVsFisico
         'MPanelUserAct
         '
         Me.MPanelUserAct.Location = New System.Drawing.Point(1122, 0)
+        '
+        'MRlAccion
+        '
+        '
+        '
+        '
+        Me.MRlAccion.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.MRlAccion.Size = New System.Drawing.Size(791, 72)
         '
         'btExcel
         '
@@ -414,7 +422,7 @@ Partial Class F1_StockSistVsFisico
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1354, 661)
+        Me.ClientSize = New System.Drawing.Size(1354, 701)
         Me.Location = New System.Drawing.Point(0, 0)
         Me.Name = "F1_StockSistVsFisico"
         Me.Text = "STOCK SISTEMA VS. STOCK FÍSICO"

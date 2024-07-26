@@ -28,8 +28,8 @@ Partial Class F0_VerificarPrecioCompra
         Me.PanelPrecios = New System.Windows.Forms.Panel()
         Me.GroupPanel4 = New DevComponents.DotNetBar.Controls.GroupPanel()
         Me.Panel5 = New System.Windows.Forms.Panel()
-        Me.grTodasCompras = New Janus.Windows.GridEX.GridEX()
         Me.grprecio = New Janus.Windows.GridEX.GridEX()
+        Me.grTodasCompras = New Janus.Windows.GridEX.GridEX()
         Me.GroupPanel3 = New DevComponents.DotNetBar.Controls.GroupPanel()
         Me.Panel4 = New System.Windows.Forms.Panel()
         Me.TableLayoutPanel1 = New System.Windows.Forms.TableLayoutPanel()
@@ -63,8 +63,8 @@ Partial Class F0_VerificarPrecioCompra
         Me.PanelPrecios.SuspendLayout()
         Me.GroupPanel4.SuspendLayout()
         Me.Panel5.SuspendLayout()
-        CType(Me.grTodasCompras, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.grprecio, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.grTodasCompras, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupPanel3.SuspendLayout()
         Me.Panel4.SuspendLayout()
         Me.TableLayoutPanel1.SuspendLayout()
@@ -92,7 +92,6 @@ Partial Class F0_VerificarPrecioCompra
         '
         'PanelInferior
         '
-        Me.PanelInferior.Location = New System.Drawing.Point(0, 622)
         Me.PanelInferior.Margin = New System.Windows.Forms.Padding(4)
         Me.PanelInferior.Size = New System.Drawing.Size(1344, 39)
         Me.PanelInferior.Style.Alignment = System.Drawing.StringAlignment.Center
@@ -147,10 +146,6 @@ Partial Class F0_VerificarPrecioCompra
         'btnModificar
         '
         '
-        'btnNuevo
-        '
-        Me.btnNuevo.Visible = False
-        '
         'PanelToolBar2
         '
         Me.PanelToolBar2.Controls.Add(Me.btTodasCompras)
@@ -163,7 +158,7 @@ Partial Class F0_VerificarPrecioCompra
         'PanelPrincipal
         '
         Me.PanelPrincipal.Margin = New System.Windows.Forms.Padding(4)
-        Me.PanelPrincipal.Size = New System.Drawing.Size(1344, 661)
+        Me.PanelPrincipal.Size = New System.Drawing.Size(1344, 701)
         Me.PanelPrincipal.Controls.SetChildIndex(Me.PanelInferior, 0)
         Me.PanelPrincipal.Controls.SetChildIndex(Me.PanelUsuario, 0)
         Me.PanelPrincipal.Controls.SetChildIndex(Me.PanelSuperior, 0)
@@ -201,18 +196,18 @@ Partial Class F0_VerificarPrecioCompra
         '
         Me.PanelContent.Controls.Add(Me.PanelPrecios)
         Me.PanelContent.Margin = New System.Windows.Forms.Padding(2)
-        Me.PanelContent.Size = New System.Drawing.Size(1311, 550)
+        Me.PanelContent.Size = New System.Drawing.Size(1311, 590)
         '
         'Panel1
         '
         Me.Panel1.BackColor = System.Drawing.Color.White
         Me.Panel1.Margin = New System.Windows.Forms.Padding(4)
-        Me.Panel1.Size = New System.Drawing.Size(1344, 550)
+        Me.Panel1.Size = New System.Drawing.Size(1344, 590)
         '
         'MSuperTabControlPanel1
         '
         Me.MSuperTabControlPanel1.Margin = New System.Windows.Forms.Padding(2)
-        Me.MSuperTabControlPanel1.Size = New System.Drawing.Size(1311, 550)
+        Me.MSuperTabControlPanel1.Size = New System.Drawing.Size(1311, 590)
         '
         'MSuperTabControl
         '
@@ -230,13 +225,17 @@ Partial Class F0_VerificarPrecioCompra
         Me.MSuperTabControl.ControlBox.Name = ""
         Me.MSuperTabControl.ControlBox.SubItems.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.MSuperTabControl.ControlBox.MenuBox, Me.MSuperTabControl.ControlBox.CloseBox})
         Me.MSuperTabControl.Margin = New System.Windows.Forms.Padding(4)
-        Me.MSuperTabControl.Size = New System.Drawing.Size(1344, 550)
+        Me.MSuperTabControl.Size = New System.Drawing.Size(1344, 590)
         Me.MSuperTabControl.Controls.SetChildIndex(Me.MSuperTabControlPanel1, 0)
         '
         'PictureBox1
         '
         Me.PictureBox1.Location = New System.Drawing.Point(971, 0)
         Me.PictureBox1.Margin = New System.Windows.Forms.Padding(4)
+        '
+        'btnNuevo
+        '
+        Me.btnNuevo.Visible = False
         '
         'PanelPrecios
         '
@@ -247,7 +246,7 @@ Partial Class F0_VerificarPrecioCompra
         Me.PanelPrecios.Dock = System.Windows.Forms.DockStyle.Fill
         Me.PanelPrecios.Location = New System.Drawing.Point(0, 0)
         Me.PanelPrecios.Name = "PanelPrecios"
-        Me.PanelPrecios.Size = New System.Drawing.Size(1311, 550)
+        Me.PanelPrecios.Size = New System.Drawing.Size(1311, 590)
         Me.PanelPrecios.TabIndex = 1
         '
         'GroupPanel4
@@ -260,7 +259,7 @@ Partial Class F0_VerificarPrecioCompra
         Me.GroupPanel4.Font = New System.Drawing.Font("Georgia", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GroupPanel4.Location = New System.Drawing.Point(0, 100)
         Me.GroupPanel4.Name = "GroupPanel4"
-        Me.GroupPanel4.Size = New System.Drawing.Size(1311, 450)
+        Me.GroupPanel4.Size = New System.Drawing.Size(1311, 490)
         '
         '
         '
@@ -300,22 +299,8 @@ Partial Class F0_VerificarPrecioCompra
         Me.Panel5.Dock = System.Windows.Forms.DockStyle.Fill
         Me.Panel5.Location = New System.Drawing.Point(0, 0)
         Me.Panel5.Name = "Panel5"
-        Me.Panel5.Size = New System.Drawing.Size(1305, 427)
+        Me.Panel5.Size = New System.Drawing.Size(1305, 467)
         Me.Panel5.TabIndex = 0
-        '
-        'grTodasCompras
-        '
-        Me.grTodasCompras.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.grTodasCompras.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.5!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.grTodasCompras.HeaderFormatStyle.Font = New System.Drawing.Font("Georgia", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.grTodasCompras.Location = New System.Drawing.Point(0, 0)
-        Me.grTodasCompras.Name = "grTodasCompras"
-        Me.grTodasCompras.Office2007ColorScheme = Janus.Windows.GridEX.Office2007ColorScheme.Custom
-        Me.grTodasCompras.Office2007CustomColor = System.Drawing.Color.DodgerBlue
-        Me.grTodasCompras.Size = New System.Drawing.Size(1305, 427)
-        Me.grTodasCompras.TabIndex = 1
-        Me.grTodasCompras.Visible = False
-        Me.grTodasCompras.VisualStyle = Janus.Windows.GridEX.VisualStyle.Office2007
         '
         'grprecio
         '
@@ -326,9 +311,23 @@ Partial Class F0_VerificarPrecioCompra
         Me.grprecio.Name = "grprecio"
         Me.grprecio.Office2007ColorScheme = Janus.Windows.GridEX.Office2007ColorScheme.Custom
         Me.grprecio.Office2007CustomColor = System.Drawing.Color.DodgerBlue
-        Me.grprecio.Size = New System.Drawing.Size(1305, 427)
+        Me.grprecio.Size = New System.Drawing.Size(1305, 467)
         Me.grprecio.TabIndex = 0
         Me.grprecio.VisualStyle = Janus.Windows.GridEX.VisualStyle.Office2007
+        '
+        'grTodasCompras
+        '
+        Me.grTodasCompras.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.grTodasCompras.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.5!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.grTodasCompras.HeaderFormatStyle.Font = New System.Drawing.Font("Georgia", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.grTodasCompras.Location = New System.Drawing.Point(0, 0)
+        Me.grTodasCompras.Name = "grTodasCompras"
+        Me.grTodasCompras.Office2007ColorScheme = Janus.Windows.GridEX.Office2007ColorScheme.Custom
+        Me.grTodasCompras.Office2007CustomColor = System.Drawing.Color.DodgerBlue
+        Me.grTodasCompras.Size = New System.Drawing.Size(1305, 467)
+        Me.grTodasCompras.TabIndex = 1
+        Me.grTodasCompras.Visible = False
+        Me.grTodasCompras.VisualStyle = Janus.Windows.GridEX.VisualStyle.Office2007
         '
         'GroupPanel3
         '
@@ -576,7 +575,7 @@ Partial Class F0_VerificarPrecioCompra
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1344, 661)
+        Me.ClientSize = New System.Drawing.Size(1344, 701)
         Me.Location = New System.Drawing.Point(0, 0)
         Me.Margin = New System.Windows.Forms.Padding(4)
         Me.Name = "F0_VerificarPrecioCompra"
@@ -603,8 +602,8 @@ Partial Class F0_VerificarPrecioCompra
         Me.PanelPrecios.ResumeLayout(False)
         Me.GroupPanel4.ResumeLayout(False)
         Me.Panel5.ResumeLayout(False)
-        CType(Me.grTodasCompras, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.grprecio, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.grTodasCompras, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupPanel3.ResumeLayout(False)
         Me.Panel4.ResumeLayout(False)
         Me.TableLayoutPanel1.ResumeLayout(False)

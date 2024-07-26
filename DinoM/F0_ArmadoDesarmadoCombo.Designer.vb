@@ -111,7 +111,6 @@ Partial Class F0_ArmadoDesarmadoCombo
         '
         'PanelInferior
         '
-        Me.PanelInferior.Location = New System.Drawing.Point(0, 652)
         Me.PanelInferior.Size = New System.Drawing.Size(1352, 39)
         Me.PanelInferior.Style.Alignment = System.Drawing.StringAlignment.Center
         Me.PanelInferior.Style.BackColor1.Color = System.Drawing.Color.Transparent
@@ -170,7 +169,7 @@ Partial Class F0_ArmadoDesarmadoCombo
         '
         'PanelPrincipal
         '
-        Me.PanelPrincipal.Size = New System.Drawing.Size(1352, 691)
+        Me.PanelPrincipal.Size = New System.Drawing.Size(1352, 701)
         Me.PanelPrincipal.Controls.SetChildIndex(Me.PanelInferior, 0)
         Me.PanelPrincipal.Controls.SetChildIndex(Me.PanelUsuario, 0)
         Me.PanelPrincipal.Controls.SetChildIndex(Me.PanelSuperior, 0)
@@ -203,15 +202,15 @@ Partial Class F0_ArmadoDesarmadoCombo
         'PanelContent
         '
         Me.PanelContent.Controls.Add(Me.TableLayoutPanel1)
-        Me.PanelContent.Size = New System.Drawing.Size(1319, 580)
+        Me.PanelContent.Size = New System.Drawing.Size(1319, 590)
         '
         'Panel1
         '
-        Me.Panel1.Size = New System.Drawing.Size(1352, 580)
+        Me.Panel1.Size = New System.Drawing.Size(1352, 590)
         '
         'MSuperTabControlPanel1
         '
-        Me.MSuperTabControlPanel1.Size = New System.Drawing.Size(1319, 580)
+        Me.MSuperTabControlPanel1.Size = New System.Drawing.Size(1319, 590)
         '
         'MSuperTabControl
         '
@@ -230,7 +229,7 @@ Partial Class F0_ArmadoDesarmadoCombo
         Me.MSuperTabControl.ControlBox.SubItems.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.MSuperTabControl.ControlBox.MenuBox, Me.MSuperTabControl.ControlBox.CloseBox})
         Me.MSuperTabControl.Controls.Add(Me.SuperTabControlPanel1)
         Me.MSuperTabControl.SelectedTabIndex = 1
-        Me.MSuperTabControl.Size = New System.Drawing.Size(1352, 580)
+        Me.MSuperTabControl.Size = New System.Drawing.Size(1352, 590)
         Me.MSuperTabControl.Tabs.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.MSuperTabItemBusqueda})
         Me.MSuperTabControl.Controls.SetChildIndex(Me.MSuperTabControlPanel1, 0)
         Me.MSuperTabControl.Controls.SetChildIndex(Me.SuperTabControlPanel1, 0)
@@ -257,7 +256,7 @@ Partial Class F0_ArmadoDesarmadoCombo
         Me.TableLayoutPanel1.RowCount = 2
         Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 45.0!))
         Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 55.0!))
-        Me.TableLayoutPanel1.Size = New System.Drawing.Size(1319, 580)
+        Me.TableLayoutPanel1.Size = New System.Drawing.Size(1319, 590)
         Me.TableLayoutPanel1.TabIndex = 0
         '
         'GroupPanelDetalle
@@ -268,9 +267,9 @@ Partial Class F0_ArmadoDesarmadoCombo
         Me.GroupPanelDetalle.DisabledBackColor = System.Drawing.Color.Empty
         Me.GroupPanelDetalle.Dock = System.Windows.Forms.DockStyle.Fill
         Me.GroupPanelDetalle.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.GroupPanelDetalle.Location = New System.Drawing.Point(3, 264)
+        Me.GroupPanelDetalle.Location = New System.Drawing.Point(3, 268)
         Me.GroupPanelDetalle.Name = "GroupPanelDetalle"
-        Me.GroupPanelDetalle.Size = New System.Drawing.Size(653, 313)
+        Me.GroupPanelDetalle.Size = New System.Drawing.Size(653, 319)
         '
         '
         '
@@ -307,7 +306,7 @@ Partial Class F0_ArmadoDesarmadoCombo
         Me.dgjDetalle.Dock = System.Windows.Forms.DockStyle.Fill
         Me.dgjDetalle.Location = New System.Drawing.Point(0, 0)
         Me.dgjDetalle.Name = "dgjDetalle"
-        Me.dgjDetalle.Size = New System.Drawing.Size(647, 289)
+        Me.dgjDetalle.Size = New System.Drawing.Size(647, 295)
         Me.dgjDetalle.TabIndex = 0
         '
         'GroupPanelDesarmado
@@ -318,9 +317,9 @@ Partial Class F0_ArmadoDesarmadoCombo
         Me.GroupPanelDesarmado.DisabledBackColor = System.Drawing.Color.Empty
         Me.GroupPanelDesarmado.Dock = System.Windows.Forms.DockStyle.Fill
         Me.GroupPanelDesarmado.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.GroupPanelDesarmado.Location = New System.Drawing.Point(662, 264)
+        Me.GroupPanelDesarmado.Location = New System.Drawing.Point(662, 268)
         Me.GroupPanelDesarmado.Name = "GroupPanelDesarmado"
-        Me.GroupPanelDesarmado.Size = New System.Drawing.Size(654, 313)
+        Me.GroupPanelDesarmado.Size = New System.Drawing.Size(654, 319)
         '
         '
         '
@@ -357,7 +356,7 @@ Partial Class F0_ArmadoDesarmadoCombo
         Me.dgjDesArmPack.Dock = System.Windows.Forms.DockStyle.Fill
         Me.dgjDesArmPack.Location = New System.Drawing.Point(0, 0)
         Me.dgjDesArmPack.Name = "dgjDesArmPack"
-        Me.dgjDesArmPack.Size = New System.Drawing.Size(648, 289)
+        Me.dgjDesArmPack.Size = New System.Drawing.Size(648, 295)
         Me.dgjDesArmPack.TabIndex = 0
         '
         'GroupPanelDatosArmado
@@ -370,7 +369,7 @@ Partial Class F0_ArmadoDesarmadoCombo
         Me.GroupPanelDatosArmado.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GroupPanelDatosArmado.Location = New System.Drawing.Point(3, 3)
         Me.GroupPanelDatosArmado.Name = "GroupPanelDatosArmado"
-        Me.GroupPanelDatosArmado.Size = New System.Drawing.Size(653, 255)
+        Me.GroupPanelDatosArmado.Size = New System.Drawing.Size(653, 259)
         '
         '
         '
@@ -425,7 +424,7 @@ Partial Class F0_ArmadoDesarmadoCombo
         Me.PanelExDatosGenerales.Dock = System.Windows.Forms.DockStyle.Fill
         Me.PanelExDatosGenerales.Location = New System.Drawing.Point(0, 0)
         Me.PanelExDatosGenerales.Name = "PanelExDatosGenerales"
-        Me.PanelExDatosGenerales.Size = New System.Drawing.Size(647, 231)
+        Me.PanelExDatosGenerales.Size = New System.Drawing.Size(647, 235)
         Me.PanelExDatosGenerales.Style.Alignment = System.Drawing.StringAlignment.Center
         Me.PanelExDatosGenerales.Style.BackColor1.Color = System.Drawing.SystemColors.Control
         Me.PanelExDatosGenerales.Style.BackColor2.Color = System.Drawing.SystemColors.Control
@@ -685,7 +684,7 @@ Partial Class F0_ArmadoDesarmadoCombo
         Me.GroupPanelDatosDesarmado.Dock = System.Windows.Forms.DockStyle.Fill
         Me.GroupPanelDatosDesarmado.Location = New System.Drawing.Point(662, 3)
         Me.GroupPanelDatosDesarmado.Name = "GroupPanelDatosDesarmado"
-        Me.GroupPanelDatosDesarmado.Size = New System.Drawing.Size(654, 255)
+        Me.GroupPanelDatosDesarmado.Size = New System.Drawing.Size(654, 259)
         '
         '
         '
@@ -732,7 +731,7 @@ Partial Class F0_ArmadoDesarmadoCombo
         Me.PanelEx1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.PanelEx1.Location = New System.Drawing.Point(0, 0)
         Me.PanelEx1.Name = "PanelEx1"
-        Me.PanelEx1.Size = New System.Drawing.Size(648, 232)
+        Me.PanelEx1.Size = New System.Drawing.Size(648, 236)
         Me.PanelEx1.Style.Alignment = System.Drawing.StringAlignment.Center
         Me.PanelEx1.Style.BackColor1.Color = System.Drawing.SystemColors.Control
         Me.PanelEx1.Style.BackColor2.Color = System.Drawing.SystemColors.Control
@@ -936,7 +935,7 @@ Partial Class F0_ArmadoDesarmadoCombo
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1352, 691)
+        Me.ClientSize = New System.Drawing.Size(1352, 701)
         Me.Location = New System.Drawing.Point(0, 0)
         Me.Name = "F0_ArmadoDesarmadoCombo"
         Me.Text = "F0_ArmadoDesarmadoCombo"

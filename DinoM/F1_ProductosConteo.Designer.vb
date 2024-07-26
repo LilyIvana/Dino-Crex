@@ -293,6 +293,14 @@ Partial Class F1_ProductosConteo
         '
         Me.MPanelUserAct.Location = New System.Drawing.Point(1118, 0)
         '
+        'MRlAccion
+        '
+        '
+        '
+        '
+        Me.MRlAccion.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.MRlAccion.Size = New System.Drawing.Size(787, 72)
+        '
         'lbgrupo1
         '
         Me.lbgrupo1.BackColor = System.Drawing.Color.Transparent

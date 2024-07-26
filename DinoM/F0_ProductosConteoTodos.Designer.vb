@@ -89,7 +89,6 @@ Partial Class F0_ProductosConteoTodos
         '
         'PanelInferior
         '
-        Me.PanelInferior.Location = New System.Drawing.Point(0, 622)
         Me.PanelInferior.Margin = New System.Windows.Forms.Padding(4)
         Me.PanelInferior.Size = New System.Drawing.Size(1344, 39)
         Me.PanelInferior.Style.Alignment = System.Drawing.StringAlignment.Center
@@ -152,7 +151,7 @@ Partial Class F0_ProductosConteoTodos
         'PanelPrincipal
         '
         Me.PanelPrincipal.Margin = New System.Windows.Forms.Padding(4)
-        Me.PanelPrincipal.Size = New System.Drawing.Size(1344, 661)
+        Me.PanelPrincipal.Size = New System.Drawing.Size(1344, 701)
         Me.PanelPrincipal.Controls.SetChildIndex(Me.PanelInferior, 0)
         Me.PanelPrincipal.Controls.SetChildIndex(Me.PanelUsuario, 0)
         Me.PanelPrincipal.Controls.SetChildIndex(Me.PanelSuperior, 0)
@@ -194,18 +193,18 @@ Partial Class F0_ProductosConteoTodos
         '
         Me.PanelContent.Controls.Add(Me.PanelPrecios)
         Me.PanelContent.Margin = New System.Windows.Forms.Padding(2)
-        Me.PanelContent.Size = New System.Drawing.Size(1311, 550)
+        Me.PanelContent.Size = New System.Drawing.Size(1311, 590)
         '
         'Panel1
         '
         Me.Panel1.BackColor = System.Drawing.Color.White
         Me.Panel1.Margin = New System.Windows.Forms.Padding(4)
-        Me.Panel1.Size = New System.Drawing.Size(1344, 550)
+        Me.Panel1.Size = New System.Drawing.Size(1344, 590)
         '
         'MSuperTabControlPanel1
         '
         Me.MSuperTabControlPanel1.Margin = New System.Windows.Forms.Padding(2)
-        Me.MSuperTabControlPanel1.Size = New System.Drawing.Size(1311, 550)
+        Me.MSuperTabControlPanel1.Size = New System.Drawing.Size(1311, 590)
         '
         'MSuperTabControl
         '
@@ -223,7 +222,7 @@ Partial Class F0_ProductosConteoTodos
         Me.MSuperTabControl.ControlBox.Name = ""
         Me.MSuperTabControl.ControlBox.SubItems.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.MSuperTabControl.ControlBox.MenuBox, Me.MSuperTabControl.ControlBox.CloseBox})
         Me.MSuperTabControl.Margin = New System.Windows.Forms.Padding(4)
-        Me.MSuperTabControl.Size = New System.Drawing.Size(1344, 550)
+        Me.MSuperTabControl.Size = New System.Drawing.Size(1344, 590)
         Me.MSuperTabControl.Controls.SetChildIndex(Me.MSuperTabControlPanel1, 0)
         '
         'PictureBox1
@@ -244,7 +243,7 @@ Partial Class F0_ProductosConteoTodos
         Me.PanelPrecios.Dock = System.Windows.Forms.DockStyle.Fill
         Me.PanelPrecios.Location = New System.Drawing.Point(0, 0)
         Me.PanelPrecios.Name = "PanelPrecios"
-        Me.PanelPrecios.Size = New System.Drawing.Size(1311, 550)
+        Me.PanelPrecios.Size = New System.Drawing.Size(1311, 590)
         Me.PanelPrecios.TabIndex = 1
         '
         'GroupPanel4
@@ -257,7 +256,7 @@ Partial Class F0_ProductosConteoTodos
         Me.GroupPanel4.Font = New System.Drawing.Font("Georgia", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GroupPanel4.Location = New System.Drawing.Point(0, 52)
         Me.GroupPanel4.Name = "GroupPanel4"
-        Me.GroupPanel4.Size = New System.Drawing.Size(1311, 498)
+        Me.GroupPanel4.Size = New System.Drawing.Size(1311, 538)
         '
         '
         '
@@ -296,7 +295,7 @@ Partial Class F0_ProductosConteoTodos
         Me.Panel5.Dock = System.Windows.Forms.DockStyle.Fill
         Me.Panel5.Location = New System.Drawing.Point(0, 0)
         Me.Panel5.Name = "Panel5"
-        Me.Panel5.Size = New System.Drawing.Size(1305, 475)
+        Me.Panel5.Size = New System.Drawing.Size(1305, 515)
         Me.Panel5.TabIndex = 0
         '
         'grproductos
@@ -308,7 +307,7 @@ Partial Class F0_ProductosConteoTodos
         Me.grproductos.Name = "grproductos"
         Me.grproductos.Office2007ColorScheme = Janus.Windows.GridEX.Office2007ColorScheme.Custom
         Me.grproductos.Office2007CustomColor = System.Drawing.Color.DodgerBlue
-        Me.grproductos.Size = New System.Drawing.Size(1305, 475)
+        Me.grproductos.Size = New System.Drawing.Size(1305, 515)
         Me.grproductos.TabIndex = 0
         Me.grproductos.VisualStyle = Janus.Windows.GridEX.VisualStyle.Office2007
         '
@@ -468,7 +467,7 @@ Partial Class F0_ProductosConteoTodos
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1344, 661)
+        Me.ClientSize = New System.Drawing.Size(1344, 701)
         Me.Location = New System.Drawing.Point(0, 0)
         Me.Margin = New System.Windows.Forms.Padding(4)
         Me.Name = "F0_ProductosConteoTodos"

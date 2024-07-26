@@ -2294,9 +2294,6 @@ Public Class F0_VentasSupermercado
 
     Private Sub P_prCargarParametro()
         'El sistema factura?
-
-
-
     End Sub
     Private Sub P_GenerarReporte(numi As String)
         Dim dt As DataTable = L_fnVentaNotaDeVenta(numi)
@@ -2361,14 +2358,16 @@ Public Class F0_VentasSupermercado
             Select Case fila.Item("TipoReporte").ToString
                 Case ENReporteTipo.NOTAVENTA_Carta
                     objrep = New R_NotaVenta_Carta
-                    SetParametrosNotaVenta(dt, total, li, _Hora, _Ds2, _Ds3, fila.Item("TipoReporte").ToString, objrep, fechaven)
+                    SetParametrosNotaVenta(dt, total, li, _Hora, _Ds2, _Ds3, fila.Item("TipoReporte").ToString, objrep, fechaven, False, numi, "")
                 Case ENReporteTipo.NOTAVENTA_Ticket
                     objrep = New R_NotaVenta_7_5X100
-                    SetParametrosNotaVenta(dt, total, li, _Hora, _Ds2, _Ds3, fila.Item("TipoReporte").ToString, objrep, fechaven)
+                    SetParametrosNotaVenta(dt, total, li, _Hora, _Ds2, _Ds3, fila.Item("TipoReporte").ToString, objrep, fechaven, False, numi, "")
             End Select
         Next
     End Sub
-    Private Sub SetParametrosNotaVenta(dt As DataTable, total As Decimal, li As String, _Hora As String, _Ds2 As DataSet, _Ds3 As DataSet, tipoReporte As String, objrep As Object, fecha As String)
+    Private Sub SetParametrosNotaVenta(dt As DataTable, total As Decimal, li As String, _Hora As String, _Ds2 As DataSet, _Ds3 As DataSet,
+                                       tipoReporte As String, objrep As Object, fecha As String, grabar As Boolean, numMov As Integer,
+                                       nombEmpresa As String)
 
         Select Case tipoReporte
             Case ENReporteTipo.NOTAVENTA_Carta
@@ -2411,11 +2410,19 @@ Public Class F0_VentasSupermercado
                 ToastNotification.Show(Me, "La Impresora ".ToUpper + _Ds3.Tables(0).Rows(0).Item("cbrut").ToString + Chr(13) + "No Existe".ToUpper,
                                        My.Resources.WARNING, 5 * 1000,
                                        eToastGlowColor.Blue, eToastPosition.BottomRight)
-
             Else
                 objrep.PrintOptions.PrinterName = _Ds3.Tables(0).Rows(0).Item("cbrut").ToString
                 objrep.PrintToPrinter(1, True, 0, 0)
             End If
+        End If
+        If grabar Then
+            'Copia de Vale en PDF
+            If (Not Directory.Exists(gs_CarpetaRaiz + "\Vales")) Then
+                Directory.CreateDirectory(gs_CarpetaRaiz + "\Vales")
+            End If
+            objrep.ExportToDisk(ExportFormatType.PortableDocFormat, gs_CarpetaRaiz + "\Vales\" + nombEmpresa + "_" + CStr(numMov) + "_" + CStr(Now.Date.Day) +
+                    "." + CStr(Now.Date.Month) + "." + CStr(Now.Date.Year) + "_" + CStr(Now.Hour) + "." + CStr(Now.Minute) + "." + CStr(Now.Second) + ".pdf")
+
         End If
     End Sub
 
@@ -2465,8 +2472,6 @@ Public Class F0_VentasSupermercado
         'P_Global.Visualizador.CrGeneral.ReportSource = objrep 'Comentar
         'P_Global.Visualizador.Show() 'Comentar
         'P_Global.Visualizador.BringToFront() 'Comentar
-
-
 
     End Sub
 
@@ -3610,8 +3615,6 @@ Public Class F0_VentasSupermercado
 
     Private Sub tbProducto_TextChanged(sender As Object, e As EventArgs) Handles tbProducto.TextChanged
         Dim tbP As TextBox = sender
-
-
     End Sub
 
     Private Sub ModificarCantidadMenu_Click(sender As Object, e As EventArgs) Handles ModificarCantidadMenu.Click
@@ -4284,8 +4287,8 @@ Public Class F0_VentasSupermercado
                     Dim res As Boolean = L_prMovimientoChoferGrabar(numi, Now.Date.ToString("yyyy/MM/dd"), 2, "VALE VENTA A " + nomEmpresa, 1, 0, 0, tabla, 7, gs_VersionSistema, gs_IPMaquina, gs_UsuMaquina)
 
                     If res Then
-                        P_GenerarReporte(Convert.ToInt32(ENReporte.NOTAVENTA))
-                        P_GenerarReporte(Convert.ToInt32(ENReporte.NOTAVENTA))
+                        P_GenerarReporte(Convert.ToInt32(ENReporte.NOTAVENTA), True, numi, nomEmpresa)
+                        P_GenerarReporte(Convert.ToInt32(ENReporte.NOTAVENTA), False, numi, nomEmpresa)
                         _prCrearCarpetaReportes()
 
                         Dim img As Bitmap = New Bitmap(My.Resources.checked, 50, 50)
@@ -4401,7 +4404,7 @@ Public Class F0_VentasSupermercado
         End If
         Return False
     End Function
-    Private Sub P_GenerarReporte(TipoRep As Integer)
+    Private Sub P_GenerarReporte(TipoRep As Integer, _grabar As Boolean, _numMov As Integer, _nombEmpresa As String)
         Dim dt As DataTable = CType(grdetalle.DataSource, DataTable)
         dt = dt.Select("estado=0").CopyToDataTable
         If (gb_DetalleProducto) Then
@@ -4464,13 +4467,13 @@ Public Class F0_VentasSupermercado
             Select Case fila.Item("TipoReporte").ToString
                 Case ENReporteTipo.NOTAVENTA_Carta
                     objrep = New R_NotaVenta_Carta
-                    SetParametrosNotaVenta(dt, total, li, _Hora, _Ds2, _Ds3, fila.Item("TipoReporte").ToString, objrep, fechaven)
+                    SetParametrosNotaVenta(dt, total, li, _Hora, _Ds2, _Ds3, fila.Item("TipoReporte").ToString, objrep, fechaven, _grabar, _numMov, _nombEmpresa)
                 Case ENReporteTipo.NOTAVENTA_Ticket
                     objrep = New R_NotaVenta_7_5X100_2
-                    SetParametrosNotaVenta(dt, total, li, _Hora, _Ds2, _Ds3, fila.Item("TipoReporte").ToString, objrep, fechaven)
+                    SetParametrosNotaVenta(dt, total, li, _Hora, _Ds2, _Ds3, fila.Item("TipoReporte").ToString, objrep, fechaven, _grabar, _numMov, _nombEmpresa)
                 Case ENReporteTipo.PROFORMA_Ticket
                     objrep = New R_NotaVenta_7_5X100_3
-                    SetParametrosNotaVenta(dt, total, li, _Hora, _Ds2, _Ds3, fila.Item("TipoReporte").ToString, objrep, fechaven)
+                    SetParametrosNotaVenta(dt, total, li, _Hora, _Ds2, _Ds3, fila.Item("TipoReporte").ToString, objrep, fechaven, _grabar, _numMov, _nombEmpresa)
 
             End Select
         Next

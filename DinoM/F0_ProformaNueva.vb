@@ -1424,6 +1424,16 @@ Public Class F0_ProformaNueva
                 objrep.PrintToPrinter(1, True, 0, 0)
             End If
         End If
+
+
+        'Copia de Proforma en PDF
+        If (Not Directory.Exists(gs_CarpetaRaiz + "\Proformas")) Then
+            Directory.CreateDirectory(gs_CarpetaRaiz + "\Proformas")
+        End If
+        objrep.ExportToDisk(ExportFormatType.PortableDocFormat, gs_CarpetaRaiz + "\Proformas\" + CStr(nombre) + "_" + CStr(Now.Date.Day) +
+                    "." + CStr(Now.Date.Month) + "." + CStr(Now.Date.Year) + "_" + CStr(Now.Hour) + "." + CStr(Now.Minute) + "." + CStr(Now.Second) + ".pdf")
+
+
     End Sub
 
     Private Sub ponerDescripcionProducto(ByRef dt As DataTable)

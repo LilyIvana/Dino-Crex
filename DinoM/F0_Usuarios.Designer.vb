@@ -89,7 +89,7 @@ Partial Class F0_Usuarios
         Me.SuperTabPrincipal.ControlBox.Name = ""
         Me.SuperTabPrincipal.ControlBox.SubItems.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.SuperTabPrincipal.ControlBox.MenuBox, Me.SuperTabPrincipal.ControlBox.CloseBox})
         Me.SuperTabPrincipal.SelectedTabIndex = 1
-        Me.SuperTabPrincipal.Size = New System.Drawing.Size(1362, 741)
+        Me.SuperTabPrincipal.Size = New System.Drawing.Size(1362, 701)
         Me.SuperTabPrincipal.Controls.SetChildIndex(Me.SuperTabControlPanelRegistro, 0)
         Me.SuperTabPrincipal.Controls.SetChildIndex(Me.SuperTabControlPanelBuscador, 0)
         '
@@ -104,7 +104,7 @@ Partial Class F0_Usuarios
         '
         'SuperTabControlPanelRegistro
         '
-        Me.SuperTabControlPanelRegistro.Size = New System.Drawing.Size(1330, 741)
+        Me.SuperTabControlPanelRegistro.Size = New System.Drawing.Size(1330, 701)
         Me.SuperTabControlPanelRegistro.Controls.SetChildIndex(Me.PanelSuperior, 0)
         Me.SuperTabControlPanelRegistro.Controls.SetChildIndex(Me.PanelInferior, 0)
         Me.SuperTabControlPanelRegistro.Controls.SetChildIndex(Me.PanelPrincipal, 0)
@@ -133,7 +133,7 @@ Partial Class F0_Usuarios
         '
         'PanelInferior
         '
-        Me.PanelInferior.Location = New System.Drawing.Point(0, 702)
+        Me.PanelInferior.Location = New System.Drawing.Point(0, 662)
         Me.PanelInferior.Size = New System.Drawing.Size(1330, 39)
         Me.PanelInferior.Style.Alignment = System.Drawing.StringAlignment.Center
         Me.PanelInferior.Style.BackColor1.Color = System.Drawing.Color.Gold
@@ -187,13 +187,13 @@ Partial Class F0_Usuarios
         '
         'PanelToolBar2
         '
-        Me.PanelToolBar2.Location = New System.Drawing.Point(1250, 0)
+        Me.PanelToolBar2.Location = New System.Drawing.Point(986, 0)
         '
         'PanelPrincipal
         '
         Me.PanelPrincipal.Controls.Add(Me.GroupPanel1)
         Me.PanelPrincipal.Controls.Add(Me.Panel1)
-        Me.PanelPrincipal.Size = New System.Drawing.Size(1330, 630)
+        Me.PanelPrincipal.Size = New System.Drawing.Size(1330, 590)
         Me.PanelPrincipal.Controls.SetChildIndex(Me.PanelUsuario, 0)
         Me.PanelPrincipal.Controls.SetChildIndex(Me.Panel1, 0)
         Me.PanelPrincipal.Controls.SetChildIndex(Me.GroupPanel1, 0)
@@ -226,7 +226,7 @@ Partial Class F0_Usuarios
         '
         '
         Me.MRlAccion.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.MRlAccion.Size = New System.Drawing.Size(874, 72)
+        Me.MRlAccion.Size = New System.Drawing.Size(610, 72)
         '
         'Tb_DiasPedidos
         '
@@ -608,7 +608,7 @@ Partial Class F0_Usuarios
         Me.GroupPanel1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GroupPanel1.Location = New System.Drawing.Point(0, 175)
         Me.GroupPanel1.Name = "GroupPanel1"
-        Me.GroupPanel1.Size = New System.Drawing.Size(1330, 455)
+        Me.GroupPanel1.Size = New System.Drawing.Size(1330, 415)
         '
         '
         '
@@ -659,7 +659,7 @@ Partial Class F0_Usuarios
         Me.JGr_Buscador.SelectedFormatStyle.BackColor = System.Drawing.Color.DodgerBlue
         Me.JGr_Buscador.SelectedFormatStyle.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.JGr_Buscador.SelectedFormatStyle.ForeColor = System.Drawing.Color.White
-        Me.JGr_Buscador.Size = New System.Drawing.Size(1324, 432)
+        Me.JGr_Buscador.Size = New System.Drawing.Size(1324, 392)
         Me.JGr_Buscador.TabIndex = 0
         Me.JGr_Buscador.VisualStyle = Janus.Windows.GridEX.VisualStyle.Office2007
         '
@@ -685,16 +685,15 @@ Partial Class F0_Usuarios
         Me.swActivos.Size = New System.Drawing.Size(160, 22)
         Me.swActivos.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
         Me.swActivos.TabIndex = 241
-        Me.swActivos.Value = True
         Me.swActivos.ValueFalse = "0"
-        Me.swActivos.ValueObject = "1"
+        Me.swActivos.ValueObject = "0"
         Me.swActivos.ValueTrue = "1"
         '
         'F0_Usuarios
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1362, 741)
+        Me.ClientSize = New System.Drawing.Size(1362, 701)
         Me.Location = New System.Drawing.Point(0, 0)
         Me.Name = "F0_Usuarios"
         Me.Opacity = 0.05R
