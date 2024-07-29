@@ -142,6 +142,9 @@ Partial Class F1_Bitacora
         Me.BubbleBarUsuario.MouseOverTabColors.BorderColor = System.Drawing.SystemColors.Highlight
         Me.BubbleBarUsuario.SelectedTabColors.BorderColor = System.Drawing.Color.Black
         '
+        'btnSalir
+        '
+        '
         'PanelToolBar2
         '
         Me.PanelToolBar2.Controls.Add(Me.btExcel)

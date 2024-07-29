@@ -327,4 +327,5 @@ Public Class F1_Bitacora
                                        eToastPosition.TopCenter)
         End If
     End Sub
+
 End Class

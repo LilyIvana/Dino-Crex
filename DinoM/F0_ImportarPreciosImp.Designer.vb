@@ -98,6 +98,7 @@ Partial Class F0_ImportarPreciosImp
         Me.PanelInferior.Style.BorderColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder
         Me.PanelInferior.Style.ForeColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelText
         Me.PanelInferior.Style.GradientAngle = 90
+        Me.PanelInferior.Visible = False
         '
         'BubbleBarUsuario
         '

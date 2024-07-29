@@ -28,6 +28,7 @@ Partial Class F0_KardexMovimientoProdxPeso
         Dim cbAlmacen_DesignTimeLayout As Janus.Windows.GridEX.GridEXLayout = New Janus.Windows.GridEX.GridEXLayout()
         Me.GroupPanelDatos = New DevComponents.DotNetBar.Controls.GroupPanel()
         Me.Panel2 = New System.Windows.Forms.Panel()
+        Me.btSalir = New DevComponents.DotNetBar.ButtonX()
         Me.btExportar = New DevComponents.DotNetBar.ButtonX()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.tbFechaVenc = New DevComponents.DotNetBar.Controls.TextBoxX()
@@ -273,6 +274,7 @@ Partial Class F0_KardexMovimientoProdxPeso
         '
         'Panel2
         '
+        Me.Panel2.Controls.Add(Me.btSalir)
         Me.Panel2.Controls.Add(Me.btExportar)
         Me.Panel2.Controls.Add(Me.Label1)
         Me.Panel2.Controls.Add(Me.tbFechaVenc)
@@ -296,22 +298,39 @@ Partial Class F0_KardexMovimientoProdxPeso
         Me.Panel2.Size = New System.Drawing.Size(1305, 194)
         Me.Panel2.TabIndex = 0
         '
+        'btSalir
+        '
+        Me.btSalir.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
+        Me.btSalir.BackColor = System.Drawing.Color.SkyBlue
+        Me.btSalir.ColorTable = DevComponents.DotNetBar.eButtonColor.BlueOrb
+        Me.btSalir.Font = New System.Drawing.Font("Georgia", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btSalir.Image = Global.DinoM.My.Resources.Resources.atras1
+        Me.btSalir.ImageFixedSize = New System.Drawing.Size(35, 35)
+        Me.btSalir.Location = New System.Drawing.Point(415, 121)
+        Me.btSalir.Name = "btSalir"
+        Me.btSalir.Shape = New DevComponents.DotNetBar.RoundRectangleShapeDescriptor(4)
+        Me.btSalir.Size = New System.Drawing.Size(126, 49)
+        Me.btSalir.SubItemsExpandWidth = 10
+        Me.btSalir.TabIndex = 247
+        Me.btSalir.Text = "SALIR"
+        Me.btSalir.TextColor = System.Drawing.Color.White
+        '
         'btExportar
         '
         Me.btExportar.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
         Me.btExportar.BackColor = System.Drawing.Color.SkyBlue
-        Me.btExportar.ColorTable = DevComponents.DotNetBar.eButtonColor.Office2007WithBackground
+        Me.btExportar.ColorTable = DevComponents.DotNetBar.eButtonColor.BlueOrb
         Me.btExportar.Font = New System.Drawing.Font("Georgia", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btExportar.Image = Global.DinoM.My.Resources.Resources.sheets
         Me.btExportar.ImageFixedSize = New System.Drawing.Size(35, 35)
-        Me.btExportar.Location = New System.Drawing.Point(288, 121)
+        Me.btExportar.Location = New System.Drawing.Point(262, 121)
         Me.btExportar.Name = "btExportar"
         Me.btExportar.Shape = New DevComponents.DotNetBar.RoundRectangleShapeDescriptor(4)
         Me.btExportar.Size = New System.Drawing.Size(126, 49)
         Me.btExportar.SubItemsExpandWidth = 10
         Me.btExportar.TabIndex = 245
         Me.btExportar.Text = "EXPORTAR"
-        Me.btExportar.TextColor = System.Drawing.Color.FromArgb(CType(CType(49, Byte), Integer), CType(CType(59, Byte), Integer), CType(CType(66, Byte), Integer))
+        Me.btExportar.TextColor = System.Drawing.Color.White
         '
         'Label1
         '
@@ -415,7 +434,7 @@ Partial Class F0_KardexMovimientoProdxPeso
         '
         Me.BtGenerar.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
         Me.BtGenerar.BackColor = System.Drawing.Color.SkyBlue
-        Me.BtGenerar.ColorTable = DevComponents.DotNetBar.eButtonColor.Office2007WithBackground
+        Me.BtGenerar.ColorTable = DevComponents.DotNetBar.eButtonColor.BlueOrb
         Me.BtGenerar.Font = New System.Drawing.Font("Georgia", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.BtGenerar.Image = Global.DinoM.My.Resources.Resources.actualizado
         Me.BtGenerar.ImageFixedSize = New System.Drawing.Size(40, 40)
@@ -426,7 +445,7 @@ Partial Class F0_KardexMovimientoProdxPeso
         Me.BtGenerar.SubItemsExpandWidth = 10
         Me.BtGenerar.TabIndex = 236
         Me.BtGenerar.Text = "GENERAR"
-        Me.BtGenerar.TextColor = System.Drawing.Color.FromArgb(CType(CType(49, Byte), Integer), CType(CType(59, Byte), Integer), CType(CType(66, Byte), Integer))
+        Me.BtGenerar.TextColor = System.Drawing.Color.White
         '
         'tbsaldo
         '
@@ -792,4 +811,5 @@ Partial Class F0_KardexMovimientoProdxPeso
     Friend WithEvents Timer1 As Timer
     Friend WithEvents Label1 As Label
     Friend WithEvents btExportar As DevComponents.DotNetBar.ButtonX
+    Friend WithEvents btSalir As DevComponents.DotNetBar.ButtonX
 End Class
