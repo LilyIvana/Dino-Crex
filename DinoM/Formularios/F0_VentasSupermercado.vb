@@ -4289,10 +4289,14 @@ Public Class F0_VentasSupermercado
                     If res Then
                         P_GenerarReporte(Convert.ToInt32(ENReporte.NOTAVENTA), True, numi, nomEmpresa)
                         P_GenerarReporte(Convert.ToInt32(ENReporte.NOTAVENTA), False, numi, nomEmpresa)
-                        _prCrearCarpetaReportes()
+                        '_prCrearCarpetaReportes()
+
+                        If (Not Directory.Exists(gs_CarpetaRaiz + "\Vales")) Then
+                            Directory.CreateDirectory(gs_CarpetaRaiz + "\Vales")
+                        End If
 
                         Dim img As Bitmap = New Bitmap(My.Resources.checked, 50, 50)
-                        If (P_ExportarExcel(RutaGlobal + "\Reporte\Reporte Productos", "VENTAPRODUCTOSVALE" + nomEmpresa)) Then
+                        If (P_ExportarExcel(RutaGlobal + "\Vales", "VENTAPRODUCTOSVALE" + nomEmpresa)) Then
                             L_fnBotonImprimirExportar(gs_VersionSistema, gs_IPMaquina, gs_UsuMaquina, 0, "VALE VENTA", "VALE VENTA " + nomEmpresa)
                             ToastNotification.Show(Me, "SE GRABÓ Y EXPORTÓ EL VALE VENTA DE PRODUCTOS DE FORMA EXITOSA..!!!",
                                                    img, 3000,

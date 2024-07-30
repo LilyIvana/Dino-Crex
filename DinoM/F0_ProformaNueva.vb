@@ -2762,10 +2762,13 @@ Public Class F0_ProformaNueva
 
                 If frm.Aceptar = True Then
                     P_GenerarReporte(Convert.ToInt32(ENReporte.PROFORMA), nomProforma, nomContacto, telfContacto, obs)
-                    _prCrearCarpetaReportes()
+                    '_prCrearCarpetaReportes()
 
+                    If (Not Directory.Exists(gs_CarpetaRaiz + "\Proformas")) Then
+                        Directory.CreateDirectory(gs_CarpetaRaiz + "\Proformas")
+                    End If
                     Dim img As Bitmap = New Bitmap(My.Resources.checked, 50, 50)
-                    If (P_ExportarExcel(RutaGlobal + "\Reporte\Reporte Productos", "Proforma")) Then
+                    If (P_ExportarExcel(RutaGlobal + "\Proformas", "Proforma")) Then
                         L_fnBotonImprimirExportar(gs_VersionSistema, gs_IPMaquina, gs_UsuMaquina, 0, "PROFORMA", "PROFORMA")
                         ToastNotification.Show(Me, "SE EXPORTÓ LA PROFORMA DE FORMA EXITOSA..!!!",
                                                    img, 3000,
