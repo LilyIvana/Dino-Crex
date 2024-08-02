@@ -163,9 +163,16 @@ Public Class F1_StockSistVsFisico
                 .FormatString = "0.00"
                 .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far
             End With
-            With JGrM_Buscador.RootTable.Columns("StockSisPeso")
+            'With JGrM_Buscador.RootTable.Columns("StockSisPeso")
+            '    .Width = 150
+            '    .Caption = "STOCK SIST. X PESO"
+            '    .Visible = True
+            '    .FormatString = "0.00"
+            '    .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far
+            'End With
+            With JGrM_Buscador.RootTable.Columns("StockEstimado")
                 .Width = 150
-                .Caption = "STOCK SIST. X PESO"
+                .Caption = "STOCK ESTIMADO X PESO"
                 .Visible = True
                 .FormatString = "0.00"
                 .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far
@@ -191,13 +198,13 @@ Public Class F1_StockSistVsFisico
                 .FormatString = "0.00"
                 .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far
             End With
-            With JGrM_Buscador.RootTable.Columns("StockActualPeso")
-                .Width = 150
-                .Caption = "STOCK ACT. X PESO"
-                .Visible = True
-                .FormatString = "0.00"
-                .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far
-            End With
+            'With JGrM_Buscador.RootTable.Columns("StockActualPeso")
+            '    .Width = 150
+            '    .Caption = "STOCK ACT. X PESO"
+            '    .Visible = True
+            '    .FormatString = "0.00"
+            '    .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far
+            'End With
             With JGrM_Buscador.RootTable.Columns("cant1")
                 .Width = 100
                 .Caption = "CANTIDAD1"
