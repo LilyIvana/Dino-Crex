@@ -687,9 +687,6 @@ Public Class F1_PesajeProductos
 
 
 
-
-
-
     Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
         _Inter = _Inter + 1
         If _Inter = 1 Then
@@ -770,8 +767,9 @@ Public Class F1_PesajeProductos
 
     Private Sub tbPesoReal_ValueChanged(sender As Object, e As EventArgs) Handles tbPesoReal.ValueChanged
         If _fnAccesible() Then
+            If tbPesoReal.Value < 10 Then
 
-            tbPesoSistema.Value = Format(tbPesoReal.Value, "#.#0")
+                tbPesoSistema.Value = Format(tbPesoReal.Value, "#.#0")
                 tbTotal.Value = Format((tbPesoSistema.Value * tbPrecio.Text), "#.#0")
                 Dim pesoGr As Integer = (tbPesoSistema.Value * 1000)
 
@@ -811,8 +809,15 @@ Public Class F1_PesajeProductos
 
                 tbCodBarraImp.Text = barra1 & barra2
                 tbCodBarraSist.Text = barra1
-            End If
+            Else
 
+                ToastNotification.Show(Me, "El peso no puede ser mayor a 10".ToUpper,
+                                      My.Resources.WARNING, 3 * 1000,
+                                      eToastGlowColor.Blue, eToastPosition.TopCenter)
+                tbPesoReal.Value = 0
+
+            End If
+        End If
 
         'Dim aux = Replace(tbPesoSistema.Text, ".", "")
         'tbCodBarraSist.Text = aux

@@ -172,7 +172,7 @@ Public Class F1_StockSistVsFisico
             'End With
             With JGrM_Buscador.RootTable.Columns("StockEstimado")
                 .Width = 150
-                .Caption = "STOCK ESTIMADO X PESO"
+                .Caption = "STOCK X PESO ESTIMADO"
                 .Visible = True
                 .FormatString = "0.00"
                 .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far
