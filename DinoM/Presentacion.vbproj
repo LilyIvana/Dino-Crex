@@ -378,6 +378,12 @@
     <Compile Include="F0_ProformaNueva.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="F0_Proforma1.Designer.vb">
+      <DependentUpon>F0_Proforma1.vb</DependentUpon>
+    </Compile>
+    <Compile Include="F0_Proforma1.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="F0_VerificarPrecioCompra.Designer.vb">
       <DependentUpon>F0_VerificarPrecioCompra.vb</DependentUpon>
     </Compile>
@@ -1678,6 +1684,9 @@
     <EmbeddedResource Include="F0_ProformaNueva.resx">
       <DependentUpon>F0_ProformaNueva.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="F0_Proforma1.resx">
+      <DependentUpon>F0_Proforma1.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="F0_VerificarPrecioCompra.resx">
       <DependentUpon>F0_VerificarPrecioCompra.vb</DependentUpon>
     </EmbeddedResource>
@@ -2706,6 +2715,8 @@
     <None Include="Resources\bandeja-de-entrada.png" />
     <None Include="Resources\bandeja-de-salida1.png" />
     <None Include="Resources\Banner.png" />
+    <None Include="Resources\calcularp.png" />
+    <None Include="Resources\calcularp1.png" />
     <Content Include="Resources\check-mark.png" />
     <None Include="Resources\cobro.png" />
     <None Include="Resources\creditopagos.png" />

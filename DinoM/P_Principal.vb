@@ -842,17 +842,13 @@ Public Class P_Principal
     End Sub
 
     Private Sub btVentProforma_Click(sender As Object, e As EventArgs) Handles btVentProforma.Click
-        'SideNav1.IsMenuExpanded = False
-        'Ventana.Select()
-        Dim frm As New F0_ProformaNueva
+
+        Dim frm As New F0_Proforma
+        'Dim frm As New F0_ProformaNueva
         frm._nameButton = btVentProforma.Name
         frm._modulo = FP_VENTAS
-        'Dim panel As Panel = P_Global._fnCrearPanelVentanas(frm)
-        'superTabControl3.SelectedTabIndex = superTabControl3.Tabs.Count - 1
-        'tab3.AttachedControl.Controls.Add(panel)
         frm.Show()
-        'tab3.Text = frm.Text
-        'tab3.Icon = frm.Icon
+
     End Sub
 
     Private Sub btVentGrafica_Click(sender As Object, e As EventArgs) Handles btVentGrafica.Click
@@ -1108,9 +1104,16 @@ Public Class P_Principal
     End Sub
 
     Private Sub btIngresoEgreso_Click(sender As Object, e As EventArgs) Handles btIngresoEgreso.Click
-        Dim frm As New F1_IngresosEgresos
-        frm._nameButton = btIngresoEgreso.Name
+        'Dim frm As New F1_IngresosEgresos
+        'frm._nameButton = btIngresoEgreso.Name
+        'frm.Show()
+
+        Dim frm As New F0_ProformaNueva
+        'Dim frm As New F0_ProformaNueva
+        frm._nameButton = btVentProforma.Name
+        frm._modulo = FP_VENTAS
         frm.Show()
+
     End Sub
 
     Private Sub btnVentaRapida_Click(sender As Object, e As EventArgs) Handles btnVentaRapida.Click
@@ -1360,6 +1363,7 @@ Public Class P_Principal
         frm._modulo = FP_Configuracion
         frm.Show()
     End Sub
+
 
 
     'Private Sub btnCredPagoCliente_Click(sender As Object, e As EventArgs) Handles btnCredPagoCliente.Click

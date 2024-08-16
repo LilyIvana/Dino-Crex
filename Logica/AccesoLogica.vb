@@ -6445,9 +6445,9 @@ Public Class AccesoLogica
 
 
     Public Shared Function L_fnGrabarProforma(ByRef _panumi As String, _pafdoc As String, _paven As Integer, _paclpr As Integer,
-                                           _pamon As Integer, _paobs As String,
-                                           _padesc As Double,
-                                           _patotal As Double, detalle As DataTable, _almacen As Integer) As Boolean
+                                              _pamon As Integer, _paobs As String, _padesc As Double, _patotal As Double,
+                                              detalle As DataTable, _almacen As Integer, _cliente As String, _contacto As String,
+                                              _telf As String) As Boolean
         Dim _Tabla As DataTable
         Dim _resultado As Boolean
         Dim _listParam As New List(Of Datos.DParametro)
@@ -6464,7 +6464,11 @@ Public Class AccesoLogica
         _listParam.Add(New Datos.DParametro("@paobs", _paobs))
         _listParam.Add(New Datos.DParametro("@padesc", _padesc))
         _listParam.Add(New Datos.DParametro("@patotal", _patotal))
+        _listParam.Add(New Datos.DParametro("@pacliente", _cliente))
+        _listParam.Add(New Datos.DParametro("@pacontacto", _contacto))
+        _listParam.Add(New Datos.DParametro("@patelf", _telf))
         _listParam.Add(New Datos.DParametro("@pauact", L_Usuario))
+
         _listParam.Add(New Datos.DParametro("@TP0011", "", detalle))
         _Tabla = D_ProcedimientoConParam("sp_Mam_TP001", _listParam)
 

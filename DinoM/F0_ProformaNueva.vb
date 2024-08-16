@@ -1568,6 +1568,7 @@ Public Class F0_ProformaNueva
         tbProducto.Focus()
     End Sub
 
+
     Private Sub tbProducto_KeyDown(sender As Object, e As KeyEventArgs) Handles tbProducto.KeyDown
         'If e.KeyData = Keys.Control + Keys.E Then
 
