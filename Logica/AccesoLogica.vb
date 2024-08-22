@@ -2084,6 +2084,7 @@ Public Class AccesoLogica
 
         Return _Tabla
     End Function
+
     Public Shared Function L_fnListarProductosSinLoteNuevo(_almacen As String, _cliente As String, _detalle As DataTable) As DataTable
         Dim _Tabla As DataTable
 
@@ -6326,12 +6327,13 @@ Public Class AccesoLogica
 #End Region
 
 #Region "TP001 PROFORMA"
-    Public Shared Function L_fnGeneralProforma() As DataTable
+    Public Shared Function L_fnGeneralProforma(mostrar As Integer) As DataTable
         Dim _Tabla As DataTable
 
         Dim _listParam As New List(Of Datos.DParametro)
 
         _listParam.Add(New Datos.DParametro("@tipo", 3))
+        _listParam.Add(New Datos.DParametro("@mostrar", mostrar))
         _listParam.Add(New Datos.DParametro("@pauact", L_Usuario))
         _Tabla = D_ProcedimientoConParam("sp_Mam_TP001", _listParam)
 
@@ -6447,12 +6449,11 @@ Public Class AccesoLogica
     Public Shared Function L_fnGrabarProforma(ByRef _panumi As String, _pafdoc As String, _paven As Integer, _paclpr As Integer,
                                               _pamon As Integer, _paobs As String, _padesc As Double, _patotal As Double,
                                               detalle As DataTable, _almacen As Integer, _cliente As String, _contacto As String,
-                                              _telf As String) As Boolean
+                                              _telf As String, _version As String, _ip As String, _usumaquina As String) As Boolean
         Dim _Tabla As DataTable
         Dim _resultado As Boolean
         Dim _listParam As New List(Of Datos.DParametro)
-        '     @panumi,@paalm,@pafdoc ,@paven ,@paclpr,
-        '@pamon ,@paest  ,@paobs ,@padesc  ,@patotal ,@newFecha,@newHora,@pauact
+
         _listParam.Add(New Datos.DParametro("@tipo", 1))
         _listParam.Add(New Datos.DParametro("@panumi", _panumi))
         _listParam.Add(New Datos.DParametro("@paalm", _almacen))
@@ -6467,6 +6468,9 @@ Public Class AccesoLogica
         _listParam.Add(New Datos.DParametro("@pacliente", _cliente))
         _listParam.Add(New Datos.DParametro("@pacontacto", _contacto))
         _listParam.Add(New Datos.DParametro("@patelf", _telf))
+        _listParam.Add(New Datos.DParametro("@version", _version))
+        _listParam.Add(New Datos.DParametro("@ip", _ip))
+        _listParam.Add(New Datos.DParametro("@usumaquina", _usumaquina))
         _listParam.Add(New Datos.DParametro("@pauact", L_Usuario))
 
         _listParam.Add(New Datos.DParametro("@TP0011", "", detalle))
@@ -6484,9 +6488,9 @@ Public Class AccesoLogica
     End Function
 
     Public Shared Function L_fnModificarProforma(ByRef _panumi As String, _pafdoc As String, _paven As Integer, _paclpr As Integer,
-                                           _pamon As Integer, _paobs As String,
-                                           _padesc As Double,
-                                           _patotal As Double, detalle As DataTable, _almacen As Integer) As Boolean
+                                                _pamon As Integer, _paobs As String, _padesc As Double, _patotal As Double,
+                                                detalle As DataTable, _almacen As Integer, _cliente As String, _contacto As String,
+                                              _telf As String, _version As String, _ip As String, _usumaquina As String) As Boolean
         Dim _Tabla As DataTable
         Dim _resultado As Boolean
         Dim _listParam As New List(Of Datos.DParametro)
@@ -6502,6 +6506,12 @@ Public Class AccesoLogica
         _listParam.Add(New Datos.DParametro("@paobs", _paobs))
         _listParam.Add(New Datos.DParametro("@padesc", _padesc))
         _listParam.Add(New Datos.DParametro("@patotal", _patotal))
+        _listParam.Add(New Datos.DParametro("@pacliente", _cliente))
+        _listParam.Add(New Datos.DParametro("@pacontacto", _contacto))
+        _listParam.Add(New Datos.DParametro("@patelf", _telf))
+        _listParam.Add(New Datos.DParametro("@version", _version))
+        _listParam.Add(New Datos.DParametro("@ip", _ip))
+        _listParam.Add(New Datos.DParametro("@usumaquina", _usumaquina))
         _listParam.Add(New Datos.DParametro("@pauact", L_Usuario))
         _listParam.Add(New Datos.DParametro("@TP0011", "", detalle))
         _Tabla = D_ProcedimientoConParam("sp_Mam_TP001", _listParam)
@@ -6517,7 +6527,8 @@ Public Class AccesoLogica
         Return _resultado
     End Function
 
-    Public Shared Function L_fnEliminarProforma(numi As String, ByRef mensaje As String) As Boolean
+    Public Shared Function L_fnEliminarProforma(numi As String, ByRef mensaje As String, _version As String, _ip As String,
+                                                _usumaquina As String) As Boolean
         Dim _resultado As Boolean
         If L_fnbValidarEliminacion(numi, "TP001", "panumi", mensaje) = True Then
             Dim _Tabla As DataTable
@@ -6525,6 +6536,9 @@ Public Class AccesoLogica
 
             _listParam.Add(New Datos.DParametro("@tipo", -1))
             _listParam.Add(New Datos.DParametro("@panumi", numi))
+            _listParam.Add(New Datos.DParametro("@version", _version))
+            _listParam.Add(New Datos.DParametro("@ip", _ip))
+            _listParam.Add(New Datos.DParametro("@usumaquina", _usumaquina))
             _listParam.Add(New Datos.DParametro("@pauact", L_Usuario))
             _Tabla = D_ProcedimientoConParam("sp_Mam_TP001", _listParam)
 
@@ -6537,6 +6551,18 @@ Public Class AccesoLogica
             _resultado = False
         End If
         Return _resultado
+    End Function
+    Public Shared Function L_fnListarUnProductoPrecioVenta(_codPro As String) As DataTable
+        Dim _Tabla As DataTable
+
+        Dim _listParam As New List(Of Datos.DParametro)
+
+        _listParam.Add(New Datos.DParametro("@tipo", 12))
+        _listParam.Add(New Datos.DParametro("@producto", _codPro))
+        _listParam.Add(New Datos.DParametro("@pauact", L_Usuario))
+        _Tabla = D_ProcedimientoConParam("sp_Mam_TP001", _listParam)
+
+        Return _Tabla
     End Function
 #End Region
 #Region "VENTAS ESTADISTICOS"

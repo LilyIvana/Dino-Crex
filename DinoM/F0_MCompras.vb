@@ -1462,7 +1462,7 @@ Public Class F0_MCompras
         If tbFechaVenta.Value > Now.Date Then
             Dim img As Bitmap = New Bitmap(My.Resources.mensaje, 50, 50)
             ToastNotification.Show(Me, "La fecha de compra no puede ser mayor a la fecha actual".ToUpper, img, 2800, eToastGlowColor.Red, eToastPosition.BottomCenter)
-            tbProveedor.Focus()
+            tbFechaVenta.Focus()
             Return False
         End If
 

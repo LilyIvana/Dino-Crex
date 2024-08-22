@@ -90,7 +90,7 @@ Partial Class P_Acerca
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(159, 20)
         Me.Label2.TabIndex = 7
-        Me.Label2.Text = "Versión: 4.12.0.240730"
+        Me.Label2.Text = "Versión: 4.13.0.240827"
         '
         'Label1
         '

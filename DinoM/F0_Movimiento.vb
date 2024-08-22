@@ -752,6 +752,12 @@ Public Class F0_Movimiento
 
     End Sub
     Public Function _ValidarCampos() As Boolean
+        If tbFecha.Value > Now.Date Then
+            Dim img As Bitmap = New Bitmap(My.Resources.mensaje, 50, 50)
+            ToastNotification.Show(Me, "La fecha no puede ser mayor a la fecha actual".ToUpper, img, 2800, eToastGlowColor.Red, eToastPosition.BottomCenter)
+            tbFecha.Focus()
+            Return False
+        End If
         If (cbConcepto.SelectedIndex < 0) Then
             Dim img As Bitmap = New Bitmap(My.Resources.mensaje, 50, 50)
             ToastNotification.Show(Me, "Por Favor Seleccione un Concepto".ToUpper, img, 2000, eToastGlowColor.Red, eToastPosition.BottomCenter)
@@ -803,7 +809,6 @@ Public Class F0_Movimiento
 
         ''Para validar nuevamente Stock
         If Modificar = False Then
-
             If cbConcepto.Value = 2 Or cbConcepto.Value = 6 Then 'Conceptos 2=Salida y 6=Traspaso Salida 
 
                 For i = 0 To CType(grdetalle.DataSource, DataTable).Rows.Count - 1
@@ -1389,7 +1394,6 @@ salirIf:
 
     Private Sub btnEliminar_Click(sender As Object, e As EventArgs) Handles btnEliminar.Click
         Dim ef = New Efecto
-
 
         ef.tipo = 2
         ef.Context = "¿esta seguro de eliminar el registro?".ToUpper

@@ -520,6 +520,7 @@ Partial Class F0_Proforma
         Me.tbContacto.Font = New System.Drawing.Font("Georgia", 9.0!, System.Drawing.FontStyle.Bold)
         Me.tbContacto.ForeColor = System.Drawing.Color.FromArgb(CType(CType(45, Byte), Integer), CType(CType(59, Byte), Integer), CType(CType(66, Byte), Integer))
         Me.tbContacto.Location = New System.Drawing.Point(363, 39)
+        Me.tbContacto.MaxLength = 50
         Me.tbContacto.Name = "tbContacto"
         Me.tbContacto.PreventEnterBeep = True
         Me.tbContacto.Size = New System.Drawing.Size(250, 21)
@@ -549,9 +550,10 @@ Partial Class F0_Proforma
         '
         Me.tbTelf.Border.Class = "TextBoxBorder"
         Me.tbTelf.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.tbTelf.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.tbTelf.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.tbTelf.ForeColor = System.Drawing.Color.FromArgb(CType(CType(45, Byte), Integer), CType(CType(59, Byte), Integer), CType(CType(66, Byte), Integer))
         Me.tbTelf.Location = New System.Drawing.Point(363, 70)
+        Me.tbTelf.MaxLength = 30
         Me.tbTelf.Name = "tbTelf"
         Me.tbTelf.PreventEnterBeep = True
         Me.tbTelf.Size = New System.Drawing.Size(250, 22)
@@ -568,6 +570,7 @@ Partial Class F0_Proforma
         Me.TbNomCliente.Font = New System.Drawing.Font("Georgia", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.TbNomCliente.ForeColor = System.Drawing.Color.FromArgb(CType(CType(45, Byte), Integer), CType(CType(59, Byte), Integer), CType(CType(66, Byte), Integer))
         Me.TbNomCliente.Location = New System.Drawing.Point(362, 9)
+        Me.TbNomCliente.MaxLength = 50
         Me.TbNomCliente.Name = "TbNomCliente"
         Me.TbNomCliente.PreventEnterBeep = True
         Me.TbNomCliente.Size = New System.Drawing.Size(250, 21)
@@ -615,7 +618,7 @@ Partial Class F0_Proforma
         Me.swMostrar.Location = New System.Drawing.Point(133, 70)
         Me.swMostrar.Name = "swMostrar"
         Me.swMostrar.OffBackColor = System.Drawing.Color.Gold
-        Me.swMostrar.OffText = "MOSTRAR ÚLT. 1000"
+        Me.swMostrar.OffText = "MOSTRAR ÚLT. 100"
         Me.swMostrar.OnBackColor = System.Drawing.Color.ForestGreen
         Me.swMostrar.OnText = "MOSTRAR TODOS"
         Me.swMostrar.Size = New System.Drawing.Size(130, 22)
@@ -780,9 +783,10 @@ Partial Class F0_Proforma
         '
         Me.tbObservacion.Border.Class = "TextBoxBorder"
         Me.tbObservacion.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.tbObservacion.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.tbObservacion.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.tbObservacion.ForeColor = System.Drawing.Color.FromArgb(CType(CType(45, Byte), Integer), CType(CType(59, Byte), Integer), CType(CType(66, Byte), Integer))
         Me.tbObservacion.Location = New System.Drawing.Point(635, 28)
+        Me.tbObservacion.MaxLength = 200
         Me.tbObservacion.Multiline = True
         Me.tbObservacion.Name = "tbObservacion"
         Me.tbObservacion.PreventEnterBeep = True

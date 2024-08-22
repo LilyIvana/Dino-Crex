@@ -613,7 +613,7 @@ Partial Class F0_Venta2
         Me.LabelX27.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.LabelX27.Font = New System.Drawing.Font("Georgia", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.LabelX27.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(85, Byte), Integer), CType(CType(139, Byte), Integer))
-        Me.LabelX27.Location = New System.Drawing.Point(201, 35)
+        Me.LabelX27.Location = New System.Drawing.Point(201, 34)
         Me.LabelX27.Name = "LabelX27"
         Me.LabelX27.SingleLineColor = System.Drawing.SystemColors.Control
         Me.LabelX27.Size = New System.Drawing.Size(70, 23)
@@ -675,6 +675,7 @@ Partial Class F0_Venta2
         Me.tbObservacion.Font = New System.Drawing.Font("Georgia", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.tbObservacion.ForeColor = System.Drawing.Color.FromArgb(CType(CType(45, Byte), Integer), CType(CType(59, Byte), Integer), CType(CType(66, Byte), Integer))
         Me.tbObservacion.Location = New System.Drawing.Point(93, 65)
+        Me.tbObservacion.MaxLength = 50
         Me.tbObservacion.Multiline = True
         Me.tbObservacion.Name = "tbObservacion"
         Me.tbObservacion.PreventEnterBeep = True
@@ -1065,7 +1066,7 @@ Partial Class F0_Venta2
         Me.tbCodigo.Enabled = False
         Me.tbCodigo.Font = New System.Drawing.Font("Georgia", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.tbCodigo.ForeColor = System.Drawing.Color.Black
-        Me.tbCodigo.Location = New System.Drawing.Point(93, 4)
+        Me.tbCodigo.Location = New System.Drawing.Point(93, 5)
         Me.tbCodigo.Name = "tbCodigo"
         Me.tbCodigo.PreventEnterBeep = True
         Me.tbCodigo.Size = New System.Drawing.Size(100, 21)
@@ -1081,7 +1082,7 @@ Partial Class F0_Venta2
         Me.lbFVenta.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.lbFVenta.Font = New System.Drawing.Font("Georgia", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lbFVenta.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(85, Byte), Integer), CType(CType(139, Byte), Integer))
-        Me.lbFVenta.Location = New System.Drawing.Point(6, 36)
+        Me.lbFVenta.Location = New System.Drawing.Point(6, 34)
         Me.lbFVenta.Name = "lbFVenta"
         Me.lbFVenta.SingleLineColor = System.Drawing.SystemColors.Control
         Me.lbFVenta.Size = New System.Drawing.Size(88, 23)

@@ -161,7 +161,11 @@ Public Class F0_Proforma
         tbCodigo.Clear()
         tbCliente.Clear()
         tbVendedor.Clear()
+        TbNomCliente.Clear()
+        tbContacto.Clear()
+        tbTelf.Clear()
         tbObservacion.Clear()
+        tbObservacion.Text = "ALGUNOS PRODUCTOS PUEDEN NO ESTAR DISPONIBLES. EL PRECIO PUEDE VARIAR SEGÚN STOCK."
         swMoneda.Value = True
         _CodCliente = 0
         _CodEmpleado = 0
@@ -195,10 +199,6 @@ Public Class F0_Proforma
         dtDescuentos = L_fnListarDescuentosTodos()
     End Sub
     Public Sub _prMostrarRegistro(_N As Integer)
-        '' grVentas.Row = _N
-        '      a.panumi ,a.paalm ,a.pafdoc ,a.paven ,vendedor .yddesc as vendedor,a.paclpr,
-        'cliente.yddesc as cliente ,a.pamon ,IIF(pamon=1,'Boliviano','Dolar') as moneda,a.paest ,a.paobs ,
-        'a.padesc, a.pafact ,a.pahact ,a.pauact,a.patotal as total
 
         With grVentas
             cbSucursal.Value = .GetValue("paalm")
@@ -209,6 +209,9 @@ Public Class F0_Proforma
             _CodCliente = .GetValue("paclpr")
             tbCliente.Text = .GetValue("cliente")
             swMoneda.Value = .GetValue("pamon")
+            TbNomCliente.Text = .GetValue("pacliente")
+            tbContacto.Text = .GetValue("pacontacto")
+            tbTelf.Text = .GetValue("patelf")
             tbObservacion.Text = .GetValue("paobs")
 
             lbFecha.Text = CType(.GetValue("pafact"), Date).ToString("dd/MM/yyyy")
@@ -363,7 +366,7 @@ Public Class F0_Proforma
 
     Private Sub _prCargarProforma()
         Dim dt As New DataTable
-        dt = L_fnGeneralProforma()
+        dt = L_fnGeneralProforma(IIf(swMostrar.Value = True, 1, 0))
         grVentas.DataSource = dt
         grVentas.RetrieveStructure()
         grVentas.AlternatingColors = True
@@ -373,7 +376,6 @@ Public Class F0_Proforma
             .Caption = "CODIGO"
             .Visible = True
         End With
-
         With grVentas.RootTable.Columns("paalm")
             .Width = 90
             .Visible = False
@@ -383,17 +385,15 @@ Public Class F0_Proforma
             .Visible = True
             .Caption = "FECHA"
         End With
-
         With grVentas.RootTable.Columns("paven")
             .Width = 160
             .Visible = False
         End With
         With grVentas.RootTable.Columns("vendedor")
             .Width = 250
-            .Visible = True
+            .Visible = False
             .Caption = "VENDEDOR".ToUpper
         End With
-
         With grVentas.RootTable.Columns("paclpr")
             .Width = 50
             .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Near
@@ -402,10 +402,9 @@ Public Class F0_Proforma
         With grVentas.RootTable.Columns("cliente")
             .Width = 250
             .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Near
-            .Visible = True
+            .Visible = False
             .Caption = "CLIENTE"
         End With
-
         With grVentas.RootTable.Columns("pamon")
             .Width = 50
             .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Near
@@ -414,16 +413,26 @@ Public Class F0_Proforma
         With grVentas.RootTable.Columns("moneda")
             .Width = 150
             .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Near
-            .Visible = True
+            .Visible = False
             .Caption = "MONEDA"
         End With
-        '    a.panumi ,a.paalm ,a.pafdoc ,a.paven ,vendedor .yddesc as vendedor,a.paclpr,
-        'cliente.yddesc as cliente ,a.pamon ,IIF(pamon=1,'Boliviano','Dolar') as moneda,a.paest ,a.paobs ,
-        'a.padesc, a.pafact ,a.pahact ,a.pauact,a.patotal as total
-
-
-        With grVentas.RootTable.Columns("paobs")
+        With grVentas.RootTable.Columns("pacliente")
+            .Width = 300
+            .Visible = True
+            .Caption = "CLIENTE"
+        End With
+        With grVentas.RootTable.Columns("pacontacto")
             .Width = 200
+            .Visible = True
+            .Caption = "CONTACTO"
+        End With
+        With grVentas.RootTable.Columns("patelf")
+            .Width = 100
+            .Visible = True
+            .Caption = "TELÉFONO"
+        End With
+        With grVentas.RootTable.Columns("paobs")
+            .Width = 300
             .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Near
             .Visible = True
             .Caption = "OBSERVACION"
@@ -438,7 +447,6 @@ Public Class F0_Proforma
             .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Near
             .Visible = False
         End With
-
         With grVentas.RootTable.Columns("pafact")
             .Width = 50
             .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Near
@@ -871,6 +879,12 @@ Public Class F0_Proforma
             cbSucursal.Focus()
             Return False
         End If
+        If tbFechaVenta.Value > Now.Date Then
+            Dim img As Bitmap = New Bitmap(My.Resources.mensaje, 50, 50)
+            ToastNotification.Show(Me, "La fecha de proforma no puede ser mayor a la fecha actual".ToUpper, img, 2800, eToastGlowColor.Red, eToastPosition.BottomCenter)
+            tbFechaVenta.Focus()
+            Return False
+        End If
         If (TbNomCliente.Text = String.Empty) Then
             Dim img As Bitmap = New Bitmap(My.Resources.mensaje, 50, 50)
             ToastNotification.Show(Me, "Por Favor ingrese nombre del cliente".ToUpper, img, 2000, eToastGlowColor.Red, eToastPosition.BottomCenter)
@@ -894,10 +908,9 @@ Public Class F0_Proforma
             grdetalle.Row = grdetalle.RowCount - 1
             If (grdetalle.GetValue("pbty5prod") = 0) Then
                 Dim img As Bitmap = New Bitmap(My.Resources.mensaje, 50, 50)
-                ToastNotification.Show(Me, "Por Favor Seleccione  un detalle de producto".ToUpper, img, 2000, eToastGlowColor.Red, eToastPosition.BottomCenter)
+                ToastNotification.Show(Me, "Por Favor introduzca productos al detalle".ToUpper, img, 2000, eToastGlowColor.Red, eToastPosition.BottomCenter)
                 Return False
             End If
-
         End If
         Return True
     End Function
@@ -906,13 +919,13 @@ Public Class F0_Proforma
         Dim numi As String = ""
         Dim res As Boolean = L_fnGrabarProforma(numi, tbFechaVenta.Value.ToString("yyyy/MM/dd"), _CodEmpleado, _CodCliente,
                                                 IIf(swMoneda.Value = True, 1, 0), tbObservacion.Text, tbMdesc.Value, tbtotal.Value,
-                                                CType(grdetalle.DataSource, DataTable), cbSucursal.Value, tbCliente.Text.Trim,
-                                                tbContacto.Text.Trim, tbTelf.Text.Trim)
+                                                CType(grdetalle.DataSource, DataTable), cbSucursal.Value, TbNomCliente.Text.Trim,
+                                                tbContacto.Text.Trim, tbTelf.Text.Trim, gs_VersionSistema, gs_IPMaquina, gs_UsuMaquina)
 
         If res Then
 
             Dim img As Bitmap = New Bitmap(My.Resources.checked, 50, 50)
-            ToastNotification.Show(Me, "Código de Proforma ".ToUpper + tbCodigo.Text + " Grabado con éxito.".ToUpper,
+            ToastNotification.Show(Me, "Código de Proforma ".ToUpper + tbCodigo.Text + " Grabada con éxito.".ToUpper,
                                       img, 2000,
                                       eToastGlowColor.Green,
                                       eToastPosition.TopCenter)
@@ -920,22 +933,24 @@ Public Class F0_Proforma
             _prImprimirReporte()
 
             _prCargarProforma()
-
             _Limpiar()
 
         Else
             Dim img As Bitmap = New Bitmap(My.Resources.cancel, 50, 50)
-            ToastNotification.Show(Me, "La Proforma no pudo ser insertado".ToUpper, img, 2000, eToastGlowColor.Red, eToastPosition.BottomCenter)
+            ToastNotification.Show(Me, "La Proforma no pudo ser insertada".ToUpper, img, 2000, eToastGlowColor.Red, eToastPosition.BottomCenter)
 
         End If
 
     End Sub
     Private Sub _prGuardarModificado()
-        Dim res As Boolean = L_fnModificarProforma(tbCodigo.Text, tbFechaVenta.Value.ToString("yyyy/MM/dd"), _CodEmpleado, _CodCliente, IIf(swMoneda.Value = True, 1, 0), tbObservacion.Text, tbMdesc.Value, tbtotal.Value, CType(grdetalle.DataSource, DataTable), cbSucursal.Value)
+        Dim res As Boolean = L_fnModificarProforma(tbCodigo.Text, tbFechaVenta.Value.ToString("yyyy/MM/dd"), _CodEmpleado, _CodCliente,
+                                                   IIf(swMoneda.Value = True, 1, 0), tbObservacion.Text, tbMdesc.Value, tbtotal.Value,
+                                                   CType(grdetalle.DataSource, DataTable), cbSucursal.Value, TbNomCliente.Text.Trim,
+                                                   tbContacto.Text.Trim, tbTelf.Text.Trim, gs_VersionSistema, gs_IPMaquina, gs_UsuMaquina)
         If res Then
 
             Dim img As Bitmap = New Bitmap(My.Resources.checked, 50, 50)
-            ToastNotification.Show(Me, "Código de Proforma ".ToUpper + tbCodigo.Text + " Modificado con Exito.".ToUpper,
+            ToastNotification.Show(Me, "Código de Proforma ".ToUpper + tbCodigo.Text + " Modificada con éxito.".ToUpper,
                                       img, 2000,
                                       eToastGlowColor.Green,
                                       eToastPosition.TopCenter
@@ -950,7 +965,7 @@ Public Class F0_Proforma
 
         Else
             Dim img As Bitmap = New Bitmap(My.Resources.cancel, 50, 50)
-            ToastNotification.Show(Me, "La Venta no pudo ser Modificada".ToUpper, img, 2000, eToastGlowColor.Red, eToastPosition.BottomCenter)
+            ToastNotification.Show(Me, "La Proforma no pudo ser Modificada".ToUpper, img, 2000, eToastGlowColor.Red, eToastPosition.BottomCenter)
 
         End If
     End Sub
@@ -978,6 +993,21 @@ Public Class F0_Proforma
         Next
 
     End Sub
+
+    Private Sub RecalcularPrecios()
+        dtDescuentos = L_fnListarDescuentosTodos()
+        For i = 0 To CType(grdetalle.DataSource, DataTable).Rows.Count - 1
+            Dim rowIndex As Integer = grdetalle.Row
+            Dim codPro = CType(grdetalle.DataSource, DataTable).Rows(i).Item("pbty5prod")
+            Dim dt As DataTable = L_fnListarUnProductoPrecioVenta(codPro.ToString)
+            CType(grdetalle.DataSource, DataTable).Rows(i).Item("pbpbas") = dt.Rows(0).Item("PrecioV")
+            CType(grdetalle.DataSource, DataTable).Rows(i).Item("pbptot") = CType(grdetalle.DataSource, DataTable).Rows(i).Item("pbpbas") * CType(grdetalle.DataSource, DataTable).Rows(i).Item("pbcmin")
+            CalcularDescuentos(CType(grdetalle.DataSource, DataTable).Rows(i).Item("pbty5prod"), CType(grdetalle.DataSource, DataTable).Rows(i).Item("pbcmin"), CType(grdetalle.DataSource, DataTable).Rows(i).Item("pbpbas"), i)
+            P_PonerTotal(rowIndex)
+        Next
+
+    End Sub
+
     Public Sub _PrimerRegistro()
         Dim _MPos As Integer
         If grVentas.RowCount > 0 Then
@@ -1436,6 +1466,7 @@ salirIf:
                     CalcularDescuentos(CType(grdetalle.DataSource, DataTable).Rows(pos1).Item("pbty5prod"), cant, CType(grdetalle.DataSource, DataTable).Rows(pos1).Item("pbpbas"), pos1)
                     _prCalcularPrecioTotal()
 
+                    CType(grdetalle.DataSource, DataTable).Rows(grdetalle.RowCount - 1).Item("yfcbarra") = ""
                     grdetalle.SetValue("yfcbarra", "")
                     grdetalle.SetValue("pbcmin", 0)
                     grdetalle.SetValue("pbptot", 0)
@@ -1473,8 +1504,14 @@ salirIf:
             CType(grdetalle.DataSource, DataTable).Rows(pos).Item("pbcmin") = 1
             CType(grdetalle.DataSource, DataTable).Rows(pos).Item("stock") = grProductos.GetValue("stock")
             CType(grdetalle.DataSource, DataTable).Rows(pos).Item("pbfamilia") = grProductos.GetValue("yfgr4")
+
+            CalcularDescuentos(CType(grdetalle.DataSource, DataTable).Rows(pos).Item("pbty5prod"), 1, CType(grdetalle.DataSource, DataTable).Rows(pos).Item("pbpbas"), pos)
             _prCalcularPrecioTotal()
             _DesHabilitarProductos()
+
+
+            grdetalle.Col = 6
+
         Else
             If (existe) Then
                 Dim img As Bitmap = New Bitmap(My.Resources.mensaje, 50, 50)
@@ -1632,7 +1669,7 @@ salirIf:
 
             Next
         Else
-            'Dim tabla As DataTable = CType(grdetalle.DataSource, DataTable).Select("estado=0", "").CopyToDataTable
+            'Dim tabla As DataTable = CType(grdetalle.DataSource, DataTable).Select("estado>=0", "").CopyToDataTable
             'grdetalle.DataSource = tabla
             For i = 0 To CType(grdetalle.DataSource, DataTable).Rows.Count - 1
                 'Cálculo de descuentos por familia
@@ -1642,19 +1679,19 @@ salirIf:
                 Dim CodProd = CType(grdetalle.DataSource, DataTable).Rows(i).Item("pbty5prod")
                 total1 = CType(grdetalle.DataSource, DataTable).Rows(i).Item("pbptot")
 
-                If Estado = 0 And familia <> 1 Then
+                If Estado >= 0 And familia <> 1 Then
                     'Recorre el grid para hacer la suma de las cantidades por familia
 
-                    'For Each flia In grdetalle.GetRows
-                    '    If familia = flia.Cells("pbfamilia").Value Then
-                    '        cantf += flia.Cells("pbcmin").Value
-                    '    End If
-                    'Next
-                    For j = 0 To CType(grdetalle.DataSource, DataTable).Rows.Count - 1
-                        If familia = CType(grdetalle.DataSource, DataTable).Rows(j).Item("pbfamilia") Then
-                            cantf += CType(grdetalle.DataSource, DataTable).Rows(j).Item("pbcmin")
+                    For Each flia In grdetalle.GetRows
+                        If familia = flia.Cells("pbfamilia").Value Then
+                            cantf += flia.Cells("pbcmin").Value
                         End If
                     Next
+                    'For j = 0 To CType(grdetalle.DataSource, DataTable).Rows.Count - 1
+                    '    If familia = CType(grdetalle.DataSource, DataTable).Rows(j).Item("pbfamilia") Then
+                    '        cantf += CType(grdetalle.DataSource, DataTable).Rows(j).Item("pbcmin")
+                    '    End If
+                    'Next
 
 
                     'Consulta la tabla de descuentos para ver cual aplicará segun la cantidad ingresada
@@ -1690,7 +1727,8 @@ salirIf:
 
         'Cálculo de descuentos si es sin familia
         If CType(grdetalle.DataSource, DataTable).Rows(Posicion).Item("pbfamilia") <> 1 Then
-
+            'Dim tabla As DataTable = CType(grdetalle.DataSource, DataTable).Select("estado>=0", "").CopyToDataTable
+            'grdetalle.DataSource = tabla
             For i = 0 To CType(grdetalle.DataSource, DataTable).Rows.Count - 1
                 'Cálculo de descuentos por familia
                 Dim familia = CType(grdetalle.DataSource, DataTable).Rows(i).Item("pbfamilia")
@@ -1699,19 +1737,24 @@ salirIf:
                 Dim CodProd = CType(grdetalle.DataSource, DataTable).Rows(i).Item("pbty5prod")
                 total1 = CType(grdetalle.DataSource, DataTable).Rows(i).Item("pbptot")
 
-                If Estado = 0 And familia <> 1 Then
+                If Estado >= 0 And familia <> 1 Then
                     'Recorre el grid para hacer la suma de las cantidades por familia
                     'For Each flia In grdetalle.GetRows
                     '    If familia = flia.Cells("pbfamilia").Value Then
                     '        cantf += flia.Cells("pbcmin").Value
                     '    End If
                     'Next
-                    For j = 0 To CType(grdetalle.DataSource, DataTable).Rows.Count - 1
-                        If familia = CType(grdetalle.DataSource, DataTable).Rows(j).Item("pbfamilia") Then
-                            cantf += CType(grdetalle.DataSource, DataTable).Rows(j).Item("pbcmin")
+
+                    'For j = 0 To CType(grdetalle.DataSource, DataTable).Rows.Count - 1
+                    '    If familia = CType(grdetalle.DataSource, DataTable).Rows(j).Item("pbfamilia") Then
+                    '        cantf += CType(grdetalle.DataSource, DataTable).Rows(j).Item("pbcmin")
+                    '    End If
+                    'Next
+                    For Each flia In grdetalle.GetRows
+                        If familia = flia.Cells("pbfamilia").Value Then
+                            cantf += flia.Cells("pbcmin").Value
                         End If
                     Next
-
 
                     fila = dtDescuentos.Select("ProductoId=" + CodProd.ToString + "", "")
                     'Consulta la tabla de descuentos para ver cual aplicará segun la cantidad ingresada
@@ -1836,21 +1879,18 @@ salirIf:
     End Sub
 
     Sub _prImprimirReporte()
-        Dim ef = New Efecto
+        'Dim ef = New Efecto
+        'ef.tipo = 2
+        'ef.Context = "mensaje principal".ToUpper
+        'ef.Header = "¿DESEA IMPRIMIR REPORTE DE LA PROFORMA INSERTADA?".ToUpper
+        'ef.ShowDialog()
+        'Dim bandera As Boolean = False
+        'bandera = ef.band
+        'If (bandera = True) Then
+        '    P_GenerarReporte(True)
+        'End If
 
-
-        ef.tipo = 2
-        ef.Context = "mensaje principal".ToUpper
-        ef.Header = "¿DESEA IMPRIMIR REPORTE DE LA PROFORMA INSERTADA?".ToUpper
-        ef.ShowDialog()
-        Dim bandera As Boolean = False
-        bandera = ef.band
-        If (bandera = True) Then
-            P_GenerarReporte()
-
-
-
-        End If
+        P_GenerarReporte(True)
     End Sub
     Private Sub btnGrabar_Click(sender As Object, e As EventArgs) Handles btnGrabar.Click
 
@@ -1872,25 +1912,20 @@ salirIf:
 
     Private Sub btnModificar_Click(sender As Object, e As EventArgs) Handles btnModificar.Click
         If (grVentas.RowCount > 0) Then
-
-
             _prhabilitar()
             btnNuevo.Enabled = False
             btnModificar.Enabled = False
             btnEliminar.Enabled = False
             btnGrabar.Enabled = True
-
             PanelNavegacion.Enabled = False
             _prCargarIconELiminar()
+
+            RecalcularPrecios()
         End If
     End Sub
     Private Sub btnEliminar_Click(sender As Object, e As EventArgs) Handles btnEliminar.Click
 
-
-
         Dim ef = New Efecto
-
-
         ef.tipo = 2
         ef.Context = "¿esta seguro de eliminar el registro?".ToUpper
         ef.Header = "mensaje principal".ToUpper
@@ -1899,19 +1934,15 @@ salirIf:
         bandera = ef.band
         If (bandera = True) Then
             Dim mensajeError As String = ""
-            Dim res As Boolean = L_fnEliminarProforma(tbCodigo.Text, mensajeError)
+            Dim res As Boolean = L_fnEliminarProforma(tbCodigo.Text, mensajeError, gs_VersionSistema, gs_IPMaquina, gs_UsuMaquina)
             If res Then
 
-
                 Dim img As Bitmap = New Bitmap(My.Resources.checked, 50, 50)
-
-                ToastNotification.Show(Me, "Código de Proforma ".ToUpper + tbCodigo.Text + " eliminado con Exito.".ToUpper,
+                ToastNotification.Show(Me, "Código de Proforma ".ToUpper + tbCodigo.Text + " eliminada con éxito.".ToUpper,
                                           img, 2000,
                                           eToastGlowColor.Green,
                                           eToastPosition.TopCenter)
-
                 _prFiltrar()
-
             Else
                 Dim img As Bitmap = New Bitmap(My.Resources.cancel, 50, 50)
                 ToastNotification.Show(Me, mensajeError, img, 2000, eToastGlowColor.Red, eToastPosition.BottomCenter)
@@ -1922,11 +1953,8 @@ salirIf:
 
     Private Sub grVentas_SelectionChanged(sender As Object, e As EventArgs) Handles grVentas.SelectionChanged
         If (grVentas.RowCount >= 0 And grVentas.Row >= 0) Then
-
             _prMostrarRegistro(grVentas.Row)
         End If
-
-
     End Sub
 
     Private Sub btnSiguiente_Click(sender As Object, e As EventArgs) Handles btnSiguiente.Click
@@ -1990,14 +2018,12 @@ salirIf:
         End If
     End Sub
 
-    Private Sub ButtonX1_Click(sender As Object, e As EventArgs)
-        If (Not _fnAccesible()) Then
-            P_GenerarReporte()
-
-        End If
-    End Sub
-    Private Sub P_GenerarReporte()
+    Private Sub P_GenerarReporte(pdf As Boolean)
         Dim dt As DataTable = L_fnReporteProforma(tbCodigo.Text)
+
+        'Dim dt As DataTable = CType(grdetalle.DataSource, DataTable)
+        'dt = dt.Select("estado=0").CopyToDataTable
+        Dim _Ds2 = L_Reporte_Factura_Cia("2")
 
         If Not IsNothing(P_Global.Visualizador) Then
             P_Global.Visualizador.Close()
@@ -2005,17 +2031,35 @@ salirIf:
 
         P_Global.Visualizador = New Visualizador
 
-        Dim objrep As New R_Proforma2
-        '' GenerarNro(_dt)
-        ''objrep.SetDataSource(Dt1Kardex)
+        Dim objrep As New R_Proforma1
         objrep.SetDataSource(dt)
-        objrep.SetParameterValue("usuario", gs_user)
-        objrep.SetParameterValue("Logo", gb_UbiLogo)
+
+        objrep.SetParameterValue("ECasaMatriz", _Ds2.Tables(0).Rows(0).Item("scsuc").ToString)
+        objrep.SetParameterValue("ECiudadPais", _Ds2.Tables(0).Rows(0).Item("scpai").ToString)
+        objrep.SetParameterValue("EDuenho", _Ds2.Tables(0).Rows(0).Item("scnom").ToString)
+        objrep.SetParameterValue("Direccionpr", _Ds2.Tables(0).Rows(0).Item("scdir").ToString)
+        objrep.SetParameterValue("Fecha", tbFechaVenta.Value.ToString("dd/MM/yyyy"))
+        objrep.SetParameterValue("nombreCliente", TbNomCliente.Text)
+        objrep.SetParameterValue("NombreContacto", tbContacto.Text)
+        objrep.SetParameterValue("TelfContacto", tbTelf.Text)
+        objrep.SetParameterValue("Obs", tbObservacion.Text)
+        objrep.SetParameterValue("ENombre", _Ds2.Tables(0).Rows(0).Item("scneg").ToString)
+        objrep.SetParameterValue("codigo", tbCodigo.Text)
+        objrep.SetParameterValue("Usuario", L_Usuario)
+
         P_Global.Visualizador.CrGeneral.ReportSource = objrep 'Comentar
         P_Global.Visualizador.ShowDialog() 'Comentar
         P_Global.Visualizador.BringToFront() 'Comentar
 
+        If pdf Then
+            'Copia de Proforma en PDF
+            If (Not Directory.Exists(gs_CarpetaRaiz + "\Proformas")) Then
+                Directory.CreateDirectory(gs_CarpetaRaiz + "\Proformas")
+            End If
+            objrep.ExportToDisk(ExportFormatType.PortableDocFormat, gs_CarpetaRaiz + "\Proformas\" + CStr(TbNomCliente.Text) + "_" + CStr(Now.Date.Day) +
+                    "." + CStr(Now.Date.Month) + "." + CStr(Now.Date.Year) + "_" + CStr(Now.Hour) + "." + CStr(Now.Minute) + "." + CStr(Now.Second) + ".pdf")
 
+        End If
 
     End Sub
 
@@ -2025,8 +2069,7 @@ salirIf:
 
     Private Sub btnImprimir_Click(sender As Object, e As EventArgs) Handles btnImprimir.Click
         If (Not _fnAccesible()) Then
-            P_GenerarReporte()
-
+            P_GenerarReporte(False)
         End If
     End Sub
 
@@ -2039,5 +2082,9 @@ salirIf:
             Me.Opacity = 100
             Timer1.Enabled = False
         End If
+    End Sub
+
+    Private Sub swMostrar_ValueChanged(sender As Object, e As EventArgs) Handles swMostrar.ValueChanged
+        _prCargarProforma()
     End Sub
 End Class
