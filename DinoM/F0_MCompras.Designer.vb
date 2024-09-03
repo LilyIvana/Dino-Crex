@@ -1773,6 +1773,7 @@ Partial Class F0_MCompras
         Me.btnMovXpeso.TabIndex = 16
         Me.btnMovXpeso.Text = "MOV. DE PROD. X PESO"
         Me.btnMovXpeso.TextColor = System.Drawing.Color.White
+        Me.btnMovXpeso.Visible = False
         '
         'swMostrar
         '

@@ -354,7 +354,7 @@ Public Class F1_CalculoPedidoSugerido
         If tbCodProv.Text <> String.Empty And tbCantSemVentas.Value > 0 And tbCantSemPedido.Value > 0 Then
             _prCargarDatos()
         Else
-            ToastNotification.Show(Me, "Debe llenar los campos requeridos..!!!".ToUpper,
+            ToastNotification.Show(Me, "Debe llenar los campos requeridos que se encuentran con * !!!".ToUpper,
                            My.Resources.WARNING, 3000,
                            eToastGlowColor.Red,
                            eToastPosition.TopCenter)
@@ -381,9 +381,11 @@ Public Class F1_CalculoPedidoSugerido
 
     Private Sub tbCantSemVentas_ValueChanged(sender As Object, e As EventArgs) Handles tbCantSemVentas.ValueChanged
         Dim Dias = tbCantSemVentas.Value * 7
-        tbFechaF.Value = Now.Date.AddDays(-1)
-        tbFechaI.Value = tbFechaF.Value.AddDays(-Dias)
+        'tbFechaF.Value = Now.Date.AddDays(-1)
+        'tbFechaI.Value = tbFechaF.Value.AddDays(-Dias)
 
+        tbFechaF.Value = Now.Date
+        tbFechaI.Value = tbFechaF.Value.AddDays(-Dias)
     End Sub
 
     Private Sub btnSearch_Click(sender As Object, e As EventArgs) Handles btnSearch.Click

@@ -112,7 +112,15 @@ Public Class F1_CalculoPedidoSugeridoDias
             L_fnRepPedidoSugeridoDias(gs_VersionSistema, gs_IPMaquina, gs_UsuMaquina, tbCodProv.Text)
 
             For i = 0 To dt.Rows.Count - 1
-                'Dim PedConv1 = Math.Round((dt.Rows(i).Item("PedSugeridoUniNuevo") / dt.Rows(i).Item("Conversion1")), 0)
+                dt.Rows(i).Item("VentasxDia") = Format((IIf(IsDBNull(dt.Rows(i).Item("cantVentas")), 0, dt.Rows(i).Item("cantVentas")) /
+                                                        IIf(tbCantDiasVentas.Value - dt.Rows(i).Item("DiasConStock0") = 0, 1, tbCantDiasVentas.Value - dt.Rows(i).Item("DiasConStock0"))), 0)
+
+                dt.Rows(i).Item("MaximoNuevo") = Format((IIf(IsDBNull(dt.Rows(i).Item("cantVentas")), 0, dt.Rows(i).Item("cantVentas")) /
+                                                        IIf(tbCantDiasVentas.Value - dt.Rows(i).Item("DiasConStock0") = 0, 1, tbCantDiasVentas.Value - dt.Rows(i).Item("DiasConStock0"))) *
+                                                        tbCantDiasPedido.Value, 0)
+                dt.Rows(i).Item("PedSugeridoUniNuevo") = dt.Rows(i).Item("MaximoNuevo") - dt.Rows(i).Item("StockAct")
+
+
                 Dim PedConv1 = Format((dt.Rows(i).Item("PedSugeridoUniNuevo") / dt.Rows(i).Item("Conversion1")), 0)
 
                 dt.Rows(i).Item("PedidoFinalUni") = IIf(dt.Rows(i).Item("Conversion2") > 1, 0, PedConv1 * dt.Rows(i).Item("Conversion1"))
@@ -412,7 +420,7 @@ Public Class F1_CalculoPedidoSugeridoDias
         If tbCodProv.Text <> String.Empty And tbCantDiasVentas.Value > 0 And tbCantDiasPedido.Value > 0 Then
             _prCargarDatos()
         Else
-            ToastNotification.Show(Me, "Debe llenar los campos requeridos..!!!".ToUpper,
+            ToastNotification.Show(Me, "Debe llenar los campos requeridos que se encuentran con * !!!".ToUpper,
                            My.Resources.WARNING, 3000,
                            eToastGlowColor.Red,
                            eToastPosition.TopCenter)
@@ -439,7 +447,10 @@ Public Class F1_CalculoPedidoSugeridoDias
 
     Private Sub tbCantSemVentas_ValueChanged(sender As Object, e As EventArgs) Handles tbCantDiasVentas.ValueChanged
         Dim Dias = tbCantDiasVentas.Value
-        tbFechaF.Value = Now.Date.AddDays(-1)
+        'tbFechaF.Value = Now.Date.AddDays(-1)
+        'tbFechaI.Value = tbFechaF.Value.AddDays(-Dias)
+
+        tbFechaF.Value = Now.Date
         tbFechaI.Value = tbFechaF.Value.AddDays(-Dias)
 
     End Sub

@@ -830,6 +830,7 @@ Partial Class F0_Movimiento
         Me.btnMovXpeso.TabIndex = 17
         Me.btnMovXpeso.Text = "MOV. DE PROD. X PESO"
         Me.btnMovXpeso.TextColor = System.Drawing.Color.White
+        Me.btnMovXpeso.Visible = False
         '
         'btnExportar
         '

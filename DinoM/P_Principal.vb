@@ -1104,16 +1104,14 @@ Public Class P_Principal
     End Sub
 
     Private Sub btIngresoEgreso_Click(sender As Object, e As EventArgs) Handles btIngresoEgreso.Click
-        'Dim frm As New F1_IngresosEgresos
-        'frm._nameButton = btIngresoEgreso.Name
-        'frm.Show()
-
-        Dim frm As New F0_ProformaNueva
-        'Dim frm As New F0_ProformaNueva
-        frm._nameButton = btVentProforma.Name
-        frm._modulo = FP_VENTAS
+        Dim frm As New F1_IngresosEgresos
+        frm._nameButton = btIngresoEgreso.Name
         frm.Show()
 
+        'Dim frm As New F0_ProformaNueva
+        'frm._nameButton = btVentProforma.Name
+        'frm._modulo = FP_VENTAS
+        'frm.Show()
     End Sub
 
     Private Sub btnVentaRapida_Click(sender As Object, e As EventArgs) Handles btnVentaRapida.Click
