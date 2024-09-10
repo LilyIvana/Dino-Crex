@@ -236,17 +236,17 @@ Public Class F1_Proveedor
     End Sub
 
     Private Sub _prCrearCarpetaReportes()
-        Dim rutaDestino As String = RutaGlobal + "\Reporte\Reporte ClienteDino\"
+        Dim rutaDestino As String = RutaGlobal + "\Reporte\Reporte Proveedores\"
 
-        If System.IO.Directory.Exists(RutaGlobal + "\Reporte\Reporte ClienteDino\") = False Then
+        If System.IO.Directory.Exists(RutaGlobal + "\Reporte\Reporte Proveedores\") = False Then
             If System.IO.Directory.Exists(RutaGlobal + "\Reporte") = False Then
                 System.IO.Directory.CreateDirectory(RutaGlobal + "\Reporte")
-                If System.IO.Directory.Exists(RutaGlobal + "\Reporte\Reporte ClienteDino") = False Then
-                    System.IO.Directory.CreateDirectory(RutaGlobal + "\Reporte\Reporte ClienteDino")
+                If System.IO.Directory.Exists(RutaGlobal + "\Reporte\Reporte Proveedores") = False Then
+                    System.IO.Directory.CreateDirectory(RutaGlobal + "\Reporte\Reporte Proveedores")
                 End If
             Else
-                If System.IO.Directory.Exists(RutaGlobal + "\Reporte\Reporte ClienteDino") = False Then
-                    System.IO.Directory.CreateDirectory(RutaGlobal + "\Reporte\Reporte ClienteDino")
+                If System.IO.Directory.Exists(RutaGlobal + "\Reporte\Reporte Proveedores") = False Then
+                    System.IO.Directory.CreateDirectory(RutaGlobal + "\Reporte\Reporte Proveedores")
 
                 End If
             End If
@@ -531,10 +531,6 @@ Public Class F1_Proveedor
 
     Public Overrides Function _PMOGetListEstructuraBuscador() As List(Of Modelo.Celda)
         Dim listEstCeldas As New List(Of Modelo.Celda)
-        'a.ydnumi, a.ydcod, a.yddesc, a.ydzona, a.yddct, a.yddctnum, a.yddirec, a.ydtelf1, a.ydtelf2, a.ydcat,
-        'a.ydest, a.ydlat, a.ydlongi, a.ydprconsu, a.ydobs, a.ydfnac, a.ydnomfac, a.ydtip, a.ydnit, a.ydfecing, a.ydultvent,
-        'a.ydimg,
-        'a.ydfact, a.ydhact, a.yduact
 
         listEstCeldas.Add(New Modelo.Celda("ydnumi", True, "Cod Orig.".ToUpper, 100))
         listEstCeldas.Add(New Modelo.Celda("ydcod", True, "Cod Prov.".ToUpper, 100))
@@ -544,15 +540,15 @@ Public Class F1_Proveedor
         listEstCeldas.Add(New Modelo.Celda("yddct", False))
         listEstCeldas.Add(New Modelo.Celda("yddctnum", True, "N. Documento".ToUpper, 150))
         listEstCeldas.Add(New Modelo.Celda("yddirec", True, "Direccion".ToUpper, 180))
-        listEstCeldas.Add(New Modelo.Celda("ydtelf1", False))
-        listEstCeldas.Add(New Modelo.Celda("ydtelf2", False))
+        listEstCeldas.Add(New Modelo.Celda("ydtelf1", True, "Teléfono".ToUpper, 100))
+        listEstCeldas.Add(New Modelo.Celda("ydtelf2", True, "Núm. Cuenta proveedor".ToUpper, 180))
         listEstCeldas.Add(New Modelo.Celda("ydcat", False))
         listEstCeldas.Add(New Modelo.Celda("ydest", False))
         listEstCeldas.Add(New Modelo.Celda("ydlat", False))
         listEstCeldas.Add(New Modelo.Celda("ydlongi", False))
         listEstCeldas.Add(New Modelo.Celda("ydprconsu", False))
-        listEstCeldas.Add(New Modelo.Celda("ydobs", True, "Observacion".ToUpper, 180))
-        listEstCeldas.Add(New Modelo.Celda("ydfnac", True, "Fecha Nacimiento".ToUpper, 150))
+        listEstCeldas.Add(New Modelo.Celda("ydobs", True, "Condiciones de Pago".ToUpper, 180))
+        listEstCeldas.Add(New Modelo.Celda("ydfnac", False, "Fecha Nacimiento".ToUpper, 150))
         listEstCeldas.Add(New Modelo.Celda("ydnomfac", False, "Factura".ToUpper, 200))
         listEstCeldas.Add(New Modelo.Celda("ydtip", False))
         listEstCeldas.Add(New Modelo.Celda("ydnit", False, "Nit".ToUpper, 120))
@@ -564,7 +560,7 @@ Public Class F1_Proveedor
         listEstCeldas.Add(New Modelo.Celda("yduact", False))
         listEstCeldas.Add(New Modelo.Celda("ydrut", False))
         listEstCeldas.Add(New Modelo.Celda("visita", False, "FRECUENCIA DE VISITA", 120))
-        listEstCeldas.Add(New Modelo.Celda("zona", True, "ZONA".ToUpper, 150))
+        listEstCeldas.Add(New Modelo.Celda("zona", False, "ZONA".ToUpper, 150))
         listEstCeldas.Add(New Modelo.Celda("documento".ToUpper, True, "Tipo Documento".ToUpper, 150))
         listEstCeldas.Add(New Modelo.Celda("ydnumivend", False))
         listEstCeldas.Add(New Modelo.Celda("vendedor", False))
@@ -782,4 +778,20 @@ Public Class F1_Proveedor
         End If
     End Sub
 
+    Private Sub btnImprimir_Click(sender As Object, e As EventArgs) Handles btnImprimir.Click
+        _prCrearCarpetaReportes()
+        Dim img As Bitmap = New Bitmap(My.Resources.checked, 50, 50)
+        If (P_ExportarExcelGlobal(RutaGlobal + "\Reporte\Reporte Proveedores", JGrM_Buscador, "Lista Proveedores")) Then
+            L_fnBotonExportar(gs_VersionSistema, gs_IPMaquina, gs_UsuMaquina, 0, "TY004", "PROVEEDORES")
+            ToastNotification.Show(Me, "EXPORTACIÓN DE LISTA DE PROVEEDORES EXITOSA..!!!",
+                                       img, 2000,
+                                       eToastGlowColor.Green,
+                                       eToastPosition.BottomCenter)
+        Else
+            ToastNotification.Show(Me, "FALLO AL EXPORTACIÓN DE LISTA DE PROVEEDORES..!!!",
+                                       My.Resources.WARNING, 2000,
+                                       eToastGlowColor.Red,
+                                       eToastPosition.BottomLeft)
+        End If
+    End Sub
 End Class

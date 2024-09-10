@@ -254,6 +254,14 @@ Partial Class F1_CalculoPedidoSugeridoDias
         '
         Me.MPanelUserAct.Location = New System.Drawing.Point(1122, 0)
         '
+        'MRlAccion
+        '
+        '
+        '
+        '
+        Me.MRlAccion.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.MRlAccion.Size = New System.Drawing.Size(791, 72)
+        '
         'btExcel
         '
         Me.btExcel.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton

@@ -50,6 +50,7 @@ Partial Class F1_Proveedor
         Me.SuperTabItem1 = New DevComponents.DotNetBar.SuperTabItem()
         Me.SuperTabControlPanel3 = New DevComponents.DotNetBar.SuperTabControlPanel()
         Me.Panel2 = New System.Windows.Forms.Panel()
+        Me.UsImg = New DinoM.UCImg()
         Me.BtAdicionar = New DevComponents.DotNetBar.ButtonX()
         Me.LabelX15 = New DevComponents.DotNetBar.LabelX()
         Me.SuperTabItem3 = New DevComponents.DotNetBar.SuperTabItem()
@@ -76,7 +77,6 @@ Partial Class F1_Proveedor
         Me.cbZona = New Janus.Windows.GridEX.EditControls.MultiColumnCombo()
         Me.cbTipoDoc = New Janus.Windows.GridEX.EditControls.MultiColumnCombo()
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
-        Me.UsImg = New DinoM.UCImg()
         CType(Me.SuperTabPrincipal, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuperTabPrincipal.SuspendLayout()
         Me.SuperTabControlPanelRegistro.SuspendLayout()
@@ -205,9 +205,6 @@ Partial Class F1_Proveedor
         '
         Me.btnGrabar.TabIndex = 0
         '
-        'btnNuevo
-        '
-        '
         'PanelToolBar2
         '
         Me.PanelToolBar2.Location = New System.Drawing.Point(1232, 0)
@@ -289,6 +286,8 @@ Partial Class F1_Proveedor
         '
         'btnImprimir
         '
+        Me.btnImprimir.Image = Global.DinoM.My.Resources.Resources.EXCEL
+        Me.btnImprimir.Text = "EXPORTAR"
         Me.btnImprimir.Visible = False
         '
         'btnUltimo
@@ -299,6 +298,14 @@ Partial Class F1_Proveedor
         '
         Me.MPanelUserAct.Location = New System.Drawing.Point(1112, 0)
         Me.MPanelUserAct.Margin = New System.Windows.Forms.Padding(4)
+        '
+        'MRlAccion
+        '
+        '
+        '
+        '
+        Me.MRlAccion.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.MRlAccion.Size = New System.Drawing.Size(856, 72)
         '
         'LabelX1
         '
@@ -329,7 +336,7 @@ Partial Class F1_Proveedor
         Me.tbCodigoOriginal.Location = New System.Drawing.Point(172, 16)
         Me.tbCodigoOriginal.Name = "tbCodigoOriginal"
         Me.tbCodigoOriginal.PreventEnterBeep = True
-        Me.tbCodigoOriginal.Size = New System.Drawing.Size(74, 22)
+        Me.tbCodigoOriginal.Size = New System.Drawing.Size(94, 22)
         Me.tbCodigoOriginal.TabIndex = 0
         Me.tbCodigoOriginal.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         '
@@ -361,7 +368,7 @@ Partial Class F1_Proveedor
         Me.tbCodCliente.Location = New System.Drawing.Point(172, 47)
         Me.tbCodCliente.Name = "tbCodCliente"
         Me.tbCodCliente.PreventEnterBeep = True
-        Me.tbCodCliente.Size = New System.Drawing.Size(74, 22)
+        Me.tbCodCliente.Size = New System.Drawing.Size(94, 22)
         Me.tbCodCliente.TabIndex = 1
         Me.tbCodCliente.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         '
@@ -394,7 +401,7 @@ Partial Class F1_Proveedor
         Me.LabelX3.SingleLineColor = System.Drawing.SystemColors.Control
         Me.LabelX3.Size = New System.Drawing.Size(148, 23)
         Me.LabelX3.TabIndex = 226
-        Me.LabelX3.Text = "Direccion:"
+        Me.LabelX3.Text = "Dirección:"
         '
         'LabelX10
         '
@@ -442,7 +449,7 @@ Partial Class F1_Proveedor
         Me.LabelX4.SingleLineColor = System.Drawing.SystemColors.Control
         Me.LabelX4.Size = New System.Drawing.Size(113, 23)
         Me.LabelX4.TabIndex = 229
-        Me.LabelX4.Text = "Telefono 1:"
+        Me.LabelX4.Text = "Teléfono:"
         '
         'LabelX5
         '
@@ -528,7 +535,7 @@ Partial Class F1_Proveedor
         Me.tbTelf2.Location = New System.Drawing.Point(172, 171)
         Me.tbTelf2.Name = "tbTelf2"
         Me.tbTelf2.PreventEnterBeep = True
-        Me.tbTelf2.Size = New System.Drawing.Size(127, 22)
+        Me.tbTelf2.Size = New System.Drawing.Size(242, 22)
         Me.tbTelf2.TabIndex = 5
         '
         'tbTelf1
@@ -543,7 +550,7 @@ Partial Class F1_Proveedor
         Me.tbTelf1.Location = New System.Drawing.Point(172, 142)
         Me.tbTelf1.Name = "tbTelf1"
         Me.tbTelf1.PreventEnterBeep = True
-        Me.tbTelf1.Size = New System.Drawing.Size(127, 22)
+        Me.tbTelf1.Size = New System.Drawing.Size(242, 22)
         Me.tbTelf1.TabIndex = 4
         '
         'TableLayoutPanel1
@@ -729,6 +736,16 @@ Partial Class F1_Proveedor
         Me.Panel2.Name = "Panel2"
         Me.Panel2.Size = New System.Drawing.Size(430, 284)
         Me.Panel2.TabIndex = 223
+        '
+        'UsImg
+        '
+        Me.UsImg.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
+        Me.UsImg.BackColor = System.Drawing.Color.Transparent
+        Me.UsImg.Location = New System.Drawing.Point(100, 14)
+        Me.UsImg.Margin = New System.Windows.Forms.Padding(4)
+        Me.UsImg.Name = "UsImg"
+        Me.UsImg.Size = New System.Drawing.Size(310, 257)
+        Me.UsImg.TabIndex = 222
         '
         'BtAdicionar
         '
@@ -1033,7 +1050,7 @@ Partial Class F1_Proveedor
         Me.tbNdoc.Location = New System.Drawing.Point(140, 79)
         Me.tbNdoc.Name = "tbNdoc"
         Me.tbNdoc.PreventEnterBeep = True
-        Me.tbNdoc.Size = New System.Drawing.Size(166, 22)
+        Me.tbNdoc.Size = New System.Drawing.Size(176, 22)
         Me.tbNdoc.TabIndex = 3
         '
         'LabelX7
@@ -1134,16 +1151,6 @@ Partial Class F1_Proveedor
         '
         Me.Timer1.Enabled = True
         Me.Timer1.Interval = 500
-        '
-        'UsImg
-        '
-        Me.UsImg.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
-        Me.UsImg.BackColor = System.Drawing.Color.Transparent
-        Me.UsImg.Location = New System.Drawing.Point(100, 14)
-        Me.UsImg.Margin = New System.Windows.Forms.Padding(4)
-        Me.UsImg.Name = "UsImg"
-        Me.UsImg.Size = New System.Drawing.Size(310, 257)
-        Me.UsImg.TabIndex = 222
         '
         'F1_Proveedor
         '

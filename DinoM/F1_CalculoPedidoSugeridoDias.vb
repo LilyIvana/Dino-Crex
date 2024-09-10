@@ -123,9 +123,20 @@ Public Class F1_CalculoPedidoSugeridoDias
 
                 Dim PedConv1 = Format((dt.Rows(i).Item("PedSugeridoUniNuevo") / dt.Rows(i).Item("Conversion1")), 0)
 
-                dt.Rows(i).Item("PedidoFinalUni") = IIf(dt.Rows(i).Item("Conversion2") > 1, 0, PedConv1 * dt.Rows(i).Item("Conversion1"))
-                dt.Rows(i).Item("PedidoFinalDisp") = IIf(dt.Rows(i).Item("Conversion2") = 1, 0, PedConv1)
-                'dt.Rows(i).Item("TotalNuevo") = Math.Round((IIf(dt.Rows(i).Item("Conversion2") = 1, (dt.Rows(i).Item("PedidoFinalUni") * dt.Rows(i).Item("CostoNuevo")), (dt.Rows(i).Item("PedidoFinalDisp") * dt.Rows(i).Item("CostoNuevo")))), 2)
+                'dt.Rows(i).Item("PedidoFinalUni") = IIf(dt.Rows(i).Item("Conversion2") > 1, 0, PedConv1 * dt.Rows(i).Item("Conversion1"))
+                'dt.Rows(i).Item("PedidoFinalDisp") = IIf(dt.Rows(i).Item("Conversion2") = 1, 0, PedConv1)
+
+                If dt.Rows(i).Item("Conversion2") = 1 Then
+                    dt.Rows(i).Item("PedidoFinalUni") = (PedConv1 * dt.Rows(i).Item("Conversion1"))
+                    dt.Rows(i).Item("PedidoFinalDisp") = (dt.Rows(i).Item("PedidoFinalUni") / dt.Rows(i).Item("Conversion1"))
+
+                ElseIf dt.Rows(i).Item("Conversion2") > 1 Then
+                    dt.Rows(i).Item("PedidoFinalUni") = 0
+                    dt.Rows(i).Item("PedidoFinalDisp") = ((PedConv1 * dt.Rows(i).Item("Conversion1")) / dt.Rows(i).Item("Conversion1"))
+                Else
+                    dt.Rows(i).Item("PedidoFinalUni") = 0
+                    dt.Rows(i).Item("PedidoFinalDisp") = 0
+                End If
             Next
 
             JGrM_Buscador.DataSource = dt
@@ -260,7 +271,8 @@ Public Class F1_CalculoPedidoSugeridoDias
             End With
             With JGrM_Buscador.RootTable.Columns("PedidoFinalDisp")
                 .Width = 120
-                .Caption = "SUGERIDO FINAL POR DISPLAY "
+                '.Caption = "SUGERIDO FINAL POR DISPLAY "
+                .Caption = "EQUIVALENTE FINAL POR CAJ/PAQ/DISP"
                 .Visible = True
                 .FormatString = "0.00"
                 .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far
@@ -269,6 +281,7 @@ Public Class F1_CalculoPedidoSugeridoDias
                 .Width = 90
                 .Visible = True
                 .Caption = "EMPAQUE COMPRA"
+                .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far
             End With
             With JGrM_Buscador.RootTable.Columns("CostoNuevo")
                 .Width = 120
@@ -495,4 +508,6 @@ Public Class F1_CalculoPedidoSugeridoDias
             tbProveedor.Text = Row.Cells("yddesc").Value
         End If
     End Sub
+
+
 End Class
