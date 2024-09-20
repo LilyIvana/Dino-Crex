@@ -286,9 +286,9 @@ Partial Class F1_Proveedor
         '
         'btnImprimir
         '
-        Me.btnImprimir.Image = Global.DinoM.My.Resources.Resources.EXCEL
+        Me.btnImprimir.Image = Global.DinoM.My.Resources.Resources.sheets
+        Me.btnImprimir.ImageFixedSize = New System.Drawing.Size(42, 45)
         Me.btnImprimir.Text = "EXPORTAR"
-        Me.btnImprimir.Visible = False
         '
         'btnUltimo
         '
@@ -481,7 +481,7 @@ Partial Class F1_Proveedor
         Me.LabelX6.SingleLineColor = System.Drawing.SystemColors.Control
         Me.LabelX6.Size = New System.Drawing.Size(148, 19)
         Me.LabelX6.TabIndex = 233
-        Me.LabelX6.Text = "Condiciones de Pago:"
+        Me.LabelX6.Text = "Observaciones:"
         '
         'tbObs
         '

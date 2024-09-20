@@ -354,6 +354,9 @@ Public Class F0_Proforma
             .GroupByBoxVisible = False
             'diseño de la grilla
             .VisualStyle = VisualStyle.Office2007
+
+            .RecordNavigator = True
+            .RecordNavigatorText = "Productos"
         End With
     End Sub
 
@@ -905,7 +908,7 @@ Public Class F0_Proforma
                                       eToastPosition.TopCenter)
             tbCodigo.Text = numi
             _prImprimirReporte()
-
+            '_prExportarExcelProforma()
             _prCargarProforma()
             _Limpiar()
         Else
@@ -928,6 +931,7 @@ Public Class F0_Proforma
                                       )
 
             _prImprimirReporte()
+            '_prExportarExcelProforma()
             _prCargarProforma()
             _prSalir()
         Else
@@ -1816,6 +1820,27 @@ salirIf:
 
         P_GenerarReporte(True)
     End Sub
+    Sub _prExportarExcelProforma()
+        If (Not Directory.Exists(gs_CarpetaRaiz + "\Proformas")) Then
+            Directory.CreateDirectory(gs_CarpetaRaiz + "\Proformas")
+        End If
+        Dim img As Bitmap = New Bitmap(My.Resources.checked, 50, 50)
+
+        If (P_ExportarExcelGlobal(gs_CarpetaRaiz + "\Proformas", grdetalle, "Proforma")) Then
+            L_fnBotonImprimirExportar(gs_VersionSistema, gs_IPMaquina, gs_UsuMaquina, 0, "PROFORMA", "PROFORMA")
+            ToastNotification.Show(Me, "SE EXPORTÓ EL DETALLE DE LA PROFORMA DE FORMA ÉXITOSA..!!!",
+                                       img, 3000,
+                                       eToastGlowColor.Green,
+                                       eToastPosition.BottomCenter)
+        Else
+            ToastNotification.Show(Me, "FALLÓ LA EXPORTACIÓN DEL DETALLE DE LA PROFORMA..!!!",
+                                       My.Resources.WARNING, 3000,
+                                       eToastGlowColor.Red,
+                                       eToastPosition.BottomCenter)
+        End If
+    End Sub
+
+
     Private Sub btnGrabar_Click(sender As Object, e As EventArgs) Handles btnGrabar.Click
 
         If _ValidarCampos() = False Then
@@ -1986,6 +2011,7 @@ salirIf:
     Private Sub btnImprimir_Click(sender As Object, e As EventArgs) Handles btnImprimir.Click
         If (Not _fnAccesible()) Then
             P_GenerarReporte(False)
+            _prExportarExcelProforma()
         End If
     End Sub
 

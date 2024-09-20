@@ -1762,7 +1762,7 @@ Public Class F0_Venta2
             Dim res As Boolean = L_fnGrabarVenta(numi, "", tbFechaVenta.Value.ToString("yyyy/MM/dd"), _CodEmpleado, IIf(swTipoVenta.Value = True, 1, 0),
                                                  IIf(swTipoVenta.Value = True, Now.Date.ToString("yyyy/MM/dd"), tbFechaVenc.Value.ToString("yyyy/MM/dd")),
                                                  _CodCliente, IIf(swMoneda.Value = True, 1, 0), tbObservacion.Text.Trim, tbMdesc.Value, tbIce.Value,
-                                                 tbTotalBs.Text, dtDetalle, cbSucursal.Value, 0, tabla, gs_NroCaja, Programa, tbNit.Text, TbNombre1.Text,
+                                                 tbTotalBs.Text, dtDetalle, cbSucursal.Value, 0, tabla, gs_NroCaja, Programa, tbNit.Text, TbNombre1.Text.Trim,
                                                  TbEmail.Text, CbTipoDoc.Value, 1, tbComplemento.Text, tbCel.Text, NroFact, gb_cufSifac, "A-" + _CodCliente.ToString,
                                                  CStr(Format(a, "####0.00")), CStr(Format(b, "####0.00")), CStr(Format(c, "####0.00")), CStr(Format(d, "####0.00")),
                                                  CStr(Format(e, "####0.00")), CStr(Format(f, "####0.00")), CStr(Format(g, "####0.00")), CStr(Format(h, "####0.00")),

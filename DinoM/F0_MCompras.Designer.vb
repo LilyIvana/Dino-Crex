@@ -104,7 +104,7 @@ Partial Class F0_MCompras
         Me.btnExportar = New DevComponents.DotNetBar.ButtonX()
         Me.swMostrarProdProv = New DevComponents.DotNetBar.Controls.SwitchButton()
         Me.LabelX19 = New DevComponents.DotNetBar.LabelX()
-        Me.btnMovXpeso = New DevComponents.DotNetBar.ButtonX()
+        Me.btnDuplicar = New DevComponents.DotNetBar.ButtonX()
         Me.swMostrar = New DevComponents.DotNetBar.Controls.SwitchButton()
         Me.LabelX20 = New DevComponents.DotNetBar.LabelX()
         Me.PanelSuperior.SuspendLayout()
@@ -242,10 +242,10 @@ Partial Class F0_MCompras
         'PanelToolBar2
         '
         Me.PanelToolBar2.Controls.Add(Me.btnExportar)
-        Me.PanelToolBar2.Controls.Add(Me.btnMovXpeso)
+        Me.PanelToolBar2.Controls.Add(Me.btnDuplicar)
         Me.PanelToolBar2.Location = New System.Drawing.Point(1110, 0)
         Me.PanelToolBar2.Size = New System.Drawing.Size(240, 72)
-        Me.PanelToolBar2.Controls.SetChildIndex(Me.btnMovXpeso, 0)
+        Me.PanelToolBar2.Controls.SetChildIndex(Me.btnDuplicar, 0)
         Me.PanelToolBar2.Controls.SetChildIndex(Me.btnExportar, 0)
         Me.PanelToolBar2.Controls.SetChildIndex(Me.btnImprimir, 0)
         Me.PanelPrincipal.Controls.SetChildIndex(Me.PanelInferior, 0)
@@ -1756,24 +1756,23 @@ Partial Class F0_MCompras
         Me.LabelX19.TabIndex = 371
         Me.LabelX19.Text = "Mostrar Productos de:"
         '
-        'btnMovXpeso
+        'btnDuplicar
         '
-        Me.btnMovXpeso.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
-        Me.btnMovXpeso.ColorTable = DevComponents.DotNetBar.eButtonColor.Flat
-        Me.btnMovXpeso.Dock = System.Windows.Forms.DockStyle.Right
-        Me.btnMovXpeso.Font = New System.Drawing.Font("Arial", 7.5!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnMovXpeso.Image = Global.DinoM.My.Resources.Resources.bandeja_de_entrada
-        Me.btnMovXpeso.ImageFixedSize = New System.Drawing.Size(40, 42)
-        Me.btnMovXpeso.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top
-        Me.btnMovXpeso.Location = New System.Drawing.Point(165, 0)
-        Me.btnMovXpeso.Name = "btnMovXpeso"
-        Me.btnMovXpeso.Padding = New System.Windows.Forms.Padding(0, 0, 0, 20)
-        Me.btnMovXpeso.Size = New System.Drawing.Size(75, 72)
-        Me.btnMovXpeso.Style = DevComponents.DotNetBar.eDotNetBarStyle.OfficeMobile2014
-        Me.btnMovXpeso.TabIndex = 16
-        Me.btnMovXpeso.Text = "MOV. DE PROD. X PESO"
-        Me.btnMovXpeso.TextColor = System.Drawing.Color.White
-        Me.btnMovXpeso.Visible = False
+        Me.btnDuplicar.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
+        Me.btnDuplicar.ColorTable = DevComponents.DotNetBar.eButtonColor.Flat
+        Me.btnDuplicar.Dock = System.Windows.Forms.DockStyle.Right
+        Me.btnDuplicar.Font = New System.Drawing.Font("Arial", 7.5!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnDuplicar.Image = Global.DinoM.My.Resources.Resources.duplicar
+        Me.btnDuplicar.ImageFixedSize = New System.Drawing.Size(40, 42)
+        Me.btnDuplicar.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top
+        Me.btnDuplicar.Location = New System.Drawing.Point(165, 0)
+        Me.btnDuplicar.Name = "btnDuplicar"
+        Me.btnDuplicar.Padding = New System.Windows.Forms.Padding(0, 0, 0, 20)
+        Me.btnDuplicar.Size = New System.Drawing.Size(75, 72)
+        Me.btnDuplicar.Style = DevComponents.DotNetBar.eDotNetBarStyle.OfficeMobile2014
+        Me.btnDuplicar.TabIndex = 16
+        Me.btnDuplicar.Text = "DUPLICAR"
+        Me.btnDuplicar.TextColor = System.Drawing.Color.White
         '
         'swMostrar
         '
@@ -1946,7 +1945,7 @@ Partial Class F0_MCompras
     Friend WithEvents btnExportar As DevComponents.DotNetBar.ButtonX
     Friend WithEvents LabelX19 As DevComponents.DotNetBar.LabelX
     Friend WithEvents swMostrarProdProv As DevComponents.DotNetBar.Controls.SwitchButton
-    Friend WithEvents btnMovXpeso As DevComponents.DotNetBar.ButtonX
+    Friend WithEvents btnDuplicar As DevComponents.DotNetBar.ButtonX
     Friend WithEvents swMostrar As DevComponents.DotNetBar.Controls.SwitchButton
     Friend WithEvents LabelX20 As DevComponents.DotNetBar.LabelX
 End Class

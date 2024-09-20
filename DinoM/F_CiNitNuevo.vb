@@ -117,17 +117,14 @@ Public Class F_CiNitNuevo
 
     Private Sub btnguardar_Click(sender As Object, e As EventArgs) Handles btnguardar.Click
         If (_prValidar()) Then
-
-
             Dim res As Boolean = L_Grabar_NitPrimero(tbNit.Text, tbRazonSocial.Text, "", CbTDoc.Value,
                                                      TbEmailN.Text, tbComplementoCi.Text, "")
-
             If res Then
                 ToastNotification.Show(Me, "Los datos se grabaron con éxito.".ToUpper, My.Resources.GRABACION_EXITOSA, 5000, eToastGlowColor.Green, eToastPosition.TopCenter)
                 Cliente = True
-                Razonsocial = tbRazonSocial.Text
+                Razonsocial = tbRazonSocial.Text.Trim
                 Nit = tbNit.Text
-                Correo = TbEmailN.Text
+                Correo = TbEmailN.Text.Trim
                 NuevoCli = True
                 Complemento = tbComplementoCi.Text
                 'F1_MontoPagar.NuevoCliente = NuevoCli

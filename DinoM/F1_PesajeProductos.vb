@@ -133,11 +133,12 @@ Public Class F1_PesajeProductos
             tbCodProd.Clear()
             tbDescPro.Clear()
             tbPrecio.Text = 0
+            dtFechaVenc.Value = DateAdd(DateInterval.Day, 5, Now.Date)
         End If
 
 
         tbPesoReal.Value = 0
-        dtFechaVenc.Value = DateAdd(DateInterval.Day, 5, Now.Date)
+        'dtFechaVenc.Value = DateAdd(DateInterval.Day, 5, Now.Date)
         tbPesoSistema.Value = 0
         tbTotal.Value = 0
         tbCodBarraSist.Clear()
@@ -827,6 +828,5 @@ Public Class F1_PesajeProductos
     Private Sub swMostrar_ValueChanged(sender As Object, e As EventArgs) Handles swMostrar.ValueChanged
         _prCargarPesaje()
     End Sub
-
 
 End Class

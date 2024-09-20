@@ -1147,11 +1147,22 @@ Public Class F1_Productos
 
     Private Sub btgrupo4_Click(sender As Object, e As EventArgs) Handles btgrupo4.Click
         Dim numi As String = ""
-
-        If L_prLibreriaGrabarGrupos(numi, "1", "4", cbgrupo4.Text, "", 104) Then
+        Dim Validar = L_fnValidarDescripcionLibrerias("1", "4", cbgrupo4.Text.Trim)
+        If Validar.Rows.Count > 0 Then
+            ToastNotification.Show(Me, "YA EXISTE FAMILIA CON LA MISMA DESCRIPCIÓN, ESCRIBA O SELECCIONE OTRA VUELTA..!!!",
+                                     My.Resources.WARNING, 3000,
+                                     eToastGlowColor.Red,
+                                     eToastPosition.TopCenter)
             _prCargarComboLibreria(cbgrupo4, "1", "4")
-            cbgrupo4.SelectedIndex = CType(cbgrupo4.DataSource, DataTable).Rows.Count - 1
+            cbgrupo4.Clear()
+
+        Else
+            If L_prLibreriaGrabarGrupos(numi, "1", "4", cbgrupo4.Text.Trim, "", 104) Then
+                _prCargarComboLibreria(cbgrupo4, "1", "4")
+                cbgrupo4.SelectedIndex = CType(cbgrupo4.DataSource, DataTable).Rows.Count - 1
+            End If
         End If
+
     End Sub
 
     Private Sub btUMedida_Click(sender As Object, e As EventArgs) Handles btUMedida.Click

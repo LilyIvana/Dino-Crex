@@ -182,6 +182,7 @@ Partial Class Login
         Me.tbUsuario.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.tbUsuario.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.tbUsuario.Location = New System.Drawing.Point(157, 266)
+        Me.tbUsuario.MaxLength = 10
         Me.tbUsuario.Multiline = True
         Me.tbUsuario.Name = "tbUsuario"
         Me.tbUsuario.PreventEnterBeep = True

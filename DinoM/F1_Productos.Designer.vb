@@ -1955,7 +1955,7 @@ Partial Class F1_Productos
         Me.btExcel.Dock = System.Windows.Forms.DockStyle.Right
         Me.btExcel.Font = New System.Drawing.Font("Arial", 8.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btExcel.Image = Global.DinoM.My.Resources.Resources.sheets
-        Me.btExcel.ImageFixedSize = New System.Drawing.Size(37, 45)
+        Me.btExcel.ImageFixedSize = New System.Drawing.Size(40, 45)
         Me.btExcel.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top
         Me.btExcel.Location = New System.Drawing.Point(499, 0)
         Me.btExcel.Name = "btExcel"

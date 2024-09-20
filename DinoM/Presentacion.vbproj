@@ -2760,6 +2760,7 @@
     <None Include="Resources\impresora3.png" />
     <None Include="Resources\EMPRESA2.png" />
     <None Include="Resources\EMPRESA.png" />
+    <None Include="Resources\duplicar.png" />
     <Content Include="Resources\man.png" />
     <None Include="Resources\pdf.png" />
     <None Include="Resources\txt.png" />

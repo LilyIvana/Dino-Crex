@@ -547,7 +547,7 @@ Public Class F1_Proveedor
         listEstCeldas.Add(New Modelo.Celda("ydlat", False))
         listEstCeldas.Add(New Modelo.Celda("ydlongi", False))
         listEstCeldas.Add(New Modelo.Celda("ydprconsu", False))
-        listEstCeldas.Add(New Modelo.Celda("ydobs", True, "Condiciones de Pago".ToUpper, 180))
+        listEstCeldas.Add(New Modelo.Celda("ydobs", True, "Observaciones".ToUpper, 180))
         listEstCeldas.Add(New Modelo.Celda("ydfnac", False, "Fecha Nacimiento".ToUpper, 150))
         listEstCeldas.Add(New Modelo.Celda("ydnomfac", False, "Factura".ToUpper, 200))
         listEstCeldas.Add(New Modelo.Celda("ydtip", False))

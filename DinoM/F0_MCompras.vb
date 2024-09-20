@@ -42,6 +42,8 @@ Public Class F0_MCompras
         Me.Text = "COMPRAS"
         PanelDetalle.Height = 250
         MSuperTabControl.SelectedTabIndex = 0
+
+
     End Sub
     Public Sub _prValidarLote()
         Dim dt As DataTable = L_fnPorcUtilidad()
@@ -308,6 +310,12 @@ Public Class F0_MCompras
             lbHora.Text = .GetValue("cahact").ToString
             lbUsuario.Text = .GetValue("cauact").ToString
         End With
+        Dim dtConsignacion = L_fnProveedorConsignacion(tbCodProv.Text)
+        If dtConsignacion.Rows.Count > 0 Then
+            btnDuplicar.Visible = True
+        Else
+            btnDuplicar.Visible = False
+        End If
 
         _prCargarDetalleVenta(tbCodigo.Text)
         _prCargarDetalleVenta2(tbCodigo.Text)
@@ -581,6 +589,17 @@ Public Class F0_MCompras
             .DefaultFilterRowComparison = FilterConditionOperator.Contains
             .FilterRowUpdateMode = FilterRowUpdateMode.WhenValueChanges
             .FilterMode = FilterMode.Automatic
+
+            'If tbObservacion.ReadOnly = True Then
+            '    .DefaultFilterRowComparison = FilterConditionOperator.Contains
+            '    .FilterRowUpdateMode = FilterRowUpdateMode.WhenValueChanges
+            '    .FilterMode = FilterMode.Automatic
+            'Else
+            '    .DefaultFilterRowComparison = False
+            '    .FilterRowUpdateMode = False
+            '    .FilterMode = False
+            'End If
+
             .VisualStyle = VisualStyle.Office2007
 
             .TotalRow = InheritableBoolean.True
@@ -1482,6 +1501,12 @@ Public Class F0_MCompras
                 Return False
             End If
         Next
+        If tbSubtotalC.Value = 0 Or tbtotal.Value = 0 Or tbSACF.Text = "0" Then
+            Dim img As Bitmap = New Bitmap(My.Resources.mensaje, 50, 50)
+            ToastNotification.Show(Me, "El Subtotal, Total o Sujeto a Crédito fiscal no pueden ser 0 ".ToUpper, img, 2800, eToastGlowColor.Red, eToastPosition.BottomCenter)
+            Return False
+        End If
+
         If (swEmision.Value = False) Then
             Dim ef = New Efecto
             ef.tipo = 2
@@ -1503,18 +1528,31 @@ Public Class F0_MCompras
     Public Sub _GuardarNuevo()
         Try
             RecuperarDatosTFC001()  'Recupera datos para grabar en la BDDiconDino en la Tabla TFC001
+
+            ''Recorrido para detectar si se esta modificando registros antiguos y no los tome como cambio de precio para el control de verificar precio costo
+            Dim dt As DataTable = L_fnArmarTablaProdDiferentesPrecioCosto(CType(grdetalle.DataSource, DataTable))
+            Dim _dtActualizar As New DataTable
+            _dtActualizar.Columns.Add("Prod")
+            _dtActualizar.Columns.Add("Act")
+            For i = 0 To dt.Rows.Count - 1
+                Dim dtResult As DataTable = L_fnVerificarComprasUnProducto(dt.Rows(i).Item("cbty5prod"), tbFechaVenta.Value.ToString("yyyy/MM/dd"))
+                If dtResult.Rows.Count > 0 Then
+                    _dtActualizar.Rows.Add(dt.Rows(i).Item("cbty5prod"), 1)
+                End If
+            Next
+
             Dim res As Boolean = L_fnGrabarCompra("", cbSucursal.Value, tbFechaVenta.Value.ToString("yyyy/MM/dd"),
                                                   _CodProveedor, IIf(swTipoVenta.Value = True, 1, 0), IIf(swTipoVenta.Value = True,
                                                   Now.Date.ToString("yyyy/MM/dd"), tbFechaVenc.Value.ToString("yyyy/MM/dd")),
-                                                  IIf(swMoneda.Value = True, 1, 0), tbObservacion.Text, tbSubtotalC.Value, tbMdesc.Value,
+                                                  IIf(swMoneda.Value = True, 1, 0), tbObservacion.Text.Trim, tbSubtotalC.Value, tbMdesc.Value,
                                                   tbDescPro.Value, tbIce.Value, tbtotal.Value, CType(grdetalle.DataSource, DataTable),
                                                   _detalleCompras, IIf(swEmision.Value = True, 1, 0),
                                                   tbNFactura.Text, IIf(swConsigna.Value = True, 1, 0),
                                                   IIf(swRetencion.Value = True, 1, 0), IIf(swMoneda.Value = True, 1, tbTipoCambio.Value),
-                                                  gs_VersionSistema, gs_IPMaquina, gs_UsuMaquina)
+                                                  gs_VersionSistema, gs_IPMaquina, gs_UsuMaquina, _dtActualizar)
             If res Then
                 Dim img As Bitmap = New Bitmap(My.Resources.checked, 50, 50)
-                ToastNotification.Show(Me, "Código de Compra ".ToUpper + tbCodigo.Text + " Grabado con Exito.".ToUpper,
+                ToastNotification.Show(Me, "Código de Compra ".ToUpper + tbCodigo.Text + " Grabado con éxito.".ToUpper,
                                           img, 2000,
                                           eToastGlowColor.Green,
                                           eToastPosition.TopCenter
@@ -1620,13 +1658,28 @@ Public Class F0_MCompras
 
     Private Sub _prGuardarModificado()
         RecuperarDatosTFC001()
+
+
+        ''Recorrido para detectar si se esta modificando registros antiguos y no los tome como cambio de precio para el control de verificar precio costo
+        Dim dt As DataTable = L_fnArmarTablaProdDiferentesPrecioCosto(CType(grdetalle.DataSource, DataTable))
+        Dim _dtActualizar As New DataTable
+        _dtActualizar.Columns.Add("Prod")
+        _dtActualizar.Columns.Add("Act")
+        For i = 0 To dt.Rows.Count - 1
+            Dim dtResult As DataTable = L_fnVerificarComprasUnProducto(dt.Rows(i).Item("cbty5prod"), tbFechaVenta.Value.ToString("yyyy/MM/dd"))
+            If dtResult.Rows.Count > 0 Then
+                _dtActualizar.Rows.Add(dt.Rows(i).Item("cbty5prod"), 1)
+            End If
+        Next
+
         Dim res As Boolean = L_fnModificarCompra(tbCodigo.Text, cbSucursal.Value, tbFechaVenta.Value.ToString("yyyy/MM/dd"), _CodProveedor,
                                                  IIf(swTipoVenta.Value = True, 1, 0), IIf(swTipoVenta.Value = True, Now.Date.ToString("yyyy/MM/dd"),
-                                                 tbFechaVenc.Value.ToString("yyyy/MM/dd")), IIf(swMoneda.Value = True, 1, 0), tbObservacion.Text,
+                                                 tbFechaVenc.Value.ToString("yyyy/MM/dd")), IIf(swMoneda.Value = True, 1, 0), tbObservacion.Text.Trim,
                                                  tbSubtotalC.Value, tbMdesc.Value, tbDescPro.Value, tbIce.Value, tbtotal.Value,
                                                  CType(grdetalle.DataSource, DataTable), _detalleCompras, IIf(swEmision.Value = True, 1, 0),
                                                  tbNFactura.Text, IIf(swConsigna.Value = True, 1, 0), IIf(swRetencion.Value = True, 1, 0),
-                                                 IIf(swMoneda.Value = True, 1, tbTipoCambio.Value), gs_VersionSistema, gs_IPMaquina, gs_UsuMaquina)
+                                                 IIf(swMoneda.Value = True, 1, tbTipoCambio.Value), gs_VersionSistema, gs_IPMaquina,
+                                                 gs_UsuMaquina, _dtActualizar)
         If res Then
 
             Dim img As Bitmap = New Bitmap(My.Resources.checked, 50, 50)
@@ -1665,6 +1718,11 @@ Public Class F0_MCompras
             img.Save(Bin, Imaging.ImageFormat.Png)
             CType(grdetalle.DataSource, DataTable).Rows(i).Item("img") = Bin.GetBuffer
             grdetalle.RootTable.Columns("img").Visible = True
+        Next
+    End Sub
+    Public Sub _prActualizarAlgunosCampos()
+        For i As Integer = 0 To CType(grdetalle.DataSource, DataTable).Rows.Count - 1 Step 1
+            CType(grdetalle.DataSource, DataTable).Rows(i).Item("estado") = 0
         Next
     End Sub
     Public Sub _PrimerRegistro()
@@ -1728,6 +1786,18 @@ Public Class F0_MCompras
         btnEliminar.Enabled = False
         btnGrabar.Enabled = True
         PanelNavegacion.Enabled = False
+
+        With grdetalle
+            If tbObservacion.ReadOnly = True Then
+                .DefaultFilterRowComparison = FilterConditionOperator.Contains
+                .FilterRowUpdateMode = FilterRowUpdateMode.WhenValueChanges
+                .FilterMode = FilterMode.Automatic
+            Else
+                .DefaultFilterRowComparison = False
+                .FilterRowUpdateMode = False
+                .FilterMode = False
+            End If
+        End With
     End Sub
     Private Sub btnSalir_Click(sender As Object, e As EventArgs) Handles btnSalir.Click
         _prSalir()
@@ -2241,6 +2311,19 @@ salirIf:
 
                 PanelNavegacion.Enabled = False
                 _prCargarIconELiminar()
+
+
+                With grdetalle
+                    If tbObservacion.ReadOnly = True Then
+                        .DefaultFilterRowComparison = FilterConditionOperator.Contains
+                        .FilterRowUpdateMode = FilterRowUpdateMode.WhenValueChanges
+                        .FilterMode = FilterMode.Automatic
+                    Else
+                        .DefaultFilterRowComparison = False
+                        .FilterRowUpdateMode = False
+                        .FilterMode = False
+                    End If
+                End With
             End If
         End If
     End Sub
@@ -2757,54 +2840,104 @@ salirIf:
         Return False
     End Function
 
-    Private Sub btnMovXpeso_Click(sender As Object, e As EventArgs) Handles btnMovXpeso.Click
-        Try
-            Dim dt As DataTable = CType(grdetalle.DataSource, DataTable).Copy
-            If Not (dt.Columns.Contains("gramaje")) Then
-                dt.Columns.Add("gramaje")
-            End If
+    'Private Sub btnMovXpeso_Click(sender As Object, e As EventArgs) Handles btnMovXpeso.Click
+    '    Try
+    '        Dim dt As DataTable = CType(grdetalle.DataSource, DataTable).Copy
+    '        If Not (dt.Columns.Contains("gramaje")) Then
+    '            dt.Columns.Add("gramaje")
+    '        End If
 
-            For i = 0 To dt.Rows.Count - 1
-                Dim dt1 As DataTable = L_fnVerificarProdTI003(dt.Rows(i).Item("cbty5prod"))
-                dt.Rows(i).Item("gramaje") = dt1.Rows(0).Item("ycdes3")
-            Next
-            Dim dt2 = dt.Copy
-            dt2.Clear()
+    '        For i = 0 To dt.Rows.Count - 1
+    '            Dim dt1 As DataTable = L_fnVerificarProdTI003(dt.Rows(i).Item("cbty5prod"))
+    '            dt.Rows(i).Item("gramaje") = dt1.Rows(0).Item("ycdes3")
+    '        Next
+    '        Dim dt2 = dt.Copy
+    '        dt2.Clear()
 
-            For i = 0 To dt.Rows.Count - 1
-                If dt.Rows(i).Item("gramaje").ToString = "X KILO" Then
-                    dt2.Rows.Add(dt.Rows(i).ItemArray)
-                End If
-            Next
+    '        For i = 0 To dt.Rows.Count - 1
+    '            If dt.Rows(i).Item("gramaje").ToString = "X KILO" Then
+    '                dt2.Rows.Add(dt.Rows(i).ItemArray)
+    '            End If
+    '        Next
 
-            If dt2.Rows.Count > 0 Then
-                L_fnMovProdxPeso(gs_VersionSistema, gs_IPMaquina, gs_UsuMaquina, tbCodigo.Text)
-                Dim frm As New F0_MovimientoProdPeso
-                frm._nameButton = P_Principal.btInvMovimientoProdPeso.Name
-                frm.DesdeModulo = True
-                frm._modulo = P_Principal.FP_INVENTARIO
-                'frm.dtCompra = CType(grdetalle.DataSource, DataTable).Copy
-                frm.dtCompra = dt2.Copy
-                frm.prog = 1
-                frm._IniciarTodo()
-                frm.Observ = "INGRESO DESDE COMPRA " + tbCodigo.Text + "-" + tbProveedor.Text
+    '        If dt2.Rows.Count > 0 Then
+    '            L_fnMovProdxPeso(gs_VersionSistema, gs_IPMaquina, gs_UsuMaquina, tbCodigo.Text)
+    '            Dim frm As New F0_MovimientoProdPeso
+    '            frm._nameButton = P_Principal.btInvMovimientoProdPeso.Name
+    '            frm.DesdeModulo = True
+    '            frm._modulo = P_Principal.FP_INVENTARIO
+    '            'frm.dtCompra = CType(grdetalle.DataSource, DataTable).Copy
+    '            frm.dtCompra = dt2.Copy
+    '            frm.prog = 1
+    '            frm._IniciarTodo()
+    '            frm.Observ = "INGRESO DESDE COMPRA " + tbCodigo.Text + "-" + tbProveedor.Text
 
-                frm.StartPosition = FormStartPosition.WindowsDefaultLocation
-                frm.WindowState = FormWindowState.Minimized
-                frm.ShowDialog()
-            Else
-                ToastNotification.Show(Me, "NO EXISTE PRODUCTOS X KILO PARA REGISTRAR..!!!",
-                       My.Resources.WARNING, 2000,
-                       eToastGlowColor.Red,
-                       eToastPosition.TopCenter)
-            End If
+    '            frm.StartPosition = FormStartPosition.WindowsDefaultLocation
+    '            frm.WindowState = FormWindowState.Minimized
+    '            frm.ShowDialog()
+    '        Else
+    '            ToastNotification.Show(Me, "NO EXISTE PRODUCTOS X KILO PARA REGISTRAR..!!!",
+    '                   My.Resources.WARNING, 2000,
+    '                   eToastGlowColor.Red,
+    '                   eToastPosition.TopCenter)
+    '        End If
 
-        Catch ex As Exception
-            MostrarMensajeError(ex.Message)
-        End Try
-    End Sub
+    '    Catch ex As Exception
+    '        MostrarMensajeError(ex.Message)
+    '    End Try
+    'End Sub
 
     Private Sub swMostrar_ValueChanged(sender As Object, e As EventArgs) Handles swMostrar.ValueChanged
         _prCargarCompra()
+    End Sub
+
+    Private Sub btnDuplicar_Click(sender As Object, e As EventArgs) Handles btnDuplicar.Click
+        If btnGrabar.Enabled = False Then
+            Dim fechaVenta, proveedor, observacion, codProv, fechaVenc As String
+            Dim tipoventa, emision, moneda As Boolean
+            Dim sucursal As Integer
+            Dim detalle As DataTable
+            fechaVenta = tbFechaVenta.Value.ToString
+            _CodProveedor = Convert.ToInt32(tbCodProv.Text)
+            tipoventa = swTipoVenta.Value
+            proveedor = tbProveedor.Text
+            sucursal = cbSucursal.Value
+            observacion = tbObservacion.Text
+            codProv = tbCodProv.Text
+            emision = swEmision.Value
+            moneda = swMoneda.Value
+            fechaVenc = tbFechaVenc.Value.ToString
+            detalle = CType(grdetalle.DataSource, DataTable).Copy
+
+            btnNuevo.PerformClick()
+
+            tbFechaVenta.Value = fechaVenta
+            tbCodProv.Text = codProv
+            _CodProveedor = codProv
+            tbProveedor.Text = proveedor
+
+            grdetalle.DataSource = detalle.Copy
+            CType(grdetalle.DataSource, DataTable).AcceptChanges()
+            grdetalle.DataChanged = True
+            grdetalle.Refresh()
+
+            '_prCargarIconELiminar()
+            For i As Integer = 0 To CType(grdetalle.DataSource, DataTable).Rows.Count - 1 Step 1
+                Dim Bin As New MemoryStream
+                Dim img As New Bitmap(My.Resources.delete, 28, 28)
+                img.Save(Bin, Imaging.ImageFormat.Png)
+                CType(grdetalle.DataSource, DataTable).Rows(i).Item("img") = Bin.GetBuffer
+                grdetalle.RootTable.Columns("img").Visible = True
+                CType(grdetalle.DataSource, DataTable).Rows(i).Item("estado") = 0
+            Next
+        Else
+            ToastNotification.Show(Me, "EL REGISTRO DEBE ESTAR GRABADO PARA PODER DUPLICARLO...!!!",
+                           My.Resources.WARNING, 2000,
+                           eToastGlowColor.Red,
+                           eToastPosition.TopCenter)
+        End If
+
+
+
     End Sub
 End Class
