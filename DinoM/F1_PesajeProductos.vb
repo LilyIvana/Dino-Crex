@@ -144,7 +144,8 @@ Public Class F1_PesajeProductos
         tbCodBarraSist.Clear()
         tbCodBarraImp.Clear()
 
-        tbCodProd.Focus()
+        'tbCodProd.Focus()
+        tbPesoReal.Focus()
 
 
     End Sub
@@ -166,7 +167,7 @@ Public Class F1_PesajeProductos
                                       eToastPosition.TopCenter
                                       )
             ImprimirCodigoBarras(tbCodigo.Text)
-            tbCodigo.Focus()
+            'tbPesoReal.Focus()
             Limpiar = True
         Else
             Dim img As Bitmap = New Bitmap(My.Resources.cancel, 50, 50)

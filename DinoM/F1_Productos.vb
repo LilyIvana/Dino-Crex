@@ -1120,10 +1120,20 @@ Public Class F1_Productos
 
     Private Sub btgrupo3_Click(sender As Object, e As EventArgs) Handles btgrupo3.Click
         Dim numi As String = ""
-
-        If L_prLibreriaGrabarGrupos(numi, "1", "3", cbgrupo3.Text, "", 103) Then
+        Dim Validar = L_fnValidarDescripcionLibrerias("1", "3", cbgrupo3.Text.Trim)
+        If Validar.Rows.Count > 0 Then
+            ToastNotification.Show(Me, "YA EXISTE CALIBRE-GRAMAJE CON LA MISMA DESCRIPCIÓN, ESCRIBA O SELECCIONE OTRA VUELTA..!!!",
+                                     My.Resources.WARNING, 3000,
+                                     eToastGlowColor.Red,
+                                     eToastPosition.TopCenter)
             _prCargarComboLibreria(cbgrupo3, "1", "3")
-            cbgrupo3.SelectedIndex = CType(cbgrupo3.DataSource, DataTable).Rows.Count - 1
+            cbgrupo3.Clear()
+
+        Else
+            If L_prLibreriaGrabarGrupos(numi, "1", "3", cbgrupo3.Text.Trim, "", 103) Then
+                _prCargarComboLibreria(cbgrupo3, "1", "3")
+                cbgrupo3.SelectedIndex = CType(cbgrupo3.DataSource, DataTable).Rows.Count - 1
+            End If
         End If
     End Sub
 
@@ -1138,10 +1148,19 @@ Public Class F1_Productos
 
     Private Sub btgrupo2_Click(sender As Object, e As EventArgs) Handles btgrupo2.Click
         Dim numi As String = ""
-
-        If L_prLibreriaGrabarGrupos(numi, "1", "2", cbgrupo2.Text, "", 102) Then
+        Dim Validar = L_fnValidarDescripcionLibrerias("1", "2", cbgrupo2.Text.Trim)
+        If Validar.Rows.Count > 0 Then
+            ToastNotification.Show(Me, "YA EXISTE MARCA CON LA MISMA DESCRIPCIÓN, ESCRIBA O SELECCIONE OTRA VUELTA..!!!",
+                                     My.Resources.WARNING, 3000,
+                                     eToastGlowColor.Red,
+                                     eToastPosition.TopCenter)
             _prCargarComboLibreria(cbgrupo2, "1", "2")
-            cbgrupo2.SelectedIndex = CType(cbgrupo2.DataSource, DataTable).Rows.Count - 1
+            cbgrupo2.Clear()
+        Else
+            If L_prLibreriaGrabarGrupos(numi, "1", "2", cbgrupo2.Text.Trim, "", 102) Then
+                _prCargarComboLibreria(cbgrupo2, "1", "2")
+                cbgrupo2.SelectedIndex = CType(cbgrupo2.DataSource, DataTable).Rows.Count - 1
+            End If
         End If
     End Sub
 
@@ -1167,10 +1186,20 @@ Public Class F1_Productos
 
     Private Sub btUMedida_Click(sender As Object, e As EventArgs) Handles btUMedida.Click
         Dim numi As String = ""
-
-        If L_prLibreriaGrabarGrupos(numi, "1", "5", cbUMed.Text, "", 105) Then
+        Dim Validar = L_fnValidarDescripcionLibrerias("1", "5", cbUMed.Text.Trim)
+        If Validar.Rows.Count > 0 Then
+            ToastNotification.Show(Me, "YA EXISTE GRUPO DESCT. CON LA MISMA DESCRIPCIÓN, ESCRIBA O SELECCIONE OTRA VUELTA..!!!",
+                                     My.Resources.WARNING, 3000,
+                                     eToastGlowColor.Red,
+                                     eToastPosition.TopCenter)
             _prCargarComboLibreria(cbUMed, "1", "5")
-            cbUMed.SelectedIndex = CType(cbUMed.DataSource, DataTable).Rows.Count - 1
+            cbUMed.Clear()
+
+        Else
+            If L_prLibreriaGrabarGrupos(numi, "1", "5", cbUMed.Text.Trim, "", 105) Then
+                _prCargarComboLibreria(cbUMed, "1", "5")
+                cbUMed.SelectedIndex = CType(cbUMed.DataSource, DataTable).Rows.Count - 1
+            End If
         End If
     End Sub
 
@@ -1502,10 +1531,20 @@ Public Class F1_Productos
 
     Private Sub btgrupo5_Click(sender As Object, e As EventArgs) Handles btgrupo5.Click
         Dim numi As String = ""
-
-        If L_prLibreriaGrabarGrupos(numi, "1", "7", cbgrupo5.Text, "", 0) Then
+        Dim Validar = L_fnValidarDescripcionLibrerias("1", "7", cbgrupo5.Text.Trim)
+        If Validar.Rows.Count > 0 Then
+            ToastNotification.Show(Me, "YA EXISTE CATEGORIA CON LA MISMA DESCRIPCIÓN, ESCRIBA O SELECCIONE OTRA VUELTA..!!!",
+                                     My.Resources.WARNING, 3000,
+                                     eToastGlowColor.Red,
+                                     eToastPosition.TopCenter)
             _prCargarComboLibreria(cbgrupo5, "1", "7")
-            cbgrupo5.SelectedIndex = CType(cbgrupo5.DataSource, DataTable).Rows.Count - 1
+            cbgrupo5.Clear()
+
+        Else
+            If L_prLibreriaGrabarGrupos(numi, "1", "7", cbgrupo5.Text.Trim, "", 0) Then
+                _prCargarComboLibreria(cbgrupo5, "1", "7")
+                cbgrupo5.SelectedIndex = CType(cbgrupo5.DataSource, DataTable).Rows.Count - 1
+            End If
         End If
     End Sub
 
