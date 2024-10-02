@@ -1846,7 +1846,7 @@ Public Class F0_MCompras
                     ef.SeleclCol = 2
                     ef.listEstCeldas = listEstCeldas
                     ef.alto = 50
-                    ef.ancho = 350
+                    ef.ancho = 250
                     ef.Context = "Seleccione Proveedor".ToUpper
                     ef.ShowDialog()
                     Dim bandera As Boolean = False
