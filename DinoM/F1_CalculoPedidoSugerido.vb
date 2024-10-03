@@ -408,6 +408,7 @@ Public Class F1_CalculoPedidoSugerido
         listEstCeldas.Add(New Modelo.Celda("yddirec", False, "DIRECCION", 220))
         listEstCeldas.Add(New Modelo.Celda("ydtelf1", True, "Telefono".ToUpper, 200))
         listEstCeldas.Add(New Modelo.Celda("ydfnac", False, "F.Nacimiento".ToUpper, 150, "MM/dd,YYYY"))
+        listEstCeldas.Add(New Modelo.Celda("ydobs", True, "OBSERVACIÓN".ToUpper, 200))
 
 
         Dim ef = New Efecto

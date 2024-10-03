@@ -1832,13 +1832,14 @@ Public Class F0_MCompras
                     End If
                     Dim listEstCeldas As New List(Of Modelo.Celda)
 
-                    listEstCeldas.Add(New Modelo.Celda("ydnumi,", True, "COD SISTEMA.", 90))
+                    listEstCeldas.Add(New Modelo.Celda("ydnumi,", True, "COD SISTEMA", 90))
                     listEstCeldas.Add(New Modelo.Celda("ydcod", True, "COD PROV.", 90))
                     listEstCeldas.Add(New Modelo.Celda("yddesc", True, "NOMBRE", 280))
                     listEstCeldas.Add(New Modelo.Celda("yddctnum", True, "N. Documento".ToUpper, 150))
                     listEstCeldas.Add(New Modelo.Celda("yddirec", True, "DIRECCION", 220))
                     listEstCeldas.Add(New Modelo.Celda("ydtelf1", True, "Telefono".ToUpper, 200))
                     listEstCeldas.Add(New Modelo.Celda("ydfnac", False, "F.Nacimiento".ToUpper, 150, "MM/dd,YYYY"))
+                    listEstCeldas.Add(New Modelo.Celda("ydobs", True, "OBSERVACIÓN".ToUpper, 200))
 
                     Dim ef = New Efecto
                     ef.tipo = 3

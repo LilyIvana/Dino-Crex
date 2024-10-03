@@ -370,8 +370,19 @@ Public Class F1_Proveedor
     End Sub
 
     Public Overrides Function _PMOGrabarRegistro() As Boolean
+        Dim Validar = L_fnValidarDescripcionLibrerias("1", "1", tbNombre.Text.Trim)
+        If Validar.Rows.Count > 0 Then
+            ToastNotification.Show(Me, "YA EXISTE PROVEEDOR CON LA MISMA DESCRIPCIÓN, NO PUEDE GRABAR..!!!",
+                                     My.Resources.WARNING, 3000,
+                                     eToastGlowColor.Red,
+                                     eToastPosition.TopCenter)
 
-        Dim res As Boolean = L_fnGrabarCLiente(tbCodigoOriginal.Text, tbCodCliente.Text, "", tbNombre.Text, NumiVendedor, cbZona.Value, cbTipoDoc.Value, tbNdoc.Text,
+            Exit Function
+        End If
+
+
+
+        Dim res As Boolean = L_fnGrabarCLiente(tbCodigoOriginal.Text, tbCodCliente.Text, "", tbNombre.Text.Trim, NumiVendedor, cbZona.Value, cbTipoDoc.Value, tbNdoc.Text,
                                                tbDireccion.Text, tbTelf1.Text, tbTelf2.Text, 70, IIf(swEstado.Value = True, 1, 0), _latitud, _longitud, tbObs.Text,
                                                tbFnac.Value.ToString("yyyy/MM/dd"), "", _Tipo, "", 0, 0, tbFIngr.Value.ToString("yyyy/MM/dd"),
                                                tbUltVenta.Value.ToString("yyyy/MM/dd"), nameImg, 1, "", "", gs_VersionSistema, gs_IPMaquina, gs_UsuMaquina)
@@ -400,25 +411,32 @@ Public Class F1_Proveedor
 
     Public Overrides Function _PMOModificarRegistro() As Boolean
         Dim res As Boolean
-
         Dim nameImage As String = JGrM_Buscador.GetValue("ydimg")
+
+        Dim Validar = L_fnValidarDescripcionLibrerias("1", "1", tbNombre.Text.Trim)
+        If Validar.Rows.Count > 0 Then
+            ToastNotification.Show(Me, "YA EXISTE PROVEEDOR CON LA MISMA DESCRIPCIÓN, NO PUEDE GRABAR..!!!",
+                                     My.Resources.WARNING, 3000,
+                                     eToastGlowColor.Red,
+                                     eToastPosition.TopCenter)
+            Exit Function
+        End If
         If (Modificado = False) Then
             res = L_fnModificarClientes(tbCodigoOriginal.Text, tbCodCliente.Text, "", tbNombre.Text, NumiVendedor, cbZona.Value,
-                                        cbTipoDoc.Value, tbNdoc.Text, tbDireccion.Text, tbTelf1.Text, tbTelf2.Text, 1,
-                                        IIf(swEstado.Value = True, 1, 0), _latitud, _longitud, tbObs.Text, tbFnac.Value.ToString("yyyy/MM/dd"),
-                                        "", _Tipo, "", 0, 0, tbFIngr.Value.ToString("yyyy/MM/dd"), tbUltVenta.Value.ToString("yyyy/MM/dd"),
-                                        nameImage, 1, gs_VersionSistema, gs_IPMaquina, gs_UsuMaquina)
+                                            cbTipoDoc.Value, tbNdoc.Text, tbDireccion.Text, tbTelf1.Text, tbTelf2.Text, 1,
+                                            IIf(swEstado.Value = True, 1, 0), _latitud, _longitud, tbObs.Text, tbFnac.Value.ToString("yyyy/MM/dd"),
+                                            "", _Tipo, "", 0, 0, tbFIngr.Value.ToString("yyyy/MM/dd"), tbUltVenta.Value.ToString("yyyy/MM/dd"),
+                                            nameImage, 1, gs_VersionSistema, gs_IPMaquina, gs_UsuMaquina)
 
         Else
             res = L_fnModificarClientes(tbCodigoOriginal.Text, tbCodCliente.Text, "", tbNombre.Text, NumiVendedor, cbZona.Value,
-                                        cbTipoDoc.Value, tbNdoc.Text, tbDireccion.Text, tbTelf1.Text, tbTelf2.Text, 1,
-                                        IIf(swEstado.Value = True, 1, 0), _latitud, _longitud, tbObs.Text, tbFnac.Value.ToString("yyyy/MM/dd"),
-                                        "", _Tipo, "", 0, 0, tbFIngr.Value.ToString("yyyy/MM/dd"), tbUltVenta.Value.ToString("yyyy/MM/dd"),
-                                        nameImg, 1, gs_VersionSistema, gs_IPMaquina, gs_UsuMaquina)
-
-
+                                            cbTipoDoc.Value, tbNdoc.Text, tbDireccion.Text, tbTelf1.Text, tbTelf2.Text, 1,
+                                            IIf(swEstado.Value = True, 1, 0), _latitud, _longitud, tbObs.Text, tbFnac.Value.ToString("yyyy/MM/dd"),
+                                            "", _Tipo, "", 0, 0, tbFIngr.Value.ToString("yyyy/MM/dd"), tbUltVenta.Value.ToString("yyyy/MM/dd"),
+                                            nameImg, 1, gs_VersionSistema, gs_IPMaquina, gs_UsuMaquina)
 
         End If
+
         If res Then
 
             If (Modificado = True) Then
@@ -571,10 +589,7 @@ Public Class F1_Proveedor
 
     Public Overrides Sub _PMOMostrarRegistro(_N As Integer)
         JGrM_Buscador.Row = _MPos
-        'a.ydnumi, a.ydcod, a.yddesc, a.ydzona, a.yddct, a.yddctnum, a.yddirec, a.ydtelf1, a.ydtelf2, a.ydcat,
-        'a.ydest, a.ydlat, a.ydlongi, a.ydprconsu, a.ydobs, a.ydfnac, a.ydnomfac, a.ydtip, a.ydnit, a.ydfecing, a.ydultvent,
-        'a.ydimg,
-        'a.ydfact, a.ydhact, a.yduact ,a.ydrut ,visita
+
         Dim dt As DataTable = CType(JGrM_Buscador.DataSource, DataTable)
         Try
             tbCodigoOriginal.Text = JGrM_Buscador.GetValue("ydnumi").ToString
@@ -794,4 +809,6 @@ Public Class F1_Proveedor
                                        eToastPosition.BottomLeft)
         End If
     End Sub
+
+
 End Class

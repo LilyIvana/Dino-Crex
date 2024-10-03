@@ -39,6 +39,8 @@ Public Class Pr_EstadoCuentasProveedores
         listEstCeldas.Add(New Modelo.Celda("yddirec", True, "DIRECCION", 220))
         listEstCeldas.Add(New Modelo.Celda("ydtelf1", True, "Telefono".ToUpper, 200))
         listEstCeldas.Add(New Modelo.Celda("ydfnac", True, "F.Nacimiento".ToUpper, 150, "MM/dd,YYYY"))
+
+
         Dim ef = New Efecto
         ef.tipo = 3
         ef.dt = dt
