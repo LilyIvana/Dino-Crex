@@ -1478,6 +1478,12 @@
       <DependentUpon>R_StockActual.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Reporte\R_StockMinimoProveedores.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>R_StockMinimoProveedores.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Reporte\R_StockMinimoTodosAlmacenes.vb">
       <DependentUpon>R_StockMinimoTodosAlmacenes.rpt</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -2305,6 +2311,10 @@
     <EmbeddedResource Include="Reporte\R_StockActual.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>R_StockActual.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reporte\R_StockMinimoProveedores.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>R_StockMinimoProveedores.vb</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Reporte\R_StockMinimoTodosAlmacenes.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>

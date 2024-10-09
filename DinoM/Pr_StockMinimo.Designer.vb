@@ -37,6 +37,7 @@ Partial Class Pr_StockMinimo
         Me.LabelX3 = New DevComponents.DotNetBar.LabelX()
         Me.MReportViewer = New CrystalDecisions.Windows.Forms.CrystalReportViewer()
         Me.Panel5 = New System.Windows.Forms.Panel()
+        Me.swMostrar = New DevComponents.DotNetBar.Controls.SwitchButton()
         Me.GroupPanelBuscador = New DevComponents.DotNetBar.Controls.GroupPanel()
         Me.grBuscador = New Janus.Windows.GridEX.GridEX()
         Me.Panel6 = New System.Windows.Forms.Panel()
@@ -225,6 +226,7 @@ Partial Class Pr_StockMinimo
         'Panel5
         '
         Me.Panel5.BackColor = System.Drawing.Color.Gainsboro
+        Me.Panel5.Controls.Add(Me.swMostrar)
         Me.Panel5.Controls.Add(Me.GroupPanelBuscador)
         Me.Panel5.Controls.Add(Me.LabelX1)
         Me.Panel5.Controls.Add(Me.LabelX3)
@@ -237,6 +239,28 @@ Partial Class Pr_StockMinimo
         Me.Panel5.Size = New System.Drawing.Size(377, 591)
         Me.Panel5.TabIndex = 264
         '
+        'swMostrar
+        '
+        Me.swMostrar.BackColor = System.Drawing.Color.LightGray
+        '
+        '
+        '
+        Me.swMostrar.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.swMostrar.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.swMostrar.Location = New System.Drawing.Point(58, 124)
+        Me.swMostrar.Name = "swMostrar"
+        Me.swMostrar.OffBackColor = System.Drawing.Color.Goldenrod
+        Me.swMostrar.OffText = "SOLO PROVEEDORES"
+        Me.swMostrar.OffTextColor = System.Drawing.Color.White
+        Me.swMostrar.OnBackColor = System.Drawing.Color.Green
+        Me.swMostrar.OnText = "TODOS LOS PRODUCTOS"
+        Me.swMostrar.OnTextColor = System.Drawing.Color.White
+        Me.swMostrar.Size = New System.Drawing.Size(250, 22)
+        Me.swMostrar.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+        Me.swMostrar.TabIndex = 261
+        Me.swMostrar.Value = True
+        Me.swMostrar.ValueObject = "Y"
+        '
         'GroupPanelBuscador
         '
         Me.GroupPanelBuscador.CanvasColor = System.Drawing.SystemColors.Control
@@ -244,9 +268,9 @@ Partial Class Pr_StockMinimo
         Me.GroupPanelBuscador.Controls.Add(Me.grBuscador)
         Me.GroupPanelBuscador.DisabledBackColor = System.Drawing.Color.Empty
         Me.GroupPanelBuscador.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.GroupPanelBuscador.Location = New System.Drawing.Point(25, 134)
+        Me.GroupPanelBuscador.Location = New System.Drawing.Point(79, 172)
         Me.GroupPanelBuscador.Name = "GroupPanelBuscador"
-        Me.GroupPanelBuscador.Size = New System.Drawing.Size(326, 162)
+        Me.GroupPanelBuscador.Size = New System.Drawing.Size(200, 85)
         '
         '
         '
@@ -293,7 +317,7 @@ Partial Class Pr_StockMinimo
         Me.grBuscador.SelectedFormatStyle.BackColor = System.Drawing.Color.DodgerBlue
         Me.grBuscador.SelectedFormatStyle.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.grBuscador.SelectedFormatStyle.ForeColor = System.Drawing.Color.White
-        Me.grBuscador.Size = New System.Drawing.Size(320, 139)
+        Me.grBuscador.Size = New System.Drawing.Size(194, 62)
         Me.grBuscador.TabIndex = 0
         '
         'Panel6
@@ -421,4 +445,5 @@ Partial Class Pr_StockMinimo
     Protected WithEvents btnExportar As DevComponents.DotNetBar.ButtonX
     Protected WithEvents btn_Salir As DevComponents.DotNetBar.ButtonX
     Protected WithEvents btn_Generar As DevComponents.DotNetBar.ButtonX
+    Friend WithEvents swMostrar As DevComponents.DotNetBar.Controls.SwitchButton
 End Class

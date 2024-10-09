@@ -1637,11 +1637,12 @@ Public Class AccesoLogica
         Return _resultado
     End Function
 
-    Public Shared Function L_PrecioVentaMenorPrecioCosto(estado As String) As DataTable
+    Public Shared Function L_PrecioVentaMenorPrecioCosto(estado As String, tipoPrecio As Integer) As DataTable
         Dim _Tabla As DataTable
         Dim _listParam As New List(Of Datos.DParametro)
         _listParam.Add(New Datos.DParametro("@tipo", 16))
         _listParam.Add(New Datos.DParametro("@estado", estado))
+        _listParam.Add(New Datos.DParametro("@tipoPrecio", tipoPrecio))
         _listParam.Add(New Datos.DParametro("@yguact", L_Usuario))
         _Tabla = D_ProcedimientoConParam("sp_Mam_TY006", _listParam)
         Return _Tabla
@@ -7235,6 +7236,18 @@ Public Class AccesoLogica
         _listParam.Add(New Datos.DParametro("@yduact", L_Usuario))
         _listParam.Add(New Datos.DParametro("@linea", numiLinea))
         _listParam.Add(New Datos.DParametro("@almacen", CodAlmacen))
+        _Tabla = D_ProcedimientoConParam("sp_Mam_SaldosProducto", _listParam)
+
+        Return _Tabla
+    End Function
+    Public Shared Function L_fnSaldosMenoresAlStockProv(numialmacen As Integer) As DataTable
+        Dim _Tabla As DataTable
+
+        Dim _listParam As New List(Of Datos.DParametro)
+
+        _listParam.Add(New Datos.DParametro("@tipo", 9))
+        _listParam.Add(New Datos.DParametro("@yduact", L_Usuario))
+        _listParam.Add(New Datos.DParametro("@almacen", numialmacen))
         _Tabla = D_ProcedimientoConParam("sp_Mam_SaldosProducto", _listParam)
 
         Return _Tabla

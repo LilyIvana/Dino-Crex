@@ -127,21 +127,34 @@ Public Class Pr_StockMinimo
         If (_dt.Rows.Count > 0) Then
             L_fnBotonGenerar(gs_VersionSistema, gs_IPMaquina, gs_UsuMaquina, IIf(checkTodosGrupos.Checked = True, 0, cbGrupos.Value), "SALDOS MENORES", "SALDOS MENORES AL STOCK MIN.")
             Dim objrep
-            If CheckTodosAlmacen.Checked Then
-                objrep = New R_StockMinimoTodosAlmacenes
+            If swMostrar.Value = True Then
+                If CheckTodosAlmacen.Checked Then
+                    objrep = New R_StockMinimoTodosAlmacenes
+                Else
+                    objrep = New R_StockMinimo
+                End If
             Else
-                objrep = New R_StockMinimo
+                objrep = New R_StockMinimoProveedores
             End If
+
 
             objrep.SetDataSource(_dt)
             objrep.SetParameterValue("usuario", L_Usuario)
-            objrep.SetParameterValue("almacen", cbAlmacen.Text)
-            objrep.SetParameterValue("conteo", _dt.Rows.Count)
+            If swMostrar.Value = True Then
+                objrep.SetParameterValue("almacen", cbAlmacen.Text)
+                objrep.SetParameterValue("conteo", _dt.Rows.Count)
+            End If
+
             MReportViewer.ReportSource = objrep
             MReportViewer.Show()
             MReportViewer.BringToFront()
 
-            CargarGrilla(_dt)
+            If swMostrar.Value = True Then
+                CargarGrillaConProd(_dt)
+            Else
+                CargarGrillaSoloProv(_dt)
+            End If
+
         Else
             ToastNotification.Show(Me, "NO HAY DATOS PARA LOS PARAMETROS SELECCIONADOS..!!!",
                                        My.Resources.INFORMATION, 2500,
@@ -154,32 +167,39 @@ Public Class Pr_StockMinimo
     End Sub
 
     Public Sub _prInterpretarDatos(ByRef _dt As DataTable)
-        If (CheckTodosAlmacen.Checked And checkTodosGrupos.Checked) Then
-            _dt = L_fnTodosAlmacenTodosLineasMenoresStock()
+        If swMostrar.Value = True Then
+            If (CheckTodosAlmacen.Checked And checkTodosGrupos.Checked) Then
+                _dt = L_fnTodosAlmacenTodosLineasMenoresStock()
+            End If
+            'If (CheckTodosAlmacen.Checked And checkTodosGrupos.Checked) Then
+            '    _dt = L_fnTodosAlmacenTodosLineas()
+            'End If
+            If (checkUnaAlmacen.Checked And checkTodosGrupos.Checked) Then
+                _dt = L_fnUnaAlmacenTodosLineasMenoresStock(cbAlmacen.Value)
+            End If
+            'un almacen todos mayor a 0
+            'If (checkUnaAlmacen.Checked And checkTodosGrupos.Checked) Then
+            '    _dt = L_fnUnaAlmacenTodosLineasMayorCero(cbAlmacen.Value)
+            'End If
+            If (checkUnaGrupo.Checked And CheckTodosAlmacen.Checked) Then
+                _dt = L_fnTodosAlmacenUnaLineasMenoresStock(cbGrupos.Value)
+            End If
+            If (checkUnaAlmacen.Checked And checkUnaGrupo.Checked) Then
+                _dt = L_fnUnaAlmacenUnaLineasMenoresStock(cbGrupos.Value, cbAlmacen.Value)
+            End If
+            ' un almacen una linea y mayor a cero
+            'If (checkUnaAlmacen.Checked And checkUnaGrupo.Checked) Then
+            '    _dt = L_fnUnaAlmacenUnaLineasMayorCero(cbGrupos.Value, cbAlmacen.Value)
+            'End If
+        Else
+
+            _dt = L_fnSaldosMenoresAlStockProv(cbAlmacen.Value)
         End If
-        'If (CheckTodosAlmacen.Checked And checkTodosGrupos.Checked) Then
-        '    _dt = L_fnTodosAlmacenTodosLineas()
-        'End If
-        If (checkUnaAlmacen.Checked And checkTodosGrupos.Checked) Then
-            _dt = L_fnUnaAlmacenTodosLineasMenoresStock(cbAlmacen.Value)
-        End If
-        'un almacen todos mayor a 0
-        'If (checkUnaAlmacen.Checked And checkTodosGrupos.Checked) Then
-        '    _dt = L_fnUnaAlmacenTodosLineasMayorCero(cbAlmacen.Value)
-        'End If
-        If (checkUnaGrupo.Checked And CheckTodosAlmacen.Checked) Then
-            _dt = L_fnTodosAlmacenUnaLineasMenoresStock(cbGrupos.Value)
-        End If
-        If (checkUnaAlmacen.Checked And checkUnaGrupo.Checked) Then
-            _dt = L_fnUnaAlmacenUnaLineasMenoresStock(cbGrupos.Value, cbAlmacen.Value)
-        End If
-        ' un almacen una linea y mayor a cero
-        'If (checkUnaAlmacen.Checked And checkUnaGrupo.Checked) Then
-        '    _dt = L_fnUnaAlmacenUnaLineasMayorCero(cbGrupos.Value, cbAlmacen.Value)
-        'End If
+
+
     End Sub
 
-    Private Sub CargarGrilla(ByRef _dt As DataTable)
+    Private Sub CargarGrillaConProd(ByRef _dt As DataTable)
 
         grBuscador.DataSource = _dt
         grBuscador.RetrieveStructure()
@@ -264,6 +284,38 @@ Public Class Pr_StockMinimo
             .RecordNavigatorText = "Datos"
         End With
     End Sub
+    Private Sub CargarGrillaSoloProv(ByRef _dt As DataTable)
+
+        grBuscador.DataSource = _dt
+        grBuscador.RetrieveStructure()
+        grBuscador.AlternatingColors = True
+
+        With grBuscador.RootTable.Columns("yfgr1")
+            .Width = 90
+            .Visible = True
+            .Caption = "CÓDIGO"
+        End With
+
+        With grBuscador.RootTable.Columns("proveedor")
+            .Width = 350
+            .Visible = True
+            .Caption = "PROVEEDOR"
+        End With
+
+        With grBuscador
+            .DefaultFilterRowComparison = FilterConditionOperator.Contains
+            .FilterMode = FilterMode.Automatic
+            .FilterRowUpdateMode = FilterRowUpdateMode.WhenValueChanges
+            .GroupByBoxVisible = False
+            .TotalRow = InheritableBoolean.True
+            .TotalRowFormatStyle.BackColor = Color.Gold
+            .TotalRowPosition = TotalRowPosition.BottomFixed
+            'diseño de la grilla
+
+            .RecordNavigator = True
+            .RecordNavigatorText = "Datos"
+        End With
+    End Sub
     Private Sub checkUnaAlmacen_CheckedChanged(sender As Object, e As EventArgs) Handles checkUnaAlmacen.CheckedChanged
         cbAlmacen.ReadOnly = False
     End Sub
@@ -292,7 +344,7 @@ Public Class Pr_StockMinimo
         If grBuscador.RowCount > 0 Then
             _prCrearCarpetaReportesGlobal()
             Dim img As Bitmap = New Bitmap(My.Resources.checked, 50, 50)
-            If (P_ExportarExcelGlobal(RutaGlobal + "\Reporte\Reporte Productos", grBuscador, "SaldosMenoresAlStockMin")) Then
+            If (P_ExportarExcelGlobal(RutaGlobal + "\Reporte\Reporte Productos", grBuscador, IIf(swMostrar.Value = True, "SaldosMenoresAlStockMin", "SaldosMenoresAlStockMinProv"))) Then
                 L_fnBotonExportar(gs_VersionSistema, gs_IPMaquina, gs_UsuMaquina, IIf(checkTodosGrupos.Checked = True, 0, cbGrupos.Value), "SALDOS MENORES AL STOCK", "SALDOS MENORES AL STOCK MIN.")
                 ToastNotification.Show(Me, "EXPORTACIÓN DE SALDOS MENORES AL STOCK MIN. EXITOSA..!!!",
                                            img, 2500,

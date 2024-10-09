@@ -20,8 +20,8 @@ Public Class F1_PVentaMenorPCosto
 #End Region
 #Region "Metodos Privados"
     Private Sub _prIniciarTodo()
-        Me.Text = "PRECIOS VENTA  MENORES AL PRECIO COSTO"
-
+        Me.Text = "COMPARACIÓN DE PRECIOS"
+        _prCargarComboTipo(cbTipo)
 
         Dim blah As New Bitmap(New Bitmap(My.Resources.producto), 20, 20)
         Dim ico As Icon = Icon.FromHandle(blah.GetHicon())
@@ -88,8 +88,17 @@ Public Class F1_PVentaMenorPCosto
         End If
     End Sub
     Private Sub _prCargarDescuentosProd()
+        Dim dt As DataTable
+        dt = L_PrecioVentaMenorPrecioCosto(IIf(swEstado.Value = True, 1, 0), cbTipo.Value)
+        'If cbTipo.Value = 1 Then
 
-        Dim dt As DataTable = L_PrecioVentaMenorPrecioCosto(IIf(swEstado.Value = True, 1, 0))
+        'ElseIf cbTipo.Value = 2 Then
+
+        'ElseIf cbTipo.Value = 3 Then
+
+        'End If
+
+
         L_fnRepConsultaPVentaMenorPCosto(gs_VersionSistema, gs_IPMaquina, gs_UsuMaquina)
 
         If dt.Rows.Count > 0 Then
@@ -128,16 +137,31 @@ Public Class F1_PVentaMenorPCosto
                 .Caption = "PROVEEDOR"
                 .Visible = True
             End With
-            With JGrM_Buscador.RootTable.Columns("yhprecio")
+            With JGrM_Buscador.RootTable.Columns("precio1")
                 .Width = 125
-                .Caption = "PRECIO COSTO"
+                If cbTipo.Value = 1 Then
+                    .Caption = "PRECIO COSTO"
+                ElseIf cbTipo.Value = 2 Then
+                    .Caption = "PRECIO WHOLESALE"
+                ElseIf cbTipo.Value = 3 Then
+                    .Caption = "PRECIO PREFERENCIAL"
+                End If
+
                 .Visible = True
                 .FormatString = "0.00"
                 .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far
             End With
-            With JGrM_Buscador.RootTable.Columns("PVenta")
+            With JGrM_Buscador.RootTable.Columns("precio2")
                 .Width = 160
-                .Caption = "PRECIO WHOLESALE"
+
+                If cbTipo.Value = 1 Then
+                    .Caption = "PRECIO WHOLESALE"
+                ElseIf cbTipo.Value = 2 Then
+                    .Caption = "PRECIO PREFERENCIAL"
+                ElseIf cbTipo.Value = 3 Then
+                    .Caption = "PRECIO PDV"
+                End If
+
                 .Visible = True
                 .FormatString = "0.00"
                 .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far
@@ -176,7 +200,33 @@ Public Class F1_PVentaMenorPCosto
         _prIniciarTodo()
     End Sub
 
+    Private Sub _prCargarComboTipo(mCombo As Janus.Windows.GridEX.EditControls.MultiColumnCombo)
+        Dim dt As New DataTable
 
+        dt.Columns.Add("COD")
+        dt.Columns.Add("CATEGORÍA")
+
+        dt.Rows.Add(1, "PRECIO COSTO VS. PRECIO WHOLESALE")
+        dt.Rows.Add(2, "PRECIO WHOLESALE VS. PRECIO PREFERENCIAL")
+        dt.Rows.Add(3, "PRECIO PREFERENCIAL VS. PRECIO PDV")
+
+
+        With mCombo
+            .DropDownList.Columns.Clear()
+            .DropDownList.Columns.Add("COD").Width = 70
+            .DropDownList.Columns("COD").Caption = "COD"
+            .DropDownList.Columns.Add("CATEGORÍA").Width = 300
+            .DropDownList.Columns("CATEGORÍA").Caption = "CATEGORÍA"
+            .ValueMember = "COD"
+            .DisplayMember = "CATEGORÍA"
+            .DataSource = dt
+            .Refresh()
+        End With
+
+        If dt.Rows.Count > 0 Then
+            mCombo.SelectedIndex = 0
+        End If
+    End Sub
 
     Public Function P_ExportarExcel(_ruta As String) As Boolean
         Dim _ubicacion As String

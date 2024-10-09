@@ -25,10 +25,13 @@ Partial Class F1_PVentaMenorPCosto
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(F1_PVentaMenorPCosto))
+        Dim cbTipo_DesignTimeLayout As Janus.Windows.GridEX.GridEXLayout = New Janus.Windows.GridEX.GridEXLayout()
         Me.btExcel = New DevComponents.DotNetBar.ButtonX()
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         Me.GroupPanel2 = New DevComponents.DotNetBar.Controls.GroupPanel()
         Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.LabelX2 = New DevComponents.DotNetBar.LabelX()
+        Me.cbTipo = New Janus.Windows.GridEX.EditControls.MultiColumnCombo()
         Me.LabelX4 = New DevComponents.DotNetBar.LabelX()
         Me.swEstado = New DevComponents.DotNetBar.Controls.SwitchButton()
         Me.btnExportarExcel = New DevComponents.DotNetBar.ButtonX()
@@ -51,6 +54,7 @@ Partial Class F1_PVentaMenorPCosto
         CType(Me.MEP, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupPanel2.SuspendLayout()
         Me.Panel1.SuspendLayout()
+        CType(Me.cbTipo, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'SuperTabPrincipal
@@ -315,6 +319,8 @@ Partial Class F1_PVentaMenorPCosto
         'Panel1
         '
         Me.Panel1.AutoScroll = True
+        Me.Panel1.Controls.Add(Me.LabelX2)
+        Me.Panel1.Controls.Add(Me.cbTipo)
         Me.Panel1.Controls.Add(Me.LabelX4)
         Me.Panel1.Controls.Add(Me.swEstado)
         Me.Panel1.Controls.Add(Me.btnExportarExcel)
@@ -325,6 +331,38 @@ Partial Class F1_PVentaMenorPCosto
         Me.Panel1.Size = New System.Drawing.Size(1306, 77)
         Me.Panel1.TabIndex = 227
         '
+        'LabelX2
+        '
+        Me.LabelX2.BackColor = System.Drawing.Color.Transparent
+        '
+        '
+        '
+        Me.LabelX2.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.LabelX2.Font = New System.Drawing.Font("Georgia", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LabelX2.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(85, Byte), Integer), CType(CType(139, Byte), Integer))
+        Me.LabelX2.Location = New System.Drawing.Point(462, 26)
+        Me.LabelX2.Name = "LabelX2"
+        Me.LabelX2.SingleLineColor = System.Drawing.SystemColors.Control
+        Me.LabelX2.Size = New System.Drawing.Size(137, 23)
+        Me.LabelX2.TabIndex = 373
+        Me.LabelX2.Text = "Categoría de Precios:"
+        '
+        'cbTipo
+        '
+        Me.cbTipo.BackColor = System.Drawing.Color.Gainsboro
+        cbTipo_DesignTimeLayout.LayoutString = resources.GetString("cbTipo_DesignTimeLayout.LayoutString")
+        Me.cbTipo.DesignTimeLayout = cbTipo_DesignTimeLayout
+        Me.cbTipo.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cbTipo.Location = New System.Drawing.Point(607, 27)
+        Me.cbTipo.Name = "cbTipo"
+        Me.cbTipo.Office2007ColorScheme = Janus.Windows.GridEX.Office2007ColorScheme.Custom
+        Me.cbTipo.Office2007CustomColor = System.Drawing.Color.DodgerBlue
+        Me.cbTipo.SelectedIndex = -1
+        Me.cbTipo.SelectedItem = Nothing
+        Me.cbTipo.Size = New System.Drawing.Size(350, 22)
+        Me.cbTipo.TabIndex = 372
+        Me.cbTipo.VisualStyle = Janus.Windows.GridEX.VisualStyle.Office2007
+        '
         'LabelX4
         '
         Me.LabelX4.BackColor = System.Drawing.Color.Transparent
@@ -334,7 +372,7 @@ Partial Class F1_PVentaMenorPCosto
         Me.LabelX4.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.LabelX4.Font = New System.Drawing.Font("Georgia", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.LabelX4.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(85, Byte), Integer), CType(CType(139, Byte), Integer))
-        Me.LabelX4.Location = New System.Drawing.Point(320, 29)
+        Me.LabelX4.Location = New System.Drawing.Point(115, 25)
         Me.LabelX4.Name = "LabelX4"
         Me.LabelX4.SingleLineColor = System.Drawing.SystemColors.Control
         Me.LabelX4.Size = New System.Drawing.Size(155, 23)
@@ -348,7 +386,7 @@ Partial Class F1_PVentaMenorPCosto
         '
         Me.swEstado.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.swEstado.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.swEstado.Location = New System.Drawing.Point(481, 29)
+        Me.swEstado.Location = New System.Drawing.Point(276, 27)
         Me.swEstado.Name = "swEstado"
         Me.swEstado.OffBackColor = System.Drawing.Color.Gold
         Me.swEstado.OffText = "TODOS"
@@ -368,7 +406,7 @@ Partial Class F1_PVentaMenorPCosto
         Me.btnExportarExcel.Image = Global.DinoM.My.Resources.Resources.sheets
         Me.btnExportarExcel.ImageFixedSize = New System.Drawing.Size(35, 40)
         Me.btnExportarExcel.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top
-        Me.btnExportarExcel.Location = New System.Drawing.Point(758, 6)
+        Me.btnExportarExcel.Location = New System.Drawing.Point(1124, 6)
         Me.btnExportarExcel.Name = "btnExportarExcel"
         Me.btnExportarExcel.Size = New System.Drawing.Size(65, 65)
         Me.btnExportarExcel.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
@@ -383,7 +421,7 @@ Partial Class F1_PVentaMenorPCosto
         Me.btnGenerar.Image = Global.DinoM.My.Resources.Resources.ventasCostos
         Me.btnGenerar.ImageFixedSize = New System.Drawing.Size(40, 40)
         Me.btnGenerar.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top
-        Me.btnGenerar.Location = New System.Drawing.Point(651, 5)
+        Me.btnGenerar.Location = New System.Drawing.Point(1023, 5)
         Me.btnGenerar.Name = "btnGenerar"
         Me.btnGenerar.Size = New System.Drawing.Size(65, 65)
         Me.btnGenerar.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
@@ -419,6 +457,8 @@ Partial Class F1_PVentaMenorPCosto
         CType(Me.MEP, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupPanel2.ResumeLayout(False)
         Me.Panel1.ResumeLayout(False)
+        Me.Panel1.PerformLayout()
+        CType(Me.cbTipo, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -430,4 +470,6 @@ Partial Class F1_PVentaMenorPCosto
     Friend WithEvents btnExportarExcel As DevComponents.DotNetBar.ButtonX
     Friend WithEvents LabelX4 As DevComponents.DotNetBar.LabelX
     Friend WithEvents swEstado As DevComponents.DotNetBar.Controls.SwitchButton
+    Friend WithEvents LabelX2 As DevComponents.DotNetBar.LabelX
+    Friend WithEvents cbTipo As Janus.Windows.GridEX.EditControls.MultiColumnCombo
 End Class
