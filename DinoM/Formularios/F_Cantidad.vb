@@ -28,21 +28,72 @@ Public Class F_Cantidad
             Me.Close()
         End If
         If (e.KeyData = Keys.Enter) Then
-            ''Para controlar que no deje vender cuando no hay stock o la cantidad es mayor al stock que hay
-            If (tbCantidad.Value > Stock) Then
-                Dim img As Bitmap = New Bitmap(My.Resources.mensaje, 50, 50)
-                ToastNotification.Show(Me, "La cantidad Ingresada " + Str(tbCantidad.Value) + " Es superior a la cantidad Disponible del Producto : " + Str(Stock), img, 5000, eToastGlowColor.Red, eToastPosition.BottomCenter)
-                Return
+            Dim UltimaPalabra As String = lbProducto.Text.Substring(lbProducto.Text.LastIndexOf(" ") + 1)
+            If UltimaPalabra = "V*" Then
+                Dim ef = New Efecto
+                ef.tipo = 2
+                ef.Context = "¿esta seguro de la cantidad que ingresó?".ToUpper
+                ef.Header = "Verifique cantidad!!!".ToUpper & vbCrLf & vbCrLf & " Cantidad Ingresada: ".ToUpper + tbCantidad.Value.ToString
+                ef.ShowDialog()
+                Dim respuesta As Boolean = False
+                respuesta = ef.band
 
+                If (respuesta = True) Then
+                    ''Para controlar que no deje vender cuando no hay stock o la cantidad es mayor al stock que hay
+                    If (tbCantidad.Value > Stock) Then
+                        Dim img As Bitmap = New Bitmap(My.Resources.mensaje, 50, 50)
+                        ToastNotification.Show(Me, "La cantidad Ingresada " + Str(tbCantidad.Value) + " Es superior a la cantidad Disponible del Producto : " + Str(Stock), img, 5000, eToastGlowColor.Red, eToastPosition.BottomCenter)
+                        Return
+                    Else
+                        Cantidad = tbCantidad.Value
+                        bandera = True
+                        Me.Close()
+                    End If
+
+                    Cantidad = tbCantidad.Value
+                    bandera = True
+                    Me.Close()
+                Else
+                    ef.Close()
+                End If
             Else
+                ''Para controlar que no deje vender cuando no hay stock o la cantidad es mayor al stock que hay
+                If (tbCantidad.Value > Stock) Then
+                    Dim img As Bitmap = New Bitmap(My.Resources.mensaje, 50, 50)
+                    ToastNotification.Show(Me, "La cantidad Ingresada " + Str(tbCantidad.Value) + " Es superior a la cantidad Disponible del Producto : " + Str(Stock), img, 5000, eToastGlowColor.Red, eToastPosition.BottomCenter)
+                    Return
+
+                Else
+                    Cantidad = tbCantidad.Value
+                    bandera = True
+                    Me.Close()
+                End If
+
                 Cantidad = tbCantidad.Value
                 bandera = True
                 Me.Close()
             End If
 
-            Cantidad = tbCantidad.Value
-            bandera = True
-            Me.Close()
+
+
+
+            '''Para controlar que no deje vender cuando no hay stock o la cantidad es mayor al stock que hay
+            'If (tbCantidad.Value > Stock) Then
+            '    Dim img As Bitmap = New Bitmap(My.Resources.mensaje, 50, 50)
+            '    ToastNotification.Show(Me, "La cantidad Ingresada " + Str(tbCantidad.Value) + " Es superior a la cantidad Disponible del Producto : " + Str(Stock), img, 5000, eToastGlowColor.Red, eToastPosition.BottomCenter)
+            '    Return
+
+            'Else
+            '    Cantidad = tbCantidad.Value
+            '    bandera = True
+            '    Me.Close()
+            'End If
+
+            'Cantidad = tbCantidad.Value
+            'bandera = True
+            'Me.Close()
+
+
         End If
 
     End Sub
@@ -54,4 +105,6 @@ Public Class F_Cantidad
             tbCantidad.Focus()
         End If
     End Sub
+
+
 End Class

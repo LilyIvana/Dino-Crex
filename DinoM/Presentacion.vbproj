@@ -757,6 +757,12 @@
     <Compile Include="Formularios\F1_Servicios.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Formularios\F_PrecioUnitario.Designer.vb">
+      <DependentUpon>F_PrecioUnitario.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\F_PrecioUnitario.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Formularios\F_CantidadProforma.Designer.vb">
       <DependentUpon>F_CantidadProforma.vb</DependentUpon>
     </Compile>
@@ -1878,6 +1884,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\F1_Servicios.resx">
       <DependentUpon>F1_Servicios.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\F_PrecioUnitario.resx">
+      <DependentUpon>F_PrecioUnitario.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\F_CantidadProforma.resx">
       <DependentUpon>F_CantidadProforma.vb</DependentUpon>

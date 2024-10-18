@@ -45,6 +45,7 @@ Partial Class F0_VentasSupermercado
         Me.CmDetalle = New System.Windows.Forms.ContextMenuStrip(Me.components)
         Me.ModificarCantidadMenu = New System.Windows.Forms.ToolStripMenuItem()
         Me.EliminarProductoMenu = New System.Windows.Forms.ToolStripMenuItem()
+        Me.VerPrecioUnitarioToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.PanelDatos = New System.Windows.Forms.Panel()
         Me.grdetalle = New Janus.Windows.GridEX.GridEX()
         Me.PanelButtom = New System.Windows.Forms.Panel()
@@ -376,9 +377,9 @@ Partial Class F0_VentasSupermercado
         'CmDetalle
         '
         Me.CmDetalle.ImageScalingSize = New System.Drawing.Size(20, 20)
-        Me.CmDetalle.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ModificarCantidadMenu, Me.EliminarProductoMenu})
+        Me.CmDetalle.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ModificarCantidadMenu, Me.EliminarProductoMenu, Me.VerPrecioUnitarioToolStripMenuItem})
         Me.CmDetalle.Name = "CmDetalle"
-        Me.CmDetalle.Size = New System.Drawing.Size(191, 76)
+        Me.CmDetalle.Size = New System.Drawing.Size(191, 112)
         '
         'ModificarCantidadMenu
         '
@@ -394,6 +395,13 @@ Partial Class F0_VentasSupermercado
         Me.EliminarProductoMenu.Name = "EliminarProductoMenu"
         Me.EliminarProductoMenu.Size = New System.Drawing.Size(190, 36)
         Me.EliminarProductoMenu.Text = "Eliminar Producto"
+        '
+        'VerPrecioUnitarioToolStripMenuItem
+        '
+        Me.VerPrecioUnitarioToolStripMenuItem.Image = Global.DinoM.My.Resources.Resources.precio1
+        Me.VerPrecioUnitarioToolStripMenuItem.Name = "VerPrecioUnitarioToolStripMenuItem"
+        Me.VerPrecioUnitarioToolStripMenuItem.Size = New System.Drawing.Size(190, 36)
+        Me.VerPrecioUnitarioToolStripMenuItem.Text = "Ver Precio Unitario"
         '
         'PanelDatos
         '
@@ -1034,4 +1042,5 @@ Partial Class F0_VentasSupermercado
     Friend WithEvents btnProforma As DevComponents.DotNetBar.ButtonX
     Friend WithEvents Label13 As Label
     Public WithEvents cbCanje As Janus.Windows.GridEX.EditControls.MultiColumnCombo
+    Friend WithEvents VerPrecioUnitarioToolStripMenuItem As ToolStripMenuItem
 End Class

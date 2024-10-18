@@ -137,7 +137,6 @@ Public Class Pr_StockMinimo
                 objrep = New R_StockMinimoProveedores
             End If
 
-
             objrep.SetDataSource(_dt)
             objrep.SetParameterValue("usuario", L_Usuario)
             If swMostrar.Value = True Then
@@ -156,7 +155,7 @@ Public Class Pr_StockMinimo
             End If
 
         Else
-            ToastNotification.Show(Me, "NO HAY DATOS PARA LOS PARAMETROS SELECCIONADOS..!!!",
+            ToastNotification.Show(Me, "NO HAY DATOS PARA LOS PARÁMETROS SELECCIONADOS..!!!",
                                        My.Resources.INFORMATION, 2500,
                                        eToastGlowColor.Blue,
                                        eToastPosition.TopCenter)
@@ -192,10 +191,8 @@ Public Class Pr_StockMinimo
             '    _dt = L_fnUnaAlmacenUnaLineasMayorCero(cbGrupos.Value, cbAlmacen.Value)
             'End If
         Else
-
             _dt = L_fnSaldosMenoresAlStockProv(cbAlmacen.Value)
         End If
-
 
     End Sub
 

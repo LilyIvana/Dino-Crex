@@ -1927,6 +1927,31 @@ Public Class F0_Venta2
             CType(grdetalle.DataSource, DataTable).Rows(pos).Item("ygcodsin") = grProductos.GetValue("ygcodsin")
             CType(grdetalle.DataSource, DataTable).Rows(pos).Item("ygcodu") = grProductos.GetValue("ygcodu")
             CType(grdetalle.DataSource, DataTable).Rows(pos).Item("tbcmin") = 1
+
+
+            Dim UltimaPalabra As String = CType(grdetalle.DataSource, DataTable).Rows(pos).Item("producto").ToString.Substring(CType(grdetalle.DataSource, DataTable).Rows(pos).Item("producto").ToString.LastIndexOf(" ") + 1)
+            If UltimaPalabra = "V*" Then
+                Dim ef = New Efecto
+                ef.tipo = 2
+                ef.Context = "¿esta seguro de la cantidad que ingresó?".ToUpper
+                ef.Header = "Verifique cantidad!!!".ToUpper & vbCrLf & vbCrLf & " Cantidad Ingresada: ".ToUpper + CType(grdetalle.DataSource, DataTable).Rows(pos).Item("tbcmin").ToString
+                ef.ShowDialog()
+                Dim respuesta As Boolean = False
+                respuesta = ef.band
+
+                If (respuesta = True) Then
+
+                Else
+                    ef.Close()
+                    'grdetalle.Select()
+                    grdetalle.Col = 7
+                End If
+            Else
+
+            End If
+
+
+
             'If (gb_FacturaIncluirICE) Then
             '    CType(grdetalle.DataSource, DataTable).Rows(pos).Item("tbpcos") = grProductos.GetValue("pcos")
             'Else

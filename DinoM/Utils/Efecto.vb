@@ -45,6 +45,8 @@ Public Class Efecto
 
     Public NombreServicio As String = ""
 
+    Public PrecUni As Double = 0
+
 
     Private Sub Efecto_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Me.WindowState = FormWindowState.Maximized
@@ -66,6 +68,8 @@ Public Class Efecto
                 _prLogin()
             Case 9
                 _prMostrarAyudaVentaCantidadProforma()
+            Case 10
+                _prMostrarPrecioUnitario()
         End Select
     End Sub
     Public Sub _prLogin()
@@ -182,7 +186,7 @@ Public Class Efecto
         frmAyuda.Conversion = Conversion
         frmAyuda.CantidadPrevia = CantidadPrevia
         frmAyuda.ShowDialog()
-        If frmAyuda.Bandera = True Then
+        If frmAyuda.bandera = True Then
 
             Cantidad = frmAyuda.Cantidad
 
@@ -215,6 +219,22 @@ Public Class Efecto
             Me.Close()
         End If
 
+    End Sub
+
+    Sub _prMostrarPrecioUnitario()
+        Dim frmAyuda As F_PrecioUnitario
+        frmAyuda = New F_PrecioUnitario
+
+        frmAyuda.Producto = NameProducto
+        frmAyuda.PrecioUni = PrecUni
+        frmAyuda.ShowDialog()
+        If frmAyuda.bandera = True Then
+            band = True
+            Me.Close()
+        Else
+            band = False
+            Me.Close()
+        End If
     End Sub
     Sub _prMostrarMensaje()
         Dim blah As Bitmap = My.Resources.cuestion

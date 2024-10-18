@@ -4549,4 +4549,17 @@ Public Class F0_VentasSupermercado
             tbProducto.Focus()
         End If
     End Sub
+
+    Private Sub VerPrecioUnitarioToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles VerPrecioUnitarioToolStripMenuItem.Click
+        If (grdetalle.Row >= 0) Then
+            Dim ef = New Efecto
+            ef.tipo = 10
+
+            ef.NameProducto = grdetalle.GetValue("producto")
+            ef.PrecUni = Format(grdetalle.GetValue("tbtotdesc") / grdetalle.GetValue("tbcmin"), "#.#0")
+            ef.ShowDialog()
+            Dim bandera As Boolean = False
+            bandera = ef.band
+        End If
+    End Sub
 End Class
