@@ -1395,6 +1395,7 @@ Public Class F0_Venta2
                     CType(grdetalle.DataSource, DataTable).Rows(pos).Item("estado") = 2
                 End If
             End If
+
             _prCalcularPrecioTotal()
         End If
     End Sub
@@ -3459,6 +3460,32 @@ salirIf:
                     'CType(grdetalle.DataSource, DataTable).Rows(pos).Item("stock") = grProductos.GetValue("iccven")
 
                     'CalcularDescuentos(grdetalle.GetValue("tbty5prod"), 1, grdetalle.GetValue("tbpbas"), pos)
+
+                    ''Controlar Productos que pueden ser unidad o paquete y los cajeros no ponen bien la cantidad
+                    Dim UltimaPalabra As String = CType(grdetalle.DataSource, DataTable).Rows(pos).Item("producto").ToString.Substring(CType(grdetalle.DataSource, DataTable).Rows(pos).Item("producto").ToString.LastIndexOf(" ") + 1)
+                    If UltimaPalabra = "V*" Then
+                        Dim ef = New Efecto
+                        ef.tipo = 2
+                        ef.Context = "¿esta seguro de la cantidad que ingresó?".ToUpper
+                        ef.Header = "Verifique cantidad!!!".ToUpper & vbCrLf & vbCrLf & " Cantidad Ingresada: ".ToUpper + CType(grdetalle.DataSource, DataTable).Rows(pos).Item("tbcmin").ToString
+                        ef.ShowDialog()
+                        Dim respuesta As Boolean = False
+                        respuesta = ef.band
+
+                        If (respuesta = True) Then
+
+                        Else
+                            grdetalle.Select()
+                            grdetalle.Row = pos
+                            grdetalle.Col = 7
+                            ef.Close()
+
+
+                        End If
+                    Else
+
+                    End If
+
                     _prCalcularPrecioTotal()
                     resultado = True
                 Else
@@ -3491,12 +3518,40 @@ salirIf:
                     CType(grdetalle.DataSource, DataTable).Rows(pos1).Item("tbtotdesc") = Format((CType(grdetalle.DataSource, DataTable).Rows(pos1).Item("tbpbas") * cant), "#.#0")
                     CType(grdetalle.DataSource, DataTable).Rows(pos1).Item("tbptot2") = Format((CType(grdetalle.DataSource, DataTable).Rows(pos1).Item("tbpcos") * cant), "#.#0")
 
+
                     grdetalle.SetValue("yfcbarra", "")
                     grdetalle.SetValue("tbcmin", 0)
                     grdetalle.SetValue("tbptot", 0)
                     grdetalle.SetValue("tbptot2", 0)
                     grdetalle.DataChanged = True
                     grdetalle.Refresh()
+
+
+                    ''Controlar Productos que pueden ser unidad o paquete y los cajeros no ponen bien la cantidad
+                    Dim UltimaPalabra As String = CType(grdetalle.DataSource, DataTable).Rows(pos1).Item("producto").ToString.Substring(CType(grdetalle.DataSource, DataTable).Rows(pos1).Item("producto").ToString.LastIndexOf(" ") + 1)
+                    If UltimaPalabra = "V*" Then
+                        Dim ef = New Efecto
+                        ef.tipo = 2
+                        ef.Context = "¿esta seguro de la cantidad que ingresó?".ToUpper
+                        ef.Header = "Verifique cantidad!!!".ToUpper & vbCrLf & vbCrLf & " Cantidad Ingresada: ".ToUpper + CType(grdetalle.DataSource, DataTable).Rows(pos1).Item("tbcmin").ToString
+                        ef.ShowDialog()
+                        Dim respuesta As Boolean = False
+                        respuesta = ef.band
+
+                        If (respuesta = True) Then
+
+                        Else
+                            grdetalle.Select()
+                            grdetalle.Row = pos1 - 1
+                            'grdetalle.Row = pos1
+
+                            grdetalle.Col = 7
+                            ef.Close()
+
+                        End If
+                    Else
+
+                    End If
 
                     _prCalcularPrecioTotal()
                 Else
@@ -3508,8 +3563,6 @@ salirIf:
                     grdetalle.Refresh()
                     Dim img As Bitmap = New Bitmap(My.Resources.mensaje, 50, 50)
                     ToastNotification.Show(Me, "La cantidad es superior a la cantidad disponible que es: ".ToUpper + Str(stock) + " , Primero se debe regularizar el stock".ToUpper, img, 5000, eToastGlowColor.Red, eToastPosition.TopCenter)
-
-
                 End If
             End If
         Catch ex As Exception
@@ -3526,7 +3579,7 @@ salirIf:
             CType(grdetalle.DataSource, DataTable).Rows(0).Item("unidad") = _t.Rows(0).Item("uni")
 
         Else
-            MsgBox("Codigo de Producto No Exite")
+            MsgBox("Codigo de Producto No Existe")
         End If
     End Sub
     Private Sub grProductos_KeyDown(sender As Object, e As KeyEventArgs) Handles grProductos.KeyDown
@@ -3701,6 +3754,30 @@ salirIf:
 
                             CalcularDescuentos(grdetalle.GetValue("tbty5prod"), grdetalle.GetValue("tbcmin"), grdetalle.GetValue("tbpbas"), pos)
 
+                            ''Controlar Productos que pueden ser unidad o paquete y los cajeros no ponen bien la cantidad
+                            Dim UltimaPalabra As String = CType(grdetalle.DataSource, DataTable).Rows(pos).Item("producto").ToString.Substring(CType(grdetalle.DataSource, DataTable).Rows(pos).Item("producto").ToString.LastIndexOf(" ") + 1)
+                            If UltimaPalabra = "V*" Then
+                                Dim ef = New Efecto
+                                ef.tipo = 2
+                                ef.Context = "¿esta seguro de la cantidad que ingresó?".ToUpper
+                                ef.Header = "Verifique cantidad!!!".ToUpper & vbCrLf & vbCrLf & " Cantidad Ingresada: ".ToUpper + grdetalle.GetValue("tbcmin").ToString
+                                ef.ShowDialog()
+                                Dim respuesta As Boolean = False
+                                respuesta = ef.band
+
+                                If (respuesta = True) Then
+
+                                Else
+                                    ef.Close()
+                                    'grdetalle.Select()
+                                    grdetalle.Col = 7
+                                End If
+                            Else
+
+                            End If
+
+
+
                             P_PonerTotal(rowIndex)
                             CalculoDescuentoXProveedor()
 
@@ -3720,6 +3797,27 @@ salirIf:
                             grdetalle.SetValue("tbptot", grdetalle.GetValue("tbpbas"))
 
                             CalcularDescuentos(grdetalle.GetValue("tbty5prod"), grdetalle.GetValue("tbcmin"), grdetalle.GetValue("tbpbas"), pos)
+
+                            Dim UltimaPalabra As String = CType(grdetalle.DataSource, DataTable).Rows(pos).Item("producto").ToString.Substring(CType(grdetalle.DataSource, DataTable).Rows(pos).Item("producto").ToString.LastIndexOf(" ") + 1)
+                            If UltimaPalabra = "V*" Then
+                                Dim ef = New Efecto
+                                ef.tipo = 2
+                                ef.Context = "¿esta seguro de la cantidad que ingresó?".ToUpper
+                                ef.Header = "Verifique cantidad!!!".ToUpper & vbCrLf & vbCrLf & " Cantidad Ingresada: ".ToUpper + CType(grdetalle.DataSource, DataTable).Rows(pos).Item("tbcmin").ToString
+                                ef.ShowDialog()
+                                Dim respuesta As Boolean = False
+                                respuesta = ef.band
+
+                                If (respuesta = True) Then
+
+                                Else
+                                    ef.Close()
+                                    'grdetalle.Select()
+                                    grdetalle.Col = 7
+                                End If
+                            Else
+
+                            End If
 
 
                             _prCalcularPrecioTotal()
@@ -5454,6 +5552,8 @@ salirIf:
         End If
 
     End Sub
+
+
 
 
 
