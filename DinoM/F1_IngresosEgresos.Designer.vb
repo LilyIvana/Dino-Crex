@@ -227,6 +227,14 @@ Partial Class F1_IngresosEgresos
         '
         Me.MPanelUserAct.Location = New System.Drawing.Point(1122, 0)
         '
+        'MRlAccion
+        '
+        '
+        '
+        '
+        Me.MRlAccion.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.MRlAccion.Size = New System.Drawing.Size(866, 72)
+        '
         'Panel1
         '
         Me.Panel1.Controls.Add(Me.TableLayoutPanel1)
@@ -499,7 +507,8 @@ Partial Class F1_IngresosEgresos
         Me.tbObservacion.Multiline = True
         Me.tbObservacion.Name = "tbObservacion"
         Me.tbObservacion.PreventEnterBeep = True
-        Me.tbObservacion.Size = New System.Drawing.Size(280, 70)
+        Me.tbObservacion.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
+        Me.tbObservacion.Size = New System.Drawing.Size(280, 95)
         Me.tbObservacion.TabIndex = 217
         '
         'LabelX1
