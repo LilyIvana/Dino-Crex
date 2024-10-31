@@ -1440,7 +1440,7 @@ Public Class F1_Productos
                  eToastPosition.TopCenter)
                 End If
             Else
-            ToastNotification.Show(Me, "EL CODIGO DYNASYS ESTA VACÍO, NO PUEDE IMPRIMIR PRECIO",
+                ToastNotification.Show(Me, "EL CODIGO DYNASYS ESTA VACÍO, NO PUEDE IMPRIMIR PRECIO",
                        My.Resources.WARNING, 2500,
                        eToastGlowColor.Red,
                        eToastPosition.TopCenter)
@@ -2105,4 +2105,6 @@ Public Class F1_Productos
     Private Sub btnImprimirOtros_Click(sender As Object, e As EventArgs) Handles btnImprimirOtros.Click
         ImprimirOtros()
     End Sub
+
+
 End Class

@@ -33,6 +33,7 @@ Public Class F1_Proveedor
     Public _modulo As SideNavItem
     Public _Tipo As Integer
     Dim NumiVendedor As Integer
+    Public NombreAntiguo As String
 #End Region
 #Region "Metodos Privados"
 
@@ -413,13 +414,20 @@ Public Class F1_Proveedor
         Dim res As Boolean
         Dim nameImage As String = JGrM_Buscador.GetValue("ydimg")
 
-        Dim Validar = L_fnValidarDescripcionLibrerias("1", "1", tbNombre.Text.Trim)
+        Dim Validar As DataTable = L_fnValidarDescripcionLibrerias("1", "1", tbNombre.Text.Trim)
+
         If Validar.Rows.Count > 0 Then
-            ToastNotification.Show(Me, "YA EXISTE PROVEEDOR CON LA MISMA DESCRIPCIÓN, NO PUEDE GRABAR..!!!",
-                                     My.Resources.WARNING, 3000,
-                                     eToastGlowColor.Red,
-                                     eToastPosition.TopCenter)
-            Exit Function
+            If NombreAntiguo <> tbNombre.Text.Trim Then
+                If tbNombre.Text.Trim = Validar.Rows(0).Item("ycdes3") Then
+                    ToastNotification.Show(Me, "YA EXISTE PROVEEDOR CON LA MISMA DESCRIPCIÓN, NO PUEDE GRABAR..!!!",
+                                       My.Resources.WARNING, 3000,
+                                       eToastGlowColor.Red,
+                                       eToastPosition.TopCenter)
+                    Exit Function
+                End If
+            Else
+
+            End If
         End If
         If (Modificado = False) Then
             res = L_fnModificarClientes(tbCodigoOriginal.Text, tbCodCliente.Text, "", tbNombre.Text, NumiVendedor, cbZona.Value,
@@ -810,5 +818,7 @@ Public Class F1_Proveedor
         End If
     End Sub
 
-
+    Private Sub btnModificar_Click(sender As Object, e As EventArgs) Handles btnModificar.Click
+        NombreAntiguo = tbNombre.Text.Trim
+    End Sub
 End Class
