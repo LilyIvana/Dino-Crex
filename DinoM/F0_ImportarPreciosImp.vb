@@ -223,11 +223,11 @@ Public Class F0_ImportarPreciosImp
                 Dim Fin As Integer = dt.Rows(0).Item("CantFin")
 
                 If Ini = 0 And Fin = 0 Then
-                    P_GenerarReporte(1, dt, "5", False) ''Imprime 1 precio
+                    P_GenerarReporte(1, dt, "5", swVisualizar.Value) ''Imprime 1 precio
                 ElseIf Ini = Fin Then
-                    P_GenerarReporte(2, dt, "5", False) ''Imprime 2 precios
+                    P_GenerarReporte(2, dt, "5", swVisualizar.Value) ''Imprime 2 precios
                 ElseIf Ini <> Fin Then
-                    P_GenerarReporte(3, dt, "5", False) ''Imprime 3 precios
+                    P_GenerarReporte(3, dt, "5", swVisualizar.Value) ''Imprime 3 precios
                 End If
 
                 L_fnBotonImprimir(gs_VersionSistema, gs_IPMaquina, gs_UsuMaquina, Cod, "IMPRESION DE PRECIOS", "IMPRESIÓN DE PRECIOS")
@@ -455,9 +455,9 @@ Public Class F0_ImportarPreciosImp
                 L_fnBotonImprimir(gs_VersionSistema, gs_IPMaquina, gs_UsuMaquina, Cod, "IMPRESION DE PRECIOS", "IMPRESIÓN DE PRECIOS FRIO")
             Next
             If swMedida.Value = True Then
-                P_GenerarReporteOtrosFormatos(1, dt, "5", False) ''Imprime mas chico (7x1.5cm)
+                P_GenerarReporteOtrosFormatos(1, dt, "5", swVisualizar.Value) ''Imprime mas chico (7x1.5cm)
             Else
-                P_GenerarReporteOtrosFormatos(2, dt, "5", False) ''Imprime mas chico (12.4x1.5cm)
+                P_GenerarReporteOtrosFormatos(2, dt, "5", swVisualizar.Value) ''Imprime mas chico (12.4x1.5cm)
             End If
 
         Else
@@ -498,15 +498,15 @@ Public Class F0_ImportarPreciosImp
             Next
 
             If dt1.Rows.Count > 0 Then
-                P_GenerarReporteOtrosFormatos(3, dt1, "5", False, 1) ''Imprime 1 precio (4.5 x 3.5cm)
+                P_GenerarReporteOtrosFormatos(3, dt1, "5", swVisualizar.Value, 1) ''Imprime 1 precio (4.5 x 3.5cm)
             End If
 
             If dt2.Rows.Count > 0 Then
-                P_GenerarReporteOtrosFormatos(3, dt2, "5", False, 2) ''Imprime 2 precios (4.5 x 3.5cm)
+                P_GenerarReporteOtrosFormatos(3, dt2, "5", swVisualizar.Value, 2) ''Imprime 2 precios (4.5 x 3.5cm)
             End If
 
             If dt3.Rows.Count > 0 Then
-                P_GenerarReporteOtrosFormatos(3, dt3, "5", False, 3) ''Imprime 3 precios (4.5 x 3.5cm)
+                P_GenerarReporteOtrosFormatos(3, dt3, "5", swVisualizar.Value, 3) ''Imprime 3 precios (4.5 x 3.5cm)
             End If
 
         Else

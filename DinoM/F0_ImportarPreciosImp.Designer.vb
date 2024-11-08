@@ -37,6 +37,8 @@ Partial Class F0_ImportarPreciosImp
         Me.btnImprimirFrio = New DevComponents.DotNetBar.ButtonX()
         Me.LabelX24 = New DevComponents.DotNetBar.LabelX()
         Me.swMedida = New DevComponents.DotNetBar.Controls.SwitchButton()
+        Me.LabelX1 = New DevComponents.DotNetBar.LabelX()
+        Me.swVisualizar = New DevComponents.DotNetBar.Controls.SwitchButton()
         Me.PanelSuperior.SuspendLayout()
         Me.PanelInferior.SuspendLayout()
         CType(Me.BubbleBarUsuario, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -62,6 +64,8 @@ Partial Class F0_ImportarPreciosImp
         '
         'PanelSuperior
         '
+        Me.PanelSuperior.Controls.Add(Me.LabelX1)
+        Me.PanelSuperior.Controls.Add(Me.swVisualizar)
         Me.PanelSuperior.Controls.Add(Me.LabelX24)
         Me.PanelSuperior.Controls.Add(Me.swMedida)
         Me.PanelSuperior.Margin = New System.Windows.Forms.Padding(4)
@@ -85,6 +89,8 @@ Partial Class F0_ImportarPreciosImp
         Me.PanelSuperior.Controls.SetChildIndex(Me.PictureBox1, 0)
         Me.PanelSuperior.Controls.SetChildIndex(Me.swMedida, 0)
         Me.PanelSuperior.Controls.SetChildIndex(Me.LabelX24, 0)
+        Me.PanelSuperior.Controls.SetChildIndex(Me.swVisualizar, 0)
+        Me.PanelSuperior.Controls.SetChildIndex(Me.LabelX1, 0)
         '
         'PanelInferior
         '
@@ -460,11 +466,12 @@ Partial Class F0_ImportarPreciosImp
         Me.LabelX24.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.LabelX24.Font = New System.Drawing.Font("Georgia", 8.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.LabelX24.ForeColor = System.Drawing.Color.White
-        Me.LabelX24.Location = New System.Drawing.Point(781, 12)
+        Me.LabelX24.Location = New System.Drawing.Point(804, 12)
         Me.LabelX24.Name = "LabelX24"
-        Me.LabelX24.Size = New System.Drawing.Size(147, 12)
+        Me.LabelX24.Size = New System.Drawing.Size(100, 22)
         Me.LabelX24.TabIndex = 431
-        Me.LabelX24.Text = "Formato Impresión Frío"
+        Me.LabelX24.Text = "Formato " & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Impresión Frío"
+        Me.LabelX24.TextAlignment = System.Drawing.StringAlignment.Center
         '
         'swMedida
         '
@@ -473,18 +480,50 @@ Partial Class F0_ImportarPreciosImp
         '
         Me.swMedida.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.swMedida.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.swMedida.Location = New System.Drawing.Point(791, 30)
+        Me.swMedida.Location = New System.Drawing.Point(800, 41)
         Me.swMedida.Name = "swMedida"
         Me.swMedida.OffBackColor = System.Drawing.Color.Gold
         Me.swMedida.OffText = "12.4 x 1.5 cm."
         Me.swMedida.OnBackColor = System.Drawing.Color.ForestGreen
         Me.swMedida.OnText = "7 x 1.5 cm."
-        Me.swMedida.Size = New System.Drawing.Size(120, 22)
+        Me.swMedida.Size = New System.Drawing.Size(110, 22)
         Me.swMedida.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
         Me.swMedida.SwitchWidth = 25
         Me.swMedida.TabIndex = 430
         Me.swMedida.Value = True
         Me.swMedida.ValueObject = "Y"
+        '
+        'LabelX1
+        '
+        '
+        '
+        '
+        Me.LabelX1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.LabelX1.Font = New System.Drawing.Font("Georgia", 7.9!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LabelX1.ForeColor = System.Drawing.Color.White
+        Me.LabelX1.Location = New System.Drawing.Point(671, 12)
+        Me.LabelX1.Name = "LabelX1"
+        Me.LabelX1.Size = New System.Drawing.Size(90, 22)
+        Me.LabelX1.TabIndex = 433
+        Me.LabelX1.Text = "Visualizar antes" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "  de Imprimir:"
+        '
+        'swVisualizar
+        '
+        '
+        '
+        '
+        Me.swVisualizar.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.swVisualizar.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.swVisualizar.Location = New System.Drawing.Point(682, 38)
+        Me.swVisualizar.Name = "swVisualizar"
+        Me.swVisualizar.OffBackColor = System.Drawing.Color.Gold
+        Me.swVisualizar.OffText = "NO"
+        Me.swVisualizar.OnBackColor = System.Drawing.Color.ForestGreen
+        Me.swVisualizar.OnText = "SI"
+        Me.swVisualizar.Size = New System.Drawing.Size(64, 22)
+        Me.swVisualizar.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+        Me.swVisualizar.SwitchWidth = 25
+        Me.swVisualizar.TabIndex = 432
         '
         'F0_ImportarPreciosImp
         '
@@ -535,4 +574,6 @@ Partial Class F0_ImportarPreciosImp
     Friend WithEvents btnImprimirPrecioPeq As DevComponents.DotNetBar.ButtonX
     Friend WithEvents LabelX24 As DevComponents.DotNetBar.LabelX
     Friend WithEvents swMedida As DevComponents.DotNetBar.Controls.SwitchButton
+    Friend WithEvents LabelX1 As DevComponents.DotNetBar.LabelX
+    Friend WithEvents swVisualizar As DevComponents.DotNetBar.Controls.SwitchButton
 End Class

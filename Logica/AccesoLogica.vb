@@ -581,7 +581,6 @@ Public Class AccesoLogica
         _listParam.Add(New Datos.DParametro("@ip", _ip))
         _listParam.Add(New Datos.DParametro("@usumaquina", _usumaquina))
 
-
         _listParam.Add(New Datos.DParametro("@ycodact", _ycodact))
         _listParam.Add(New Datos.DParametro("@ygcodu", _ycodu))
         _listParam.Add(New Datos.DParametro("@ycodprosin", _ycodprosin))

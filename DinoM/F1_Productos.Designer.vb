@@ -838,7 +838,7 @@ Partial Class F1_Productos
         Me.btgrupo2.ColorTable = DevComponents.DotNetBar.eButtonColor.Flat
         Me.btgrupo2.Image = Global.DinoM.My.Resources.Resources.add
         Me.btgrupo2.ImageFixedSize = New System.Drawing.Size(25, 23)
-        Me.btgrupo2.Location = New System.Drawing.Point(309, 35)
+        Me.btgrupo2.Location = New System.Drawing.Point(309, 32)
         Me.btgrupo2.Name = "btgrupo2"
         Me.btgrupo2.Size = New System.Drawing.Size(28, 23)
         Me.btgrupo2.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
@@ -852,7 +852,7 @@ Partial Class F1_Productos
         Me.btgrupo3.ColorTable = DevComponents.DotNetBar.eButtonColor.Flat
         Me.btgrupo3.Image = Global.DinoM.My.Resources.Resources.add
         Me.btgrupo3.ImageFixedSize = New System.Drawing.Size(25, 23)
-        Me.btgrupo3.Location = New System.Drawing.Point(309, 87)
+        Me.btgrupo3.Location = New System.Drawing.Point(309, 86)
         Me.btgrupo3.Name = "btgrupo3"
         Me.btgrupo3.Size = New System.Drawing.Size(28, 23)
         Me.btgrupo3.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
@@ -866,7 +866,7 @@ Partial Class F1_Productos
         Me.btgrupo4.ColorTable = DevComponents.DotNetBar.eButtonColor.Flat
         Me.btgrupo4.Image = Global.DinoM.My.Resources.Resources.add
         Me.btgrupo4.ImageFixedSize = New System.Drawing.Size(25, 23)
-        Me.btgrupo4.Location = New System.Drawing.Point(309, 116)
+        Me.btgrupo4.Location = New System.Drawing.Point(309, 114)
         Me.btgrupo4.Name = "btgrupo4"
         Me.btgrupo4.Size = New System.Drawing.Size(28, 23)
         Me.btgrupo4.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
@@ -880,7 +880,7 @@ Partial Class F1_Productos
         Me.btUMedida.ColorTable = DevComponents.DotNetBar.eButtonColor.Flat
         Me.btUMedida.Image = Global.DinoM.My.Resources.Resources.add
         Me.btUMedida.ImageFixedSize = New System.Drawing.Size(25, 23)
-        Me.btUMedida.Location = New System.Drawing.Point(309, 140)
+        Me.btUMedida.Location = New System.Drawing.Point(309, 141)
         Me.btUMedida.Name = "btUMedida"
         Me.btUMedida.Size = New System.Drawing.Size(28, 23)
         Me.btUMedida.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
@@ -1449,7 +1449,7 @@ Partial Class F1_Productos
         Me.btgrupo5.ColorTable = DevComponents.DotNetBar.eButtonColor.Flat
         Me.btgrupo5.Image = Global.DinoM.My.Resources.Resources.add
         Me.btgrupo5.ImageFixedSize = New System.Drawing.Size(25, 23)
-        Me.btgrupo5.Location = New System.Drawing.Point(309, 62)
+        Me.btgrupo5.Location = New System.Drawing.Point(309, 59)
         Me.btgrupo5.Name = "btgrupo5"
         Me.btgrupo5.Size = New System.Drawing.Size(28, 23)
         Me.btgrupo5.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
