@@ -1428,16 +1428,16 @@ Public Class F1_Productos
                         End If
                     Else
                         ToastNotification.Show(Me, "DEBE SELECCIONAR UN FORMATO DE IMPRESIÓN VÁLIDO",
-                 My.Resources.WARNING, 2500,
-                 eToastGlowColor.Red,
-                 eToastPosition.TopCenter)
+                        My.Resources.WARNING, 2500,
+                        eToastGlowColor.Red,
+                        eToastPosition.TopCenter)
 
                     End If
                 Else
                     ToastNotification.Show(Me, "DEBE SELECCIONAR UN FORMATO DE IMPRESIÓN VÁLIDO",
-                 My.Resources.WARNING, 3000,
-                 eToastGlowColor.Red,
-                 eToastPosition.TopCenter)
+                    My.Resources.WARNING, 3000,
+                    eToastGlowColor.Red,
+                    eToastPosition.TopCenter)
                 End If
             Else
                 ToastNotification.Show(Me, "EL CODIGO DYNASYS ESTA VACÍO, NO PUEDE IMPRIMIR PRECIO",

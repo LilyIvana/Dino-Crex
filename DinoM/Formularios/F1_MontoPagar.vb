@@ -474,7 +474,8 @@ Public Class F1_MontoPagar
             tbMontoBs.Enabled = True
             tbMontoDolar.Enabled = True
             tbMontoTarej.Value = 0
-            tbMontoQR.Enabled = True
+            tbMontoTarej.Enabled = False
+            'tbMontoQR.Enabled = True
             chbQR.Enabled = True
             lbNroTarjeta.Visible = False
             tbNroTarjeta1.Visible = False
@@ -554,9 +555,10 @@ Public Class F1_MontoPagar
         Else
             tbMontoBs.Enabled = True
             tbMontoDolar.Enabled = True
-            tbMontoTarej.Enabled = True
+            'tbMontoTarej.Enabled = True
             chbTarjeta.Enabled = True
             tbMontoQR.Value = 0
+            tbMontoQR.Enabled = False
         End If
 
 

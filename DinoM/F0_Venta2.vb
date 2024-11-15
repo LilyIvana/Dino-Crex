@@ -305,7 +305,7 @@ Public Class F0_Venta2
 
         tbMontoBs.IsInputReadOnly = False
         tbMontoDolar.IsInputReadOnly = False
-        tbMontoTarej.IsInputReadOnly = False
+        'tbMontoTarej.IsInputReadOnly = False
 
         tbNroTarjeta1.ReadOnly = False
         tbNroTarjeta3.ReadOnly = False
@@ -4451,7 +4451,8 @@ salirIf:
                 tbMontoBs.Enabled = True
                 tbMontoDolar.Enabled = True
                 tbMontoTarej.Value = 0
-                tbMontoQR.Enabled = True
+                tbMontoTarej.Enabled = False
+                'tbMontoQR.Enabled = True
                 chbQR.Enabled = True
                 tbNroTarjeta1.Text = ""
                 tbNroTarjeta3.Text = ""
@@ -5401,9 +5402,10 @@ salirIf:
             Else
                 tbMontoBs.Enabled = True
                 tbMontoDolar.Enabled = True
-                tbMontoTarej.Enabled = True
+                'tbMontoTarej.Enabled = True
                 chbTarjeta.Enabled = True
                 tbMontoQR.Value = 0
+                tbMontoQR.Enabled = False
             End If
 
         End If

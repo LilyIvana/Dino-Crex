@@ -279,7 +279,7 @@ Public Class F1_CalculoPedidoSugeridoDias
             End With
             With JGrM_Buscador.RootTable.Columns("UniCompra")
                 .Width = 90
-                .Visible = True
+                .Visible = False
                 .Caption = "EMPAQUE COMPRA"
                 .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far
             End With

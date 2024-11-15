@@ -83,6 +83,8 @@ Public Class F0_VentasSupermercado
     Public SwFacturaClick As Boolean = False
     Dim RutaGlobal As String = gs_CarpetaRaiz
 
+    Public dtname As DataTable
+
 #Region "Metodos Privados"
     Private Sub _IniciarTodo()
         L_prAbrirConexion(gs_Ip, gs_UsuarioSql, gs_ClaveSql, gs_NombreBD)
@@ -121,6 +123,7 @@ Public Class F0_VentasSupermercado
             swEstadoFacturas.IsReadOnly = True
         End If
 
+        dtname = L_fnNameLabel()
     End Sub
     Private Sub _CargarBanner()
         Dim ubicacion As String
@@ -668,8 +671,6 @@ Public Class F0_VentasSupermercado
     End Sub
 
     Private Sub _prCargarProductos(_cliente As String)
-
-        Dim dtname As DataTable = L_fnNameLabel()
         Dim dt As New DataTable
 
         If (G_Lote = True) Then
@@ -683,22 +684,15 @@ Public Class F0_VentasSupermercado
             'Table_Producto = dt.Copy
         End If
 
-
-
-        ''  actualizarSaldoSinLote(dt)
+        ''ActualizarSaldoSinLote(dt)
         grProductos.DataSource = dt
         grProductos.RetrieveStructure()
         grProductos.AlternatingColors = True
-
-        '      a.yfnumi ,a.yfcprod ,a.yfcdprod1,a.yfcdprod2 ,a.yfgr1,gr1.ycdes3 as grupo1,a.yfgr2
-        ',gr2.ycdes3 as grupo2 ,a.yfgr3,gr3.ycdes3 as grupo3,a.yfgr4 ,gr4 .ycdes3 as grupo4,a.yfumin ,Umin .ycdes3 as UnidMin
-        ' ,b.yhprecio 
 
         With grProductos.RootTable.Columns("yfnumi")
             .Width = 50
             .Caption = "Cod Dynasys".ToUpper
             .Visible = True
-
         End With
         With grProductos.RootTable.Columns("yfcprod")
             .Width = 55
@@ -724,12 +718,10 @@ Public Class F0_VentasSupermercado
             .FormatString = "0.00"
         End With
         With grProductos.RootTable.Columns("yfcdprod2")
-            .Width = 150
             .Visible = False
             .Caption = "Descripcion Corta".ToUpper
         End With
         With grProductos.RootTable.Columns("yfgr1")
-            .Width = 160
             .Visible = False
         End With
         If (dtname.Rows.Count > 0) Then
@@ -787,44 +779,29 @@ Public Class F0_VentasSupermercado
         End If
 
         With grProductos.RootTable.Columns("yfgr2")
-            .Width = 50
-            .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Near
             .Visible = False
         End With
 
         With grProductos.RootTable.Columns("yfgr3")
-            .Width = 50
-            .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Near
             .Visible = False
         End With
         With grProductos.RootTable.Columns("validacion")
-            .Width = 50
-            .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Near
             .Visible = False
         End With
         With grProductos.RootTable.Columns("yfgr4")
-            .Width = 50
-            .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Near
             .Visible = False
         End With
         With grProductos.RootTable.Columns("yfgr5")
-            .Width = 50
-            .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Near
             .Visible = False
         End With
         With grProductos.RootTable.Columns("Grupo5")
-            .Width = 50
-            .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Near
             .Visible = False
         End With
         With grProductos.RootTable.Columns("yfumin")
-            .Width = 50
-            .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Near
+            '.CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Near
             .Visible = False
         End With
         With grProductos.RootTable.Columns("UnidMin")
-            .Width = 120
-            .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Near
             .Visible = False
             .Caption = "Unidad Min."
         End With
@@ -837,7 +814,6 @@ Public Class F0_VentasSupermercado
         End With
         With grProductos.RootTable.Columns("pcos")
             .Width = 120
-            .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Near
             .Visible = False
             .Caption = "Precio Costo".ToUpper
             .FormatString = "0.00"
@@ -852,9 +828,7 @@ Public Class F0_VentasSupermercado
             .Visible = False
         End With
         With grProductos.RootTable.Columns("grupoDesc")
-            .Width = 100
             .Visible = False
-            .Caption = "Grupo Desc.".ToUpper
         End With
         With grProductos.RootTable.Columns("ygcodsin")
             .Visible = False
@@ -1016,7 +990,6 @@ Public Class F0_VentasSupermercado
 
     Private Sub _HabilitarProductos()
         GPanelProductos.Visible = True
-
         _prCargarProductos(Str(_CodCliente))
         grProductos.Focus()
         grProductos.MoveTo(grProductos.FilterRow)

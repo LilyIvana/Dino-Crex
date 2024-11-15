@@ -895,12 +895,11 @@ Public Class F0_Proforma
     Public Sub _GuardarNuevo()
         Dim numi As String = ""
         Dim res As Boolean = L_fnGrabarProforma(numi, tbFechaVenta.Value.ToString("yyyy/MM/dd"), _CodEmpleado, _CodCliente,
-                                                IIf(swMoneda.Value = True, 1, 0), tbObservacion.Text, tbMdesc.Value, tbtotal.Value,
-                                                CType(grdetalle.DataSource, DataTable), cbSucursal.Value, TbNomCliente.Text.Trim,
-                                                tbContacto.Text.Trim, tbTelf.Text.Trim, gs_VersionSistema, gs_IPMaquina, gs_UsuMaquina)
+                                                IIf(swMoneda.Value = True, 1, 0), tbObservacion.Text.Trim.ToUpper, tbMdesc.Value, tbtotal.Value,
+                                                CType(grdetalle.DataSource, DataTable), cbSucursal.Value, TbNomCliente.Text.Trim.ToUpper,
+                                                tbContacto.Text.Trim.ToUpper, tbTelf.Text.Trim, gs_VersionSistema, gs_IPMaquina, gs_UsuMaquina)
 
         If res Then
-
             Dim img As Bitmap = New Bitmap(My.Resources.checked, 50, 50)
             ToastNotification.Show(Me, "Código de Proforma ".ToUpper + tbCodigo.Text + " Grabada con éxito.".ToUpper,
                                       img, 2000,
@@ -918,9 +917,9 @@ Public Class F0_Proforma
     End Sub
     Private Sub _prGuardarModificado()
         Dim res As Boolean = L_fnModificarProforma(tbCodigo.Text, tbFechaVenta.Value.ToString("yyyy/MM/dd"), _CodEmpleado, _CodCliente,
-                                                   IIf(swMoneda.Value = True, 1, 0), tbObservacion.Text, tbMdesc.Value, tbtotal.Value,
-                                                   CType(grdetalle.DataSource, DataTable), cbSucursal.Value, TbNomCliente.Text.Trim,
-                                                   tbContacto.Text.Trim, tbTelf.Text.Trim, gs_VersionSistema, gs_IPMaquina, gs_UsuMaquina)
+                                                   IIf(swMoneda.Value = True, 1, 0), tbObservacion.Text.Trim.ToUpper, tbMdesc.Value, tbtotal.Value,
+                                                   CType(grdetalle.DataSource, DataTable), cbSucursal.Value, TbNomCliente.Text.Trim.ToUpper,
+                                                   tbContacto.Text.Trim.ToUpper, tbTelf.Text.Trim, gs_VersionSistema, gs_IPMaquina, gs_UsuMaquina)
         If res Then
 
             Dim img As Bitmap = New Bitmap(My.Resources.checked, 50, 50)
