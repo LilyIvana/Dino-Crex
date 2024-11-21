@@ -1,9 +1,9 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class P_Acerca
     Inherits System.Windows.Forms.Form
 
     'Form reemplaza a Dispose para limpiar la lista de componentes.
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
             If disposing AndAlso components IsNot Nothing Then
@@ -20,11 +20,10 @@ Partial Class P_Acerca
     'NOTA: el Diseñador de Windows Forms necesita el siguiente procedimiento
     'Se puede modificar usando el Diseñador de Windows Forms.  
     'No lo modifique con el editor de código.
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(P_Acerca))
         Me.Panel1 = New System.Windows.Forms.Panel()
-        Me.Label5 = New System.Windows.Forms.Label()
         Me.Label4 = New System.Windows.Forms.Label()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
@@ -38,7 +37,6 @@ Partial Class P_Acerca
         '
         'Panel1
         '
-        Me.Panel1.Controls.Add(Me.Label5)
         Me.Panel1.Controls.Add(Me.Label4)
         Me.Panel1.Controls.Add(Me.Label3)
         Me.Panel1.Controls.Add(Me.Label2)
@@ -51,16 +49,6 @@ Partial Class P_Acerca
         Me.Panel1.Name = "Panel1"
         Me.Panel1.Size = New System.Drawing.Size(543, 363)
         Me.Panel1.TabIndex = 0
-        '
-        'Label5
-        '
-        Me.Label5.AutoSize = True
-        Me.Label5.Font = New System.Drawing.Font("Palatino Linotype", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label5.Location = New System.Drawing.Point(263, 215)
-        Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(245, 20)
-        Me.Label5.TabIndex = 10
-        Me.Label5.Text = "Mejoras: Ing. Lilian Calvetty Michel"
         '
         'Label4
         '
@@ -88,9 +76,9 @@ Partial Class P_Acerca
         Me.Label2.Font = New System.Drawing.Font("Palatino Linotype", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label2.Location = New System.Drawing.Point(263, 162)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(159, 20)
+        Me.Label2.Size = New System.Drawing.Size(155, 20)
         Me.Label2.TabIndex = 7
-        Me.Label2.Text = "Versión: 4.13.0.240827"
+        Me.Label2.Text = "Versión 4.16.0.241122"
         '
         'Label1
         '
@@ -164,5 +152,4 @@ Partial Class P_Acerca
     Friend WithEvents Label1 As Label
     Friend WithEvents OKButton As Button
     Friend WithEvents TextBoxDescription As TextBox
-    Friend WithEvents Label5 As Label
 End Class
