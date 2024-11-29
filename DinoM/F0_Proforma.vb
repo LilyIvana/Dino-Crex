@@ -30,6 +30,8 @@ Public Class F0_Proforma
     Dim Lote As Boolean = False '1=igual a mostrar las columnas de lote y fecha de Vencimiento
     Dim dtDescuentos As DataTable = Nothing
     Dim Table_Producto As DataTable
+
+    Dim dtname As DataTable
 #End Region
 
 #Region "Métodos Privados"
@@ -37,6 +39,8 @@ Public Class F0_Proforma
         '' L_prAbrirConexion(gs_Ip, gs_UsuarioSql, gs_ClaveSql, gs_NombreBD)
         MSuperTabControl.SelectedTabIndex = 0
         'Me.WindowState = FormWindowState.Maximized
+
+
         _prValidarLote()
         _prCargarComboLibreriaSucursal(cbSucursal)
         lbTipoMoneda.Visible = False
@@ -51,6 +55,7 @@ Public Class F0_Proforma
         Me.Icon = ico
         _prAsignarPermisos()
 
+        dtname = L_fnNameLabel()
     End Sub
     Public Sub _prValidarLote()
         Dim dt As DataTable = L_fnPorcUtilidad()
@@ -506,10 +511,13 @@ Public Class F0_Proforma
         If (cbSucursal.SelectedIndex < 0) Then
             Return
         End If
-        Dim dtname As DataTable = L_fnNameLabel()
-        Dim dt As New DataTable
+        'Dim dtname As DataTable = L_fnNameLabel()
+
+        Dim dt1, dt As New DataTable
         'dt = L_fnListarProductosSinLoteProformaNuevo(cbSucursal.Value, _cliente)
-        dt = L_fnListarProductosSinLoteUltProforma(cbSucursal.Value, _cliente, CType(grdetalle.DataSource, DataTable))
+        'dt = L_fnListarProductosSinLoteUltProforma(cbSucursal.Value, _cliente, CType(grdetalle.DataSource, DataTable))
+        dt1 = L_fnListarProductosSinLoteUltimaProforma(cbSucursal.Value, _cliente)
+        dt = dt1.Select("yhprecio>0").CopyToDataTable
 
         grProductos.DataSource = dt
         grProductos.RetrieveStructure()
@@ -993,6 +1001,12 @@ Public Class F0_Proforma
         _Limpiar()
         _prhabilitar()
         AsignarCliente()
+
+        'tbCliente.Text = "CLIENTES VARIOS"
+        '_CodCliente = 2
+        'tbVendedor.Text = "VENDEDOR1"
+        '_CodEmpleado = 1
+
         btnNuevo.Enabled = False
         btnModificar.Enabled = False
         btnEliminar.Enabled = False
@@ -1184,7 +1198,6 @@ Public Class F0_Proforma
                 Else
                     ToastNotification.Show(Me, "Seleccione un Producto Por Favor", My.Resources.WARNING, 3000, eToastGlowColor.Red, eToastPosition.TopCenter)
                 End If
-
             End If
             If (grdetalle.Col = grdetalle.RootTable.Columns("producto").Index) Then
                 If (grdetalle.GetValue("producto") <> String.Empty) Then
@@ -1193,7 +1206,6 @@ Public Class F0_Proforma
                 Else
                     ToastNotification.Show(Me, "Seleccione un Producto Por Favor", My.Resources.WARNING, 3000, eToastGlowColor.Red, eToastPosition.TopCenter)
                 End If
-
             End If
             If (grdetalle.Col = grdetalle.RootTable.Columns("yfcbarra").Index) Then
                 If (grdetalle.GetValue("yfcbarra").ToString().Trim() <> String.Empty) Then
@@ -1448,6 +1460,8 @@ salirIf:
             _DesHabilitarProductos()
 
             grdetalle.Col = 6
+
+            '_prAddDetalleVenta()
         Else
             If (existe) Then
                 Dim img As Bitmap = New Bitmap(My.Resources.mensaje, 50, 50)

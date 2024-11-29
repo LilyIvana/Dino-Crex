@@ -98,7 +98,6 @@ Public Class F1_PVentaMenorPCosto
 
         'End If
 
-
         L_fnRepConsultaPVentaMenorPCosto(gs_VersionSistema, gs_IPMaquina, gs_UsuMaquina)
 
         If dt.Rows.Count > 0 Then

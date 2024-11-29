@@ -65,6 +65,8 @@ Public Class F0_Venta2
     Public TerceraLeyenda As String
     Public Cudf As String
 
+    Public nombreGrupos As DataTable
+
 #End Region
 #Region "Metodos Privados"
     Private Sub _IniciarTodo()
@@ -109,7 +111,7 @@ Public Class F0_Venta2
         Dim dtFact As DataTable = L_fnConfParametrosFacturacion()
         gb_OnOff = dtFact.Rows(0).Item("OnOff")
 
-
+        nombreGrupos = L_fnNameLabel()
     End Sub
 
     Public Sub _prCargarNameLabel()
@@ -945,7 +947,9 @@ Public Class F0_Venta2
         If (cbSucursal.SelectedIndex < 0) Then
             Return
         End If
-        Dim nombreGrupos As DataTable = L_fnNameLabel()
+        'Dim nombreGrupos As DataTable = L_fnNameLabel()
+
+
         Dim dt As New DataTable
 
         If (G_Lote = True) Then
@@ -5043,7 +5047,7 @@ salirIf:
 
 
         If TbEmail.Text = String.Empty Then
-            email = "cliente@crex.com.bo"
+            email = "cliente@crex.com.bo".ToUpper
             TbEmail.Text = email
         Else
             email = TbEmail.Text
