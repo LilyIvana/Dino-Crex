@@ -2041,4 +2041,6 @@ salirIf:
     Private Sub swMostrar_ValueChanged(sender As Object, e As EventArgs) Handles swMostrar.ValueChanged
         _prCargarProforma()
     End Sub
+
+
 End Class

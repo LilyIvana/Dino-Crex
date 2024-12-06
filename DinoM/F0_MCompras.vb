@@ -2708,21 +2708,63 @@ salirIf:
     End Sub
 
     Private Sub tbNitProv_KeyDown(sender As Object, e As KeyEventArgs) Handles tbNitProv.KeyDown
+
+        If (_fnAccesible()) Then
+            If e.KeyData = Keys.Control + Keys.Enter Then
+                If tbCodProv.Text <> String.Empty Then
+                    Dim dt As DataTable
+                    dt = L_fnObtenerNitProv(tbCodProv.Text)
+
+                    If dt.Rows.Count = 0 Then
+                        Throw New Exception("Lista de nit vacia")
+                    End If
+                    Dim listEstCeldas As New List(Of Modelo.Celda)
+
+                    listEstCeldas.Add(New Modelo.Celda("sdnumi,", False, "COD", 90))
+                    listEstCeldas.Add(New Modelo.Celda("sdnit", True, "NIT", 90))
+                    listEstCeldas.Add(New Modelo.Celda("sdnom1", True, "RAZÓN SOCIAL", 350))
+                    listEstCeldas.Add(New Modelo.Celda("sdcodprov", False, "COD PROV".ToUpper, 150))
+
+                    Dim ef = New Efecto
+                    ef.tipo = 3
+                    ef.dt = dt
+                    ef.SeleclCol = 2
+                    ef.listEstCeldas = listEstCeldas
+                    ef.alto = 50
+                    ef.ancho = 250
+                    ef.Context = "Seleccione Nit".ToUpper
+                    ef.ShowDialog()
+                    Dim bandera As Boolean = False
+                    bandera = ef.band
+                    If (bandera = True) Then
+                        Dim Row As Janus.Windows.GridEX.GridEXRow = ef.Row
+
+                        tbNitProv.Text = Row.Cells("sdnit").Value
+                        tbRazonSocial.Text = Row.Cells("sdnom1").Value
+
+                        tbObservacion.Focus()
+                    End If
+                Else
+                    ToastNotification.Show(Me, "PRIMERO DEBE SELECCIONAR UN PROVEEDOR...!!!",
+                                      My.Resources.WARNING, 2000,
+                                      eToastGlowColor.Red,
+                                      eToastPosition.BottomCenter
+                                      )
+                End If
+            End If
+        End If
+
         If (e.KeyData = Keys.Enter) Then
             If btnGrabar.Enabled = True Then
-
                 Dim nom1 As String
-
                 nom1 = ""
-
                 If (tbNitProv.Text.Trim <> String.Empty) Then
                     L_Validar_NitCompra(tbNitProv.Text.Trim, nom1, tbCodProv.Text)
                     tbRazonSocial.Text = nom1
-
                 End If
-
             End If
         End If
+
     End Sub
 
     Private Sub btnExportar_Click(sender As Object, e As EventArgs) Handles btnExportar.Click

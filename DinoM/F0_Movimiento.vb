@@ -993,6 +993,11 @@ Public Class F0_Movimiento
                     grproducto.Focus()
                     grproducto.MoveTo(grproducto.FilterRow)
                     grproducto.Col = 1
+
+                    grdetalle.Select()
+                    grdetalle.Col = 7
+                    grdetalle.Row = grdetalle.RowCount - 2
+
                 End If
             Else
                 If (existe) Then
@@ -1143,6 +1148,11 @@ Public Class F0_Movimiento
             c = grdetalle.Col
             f = grdetalle.Row
 
+            grproducto.Focus()
+            grproducto.MoveTo(grproducto.FilterRow)
+            grproducto.Col = 1
+
+
             'If (grdetalle.Col = grdetalle.RootTable.Columns("iccant").Index) Then
             '    If (grdetalle.GetValue("producto") <> String.Empty) Then
             '        _prAddDetalleVenta()
@@ -1192,26 +1202,21 @@ salirIf:
             c = grproducto.Col
             f = grproducto.Row
             If (f >= 0) Then
-
                 If (IsNothing(FilaSelectLote)) Then
                     ''''''''''''''''''''''''
                     If (Lote = True) Then
                         If (cbConcepto.Value = 1) Then ''' Aqui pregunto si es con lote y tambien si es una 
                             ''entrada debe solo insertar solo el producto y no seguir con los lotes 
                             InsertarProductosSinLote()
-
                         Else
                             InsertarProductosConLote()
                         End If
-
                     Else
-
                         InsertarProductosSinLote()
                     End If
                     '''''''''''''''
                 Else
-
-                    '      a.icid ,a.icibid ,a.iccprod ,b.yfcdprod1  as producto,a.iccant ,
+                    'a.icid ,a.icibid ,a.iccprod ,b.yfcdprod1  as producto,a.iccant ,
                     'a.iclot ,a.icfvenc ,Cast(null as image ) as img,1 as estado,
                     '(Sum(inv.iccven )+a.iccant  ) as stock
 
@@ -1233,38 +1238,28 @@ salirIf:
 
                         CType(grdetalle.DataSource, DataTable).Rows(pos).Item("iclot") = grproducto.GetValue("iclot")
                         CType(grdetalle.DataSource, DataTable).Rows(pos).Item("icfvenc") = grproducto.GetValue("icfven")
-
                         CType(grdetalle.DataSource, DataTable).Rows(pos).Item("Laboratorio") = FilaSelectLote.Item("Laboratorio")
                         CType(grdetalle.DataSource, DataTable).Rows(pos).Item("Presentacion") = FilaSelectLote.Item("Presentacion")
                         CType(grdetalle.DataSource, DataTable).Rows(pos).Item("yfcprod") = FilaSelectLote.Item("yfcprod")
 
                         FilaSelectLote = Nothing
                         _DesHabilitarProductos()
-
                     Else
                         Dim img As Bitmap = New Bitmap(My.Resources.mensaje, 50, 50)
                         ToastNotification.Show(Me, "El producto con el lote ya existe modifique su cantidad".ToUpper, img, 2000, eToastGlowColor.Red, eToastPosition.BottomCenter)
                     End If
-
-
-
                 End If
-
-
             End If
         End If
         If e.KeyData = Keys.Escape Then
             CType(grproducto.DataSource, DataTable).Rows.Clear()
-
             _DesHabilitarProductos()
         End If
     End Sub
 
     Private Sub grdetalle_CellValueChanged(sender As Object, e As ColumnActionEventArgs) Handles grdetalle.CellValueChanged
-
         If (e.Column.Index = grdetalle.RootTable.Columns("iccant").Index) Then
             If (Not IsNumeric(grdetalle.GetValue("iccant")) Or grdetalle.GetValue("iccant").ToString = String.Empty) Then
-
                 'grDetalle.GetRow(rowIndex).Cells("cant").Value = 1
                 '  grDetalle.CurrentRow.Cells.Item("cant").Value = 1
                 Dim lin As Integer = grdetalle.GetValue("icid")
@@ -1277,7 +1272,6 @@ salirIf:
                 If (estado = 1) Then
                     CType(grdetalle.DataSource, DataTable).Rows(pos).Item("estado") = 2
                 End If
-
             Else
                 If (grdetalle.GetValue("iccant") > 0) Then
                     Dim lin As Integer = grdetalle.GetValue("icid")
@@ -1288,7 +1282,6 @@ salirIf:
                     If (estado = 1) Then
                         CType(grdetalle.DataSource, DataTable).Rows(pos).Item("estado") = 2
                     End If
-
                 Else
                     Dim lin As Integer = grdetalle.GetValue("icid")
                     Dim pos As Integer = -1
@@ -1299,7 +1292,6 @@ salirIf:
                     If (estado = 1) Then
                         CType(grdetalle.DataSource, DataTable).Rows(pos).Item("estado") = 2
                     End If
-
                 End If
             End If
         End If
@@ -1308,7 +1300,6 @@ salirIf:
     Private Sub grdetalle_CellEdited(sender As Object, e As ColumnActionEventArgs) Handles grdetalle.CellEdited
         If (e.Column.Index = grdetalle.RootTable.Columns("iccant").Index) Then
             If (Not IsNumeric(grdetalle.GetValue("iccant")) Or grdetalle.GetValue("iccant").ToString = String.Empty) Then
-
                 grdetalle.SetValue("iccant", 1)
             Else
                 If (grdetalle.GetValue("iccant") > 0) Then
@@ -1321,15 +1312,10 @@ salirIf:
                         grdetalle.SetValue("iccant", stock)
                         Dim img As Bitmap = New Bitmap(My.Resources.mensaje, 50, 50)
                         ToastNotification.Show(Me, "La cantidad que se quiere sacar es mayor a la que existe en el stock solo puede Sacar : ".ToUpper + Str(stock).Trim,
-                          img,
-                          5000,
-                          eToastGlowColor.Blue,
-                          eToastPosition.BottomLeft)
+                          img, 5000, eToastGlowColor.Blue, eToastPosition.BottomLeft)
                     End If
                 Else
-
                     grdetalle.SetValue("iccant", 1)
-
                 End If
             End If
         End If
@@ -1464,7 +1450,7 @@ salirIf:
     Private Sub grdetalle_Enter(sender As Object, e As EventArgs) Handles grdetalle.Enter
         If (grdetalle.RowCount > 0) Then
             grdetalle.Select()
-            grdetalle.Col = 3
+            grdetalle.Col = 4
             grdetalle.Row = 0
         End If
     End Sub
@@ -1473,7 +1459,6 @@ salirIf:
         If e.KeyData = Keys.Enter Then
             MSuperTabControl.SelectedTabIndex = 0
             grdetalle.Focus()
-
         End If
     End Sub
 

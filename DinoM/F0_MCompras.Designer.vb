@@ -50,6 +50,7 @@ Partial Class F0_MCompras
         Me.PanelContentSup = New System.Windows.Forms.Panel()
         Me.GroupPanel1 = New DevComponents.DotNetBar.Controls.GroupPanel()
         Me.Panel2 = New System.Windows.Forms.Panel()
+        Me.LabelX21 = New DevComponents.DotNetBar.LabelX()
         Me.LabelX18 = New DevComponents.DotNetBar.LabelX()
         Me.tbRazonSocial = New DevComponents.DotNetBar.Controls.TextBoxX()
         Me.lbTipoCambio = New DevComponents.DotNetBar.LabelX()
@@ -388,7 +389,7 @@ Partial Class F0_MCompras
         Me.grdetalle.Office2007ColorScheme = Janus.Windows.GridEX.Office2007ColorScheme.Custom
         Me.grdetalle.Office2007CustomColor = System.Drawing.Color.DodgerBlue
         Me.grdetalle.Size = New System.Drawing.Size(1311, 135)
-        Me.grdetalle.TabIndex = 3
+        Me.grdetalle.TabIndex = 5
         Me.grdetalle.VisualStyle = Janus.Windows.GridEX.VisualStyle.Office2007
         '
         'grdetalle2
@@ -766,6 +767,7 @@ Partial Class F0_MCompras
         '
         Me.Panel2.AutoScroll = True
         Me.Panel2.BackColor = System.Drawing.Color.White
+        Me.Panel2.Controls.Add(Me.LabelX21)
         Me.Panel2.Controls.Add(Me.LabelX18)
         Me.Panel2.Controls.Add(Me.tbRazonSocial)
         Me.Panel2.Controls.Add(Me.lbTipoCambio)
@@ -803,6 +805,22 @@ Partial Class F0_MCompras
         Me.Panel2.Size = New System.Drawing.Size(1311, 207)
         Me.Panel2.TabIndex = 234
         '
+        'LabelX21
+        '
+        Me.LabelX21.BackColor = System.Drawing.Color.Transparent
+        '
+        '
+        '
+        Me.LabelX21.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.LabelX21.Font = New System.Drawing.Font("Georgia", 7.5!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LabelX21.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(85, Byte), Integer), CType(CType(139, Byte), Integer))
+        Me.LabelX21.Location = New System.Drawing.Point(285, 60)
+        Me.LabelX21.Name = "LabelX21"
+        Me.LabelX21.SingleLineColor = System.Drawing.SystemColors.Control
+        Me.LabelX21.Size = New System.Drawing.Size(65, 10)
+        Me.LabelX21.TabIndex = 678
+        Me.LabelX21.Text = "Ctrl+Enter"
+        '
         'LabelX18
         '
         Me.LabelX18.BackColor = System.Drawing.Color.Transparent
@@ -833,7 +851,7 @@ Partial Class F0_MCompras
         Me.tbRazonSocial.Name = "tbRazonSocial"
         Me.tbRazonSocial.PreventEnterBeep = True
         Me.tbRazonSocial.Size = New System.Drawing.Size(265, 22)
-        Me.tbRazonSocial.TabIndex = 355
+        Me.tbRazonSocial.TabIndex = 3
         '
         'lbTipoCambio
         '
@@ -1225,7 +1243,7 @@ Partial Class F0_MCompras
         Me.tbNitProv.Name = "tbNitProv"
         Me.tbNitProv.PreventEnterBeep = True
         Me.tbNitProv.Size = New System.Drawing.Size(150, 22)
-        Me.tbNitProv.TabIndex = 354
+        Me.tbNitProv.TabIndex = 2
         Me.tbNitProv.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         '
         'LabelX6
@@ -1417,7 +1435,7 @@ Partial Class F0_MCompras
         Me.swTipoVenta.OnText = "CONTADO"
         Me.swTipoVenta.Size = New System.Drawing.Size(120, 22)
         Me.swTipoVenta.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-        Me.swTipoVenta.TabIndex = 5
+        Me.swTipoVenta.TabIndex = 300
         Me.swTipoVenta.Value = True
         Me.swTipoVenta.ValueObject = "Y"
         '
@@ -1501,7 +1519,7 @@ Partial Class F0_MCompras
         Me.tbObservacion.PreventEnterBeep = True
         Me.tbObservacion.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
         Me.tbObservacion.Size = New System.Drawing.Size(265, 47)
-        Me.tbObservacion.TabIndex = 358
+        Me.tbObservacion.TabIndex = 4
         '
         'LabelX3
         '
@@ -1948,4 +1966,5 @@ Partial Class F0_MCompras
     Friend WithEvents btnDuplicar As DevComponents.DotNetBar.ButtonX
     Friend WithEvents swMostrar As DevComponents.DotNetBar.Controls.SwitchButton
     Friend WithEvents LabelX20 As DevComponents.DotNetBar.LabelX
+    Friend WithEvents LabelX21 As DevComponents.DotNetBar.LabelX
 End Class

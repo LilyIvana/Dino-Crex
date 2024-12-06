@@ -1318,7 +1318,7 @@ Public Class F0_Venta2
         PanelInferior.Visible = True
 
         grdetalle.Select()
-        grdetalle.Col = 5
+        grdetalle.Col = 6
         grdetalle.Row = grdetalle.RowCount - 1
     End Sub
     Public Sub _fnObtenerFilaDetalle(ByRef pos As Integer, numi As Integer)

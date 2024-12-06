@@ -3859,6 +3859,13 @@ Public Class AccesoLogica
 
         End If
     End Sub
+
+    Public Shared Function L_fnObtenerNitProv(_CodProv As String) As DataTable
+        Dim _Tabla As DataTable
+        _Tabla = D_Datos_Tabla("*", "TS004", " sdcodprov = " + _CodProv + "")
+        Return _Tabla
+    End Function
+
     Public Shared Function L_Dosificacion(_cia As String, _alm As String, _fecha As String) As DataSet
         Dim _Tabla As DataTable
         Dim _Ds As New DataSet
