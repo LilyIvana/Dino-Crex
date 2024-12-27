@@ -830,7 +830,7 @@ Public Class F0_Proforma
                     CType(grdetalle.DataSource, DataTable).Rows(pos).Item("estado") = -2
 
                 End If
-                If (estado = 1) Then
+                If (estado >= 1) Then
                     CType(grdetalle.DataSource, DataTable).Rows(pos).Item("estado") = -1
                 End If
                 grdetalle.RootTable.ApplyFilter(New Janus.Windows.GridEX.GridEXFilterCondition(grdetalle.RootTable.Columns("estado"), Janus.Windows.GridEX.ConditionOperator.GreaterThanOrEqualTo, 0))
@@ -1191,14 +1191,19 @@ Public Class F0_Proforma
             c = grdetalle.Col
             f = grdetalle.Row
 
-            If (grdetalle.Col = grdetalle.RootTable.Columns("pbcmin").Index) Then
-                If (grdetalle.GetValue("producto") <> String.Empty) Then
-                    _prAddDetalleVenta()
-                    _HabilitarProductos()
-                Else
-                    ToastNotification.Show(Me, "Seleccione un Producto Por Favor", My.Resources.WARNING, 3000, eToastGlowColor.Red, eToastPosition.TopCenter)
-                End If
-            End If
+
+            grProductos.Focus()
+            grProductos.MoveTo(grProductos.FilterRow)
+            grProductos.Col = 2
+
+            'If (grdetalle.Col = grdetalle.RootTable.Columns("pbcmin").Index) Then
+            '    If (grdetalle.GetValue("producto") <> String.Empty) Then
+            '        _prAddDetalleVenta()
+            '        _HabilitarProductos()
+            '    Else
+            '        ToastNotification.Show(Me, "Seleccione un Producto Por Favor", My.Resources.WARNING, 3000, eToastGlowColor.Red, eToastPosition.TopCenter)
+            '    End If
+            'End If
             If (grdetalle.Col = grdetalle.RootTable.Columns("producto").Index) Then
                 If (grdetalle.GetValue("producto") <> String.Empty) Then
                     _prAddDetalleVenta()
@@ -1401,7 +1406,7 @@ salirIf:
     End Sub
     Private Sub sumarCantidad(codigo As String)
         Try
-            Dim fila As DataRow() = CType(grdetalle.DataSource, DataTable).Select(" estado=0 and yfcbarra='" + codigo.Trim + "'", "")
+            Dim fila As DataRow() = CType(grdetalle.DataSource, DataTable).Select(" estado>=0 and yfcbarra='" + codigo.Trim + "'", "")
             If (fila.Count > 0) Then
                 grdetalle.UpdateData()
                 Dim pos1 As Integer = -1
@@ -1457,11 +1462,14 @@ salirIf:
 
             CalcularDescuentos(CType(grdetalle.DataSource, DataTable).Rows(pos).Item("pbty5prod"), 1, CType(grdetalle.DataSource, DataTable).Rows(pos).Item("pbpbas"), pos)
             _prCalcularPrecioTotal()
-            _DesHabilitarProductos()
+            '_DesHabilitarProductos()
 
+            _prAddDetalleVenta()
+
+            grdetalle.Select()
             grdetalle.Col = 6
+            grdetalle.Row = grdetalle.RowCount - 2
 
-            '_prAddDetalleVenta()
         Else
             If (existe) Then
                 Dim img As Bitmap = New Bitmap(My.Resources.mensaje, 50, 50)

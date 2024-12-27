@@ -535,7 +535,7 @@ Partial Class P_Principal
         Me.lbVersion.SingleLineColor = System.Drawing.Color.Transparent
         Me.lbVersion.Size = New System.Drawing.Size(127, 18)
         Me.lbVersion.TabIndex = 5
-        Me.lbVersion.Text = "Versión 4.17.0.241213"
+        Me.lbVersion.Text = "Versión 4.18.0.250110"
         Me.lbVersion.TextAlignment = System.Drawing.StringAlignment.Center
         '
         'SideNav1
@@ -544,10 +544,10 @@ Partial Class P_Principal
         Me.SideNav1.BackgroundImage = Global.DinoM.My.Resources.Resources.Fondo_empresarial
         Me.SideNav1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.SideNav1.Controls.Add(Me.SideNavPanel5)
+        Me.SideNav1.Controls.Add(Me.SideNavPanel6)
         Me.SideNav1.Controls.Add(Me.SideNav_Conf)
         Me.SideNav1.Controls.Add(Me.SideNavPanel7)
         Me.SideNav1.Controls.Add(Me.SideNav_Ventas)
-        Me.SideNav1.Controls.Add(Me.SideNavPanel6)
         Me.SideNav1.Controls.Add(Me.SideNavPanel4)
         Me.SideNav1.Controls.Add(Me.SideNavPanel3)
         Me.SideNav1.Controls.Add(Me.SideNav_Logistica)
