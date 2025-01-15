@@ -74,6 +74,10 @@ Public Class F0_Venta2
         MSuperTabControl.SelectedTabIndex = 0
         'Me.WindowState = FormWindowState.Maximized
 
+        tokenObtenido = ObtToken()
+        'CodTipoDocumento(tokenObtenido)
+        ArmarComboTipoDoc(CbTipoDoc)
+
         _prValidarLote()
         _prCargarComboLibreriaSucursal(cbSucursal)
         _prCargarComboLibreria(cbCambioDolar, 7, 1)
@@ -1512,6 +1516,12 @@ Public Class F0_Venta2
                 TbNombre1.Focus()
                 Return False
             End If
+            If tbNit.Text = "0" Or TbNombre1.Text = "S/N" Then
+                ''ToastNotification.Show(Me, "El Nit o razón social no es válida.".ToUpper & vbCrLf & "Debe Ingresar Nit y Razón Social válidos!!!".ToUpper, My.Resources.WARNING, 5000, eToastGlowColor.Red, eToastPosition.TopCenter)
+                Dim img As Bitmap = New Bitmap(My.Resources.mensaje, 50, 50)
+                ToastNotification.Show(Me, "El Nit o razón social no es válida.".ToUpper & vbCrLf & "Debe Ingresar Nit y Razón Social válidos!!!".ToUpper, img, 4500, eToastGlowColor.Red, eToastPosition.BottomCenter)
+                Return False
+            End If
             If gb_OnOff = 1 And CbTipoDoc.Value = 5 Then
                 Dim code = VerifConexion(tokenObtenido)
                 If (code = True) Then
@@ -1767,8 +1777,8 @@ Public Class F0_Venta2
             Dim res As Boolean = L_fnGrabarVenta(numi, "", tbFechaVenta.Value.ToString("yyyy/MM/dd"), _CodEmpleado, IIf(swTipoVenta.Value = True, 1, 0),
                                                  IIf(swTipoVenta.Value = True, Now.Date.ToString("yyyy/MM/dd"), tbFechaVenc.Value.ToString("yyyy/MM/dd")),
                                                  _CodCliente, IIf(swMoneda.Value = True, 1, 0), tbObservacion.Text.Trim, tbMdesc.Value, tbIce.Value,
-                                                 tbTotalBs.Text, dtDetalle, cbSucursal.Value, 0, tabla, gs_NroCaja, Programa, tbNit.Text, TbNombre1.Text.Trim,
-                                                 TbEmail.Text, CbTipoDoc.Value, 1, tbComplemento.Text, tbCel.Text, NroFact, gb_cufSifac, "A-" + _CodCliente.ToString,
+                                                 tbTotalBs.Text, dtDetalle, cbSucursal.Value, 0, tabla, gs_NroCaja, Programa, tbNit.Text.Trim, TbNombre1.Text.Trim.Trim,
+                                                 TbEmail.Text.Trim, CbTipoDoc.Value, 1, tbComplemento.Text, tbCel.Text, NroFact, gb_cufSifac, "A-" + _CodCliente.ToString,
                                                  CStr(Format(a, "####0.00")), CStr(Format(b, "####0.00")), CStr(Format(c, "####0.00")), CStr(Format(d, "####0.00")),
                                                  CStr(Format(e, "####0.00")), CStr(Format(f, "####0.00")), CStr(Format(g, "####0.00")), CStr(Format(h, "####0.00")),
                                                  QrUrl, FactUrl, SegundaLeyenda, TerceraLeyenda, Cudf, Anhio, IIf(gb_FacturaEmite = True, 1, 0), gs_VersionSistema,
@@ -1777,7 +1787,7 @@ Public Class F0_Venta2
             If res Then
                 'Emite factura
                 If (gb_FacturaEmite) Then
-                    If tbNit.Text <> String.Empty Then
+                    If tbNit.Text.Trim <> String.Empty Then
                         ''P_fnGenerarFactura(numi)
 
                         If (Not tbNit.Text.Trim.Equals("0")) Then
@@ -4613,12 +4623,15 @@ salirIf:
     'End Sub
 
     Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
-        tokenObtenido = ObtToken()
+        'tokenObtenido = ObtToken()
+
         'Dim code
         _Inter = _Inter + 1
         If _Inter = 1 Then
             'MetPago(tokenObtenido)
-            CodTipoDocumento(tokenObtenido)
+
+            'CodTipoDocumento(tokenObtenido)
+
             'code = VerifConexion(tokenObtenido)
             'If (code = True) Then
             '    Label1Conn.Text = "ONLINE SIAT"
@@ -5471,7 +5484,6 @@ salirIf:
                     tbCel.Text = cel1
 
                 End If
-
             End If
         End If
     End Sub

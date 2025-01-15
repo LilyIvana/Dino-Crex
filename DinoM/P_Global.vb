@@ -199,6 +199,24 @@ Module P_Global
         End If
         Return False
     End Function
+
+
+    Public Sub ArmarComboTipoDoc(mCombo As Janus.Windows.GridEX.EditControls.MultiColumnCombo)
+        Dim dt As New DataTable
+        dt = L_fnTiposDocIdentidad()
+
+        With mCombo
+            .DropDownList.Columns.Clear()
+            .DropDownList.Columns.Add("codigoClasificador").Width = 70
+            .DropDownList.Columns("codigoClasificador").Caption = "COD"
+            .DropDownList.Columns.Add("descripcion").Width = 500
+            .DropDownList.Columns("descripcion").Caption = "DESCRIPCION"
+            .ValueMember = "codigoClasificador"
+            .DisplayMember = "descripcion"
+            .DataSource = dt
+            .Refresh()
+        End With
+    End Sub
 #End Region
 
 #Region "Configuracion del sistema"

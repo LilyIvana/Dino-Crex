@@ -386,6 +386,8 @@ Public Class F0_VentasSupermercado
         lbCliente.Text = "S/N"
         lbNit.Text = "0"
         cbCanje.SelectedIndex = 1
+        CbTDoc.SelectedIndex = -1
+
 
         _prCargarDetalleVenta(-1)
 
@@ -1443,7 +1445,7 @@ Public Class F0_VentasSupermercado
             Dim h As Double = g * (gi_IVA / 100)
             Dim res As Boolean = L_fnGrabarVenta(numi, "", Now.Date.ToString("yyyy/MM/dd"), Vendedor, 1, Now.Date.ToString("yyyy/MM/dd"), _CodCliente, 1, "",
                                                  tbDescuento.Value, 0, Str(tbTotal.Value), dtDetalle, Sucursal, 0, tabla, gs_NroCaja, Programa,
-                                                 lbNit.Text.Trim, lbCliente.Text.Trim, TbEmailS.Text, CbTDoc.Value, actualizar, ComplementoCI, Cel,
+                                                 lbNit.Text.Trim, lbCliente.Text.Trim, TbEmailS.Text.Trim, CbTDoc.Value, actualizar, ComplementoCI, Cel,
                                                  NroFact, gb_cufSifac, "B-" + IdNit, CStr(Format(a, "####0.00")),
                                                  CStr(Format(b, "####0.00")), CStr(Format(c, "####0.00")), CStr(Format(d, "####0.00")), CStr(Format(e, "####0.00")),
                                                  CStr(Format(f, "####0.00")), CStr(Format(g, "####0.00")), CStr(Format(h, "####0.00")), QrUrl, FactUrl,
@@ -1453,13 +1455,13 @@ Public Class F0_VentasSupermercado
             If res Then
                 'Emite factura
                 If (gb_FacturaEmite) Then
-                    If lbNit.Text <> String.Empty Then
+                    If lbNit.Text.Trim <> String.Empty Then
                         ''P_fnGenerarFactura(numi)
 
                         If (Not lbNit.Text.Trim.Equals("0")) Then
-                            L_Grabar_Nit(lbNit.Text.Trim, lbCliente.Text.Trim, "", CbTDoc.Value, TbEmailS.Text, ComplementoCI, Cel)
+                            L_Grabar_Nit(lbNit.Text.Trim, lbCliente.Text.Trim, "", CbTDoc.Value, TbEmailS.Text.Trim, ComplementoCI, Cel)
                         Else
-                            L_Grabar_Nit(lbNit.Text, "S/N", "", "", "", "", "")
+                            L_Grabar_Nit(lbNit.Text.Trim, "S/N", "", "", "", "", "")
                         End If
 
                         Dim ef = New Efecto
@@ -2569,7 +2571,9 @@ Public Class F0_VentasSupermercado
         'Dim code
 
         'MetPago(tokenObtenido)
-        CodTipoDocumento(tokenObtenido)
+        'CodTipoDocumentoNuevo()
+        ArmarComboTipoDoc(CbTDoc)
+
         Dim code = VerifConexion(tokenObtenido)
         If (code = True) Then
             Label1Conn.Text = "ONLINE SIAT"
@@ -2580,6 +2584,36 @@ Public Class F0_VentasSupermercado
         End If
     End Sub
 
+    Public Function CodTipoDocumentoNuevo()
+
+        Dim dt As New DataTable
+        dt = L_fnTiposDocIdentidad()
+
+        'dt.Columns.Add("codigoClasificador")
+        'dt.Columns.Add("descripcion")
+
+        'dt.Rows.Clear()
+
+        'dt.Rows.Add(1, "CI - CÉDULA DE IDENTIDAD")
+        'dt.Rows.Add(2, "CEX - CÉDULA DE IDENTIDAD DE EXTRANJERO")
+        'dt.Rows.Add(3, "PAS - PASAPORTE")
+        'dt.Rows.Add(4, "OD - OTRO DOCUMENTO DE IDENTIDAD")
+        'dt.Rows.Add(5, "NIT - NÚMERO DE IDENTIFICACIÓN TRIBUTARIA")
+
+        With CbTDoc
+            .DropDownList.Columns.Clear()
+            .DropDownList.Columns.Add("codigoClasificador").Width = 70
+            .DropDownList.Columns("codigoClasificador").Caption = "COD"
+            .DropDownList.Columns.Add("descripcion").Width = 500
+            .DropDownList.Columns("descripcion").Caption = "DESCRIPCION"
+            .ValueMember = "codigoClasificador"
+            .DisplayMember = "descripcion"
+            .DataSource = dt
+            .Refresh()
+        End With
+
+        Return ""
+    End Function
     Private Sub tbProducto_KeyDown(sender As Object, e As KeyEventArgs) Handles tbProducto.KeyDown
         If e.KeyData = Keys.Control + Keys.E Then
 
@@ -2693,15 +2727,13 @@ Public Class F0_VentasSupermercado
 
                 _prGuardar()
             Else
-                ToastNotification.Show(Me, "No se Ingreso Monto a Pagar ", My.Resources.WARNING, 4000, eToastGlowColor.Red, eToastPosition.TopCenter)
-
+                ToastNotification.Show(Me, "No se Ingresó Monto a Pagar.".ToUpper, My.Resources.WARNING, 4000, eToastGlowColor.Red, eToastPosition.TopCenter)
             End If
 
         End If
         If (e.KeyData = Keys.Enter) Then
             If (tbProducto.Text.Trim.Length < 2) Then
                 Return
-
             End If
             cargarProductos()
             Dim codigoBarrasCompleto = tbProducto.Text.Trim

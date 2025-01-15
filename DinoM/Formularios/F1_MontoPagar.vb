@@ -367,7 +367,10 @@ Public Class F1_MontoPagar
 
     Private Sub btnContinuar_Click(sender As Object, e As EventArgs) Handles btnContinuar.Click
         Try
-
+            If tbNit.Text = "0" Or tbRazonSocial.Text = "S/N" Then
+                ToastNotification.Show(Me, "El Nit o razón social no es válida.".ToUpper & vbCrLf & "Debe Ingresar Nit y Razón Social válidos!!!".ToUpper, My.Resources.WARNING, 5000, eToastGlowColor.Red, eToastPosition.TopCenter)
+                Exit Sub
+            End If
             If tbNit.Text = String.Empty Or tbRazonSocial.Text = String.Empty Then
                 ToastNotification.Show(Me, "Debe Ingresar Nit y Razón Social obligatoriamente!!!", My.Resources.WARNING, 3500, eToastGlowColor.Red, eToastPosition.TopCenter)
                 Exit Sub
