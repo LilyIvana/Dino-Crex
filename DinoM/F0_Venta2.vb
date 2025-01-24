@@ -1309,7 +1309,7 @@ Public Class F0_Venta2
         _prCargarProductos(Str(_CodCliente))
         grProductos.Focus()
         grProductos.MoveTo(grProductos.FilterRow)
-        grProductos.Col = 2
+        grProductos.Col = 3
     End Sub
     Private Sub _HabilitarFocoDetalle(fila As Integer)
         _prCargarProductos(Str(_CodCliente))
@@ -1517,7 +1517,6 @@ Public Class F0_Venta2
                 Return False
             End If
             If tbNit.Text = "0" Or TbNombre1.Text = "S/N" Then
-                ''ToastNotification.Show(Me, "El Nit o razón social no es válida.".ToUpper & vbCrLf & "Debe Ingresar Nit y Razón Social válidos!!!".ToUpper, My.Resources.WARNING, 5000, eToastGlowColor.Red, eToastPosition.TopCenter)
                 Dim img As Bitmap = New Bitmap(My.Resources.mensaje, 50, 50)
                 ToastNotification.Show(Me, "El Nit o razón social no es válida.".ToUpper & vbCrLf & "Debe Ingresar Nit y Razón Social válidos!!!".ToUpper, img, 4500, eToastGlowColor.Red, eToastPosition.BottomCenter)
                 Return False
@@ -5179,9 +5178,11 @@ salirIf:
             Dim Mensaje3 = Split(Mensaje2, ".")
 
             Dim MensajeInicial = Mensaje3(0)
-            Dim NroFactUlt = Mensaje3(2).Trim
+
 
             If MensajeInicial = "La Factura No" Then
+                Dim NroFactUlt = Mensaje3(2).Trim
+
                 'Dim Succes As Integer = Emisor(tokenObtenido, False)
                 'If Succes = 200 Then
                 '    _GuardarNuevo()

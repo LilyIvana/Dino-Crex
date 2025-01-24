@@ -407,7 +407,7 @@ Partial Class Pr_StockUtilidad
         Me.LabelX1.SingleLineColor = System.Drawing.SystemColors.Control
         Me.LabelX1.Size = New System.Drawing.Size(72, 21)
         Me.LabelX1.TabIndex = 250
-        Me.LabelX1.Text = "Categoria:"
+        Me.LabelX1.Text = "Categoria Precio:"
         '
         'tbcatprecio
         '
