@@ -995,7 +995,7 @@ Public Class F0_VentasSupermercado
         _prCargarProductos(Str(_CodCliente))
         grProductos.Focus()
         grProductos.MoveTo(grProductos.FilterRow)
-        grProductos.Col = 3
+        grProductos.Col = 2
     End Sub
     Private Sub _HabilitarFocoDetalle(fila As Integer)
         _prCargarProductos(Str(_CodCliente))

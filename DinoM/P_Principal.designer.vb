@@ -535,7 +535,7 @@ Partial Class P_Principal
         Me.lbVersion.SingleLineColor = System.Drawing.Color.Transparent
         Me.lbVersion.Size = New System.Drawing.Size(127, 18)
         Me.lbVersion.TabIndex = 5
-        Me.lbVersion.Text = "Versión 4.18.0.250128"
+        Me.lbVersion.Text = "Versión 4.18.0.250131"
         Me.lbVersion.TextAlignment = System.Drawing.StringAlignment.Center
         '
         'SideNav1
@@ -3466,5 +3466,5 @@ Partial Class P_Principal
     Friend WithEvents btBitacora As DevComponents.DotNetBar.Metro.MetroTileItem
     Friend WithEvents btConsultaPrecios As DevComponents.DotNetBar.Metro.MetroTileItem
     Friend WithEvents btImpresionPrecios As DevComponents.DotNetBar.Metro.MetroTileItem
-    Public WithEvents FP_INVENTARIO As DevComponents.DotNetBar.Controls.SideNavItem
+    Private WithEvents FP_INVENTARIO As DevComponents.DotNetBar.Controls.SideNavItem
 End Class
