@@ -1521,18 +1521,6 @@ Public Class F0_Venta2
                 ToastNotification.Show(Me, "El Nit o razón social no es válida.".ToUpper & vbCrLf & "Debe Ingresar Nit y Razón Social válidos!!!".ToUpper, img, 4500, eToastGlowColor.Red, eToastPosition.BottomCenter)
                 Return False
             End If
-            If gb_OnOff = 1 And CbTipoDoc.Value = 5 Then
-                Dim code = VerifConexion(tokenObtenido)
-                If (code = True) Then
-                    If (CbTipoDoc.Value = 5) Then ''El tipo de Doc. es Nit
-                        Dim tokenSifac As String = F0_Venta2.ObtToken()
-                        Dim Succes As Integer = VerificarNit(tokenSifac)
-                        If Succes <> 200 Then
-                            Return False
-                        End If
-                    End If
-                End If
-            End If
 
             If (chbTarjeta.Checked = True) Then
                 If tbNroTarjeta1.Text = String.Empty Or tbNroTarjeta1.Text = "0" Or tbNroTarjeta1.Text = "0000" Or
@@ -1574,6 +1562,42 @@ Public Class F0_Venta2
                     Return False
                 End If
             End If
+
+            ''Validar el Stock de los productos
+            For i = 0 To CType(grdetalle.DataSource, DataTable).Rows.Count - 1
+                Dim CodPro As Integer = CType(grdetalle.DataSource, DataTable).Rows(i).Item("tbty5prod")
+                Dim Nombre As String = CType(grdetalle.DataSource, DataTable).Rows(i).Item("producto")
+                Dim dt = L_prMovimientoListarUnProducto(cbSucursal.Value, CodPro)
+                If dt.Rows.Count > 0 Then
+                    Dim stock As Double = dt.Rows(0).Item("stock")
+                    If (CType(grdetalle.DataSource, DataTable).Rows(i).Item("estado") >= 0 And CType(grdetalle.DataSource, DataTable).Rows(i).Item("tbcmin") > stock) Then
+                        Dim img As Bitmap = New Bitmap(My.Resources.mensaje, 50, 50)
+                        ToastNotification.Show(Me, "La cantidad del Producto: ".ToUpper + Nombre +
+                                " , es mayor a la que existe en el stock : ".ToUpper + stock.ToString + " . Por favor haga un ajuste al stock.".ToUpper,
+                                  img,
+                                  7000,
+                                  eToastGlowColor.Blue,
+                                  eToastPosition.TopCenter)
+                        Return False
+                    Else
+
+                    End If
+                End If
+            Next
+
+            If gb_OnOff = 1 And CbTipoDoc.Value = 5 Then
+                Dim code = VerifConexion(tokenObtenido)
+                If (code = True) Then
+                    If (CbTipoDoc.Value = 5) Then ''El tipo de Doc. es Nit
+                        Dim tokenSifac As String = F0_Venta2.ObtToken()
+                        Dim Succes As Integer = VerificarNit(tokenSifac)
+                        If Succes <> 200 Then
+                            Return False
+                        End If
+                    End If
+                End If
+            End If
+
             ''Validación para controlar caducidad de Dosificacion
             'If tbNit.Text <> String.Empty Then
             '    Dim fecha As String = Now.Date
@@ -3151,7 +3175,7 @@ Public Class F0_Venta2
                                     End If
                                 Else
                                     grdetalle.DataChanged = False
-                                    ToastNotification.Show(Me, "El código de barra del producto no existe o no tiene stock".ToUpper, My.Resources.WARNING, 3000, eToastGlowColor.Red, eToastPosition.TopCenter)
+                                    ToastNotification.Show(Me, "El código de barra del producto no existe o no tiene stock suficiente".ToUpper, My.Resources.WARNING, 3500, eToastGlowColor.Red, eToastPosition.TopCenter)
                                 End If
 
 
@@ -3789,8 +3813,6 @@ salirIf:
 
                             End If
 
-
-
                             P_PonerTotal(rowIndex)
                             CalculoDescuentoXProveedor()
 
@@ -3799,15 +3821,15 @@ salirIf:
                             Dim lin As Integer = grdetalle.GetValue("tbnumi")
                             Dim pos As Integer = -1
                             _fnObtenerFilaDetalle(pos, lin)
-                            CType(grdetalle.DataSource, DataTable).Rows(pos).Item("tbcmin") = 1
-                            CType(grdetalle.DataSource, DataTable).Rows(pos).Item("tbptot") = CType(grdetalle.DataSource, DataTable).Rows(pos).Item("tbpbas")
+                            'CType(grdetalle.DataSource, DataTable).Rows(pos).Item("tbcmin") = 1
+                            'CType(grdetalle.DataSource, DataTable).Rows(pos).Item("tbptot") = CType(grdetalle.DataSource, DataTable).Rows(pos).Item("tbpbas")
 
-                            CType(grdetalle.DataSource, DataTable).Rows(pos).Item("tbporc") = 0
-                            CType(grdetalle.DataSource, DataTable).Rows(pos).Item("tbdesc") = 0
-                            CType(grdetalle.DataSource, DataTable).Rows(pos).Item("tbtotdesc") = CType(grdetalle.DataSource, DataTable).Rows(pos).Item("tbpbas")
-                            CType(grdetalle.DataSource, DataTable).Rows(pos).Item("tbptot2") = CType(grdetalle.DataSource, DataTable).Rows(pos).Item("tbpcos")
-                            grdetalle.SetValue("tbcmin", 1)
-                            grdetalle.SetValue("tbptot", grdetalle.GetValue("tbpbas"))
+                            'CType(grdetalle.DataSource, DataTable).Rows(pos).Item("tbporc") = 0
+                            'CType(grdetalle.DataSource, DataTable).Rows(pos).Item("tbdesc") = 0
+                            'CType(grdetalle.DataSource, DataTable).Rows(pos).Item("tbtotdesc") = CType(grdetalle.DataSource, DataTable).Rows(pos).Item("tbpbas")
+                            'CType(grdetalle.DataSource, DataTable).Rows(pos).Item("tbptot2") = CType(grdetalle.DataSource, DataTable).Rows(pos).Item("tbpcos")
+                            'grdetalle.SetValue("tbcmin", 1)
+                            'grdetalle.SetValue("tbptot", grdetalle.GetValue("tbpbas"))
 
                             CalcularDescuentos(grdetalle.GetValue("tbty5prod"), grdetalle.GetValue("tbcmin"), grdetalle.GetValue("tbpbas"), pos)
 
@@ -3815,8 +3837,9 @@ salirIf:
                             If UltimaPalabra = "V*" Then
                                 Dim ef = New Efecto
                                 ef.tipo = 2
+                                'Dim Cantidad As Decimal = grdetalle.GetValue("tbcmin")
                                 ef.Context = "¿esta seguro de la cantidad que ingresó?".ToUpper
-                                ef.Header = "Verifique cantidad!!!".ToUpper & vbCrLf & vbCrLf & " Cantidad Ingresada: ".ToUpper + CType(grdetalle.DataSource, DataTable).Rows(pos).Item("tbcmin").ToString
+                                ef.Header = "Verifique cantidad!!!".ToUpper & vbCrLf & vbCrLf & " Cantidad Ingresada: ".ToUpper + grdetalle.GetValue("tbcmin").ToString
                                 ef.ShowDialog()
                                 Dim respuesta As Boolean = False
                                 respuesta = ef.band
@@ -3838,7 +3861,7 @@ salirIf:
                             CalculoDescuentoXProveedor()
 
                             Dim img As Bitmap = New Bitmap(My.Resources.mensaje, 50, 50)
-                            ToastNotification.Show(Me, "La cantidad ingresada es superior a la cantidad disponible que es: ".ToUpper + Str(stock) + " , Primero se debe regularizar el stock".ToUpper, img, 6000, eToastGlowColor.Red, eToastPosition.TopCenter)
+                            ToastNotification.Show(Me, "La cantidad ingresada es superior a la cantidad disponible que es: ".ToUpper + (stock).ToString + " , Primero se debe regularizar el stock".ToUpper, img, 6000, eToastGlowColor.Red, eToastPosition.TopCenter)
 
                         End If
                     Else

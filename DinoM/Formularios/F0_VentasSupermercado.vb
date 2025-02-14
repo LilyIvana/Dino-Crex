@@ -1227,6 +1227,29 @@ Public Class F0_VentasSupermercado
                     Return False
                 End If
             End If
+
+            ''Validar el Stock de los productos
+            For i = 0 To CType(grdetalle.DataSource, DataTable).Rows.Count - 1
+                Dim CodPro As Integer = CType(grdetalle.DataSource, DataTable).Rows(i).Item("tbty5prod")
+                Dim Nombre As String = CType(grdetalle.DataSource, DataTable).Rows(i).Item("producto")
+                Dim dt = L_prMovimientoListarUnProducto(Sucursal, CodPro)
+                If dt.Rows.Count > 0 Then
+                    Dim stock As Double = dt.Rows(0).Item("stock")
+                    If (CType(grdetalle.DataSource, DataTable).Rows(i).Item("estado") >= 0 And CType(grdetalle.DataSource, DataTable).Rows(i).Item("tbcmin") > stock) Then
+                        Dim img As Bitmap = New Bitmap(My.Resources.mensaje, 50, 50)
+                        ToastNotification.Show(Me, "La cantidad del Producto: ".ToUpper + Nombre +
+                                " , es mayor a la que existe en el stock : ".ToUpper + stock.ToString + " . Por favor haga un ajuste al stock.".ToUpper,
+                                  img,
+                                  5500,
+                                  eToastGlowColor.Blue,
+                                  eToastPosition.TopCenter)
+                        Return False
+                    Else
+
+                    End If
+                End If
+            Next
+
             ''Validación para controlar caducidad de Dosificacion
             'If lbNit.Text <> String.Empty Then
             '    Dim fecha As String = Now.Date
@@ -1248,7 +1271,9 @@ Public Class F0_VentasSupermercado
 
     End Function
 
+    Public Sub ValidarStock()
 
+    End Sub
     Public Function rearmarDetalle() As DataTable
         Dim dt, dtDetalle, dtSaldos As DataTable
         Dim cantidadRepetido, contar, IdAux As Integer

@@ -51,7 +51,7 @@ Public Class F0_CierreCaja
         ToastNotification.Show(Me,
                                mensaje.ToUpper,
                                My.Resources.WARNING,
-                               4000,
+                               5000,
                                eToastGlowColor.Red,
                                eToastPosition.TopCenter)
     End Sub
@@ -1100,13 +1100,19 @@ Public Class F0_CierreCaja
                         tbTDeposito.Text = 0
                         tbTEfectivo.Text = 0
                         tbTDiferencia.Text = 0
+
+                        btnCalcular.Enabled = False
                         '_LimpiarGrillas()
                     ElseIf dtIngEgre.Rows.Count > 0 Then
 
                         tbTIngresos.Text = IIf(IsDBNull(dtIngEgre.Compute("Sum(ieMonto)", "ieTipo=1 and ieIdCaja=0")), 0, dtIngEgre.Compute("Sum(ieMonto)", "ieTipo=1 and ieIdCaja=0"))
                         tbTEgresos.Text = IIf(IsDBNull(dtIngEgre.Compute("Sum(ieMonto)", "ieTipo=0 and ieIdCaja=0")), 0, dtIngEgre.Compute("Sum(ieMonto)", "ieTipo=0 and ieIdCaja=0"))
                         tbTotalGral.Text = (tbMontoInicial.Value + tbTContado.Value + tbTPagos.Value + tbTIngresos.Value) - tbTEgresos.Value
+
+                        btnCalcular.Enabled = False
                     Else
+                        tbTotalGral.Text = (tbMontoInicial.Value + tbTContado.Value + tbTPagos.Value + tbTIngresos.Value) - tbTEgresos.Value
+                        btnCalcular.Enabled = False
                         Throw New Exception("No existen ventas y/o pagos de esta fecha o Ya existe Cierre de Caja de esta fecha, Verifique")
                     End If
                 End If
@@ -1224,7 +1230,14 @@ Public Class F0_CierreCaja
             _GrabarNuevo()
         Else
             If (TbCodigo.Text <> String.Empty) Then
-                _prGrabarModificado()
+                If btnCalcular.Enabled = False Then
+                    _prGrabarModificado()
+                Else
+                    Dim img As Bitmap = New Bitmap(My.Resources.mensaje, 50, 50)
+                    ToastNotification.Show(Me, "Antes de grabar primero debe presionar el botón Calcular Ventas y Pagos del día. ".ToUpper, img, 3500, eToastGlowColor.Red, eToastPosition.TopCenter)
+
+                End If
+
             End If
         End If
     End Sub

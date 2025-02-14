@@ -39,6 +39,52 @@ Public Class F_NombreVale
             MEP.SetError(tbNombre, "")
         End If
 
+        If tbNrovale.Text = String.Empty Then
+            tbNrovale.BackColor = Color.Red
+            MEP.SetError(tbNrovale, "Ingrese el o los números de vales!".ToUpper)
+            _ok = False
+        Else
+            tbNrovale.BackColor = Color.White
+            MEP.SetError(tbNrovale, "")
+        End If
+
+        If tbCantVale.Text = String.Empty Or tbCantVale.Value = 0 Then
+            tbCantVale.BackColor = Color.Red
+            MEP.SetError(tbCantVale, "La cantidad de vales no puede estar vacío o ser 0!".ToUpper)
+            _ok = False
+        Else
+            tbCantVale.BackColor = Color.White
+            MEP.SetError(tbCantVale, "")
+        End If
+
+        If tbNombreCli.Text = String.Empty Then
+            tbNombreCli.BackColor = Color.Red
+            MEP.SetError(tbNombreCli, "Ingrese nombre del cliente!".ToUpper)
+            _ok = False
+        Else
+            tbNombreCli.BackColor = Color.White
+            MEP.SetError(tbNombreCli, "")
+        End If
+
+        If tbCICli.Text = String.Empty Then
+            tbCICli.BackColor = Color.Red
+            MEP.SetError(tbCICli, "Ingrese el Carnet de identidad del cliente!".ToUpper)
+            _ok = False
+        Else
+            tbCICli.BackColor = Color.White
+            MEP.SetError(tbCICli, "")
+        End If
+
+        If tbMontoVale.Text = String.Empty Or tbMontoVale.Value = 0 Then
+            tbMontoVale.BackColor = Color.Red
+            MEP.SetError(tbMontoVale, "El monto del vale no puede estar vacío o ser 0!".ToUpper)
+            _ok = False
+        Else
+            tbMontoVale.BackColor = Color.White
+            MEP.SetError(tbMontoVale, "")
+        End If
+
+
         Return _ok
 
     End Function

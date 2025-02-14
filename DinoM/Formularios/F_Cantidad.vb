@@ -42,7 +42,7 @@ Public Class F_Cantidad
                     ''Para controlar que no deje vender cuando no hay stock o la cantidad es mayor al stock que hay
                     If (tbCantidad.Value > Stock) Then
                         Dim img As Bitmap = New Bitmap(My.Resources.mensaje, 50, 50)
-                        ToastNotification.Show(Me, "La cantidad Ingresada " + Str(tbCantidad.Value) + " Es superior a la cantidad Disponible del Producto : " + Str(Stock), img, 5000, eToastGlowColor.Red, eToastPosition.BottomCenter)
+                        ToastNotification.Show(Me, "La cantidad Ingresada: " + (tbCantidad.Value).ToString + " , es superior a la cantidad disponible del Producto : " + Stock.ToString, img, 5000, eToastGlowColor.Red, eToastPosition.BottomCenter)
                         Return
                     Else
                         Cantidad = tbCantidad.Value
@@ -60,7 +60,7 @@ Public Class F_Cantidad
                 ''Para controlar que no deje vender cuando no hay stock o la cantidad es mayor al stock que hay
                 If (tbCantidad.Value > Stock) Then
                     Dim img As Bitmap = New Bitmap(My.Resources.mensaje, 50, 50)
-                    ToastNotification.Show(Me, "La cantidad Ingresada " + Str(tbCantidad.Value) + " Es superior a la cantidad Disponible del Producto : " + Str(Stock), img, 5000, eToastGlowColor.Red, eToastPosition.BottomCenter)
+                    ToastNotification.Show(Me, "La cantidad Ingresada: " + (tbCantidad.Value).ToString + " , es superior a la cantidad disponible del Producto : " + Stock.ToString, img, 5000, eToastGlowColor.Red, eToastPosition.BottomCenter)
                     Return
 
                 Else
