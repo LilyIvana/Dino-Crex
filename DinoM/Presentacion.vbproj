@@ -564,6 +564,12 @@
     <Compile Include="F1_Bitacora.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="F1_ExcelVale.Designer.vb">
+      <DependentUpon>F1_ExcelVale.vb</DependentUpon>
+    </Compile>
+    <Compile Include="F1_ExcelVale.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="F1_ProductosVales.Designer.vb">
       <DependentUpon>F1_ProductosVales.vb</DependentUpon>
     </Compile>
@@ -1788,6 +1794,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="F1_Bitacora.resx">
       <DependentUpon>F1_Bitacora.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="F1_ExcelVale.resx">
+      <DependentUpon>F1_ExcelVale.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="F1_ProductosVales.resx">
       <DependentUpon>F1_ProductosVales.vb</DependentUpon>

@@ -1328,7 +1328,9 @@ Public Class P_Principal
     End Sub
 
     Private Sub btInvRepProdVales_Click(sender As Object, e As EventArgs) Handles btInvRepProdVales.Click
-        Dim frm As New F1_ProductosVales
+        'Dim frm As New F1_ProductosVales
+        Dim frm As New F1_ExcelVale
+
         frm._nameButton = btInvRepProdVales.Name
         frm._modulo = FP_VENTAS
         frm.Show()

@@ -9245,4 +9245,76 @@ Public Class AccesoLogica
         Return _Tabla
     End Function
 #End Region
+
+#Region "VALES"
+    Public Shared Function L_fnGrabarVales(ByRef _idVale As String, _idMov As String, _nombEmp As String, _nroVale As String,
+                                           _cantvale As Integer, _alm As Integer, _fecha As String, _nombCli As String, _ciCli As String,
+                                           _montoVale As Double, _excedente As Double, _beneficio As Double, _obs As String, _subtotal As Double,
+                                           _desc As Double, _total As Double, _NroCaja As Integer, _version As String, _ip As String,
+                                           _usumaquina As String, detalle As DataTable) As Boolean
+        Dim _Tabla As DataTable
+        Dim _resultado As Boolean
+        Dim _listParam As New List(Of Datos.DParametro)
+
+        _listParam.Add(New Datos.DParametro("@tipo", 1))
+        _listParam.Add(New Datos.DParametro("@vanumi", _idVale))
+        _listParam.Add(New Datos.DParametro("@idMovimiento", _idMov))
+        _listParam.Add(New Datos.DParametro("@nombEmp", _nombEmp))
+        _listParam.Add(New Datos.DParametro("@nroVale", _nroVale))
+        _listParam.Add(New Datos.DParametro("@cantVales", _cantvale))
+        _listParam.Add(New Datos.DParametro("@alm", _alm))
+        _listParam.Add(New Datos.DParametro("@fdoc", _fecha))
+        _listParam.Add(New Datos.DParametro("@nombCli", _nombCli))
+        _listParam.Add(New Datos.DParametro("@ci", _ciCli))
+        _listParam.Add(New Datos.DParametro("@MontoVale", _montoVale))
+        _listParam.Add(New Datos.DParametro("@excedente", _excedente))
+        _listParam.Add(New Datos.DParametro("@beneficio", _beneficio))
+        _listParam.Add(New Datos.DParametro("@obs", _obs))
+        _listParam.Add(New Datos.DParametro("@subtotal", _subtotal))
+        _listParam.Add(New Datos.DParametro("@desc", _desc))
+        _listParam.Add(New Datos.DParametro("@total", _total))
+        _listParam.Add(New Datos.DParametro("@Nrocaja", _NroCaja))
+        _listParam.Add(New Datos.DParametro("@version", _version))
+        _listParam.Add(New Datos.DParametro("@ip", _ip))
+        _listParam.Add(New Datos.DParametro("@usumaquina", _usumaquina))
+        _listParam.Add(New Datos.DParametro("@uact", L_Usuario))
+
+
+        _listParam.Add(New Datos.DParametro("@TV0011", "", detalle))
+        _Tabla = D_ProcedimientoConParam("Proc_TVale001", _listParam)
+
+
+        If _Tabla.Rows.Count > 0 Then
+            _idVale = _Tabla.Rows(0).Item(0)
+            _resultado = True
+        Else
+            _resultado = False
+        End If
+
+        Return _resultado
+    End Function
+
+    Public Shared Function L_ValeProductosResumido(fechaI As String, fechaF As String) As DataTable
+        Dim _Tabla As DataTable
+        Dim _listParam As New List(Of Datos.DParametro)
+        _listParam.Add(New Datos.DParametro("@tipo", 5))
+        _listParam.Add(New Datos.DParametro("@fechaI", fechaI))
+        _listParam.Add(New Datos.DParametro("@fechaF", fechaF))
+        _listParam.Add(New Datos.DParametro("@uact", L_Usuario))
+        _Tabla = D_ProcedimientoConParam("Proc_TVale001", _listParam)
+        Return _Tabla
+    End Function
+
+    Public Shared Function L_ValeProductosDetallado(fechaI As String, fechaF As String) As DataTable
+        Dim _Tabla As DataTable
+        Dim _listParam As New List(Of Datos.DParametro)
+        _listParam.Add(New Datos.DParametro("@tipo", 6))
+        _listParam.Add(New Datos.DParametro("@fechaI", fechaI))
+        _listParam.Add(New Datos.DParametro("@fechaF", fechaF))
+        _listParam.Add(New Datos.DParametro("@uact", L_Usuario))
+        _Tabla = D_ProcedimientoConParam("Proc_TVale001", _listParam)
+        Return _Tabla
+    End Function
+#End Region
+
 End Class

@@ -1,30 +1,22 @@
-﻿Imports Logica.AccesoLogica
-Imports Janus.Windows.GridEX
-Imports DevComponents.DotNetBar
+﻿Imports System.Drawing.Printing
 Imports System.IO
-Imports DevComponents.DotNetBar.SuperGrid
-Imports GMap.NET.MapProviders
-Imports GMap.NET
-Imports GMap.NET.WindowsForms.Markers
-Imports GMap.NET.WindowsForms
-Imports GMap.NET.WindowsForms.ToolTips
-Imports System.Drawing
-Imports DevComponents.DotNetBar.Controls
-Imports System.Drawing.Printing
+Imports System.Xml
 Imports CrystalDecisions.Shared
+Imports DevComponents.DotNetBar
+Imports DevComponents.DotNetBar.Controls
+Imports DinoM.ConnSiat
+Imports DinoM.EmisorResp
+Imports DinoM.ListarFacturas
+Imports DinoM.LoginResp
+Imports DinoM.NitResp
+Imports DinoM.RespMetodosPago
+Imports DinoM.RespTipoDoc
 Imports Facturacion
-Imports UTILITIES
-
+Imports Janus.Windows.GridEX
+Imports Logica.AccesoLogica
 'importando librerias api conexion
 Imports Newtonsoft.Json
-Imports DinoM.LoginResp
-Imports DinoM.ConnSiat
-Imports DinoM.RespMetodosPago
-Imports DinoM.EmisorResp
-Imports DinoM.RespTipoDoc
-Imports DinoM.NitResp
-Imports DinoM.ListarFacturas
-Imports System.Xml
+Imports UTILITIES
 
 Public Class F0_VentasSupermercado
 
@@ -1215,7 +1207,7 @@ Public Class F0_VentasSupermercado
                 grdetalle.Row = grdetalle.RowCount - 1
                 If (grdetalle.GetValue("tbty5prod") = 0) Then
                     Dim img As Bitmap = New Bitmap(My.Resources.mensaje, 50, 50)
-                    ToastNotification.Show(Me, "Por Favor Seleccione  un detalle de producto".ToUpper, img, 2000, eToastGlowColor.Red, eToastPosition.TopCenter)
+                    ToastNotification.Show(Me, "Por Favor Seleccione  productos".ToUpper, img, 2000, eToastGlowColor.Red, eToastPosition.TopCenter)
                     Return False
                 End If
 
@@ -4269,6 +4261,13 @@ Public Class F0_VentasSupermercado
     Private Sub btnExportar_Click(sender As Object, e As EventArgs) Handles btnExportar.Click
         Try
             Dim numi As String = ""
+            Dim idVale As String = ""
+            Dim dtDetalle As DataTable = CType(grdetalle.DataSource, DataTable)
+
+            If _ValidarCampos() = False Then
+                Exit Sub
+            End If
+
             'For i = 0 To CType(grdetalle.DataSource, DataTable).Rows.Count - 1
             '    Dim CodPro As Integer = CType(grdetalle.DataSource, DataTable).Rows(i).Item("iccprod")
             '    Dim dt = L_prMovimientoListarUnProducto(1, CodPro)
@@ -4309,41 +4308,61 @@ Public Class F0_VentasSupermercado
             If tabla.Rows.Count > 0 And tabla.Rows(0).Item("tbty5prod") > 0 Then
                 Dim frm As New F_NombreVale
                 Dim nomEmpresa As String
-
+                frm.tbTotalVenta.Value = tbTotal.Value
                 frm.ShowDialog()
                 nomEmpresa = frm.NombreEmpresa
+
 
                 If frm.Aceptar = True Then
                     Dim res As Boolean = L_prMovimientoChoferGrabar(numi, Now.Date.ToString("yyyy/MM/dd"), 2, "VALE VENTA A " + nomEmpresa, 1, 0, 0, tabla, 7, gs_VersionSistema, gs_IPMaquina, gs_UsuMaquina)
 
                     If res Then
-                        P_GenerarReporte(Convert.ToInt32(ENReporte.NOTAVENTA), True, numi, nomEmpresa)
-                        P_GenerarReporte(Convert.ToInt32(ENReporte.NOTAVENTA), False, numi, nomEmpresa)
-                        '_prCrearCarpetaReportes()
+                        ''Grabar en nuevas tablas de Vales
+                        Dim resultado As Boolean = L_fnGrabarVales(idVale, numi, nomEmpresa, frm.tbNrovale.Text, frm.tbCantVale.Text, 1,
+                                                                   Now.Date.ToString("yyyy/MM/dd"), frm.tbNombreCli.Text, frm.tbCICli.Text,
+                                                                   frm.tbMontoVale.Value, frm.tbExcedente.Value, frm.tbBeneficio.Value,
+                                                                   frm.tbObs.Text, (tbTotal.Value + tbDescuento.Value), tbDescuento.Value,
+                                                                   tbTotal.Value, gs_NroCaja, gs_VersionSistema, gs_IPMaquina, gs_UsuMaquina,
+                                                                   dtDetalle)
+                        If resultado Then
+                            P_GenerarReporte(Convert.ToInt32(ENReporte.NOTAVENTA), True, numi, nomEmpresa)
+                            P_GenerarReporte(Convert.ToInt32(ENReporte.NOTAVENTA), False, numi, nomEmpresa)
 
-                        If (Not Directory.Exists(gs_CarpetaRaiz + "\Vales")) Then
-                            Directory.CreateDirectory(gs_CarpetaRaiz + "\Vales")
-                        End If
+                            If (Not Directory.Exists(gs_CarpetaRaiz + "\Vales")) Then
+                                Directory.CreateDirectory(gs_CarpetaRaiz + "\Vales")
+                            End If
 
-                        Dim img As Bitmap = New Bitmap(My.Resources.checked, 50, 50)
-                        If (P_ExportarExcel(RutaGlobal + "\Vales", "VENTAPRODUCTOSVALE" + nomEmpresa)) Then
-                            L_fnBotonImprimirExportar(gs_VersionSistema, gs_IPMaquina, gs_UsuMaquina, 0, "VALE VENTA", "VALE VENTA " + nomEmpresa)
-                            ToastNotification.Show(Me, "SE GRABÓ Y EXPORTÓ EL VALE VENTA DE PRODUCTOS DE FORMA EXITOSA..!!!",
-                                                   img, 3000,
-                                                   eToastGlowColor.Green,
-                                                   eToastPosition.BottomCenter)
+                            Dim img As Bitmap = New Bitmap(My.Resources.checked, 50, 50)
+                            If (P_ExportarExcel(RutaGlobal + "\Vales", "VENTAPRODUCTOSVALE" + nomEmpresa)) Then
+                                L_fnBotonImprimirExportar(gs_VersionSistema, gs_IPMaquina, gs_UsuMaquina, 0, "VALE VENTA", "VALE VENTA " + nomEmpresa)
+                                ToastNotification.Show(Me, "SE GRABÓ Y EXPORTÓ EL VALE VENTA DE PRODUCTOS DE FORMA EXITOSA..!!!",
+                                                       img, 3000,
+                                                       eToastGlowColor.Green,
+                                                       eToastPosition.BottomCenter)
+                            Else
+                                ToastNotification.Show(Me, "FALLÓ EL GRABADO Y LA EXPORTACIÓN DE EL VALE VENTA DE PRODUCTOS..!!!",
+                                                       My.Resources.WARNING, 3000,
+                                                       eToastGlowColor.Red,
+                                                       eToastPosition.BottomCenter)
+                            End If
+
+                            btnExportar.Enabled = False
+
+
                         Else
-                            ToastNotification.Show(Me, "FALLÓ EL GRABADO Y LA EXPORTACIÓN DE EL VALE VENTA DE PRODUCTOS..!!!",
-                                                   My.Resources.WARNING, 3000,
-                                                   eToastGlowColor.Red,
-                                                   eToastPosition.BottomCenter)
+                            L_prMovimientoEliminar(numi, 2, gs_VersionSistema, gs_IPMaquina, gs_UsuMaquina)
+                            btnExportar.Enabled = True
+                            ToastNotification.Show(Me, "FALLÓ EL GRABADO DEL VALE, VUELVA A INTENTARLO..!!!",
+                                                 My.Resources.WARNING, 3000,
+                                                 eToastGlowColor.Red,
+                                                 eToastPosition.BottomCenter)
                         End If
 
-                        btnExportar.Enabled = False
+
                     End If
                 End If
             Else
-                    ToastNotification.Show(Me, "NO EXISTE PRODUCTOS EN EL DETALLE, NO PUEDE GRABAR Y EXPORTAR",
+                ToastNotification.Show(Me, "NO EXISTE PRODUCTOS EN EL DETALLE, NO PUEDE GRABAR Y EXPORTAR",
                            My.Resources.WARNING, 3500,
                            eToastGlowColor.Red,
                            eToastPosition.BottomCenter)

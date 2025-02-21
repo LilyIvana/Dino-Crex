@@ -108,12 +108,22 @@ Public Class F_NombreVale
         End If
     End Sub
 
-    Private Sub tbNombre_KeyPress(sender As Object, e As KeyPressEventArgs) Handles tbNombre.KeyPress
+    Private Sub tbNombre_KeyPress(sender As Object, e As KeyPressEventArgs) Handles tbNombre.KeyPress, tbNrovale.KeyPress, tbNombreCli.KeyPress, tbMontoVale.KeyPress, tbCICli.KeyPress, tbCantVale.KeyPress
         HabilitarEnter(sender, e)
     End Sub
 
     Private Sub btnCancelar_Click(sender As Object, e As EventArgs) Handles btnCancelar.Click
         Aceptar = False
         Me.Close()
+    End Sub
+
+    Private Sub tbMontoVale_ValueChanged(sender As Object, e As EventArgs) Handles tbMontoVale.ValueChanged
+        If (tbTotalVenta.Value > tbMontoVale.Value) Then
+            tbExcedente.Value = tbTotalVenta.Value - tbMontoVale.Value
+            tbBeneficio.Value = 0
+        ElseIf (tbTotalVenta.Value < tbMontoVale.Value) Then
+            tbBeneficio.Value = (tbTotalVenta.Value - tbMontoVale.Value) * (-1)
+            tbExcedente.Value = 0
+        End If
     End Sub
 End Class
