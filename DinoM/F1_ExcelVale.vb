@@ -87,17 +87,17 @@ Public Class F1_ExcelVale
     End Sub
 
     Private Sub _prCrearCarpetaReportes()
-        Dim rutaDestino As String = RutaGlobal + "\Reporte\Reporte Productos\"
+        Dim rutaDestino As String = RutaGlobal + "\Reporte\Reporte Vales\"
 
-        If System.IO.Directory.Exists(RutaGlobal + "\Reporte\Reporte Productos\") = False Then
+        If System.IO.Directory.Exists(RutaGlobal + "\Reporte\Reporte Vales\") = False Then
             If System.IO.Directory.Exists(RutaGlobal + "\Reporte") = False Then
                 System.IO.Directory.CreateDirectory(RutaGlobal + "\Reporte")
-                If System.IO.Directory.Exists(RutaGlobal + "\Reporte\Reporte Productos") = False Then
-                    System.IO.Directory.CreateDirectory(RutaGlobal + "\Reporte\Reporte Productos")
+                If System.IO.Directory.Exists(RutaGlobal + "\Reporte\Reporte Vales") = False Then
+                    System.IO.Directory.CreateDirectory(RutaGlobal + "\Reporte\Reporte Vales")
                 End If
             Else
-                If System.IO.Directory.Exists(RutaGlobal + "\Reporte\Reporte Productos") = False Then
-                    System.IO.Directory.CreateDirectory(RutaGlobal + "\Reporte\Reporte Productos")
+                If System.IO.Directory.Exists(RutaGlobal + "\Reporte\Reporte Vales") = False Then
+                    System.IO.Directory.CreateDirectory(RutaGlobal + "\Reporte\Reporte Vales")
 
                 End If
             End If
@@ -109,7 +109,7 @@ Public Class F1_ExcelVale
         Dim dt As New DataTable
 
         If swTipo.Value = True Then
-            dt = L_ValeProductosResumido(fechaDesde, fechaHasta)
+            dt = L_ValeProductosGeneral(fechaDesde, fechaHasta)
         Else
             dt = L_ValeProductosDetallado(fechaDesde, fechaHasta)
         End If
@@ -121,7 +121,7 @@ Public Class F1_ExcelVale
 
 
             If swTipo.Value = True Then
-                L_fnBotonGenerar(gs_VersionSistema, gs_IPMaquina, gs_UsuMaquina, 0, "VALES RESUMIDOS", "VALES RESUMIDOS")
+                L_fnBotonGenerar(gs_VersionSistema, gs_IPMaquina, gs_UsuMaquina, 0, "VALES GENERALES", "VALES GENERALES")
 
                 With JGrM_Buscador.RootTable.Columns("FechaVenta")
                     .Width = 90
@@ -146,6 +146,11 @@ Public Class F1_ExcelVale
                 With JGrM_Buscador.RootTable.Columns("NroCaja")
                     .Width = 90
                     .Caption = "NRO. CAJA"
+                    .Visible = True
+                End With
+                With JGrM_Buscador.RootTable.Columns("NroFactura")
+                    .Width = 90
+                    .Caption = "NRO. FACTURA"
                     .Visible = True
                 End With
                 With JGrM_Buscador.RootTable.Columns("IdVenta")
@@ -175,12 +180,12 @@ Public Class F1_ExcelVale
                 End With
                 With JGrM_Buscador.RootTable.Columns("Cliente")
                     .Width = 150
-                    .Caption = "CLIENTE"
+                    .Caption = "RAZÓN SOCIAL"
                     .Visible = True
                 End With
                 With JGrM_Buscador.RootTable.Columns("CiCliente")
                     .Width = 100
-                    .Caption = "CI CLIENTE"
+                    .Caption = "CI/NIT"
                     .Visible = True
                 End With
                 With JGrM_Buscador.RootTable.Columns("MontoVale")
@@ -239,6 +244,10 @@ Public Class F1_ExcelVale
                     .Visible = True
                     .Caption = "USUARIO"
                 End With
+                With JGrM_Buscador.RootTable.Columns("Tipo")
+                    .Visible = False
+                End With
+
             Else
                 L_fnBotonGenerar(gs_VersionSistema, gs_IPMaquina, gs_UsuMaquina, 0, "VALES DETALLADOS POR PRODUCTO", "VALES DETALLADOS POR PRODUCTO")
 
@@ -265,6 +274,11 @@ Public Class F1_ExcelVale
                 With JGrM_Buscador.RootTable.Columns("NroCaja")
                     .Width = 90
                     .Caption = "NRO. CAJA"
+                    .Visible = True
+                End With
+                With JGrM_Buscador.RootTable.Columns("NroFactura")
+                    .Width = 90
+                    .Caption = "NRO. FACTURA"
                     .Visible = True
                 End With
                 With JGrM_Buscador.RootTable.Columns("IdVenta")
@@ -294,12 +308,12 @@ Public Class F1_ExcelVale
                 End With
                 With JGrM_Buscador.RootTable.Columns("Cliente")
                     .Width = 150
-                    .Caption = "CLIENTE"
+                    .Caption = "RAZÓN SOCIAL"
                     .Visible = True
                 End With
                 With JGrM_Buscador.RootTable.Columns("CiCliente")
                     .Width = 100
-                    .Caption = "CI CLIENTE"
+                    .Caption = "CI/NIT"
                     .Visible = True
                 End With
                 With JGrM_Buscador.RootTable.Columns("MontoVale")
@@ -451,9 +465,10 @@ Public Class F1_ExcelVale
                     .Visible = True
                     .Caption = "USUARIO"
                 End With
-
+                With JGrM_Buscador.RootTable.Columns("Tipo")
+                    .Visible = False
+                End With
             End If
-
 
             With JGrM_Buscador
                 .DefaultFilterRowComparison = FilterConditionOperator.Contains
@@ -512,7 +527,7 @@ Public Class F1_ExcelVale
                 Dim _escritor As StreamWriter
                 Dim _fila As Integer = JGrM_Buscador.GetRows.Length
                 Dim _columna As Integer = JGrM_Buscador.RootTable.Columns.Count
-                Dim _archivo As String = _ubicacion & "\VentaProductos_" & Now.Date.Day &
+                Dim _archivo As String = _ubicacion & "\RepVentaVales_" & Now.Date.Day &
                     "." & Now.Date.Month & "." & Now.Date.Year & "_" & Now.Hour & "." & Now.Minute & "." & Now.Second & ".csv"
                 Dim _linea As String = ""
                 Dim _filadata = 0, columndata As Int32 = 0
@@ -598,14 +613,14 @@ Public Class F1_ExcelVale
     Private Sub btnExportarExcel_Click(sender As Object, e As EventArgs) Handles btnExportarExcel.Click
         _prCrearCarpetaReportes()
         Dim img As Bitmap = New Bitmap(My.Resources.checked, 50, 50)
-        If (P_ExportarExcel(RutaGlobal + "\Reporte\Reporte Productos")) Then
-            L_fnBotonExportar(gs_VersionSistema, gs_IPMaquina, gs_UsuMaquina, 0, "VENTAS DETALLADAS POR PRODUCTO", "VENTAS DETALLADAS POR PRODUCTO")
-            ToastNotification.Show(Me, "EXPORTACIÓN DE VENTA-PRODUCTOS EXITOSA..!!!",
+        If (P_ExportarExcel(RutaGlobal + "\Reporte\Reporte Vales")) Then
+            L_fnBotonExportar(gs_VersionSistema, gs_IPMaquina, gs_UsuMaquina, 0, "VENTA VALES", "VENTA VALES")
+            ToastNotification.Show(Me, "EXPORTACIÓN DE VENTA-VALES EXITOSA..!!!",
                                        img, 2000,
                                        eToastGlowColor.Green,
                                        eToastPosition.TopCenter)
         Else
-            ToastNotification.Show(Me, "FALLÓ LA EXPORTACIÓN DE VENTA-PRODUCTOS..!!!",
+            ToastNotification.Show(Me, "FALLÓ LA EXPORTACIÓN DE VENTA-VALES..!!!",
                                        My.Resources.WARNING, 2000,
                                        eToastGlowColor.Red,
                                        eToastPosition.TopCenter)

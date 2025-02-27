@@ -36,6 +36,7 @@ Public Class Efecto
     Public CExc As Integer
     Public ComplementoCi As String = ""
     Public cel As String = ""
+    Public obs As String = ""
 
     Public Conversion As Double = 0
     Public CantidadPrevia As Double = 0
@@ -143,6 +144,7 @@ Public Class Efecto
             CExc = frmAyuda.CExcep
             ComplementoCi = frmAyuda.tbComplemento.Text
             cel = frmAyuda.tbCel.Text
+            obs = frmAyuda.tbObs.Text
 
             band = True
             Me.Close()

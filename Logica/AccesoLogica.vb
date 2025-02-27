@@ -9294,7 +9294,7 @@ Public Class AccesoLogica
         Return _resultado
     End Function
 
-    Public Shared Function L_ValeProductosResumido(fechaI As String, fechaF As String) As DataTable
+    Public Shared Function L_ValeProductosGeneral(fechaI As String, fechaF As String) As DataTable
         Dim _Tabla As DataTable
         Dim _listParam As New List(Of Datos.DParametro)
         _listParam.Add(New Datos.DParametro("@tipo", 5))

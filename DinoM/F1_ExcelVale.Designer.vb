@@ -29,14 +29,14 @@ Partial Class F1_ExcelVale
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         Me.GroupPanel2 = New DevComponents.DotNetBar.Controls.GroupPanel()
         Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.LabelX2 = New DevComponents.DotNetBar.LabelX()
+        Me.swTipo = New DevComponents.DotNetBar.Controls.SwitchButton()
         Me.btnExportarExcel = New DevComponents.DotNetBar.ButtonX()
         Me.btnGenerar = New DevComponents.DotNetBar.ButtonX()
         Me.LabelX1 = New DevComponents.DotNetBar.LabelX()
         Me.tbFechaF = New DevComponents.Editors.DateTimeAdv.DateTimeInput()
         Me.LabelX4 = New DevComponents.DotNetBar.LabelX()
         Me.tbFechaI = New DevComponents.Editors.DateTimeAdv.DateTimeInput()
-        Me.LabelX2 = New DevComponents.DotNetBar.LabelX()
-        Me.swTipo = New DevComponents.DotNetBar.Controls.SwitchButton()
         CType(Me.SuperTabPrincipal, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuperTabPrincipal.SuspendLayout()
         Me.SuperTabControlPanelRegistro.SuspendLayout()
@@ -335,6 +335,41 @@ Partial Class F1_ExcelVale
         Me.Panel1.Size = New System.Drawing.Size(1316, 77)
         Me.Panel1.TabIndex = 227
         '
+        'LabelX2
+        '
+        Me.LabelX2.BackColor = System.Drawing.Color.Transparent
+        '
+        '
+        '
+        Me.LabelX2.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.LabelX2.Font = New System.Drawing.Font("Georgia", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LabelX2.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(85, Byte), Integer), CType(CType(139, Byte), Integer))
+        Me.LabelX2.Location = New System.Drawing.Point(212, 30)
+        Me.LabelX2.Name = "LabelX2"
+        Me.LabelX2.SingleLineColor = System.Drawing.SystemColors.Control
+        Me.LabelX2.Size = New System.Drawing.Size(65, 23)
+        Me.LabelX2.TabIndex = 373
+        Me.LabelX2.Text = "Reporte:"
+        '
+        'swTipo
+        '
+        '
+        '
+        '
+        Me.swTipo.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.swTipo.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.swTipo.Location = New System.Drawing.Point(281, 30)
+        Me.swTipo.Name = "swTipo"
+        Me.swTipo.OffBackColor = System.Drawing.Color.Gold
+        Me.swTipo.OffText = "DETALLADO"
+        Me.swTipo.OnBackColor = System.Drawing.Color.LimeGreen
+        Me.swTipo.OnText = "GENERAL"
+        Me.swTipo.Size = New System.Drawing.Size(140, 22)
+        Me.swTipo.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+        Me.swTipo.TabIndex = 372
+        Me.swTipo.Value = True
+        Me.swTipo.ValueObject = "Y"
+        '
         'btnExportarExcel
         '
         Me.btnExportarExcel.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
@@ -488,41 +523,6 @@ Partial Class F1_ExcelVale
         Me.tbFechaI.Size = New System.Drawing.Size(120, 22)
         Me.tbFechaI.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
         Me.tbFechaI.TabIndex = 236
-        '
-        'LabelX2
-        '
-        Me.LabelX2.BackColor = System.Drawing.Color.Transparent
-        '
-        '
-        '
-        Me.LabelX2.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.LabelX2.Font = New System.Drawing.Font("Georgia", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelX2.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(85, Byte), Integer), CType(CType(139, Byte), Integer))
-        Me.LabelX2.Location = New System.Drawing.Point(212, 30)
-        Me.LabelX2.Name = "LabelX2"
-        Me.LabelX2.SingleLineColor = System.Drawing.SystemColors.Control
-        Me.LabelX2.Size = New System.Drawing.Size(65, 23)
-        Me.LabelX2.TabIndex = 373
-        Me.LabelX2.Text = "Reporte:"
-        '
-        'swTipo
-        '
-        '
-        '
-        '
-        Me.swTipo.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.swTipo.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.swTipo.Location = New System.Drawing.Point(281, 30)
-        Me.swTipo.Name = "swTipo"
-        Me.swTipo.OffBackColor = System.Drawing.Color.Gold
-        Me.swTipo.OffText = "DETALLADO"
-        Me.swTipo.OnBackColor = System.Drawing.Color.LimeGreen
-        Me.swTipo.OnText = "RESUMIDO"
-        Me.swTipo.Size = New System.Drawing.Size(140, 22)
-        Me.swTipo.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-        Me.swTipo.TabIndex = 372
-        Me.swTipo.Value = True
-        Me.swTipo.ValueObject = "Y"
         '
         'F1_ExcelVale
         '

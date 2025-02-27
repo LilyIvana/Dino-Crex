@@ -69,7 +69,7 @@ Partial Class F_NombreVale
         Me.tbNombre.Border.Class = "TextBoxBorder"
         Me.tbNombre.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.tbNombre.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.tbNombre.Location = New System.Drawing.Point(159, 80)
+        Me.tbNombre.Location = New System.Drawing.Point(165, 80)
         Me.tbNombre.Name = "tbNombre"
         Me.tbNombre.PreventEnterBeep = True
         Me.tbNombre.Size = New System.Drawing.Size(447, 22)
@@ -83,7 +83,7 @@ Partial Class F_NombreVale
         '
         Me.LabelX6.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.LabelX6.Font = New System.Drawing.Font("Arial", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelX6.Location = New System.Drawing.Point(16, 79)
+        Me.LabelX6.Location = New System.Drawing.Point(22, 79)
         Me.LabelX6.Name = "LabelX6"
         Me.LabelX6.Size = New System.Drawing.Size(127, 23)
         Me.LabelX6.TabIndex = 145
@@ -104,7 +104,7 @@ Partial Class F_NombreVale
         'PictureBox1
         '
         Me.PictureBox1.Dock = System.Windows.Forms.DockStyle.Right
-        Me.PictureBox1.Image = Global.DinoM.My.Resources.Resources.EMPRESA
+        Me.PictureBox1.Image = Global.DinoM.My.Resources.Resources.vale
         Me.PictureBox1.Location = New System.Drawing.Point(543, 5)
         Me.PictureBox1.Name = "PictureBox1"
         Me.PictureBox1.Padding = New System.Windows.Forms.Padding(0, 8, 0, 0)
@@ -151,7 +151,7 @@ Partial Class F_NombreVale
         Me.btnCancelar.Image = Global.DinoM.My.Resources.Resources.cancel
         Me.btnCancelar.ImageFixedSize = New System.Drawing.Size(20, 20)
         Me.btnCancelar.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top
-        Me.btnCancelar.Location = New System.Drawing.Point(323, 379)
+        Me.btnCancelar.Location = New System.Drawing.Point(330, 379)
         Me.btnCancelar.Name = "btnCancelar"
         Me.btnCancelar.RightToLeft = System.Windows.Forms.RightToLeft.Yes
         Me.btnCancelar.Shape = New DevComponents.DotNetBar.RoundRectangleShapeDescriptor(2)
@@ -172,7 +172,7 @@ Partial Class F_NombreVale
         Me.btnAceptar.Image = Global.DinoM.My.Resources.Resources.checked
         Me.btnAceptar.ImageFixedSize = New System.Drawing.Size(20, 20)
         Me.btnAceptar.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top
-        Me.btnAceptar.Location = New System.Drawing.Point(173, 379)
+        Me.btnAceptar.Location = New System.Drawing.Point(180, 379)
         Me.btnAceptar.Name = "btnAceptar"
         Me.btnAceptar.RightToLeft = System.Windows.Forms.RightToLeft.Yes
         Me.btnAceptar.Shape = New DevComponents.DotNetBar.RoundRectangleShapeDescriptor(2)
@@ -190,7 +190,7 @@ Partial Class F_NombreVale
         '
         Me.LabelX1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.LabelX1.Font = New System.Drawing.Font("Arial", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelX1.Location = New System.Drawing.Point(16, 113)
+        Me.LabelX1.Location = New System.Drawing.Point(22, 113)
         Me.LabelX1.Name = "LabelX1"
         Me.LabelX1.Size = New System.Drawing.Size(127, 23)
         Me.LabelX1.TabIndex = 165
@@ -206,7 +206,7 @@ Partial Class F_NombreVale
         Me.tbNrovale.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.tbNrovale.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
         Me.tbNrovale.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.tbNrovale.Location = New System.Drawing.Point(159, 114)
+        Me.tbNrovale.Location = New System.Drawing.Point(165, 114)
         Me.tbNrovale.Name = "tbNrovale"
         Me.tbNrovale.PreventEnterBeep = True
         Me.tbNrovale.Size = New System.Drawing.Size(447, 22)
@@ -220,7 +220,7 @@ Partial Class F_NombreVale
         '
         Me.LabelX2.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.LabelX2.Font = New System.Drawing.Font("Arial", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelX2.Location = New System.Drawing.Point(16, 147)
+        Me.LabelX2.Location = New System.Drawing.Point(22, 147)
         Me.LabelX2.Name = "LabelX2"
         Me.LabelX2.Size = New System.Drawing.Size(127, 23)
         Me.LabelX2.TabIndex = 167
@@ -236,7 +236,7 @@ Partial Class F_NombreVale
         Me.tbNombreCli.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.tbNombreCli.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
         Me.tbNombreCli.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.tbNombreCli.Location = New System.Drawing.Point(159, 180)
+        Me.tbNombreCli.Location = New System.Drawing.Point(165, 180)
         Me.tbNombreCli.Name = "tbNombreCli"
         Me.tbNombreCli.PreventEnterBeep = True
         Me.tbNombreCli.Size = New System.Drawing.Size(447, 22)
@@ -250,7 +250,7 @@ Partial Class F_NombreVale
         '
         Me.LabelX3.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.LabelX3.Font = New System.Drawing.Font("Arial", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelX3.Location = New System.Drawing.Point(16, 180)
+        Me.LabelX3.Location = New System.Drawing.Point(22, 180)
         Me.LabelX3.Name = "LabelX3"
         Me.LabelX3.Size = New System.Drawing.Size(127, 23)
         Me.LabelX3.TabIndex = 169
@@ -266,7 +266,7 @@ Partial Class F_NombreVale
         Me.tbCICli.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.tbCICli.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
         Me.tbCICli.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.tbCICli.Location = New System.Drawing.Point(159, 212)
+        Me.tbCICli.Location = New System.Drawing.Point(165, 212)
         Me.tbCICli.Name = "tbCICli"
         Me.tbCICli.PreventEnterBeep = True
         Me.tbCICli.Size = New System.Drawing.Size(148, 22)
@@ -280,11 +280,11 @@ Partial Class F_NombreVale
         '
         Me.LabelX4.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.LabelX4.Font = New System.Drawing.Font("Arial", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelX4.Location = New System.Drawing.Point(16, 212)
+        Me.LabelX4.Location = New System.Drawing.Point(22, 212)
         Me.LabelX4.Name = "LabelX4"
         Me.LabelX4.Size = New System.Drawing.Size(127, 23)
         Me.LabelX4.TabIndex = 171
-        Me.LabelX4.Text = "CI CLIENTE:"
+        Me.LabelX4.Text = "CI/NIT CLIENTE:"
         '
         'LabelX5
         '
@@ -294,7 +294,7 @@ Partial Class F_NombreVale
         '
         Me.LabelX5.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.LabelX5.Font = New System.Drawing.Font("Arial", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelX5.Location = New System.Drawing.Point(16, 247)
+        Me.LabelX5.Location = New System.Drawing.Point(22, 247)
         Me.LabelX5.Name = "LabelX5"
         Me.LabelX5.Size = New System.Drawing.Size(127, 23)
         Me.LabelX5.TabIndex = 173
@@ -308,7 +308,7 @@ Partial Class F_NombreVale
         '
         Me.LabelX7.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.LabelX7.Font = New System.Drawing.Font("Arial", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelX7.Location = New System.Drawing.Point(16, 280)
+        Me.LabelX7.Location = New System.Drawing.Point(22, 280)
         Me.LabelX7.Name = "LabelX7"
         Me.LabelX7.Size = New System.Drawing.Size(127, 23)
         Me.LabelX7.TabIndex = 175
@@ -325,7 +325,7 @@ Partial Class F_NombreVale
         Me.tbMontoVale.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.tbMontoVale.ForeColor = System.Drawing.Color.Black
         Me.tbMontoVale.Increment = 1.0R
-        Me.tbMontoVale.Location = New System.Drawing.Point(159, 245)
+        Me.tbMontoVale.Location = New System.Drawing.Point(165, 245)
         Me.tbMontoVale.MinValue = 0R
         Me.tbMontoVale.Name = "tbMontoVale"
         Me.tbMontoVale.Size = New System.Drawing.Size(148, 24)
@@ -340,10 +340,11 @@ Partial Class F_NombreVale
         Me.tbExcedente.BackgroundStyle.Class = "DateTimeInputBackground"
         Me.tbExcedente.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.tbExcedente.ButtonFreeText.Shortcut = DevComponents.DotNetBar.eShortcut.F2
+        Me.tbExcedente.Enabled = False
         Me.tbExcedente.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.tbExcedente.ForeColor = System.Drawing.Color.Black
         Me.tbExcedente.Increment = 1.0R
-        Me.tbExcedente.Location = New System.Drawing.Point(159, 278)
+        Me.tbExcedente.Location = New System.Drawing.Point(165, 278)
         Me.tbExcedente.MinValue = 0R
         Me.tbExcedente.Name = "tbExcedente"
         Me.tbExcedente.Size = New System.Drawing.Size(148, 24)
@@ -359,7 +360,7 @@ Partial Class F_NombreVale
         Me.tbCantVale.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.tbCantVale.ButtonFreeText.Shortcut = DevComponents.DotNetBar.eShortcut.F2
         Me.tbCantVale.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!)
-        Me.tbCantVale.Location = New System.Drawing.Point(159, 147)
+        Me.tbCantVale.Location = New System.Drawing.Point(165, 147)
         Me.tbCantVale.Name = "tbCantVale"
         Me.tbCantVale.Size = New System.Drawing.Size(148, 22)
         Me.tbCantVale.TabIndex = 2
@@ -375,11 +376,12 @@ Partial Class F_NombreVale
         Me.tbBeneficio.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.tbBeneficio.ForeColor = System.Drawing.Color.Black
         Me.tbBeneficio.Increment = 1.0R
-        Me.tbBeneficio.Location = New System.Drawing.Point(323, 278)
+        Me.tbBeneficio.Location = New System.Drawing.Point(329, 278)
         Me.tbBeneficio.MinValue = 0R
         Me.tbBeneficio.Name = "tbBeneficio"
         Me.tbBeneficio.Size = New System.Drawing.Size(148, 24)
         Me.tbBeneficio.TabIndex = 102
+        Me.tbBeneficio.Visible = False
         Me.tbBeneficio.WatermarkAlignment = DevComponents.Editors.eTextAlignment.Right
         '
         'tbTotalVenta
@@ -393,11 +395,12 @@ Partial Class F_NombreVale
         Me.tbTotalVenta.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.tbTotalVenta.ForeColor = System.Drawing.Color.Black
         Me.tbTotalVenta.Increment = 1.0R
-        Me.tbTotalVenta.Location = New System.Drawing.Point(323, 245)
+        Me.tbTotalVenta.Location = New System.Drawing.Point(329, 245)
         Me.tbTotalVenta.MinValue = 0R
         Me.tbTotalVenta.Name = "tbTotalVenta"
         Me.tbTotalVenta.Size = New System.Drawing.Size(148, 24)
         Me.tbTotalVenta.TabIndex = 101
+        Me.tbTotalVenta.Visible = False
         Me.tbTotalVenta.WatermarkAlignment = DevComponents.Editors.eTextAlignment.Right
         '
         'tbObs
@@ -408,8 +411,9 @@ Partial Class F_NombreVale
         '
         Me.tbObs.Border.Class = "TextBoxBorder"
         Me.tbObs.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.tbObs.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
         Me.tbObs.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.tbObs.Location = New System.Drawing.Point(159, 312)
+        Me.tbObs.Location = New System.Drawing.Point(165, 312)
         Me.tbObs.Multiline = True
         Me.tbObs.Name = "tbObs"
         Me.tbObs.PreventEnterBeep = True
@@ -425,7 +429,7 @@ Partial Class F_NombreVale
         '
         Me.LabelX8.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.LabelX8.Font = New System.Drawing.Font("Arial", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelX8.Location = New System.Drawing.Point(16, 311)
+        Me.LabelX8.Location = New System.Drawing.Point(22, 311)
         Me.LabelX8.Name = "LabelX8"
         Me.LabelX8.Size = New System.Drawing.Size(127, 23)
         Me.LabelX8.TabIndex = 183

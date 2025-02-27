@@ -429,20 +429,11 @@ Public Class F1_Clientes
 
     Public Overrides Function _PMOGrabarRegistro() As Boolean
 
-        'ByRef _ydnumi As String, _ydcod As String,
-        '                                       _yddesc As String, _ydzona As Integer,
-        '                                       _yddct As Integer, _yddctnum As String,
-        '                                       _yddirec As String, _ydtelf1 As String,
-        '                                       _ydtelf2 As String, _ydcat As Integer, _ydest As Integer, _ydlat As Double, _ydlongi As Double, _ydobs As String,
-        '                                       _ydfnac As String, _ydnomfac As String,
-        '                                       _ydtip As Integer, _ydnit As String, _ydfecing As String, _ydultvent As String, _ydimg As String
-
-        Dim res As Boolean = L_fnGrabarCLiente(tbCodigoOriginal.Text, tbCodCliente.Text, tbRazonSocial.Text, tbNombre.Text, NumiVendedor, cbZona.Value, cbTipoDoc.Value,
+        Dim res As Boolean = L_fnGrabarCLiente(tbCodigoOriginal.Text, tbCodCliente.Text, tbRazonSocial.Text.Trim, tbNombre.Text.Trim, NumiVendedor, cbZona.Value, cbTipoDoc.Value,
                                                tbNdoc.Text, tbDireccion.Text, tbTelf1.Text, tbTelf2.Text, cbCatPrec.Value, IIf(swEstado.Value = True, 1, 0),
-                                               _latitud, _longitud, tbObs.Text, tbFnac.Value.ToString("yyyy/MM/dd"), tbNombFac.Text, _Tipo, tbNit.Text, Tbdias.Text,
+                                               _latitud, _longitud, tbObs.Text, tbFnac.Value.ToString("yyyy/MM/dd"), tbNombFac.Text.Trim, _Tipo, tbNit.Text.Trim, Tbdias.Text,
                                                TbLCred.Text, tbFIngr.Value.ToString("yyyy/MM/dd"), tbUltVenta.Value.ToString("yyyy/MM/dd"), nameImg, cbVisita.Value,
                                                "", cbTipoDoc.Value, gs_VersionSistema, gs_IPMaquina, gs_UsuMaquina)
-
 
         If res Then
             Modificado = False

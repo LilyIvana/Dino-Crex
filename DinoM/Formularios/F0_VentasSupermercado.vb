@@ -71,6 +71,7 @@ Public Class F0_VentasSupermercado
     Public IdNit As String
     Public ComplementoCI As String
     Public Cel As String
+    Public Observacion As String
 
     Public SwFacturaClick As Boolean = False
     Dim RutaGlobal As String = gs_CarpetaRaiz
@@ -1460,7 +1461,7 @@ Public Class F0_VentasSupermercado
             Dim f As Double = 0
             Dim g As Double = e - f
             Dim h As Double = g * (gi_IVA / 100)
-            Dim res As Boolean = L_fnGrabarVenta(numi, "", Now.Date.ToString("yyyy/MM/dd"), Vendedor, 1, Now.Date.ToString("yyyy/MM/dd"), _CodCliente, 1, "",
+            Dim res As Boolean = L_fnGrabarVenta(numi, "", Now.Date.ToString("yyyy/MM/dd"), Vendedor, 1, Now.Date.ToString("yyyy/MM/dd"), _CodCliente, 1, Observacion.Trim,
                                                  tbDescuento.Value, 0, Str(tbTotal.Value), dtDetalle, Sucursal, 0, tabla, gs_NroCaja, Programa,
                                                  lbNit.Text.Trim, lbCliente.Text.Trim, TbEmailS.Text.Trim, CbTDoc.Value, actualizar, ComplementoCI, Cel,
                                                  NroFact, gb_cufSifac, "B-" + IdNit, CStr(Format(a, "####0.00")),
@@ -2641,7 +2642,7 @@ Public Class F0_VentasSupermercado
 
             Dim listEstCeldas As New List(Of Modelo.Celda)
             listEstCeldas.Add(New Modelo.Celda("ydnumi,", True, "ID", 50))
-            listEstCeldas.Add(New Modelo.Celda("ydcod", False, "ID", 50))
+            listEstCeldas.Add(New Modelo.Celda("ydcod", True, "COD CLIENTE", 100))
             listEstCeldas.Add(New Modelo.Celda("ydrazonsocial", True, "RAZÓN SOCIAL", 180))
             listEstCeldas.Add(New Modelo.Celda("yddesc", True, "NOMBRE", 280))
             listEstCeldas.Add(New Modelo.Celda("yddctnum", True, "N. Documento".ToUpper, 150))
@@ -2741,6 +2742,7 @@ Public Class F0_VentasSupermercado
                 CodExcepcion = ef.CExc
                 ComplementoCI = ef.ComplementoCi
                 Cel = ef.cel
+                Observacion = ef.obs
 
                 _prGuardar()
             Else
