@@ -121,7 +121,7 @@ Public Class F1_ExcelVale
 
 
             If swTipo.Value = True Then
-                L_fnBotonGenerar(gs_VersionSistema, gs_IPMaquina, gs_UsuMaquina, 0, "VALES GENERALES", "VALES GENERALES")
+                L_fnBotonGenerar(gs_VersionSistema, gs_IPMaquina, gs_UsuMaquina, 0, "REPORTE VALES GENERALES", "REPORTE VALES GENERALES")
 
                 With JGrM_Buscador.RootTable.Columns("FechaVenta")
                     .Width = 90
@@ -249,7 +249,7 @@ Public Class F1_ExcelVale
                 End With
 
             Else
-                L_fnBotonGenerar(gs_VersionSistema, gs_IPMaquina, gs_UsuMaquina, 0, "VALES DETALLADOS POR PRODUCTO", "VALES DETALLADOS POR PRODUCTO")
+                L_fnBotonGenerar(gs_VersionSistema, gs_IPMaquina, gs_UsuMaquina, 0, "REPORTE VALES DETALLADOS POR PRODUCTO", "REPORTE VALES DETALLADOS POR PRODUCTO")
 
                 With JGrM_Buscador.RootTable.Columns("FechaVenta")
                     .Width = 90
@@ -614,13 +614,13 @@ Public Class F1_ExcelVale
         _prCrearCarpetaReportes()
         Dim img As Bitmap = New Bitmap(My.Resources.checked, 50, 50)
         If (P_ExportarExcel(RutaGlobal + "\Reporte\Reporte Vales")) Then
-            L_fnBotonExportar(gs_VersionSistema, gs_IPMaquina, gs_UsuMaquina, 0, "VENTA VALES", "VENTA VALES")
-            ToastNotification.Show(Me, "EXPORTACIÓN DE VENTA-VALES EXITOSA..!!!",
+            L_fnBotonExportar(gs_VersionSistema, gs_IPMaquina, gs_UsuMaquina, 0, "REPORTE VALES", "REPORTE VALES")
+            ToastNotification.Show(Me, "EXPORTACIÓN DE REPORTE VALES EXITOSA..!!!",
                                        img, 2000,
                                        eToastGlowColor.Green,
                                        eToastPosition.TopCenter)
         Else
-            ToastNotification.Show(Me, "FALLÓ LA EXPORTACIÓN DE VENTA-VALES..!!!",
+            ToastNotification.Show(Me, "FALLÓ LA EXPORTACIÓN DE REPORTE VALES..!!!",
                                        My.Resources.WARNING, 2000,
                                        eToastGlowColor.Red,
                                        eToastPosition.TopCenter)

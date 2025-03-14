@@ -9294,6 +9294,31 @@ Public Class AccesoLogica
         Return _resultado
     End Function
 
+    Public Shared Function L_fnGeneralVale(mostrar As Integer) As DataTable
+        Dim _Tabla As DataTable
+
+        Dim _listParam As New List(Of Datos.DParametro)
+
+        _listParam.Add(New Datos.DParametro("@tipo", 3))
+        _listParam.Add(New Datos.DParametro("@mostrar", mostrar))
+        _listParam.Add(New Datos.DParametro("@uact", L_Usuario))
+        _Tabla = D_ProcedimientoConParam("Proc_TVale001", _listParam)
+
+        Return _Tabla
+    End Function
+    Public Shared Function L_fnDetalleVale(_numi As String) As DataTable
+        Dim _Tabla As DataTable
+
+        Dim _listParam As New List(Of Datos.DParametro)
+
+        _listParam.Add(New Datos.DParametro("@tipo", 4))
+        _listParam.Add(New Datos.DParametro("@vanumi", _numi))
+        _listParam.Add(New Datos.DParametro("@uact", L_Usuario))
+        _Tabla = D_ProcedimientoConParam("Proc_TVale001", _listParam)
+
+        Return _Tabla
+    End Function
+
     Public Shared Function L_ValeProductosGeneral(fechaI As String, fechaF As String) As DataTable
         Dim _Tabla As DataTable
         Dim _listParam As New List(Of Datos.DParametro)

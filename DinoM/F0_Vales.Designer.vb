@@ -1,9 +1,9 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
-Partial Class F0_Proforma
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
+Partial Class F0_Vales
     Inherits Modelo.ModeloF0
 
     'Form reemplaza a Dispose para limpiar la lista de componentes.
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
             If disposing AndAlso components IsNot Nothing Then
@@ -20,42 +20,46 @@ Partial Class F0_Proforma
     'NOTA: el Diseñador de Windows Forms necesita el siguiente procedimiento
     'Se puede modificar usando el Diseñador de Windows Forms.  
     'No lo modifique con el editor de código.
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(F0_Proforma))
-        Dim cbSucursal_DesignTimeLayout As Janus.Windows.GridEX.GridEXLayout = New Janus.Windows.GridEX.GridEXLayout()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(F0_Vales))
         Me.SuperTabItem1 = New DevComponents.DotNetBar.SuperTabItem()
         Me.SuperTabControlPanel2 = New DevComponents.DotNetBar.SuperTabControlPanel()
         Me.TableLayoutPanel1 = New System.Windows.Forms.TableLayoutPanel()
         Me.PanelVentas = New System.Windows.Forms.Panel()
         Me.GroupPanel2 = New DevComponents.DotNetBar.Controls.GroupPanel()
         Me.Panel6 = New System.Windows.Forms.Panel()
-        Me.grVentas = New Janus.Windows.GridEX.GridEX()
+        Me.grVales = New Janus.Windows.GridEX.GridEX()
         Me.PanelContentSup = New System.Windows.Forms.Panel()
         Me.GroupPanel1 = New DevComponents.DotNetBar.Controls.GroupPanel()
         Me.Panel2 = New System.Windows.Forms.Panel()
-        Me.LabelX5 = New DevComponents.DotNetBar.LabelX()
-        Me.tbContacto = New DevComponents.DotNetBar.Controls.TextBoxX()
-        Me.LabelX27 = New DevComponents.DotNetBar.LabelX()
-        Me.tbTelf = New DevComponents.DotNetBar.Controls.TextBoxX()
-        Me.TbNomCliente = New DevComponents.DotNetBar.Controls.TextBoxX()
-        Me.LabelX6 = New DevComponents.DotNetBar.LabelX()
-        Me.LabelX29 = New DevComponents.DotNetBar.LabelX()
-        Me.swMostrar = New DevComponents.DotNetBar.Controls.SwitchButton()
-        Me.LabelX17 = New DevComponents.DotNetBar.LabelX()
-        Me.cbSucursal = New Janus.Windows.GridEX.EditControls.MultiColumnCombo()
-        Me.lbTipoMoneda = New DevComponents.DotNetBar.LabelX()
-        Me.swMoneda = New DevComponents.DotNetBar.Controls.SwitchButton()
-        Me.LabelX4 = New DevComponents.DotNetBar.LabelX()
-        Me.tbFechaVenta = New DevComponents.Editors.DateTimeAdv.DateTimeInput()
-        Me.LabelX1 = New DevComponents.DotNetBar.LabelX()
-        Me.tbObservacion = New DevComponents.DotNetBar.Controls.TextBoxX()
+        Me.Panel3 = New System.Windows.Forms.Panel()
+        Me.LabelX23 = New DevComponents.DotNetBar.LabelX()
+        Me.tbCodMovimiento = New DevComponents.DotNetBar.Controls.TextBoxX()
+        Me.tbBeneficio = New DevComponents.Editors.DoubleInput()
+        Me.LabelX22 = New DevComponents.DotNetBar.LabelX()
+        Me.tbExcedente = New DevComponents.Editors.DoubleInput()
+        Me.tbMontoVale = New DevComponents.Editors.DoubleInput()
+        Me.tbCantVale = New DevComponents.Editors.IntegerInput()
+        Me.LabelX21 = New DevComponents.DotNetBar.LabelX()
+        Me.LabelX20 = New DevComponents.DotNetBar.LabelX()
+        Me.tbNroVales = New DevComponents.DotNetBar.Controls.TextBoxX()
+        Me.LabelX19 = New DevComponents.DotNetBar.LabelX()
         Me.LabelX10 = New DevComponents.DotNetBar.LabelX()
-        Me.LabelX3 = New DevComponents.DotNetBar.LabelX()
-        Me.tbVendedor = New DevComponents.DotNetBar.Controls.TextBoxX()
+        Me.tbEmpresa = New DevComponents.DotNetBar.Controls.TextBoxX()
+        Me.LabelX12 = New DevComponents.DotNetBar.LabelX()
+        Me.tbNit = New DevComponents.DotNetBar.Controls.TextBoxX()
+        Me.LabelX14 = New DevComponents.DotNetBar.LabelX()
         Me.tbCliente = New DevComponents.DotNetBar.Controls.TextBoxX()
         Me.LabelX2 = New DevComponents.DotNetBar.LabelX()
+        Me.LabelX15 = New DevComponents.DotNetBar.LabelX()
+        Me.swMostrar = New DevComponents.DotNetBar.Controls.SwitchButton()
+        Me.LabelX16 = New DevComponents.DotNetBar.LabelX()
+        Me.dtFecha = New DevComponents.Editors.DateTimeAdv.DateTimeInput()
+        Me.LabelX17 = New DevComponents.DotNetBar.LabelX()
+        Me.tbObservacion = New DevComponents.DotNetBar.Controls.TextBoxX()
+        Me.LabelX18 = New DevComponents.DotNetBar.LabelX()
         Me.tbCodigo = New DevComponents.DotNetBar.Controls.TextBoxX()
         Me.PanelDetalle = New System.Windows.Forms.Panel()
         Me.GroupPanel4 = New DevComponents.DotNetBar.Controls.GroupPanel()
@@ -72,10 +76,6 @@ Partial Class F0_Proforma
         Me.tbSubTotal = New DevComponents.Editors.DoubleInput()
         Me.LabelX11 = New DevComponents.DotNetBar.LabelX()
         Me.LabelX9 = New DevComponents.DotNetBar.LabelX()
-        Me.LabelX8 = New DevComponents.DotNetBar.LabelX()
-        Me.tbIce = New DevComponents.Editors.DoubleInput()
-        Me.tbPdesc = New DevComponents.Editors.DoubleInput()
-        Me.lbIce = New DevComponents.DotNetBar.LabelX()
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         Me.PanelSuperior.SuspendLayout()
         Me.PanelInferior.SuspendLayout()
@@ -98,12 +98,16 @@ Partial Class F0_Proforma
         Me.PanelVentas.SuspendLayout()
         Me.GroupPanel2.SuspendLayout()
         Me.Panel6.SuspendLayout()
-        CType(Me.grVentas, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.grVales, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.PanelContentSup.SuspendLayout()
         Me.GroupPanel1.SuspendLayout()
         Me.Panel2.SuspendLayout()
-        CType(Me.cbSucursal, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.tbFechaVenta, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.Panel3.SuspendLayout()
+        CType(Me.tbBeneficio, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.tbExcedente, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.tbMontoVale, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.tbCantVale, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.dtFecha, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.PanelDetalle.SuspendLayout()
         Me.GroupPanel4.SuspendLayout()
         Me.Panel5.SuspendLayout()
@@ -116,8 +120,6 @@ Partial Class F0_Proforma
         CType(Me.tbMdesc, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.tbtotal, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.tbSubTotal, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.tbIce, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.tbPdesc, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'PanelSuperior
@@ -275,10 +277,11 @@ Partial Class F0_Proforma
         Me.MSuperTabControl.ControlBox.SubItems.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.MSuperTabControl.ControlBox.MenuBox, Me.MSuperTabControl.ControlBox.CloseBox})
         Me.MSuperTabControl.Controls.Add(Me.SuperTabControlPanel2)
         Me.MSuperTabControl.Margin = New System.Windows.Forms.Padding(4)
+        Me.MSuperTabControl.SelectedTabIndex = 1
         Me.MSuperTabControl.Size = New System.Drawing.Size(1344, 590)
         Me.MSuperTabControl.Tabs.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.SuperTabItem1})
-        Me.MSuperTabControl.Controls.SetChildIndex(Me.SuperTabControlPanel2, 0)
         Me.MSuperTabControl.Controls.SetChildIndex(Me.MSuperTabControlPanel1, 0)
+        Me.MSuperTabControl.Controls.SetChildIndex(Me.SuperTabControlPanel2, 0)
         '
         'PictureBox1
         '
@@ -287,6 +290,7 @@ Partial Class F0_Proforma
         '
         'btnNuevo
         '
+        Me.btnNuevo.Visible = False
         '
         'SuperTabItem1
         '
@@ -301,7 +305,7 @@ Partial Class F0_Proforma
         Me.SuperTabControlPanel2.Dock = System.Windows.Forms.DockStyle.Fill
         Me.SuperTabControlPanel2.Location = New System.Drawing.Point(0, 0)
         Me.SuperTabControlPanel2.Name = "SuperTabControlPanel2"
-        Me.SuperTabControlPanel2.Size = New System.Drawing.Size(1311, 600)
+        Me.SuperTabControlPanel2.Size = New System.Drawing.Size(1311, 590)
         Me.SuperTabControlPanel2.TabIndex = 0
         Me.SuperTabControlPanel2.TabItem = Me.SuperTabItem1
         '
@@ -317,8 +321,8 @@ Partial Class F0_Proforma
         Me.TableLayoutPanel1.Name = "TableLayoutPanel1"
         Me.TableLayoutPanel1.RowCount = 1
         Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
-        Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 600.0!))
-        Me.TableLayoutPanel1.Size = New System.Drawing.Size(1311, 600)
+        Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 590.0!))
+        Me.TableLayoutPanel1.Size = New System.Drawing.Size(1311, 590)
         Me.TableLayoutPanel1.TabIndex = 1
         '
         'PanelVentas
@@ -329,7 +333,7 @@ Partial Class F0_Proforma
         Me.PanelVentas.Dock = System.Windows.Forms.DockStyle.Fill
         Me.PanelVentas.Location = New System.Drawing.Point(3, 3)
         Me.PanelVentas.Name = "PanelVentas"
-        Me.PanelVentas.Size = New System.Drawing.Size(1305, 594)
+        Me.PanelVentas.Size = New System.Drawing.Size(1305, 584)
         Me.PanelVentas.TabIndex = 0
         '
         'GroupPanel2
@@ -342,7 +346,7 @@ Partial Class F0_Proforma
         Me.GroupPanel2.Font = New System.Drawing.Font("Georgia", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GroupPanel2.Location = New System.Drawing.Point(0, 0)
         Me.GroupPanel2.Name = "GroupPanel2"
-        Me.GroupPanel2.Size = New System.Drawing.Size(1305, 594)
+        Me.GroupPanel2.Size = New System.Drawing.Size(1305, 584)
         '
         '
         '
@@ -373,40 +377,40 @@ Partial Class F0_Proforma
         '
         Me.GroupPanel2.StyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.GroupPanel2.TabIndex = 3
-        Me.GroupPanel2.Text = "BUSCADOR  PROFORMAS"
+        Me.GroupPanel2.Text = "BUSCADOR  VALES"
         '
         'Panel6
         '
         Me.Panel6.BackColor = System.Drawing.Color.White
-        Me.Panel6.Controls.Add(Me.grVentas)
+        Me.Panel6.Controls.Add(Me.grVales)
         Me.Panel6.Dock = System.Windows.Forms.DockStyle.Fill
         Me.Panel6.Location = New System.Drawing.Point(0, 0)
         Me.Panel6.Name = "Panel6"
-        Me.Panel6.Size = New System.Drawing.Size(1299, 571)
+        Me.Panel6.Size = New System.Drawing.Size(1299, 561)
         Me.Panel6.TabIndex = 0
         '
-        'grVentas
+        'grVales
         '
-        Me.grVentas.AllowEdit = Janus.Windows.GridEX.InheritableBoolean.[False]
-        Me.grVentas.BackColor = System.Drawing.Color.GhostWhite
-        Me.grVentas.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.grVentas.EnterKeyBehavior = Janus.Windows.GridEX.EnterKeyBehavior.None
-        Me.grVentas.FocusStyle = Janus.Windows.GridEX.FocusStyle.Solid
-        Me.grVentas.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.grVentas.GroupRowVisualStyle = Janus.Windows.GridEX.GroupRowVisualStyle.UseRowStyle
-        Me.grVentas.HeaderFormatStyle.Font = New System.Drawing.Font("Georgia", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.grVentas.HideSelection = Janus.Windows.GridEX.HideSelection.Highlight
-        Me.grVentas.Location = New System.Drawing.Point(0, 0)
-        Me.grVentas.Name = "grVentas"
-        Me.grVentas.Office2007ColorScheme = Janus.Windows.GridEX.Office2007ColorScheme.Custom
-        Me.grVentas.Office2007CustomColor = System.Drawing.Color.DodgerBlue
-        Me.grVentas.SelectedFormatStyle.BackColor = System.Drawing.Color.DodgerBlue
-        Me.grVentas.SelectedFormatStyle.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.grVentas.SelectedFormatStyle.ForeColor = System.Drawing.Color.White
-        Me.grVentas.SelectOnExpand = False
-        Me.grVentas.Size = New System.Drawing.Size(1299, 571)
-        Me.grVentas.TabIndex = 0
-        Me.grVentas.VisualStyle = Janus.Windows.GridEX.VisualStyle.Office2007
+        Me.grVales.AllowEdit = Janus.Windows.GridEX.InheritableBoolean.[False]
+        Me.grVales.BackColor = System.Drawing.Color.GhostWhite
+        Me.grVales.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.grVales.EnterKeyBehavior = Janus.Windows.GridEX.EnterKeyBehavior.None
+        Me.grVales.FocusStyle = Janus.Windows.GridEX.FocusStyle.Solid
+        Me.grVales.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.grVales.GroupRowVisualStyle = Janus.Windows.GridEX.GroupRowVisualStyle.UseRowStyle
+        Me.grVales.HeaderFormatStyle.Font = New System.Drawing.Font("Georgia", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.grVales.HideSelection = Janus.Windows.GridEX.HideSelection.Highlight
+        Me.grVales.Location = New System.Drawing.Point(0, 0)
+        Me.grVales.Name = "grVales"
+        Me.grVales.Office2007ColorScheme = Janus.Windows.GridEX.Office2007ColorScheme.Custom
+        Me.grVales.Office2007CustomColor = System.Drawing.Color.DodgerBlue
+        Me.grVales.SelectedFormatStyle.BackColor = System.Drawing.Color.DodgerBlue
+        Me.grVales.SelectedFormatStyle.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.grVales.SelectedFormatStyle.ForeColor = System.Drawing.Color.White
+        Me.grVales.SelectOnExpand = False
+        Me.grVales.Size = New System.Drawing.Size(1299, 561)
+        Me.grVales.TabIndex = 0
+        Me.grVales.VisualStyle = Janus.Windows.GridEX.VisualStyle.Office2007
         '
         'PanelContentSup
         '
@@ -415,7 +419,7 @@ Partial Class F0_Proforma
         Me.PanelContentSup.Dock = System.Windows.Forms.DockStyle.Top
         Me.PanelContentSup.Location = New System.Drawing.Point(0, 0)
         Me.PanelContentSup.Name = "PanelContentSup"
-        Me.PanelContentSup.Size = New System.Drawing.Size(1311, 140)
+        Me.PanelContentSup.Size = New System.Drawing.Size(1311, 185)
         Me.PanelContentSup.TabIndex = 0
         '
         'GroupPanel1
@@ -429,7 +433,7 @@ Partial Class F0_Proforma
         Me.GroupPanel1.ImeMode = System.Windows.Forms.ImeMode.NoControl
         Me.GroupPanel1.Location = New System.Drawing.Point(0, 0)
         Me.GroupPanel1.Name = "GroupPanel1"
-        Me.GroupPanel1.Size = New System.Drawing.Size(1311, 140)
+        Me.GroupPanel1.Size = New System.Drawing.Size(1311, 185)
         '
         '
         '
@@ -465,148 +469,363 @@ Partial Class F0_Proforma
         '
         Me.Panel2.AutoScroll = True
         Me.Panel2.BackColor = System.Drawing.Color.White
-        Me.Panel2.Controls.Add(Me.LabelX5)
-        Me.Panel2.Controls.Add(Me.tbContacto)
-        Me.Panel2.Controls.Add(Me.LabelX27)
-        Me.Panel2.Controls.Add(Me.tbTelf)
-        Me.Panel2.Controls.Add(Me.TbNomCliente)
-        Me.Panel2.Controls.Add(Me.LabelX6)
-        Me.Panel2.Controls.Add(Me.LabelX29)
-        Me.Panel2.Controls.Add(Me.swMostrar)
-        Me.Panel2.Controls.Add(Me.LabelX17)
-        Me.Panel2.Controls.Add(Me.cbSucursal)
-        Me.Panel2.Controls.Add(Me.lbTipoMoneda)
-        Me.Panel2.Controls.Add(Me.swMoneda)
-        Me.Panel2.Controls.Add(Me.LabelX4)
-        Me.Panel2.Controls.Add(Me.tbFechaVenta)
-        Me.Panel2.Controls.Add(Me.LabelX1)
-        Me.Panel2.Controls.Add(Me.tbObservacion)
-        Me.Panel2.Controls.Add(Me.LabelX10)
-        Me.Panel2.Controls.Add(Me.LabelX3)
-        Me.Panel2.Controls.Add(Me.tbVendedor)
-        Me.Panel2.Controls.Add(Me.tbCliente)
-        Me.Panel2.Controls.Add(Me.LabelX2)
-        Me.Panel2.Controls.Add(Me.tbCodigo)
+        Me.Panel2.Controls.Add(Me.Panel3)
         Me.Panel2.Dock = System.Windows.Forms.DockStyle.Fill
         Me.Panel2.Location = New System.Drawing.Point(0, 0)
         Me.Panel2.Name = "Panel2"
-        Me.Panel2.Size = New System.Drawing.Size(1305, 117)
+        Me.Panel2.Size = New System.Drawing.Size(1305, 162)
         Me.Panel2.TabIndex = 234
         '
-        'LabelX5
+        'Panel3
         '
-        Me.LabelX5.BackColor = System.Drawing.Color.Transparent
+        Me.Panel3.AutoScroll = True
+        Me.Panel3.BackColor = System.Drawing.Color.White
+        Me.Panel3.Controls.Add(Me.LabelX23)
+        Me.Panel3.Controls.Add(Me.tbCodMovimiento)
+        Me.Panel3.Controls.Add(Me.tbBeneficio)
+        Me.Panel3.Controls.Add(Me.LabelX22)
+        Me.Panel3.Controls.Add(Me.tbExcedente)
+        Me.Panel3.Controls.Add(Me.tbMontoVale)
+        Me.Panel3.Controls.Add(Me.tbCantVale)
+        Me.Panel3.Controls.Add(Me.LabelX21)
+        Me.Panel3.Controls.Add(Me.LabelX20)
+        Me.Panel3.Controls.Add(Me.tbNroVales)
+        Me.Panel3.Controls.Add(Me.LabelX19)
+        Me.Panel3.Controls.Add(Me.LabelX10)
+        Me.Panel3.Controls.Add(Me.tbEmpresa)
+        Me.Panel3.Controls.Add(Me.LabelX12)
+        Me.Panel3.Controls.Add(Me.tbNit)
+        Me.Panel3.Controls.Add(Me.LabelX14)
+        Me.Panel3.Controls.Add(Me.tbCliente)
+        Me.Panel3.Controls.Add(Me.LabelX2)
+        Me.Panel3.Controls.Add(Me.LabelX15)
+        Me.Panel3.Controls.Add(Me.swMostrar)
+        Me.Panel3.Controls.Add(Me.LabelX16)
+        Me.Panel3.Controls.Add(Me.dtFecha)
+        Me.Panel3.Controls.Add(Me.LabelX17)
+        Me.Panel3.Controls.Add(Me.tbObservacion)
+        Me.Panel3.Controls.Add(Me.LabelX18)
+        Me.Panel3.Controls.Add(Me.tbCodigo)
+        Me.Panel3.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.Panel3.Location = New System.Drawing.Point(0, 0)
+        Me.Panel3.Name = "Panel3"
+        Me.Panel3.Size = New System.Drawing.Size(1305, 162)
+        Me.Panel3.TabIndex = 435
         '
+        'LabelX23
         '
-        '
-        Me.LabelX5.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.LabelX5.Font = New System.Drawing.Font("Georgia", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelX5.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(85, Byte), Integer), CType(CType(139, Byte), Integer))
-        Me.LabelX5.Location = New System.Drawing.Point(287, 71)
-        Me.LabelX5.Name = "LabelX5"
-        Me.LabelX5.SingleLineColor = System.Drawing.SystemColors.Control
-        Me.LabelX5.Size = New System.Drawing.Size(65, 23)
-        Me.LabelX5.TabIndex = 432
-        Me.LabelX5.Text = "Teléfono:"
-        '
-        'tbContacto
-        '
-        Me.tbContacto.BackColor = System.Drawing.Color.White
-        '
-        '
-        '
-        Me.tbContacto.Border.Class = "TextBoxBorder"
-        Me.tbContacto.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.tbContacto.Font = New System.Drawing.Font("Georgia", 9.0!, System.Drawing.FontStyle.Bold)
-        Me.tbContacto.ForeColor = System.Drawing.Color.FromArgb(CType(CType(45, Byte), Integer), CType(CType(59, Byte), Integer), CType(CType(66, Byte), Integer))
-        Me.tbContacto.Location = New System.Drawing.Point(363, 39)
-        Me.tbContacto.MaxLength = 50
-        Me.tbContacto.Name = "tbContacto"
-        Me.tbContacto.PreventEnterBeep = True
-        Me.tbContacto.Size = New System.Drawing.Size(250, 21)
-        Me.tbContacto.TabIndex = 4
-        '
-        'LabelX27
-        '
-        Me.LabelX27.BackColor = System.Drawing.Color.Transparent
-        '
-        '
-        '
-        Me.LabelX27.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.LabelX27.Font = New System.Drawing.Font("Georgia", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelX27.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(85, Byte), Integer), CType(CType(139, Byte), Integer))
-        Me.LabelX27.Location = New System.Drawing.Point(287, 38)
-        Me.LabelX27.Name = "LabelX27"
-        Me.LabelX27.SingleLineColor = System.Drawing.SystemColors.Control
-        Me.LabelX27.Size = New System.Drawing.Size(65, 23)
-        Me.LabelX27.TabIndex = 431
-        Me.LabelX27.Text = "Contacto:"
-        '
-        'tbTelf
-        '
-        Me.tbTelf.BackColor = System.Drawing.Color.White
+        Me.LabelX23.AutoSize = True
+        Me.LabelX23.BackColor = System.Drawing.Color.Transparent
         '
         '
         '
-        Me.tbTelf.Border.Class = "TextBoxBorder"
-        Me.tbTelf.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.tbTelf.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.tbTelf.ForeColor = System.Drawing.Color.FromArgb(CType(CType(45, Byte), Integer), CType(CType(59, Byte), Integer), CType(CType(66, Byte), Integer))
-        Me.tbTelf.Location = New System.Drawing.Point(363, 70)
-        Me.tbTelf.MaxLength = 30
-        Me.tbTelf.Name = "tbTelf"
-        Me.tbTelf.PreventEnterBeep = True
-        Me.tbTelf.Size = New System.Drawing.Size(250, 22)
-        Me.tbTelf.TabIndex = 5
+        Me.LabelX23.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.LabelX23.Font = New System.Drawing.Font("Georgia", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LabelX23.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(85, Byte), Integer), CType(CType(139, Byte), Integer))
+        Me.LabelX23.Location = New System.Drawing.Point(923, 14)
+        Me.LabelX23.Name = "LabelX23"
+        Me.LabelX23.SingleLineColor = System.Drawing.SystemColors.Control
+        Me.LabelX23.Size = New System.Drawing.Size(113, 16)
+        Me.LabelX23.TabIndex = 447
+        Me.LabelX23.Text = "Cod. Movimiento:"
         '
-        'TbNomCliente
-        '
-        Me.TbNomCliente.BackColor = System.Drawing.Color.White
+        'tbCodMovimiento
         '
         '
         '
-        Me.TbNomCliente.Border.Class = "TextBoxBorder"
-        Me.TbNomCliente.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.TbNomCliente.Font = New System.Drawing.Font("Georgia", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TbNomCliente.ForeColor = System.Drawing.Color.FromArgb(CType(CType(45, Byte), Integer), CType(CType(59, Byte), Integer), CType(CType(66, Byte), Integer))
-        Me.TbNomCliente.Location = New System.Drawing.Point(362, 9)
-        Me.TbNomCliente.MaxLength = 50
-        Me.TbNomCliente.Name = "TbNomCliente"
-        Me.TbNomCliente.PreventEnterBeep = True
-        Me.TbNomCliente.Size = New System.Drawing.Size(250, 21)
-        Me.TbNomCliente.TabIndex = 3
         '
-        'LabelX6
+        Me.tbCodMovimiento.Border.Class = "TextBoxBorder"
+        Me.tbCodMovimiento.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.tbCodMovimiento.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.tbCodMovimiento.ForeColor = System.Drawing.Color.FromArgb(CType(CType(45, Byte), Integer), CType(CType(59, Byte), Integer), CType(CType(66, Byte), Integer))
+        Me.tbCodMovimiento.Location = New System.Drawing.Point(1059, 11)
+        Me.tbCodMovimiento.Name = "tbCodMovimiento"
+        Me.tbCodMovimiento.PreventEnterBeep = True
+        Me.tbCodMovimiento.Size = New System.Drawing.Size(100, 22)
+        Me.tbCodMovimiento.TabIndex = 446
+        Me.tbCodMovimiento.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         '
-        Me.LabelX6.BackColor = System.Drawing.Color.Transparent
-        '
-        '
-        '
-        Me.LabelX6.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.LabelX6.Font = New System.Drawing.Font("Georgia", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelX6.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(85, Byte), Integer), CType(CType(139, Byte), Integer))
-        Me.LabelX6.Location = New System.Drawing.Point(287, 6)
-        Me.LabelX6.Name = "LabelX6"
-        Me.LabelX6.SingleLineColor = System.Drawing.SystemColors.Control
-        Me.LabelX6.Size = New System.Drawing.Size(60, 23)
-        Me.LabelX6.TabIndex = 429
-        Me.LabelX6.Text = "Cliente:"
-        '
-        'LabelX29
-        '
-        Me.LabelX29.BackColor = System.Drawing.Color.Transparent
+        'tbBeneficio
         '
         '
         '
-        Me.LabelX29.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.LabelX29.Font = New System.Drawing.Font("Georgia", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelX29.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(85, Byte), Integer), CType(CType(139, Byte), Integer))
-        Me.LabelX29.Location = New System.Drawing.Point(11, 70)
-        Me.LabelX29.Name = "LabelX29"
-        Me.LabelX29.SingleLineColor = System.Drawing.SystemColors.Control
-        Me.LabelX29.Size = New System.Drawing.Size(105, 23)
-        Me.LabelX29.TabIndex = 426
-        Me.LabelX29.Text = "Nro. Registros:"
+        '
+        Me.tbBeneficio.BackgroundStyle.Class = "DateTimeInputBackground"
+        Me.tbBeneficio.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.tbBeneficio.ButtonFreeText.Shortcut = DevComponents.DotNetBar.eShortcut.F2
+        Me.tbBeneficio.Enabled = False
+        Me.tbBeneficio.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.tbBeneficio.ForeColor = System.Drawing.Color.Black
+        Me.tbBeneficio.Increment = 1.0R
+        Me.tbBeneficio.Location = New System.Drawing.Point(564, 120)
+        Me.tbBeneficio.MinValue = 0R
+        Me.tbBeneficio.Name = "tbBeneficio"
+        Me.tbBeneficio.Size = New System.Drawing.Size(148, 24)
+        Me.tbBeneficio.TabIndex = 445
+        Me.tbBeneficio.WatermarkAlignment = DevComponents.Editors.eTextAlignment.Right
+        '
+        'LabelX22
+        '
+        Me.LabelX22.BackColor = System.Drawing.Color.Transparent
+        '
+        '
+        '
+        Me.LabelX22.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.LabelX22.Font = New System.Drawing.Font("Georgia", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LabelX22.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(85, Byte), Integer), CType(CType(139, Byte), Integer))
+        Me.LabelX22.Location = New System.Drawing.Point(438, 123)
+        Me.LabelX22.Name = "LabelX22"
+        Me.LabelX22.SingleLineColor = System.Drawing.SystemColors.Control
+        Me.LabelX22.Size = New System.Drawing.Size(120, 23)
+        Me.LabelX22.TabIndex = 444
+        Me.LabelX22.Text = "Beneficio Vale:"
+        '
+        'tbExcedente
+        '
+        '
+        '
+        '
+        Me.tbExcedente.BackgroundStyle.Class = "DateTimeInputBackground"
+        Me.tbExcedente.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.tbExcedente.ButtonFreeText.Shortcut = DevComponents.DotNetBar.eShortcut.F2
+        Me.tbExcedente.Enabled = False
+        Me.tbExcedente.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.tbExcedente.ForeColor = System.Drawing.Color.Black
+        Me.tbExcedente.Increment = 1.0R
+        Me.tbExcedente.Location = New System.Drawing.Point(564, 92)
+        Me.tbExcedente.MinValue = 0R
+        Me.tbExcedente.Name = "tbExcedente"
+        Me.tbExcedente.Size = New System.Drawing.Size(148, 24)
+        Me.tbExcedente.TabIndex = 443
+        Me.tbExcedente.WatermarkAlignment = DevComponents.Editors.eTextAlignment.Right
+        '
+        'tbMontoVale
+        '
+        '
+        '
+        '
+        Me.tbMontoVale.BackgroundStyle.Class = "DateTimeInputBackground"
+        Me.tbMontoVale.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.tbMontoVale.ButtonFreeText.Shortcut = DevComponents.DotNetBar.eShortcut.F2
+        Me.tbMontoVale.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.tbMontoVale.ForeColor = System.Drawing.Color.Black
+        Me.tbMontoVale.Increment = 1.0R
+        Me.tbMontoVale.Location = New System.Drawing.Point(564, 65)
+        Me.tbMontoVale.MinValue = 0R
+        Me.tbMontoVale.Name = "tbMontoVale"
+        Me.tbMontoVale.Size = New System.Drawing.Size(148, 24)
+        Me.tbMontoVale.TabIndex = 442
+        Me.tbMontoVale.WatermarkAlignment = DevComponents.Editors.eTextAlignment.Right
+        '
+        'tbCantVale
+        '
+        '
+        '
+        '
+        Me.tbCantVale.BackgroundStyle.Class = "DateTimeInputBackground"
+        Me.tbCantVale.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.tbCantVale.ButtonFreeText.Shortcut = DevComponents.DotNetBar.eShortcut.F2
+        Me.tbCantVale.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!)
+        Me.tbCantVale.Location = New System.Drawing.Point(137, 122)
+        Me.tbCantVale.Name = "tbCantVale"
+        Me.tbCantVale.Size = New System.Drawing.Size(100, 22)
+        Me.tbCantVale.TabIndex = 4
+        '
+        'LabelX21
+        '
+        Me.LabelX21.BackColor = System.Drawing.Color.Transparent
+        '
+        '
+        '
+        Me.LabelX21.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.LabelX21.Font = New System.Drawing.Font("Georgia", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LabelX21.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(85, Byte), Integer), CType(CType(139, Byte), Integer))
+        Me.LabelX21.Location = New System.Drawing.Point(438, 95)
+        Me.LabelX21.Name = "LabelX21"
+        Me.LabelX21.SingleLineColor = System.Drawing.SystemColors.Control
+        Me.LabelX21.Size = New System.Drawing.Size(120, 23)
+        Me.LabelX21.TabIndex = 439
+        Me.LabelX21.Text = "Excedente Vale:"
+        '
+        'LabelX20
+        '
+        Me.LabelX20.BackColor = System.Drawing.Color.Transparent
+        '
+        '
+        '
+        Me.LabelX20.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.LabelX20.Font = New System.Drawing.Font("Georgia", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LabelX20.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(85, Byte), Integer), CType(CType(139, Byte), Integer))
+        Me.LabelX20.Location = New System.Drawing.Point(11, 122)
+        Me.LabelX20.Name = "LabelX20"
+        Me.LabelX20.SingleLineColor = System.Drawing.SystemColors.Control
+        Me.LabelX20.Size = New System.Drawing.Size(120, 23)
+        Me.LabelX20.TabIndex = 437
+        Me.LabelX20.Text = "Cantidad Vales:"
+        '
+        'tbNroVales
+        '
+        Me.tbNroVales.BackColor = System.Drawing.Color.White
+        '
+        '
+        '
+        Me.tbNroVales.Border.Class = "TextBoxBorder"
+        Me.tbNroVales.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.tbNroVales.Font = New System.Drawing.Font("Georgia", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.tbNroVales.ForeColor = System.Drawing.Color.FromArgb(CType(CType(45, Byte), Integer), CType(CType(59, Byte), Integer), CType(CType(66, Byte), Integer))
+        Me.tbNroVales.Location = New System.Drawing.Point(137, 95)
+        Me.tbNroVales.MaxLength = 50
+        Me.tbNroVales.Name = "tbNroVales"
+        Me.tbNroVales.PreventEnterBeep = True
+        Me.tbNroVales.Size = New System.Drawing.Size(280, 21)
+        Me.tbNroVales.TabIndex = 3
+        '
+        'LabelX19
+        '
+        Me.LabelX19.BackColor = System.Drawing.Color.Transparent
+        '
+        '
+        '
+        Me.LabelX19.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.LabelX19.Font = New System.Drawing.Font("Georgia", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LabelX19.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(85, Byte), Integer), CType(CType(139, Byte), Integer))
+        Me.LabelX19.Location = New System.Drawing.Point(11, 95)
+        Me.LabelX19.Name = "LabelX19"
+        Me.LabelX19.SingleLineColor = System.Drawing.SystemColors.Control
+        Me.LabelX19.Size = New System.Drawing.Size(120, 23)
+        Me.LabelX19.TabIndex = 435
+        Me.LabelX19.Text = "Número Vales:"
+        '
+        'LabelX10
+        '
+        Me.LabelX10.BackColor = System.Drawing.Color.Transparent
+        '
+        '
+        '
+        Me.LabelX10.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.LabelX10.Font = New System.Drawing.Font("Georgia", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LabelX10.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(85, Byte), Integer), CType(CType(139, Byte), Integer))
+        Me.LabelX10.Location = New System.Drawing.Point(438, 12)
+        Me.LabelX10.Name = "LabelX10"
+        Me.LabelX10.SingleLineColor = System.Drawing.SystemColors.Control
+        Me.LabelX10.Size = New System.Drawing.Size(120, 23)
+        Me.LabelX10.TabIndex = 434
+        Me.LabelX10.Text = "Nombre Cliente:"
+        '
+        'tbEmpresa
+        '
+        Me.tbEmpresa.BackColor = System.Drawing.Color.White
+        '
+        '
+        '
+        Me.tbEmpresa.Border.Class = "TextBoxBorder"
+        Me.tbEmpresa.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.tbEmpresa.Font = New System.Drawing.Font("Georgia", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.tbEmpresa.ForeColor = System.Drawing.Color.FromArgb(CType(CType(45, Byte), Integer), CType(CType(59, Byte), Integer), CType(CType(66, Byte), Integer))
+        Me.tbEmpresa.Location = New System.Drawing.Point(137, 68)
+        Me.tbEmpresa.MaxLength = 50
+        Me.tbEmpresa.Name = "tbEmpresa"
+        Me.tbEmpresa.PreventEnterBeep = True
+        Me.tbEmpresa.Size = New System.Drawing.Size(280, 21)
+        Me.tbEmpresa.TabIndex = 2
+        '
+        'LabelX12
+        '
+        Me.LabelX12.BackColor = System.Drawing.Color.Transparent
+        '
+        '
+        '
+        Me.LabelX12.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.LabelX12.Font = New System.Drawing.Font("Georgia", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LabelX12.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(85, Byte), Integer), CType(CType(139, Byte), Integer))
+        Me.LabelX12.Location = New System.Drawing.Point(438, 68)
+        Me.LabelX12.Name = "LabelX12"
+        Me.LabelX12.SingleLineColor = System.Drawing.SystemColors.Control
+        Me.LabelX12.Size = New System.Drawing.Size(105, 23)
+        Me.LabelX12.TabIndex = 432
+        Me.LabelX12.Text = "Monto Vale:"
+        '
+        'tbNit
+        '
+        Me.tbNit.BackColor = System.Drawing.Color.White
+        '
+        '
+        '
+        Me.tbNit.Border.Class = "TextBoxBorder"
+        Me.tbNit.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.tbNit.Font = New System.Drawing.Font("Georgia", 9.0!, System.Drawing.FontStyle.Bold)
+        Me.tbNit.ForeColor = System.Drawing.Color.FromArgb(CType(CType(45, Byte), Integer), CType(CType(59, Byte), Integer), CType(CType(66, Byte), Integer))
+        Me.tbNit.Location = New System.Drawing.Point(564, 40)
+        Me.tbNit.MaxLength = 50
+        Me.tbNit.Name = "tbNit"
+        Me.tbNit.PreventEnterBeep = True
+        Me.tbNit.Size = New System.Drawing.Size(310, 21)
+        Me.tbNit.TabIndex = 4
+        '
+        'LabelX14
+        '
+        Me.LabelX14.BackColor = System.Drawing.Color.Transparent
+        '
+        '
+        '
+        Me.LabelX14.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.LabelX14.Font = New System.Drawing.Font("Georgia", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LabelX14.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(85, Byte), Integer), CType(CType(139, Byte), Integer))
+        Me.LabelX14.Location = New System.Drawing.Point(438, 38)
+        Me.LabelX14.Name = "LabelX14"
+        Me.LabelX14.SingleLineColor = System.Drawing.SystemColors.Control
+        Me.LabelX14.Size = New System.Drawing.Size(105, 23)
+        Me.LabelX14.TabIndex = 431
+        Me.LabelX14.Text = "CI/Nit Cliente:"
+        '
+        'tbCliente
+        '
+        Me.tbCliente.BackColor = System.Drawing.Color.White
+        '
+        '
+        '
+        Me.tbCliente.Border.Class = "TextBoxBorder"
+        Me.tbCliente.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.tbCliente.Font = New System.Drawing.Font("Georgia", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.tbCliente.ForeColor = System.Drawing.Color.FromArgb(CType(CType(45, Byte), Integer), CType(CType(59, Byte), Integer), CType(CType(66, Byte), Integer))
+        Me.tbCliente.Location = New System.Drawing.Point(564, 12)
+        Me.tbCliente.MaxLength = 50
+        Me.tbCliente.Name = "tbCliente"
+        Me.tbCliente.PreventEnterBeep = True
+        Me.tbCliente.Size = New System.Drawing.Size(310, 21)
+        Me.tbCliente.TabIndex = 3
+        '
+        'LabelX2
+        '
+        Me.LabelX2.BackColor = System.Drawing.Color.Transparent
+        '
+        '
+        '
+        Me.LabelX2.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.LabelX2.Font = New System.Drawing.Font("Georgia", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LabelX2.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(85, Byte), Integer), CType(CType(139, Byte), Integer))
+        Me.LabelX2.Location = New System.Drawing.Point(11, 68)
+        Me.LabelX2.Name = "LabelX2"
+        Me.LabelX2.SingleLineColor = System.Drawing.SystemColors.Control
+        Me.LabelX2.Size = New System.Drawing.Size(120, 23)
+        Me.LabelX2.TabIndex = 429
+        Me.LabelX2.Text = "Nombre Empresa:"
+        '
+        'LabelX15
+        '
+        Me.LabelX15.BackColor = System.Drawing.Color.Transparent
+        '
+        '
+        '
+        Me.LabelX15.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.LabelX15.Font = New System.Drawing.Font("Georgia", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LabelX15.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(85, Byte), Integer), CType(CType(139, Byte), Integer))
+        Me.LabelX15.Location = New System.Drawing.Point(923, 37)
+        Me.LabelX15.Name = "LabelX15"
+        Me.LabelX15.SingleLineColor = System.Drawing.SystemColors.Control
+        Me.LabelX15.Size = New System.Drawing.Size(105, 23)
+        Me.LabelX15.TabIndex = 426
+        Me.LabelX15.Text = "Nro. Registros:"
         '
         'swMostrar
         '
@@ -615,10 +834,10 @@ Partial Class F0_Proforma
         '
         Me.swMostrar.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.swMostrar.Font = New System.Drawing.Font("Bodoni MT", 8.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.swMostrar.Location = New System.Drawing.Point(133, 70)
+        Me.swMostrar.Location = New System.Drawing.Point(1059, 38)
         Me.swMostrar.Name = "swMostrar"
         Me.swMostrar.OffBackColor = System.Drawing.Color.Gold
-        Me.swMostrar.OffText = "MOSTRAR ÚLT. 100"
+        Me.swMostrar.OffText = "MOSTRAR ÚLT. 300"
         Me.swMostrar.OnBackColor = System.Drawing.Color.ForestGreen
         Me.swMostrar.OnText = "MOSTRAR TODOS"
         Me.swMostrar.Size = New System.Drawing.Size(130, 22)
@@ -626,8 +845,71 @@ Partial Class F0_Proforma
         Me.swMostrar.SwitchWidth = 22
         Me.swMostrar.TabIndex = 2
         '
+        'LabelX16
+        '
+        Me.LabelX16.BackColor = System.Drawing.Color.Transparent
+        '
+        '
+        '
+        Me.LabelX16.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.LabelX16.Font = New System.Drawing.Font("Georgia", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LabelX16.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(85, Byte), Integer), CType(CType(139, Byte), Integer))
+        Me.LabelX16.Location = New System.Drawing.Point(11, 38)
+        Me.LabelX16.Name = "LabelX16"
+        Me.LabelX16.SingleLineColor = System.Drawing.SystemColors.Control
+        Me.LabelX16.Size = New System.Drawing.Size(110, 23)
+        Me.LabelX16.TabIndex = 231
+        Me.LabelX16.Text = "Fecha Vale:"
+        '
+        'dtFecha
+        '
+        '
+        '
+        '
+        Me.dtFecha.BackgroundStyle.Class = "DateTimeInputBackground"
+        Me.dtFecha.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.dtFecha.ButtonDropDown.Shortcut = DevComponents.DotNetBar.eShortcut.AltDown
+        Me.dtFecha.ButtonDropDown.Visible = True
+        Me.dtFecha.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.dtFecha.IsPopupCalendarOpen = False
+        Me.dtFecha.Location = New System.Drawing.Point(137, 39)
+        '
+        '
+        '
+        '
+        '
+        '
+        Me.dtFecha.MonthCalendar.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.dtFecha.MonthCalendar.CalendarDimensions = New System.Drawing.Size(1, 1)
+        Me.dtFecha.MonthCalendar.ClearButtonVisible = True
+        '
+        '
+        '
+        Me.dtFecha.MonthCalendar.CommandsBackgroundStyle.BackColor2SchemePart = DevComponents.DotNetBar.eColorSchemePart.BarBackground2
+        Me.dtFecha.MonthCalendar.CommandsBackgroundStyle.BackColorGradientAngle = 90
+        Me.dtFecha.MonthCalendar.CommandsBackgroundStyle.BackColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.BarBackground
+        Me.dtFecha.MonthCalendar.CommandsBackgroundStyle.BorderTop = DevComponents.DotNetBar.eStyleBorderType.Solid
+        Me.dtFecha.MonthCalendar.CommandsBackgroundStyle.BorderTopColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.BarDockedBorder
+        Me.dtFecha.MonthCalendar.CommandsBackgroundStyle.BorderTopWidth = 1
+        Me.dtFecha.MonthCalendar.CommandsBackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.dtFecha.MonthCalendar.DisplayMonth = New Date(2017, 2, 1, 0, 0, 0, 0)
+        Me.dtFecha.MonthCalendar.FirstDayOfWeek = System.DayOfWeek.Monday
+        '
+        '
+        '
+        Me.dtFecha.MonthCalendar.NavigationBackgroundStyle.BackColor2SchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2
+        Me.dtFecha.MonthCalendar.NavigationBackgroundStyle.BackColorGradientAngle = 90
+        Me.dtFecha.MonthCalendar.NavigationBackgroundStyle.BackColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground
+        Me.dtFecha.MonthCalendar.NavigationBackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.dtFecha.MonthCalendar.TodayButtonVisible = True
+        Me.dtFecha.Name = "dtFecha"
+        Me.dtFecha.Size = New System.Drawing.Size(130, 22)
+        Me.dtFecha.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+        Me.dtFecha.TabIndex = 1
+        '
         'LabelX17
         '
+        Me.LabelX17.AutoSize = True
         Me.LabelX17.BackColor = System.Drawing.Color.Transparent
         '
         '
@@ -635,145 +917,12 @@ Partial Class F0_Proforma
         Me.LabelX17.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.LabelX17.Font = New System.Drawing.Font("Georgia", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.LabelX17.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(85, Byte), Integer), CType(CType(139, Byte), Integer))
-        Me.LabelX17.Location = New System.Drawing.Point(1137, 81)
+        Me.LabelX17.Location = New System.Drawing.Point(11, 14)
         Me.LabelX17.Name = "LabelX17"
         Me.LabelX17.SingleLineColor = System.Drawing.SystemColors.Control
-        Me.LabelX17.Size = New System.Drawing.Size(60, 23)
-        Me.LabelX17.TabIndex = 238
-        Me.LabelX17.Text = "Sucursal:"
-        Me.LabelX17.Visible = False
-        '
-        'cbSucursal
-        '
-        cbSucursal_DesignTimeLayout.LayoutString = resources.GetString("cbSucursal_DesignTimeLayout.LayoutString")
-        Me.cbSucursal.DesignTimeLayout = cbSucursal_DesignTimeLayout
-        Me.cbSucursal.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.cbSucursal.Location = New System.Drawing.Point(1204, 84)
-        Me.cbSucursal.Name = "cbSucursal"
-        Me.cbSucursal.Office2007ColorScheme = Janus.Windows.GridEX.Office2007ColorScheme.Custom
-        Me.cbSucursal.Office2007CustomColor = System.Drawing.Color.DodgerBlue
-        Me.cbSucursal.SelectedIndex = -1
-        Me.cbSucursal.SelectedItem = Nothing
-        Me.cbSucursal.Size = New System.Drawing.Size(100, 22)
-        Me.cbSucursal.TabIndex = 4
-        Me.cbSucursal.Visible = False
-        Me.cbSucursal.VisualStyle = Janus.Windows.GridEX.VisualStyle.Office2007
-        '
-        'lbTipoMoneda
-        '
-        Me.lbTipoMoneda.BackColor = System.Drawing.Color.Transparent
-        '
-        '
-        '
-        Me.lbTipoMoneda.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.lbTipoMoneda.Font = New System.Drawing.Font("Georgia", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lbTipoMoneda.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(85, Byte), Integer), CType(CType(139, Byte), Integer))
-        Me.lbTipoMoneda.Location = New System.Drawing.Point(1137, 58)
-        Me.lbTipoMoneda.Name = "lbTipoMoneda"
-        Me.lbTipoMoneda.SingleLineColor = System.Drawing.SystemColors.Control
-        Me.lbTipoMoneda.Size = New System.Drawing.Size(60, 23)
-        Me.lbTipoMoneda.TabIndex = 235
-        Me.lbTipoMoneda.Text = "Tipo Moneda:"
-        Me.lbTipoMoneda.Visible = False
-        '
-        'swMoneda
-        '
-        '
-        '
-        '
-        Me.swMoneda.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.swMoneda.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.swMoneda.Location = New System.Drawing.Point(1204, 58)
-        Me.swMoneda.Name = "swMoneda"
-        Me.swMoneda.OffBackColor = System.Drawing.Color.LawnGreen
-        Me.swMoneda.OffText = "DOLAR"
-        Me.swMoneda.OnBackColor = System.Drawing.Color.Gold
-        Me.swMoneda.OnText = "BOLIVIANO"
-        Me.swMoneda.Size = New System.Drawing.Size(100, 22)
-        Me.swMoneda.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-        Me.swMoneda.TabIndex = 3
-        Me.swMoneda.Value = True
-        Me.swMoneda.ValueObject = "Y"
-        Me.swMoneda.Visible = False
-        '
-        'LabelX4
-        '
-        Me.LabelX4.BackColor = System.Drawing.Color.Transparent
-        '
-        '
-        '
-        Me.LabelX4.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.LabelX4.Font = New System.Drawing.Font("Georgia", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelX4.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(85, Byte), Integer), CType(CType(139, Byte), Integer))
-        Me.LabelX4.Location = New System.Drawing.Point(13, 40)
-        Me.LabelX4.Name = "LabelX4"
-        Me.LabelX4.SingleLineColor = System.Drawing.SystemColors.Control
-        Me.LabelX4.Size = New System.Drawing.Size(110, 23)
-        Me.LabelX4.TabIndex = 231
-        Me.LabelX4.Text = "Fecha Proforma:"
-        '
-        'tbFechaVenta
-        '
-        '
-        '
-        '
-        Me.tbFechaVenta.BackgroundStyle.Class = "DateTimeInputBackground"
-        Me.tbFechaVenta.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.tbFechaVenta.ButtonDropDown.Shortcut = DevComponents.DotNetBar.eShortcut.AltDown
-        Me.tbFechaVenta.ButtonDropDown.Visible = True
-        Me.tbFechaVenta.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.tbFechaVenta.IsPopupCalendarOpen = False
-        Me.tbFechaVenta.Location = New System.Drawing.Point(133, 41)
-        '
-        '
-        '
-        '
-        '
-        '
-        Me.tbFechaVenta.MonthCalendar.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.tbFechaVenta.MonthCalendar.CalendarDimensions = New System.Drawing.Size(1, 1)
-        Me.tbFechaVenta.MonthCalendar.ClearButtonVisible = True
-        '
-        '
-        '
-        Me.tbFechaVenta.MonthCalendar.CommandsBackgroundStyle.BackColor2SchemePart = DevComponents.DotNetBar.eColorSchemePart.BarBackground2
-        Me.tbFechaVenta.MonthCalendar.CommandsBackgroundStyle.BackColorGradientAngle = 90
-        Me.tbFechaVenta.MonthCalendar.CommandsBackgroundStyle.BackColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.BarBackground
-        Me.tbFechaVenta.MonthCalendar.CommandsBackgroundStyle.BorderTop = DevComponents.DotNetBar.eStyleBorderType.Solid
-        Me.tbFechaVenta.MonthCalendar.CommandsBackgroundStyle.BorderTopColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.BarDockedBorder
-        Me.tbFechaVenta.MonthCalendar.CommandsBackgroundStyle.BorderTopWidth = 1
-        Me.tbFechaVenta.MonthCalendar.CommandsBackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.tbFechaVenta.MonthCalendar.DisplayMonth = New Date(2017, 2, 1, 0, 0, 0, 0)
-        Me.tbFechaVenta.MonthCalendar.FirstDayOfWeek = System.DayOfWeek.Monday
-        '
-        '
-        '
-        Me.tbFechaVenta.MonthCalendar.NavigationBackgroundStyle.BackColor2SchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2
-        Me.tbFechaVenta.MonthCalendar.NavigationBackgroundStyle.BackColorGradientAngle = 90
-        Me.tbFechaVenta.MonthCalendar.NavigationBackgroundStyle.BackColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground
-        Me.tbFechaVenta.MonthCalendar.NavigationBackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.tbFechaVenta.MonthCalendar.TodayButtonVisible = True
-        Me.tbFechaVenta.Name = "tbFechaVenta"
-        Me.tbFechaVenta.Size = New System.Drawing.Size(130, 22)
-        Me.tbFechaVenta.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-        Me.tbFechaVenta.TabIndex = 1
-        '
-        'LabelX1
-        '
-        Me.LabelX1.AutoSize = True
-        Me.LabelX1.BackColor = System.Drawing.Color.Transparent
-        '
-        '
-        '
-        Me.LabelX1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.LabelX1.Font = New System.Drawing.Font("Georgia", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelX1.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(85, Byte), Integer), CType(CType(139, Byte), Integer))
-        Me.LabelX1.Location = New System.Drawing.Point(13, 14)
-        Me.LabelX1.Name = "LabelX1"
-        Me.LabelX1.SingleLineColor = System.Drawing.SystemColors.Control
-        Me.LabelX1.Size = New System.Drawing.Size(50, 16)
-        Me.LabelX1.TabIndex = 224
-        Me.LabelX1.Text = "Código:"
+        Me.LabelX17.Size = New System.Drawing.Size(50, 16)
+        Me.LabelX17.TabIndex = 224
+        Me.LabelX17.Text = "Código:"
         '
         'tbObservacion
         '
@@ -785,7 +934,7 @@ Partial Class F0_Proforma
         Me.tbObservacion.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.tbObservacion.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.tbObservacion.ForeColor = System.Drawing.Color.FromArgb(CType(CType(45, Byte), Integer), CType(CType(59, Byte), Integer), CType(CType(66, Byte), Integer))
-        Me.tbObservacion.Location = New System.Drawing.Point(635, 28)
+        Me.tbObservacion.Location = New System.Drawing.Point(923, 81)
         Me.tbObservacion.MaxLength = 200
         Me.tbObservacion.Multiline = True
         Me.tbObservacion.Name = "tbObservacion"
@@ -794,89 +943,21 @@ Partial Class F0_Proforma
         Me.tbObservacion.Size = New System.Drawing.Size(360, 65)
         Me.tbObservacion.TabIndex = 6
         '
-        'LabelX10
+        'LabelX18
         '
-        Me.LabelX10.BackColor = System.Drawing.Color.Transparent
-        '
-        '
-        '
-        Me.LabelX10.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.LabelX10.Font = New System.Drawing.Font("Georgia", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelX10.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(85, Byte), Integer), CType(CType(139, Byte), Integer))
-        Me.LabelX10.Location = New System.Drawing.Point(1137, 30)
-        Me.LabelX10.Name = "LabelX10"
-        Me.LabelX10.SingleLineColor = System.Drawing.SystemColors.Control
-        Me.LabelX10.Size = New System.Drawing.Size(60, 23)
-        Me.LabelX10.TabIndex = 227
-        Me.LabelX10.Text = "Vendedor:"
-        Me.LabelX10.Visible = False
-        '
-        'LabelX3
-        '
-        Me.LabelX3.BackColor = System.Drawing.Color.Transparent
+        Me.LabelX18.BackColor = System.Drawing.Color.Transparent
         '
         '
         '
-        Me.LabelX3.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.LabelX3.Font = New System.Drawing.Font("Georgia", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelX3.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(85, Byte), Integer), CType(CType(139, Byte), Integer))
-        Me.LabelX3.Location = New System.Drawing.Point(635, 4)
-        Me.LabelX3.Name = "LabelX3"
-        Me.LabelX3.SingleLineColor = System.Drawing.SystemColors.Control
-        Me.LabelX3.Size = New System.Drawing.Size(148, 18)
-        Me.LabelX3.TabIndex = 226
-        Me.LabelX3.Text = "Observaciones:"
-        '
-        'tbVendedor
-        '
-        Me.tbVendedor.BackColor = System.Drawing.Color.White
-        '
-        '
-        '
-        Me.tbVendedor.Border.Class = "TextBoxBorder"
-        Me.tbVendedor.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.tbVendedor.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.tbVendedor.ForeColor = System.Drawing.Color.FromArgb(CType(CType(45, Byte), Integer), CType(CType(59, Byte), Integer), CType(CType(66, Byte), Integer))
-        Me.tbVendedor.Location = New System.Drawing.Point(1204, 33)
-        Me.tbVendedor.Name = "tbVendedor"
-        Me.tbVendedor.PreventEnterBeep = True
-        Me.tbVendedor.Size = New System.Drawing.Size(100, 22)
-        Me.tbVendedor.TabIndex = 2
-        Me.tbVendedor.Visible = False
-        '
-        'tbCliente
-        '
-        Me.tbCliente.BackColor = System.Drawing.Color.White
-        '
-        '
-        '
-        Me.tbCliente.Border.Class = "TextBoxBorder"
-        Me.tbCliente.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.tbCliente.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.tbCliente.ForeColor = System.Drawing.Color.FromArgb(CType(CType(45, Byte), Integer), CType(CType(59, Byte), Integer), CType(CType(66, Byte), Integer))
-        Me.tbCliente.Location = New System.Drawing.Point(1204, 8)
-        Me.tbCliente.Name = "tbCliente"
-        Me.tbCliente.PreventEnterBeep = True
-        Me.tbCliente.Size = New System.Drawing.Size(100, 22)
-        Me.tbCliente.TabIndex = 1
-        Me.tbCliente.Visible = False
-        '
-        'LabelX2
-        '
-        Me.LabelX2.BackColor = System.Drawing.Color.Transparent
-        '
-        '
-        '
-        Me.LabelX2.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.LabelX2.Font = New System.Drawing.Font("Georgia", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelX2.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(85, Byte), Integer), CType(CType(139, Byte), Integer))
-        Me.LabelX2.Location = New System.Drawing.Point(1137, 7)
-        Me.LabelX2.Name = "LabelX2"
-        Me.LabelX2.SingleLineColor = System.Drawing.SystemColors.Control
-        Me.LabelX2.Size = New System.Drawing.Size(60, 23)
-        Me.LabelX2.TabIndex = 225
-        Me.LabelX2.Text = "Cliente:"
-        Me.LabelX2.Visible = False
+        Me.LabelX18.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.LabelX18.Font = New System.Drawing.Font("Georgia", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LabelX18.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(85, Byte), Integer), CType(CType(139, Byte), Integer))
+        Me.LabelX18.Location = New System.Drawing.Point(923, 62)
+        Me.LabelX18.Name = "LabelX18"
+        Me.LabelX18.SingleLineColor = System.Drawing.SystemColors.Control
+        Me.LabelX18.Size = New System.Drawing.Size(148, 18)
+        Me.LabelX18.TabIndex = 226
+        Me.LabelX18.Text = "Observaciones:"
         '
         'tbCodigo
         '
@@ -887,10 +968,10 @@ Partial Class F0_Proforma
         Me.tbCodigo.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.tbCodigo.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.tbCodigo.ForeColor = System.Drawing.Color.FromArgb(CType(CType(45, Byte), Integer), CType(CType(59, Byte), Integer), CType(CType(66, Byte), Integer))
-        Me.tbCodigo.Location = New System.Drawing.Point(133, 12)
+        Me.tbCodigo.Location = New System.Drawing.Point(137, 8)
         Me.tbCodigo.Name = "tbCodigo"
         Me.tbCodigo.PreventEnterBeep = True
-        Me.tbCodigo.Size = New System.Drawing.Size(63, 22)
+        Me.tbCodigo.Size = New System.Drawing.Size(100, 22)
         Me.tbCodigo.TabIndex = 0
         Me.tbCodigo.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         '
@@ -900,9 +981,9 @@ Partial Class F0_Proforma
         Me.PanelDetalle.Controls.Add(Me.GroupPanel4)
         Me.PanelDetalle.Controls.Add(Me.GPanelProductos)
         Me.PanelDetalle.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.PanelDetalle.Location = New System.Drawing.Point(0, 140)
+        Me.PanelDetalle.Location = New System.Drawing.Point(0, 185)
         Me.PanelDetalle.Name = "PanelDetalle"
-        Me.PanelDetalle.Size = New System.Drawing.Size(1311, 400)
+        Me.PanelDetalle.Size = New System.Drawing.Size(1311, 355)
         Me.PanelDetalle.TabIndex = 1
         '
         'GroupPanel4
@@ -915,7 +996,7 @@ Partial Class F0_Proforma
         Me.GroupPanel4.Font = New System.Drawing.Font("Georgia", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GroupPanel4.Location = New System.Drawing.Point(0, 0)
         Me.GroupPanel4.Name = "GroupPanel4"
-        Me.GroupPanel4.Size = New System.Drawing.Size(1311, 193)
+        Me.GroupPanel4.Size = New System.Drawing.Size(1311, 148)
         '
         '
         '
@@ -946,7 +1027,7 @@ Partial Class F0_Proforma
         '
         Me.GroupPanel4.StyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.GroupPanel4.TabIndex = 0
-        Me.GroupPanel4.Text = "DETALLE DE LA PROFORMA"
+        Me.GroupPanel4.Text = "DETALLE   DEL   VALE"
         '
         'Panel5
         '
@@ -955,7 +1036,7 @@ Partial Class F0_Proforma
         Me.Panel5.Dock = System.Windows.Forms.DockStyle.Fill
         Me.Panel5.Location = New System.Drawing.Point(0, 0)
         Me.Panel5.Name = "Panel5"
-        Me.Panel5.Size = New System.Drawing.Size(1305, 170)
+        Me.Panel5.Size = New System.Drawing.Size(1305, 125)
         Me.Panel5.TabIndex = 0
         '
         'grdetalle
@@ -968,7 +1049,7 @@ Partial Class F0_Proforma
         Me.grdetalle.Name = "grdetalle"
         Me.grdetalle.Office2007ColorScheme = Janus.Windows.GridEX.Office2007ColorScheme.Custom
         Me.grdetalle.Office2007CustomColor = System.Drawing.Color.DodgerBlue
-        Me.grdetalle.Size = New System.Drawing.Size(1305, 170)
+        Me.grdetalle.Size = New System.Drawing.Size(1305, 125)
         Me.grdetalle.TabIndex = 0
         Me.grdetalle.VisualStyle = Janus.Windows.GridEX.VisualStyle.Office2007
         '
@@ -980,7 +1061,7 @@ Partial Class F0_Proforma
         Me.GPanelProductos.DisabledBackColor = System.Drawing.Color.Empty
         Me.GPanelProductos.Dock = System.Windows.Forms.DockStyle.Bottom
         Me.GPanelProductos.Font = New System.Drawing.Font("Georgia", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.GPanelProductos.Location = New System.Drawing.Point(0, 193)
+        Me.GPanelProductos.Location = New System.Drawing.Point(0, 148)
         Me.GPanelProductos.Name = "GPanelProductos"
         Me.GPanelProductos.Size = New System.Drawing.Size(1311, 207)
         '
@@ -1047,10 +1128,6 @@ Partial Class F0_Proforma
         Me.PanelTotal.BackColor = System.Drawing.Color.SlateGray
         Me.PanelTotal.BackgroundImage = Global.DinoM.My.Resources.Resources.fondo1
         Me.PanelTotal.Controls.Add(Me.Panel4)
-        Me.PanelTotal.Controls.Add(Me.LabelX8)
-        Me.PanelTotal.Controls.Add(Me.tbIce)
-        Me.PanelTotal.Controls.Add(Me.tbPdesc)
-        Me.PanelTotal.Controls.Add(Me.lbIce)
         Me.PanelTotal.Dock = System.Windows.Forms.DockStyle.Bottom
         Me.PanelTotal.Location = New System.Drawing.Point(0, 540)
         Me.PanelTotal.Name = "PanelTotal"
@@ -1172,91 +1249,20 @@ Partial Class F0_Proforma
         Me.LabelX9.TabIndex = 36
         Me.LabelX9.Text = "M. DESCUENTO:"
         '
-        'LabelX8
-        '
-        Me.LabelX8.BackColor = System.Drawing.Color.Transparent
-        '
-        '
-        '
-        Me.LabelX8.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.LabelX8.Font = New System.Drawing.Font("Georgia", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelX8.ForeColor = System.Drawing.Color.White
-        Me.LabelX8.Location = New System.Drawing.Point(20, 15)
-        Me.LabelX8.Name = "LabelX8"
-        Me.LabelX8.SingleLineColor = System.Drawing.SystemColors.Control
-        Me.LabelX8.Size = New System.Drawing.Size(86, 18)
-        Me.LabelX8.TabIndex = 34
-        Me.LabelX8.Text = "P. Descuento:"
-        Me.LabelX8.Visible = False
-        '
-        'tbIce
-        '
-        '
-        '
-        '
-        Me.tbIce.BackgroundStyle.Class = "DateTimeInputBackground"
-        Me.tbIce.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.tbIce.ButtonFreeText.Shortcut = DevComponents.DotNetBar.eShortcut.F2
-        Me.tbIce.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.tbIce.Increment = 1.0R
-        Me.tbIce.Location = New System.Drawing.Point(291, 12)
-        Me.tbIce.MinValue = 0R
-        Me.tbIce.Name = "tbIce"
-        Me.tbIce.Size = New System.Drawing.Size(89, 21)
-        Me.tbIce.TabIndex = 3
-        Me.tbIce.Visible = False
-        Me.tbIce.WatermarkAlignment = DevComponents.Editors.eTextAlignment.Right
-        '
-        'tbPdesc
-        '
-        '
-        '
-        '
-        Me.tbPdesc.BackgroundStyle.Class = "DateTimeInputBackground"
-        Me.tbPdesc.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.tbPdesc.ButtonFreeText.Shortcut = DevComponents.DotNetBar.eShortcut.F2
-        Me.tbPdesc.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.tbPdesc.Increment = 1.0R
-        Me.tbPdesc.Location = New System.Drawing.Point(127, 12)
-        Me.tbPdesc.LockUpdateChecked = False
-        Me.tbPdesc.MinValue = 0R
-        Me.tbPdesc.Name = "tbPdesc"
-        Me.tbPdesc.Size = New System.Drawing.Size(89, 21)
-        Me.tbPdesc.TabIndex = 1
-        Me.tbPdesc.Visible = False
-        Me.tbPdesc.WatermarkAlignment = DevComponents.Editors.eTextAlignment.Right
-        '
-        'lbIce
-        '
-        Me.lbIce.BackColor = System.Drawing.Color.Transparent
-        '
-        '
-        '
-        Me.lbIce.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.lbIce.Font = New System.Drawing.Font("Georgia", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lbIce.ForeColor = System.Drawing.Color.White
-        Me.lbIce.Location = New System.Drawing.Point(235, 15)
-        Me.lbIce.Name = "lbIce"
-        Me.lbIce.SingleLineColor = System.Drawing.SystemColors.Control
-        Me.lbIce.Size = New System.Drawing.Size(44, 18)
-        Me.lbIce.TabIndex = 40
-        Me.lbIce.Text = "ICE:"
-        Me.lbIce.Visible = False
-        '
         'Timer1
         '
         Me.Timer1.Enabled = True
         Me.Timer1.Interval = 500
         '
-        'F0_Proforma
+        'F0_Vales
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1344, 701)
         Me.Location = New System.Drawing.Point(0, 0)
         Me.Margin = New System.Windows.Forms.Padding(4)
-        Me.Name = "F0_Proforma"
-        Me.Text = "F0_Ventas"
+        Me.Name = "F0_Vales"
+        Me.Text = "F0_Vales"
         Me.Controls.SetChildIndex(Me.PanelPrincipal, 0)
         Me.PanelSuperior.ResumeLayout(False)
         Me.PanelInferior.ResumeLayout(False)
@@ -1281,13 +1287,17 @@ Partial Class F0_Proforma
         Me.PanelVentas.ResumeLayout(False)
         Me.GroupPanel2.ResumeLayout(False)
         Me.Panel6.ResumeLayout(False)
-        CType(Me.grVentas, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.grVales, System.ComponentModel.ISupportInitialize).EndInit()
         Me.PanelContentSup.ResumeLayout(False)
         Me.GroupPanel1.ResumeLayout(False)
         Me.Panel2.ResumeLayout(False)
-        Me.Panel2.PerformLayout()
-        CType(Me.cbSucursal, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.tbFechaVenta, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.Panel3.ResumeLayout(False)
+        Me.Panel3.PerformLayout()
+        CType(Me.tbBeneficio, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.tbExcedente, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.tbMontoVale, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.tbCantVale, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.dtFecha, System.ComponentModel.ISupportInitialize).EndInit()
         Me.PanelDetalle.ResumeLayout(False)
         Me.GroupPanel4.ResumeLayout(False)
         Me.Panel5.ResumeLayout(False)
@@ -1300,8 +1310,6 @@ Partial Class F0_Proforma
         CType(Me.tbMdesc, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.tbtotal, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.tbSubTotal, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.tbIce, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.tbPdesc, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -1314,47 +1322,48 @@ Partial Class F0_Proforma
     Friend WithEvents grdetalle As Janus.Windows.GridEX.GridEX
     Friend WithEvents GroupPanel1 As DevComponents.DotNetBar.Controls.GroupPanel
     Friend WithEvents Panel2 As System.Windows.Forms.Panel
-    Friend WithEvents LabelX1 As DevComponents.DotNetBar.LabelX
-    Friend WithEvents tbObservacion As DevComponents.DotNetBar.Controls.TextBoxX
-    Friend WithEvents LabelX10 As DevComponents.DotNetBar.LabelX
-    Friend WithEvents LabelX3 As DevComponents.DotNetBar.LabelX
-    Friend WithEvents tbVendedor As DevComponents.DotNetBar.Controls.TextBoxX
-    Friend WithEvents tbCliente As DevComponents.DotNetBar.Controls.TextBoxX
-    Friend WithEvents LabelX2 As DevComponents.DotNetBar.LabelX
-    Friend WithEvents tbCodigo As DevComponents.DotNetBar.Controls.TextBoxX
-    Friend WithEvents LabelX4 As DevComponents.DotNetBar.LabelX
-    Friend WithEvents tbFechaVenta As DevComponents.Editors.DateTimeAdv.DateTimeInput
-    Friend WithEvents lbTipoMoneda As DevComponents.DotNetBar.LabelX
-    Friend WithEvents swMoneda As DevComponents.DotNetBar.Controls.SwitchButton
     Friend WithEvents PanelTotal As System.Windows.Forms.Panel
     Friend WithEvents tbtotal As DevComponents.Editors.DoubleInput
     Friend WithEvents LabelX11 As DevComponents.DotNetBar.LabelX
     Friend WithEvents tbMdesc As DevComponents.Editors.DoubleInput
     Friend WithEvents LabelX9 As DevComponents.DotNetBar.LabelX
-    Friend WithEvents tbPdesc As DevComponents.Editors.DoubleInput
-    Friend WithEvents LabelX8 As DevComponents.DotNetBar.LabelX
     Friend WithEvents Panel4 As System.Windows.Forms.Panel
     Friend WithEvents GroupPanel2 As DevComponents.DotNetBar.Controls.GroupPanel
     Friend WithEvents Panel6 As System.Windows.Forms.Panel
-    Friend WithEvents grVentas As Janus.Windows.GridEX.GridEX
+    Friend WithEvents grVales As Janus.Windows.GridEX.GridEX
     Friend WithEvents GPanelProductos As DevComponents.DotNetBar.Controls.GroupPanel
     Friend WithEvents Panel7 As System.Windows.Forms.Panel
     Friend WithEvents grProductos As Janus.Windows.GridEX.GridEX
     Protected WithEvents SuperTabItem1 As DevComponents.DotNetBar.SuperTabItem
     Friend WithEvents SuperTabControlPanel2 As DevComponents.DotNetBar.SuperTabControlPanel
-    Friend WithEvents tbIce As DevComponents.Editors.DoubleInput
-    Friend WithEvents lbIce As DevComponents.DotNetBar.LabelX
     Friend WithEvents LabelX13 As DevComponents.DotNetBar.LabelX
     Friend WithEvents tbSubTotal As DevComponents.Editors.DoubleInput
-    Friend WithEvents LabelX17 As DevComponents.DotNetBar.LabelX
-    Friend WithEvents cbSucursal As Janus.Windows.GridEX.EditControls.MultiColumnCombo
     Friend WithEvents Timer1 As Timer
-    Friend WithEvents LabelX29 As DevComponents.DotNetBar.LabelX
+    Friend WithEvents Panel3 As Panel
+    Friend WithEvents LabelX21 As DevComponents.DotNetBar.LabelX
+    Friend WithEvents LabelX20 As DevComponents.DotNetBar.LabelX
+    Friend WithEvents tbNroVales As DevComponents.DotNetBar.Controls.TextBoxX
+    Friend WithEvents LabelX19 As DevComponents.DotNetBar.LabelX
+    Friend WithEvents LabelX10 As DevComponents.DotNetBar.LabelX
+    Friend WithEvents LabelX12 As DevComponents.DotNetBar.LabelX
+    Friend WithEvents tbNit As DevComponents.DotNetBar.Controls.TextBoxX
+    Friend WithEvents LabelX14 As DevComponents.DotNetBar.LabelX
+    Friend WithEvents tbCliente As DevComponents.DotNetBar.Controls.TextBoxX
+    Friend WithEvents LabelX2 As DevComponents.DotNetBar.LabelX
+    Friend WithEvents LabelX15 As DevComponents.DotNetBar.LabelX
     Friend WithEvents swMostrar As DevComponents.DotNetBar.Controls.SwitchButton
-    Friend WithEvents LabelX5 As DevComponents.DotNetBar.LabelX
-    Friend WithEvents tbContacto As DevComponents.DotNetBar.Controls.TextBoxX
-    Friend WithEvents LabelX27 As DevComponents.DotNetBar.LabelX
-    Friend WithEvents tbTelf As DevComponents.DotNetBar.Controls.TextBoxX
-    Friend WithEvents TbNomCliente As DevComponents.DotNetBar.Controls.TextBoxX
-    Friend WithEvents LabelX6 As DevComponents.DotNetBar.LabelX
+    Friend WithEvents LabelX16 As DevComponents.DotNetBar.LabelX
+    Friend WithEvents dtFecha As DevComponents.Editors.DateTimeAdv.DateTimeInput
+    Friend WithEvents LabelX17 As DevComponents.DotNetBar.LabelX
+    Friend WithEvents tbObservacion As DevComponents.DotNetBar.Controls.TextBoxX
+    Friend WithEvents LabelX18 As DevComponents.DotNetBar.LabelX
+    Friend WithEvents tbCodigo As DevComponents.DotNetBar.Controls.TextBoxX
+    Friend WithEvents tbCantVale As DevComponents.Editors.IntegerInput
+    Friend WithEvents tbMontoVale As DevComponents.Editors.DoubleInput
+    Friend WithEvents tbBeneficio As DevComponents.Editors.DoubleInput
+    Friend WithEvents LabelX22 As DevComponents.DotNetBar.LabelX
+    Friend WithEvents tbExcedente As DevComponents.Editors.DoubleInput
+    Friend WithEvents LabelX23 As DevComponents.DotNetBar.LabelX
+    Friend WithEvents tbCodMovimiento As DevComponents.DotNetBar.Controls.TextBoxX
+    Friend WithEvents tbEmpresa As DevComponents.DotNetBar.Controls.TextBoxX
 End Class

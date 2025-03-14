@@ -372,6 +372,12 @@
     <Compile Include="F0_ExpImpStockFisico.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="F0_Vales.Designer.vb">
+      <DependentUpon>F0_Vales.vb</DependentUpon>
+    </Compile>
+    <Compile Include="F0_Vales.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="F0_ProformaNueva.Designer.vb">
       <DependentUpon>F0_ProformaNueva.vb</DependentUpon>
     </Compile>
@@ -1699,6 +1705,9 @@
     <EmbeddedResource Include="F0_ExpImpStockFisico.resx">
       <DependentUpon>F0_ExpImpStockFisico.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="F0_Vales.resx">
+      <DependentUpon>F0_Vales.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="F0_ProformaNueva.resx">
       <DependentUpon>F0_ProformaNueva.vb</DependentUpon>
     </EmbeddedResource>
@@ -2723,6 +2732,7 @@
     <None Include="Resources\trash.png" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\vale2.png" />
     <None Include="Resources\vale.png" />
     <None Include="Resources\precio1.png" />
     <None Include="Resources\pesaje.png" />

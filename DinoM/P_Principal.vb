@@ -1364,6 +1364,12 @@ Public Class P_Principal
         frm.Show()
     End Sub
 
+    Private Sub btVales_Click(sender As Object, e As EventArgs) Handles btVales.Click
+        Dim frm As New F0_Vales
+        frm._nameButton = btVales.Name
+        frm._modulo = FP_VENTAS
+        frm.Show()
+    End Sub
 
 
     'Private Sub btnCredPagoCliente_Click(sender As Object, e As EventArgs) Handles btnCredPagoCliente.Click
