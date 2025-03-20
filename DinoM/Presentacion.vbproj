@@ -2732,6 +2732,7 @@
     <None Include="Resources\trash.png" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\rep vales.png" />
     <None Include="Resources\vale2.png" />
     <None Include="Resources\vale.png" />
     <None Include="Resources\precio1.png" />

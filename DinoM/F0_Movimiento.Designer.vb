@@ -635,7 +635,7 @@ Partial Class F0_Movimiento
         Me.cbConcepto.Office2007CustomColor = System.Drawing.Color.DodgerBlue
         Me.cbConcepto.SelectedIndex = -1
         Me.cbConcepto.SelectedItem = Nothing
-        Me.cbConcepto.Size = New System.Drawing.Size(260, 22)
+        Me.cbConcepto.Size = New System.Drawing.Size(180, 22)
         Me.cbConcepto.TabIndex = 2
         Me.cbConcepto.VisualStyle = Janus.Windows.GridEX.VisualStyle.Office2007
         '

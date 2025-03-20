@@ -95,9 +95,20 @@ Public Class F_NombreVale
 
     Private Sub btnguardar_Click(sender As Object, e As EventArgs) Handles btnAceptar.Click
         If (_prValidar()) Then
-            NombreEmpresa = tbNombre.Text
-            Aceptar = True
-            Me.Close()
+            Dim ef = New Efecto
+            ef.tipo = 2
+            ef.Context = "Mensaje"
+            ef.Header = "¿esta seguro que el nombre de la empresa es ".ToUpper + tbNombre.Text + "?"
+            ef.ShowDialog()
+            Dim bandera As Boolean = False
+            bandera = ef.band
+            If (bandera = True) Then
+                NombreEmpresa = tbNombre.Text
+                Aceptar = True
+                Me.Close()
+            Else
+                tbNombre.Focus()
+            End If
         End If
     End Sub
 

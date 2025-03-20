@@ -9247,6 +9247,32 @@ Public Class AccesoLogica
 #End Region
 
 #Region "VALES"
+    Public Shared Function L_fnEliminarVale(numi As String, codMov As String, ByRef mensaje As String, _version As String, _ip As String,
+                                                _usumaquina As String) As Boolean
+        Dim _resultado As Boolean
+        If L_fnbValidarEliminacion(numi, "TVale001", "vanumi", mensaje) = True Then
+            Dim _Tabla As DataTable
+            Dim _listParam As New List(Of Datos.DParametro)
+
+            _listParam.Add(New Datos.DParametro("@tipo", -1))
+            _listParam.Add(New Datos.DParametro("@vanumi", numi))
+            _listParam.Add(New Datos.DParametro("@idMovimiento", codMov))
+            _listParam.Add(New Datos.DParametro("@version", _version))
+            _listParam.Add(New Datos.DParametro("@ip", _ip))
+            _listParam.Add(New Datos.DParametro("@usumaquina", _usumaquina))
+            _listParam.Add(New Datos.DParametro("@uact", L_Usuario))
+            _Tabla = D_ProcedimientoConParam("Proc_TVale001", _listParam)
+
+            If _Tabla.Rows.Count > 0 Then
+                _resultado = True
+            Else
+                _resultado = False
+            End If
+        Else
+            _resultado = False
+        End If
+        Return _resultado
+    End Function
     Public Shared Function L_fnGrabarVales(ByRef _idVale As String, _idMov As String, _nombEmp As String, _nroVale As String,
                                            _cantvale As Integer, _alm As Integer, _fecha As String, _nombCli As String, _ciCli As String,
                                            _montoVale As Double, _excedente As Double, _beneficio As Double, _obs As String, _subtotal As Double,
@@ -9294,6 +9320,42 @@ Public Class AccesoLogica
         Return _resultado
     End Function
 
+    Public Shared Function L_fnModificarVale(ByRef _vanumi As String, _empresa As String, _nrovales As String, _cantvales As Integer,
+                                             vafdoc As String, _cliente As String, _ci As String, _montovale As Double, _excedente As Double,
+                                             _beneficio As Double, _vaobs As String, _codMov As String, _version As String, _ip As String, _usumaquina As String) As Boolean
+        Dim _Tabla As DataTable
+        Dim _resultado As Boolean
+        Dim _listParam As New List(Of Datos.DParametro)
+
+        _listParam.Add(New Datos.DParametro("@tipo", 2))
+        _listParam.Add(New Datos.DParametro("@vanumi", _vanumi))
+        _listParam.Add(New Datos.DParametro("@nombEmp", _empresa))
+        _listParam.Add(New Datos.DParametro("@nroVale", _nrovales))
+        _listParam.Add(New Datos.DParametro("@cantVales", _cantvales))
+        _listParam.Add(New Datos.DParametro("@fdoc", vafdoc))
+        _listParam.Add(New Datos.DParametro("@nombCli", _cliente))
+        _listParam.Add(New Datos.DParametro("@ci", _ci))
+        _listParam.Add(New Datos.DParametro("@MontoVale", _montovale))
+        _listParam.Add(New Datos.DParametro("@excedente", _excedente))
+        _listParam.Add(New Datos.DParametro("@beneficio", _beneficio))
+        _listParam.Add(New Datos.DParametro("@obs", _vaobs))
+        _listParam.Add(New Datos.DParametro("@idMovimiento", _codMov))
+        _listParam.Add(New Datos.DParametro("@version", _version))
+        _listParam.Add(New Datos.DParametro("@ip", _ip))
+        _listParam.Add(New Datos.DParametro("@usumaquina", _usumaquina))
+        _listParam.Add(New Datos.DParametro("@uact", L_Usuario))
+
+        _Tabla = D_ProcedimientoConParam("Proc_TVale001", _listParam)
+
+        If _Tabla.Rows.Count > 0 Then
+            _vanumi = _Tabla.Rows(0).Item(0)
+            _resultado = True
+        Else
+            _resultado = False
+        End If
+
+        Return _resultado
+    End Function
     Public Shared Function L_fnGeneralVale(mostrar As Integer) As DataTable
         Dim _Tabla As DataTable
 
@@ -9338,6 +9400,19 @@ Public Class AccesoLogica
         _listParam.Add(New Datos.DParametro("@fechaF", fechaF))
         _listParam.Add(New Datos.DParametro("@uact", L_Usuario))
         _Tabla = D_ProcedimientoConParam("Proc_TVale001", _listParam)
+        Return _Tabla
+    End Function
+
+    Public Shared Function L_fnDetalleValePorCodigo(_numi As String) As DataTable
+        Dim _Tabla As DataTable
+
+        Dim _listParam As New List(Of Datos.DParametro)
+
+        _listParam.Add(New Datos.DParametro("@tipo", 7))
+        _listParam.Add(New Datos.DParametro("@vanumi", _numi))
+        _listParam.Add(New Datos.DParametro("@uact", L_Usuario))
+        _Tabla = D_ProcedimientoConParam("Proc_TVale001", _listParam)
+
         Return _Tabla
     End Function
 #End Region

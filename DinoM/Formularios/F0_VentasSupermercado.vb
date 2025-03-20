@@ -2358,7 +2358,7 @@ Public Class F0_VentasSupermercado
             End Select
         Next
     End Sub
-    Private Sub SetParametrosNotaVenta(dt As DataTable, total As Decimal, li As String, _Hora As String, _Ds2 As DataSet, _Ds3 As DataSet,
+    Public Sub SetParametrosNotaVenta(dt As DataTable, total As Decimal, li As String, _Hora As String, _Ds2 As DataSet, _Ds3 As DataSet,
                                        tipoReporte As String, objrep As Object, fecha As String, grabar As Boolean, numMov As Integer,
                                        nombEmpresa As String)
 

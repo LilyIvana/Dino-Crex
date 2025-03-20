@@ -688,7 +688,7 @@ Public Class F0_CierreCaja
                                               eToastGlowColor.Green,
                                               eToastPosition.TopCenter
                                               )
-
+                    _prGenerarReporte()
                     _prCargarCierreCaja()
 
                     _UltimoRegistro()
@@ -1352,8 +1352,12 @@ Public Class F0_CierreCaja
     End Sub
 
     Private Sub btnImprimir_Click(sender As Object, e As EventArgs) Handles btnImprimir.Click
-        If (TbCodigo.Text.Trim <> String.Empty) Then
+        If (TbCodigo.Text.Trim <> String.Empty And btnGrabar.Enabled = False) Then
             _prGenerarReporte()
+        Else
+            Dim img As Bitmap = New Bitmap(My.Resources.cancel, 50, 50)
+            ToastNotification.Show(Me, "No puede imprimir si no grabó el cierre de caja".ToUpper,
+                                   img, 2500, eToastGlowColor.Red, eToastPosition.TopCenter)
         End If
     End Sub
 
@@ -1399,10 +1403,6 @@ Public Class F0_CierreCaja
             Timer1.Enabled = False
         End If
     End Sub
-
-
-
-
 
 
 #End Region

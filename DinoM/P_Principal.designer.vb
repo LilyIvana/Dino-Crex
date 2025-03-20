@@ -251,6 +251,10 @@ Partial Class P_Principal
         Me.btSocRepSocio.SymbolColor = System.Drawing.Color.Empty
         Me.btSocRepSocio.TileColor = DevComponents.DotNetBar.Metro.eMetroTileColor.Magenta
         Me.btSocRepSocio.TileSize = New System.Drawing.Size(250, 135)
+        '
+        '
+        '
+        Me.btSocRepSocio.TileStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.btSocRepSocio.TitleText = "VEHICULO"
         '
         'btSocRepSocioEdad
@@ -261,6 +265,10 @@ Partial Class P_Principal
         Me.btSocRepSocioEdad.SymbolColor = System.Drawing.Color.Empty
         Me.btSocRepSocioEdad.TileColor = DevComponents.DotNetBar.Metro.eMetroTileColor.Magenta
         Me.btSocRepSocioEdad.TileSize = New System.Drawing.Size(250, 135)
+        '
+        '
+        '
+        Me.btSocRepSocioEdad.TileStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.btSocRepSocioEdad.TitleText = "VEHICULO"
         '
         'btSocRepSocioPagos
@@ -271,6 +279,10 @@ Partial Class P_Principal
         Me.btSocRepSocioPagos.SymbolColor = System.Drawing.Color.Empty
         Me.btSocRepSocioPagos.TileColor = DevComponents.DotNetBar.Metro.eMetroTileColor.Magenta
         Me.btSocRepSocioPagos.TileSize = New System.Drawing.Size(250, 135)
+        '
+        '
+        '
+        Me.btSocRepSocioPagos.TileStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.btSocRepSocioPagos.TitleText = "VEHICULO"
         '
         'btSocRepSocioPagosGral
@@ -281,6 +293,10 @@ Partial Class P_Principal
         Me.btSocRepSocioPagosGral.SymbolColor = System.Drawing.Color.Empty
         Me.btSocRepSocioPagosGral.TileColor = DevComponents.DotNetBar.Metro.eMetroTileColor.Magenta
         Me.btSocRepSocioPagosGral.TileSize = New System.Drawing.Size(250, 135)
+        '
+        '
+        '
+        Me.btSocRepSocioPagosGral.TileStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.btSocRepSocioPagosGral.TitleText = "VEHICULO"
         '
         'btSocRepSocioPagosMortuoriaGral
@@ -291,6 +307,10 @@ Partial Class P_Principal
         Me.btSocRepSocioPagosMortuoriaGral.SymbolColor = System.Drawing.Color.Empty
         Me.btSocRepSocioPagosMortuoriaGral.TileColor = DevComponents.DotNetBar.Metro.eMetroTileColor.Magenta
         Me.btSocRepSocioPagosMortuoriaGral.TileSize = New System.Drawing.Size(250, 135)
+        '
+        '
+        '
+        Me.btSocRepSocioPagosMortuoriaGral.TileStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.btSocRepSocioPagosMortuoriaGral.TitleText = "VEHICULO"
         '
         'btSocRepSocioListaSociosActivos
@@ -301,6 +321,10 @@ Partial Class P_Principal
         Me.btSocRepSocioListaSociosActivos.SymbolColor = System.Drawing.Color.Empty
         Me.btSocRepSocioListaSociosActivos.TileColor = DevComponents.DotNetBar.Metro.eMetroTileColor.Magenta
         Me.btSocRepSocioListaSociosActivos.TileSize = New System.Drawing.Size(250, 135)
+        '
+        '
+        '
+        Me.btSocRepSocioListaSociosActivos.TileStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.btSocRepSocioListaSociosActivos.TitleText = "VEHICULO"
         '
         'btEscRepPreExamen
@@ -311,6 +335,10 @@ Partial Class P_Principal
         Me.btEscRepPreExamen.SymbolColor = System.Drawing.Color.Empty
         Me.btEscRepPreExamen.TileColor = DevComponents.DotNetBar.Metro.eMetroTileColor.Magenta
         Me.btEscRepPreExamen.TileSize = New System.Drawing.Size(250, 135)
+        '
+        '
+        '
+        Me.btEscRepPreExamen.TileStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.btEscRepPreExamen.TitleText = "VEHICULO"
         '
         'btEscRepEstadosAlumnos
@@ -321,6 +349,10 @@ Partial Class P_Principal
         Me.btEscRepEstadosAlumnos.SymbolColor = System.Drawing.Color.Empty
         Me.btEscRepEstadosAlumnos.TileColor = DevComponents.DotNetBar.Metro.eMetroTileColor.Magenta
         Me.btEscRepEstadosAlumnos.TileSize = New System.Drawing.Size(250, 135)
+        '
+        '
+        '
+        Me.btEscRepEstadosAlumnos.TileStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.btEscRepEstadosAlumnos.TitleText = "VEHICULO"
         '
         'btEscRepAlumnosSinPreExamen
@@ -331,6 +363,10 @@ Partial Class P_Principal
         Me.btEscRepAlumnosSinPreExamen.SymbolColor = System.Drawing.Color.Empty
         Me.btEscRepAlumnosSinPreExamen.TileColor = DevComponents.DotNetBar.Metro.eMetroTileColor.Magenta
         Me.btEscRepAlumnosSinPreExamen.TileSize = New System.Drawing.Size(250, 135)
+        '
+        '
+        '
+        Me.btEscRepAlumnosSinPreExamen.TileStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.btEscRepAlumnosSinPreExamen.TitleText = "VEHICULO"
         '
         'MetroTileItem8
@@ -392,6 +428,10 @@ Partial Class P_Principal
         Me.MetroTileItem4.SymbolColor = System.Drawing.Color.Empty
         Me.MetroTileItem4.TileColor = DevComponents.DotNetBar.Metro.eMetroTileColor.Magenta
         Me.MetroTileItem4.TileSize = New System.Drawing.Size(250, 135)
+        '
+        '
+        '
+        Me.MetroTileItem4.TileStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.MetroTileItem4.TitleText = "VEHICULO"
         '
         'MetroTileItem5
@@ -419,6 +459,10 @@ Partial Class P_Principal
         Me.btVentRepSaldoClientes.SymbolColor = System.Drawing.Color.Empty
         Me.btVentRepSaldoClientes.TileColor = DevComponents.DotNetBar.Metro.eMetroTileColor.Magenta
         Me.btVentRepSaldoClientes.TileSize = New System.Drawing.Size(250, 135)
+        '
+        '
+        '
+        Me.btVentRepSaldoClientes.TileStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.btVentRepSaldoClientes.TitleText = "VEHICULO"
         '
         'rmSesion
@@ -1103,7 +1147,7 @@ Partial Class P_Principal
         '
         'btInvRepProdVales
         '
-        Me.btInvRepProdVales.Image = Global.DinoM.My.Resources.Resources._14
+        Me.btInvRepProdVales.Image = Global.DinoM.My.Resources.Resources.rep_vales
         Me.btInvRepProdVales.ImageTextAlignment = System.Drawing.ContentAlignment.MiddleCenter
         Me.btInvRepProdVales.ItemAlignment = DevComponents.DotNetBar.eItemAlignment.Center
         Me.btInvRepProdVales.Name = "btInvRepProdVales"
@@ -2923,6 +2967,10 @@ Partial Class P_Principal
         Me.btEscVehiculo.SymbolColor = System.Drawing.Color.Empty
         Me.btEscVehiculo.TileColor = DevComponents.DotNetBar.Metro.eMetroTileColor.Magenta
         Me.btEscVehiculo.TileSize = New System.Drawing.Size(250, 135)
+        '
+        '
+        '
+        Me.btEscVehiculo.TileStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.btEscVehiculo.TitleText = "VEHICULO"
         '
         'btEscAlumnos
@@ -2933,6 +2981,10 @@ Partial Class P_Principal
         Me.btEscAlumnos.SymbolColor = System.Drawing.Color.Empty
         Me.btEscAlumnos.TileColor = DevComponents.DotNetBar.Metro.eMetroTileColor.Magenta
         Me.btEscAlumnos.TileSize = New System.Drawing.Size(250, 135)
+        '
+        '
+        '
+        Me.btEscAlumnos.TileStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.btEscAlumnos.TitleText = "VEHICULO"
         '
         'btEscEquipos
@@ -2943,6 +2995,10 @@ Partial Class P_Principal
         Me.btEscEquipos.SymbolColor = System.Drawing.Color.Empty
         Me.btEscEquipos.TileColor = DevComponents.DotNetBar.Metro.eMetroTileColor.Magenta
         Me.btEscEquipos.TileSize = New System.Drawing.Size(250, 135)
+        '
+        '
+        '
+        Me.btEscEquipos.TileStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.btEscEquipos.TitleText = "VEHICULO"
         '
         'btEscClaPracticas
@@ -2953,6 +3009,10 @@ Partial Class P_Principal
         Me.btEscClaPracticas.SymbolColor = System.Drawing.Color.Empty
         Me.btEscClaPracticas.TileColor = DevComponents.DotNetBar.Metro.eMetroTileColor.Magenta
         Me.btEscClaPracticas.TileSize = New System.Drawing.Size(250, 135)
+        '
+        '
+        '
+        Me.btEscClaPracticas.TileStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.btEscClaPracticas.TitleText = "VEHICULO"
         '
         'btEscInscripciones
@@ -2963,6 +3023,10 @@ Partial Class P_Principal
         Me.btEscInscripciones.SymbolColor = System.Drawing.Color.Empty
         Me.btEscInscripciones.TileColor = DevComponents.DotNetBar.Metro.eMetroTileColor.Magenta
         Me.btEscInscripciones.TileSize = New System.Drawing.Size(250, 135)
+        '
+        '
+        '
+        Me.btEscInscripciones.TileStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.btEscInscripciones.TitleText = "VEHICULO"
         '
         'btEscPreExamen
@@ -2973,6 +3037,10 @@ Partial Class P_Principal
         Me.btEscPreExamen.SymbolColor = System.Drawing.Color.Empty
         Me.btEscPreExamen.TileColor = DevComponents.DotNetBar.Metro.eMetroTileColor.Magenta
         Me.btEscPreExamen.TileSize = New System.Drawing.Size(250, 135)
+        '
+        '
+        '
+        Me.btEscPreExamen.TileStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.btEscPreExamen.TitleText = "VEHICULO"
         '
         'btEscClasesTeoricas
@@ -2983,6 +3051,10 @@ Partial Class P_Principal
         Me.btEscClasesTeoricas.SymbolColor = System.Drawing.Color.Empty
         Me.btEscClasesTeoricas.TileColor = DevComponents.DotNetBar.Metro.eMetroTileColor.Magenta
         Me.btEscClasesTeoricas.TileSize = New System.Drawing.Size(250, 135)
+        '
+        '
+        '
+        Me.btEscClasesTeoricas.TileStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.btEscClasesTeoricas.TitleText = "VEHICULO"
         '
         'ItemContainer1
