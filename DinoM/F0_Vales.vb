@@ -190,6 +190,9 @@ Public Class F0_Vales
 
         _prCargarDetalleVenta(tbCodigo.Text)
 
+        If btnGrabar.Enabled = False Then
+            swMostrar.IsReadOnly = False
+        End If
         '_prCalcularPrecioTotal()
         LblPaginacion.Text = Str(grVales.Row + 1) + "/" + grVales.RowCount.ToString
 
@@ -959,7 +962,7 @@ Public Class F0_Vales
             btnGrabar.Enabled = True
             PanelNavegacion.Enabled = False
             '_prCargarIconELiminar()
-
+            swMostrar.IsReadOnly = True
         End If
     End Sub
     Private Sub btnEliminar_Click(sender As Object, e As EventArgs) Handles btnEliminar.Click

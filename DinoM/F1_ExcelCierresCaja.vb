@@ -189,9 +189,33 @@ Public Class F1_ExcelCierresCaja
                 .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far
                 .AggregateFunction = AggregateFunction.Sum
             End With
-            With JGrM_Buscador.RootTable.Columns("Total")
+            With JGrM_Buscador.RootTable.Columns("Ingreso")
                 .Width = 120
-                .Caption = "TOTAL BS."
+                .Caption = "INGRESOS"
+                .Visible = True
+                .FormatString = "0.00"
+                .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far
+                .AggregateFunction = AggregateFunction.Sum
+            End With
+            With JGrM_Buscador.RootTable.Columns("Egreso")
+                .Width = 120
+                .Caption = "EGRESOS"
+                .Visible = True
+                .FormatString = "0.00"
+                .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far
+                .AggregateFunction = AggregateFunction.Sum
+            End With
+            With JGrM_Buscador.RootTable.Columns("TotalVenta")
+                .Width = 120
+                .Caption = "TOTAL VENTA BS."
+                .Visible = True
+                .FormatString = "0.00"
+                .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far
+                .AggregateFunction = AggregateFunction.Sum
+            End With
+            With JGrM_Buscador.RootTable.Columns("Total")
+                .Width = 150
+                .Caption = "TOTAL CAJA BS."
                 .Visible = True
                 .FormatString = "0.00"
                 .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far
@@ -220,6 +244,11 @@ Public Class F1_ExcelCierresCaja
                 .FormatString = "0.00"
                 .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far
                 .AggregateFunction = AggregateFunction.Sum
+            End With
+            With JGrM_Buscador.RootTable.Columns("Obs")
+                .Width = 250
+                .Caption = "OBSERVACIÓN"
+                .Visible = True
             End With
             With JGrM_Buscador
                 .DefaultFilterRowComparison = FilterConditionOperator.Contains
