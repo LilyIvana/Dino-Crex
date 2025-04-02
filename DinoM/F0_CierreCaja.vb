@@ -559,15 +559,19 @@ Public Class F0_CierreCaja
             swEstado.IsReadOnly = True
 
             tbMontoI.IsInputReadOnly = True
+            tbTContado.IsInputReadOnly = True
             tbTCredito.IsInputReadOnly = True
+            tbTPagos.IsInputReadOnly = True
+            tbTIngresos.IsInputReadOnly = True
+            tbTEgresos.IsInputReadOnly = True
+            tbTotalGral.IsInputReadOnly = True
+
+            tbTEfectivo.IsInputReadOnly = True
+            tbTDeposito.IsInputReadOnly = True
             tbTTarjeta.IsInputReadOnly = True
             tbTQR.IsInputReadOnly = True
-            tbTDeposito.IsInputReadOnly = True
-            tbTContado.IsInputReadOnly = True
-            tbTotalGral.IsInputReadOnly = True
-            tbTEfectivo.IsInputReadOnly = True
             tbTDiferencia.IsInputReadOnly = True
-            tbTPagos.IsInputReadOnly = True
+
 
             btnModificar.Enabled = True
             btnGrabar.Enabled = False
@@ -1046,6 +1050,9 @@ Public Class F0_CierreCaja
             _Limpiar()
             _prhabilitar()
 
+            Dgv_Cortes.Enabled = False
+            Dgv_Depositos.Enabled = False
+
             btnNuevo.Enabled = False
             btnModificar.Enabled = False
             btnEliminar.Enabled = False
@@ -1311,10 +1318,14 @@ Public Class F0_CierreCaja
         Try
             If swEstado.Value = True Then
                 _prhabilitar()
+                Dgv_Cortes.Enabled = True
+                Dgv_Depositos.Enabled = True
+
                 btnNuevo.Enabled = False
                 btnModificar.Enabled = False
                 btnEliminar.Enabled = False
                 btnGrabar.Enabled = True
+
 
                 btnCalcular.Enabled = True
                 'PanelNavegacion.Enabled = False
@@ -1352,11 +1363,11 @@ Public Class F0_CierreCaja
     End Sub
 
     Private Sub btnImprimir_Click(sender As Object, e As EventArgs) Handles btnImprimir.Click
-        If (TbCodigo.Text.Trim <> String.Empty And btnGrabar.Enabled = False) Then
+        If (TbCodigo.Text.Trim <> String.Empty And btnGrabar.Enabled = False And swEstado.Value = False) Then
             _prGenerarReporte()
         Else
             Dim img As Bitmap = New Bitmap(My.Resources.cancel, 50, 50)
-            ToastNotification.Show(Me, "No puede imprimir si no grabó el cierre de caja".ToUpper,
+            ToastNotification.Show(Me, "No puede imprimir si no grabó y cerró el cierre de caja".ToUpper,
                                    img, 2500, eToastGlowColor.Red, eToastPosition.TopCenter)
         End If
     End Sub

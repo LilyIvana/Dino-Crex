@@ -378,6 +378,7 @@ Public Class F0_VentasSupermercado
         lbFecha.Text = Now.Date.ToString("dd/MM/yyyy")
         lbCliente.Text = "S/N"
         lbNit.Text = "0"
+        Cel = ""
         cbCanje.SelectedIndex = 1
         CbTDoc.SelectedIndex = -1
 
