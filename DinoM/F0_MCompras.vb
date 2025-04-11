@@ -2716,7 +2716,10 @@ salirIf:
                     dt = L_fnObtenerNitProv(tbCodProv.Text)
 
                     If dt.Rows.Count = 0 Then
-                        Throw New Exception("Lista de nit vacia")
+                        ''Throw New Exception("Lista de nit vacia")
+                        Dim img As Bitmap = New Bitmap(My.Resources.cancel, 50, 50)
+                        ToastNotification.Show(Me, "Lista de nit vacia".ToUpper, img, 2000, eToastGlowColor.Red, eToastPosition.BottomCenter)
+
                     End If
                     Dim listEstCeldas As New List(Of Modelo.Celda)
 
