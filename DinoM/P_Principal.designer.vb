@@ -536,7 +536,7 @@ Partial Class P_Principal
         Me.lbVersion.SingleLineColor = System.Drawing.Color.Transparent
         Me.lbVersion.Size = New System.Drawing.Size(127, 18)
         Me.lbVersion.TabIndex = 5
-        Me.lbVersion.Text = "Versión 4.21.0.250421"
+        Me.lbVersion.Text = "Versión 4.21.0.250430"
         Me.lbVersion.TextAlignment = System.Drawing.StringAlignment.Center
         '
         'SideNav1
@@ -3292,7 +3292,6 @@ Partial Class P_Principal
         Me.Controls.Add(Me.rmSesion)
         Me.Controls.Add(Me.SideNav1)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog
-        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "P_Principal"
         Me.Text = "Dino "
         Me.SideNav1.ResumeLayout(False)

@@ -94,7 +94,7 @@ Partial Class Login
         Me.Label3.AutoSize = True
         Me.Label3.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label3.ForeColor = System.Drawing.Color.DodgerBlue
-        Me.Label3.Location = New System.Drawing.Point(108, 210)
+        Me.Label3.Location = New System.Drawing.Point(108, 212)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(228, 24)
         Me.Label3.TabIndex = 0
@@ -115,7 +115,7 @@ Partial Class Login
         '
         Me.PictureBox2.BackColor = System.Drawing.Color.Transparent
         Me.PictureBox2.Dock = System.Windows.Forms.DockStyle.Left
-        Me.PictureBox2.Image = Global.DinoM.My.Resources.Resources.dynasys1
+        Me.PictureBox2.Image = Global.DinoM.My.Resources.Resources.Fondo_empresarial
         Me.PictureBox2.Location = New System.Drawing.Point(0, 0)
         Me.PictureBox2.Name = "PictureBox2"
         Me.PictureBox2.Size = New System.Drawing.Size(418, 68)

@@ -302,7 +302,12 @@ Public Class F1_PesajeProductos
 
     Public Overrides Sub _PMOMostrarRegistro(_N As Integer)
         'JGrM_Buscador.Row = _MPos
-        JGrM_Buscador.Row = _N
+
+        If JGrM_Buscador.RowCount > 0 Then
+            JGrM_Buscador.Row = _N
+        End If
+
+
         Dim dt As DataTable = CType(JGrM_Buscador.DataSource, DataTable)
         Try
             tbCodigo.Text = JGrM_Buscador.GetValue("pcnumi").ToString
@@ -325,7 +330,6 @@ Public Class F1_PesajeProductos
             lbFecha.Text = CType(.GetValue("pcfact"), Date).ToString("dd/MM/yyyy")
             lbHora.Text = .GetValue("pchact").ToString
             lbUsuario.Text = .GetValue("pcuact").ToString
-
 
         End With
 

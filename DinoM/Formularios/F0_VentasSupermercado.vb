@@ -3909,7 +3909,7 @@ Public Class F0_VentasSupermercado
         Dim NTarjeta As String
 
         If TbEmailS.Text = String.Empty Then
-            email = "cliente@crex.com.bo".ToUpper
+            email = "clientesssiza@gmail.com".ToUpper
             TbEmailS.Text = email
         Else
             email = TbEmailS.Text

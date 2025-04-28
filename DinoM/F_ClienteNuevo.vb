@@ -75,7 +75,7 @@ Public Class F_ClienteNuevo
         End If
 
         If TbEmailN.Text = String.Empty Then
-            TbEmailN.Text = "cliente@crex.com.bo"
+            TbEmailN.Text = "clientesssiza@gmail.com"
         End If
 
         'If TbEmailN.Text = String.Empty Then

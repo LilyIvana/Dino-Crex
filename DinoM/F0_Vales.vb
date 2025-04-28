@@ -1123,10 +1123,10 @@ Public Class F0_Vales
     End Sub
 
     Private Sub tbMontoVale_ValueChanged(sender As Object, e As EventArgs) Handles tbMontoVale.ValueChanged
-        If (tbtotal.Value > tbMontoVale.Value) Then
+        If (tbtotal.Value >= tbMontoVale.Value) Then
             tbExcedente.Value = tbtotal.Value - tbMontoVale.Value
             tbBeneficio.Value = 0
-        ElseIf (tbTotal.Value < tbMontoVale.Value) Then
+        ElseIf (tbtotal.Value < tbMontoVale.Value) Then
             tbBeneficio.Value = (tbtotal.Value - tbMontoVale.Value) * (-1)
             tbExcedente.Value = 0
         End If
