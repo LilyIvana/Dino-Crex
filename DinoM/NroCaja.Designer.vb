@@ -77,6 +77,7 @@ Partial Class NroCaja
         Me.tbNroCaja.BackgroundStyle.Class = "DateTimeInputBackground"
         Me.tbNroCaja.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.tbNroCaja.ButtonFreeText.Shortcut = DevComponents.DotNetBar.eShortcut.F2
+        Me.tbNroCaja.Colors.Highlight = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(0, Byte), Integer))
         Me.tbNroCaja.Font = New System.Drawing.Font("Georgia", 17.0!, System.Drawing.FontStyle.Bold)
         Me.tbNroCaja.Location = New System.Drawing.Point(208, 35)
         Me.tbNroCaja.MinValue = 0
@@ -90,7 +91,7 @@ Partial Class NroCaja
         'Label1
         '
         Me.Label1.Font = New System.Drawing.Font("Georgia", 17.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.ForeColor = System.Drawing.Color.DodgerBlue
+        Me.Label1.ForeColor = System.Drawing.Color.OrangeRed
         Me.Label1.Location = New System.Drawing.Point(19, 38)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(182, 32)
@@ -99,14 +100,14 @@ Partial Class NroCaja
         '
         'btnAceptar
         '
-        Me.btnAceptar.BackColor = System.Drawing.Color.DodgerBlue
+        Me.btnAceptar.BackColor = System.Drawing.Color.OrangeRed
         Me.btnAceptar.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
         Me.btnAceptar.FlatAppearance.BorderSize = 0
-        Me.btnAceptar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.DeepSkyBlue
-        Me.btnAceptar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DarkTurquoise
+        Me.btnAceptar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Coral
+        Me.btnAceptar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Coral
         Me.btnAceptar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnAceptar.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnAceptar.ForeColor = System.Drawing.SystemColors.ControlLightLight
+        Me.btnAceptar.ForeColor = System.Drawing.SystemColors.Control
         Me.btnAceptar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.btnAceptar.Location = New System.Drawing.Point(109, 87)
         Me.btnAceptar.Name = "btnAceptar"

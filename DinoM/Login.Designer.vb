@@ -93,8 +93,8 @@ Partial Class Login
         '
         Me.Label3.AutoSize = True
         Me.Label3.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label3.ForeColor = System.Drawing.Color.DodgerBlue
-        Me.Label3.Location = New System.Drawing.Point(108, 212)
+        Me.Label3.ForeColor = System.Drawing.Color.OrangeRed
+        Me.Label3.Location = New System.Drawing.Point(107, 247)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(228, 24)
         Me.Label3.TabIndex = 0
@@ -115,7 +115,7 @@ Partial Class Login
         '
         Me.PictureBox2.BackColor = System.Drawing.Color.Transparent
         Me.PictureBox2.Dock = System.Windows.Forms.DockStyle.Left
-        Me.PictureBox2.Image = Global.DinoM.My.Resources.Resources.Fondo_empresarial
+        Me.PictureBox2.Image = Global.DinoM.My.Resources.Resources.Fondo_Dino
         Me.PictureBox2.Location = New System.Drawing.Point(0, 0)
         Me.PictureBox2.Name = "PictureBox2"
         Me.PictureBox2.Size = New System.Drawing.Size(418, 68)
@@ -126,7 +126,7 @@ Partial Class Login
         'PictureBox1
         '
         Me.PictureBox1.ImageLocation = ""
-        Me.PictureBox1.Location = New System.Drawing.Point(136, 85)
+        Me.PictureBox1.Location = New System.Drawing.Point(135, 107)
         Me.PictureBox1.Name = "PictureBox1"
         Me.PictureBox1.Size = New System.Drawing.Size(166, 122)
         Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
@@ -137,8 +137,8 @@ Partial Class Login
         '
         Me.Label1.AutoSize = True
         Me.Label1.Font = New System.Drawing.Font("Georgia", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.ForeColor = System.Drawing.Color.DodgerBlue
-        Me.Label1.Location = New System.Drawing.Point(56, 269)
+        Me.Label1.ForeColor = System.Drawing.Color.Black
+        Me.Label1.Location = New System.Drawing.Point(55, 294)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(82, 16)
         Me.Label1.TabIndex = 15
@@ -147,7 +147,7 @@ Partial Class Login
         'PictureBox4
         '
         Me.PictureBox4.Image = CType(resources.GetObject("PictureBox4.Image"), System.Drawing.Image)
-        Me.PictureBox4.Location = New System.Drawing.Point(331, 268)
+        Me.PictureBox4.Location = New System.Drawing.Point(330, 293)
         Me.PictureBox4.Name = "PictureBox4"
         Me.PictureBox4.Size = New System.Drawing.Size(24, 23)
         Me.PictureBox4.TabIndex = 14
@@ -157,8 +157,8 @@ Partial Class Login
         '
         Me.Label2.AutoSize = True
         Me.Label2.Font = New System.Drawing.Font("Georgia", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label2.ForeColor = System.Drawing.Color.DodgerBlue
-        Me.Label2.Location = New System.Drawing.Point(56, 314)
+        Me.Label2.ForeColor = System.Drawing.Color.Black
+        Me.Label2.Location = New System.Drawing.Point(55, 339)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(95, 16)
         Me.Label2.TabIndex = 4
@@ -167,7 +167,7 @@ Partial Class Login
         'PictureBox3
         '
         Me.PictureBox3.Image = CType(resources.GetObject("PictureBox3.Image"), System.Drawing.Image)
-        Me.PictureBox3.Location = New System.Drawing.Point(332, 313)
+        Me.PictureBox3.Location = New System.Drawing.Point(331, 338)
         Me.PictureBox3.Name = "PictureBox3"
         Me.PictureBox3.Size = New System.Drawing.Size(25, 23)
         Me.PictureBox3.TabIndex = 13
@@ -181,7 +181,7 @@ Partial Class Login
         Me.tbUsuario.Border.Class = "TextBoxBorder"
         Me.tbUsuario.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.tbUsuario.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.tbUsuario.Location = New System.Drawing.Point(157, 266)
+        Me.tbUsuario.Location = New System.Drawing.Point(156, 291)
         Me.tbUsuario.MaxLength = 10
         Me.tbUsuario.Multiline = True
         Me.tbUsuario.Name = "tbUsuario"
@@ -197,7 +197,7 @@ Partial Class Login
         Me.tbPassword.Border.Class = "TextBoxBorder"
         Me.tbPassword.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.tbPassword.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.tbPassword.Location = New System.Drawing.Point(159, 311)
+        Me.tbPassword.Location = New System.Drawing.Point(158, 336)
         Me.tbPassword.Multiline = True
         Me.tbPassword.Name = "tbPassword"
         Me.tbPassword.PasswordChar = Global.Microsoft.VisualBasic.ChrW(42)
@@ -207,16 +207,16 @@ Partial Class Login
         '
         'btnIngresar
         '
-        Me.btnIngresar.BackColor = System.Drawing.Color.DodgerBlue
+        Me.btnIngresar.BackColor = System.Drawing.Color.OrangeRed
         Me.btnIngresar.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
         Me.btnIngresar.FlatAppearance.BorderSize = 0
-        Me.btnIngresar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.DeepSkyBlue
-        Me.btnIngresar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DarkTurquoise
+        Me.btnIngresar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Coral
+        Me.btnIngresar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Coral
         Me.btnIngresar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnIngresar.Font = New System.Drawing.Font("Arial", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnIngresar.ForeColor = System.Drawing.SystemColors.ControlLightLight
         Me.btnIngresar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnIngresar.Location = New System.Drawing.Point(159, 355)
+        Me.btnIngresar.Location = New System.Drawing.Point(155, 386)
         Me.btnIngresar.Name = "btnIngresar"
         Me.btnIngresar.Size = New System.Drawing.Size(137, 37)
         Me.btnIngresar.TabIndex = 2

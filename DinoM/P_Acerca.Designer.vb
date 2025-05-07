@@ -31,12 +31,14 @@ Partial Class P_Acerca
         Me.OKButton = New System.Windows.Forms.Button()
         Me.TextBoxDescription = New System.Windows.Forms.TextBox()
         Me.LogoPictureBox = New System.Windows.Forms.PictureBox()
+        Me.Label5 = New System.Windows.Forms.Label()
         Me.Panel1.SuspendLayout()
         CType(Me.LogoPictureBox, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'Panel1
         '
+        Me.Panel1.Controls.Add(Me.Label5)
         Me.Panel1.Controls.Add(Me.Label4)
         Me.Panel1.Controls.Add(Me.Label3)
         Me.Panel1.Controls.Add(Me.Label2)
@@ -76,9 +78,9 @@ Partial Class P_Acerca
         Me.Label2.Font = New System.Drawing.Font("Palatino Linotype", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label2.Location = New System.Drawing.Point(263, 162)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(155, 20)
+        Me.Label2.Size = New System.Drawing.Size(159, 20)
         Me.Label2.TabIndex = 7
-        Me.Label2.Text = "Versión 4.16.0.241122"
+        Me.Label2.Text = "Versión  4.21.0.250430"
         '
         'Label1
         '
@@ -127,6 +129,16 @@ Partial Class P_Acerca
         Me.LogoPictureBox.TabIndex = 1
         Me.LogoPictureBox.TabStop = False
         '
+        'Label5
+        '
+        Me.Label5.AutoSize = True
+        Me.Label5.Font = New System.Drawing.Font("Palatino Linotype", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label5.Location = New System.Drawing.Point(263, 219)
+        Me.Label5.Name = "Label5"
+        Me.Label5.Size = New System.Drawing.Size(251, 20)
+        Me.Label5.TabIndex = 10
+        Me.Label5.Text = "Cambios: Ing. Lilian Calvetty Michel"
+        '
         'P_Acerca
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -152,4 +164,5 @@ Partial Class P_Acerca
     Friend WithEvents Label1 As Label
     Friend WithEvents OKButton As Button
     Friend WithEvents TextBoxDescription As TextBox
+    Friend WithEvents Label5 As Label
 End Class

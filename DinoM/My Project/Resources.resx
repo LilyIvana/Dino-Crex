@@ -124,6 +124,9 @@
   <data name="precio" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\precio.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="hojaruta" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\hojaruta.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="estadistico" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\estadistico.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -135,6 +138,9 @@
   </data>
   <data name="codigobarra" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\codigobarra.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="facturacion" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\facturacion.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="packing_2" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\packing-2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -156,6 +162,9 @@
   </data>
   <data name="_051_prohibition" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\051-prohibition.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Fondo Naranja 1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Fondo Naranja 1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Ideteca" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Ideteca.PNG;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -190,8 +199,8 @@
   <data name="trash2" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\trash2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="ic_f" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\ic_f.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Fondo Naranja 3" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Fondo Naranja 3.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="fondoInfo" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\fondoInfo.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -246,9 +255,6 @@
   </data>
   <data name="edit" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\edit.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="logo" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\logo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="INFORMATION" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\INFORMATION.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -352,8 +358,8 @@
   <data name="ROLES" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\ROLES.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="facturacion" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\facturacion.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="addbt" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\addbt.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="fondopanel1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\fondopanel.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -376,8 +382,8 @@
   <data name="iconalejar" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\iconalejar.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="dynasys2" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\dynasys2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="refresh_1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\refresh-1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="addimg" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\addimg.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -391,8 +397,14 @@
   <data name="trash" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\trash.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="dynasys2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\dynasys2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="precio1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\precio1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Fondo Dino" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Fondo Dino.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="zona" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\zona.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -402,9 +414,6 @@
   </data>
   <data name="ToastError" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\ToastError.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="producto" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\producto.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="duplicar" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\duplicar.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -421,11 +430,11 @@
   <data name="GRABACION_EXITOSA" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\GRABACION_EXITOSA.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="hojaruta" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\hojaruta.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="ic_f" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ic_f.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="refresh_1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\refresh-1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="producto" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\producto.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="VENT_PAGOS" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\VENT_PAGOS.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -502,6 +511,9 @@
   <data name="fondoazul" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\fondoazul.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="rep vales" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\rep vales.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="LogoDynasys" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\LogoDynasys.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -532,11 +544,14 @@
   <data name="dinases" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\dinases.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="addbt" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\addbt.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="logo" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\logo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="impresora3" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\impresora3.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Fondo Naranja 2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Fondo Naranja 2.jfif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="edit2" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\edit2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -577,7 +592,7 @@
   <data name="BUSQUEDA" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\BUSQUEDA1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="rep vales" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\rep vales.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Fondo Dino1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Fondo Dino.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

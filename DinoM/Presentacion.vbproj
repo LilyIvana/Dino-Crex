@@ -848,6 +848,11 @@
     <Compile Include="modelosApi\RespMotivoAnulacion.vb" />
     <Compile Include="modelosApi\RespTipoDoc.vb" />
     <Compile Include="modelosApi\UmedidaResp.vb" />
+    <Compile Include="My Project\Resources.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="NroCaja.Designer.vb">
       <DependentUpon>NroCaja.vb</DependentUpon>
     </Compile>
@@ -1633,11 +1638,6 @@
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>
       <DependentUpon>Application.myapp</DependentUpon>
-    </Compile>
-    <Compile Include="My Project\Resources.Designer.vb">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <Compile Include="My Project\Settings.Designer.vb">
       <AutoGen>True</AutoGen>
@@ -2426,9 +2426,9 @@
     <EmbeddedResource Include="My Project\licenses.licx" />
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.vb</LastGenOutput>
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
       <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.vb</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Utils\F_Inventario.resx">
       <DependentUpon>F_Inventario.vb</DependentUpon>
@@ -2801,6 +2801,9 @@
     <None Include="Resources\EMPRESA2.png" />
     <None Include="Resources\EMPRESA.png" />
     <None Include="Resources\duplicar.png" />
+    <None Include="Resources\Fondo Naranja 2.jfif" />
+    <None Include="Resources\Fondo Naranja 3.jpg" />
+    <None Include="Resources\Fondo Dino.png" />
     <Content Include="Resources\man.png" />
     <None Include="Resources\pdf.png" />
     <None Include="Resources\txt.png" />
