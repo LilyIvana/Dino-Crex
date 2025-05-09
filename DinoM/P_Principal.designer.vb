@@ -533,7 +533,7 @@ Partial Class P_Principal
         Me.lbVersion.SingleLineColor = System.Drawing.Color.Transparent
         Me.lbVersion.Size = New System.Drawing.Size(127, 18)
         Me.lbVersion.TabIndex = 5
-        Me.lbVersion.Text = "Versión 5.0.0.250509"
+        Me.lbVersion.Text = "Versión 5.0.0.250513"
         Me.lbVersion.TextAlignment = System.Drawing.StringAlignment.Center
         '
         'SideNav1
@@ -541,9 +541,9 @@ Partial Class P_Principal
         Me.SideNav1.BackColor = System.Drawing.Color.FromArgb(CType(CType(49, Byte), Integer), CType(CType(59, Byte), Integer), CType(CType(66, Byte), Integer))
         Me.SideNav1.BackgroundImage = Global.DinoM.My.Resources.Resources.Fondo_empresarial
         Me.SideNav1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.SideNav1.Controls.Add(Me.SideNav_Ventas)
         Me.SideNav1.Controls.Add(Me.SideNav_Conf)
         Me.SideNav1.Controls.Add(Me.SideNavPanel6)
-        Me.SideNav1.Controls.Add(Me.SideNav_Ventas)
         Me.SideNav1.Controls.Add(Me.SideNavPanel7)
         Me.SideNav1.Controls.Add(Me.SideNavPanel4)
         Me.SideNav1.Controls.Add(Me.SideNavPanel5)
@@ -569,6 +569,7 @@ Partial Class P_Principal
         Me.SideNav_Conf.Name = "SideNav_Conf"
         Me.SideNav_Conf.Size = New System.Drawing.Size(848, 524)
         Me.SideNav_Conf.TabIndex = 2
+        Me.SideNav_Conf.Visible = False
         '
         'MetroTilePanel1
         '
@@ -1227,7 +1228,6 @@ Partial Class P_Principal
         Me.SideNav_Ventas.Name = "SideNav_Ventas"
         Me.SideNav_Ventas.Size = New System.Drawing.Size(848, 524)
         Me.SideNav_Ventas.TabIndex = 134
-        Me.SideNav_Ventas.Visible = False
         '
         'MetroTilePanelVentas
         '
@@ -1581,7 +1581,7 @@ Partial Class P_Principal
         '
         '
         Me.btnVentaRapida.TileStyle.BackColor = System.Drawing.Color.Cyan
-        Me.btnVentaRapida.TileStyle.BackColor2 = System.Drawing.SystemColors.ActiveCaption
+        Me.btnVentaRapida.TileStyle.BackColor2 = System.Drawing.Color.BlueViolet
         Me.btnVentaRapida.TileStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.btnVentaRapida.TileStyle.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnVentaRapida.TileStyle.TextLineAlignment = DevComponents.DotNetBar.eStyleTextAlignment.Far
@@ -3017,7 +3017,6 @@ Partial Class P_Principal
         '
         'FP_Configuracion
         '
-        Me.FP_Configuracion.Checked = True
         Me.FP_Configuracion.Name = "FP_Configuracion"
         Me.FP_Configuracion.Panel = Me.SideNav_Conf
         Me.FP_Configuracion.Symbol = ""
@@ -3064,6 +3063,7 @@ Partial Class P_Principal
         '
         'FP_VENTAS
         '
+        Me.FP_VENTAS.Checked = True
         Me.FP_VENTAS.Name = "FP_VENTAS"
         Me.FP_VENTAS.Panel = Me.SideNav_Ventas
         Me.FP_VENTAS.Symbol = ""
@@ -3233,8 +3233,9 @@ Partial Class P_Principal
         Me.Controls.Add(Me.rmSesion)
         Me.Controls.Add(Me.SideNav1)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "P_Principal"
-        Me.Text = "Dino "
+        Me.Text = "DINO-QUINTAL"
         Me.SideNav1.ResumeLayout(False)
         Me.SideNav1.PerformLayout()
         Me.SideNav_Conf.ResumeLayout(False)

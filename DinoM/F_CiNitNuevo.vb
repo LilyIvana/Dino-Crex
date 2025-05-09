@@ -82,7 +82,7 @@ Public Class F_CiNitNuevo
         End If
 
         If TbEmailN.Text = String.Empty Then
-            TbEmailN.Text = "clientesssiza@gmail.com"
+            TbEmailN.Text = "clientes@ssiza.com.bo"
         End If
 
         If CbTDoc.SelectedIndex >= 0 Then

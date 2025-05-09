@@ -5082,7 +5082,7 @@ salirIf:
 
 
         If TbEmail.Text = String.Empty Then
-            email = "clientesssiza@gmail.com".ToUpper
+            email = "clientes@ssiza.com.bo".ToUpper
             TbEmail.Text = email
         Else
             email = TbEmail.Text
