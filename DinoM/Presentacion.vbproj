@@ -111,6 +111,9 @@
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
     <Prefer32Bit>true</Prefer32Bit>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>IconoSsiza1.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="AxInterop.AcroPDFLib">
       <HintPath>C:\librerias\PDF\AxInterop.AcroPDFLib.dll</HintPath>
@@ -2749,6 +2752,9 @@
     <None Include="Resources\14.png" />
     <None Include="Resources\add.png" />
     <None Include="Resources\actualizado.png" />
+    <Content Include="casa2.ico" />
+    <Content Include="IconoSsiza.ico" />
+    <Content Include="IconoSsiza1.ico" />
     <Content Include="Resources\atras1.png" />
     <None Include="Resources\buscar.png" />
     <None Include="Resources\BUSQUEDA1.png" />
