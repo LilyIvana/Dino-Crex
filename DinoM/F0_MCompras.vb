@@ -948,6 +948,11 @@ Public Class F0_MCompras
             .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Near
             .Visible = False
         End With
+        With grCompra.RootTable.Columns("tcompra")
+            .Width = 90
+            .Caption = "Tipo Compra".ToUpper
+            .Visible = True
+        End With
         With grCompra.RootTable.Columns("cafvcr")
             .Width = 50
             .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Near
@@ -2298,6 +2303,19 @@ salirIf:
     End Sub
 
     Private Sub btnModificar_Click(sender As Object, e As EventArgs) Handles btnModificar.Click
+        If (swTipoVenta.Value = False) Then
+            Dim res1 As Boolean = L_fnVerificarPagosCompras(tbCodigo.Text)
+            If res1 Then
+                Dim img As Bitmap = New Bitmap(My.Resources.WARNING, 50, 50)
+                ToastNotification.Show(Me, "No se puede modificar la Compra con código ".ToUpper + tbCodigo.Text + ", porque tiene pagos realizados, primero elimine los pagos correspondientes a esta compra".ToUpper,
+                                          img, 6000,
+                                          eToastGlowColor.Green,
+                                          eToastPosition.TopCenter)
+
+                Exit Sub
+            End If
+        End If
+
         Dim res As Boolean = L_fnVerificarSiSeContabilizo(tbCodigo.Text)
         If res Then
             Dim img As Bitmap = New Bitmap(My.Resources.cancel, 50, 50)

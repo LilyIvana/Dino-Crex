@@ -4212,7 +4212,7 @@ Public Class F0_VentasSupermercado
             Dim api = New DBApi()
 
             'Dim url = gb_url + "/api/v2/facturas-emitidas/1/471110/1/100"
-            Dim url = gb_url + "/api/v2/facturas/" + NPventa + "/471110/1/" + fechaI + "/" + fechaF + "/1/1000"
+            Dim url = gb_url + "/api/v2/facturas/" + NPventa + "/471110/" + fechaI + "/" + fechaF + "/1/1000"
 
 
             Dim headers = New List(Of Parametro) From {

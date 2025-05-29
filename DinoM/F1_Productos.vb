@@ -402,7 +402,7 @@ Public Class F1_Productos
         tbDescCort.Clear()
 
         CbAeconomica.SelectedIndex = 0 ''Por defecto que carque la primera actividad económica
-        CbUmedida.SelectedIndex = 56 ''Por defecto que carque la unidad (bienes)
+        CbUmedida.SelectedIndex = 25 ''25 es la posisicon en la que se encuentra el código 57 desde sifac, para que cargue por defecto unidad (bienes)
         CbProdServ.SelectedIndex = -1
         TbPrecioPsifac.Clear()
 

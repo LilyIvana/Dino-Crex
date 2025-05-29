@@ -466,7 +466,7 @@ Public Class F0_PagosCreditoCompraUlt
             .Caption = "Nro Recibo"
             .Width = 150
             .MaxLength = 20
-            .Visible = False
+            .Visible = True
         End With
         With grPendiente
             .GroupByBoxVisible = False
@@ -476,8 +476,9 @@ Public Class F0_PagosCreditoCompraUlt
             .FilterMode = FilterMode.Automatic
             .FilterRowUpdateMode = FilterRowUpdateMode.WhenValueChanges
 
+            .RecordNavigator = True
+            .RecordNavigatorText = "Compras con Pagos Pendientes"
         End With
-
 
     End Sub
     Private Sub _prCargarTablaPagos(_numi As Integer)

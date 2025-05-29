@@ -651,12 +651,11 @@ Public Class F1_Clientes
         listEstCeldas.Add(New Modelo.Celda("ydtelf1", True, "Teléfono".ToUpper, 100))
         listEstCeldas.Add(New Modelo.Celda("ydtelf2", True, "Contacto".ToUpper, 100))
         listEstCeldas.Add(New Modelo.Celda("ydcat", False))
+        listEstCeldas.Add(New Modelo.Celda("catPrecio", True, "Categoria Precio".ToUpper, 130))
         listEstCeldas.Add(New Modelo.Celda("ydest", False))
         listEstCeldas.Add(New Modelo.Celda("ydlat", True, "Latitud".ToUpper, 90, Format("0.00000")))
-
         listEstCeldas.Add(New Modelo.Celda("ydlongi", True, "Longitud".ToUpper, 90, Format("0.00000")))
         listEstCeldas.Add(New Modelo.Celda("ydprconsu", False))
-
         listEstCeldas.Add(New Modelo.Celda("ydfnac", False, "Fecha Nacimiento".ToUpper, 150))
         listEstCeldas.Add(New Modelo.Celda("ydnomfac", True, "NombreFactura".ToUpper, 200))
         listEstCeldas.Add(New Modelo.Celda("ydtip", False))
@@ -676,6 +675,7 @@ Public Class F1_Clientes
         listEstCeldas.Add(New Modelo.Celda("vendedor", True, "Vendedor".ToUpper, 120))
         listEstCeldas.Add(New Modelo.Celda("yddias", False))
         listEstCeldas.Add(New Modelo.Celda("ydlcred", False))
+        listEstCeldas.Add(New Modelo.Celda("ESTADO", True, "ESTADO", 100))
         Return listEstCeldas
     End Function
 

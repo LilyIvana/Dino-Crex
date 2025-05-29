@@ -264,7 +264,7 @@ Public Class F1_CalculoPedidoSugeridoDias
             End With
             With JGrM_Buscador.RootTable.Columns("PedidoFinalUni")
                 .Width = 120
-                .Caption = "SUGERIDO FINAL POR UNIDAD "
+                .Caption = "PEDIDO FINAL POR UNIDAD SSIZA"
                 .Visible = True
                 .FormatString = "0.00"
                 .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far
@@ -272,7 +272,7 @@ Public Class F1_CalculoPedidoSugeridoDias
             With JGrM_Buscador.RootTable.Columns("PedidoFinalDisp")
                 .Width = 120
                 '.Caption = "SUGERIDO FINAL POR DISPLAY "
-                .Caption = "EQUIVALENTE FINAL POR CAJ/PAQ/DISP"
+                .Caption = "EQUIVALENTE FINAL POR CAJ/PAQ/DISP PROVEEDOR"
                 .Visible = True
                 .FormatString = "0.00"
                 .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far
