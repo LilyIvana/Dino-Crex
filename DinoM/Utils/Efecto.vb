@@ -108,7 +108,7 @@ Public Class Efecto
         frmAyuda.Nit = Nit
         frmAyuda.RazonSocial = RazonSocial
         frmAyuda.tbCel.Text = cel
-
+        frmAyuda.swPulperia.Value = False
 
         With frmAyuda.CbTipoDoc
             .DropDownList.Columns.Clear()

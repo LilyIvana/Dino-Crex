@@ -595,4 +595,13 @@ Public Class F1_MontoPagar
         g_prValidarTextBox(1, e)
     End Sub
 
+    Private Sub swPulperia_ValueChanged(sender As Object, e As EventArgs) Handles swPulperia.ValueChanged
+        If swPulperia.Value = True Then
+            tbObs.Text = "PULPERÍA"
+            tbMontoBs.Value = TotalVenta
+        Else
+            tbObs.Clear()
+            tbMontoBs.Value = 0
+        End If
+    End Sub
 End Class

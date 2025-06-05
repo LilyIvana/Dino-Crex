@@ -53,7 +53,9 @@ Partial Class F1_MontoPagar
         Me.tbMontoDolar = New DevComponents.Editors.DoubleInput()
         Me.LabelX6 = New DevComponents.DotNetBar.LabelX()
         Me.GroupBox3 = New System.Windows.Forms.GroupBox()
+        Me.LabelX8 = New DevComponents.DotNetBar.LabelX()
         Me.LabelX7 = New DevComponents.DotNetBar.LabelX()
+        Me.tbObs = New DevComponents.DotNetBar.Controls.TextBoxX()
         Me.tbCel = New DevComponents.DotNetBar.Controls.TextBoxX()
         Me.tbComplemento = New System.Windows.Forms.TextBox()
         Me.LabelX2 = New DevComponents.DotNetBar.LabelX()
@@ -66,8 +68,8 @@ Partial Class F1_MontoPagar
         Me.tbNit = New System.Windows.Forms.TextBox()
         Me.LabelX3 = New DevComponents.DotNetBar.LabelX()
         Me.LabelX4 = New DevComponents.DotNetBar.LabelX()
-        Me.tbObs = New DevComponents.DotNetBar.Controls.TextBoxX()
-        Me.LabelX8 = New DevComponents.DotNetBar.LabelX()
+        Me.swPulperia = New DevComponents.DotNetBar.Controls.SwitchButton()
+        Me.LabelX9 = New DevComponents.DotNetBar.LabelX()
         Me.GroupBox2.SuspendLayout()
         Me.GroupBox1.SuspendLayout()
         CType(Me.tbMontoQR, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -92,9 +94,9 @@ Partial Class F1_MontoPagar
         Me.GroupBox2.Dock = System.Windows.Forms.DockStyle.Fill
         Me.GroupBox2.Font = New System.Drawing.Font("Georgia", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GroupBox2.ForeColor = System.Drawing.Color.Gold
-        Me.GroupBox2.Location = New System.Drawing.Point(0, 359)
+        Me.GroupBox2.Location = New System.Drawing.Point(0, 392)
         Me.GroupBox2.Name = "GroupBox2"
-        Me.GroupBox2.Size = New System.Drawing.Size(502, 146)
+        Me.GroupBox2.Size = New System.Drawing.Size(502, 155)
         Me.GroupBox2.TabIndex = 364
         Me.GroupBox2.TabStop = False
         Me.GroupBox2.Text = "Monto Venta/Cambio:"
@@ -221,7 +223,7 @@ Partial Class F1_MontoPagar
         Me.GroupBox1.Dock = System.Windows.Forms.DockStyle.Top
         Me.GroupBox1.Font = New System.Drawing.Font("Georgia", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GroupBox1.ForeColor = System.Drawing.Color.Gold
-        Me.GroupBox1.Location = New System.Drawing.Point(0, 218)
+        Me.GroupBox1.Location = New System.Drawing.Point(0, 251)
         Me.GroupBox1.Name = "GroupBox1"
         Me.GroupBox1.Size = New System.Drawing.Size(502, 141)
         Me.GroupBox1.TabIndex = 362
@@ -547,6 +549,8 @@ Partial Class F1_MontoPagar
         '
         Me.GroupBox3.BackColor = System.Drawing.Color.Transparent
         Me.GroupBox3.BackgroundImage = Global.DinoM.My.Resources.Resources.fondo1
+        Me.GroupBox3.Controls.Add(Me.LabelX9)
+        Me.GroupBox3.Controls.Add(Me.swPulperia)
         Me.GroupBox3.Controls.Add(Me.LabelX8)
         Me.GroupBox3.Controls.Add(Me.LabelX7)
         Me.GroupBox3.Controls.Add(Me.tbObs)
@@ -567,10 +571,26 @@ Partial Class F1_MontoPagar
         Me.GroupBox3.ForeColor = System.Drawing.Color.Gold
         Me.GroupBox3.Location = New System.Drawing.Point(0, 0)
         Me.GroupBox3.Name = "GroupBox3"
-        Me.GroupBox3.Size = New System.Drawing.Size(502, 218)
+        Me.GroupBox3.Size = New System.Drawing.Size(502, 251)
         Me.GroupBox3.TabIndex = 365
         Me.GroupBox3.TabStop = False
         Me.GroupBox3.Text = "Datos de Factura"
+        '
+        'LabelX8
+        '
+        Me.LabelX8.BackColor = System.Drawing.Color.Transparent
+        '
+        '
+        '
+        Me.LabelX8.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.LabelX8.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Bold)
+        Me.LabelX8.ForeColor = System.Drawing.Color.White
+        Me.LabelX8.Location = New System.Drawing.Point(10, 190)
+        Me.LabelX8.Name = "LabelX8"
+        Me.LabelX8.SingleLineColor = System.Drawing.SystemColors.Control
+        Me.LabelX8.Size = New System.Drawing.Size(88, 23)
+        Me.LabelX8.TabIndex = 429
+        Me.LabelX8.Text = "Observación:"
         '
         'LabelX7
         '
@@ -587,6 +607,26 @@ Partial Class F1_MontoPagar
         Me.LabelX7.Size = New System.Drawing.Size(70, 23)
         Me.LabelX7.TabIndex = 428
         Me.LabelX7.Text = "Celular:"
+        '
+        'tbObs
+        '
+        Me.tbObs.BackColor = System.Drawing.Color.White
+        '
+        '
+        '
+        Me.tbObs.Border.Class = "TextBoxBorder"
+        Me.tbObs.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.tbObs.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
+        Me.tbObs.Font = New System.Drawing.Font("Georgia", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.tbObs.ForeColor = System.Drawing.Color.FromArgb(CType(CType(45, Byte), Integer), CType(CType(59, Byte), Integer), CType(CType(66, Byte), Integer))
+        Me.tbObs.Location = New System.Drawing.Point(123, 194)
+        Me.tbObs.MaxLength = 50
+        Me.tbObs.Multiline = True
+        Me.tbObs.Name = "tbObs"
+        Me.tbObs.PreventEnterBeep = True
+        Me.tbObs.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
+        Me.tbObs.Size = New System.Drawing.Size(355, 46)
+        Me.tbObs.TabIndex = 372
         '
         'tbCel
         '
@@ -768,47 +808,44 @@ Partial Class F1_MontoPagar
         Me.LabelX4.TabIndex = 366
         Me.LabelX4.Text = "Razón Social:"
         '
-        'tbObs
-        '
-        Me.tbObs.BackColor = System.Drawing.Color.White
+        'swPulperia
         '
         '
         '
-        Me.tbObs.Border.Class = "TextBoxBorder"
-        Me.tbObs.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.tbObs.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
-        Me.tbObs.Font = New System.Drawing.Font("Georgia", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.tbObs.ForeColor = System.Drawing.Color.FromArgb(CType(CType(45, Byte), Integer), CType(CType(59, Byte), Integer), CType(CType(66, Byte), Integer))
-        Me.tbObs.Location = New System.Drawing.Point(123, 164)
-        Me.tbObs.MaxLength = 50
-        Me.tbObs.Multiline = True
-        Me.tbObs.Name = "tbObs"
-        Me.tbObs.PreventEnterBeep = True
-        Me.tbObs.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
-        Me.tbObs.Size = New System.Drawing.Size(355, 46)
-        Me.tbObs.TabIndex = 372
         '
-        'LabelX8
+        Me.swPulperia.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.swPulperia.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.swPulperia.Location = New System.Drawing.Point(123, 165)
+        Me.swPulperia.Name = "swPulperia"
+        Me.swPulperia.OffBackColor = System.Drawing.Color.SteelBlue
+        Me.swPulperia.OffText = "NO"
+        Me.swPulperia.OnBackColor = System.Drawing.Color.Gold
+        Me.swPulperia.OnText = "SI"
+        Me.swPulperia.Size = New System.Drawing.Size(70, 20)
+        Me.swPulperia.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+        Me.swPulperia.TabIndex = 430
         '
-        Me.LabelX8.BackColor = System.Drawing.Color.Transparent
+        'LabelX9
         '
+        Me.LabelX9.BackColor = System.Drawing.Color.Transparent
         '
         '
-        Me.LabelX8.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.LabelX8.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Bold)
-        Me.LabelX8.ForeColor = System.Drawing.Color.White
-        Me.LabelX8.Location = New System.Drawing.Point(11, 162)
-        Me.LabelX8.Name = "LabelX8"
-        Me.LabelX8.SingleLineColor = System.Drawing.SystemColors.Control
-        Me.LabelX8.Size = New System.Drawing.Size(88, 23)
-        Me.LabelX8.TabIndex = 429
-        Me.LabelX8.Text = "Observación:"
+        '
+        Me.LabelX9.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.LabelX9.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Bold)
+        Me.LabelX9.ForeColor = System.Drawing.Color.White
+        Me.LabelX9.Location = New System.Drawing.Point(9, 163)
+        Me.LabelX9.Name = "LabelX9"
+        Me.LabelX9.SingleLineColor = System.Drawing.SystemColors.Control
+        Me.LabelX9.Size = New System.Drawing.Size(70, 23)
+        Me.LabelX9.TabIndex = 431
+        Me.LabelX9.Text = "Pulpería:"
         '
         'F1_MontoPagar
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(502, 505)
+        Me.ClientSize = New System.Drawing.Size(502, 547)
         Me.Controls.Add(Me.GroupBox2)
         Me.Controls.Add(Me.GroupBox1)
         Me.Controls.Add(Me.GroupBox3)
@@ -875,4 +912,6 @@ Partial Class F1_MontoPagar
     Friend WithEvents tbCel As DevComponents.DotNetBar.Controls.TextBoxX
     Friend WithEvents LabelX8 As DevComponents.DotNetBar.LabelX
     Friend WithEvents tbObs As DevComponents.DotNetBar.Controls.TextBoxX
+    Friend WithEvents LabelX9 As DevComponents.DotNetBar.LabelX
+    Friend WithEvents swPulperia As DevComponents.DotNetBar.Controls.SwitchButton
 End Class

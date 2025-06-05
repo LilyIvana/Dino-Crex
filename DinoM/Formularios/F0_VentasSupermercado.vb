@@ -1494,6 +1494,11 @@ Public Class F0_VentasSupermercado
                             P_prImprimirFacturaNueva(numi, True, True) '_Codigo de la tabla TV001
                         End If
 
+                        ''Solo imprimir notas de venta para pulperia
+                        If Observacion = "PULPERÍA" Then
+                            F0_Venta2._prImiprimirNotaVenta(numi)
+                        End If
+
                     Else
                         _prImiprimirNotaVenta(numi)
                     End If
@@ -2709,6 +2714,7 @@ Public Class F0_VentasSupermercado
             ef.RazonSocial = lbCliente.Text
             ef.Email = TbEmailS.Text
             ef.cel = Cel
+
             Dim TipoDoc As String = CbTDoc.Value
 
             With ef.Tdoc
