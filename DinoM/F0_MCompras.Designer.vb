@@ -108,6 +108,7 @@ Partial Class F0_MCompras
         Me.btnDuplicar = New DevComponents.DotNetBar.ButtonX()
         Me.swMostrar = New DevComponents.DotNetBar.Controls.SwitchButton()
         Me.LabelX20 = New DevComponents.DotNetBar.LabelX()
+        Me.btnExportarCompras = New DevComponents.DotNetBar.ButtonX()
         Me.PanelSuperior.SuspendLayout()
         Me.PanelInferior.SuspendLayout()
         CType(Me.BubbleBarUsuario, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -242,12 +243,14 @@ Partial Class F0_MCompras
         '
         'PanelToolBar2
         '
+        Me.PanelToolBar2.Controls.Add(Me.btnExportarCompras)
         Me.PanelToolBar2.Controls.Add(Me.btnExportar)
         Me.PanelToolBar2.Controls.Add(Me.btnDuplicar)
-        Me.PanelToolBar2.Location = New System.Drawing.Point(1110, 0)
-        Me.PanelToolBar2.Size = New System.Drawing.Size(240, 72)
+        Me.PanelToolBar2.Location = New System.Drawing.Point(1030, 0)
+        Me.PanelToolBar2.Size = New System.Drawing.Size(320, 72)
         Me.PanelToolBar2.Controls.SetChildIndex(Me.btnDuplicar, 0)
         Me.PanelToolBar2.Controls.SetChildIndex(Me.btnExportar, 0)
+        Me.PanelToolBar2.Controls.SetChildIndex(Me.btnExportarCompras, 0)
         Me.PanelToolBar2.Controls.SetChildIndex(Me.btnImprimir, 0)
         Me.PanelPrincipal.Controls.SetChildIndex(Me.PanelInferior, 0)
         Me.PanelPrincipal.Controls.SetChildIndex(Me.PanelUsuario, 0)
@@ -256,7 +259,7 @@ Partial Class F0_MCompras
         '
         'btnImprimir
         '
-        Me.btnImprimir.Size = New System.Drawing.Size(90, 72)
+        Me.btnImprimir.Size = New System.Drawing.Size(95, 72)
         '
         'btnUltimo
         '
@@ -276,7 +279,7 @@ Partial Class F0_MCompras
         '
         '
         Me.MRlAccion.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.MRlAccion.Size = New System.Drawing.Size(734, 72)
+        Me.MRlAccion.Size = New System.Drawing.Size(654, 72)
         '
         'PanelContent
         '
@@ -302,12 +305,12 @@ Partial Class F0_MCompras
         Me.MSuperTabControl.Controls.Add(Me.SuperTabControlPanel2)
         Me.MSuperTabControl.SelectedTabIndex = 1
         Me.MSuperTabControl.Tabs.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.BUSCADOR})
-        Me.MSuperTabControl.Controls.SetChildIndex(Me.SuperTabControlPanel2, 0)
         Me.MSuperTabControl.Controls.SetChildIndex(Me.MSuperTabControlPanel1, 0)
+        Me.MSuperTabControl.Controls.SetChildIndex(Me.SuperTabControlPanel2, 0)
         '
         'PictureBox1
         '
-        Me.PictureBox1.Location = New System.Drawing.Point(917, 0)
+        Me.PictureBox1.Location = New System.Drawing.Point(837, 0)
         '
         'btnNuevo
         '
@@ -1598,7 +1601,7 @@ Partial Class F0_MCompras
         Me.SuperTabControlPanel2.Dock = System.Windows.Forms.DockStyle.Fill
         Me.SuperTabControlPanel2.Location = New System.Drawing.Point(0, 0)
         Me.SuperTabControlPanel2.Name = "SuperTabControlPanel2"
-        Me.SuperTabControlPanel2.Size = New System.Drawing.Size(1317, 618)
+        Me.SuperTabControlPanel2.Size = New System.Drawing.Size(1317, 590)
         Me.SuperTabControlPanel2.TabIndex = 0
         Me.SuperTabControlPanel2.TabItem = Me.BUSCADOR
         '
@@ -1615,7 +1618,7 @@ Partial Class F0_MCompras
         Me.TableLayoutPanel1.RowCount = 1
         Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
         Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 618.0!))
-        Me.TableLayoutPanel1.Size = New System.Drawing.Size(1317, 618)
+        Me.TableLayoutPanel1.Size = New System.Drawing.Size(1317, 590)
         Me.TableLayoutPanel1.TabIndex = 2
         '
         'PanelVentas
@@ -1626,7 +1629,7 @@ Partial Class F0_MCompras
         Me.PanelVentas.Dock = System.Windows.Forms.DockStyle.Fill
         Me.PanelVentas.Location = New System.Drawing.Point(3, 3)
         Me.PanelVentas.Name = "PanelVentas"
-        Me.PanelVentas.Size = New System.Drawing.Size(1311, 612)
+        Me.PanelVentas.Size = New System.Drawing.Size(1311, 584)
         Me.PanelVentas.TabIndex = 0
         '
         'GroupPanel2
@@ -1639,7 +1642,7 @@ Partial Class F0_MCompras
         Me.GroupPanel2.Font = New System.Drawing.Font("Georgia", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GroupPanel2.Location = New System.Drawing.Point(0, 0)
         Me.GroupPanel2.Name = "GroupPanel2"
-        Me.GroupPanel2.Size = New System.Drawing.Size(1311, 612)
+        Me.GroupPanel2.Size = New System.Drawing.Size(1311, 584)
         '
         '
         '
@@ -1679,7 +1682,7 @@ Partial Class F0_MCompras
         Me.Panel6.Dock = System.Windows.Forms.DockStyle.Fill
         Me.Panel6.Location = New System.Drawing.Point(0, 0)
         Me.Panel6.Name = "Panel6"
-        Me.Panel6.Size = New System.Drawing.Size(1305, 589)
+        Me.Panel6.Size = New System.Drawing.Size(1305, 561)
         Me.Panel6.TabIndex = 0
         '
         'grCompra
@@ -1701,7 +1704,7 @@ Partial Class F0_MCompras
         Me.grCompra.SelectedFormatStyle.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.grCompra.SelectedFormatStyle.ForeColor = System.Drawing.Color.White
         Me.grCompra.SelectOnExpand = False
-        Me.grCompra.Size = New System.Drawing.Size(1305, 589)
+        Me.grCompra.Size = New System.Drawing.Size(1305, 561)
         Me.grCompra.TabIndex = 0
         Me.grCompra.VisualStyle = Janus.Windows.GridEX.VisualStyle.Office2007
         '
@@ -1732,7 +1735,7 @@ Partial Class F0_MCompras
         Me.btnExportar.Image = Global.DinoM.My.Resources.Resources.sheets
         Me.btnExportar.ImageFixedSize = New System.Drawing.Size(40, 42)
         Me.btnExportar.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top
-        Me.btnExportar.Location = New System.Drawing.Point(90, 0)
+        Me.btnExportar.Location = New System.Drawing.Point(170, 0)
         Me.btnExportar.Name = "btnExportar"
         Me.btnExportar.Padding = New System.Windows.Forms.Padding(0, 0, 0, 20)
         Me.btnExportar.Size = New System.Drawing.Size(75, 72)
@@ -1783,7 +1786,7 @@ Partial Class F0_MCompras
         Me.btnDuplicar.Image = Global.DinoM.My.Resources.Resources.duplicar
         Me.btnDuplicar.ImageFixedSize = New System.Drawing.Size(40, 42)
         Me.btnDuplicar.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top
-        Me.btnDuplicar.Location = New System.Drawing.Point(165, 0)
+        Me.btnDuplicar.Location = New System.Drawing.Point(245, 0)
         Me.btnDuplicar.Name = "btnDuplicar"
         Me.btnDuplicar.Padding = New System.Windows.Forms.Padding(0, 0, 0, 20)
         Me.btnDuplicar.Size = New System.Drawing.Size(75, 72)
@@ -1821,6 +1824,24 @@ Partial Class F0_MCompras
         Me.LabelX20.Size = New System.Drawing.Size(147, 16)
         Me.LabelX20.TabIndex = 425
         Me.LabelX20.Text = "Nro. Registros:"
+        '
+        'btnExportarCompras
+        '
+        Me.btnExportarCompras.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
+        Me.btnExportarCompras.ColorTable = DevComponents.DotNetBar.eButtonColor.Flat
+        Me.btnExportarCompras.Dock = System.Windows.Forms.DockStyle.Right
+        Me.btnExportarCompras.Font = New System.Drawing.Font("Arial", 8.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnExportarCompras.Image = Global.DinoM.My.Resources.Resources.sheets
+        Me.btnExportarCompras.ImageFixedSize = New System.Drawing.Size(40, 42)
+        Me.btnExportarCompras.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top
+        Me.btnExportarCompras.Location = New System.Drawing.Point(95, 0)
+        Me.btnExportarCompras.Name = "btnExportarCompras"
+        Me.btnExportarCompras.Padding = New System.Windows.Forms.Padding(0, 0, 0, 20)
+        Me.btnExportarCompras.Size = New System.Drawing.Size(75, 72)
+        Me.btnExportarCompras.Style = DevComponents.DotNetBar.eDotNetBarStyle.OfficeMobile2014
+        Me.btnExportarCompras.TabIndex = 17
+        Me.btnExportarCompras.Text = "EXPORTAR COMPRAS"
+        Me.btnExportarCompras.TextColor = System.Drawing.Color.White
         '
         'F0_MCompras
         '
@@ -1967,4 +1988,5 @@ Partial Class F0_MCompras
     Friend WithEvents swMostrar As DevComponents.DotNetBar.Controls.SwitchButton
     Friend WithEvents LabelX20 As DevComponents.DotNetBar.LabelX
     Friend WithEvents LabelX21 As DevComponents.DotNetBar.LabelX
+    Friend WithEvents btnExportarCompras As DevComponents.DotNetBar.ButtonX
 End Class

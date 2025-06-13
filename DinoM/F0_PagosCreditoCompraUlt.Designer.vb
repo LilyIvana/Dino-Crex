@@ -97,7 +97,7 @@ Partial Class F0_PagosCreditoCompraUlt
         '
         'PanelInferior
         '
-        Me.PanelInferior.Location = New System.Drawing.Point(0, 702)
+        Me.PanelInferior.Location = New System.Drawing.Point(0, 690)
         Me.PanelInferior.Margin = New System.Windows.Forms.Padding(2)
         Me.PanelInferior.Size = New System.Drawing.Size(1362, 39)
         Me.PanelInferior.Style.Alignment = System.Drawing.StringAlignment.Center
@@ -160,9 +160,6 @@ Partial Class F0_PagosCreditoCompraUlt
         'btnModificar
         '
         '
-        'btnNuevo
-        '
-        '
         'PanelToolBar2
         '
         Me.PanelToolBar2.Location = New System.Drawing.Point(1282, 0)
@@ -170,7 +167,7 @@ Partial Class F0_PagosCreditoCompraUlt
         'PanelPrincipal
         '
         Me.PanelPrincipal.Margin = New System.Windows.Forms.Padding(2)
-        Me.PanelPrincipal.Size = New System.Drawing.Size(1362, 741)
+        Me.PanelPrincipal.Size = New System.Drawing.Size(1362, 729)
         Me.PanelPrincipal.Controls.SetChildIndex(Me.PanelInferior, 0)
         Me.PanelPrincipal.Controls.SetChildIndex(Me.PanelUsuario, 0)
         Me.PanelPrincipal.Controls.SetChildIndex(Me.PanelSuperior, 0)
@@ -215,17 +212,17 @@ Partial Class F0_PagosCreditoCompraUlt
         Me.PanelContent.Controls.Add(Me.Panel3)
         Me.PanelContent.Controls.Add(Me.Panel2)
         Me.PanelContent.Margin = New System.Windows.Forms.Padding(2)
-        Me.PanelContent.Size = New System.Drawing.Size(1329, 630)
+        Me.PanelContent.Size = New System.Drawing.Size(1329, 618)
         '
         'Panel1
         '
         Me.Panel1.Margin = New System.Windows.Forms.Padding(2)
-        Me.Panel1.Size = New System.Drawing.Size(1362, 630)
+        Me.Panel1.Size = New System.Drawing.Size(1362, 618)
         '
         'MSuperTabControlPanel1
         '
         Me.MSuperTabControlPanel1.Margin = New System.Windows.Forms.Padding(2)
-        Me.MSuperTabControlPanel1.Size = New System.Drawing.Size(1329, 630)
+        Me.MSuperTabControlPanel1.Size = New System.Drawing.Size(1329, 618)
         '
         'MSuperTabControl
         '
@@ -245,7 +242,7 @@ Partial Class F0_PagosCreditoCompraUlt
         Me.MSuperTabControl.Controls.Add(Me.SuperTabControlPanel1)
         Me.MSuperTabControl.Margin = New System.Windows.Forms.Padding(2)
         Me.MSuperTabControl.SelectedTabIndex = 1
-        Me.MSuperTabControl.Size = New System.Drawing.Size(1362, 630)
+        Me.MSuperTabControl.Size = New System.Drawing.Size(1362, 618)
         Me.MSuperTabControl.Tabs.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.SuperTabItem1})
         Me.MSuperTabControl.Controls.SetChildIndex(Me.MSuperTabControlPanel1, 0)
         Me.MSuperTabControl.Controls.SetChildIndex(Me.SuperTabControlPanel1, 0)
@@ -253,6 +250,9 @@ Partial Class F0_PagosCreditoCompraUlt
         'PictureBox1
         '
         Me.PictureBox1.Location = New System.Drawing.Point(1089, 0)
+        '
+        'btnNuevo
+        '
         '
         'Panel2
         '
@@ -522,7 +522,7 @@ Partial Class F0_PagosCreditoCompraUlt
         Me.GroupPanel3.Dock = System.Windows.Forms.DockStyle.Fill
         Me.GroupPanel3.Location = New System.Drawing.Point(0, 0)
         Me.GroupPanel3.Name = "GroupPanel3"
-        Me.GroupPanel3.Size = New System.Drawing.Size(1329, 203)
+        Me.GroupPanel3.Size = New System.Drawing.Size(1329, 191)
         '
         '
         '
@@ -570,7 +570,7 @@ Partial Class F0_PagosCreditoCompraUlt
         Me.grfactura.SelectedFormatStyle.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.grfactura.SelectedFormatStyle.ForeColor = System.Drawing.Color.White
         Me.grfactura.SelectionMode = Janus.Windows.GridEX.SelectionMode.MultipleSelectionSameTable
-        Me.grfactura.Size = New System.Drawing.Size(1323, 180)
+        Me.grfactura.Size = New System.Drawing.Size(1323, 168)
         Me.grfactura.TabIndex = 0
         Me.grfactura.TotalRowFormatStyle.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.2!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.grfactura.TotalRowFormatStyle.ForeColor = System.Drawing.Color.Black
@@ -584,7 +584,7 @@ Partial Class F0_PagosCreditoCompraUlt
         Me.Panel3.Location = New System.Drawing.Point(0, 240)
         Me.Panel3.Margin = New System.Windows.Forms.Padding(2)
         Me.Panel3.Name = "Panel3"
-        Me.Panel3.Size = New System.Drawing.Size(1329, 390)
+        Me.Panel3.Size = New System.Drawing.Size(1329, 378)
         Me.Panel3.TabIndex = 1
         '
         'GpanelDeudas
@@ -594,7 +594,7 @@ Partial Class F0_PagosCreditoCompraUlt
         Me.GpanelDeudas.Controls.Add(Me.grPendiente)
         Me.GpanelDeudas.DisabledBackColor = System.Drawing.Color.Empty
         Me.GpanelDeudas.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.GpanelDeudas.Location = New System.Drawing.Point(0, 203)
+        Me.GpanelDeudas.Location = New System.Drawing.Point(0, 191)
         Me.GpanelDeudas.Margin = New System.Windows.Forms.Padding(2)
         Me.GpanelDeudas.Name = "GpanelDeudas"
         Me.GpanelDeudas.Size = New System.Drawing.Size(1329, 187)
@@ -735,7 +735,7 @@ Partial Class F0_PagosCreditoCompraUlt
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1362, 741)
+        Me.ClientSize = New System.Drawing.Size(1362, 729)
         Me.Location = New System.Drawing.Point(0, 0)
         Me.Margin = New System.Windows.Forms.Padding(4)
         Me.Name = "F0_PagosCreditoCompraUlt"

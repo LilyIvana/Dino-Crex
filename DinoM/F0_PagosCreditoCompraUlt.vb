@@ -104,8 +104,7 @@ Public Class F0_PagosCreditoCompraUlt
         grcobranza.DataSource = dt
         grcobranza.RetrieveStructure()
         grcobranza.AlternatingColors = True
-        '      a.tenumi ,a.tefdoc ,a.tety4vend,vendedor .yddesc as vendedor,
-        'a.teobs ,a.tefact ,a.tehact ,a.teuact  ,Sum(detalle .tdmonto) as total 
+
         With grcobranza.RootTable.Columns("tenumi")
             .Width = 120
             .Visible = True
@@ -129,9 +128,9 @@ Public Class F0_PagosCreditoCompraUlt
             .Visible = False
         End With
         With grcobranza.RootTable.Columns("vendedor")
-            .Caption = "Cobrador"
-            .Width = 300
-            .Visible = False
+            .Caption = "Proveedor"
+            .Width = 250
+            .Visible = True
         End With
         With grcobranza.RootTable.Columns("teobs")
             .Caption = "Observacion"
@@ -390,8 +389,6 @@ Public Class F0_PagosCreditoCompraUlt
         dt = aux
     End Sub
     Private Sub _prCargarTablaCreditos()
-        '       A.tcnumi, sucursal, NroDoc
-        ',a.tctc1numi ,a.tcty4prov  ,proveedor,a.tcfdoc , totalfactura,pendiente,PagoAc,NumeroRecibo
         Dim dt As New DataTable
         dt = L_fnCobranzasObtenerLasVentasACreditoCompras()
         _prEliminarExistente(dt)
@@ -399,6 +396,7 @@ Public Class F0_PagosCreditoCompraUlt
         grPendiente.DataSource = dt
         grPendiente.RetrieveStructure()
         grPendiente.AlternatingColors = True
+
         With grPendiente.RootTable.Columns("tcnumi")
             .Width = 100
             .Visible = False
@@ -415,26 +413,41 @@ Public Class F0_PagosCreditoCompraUlt
             .Width = 100
             .Visible = False
         End With
-        
-        '       A.tcnumi, sucursal, NroDoc
-        ',a.tctc1numi ,a.tcty4prov  ,proveedor,a.tcfdoc , totalfactura,pendiente,PagoAc,NumeroRecibo
-
         With grPendiente.RootTable.Columns("NroDoc")
             .Caption = "Nro Compra"
             .Width = 90
             .TextAlignment = TextAlignment.Far
             .Visible = True
         End With
-  
+        With grPendiente.RootTable.Columns("tcfdoc")
+            .Caption = "Fecha"
+            .Width = 110
+            .FormatString = "dd/MM/yyyy"
+            .Visible = True
+        End With
         With grPendiente.RootTable.Columns("proveedor")
             .Caption = "Proveedor"
             .Width = 350
             .Visible = True
         End With
-
-
-        With grPendiente.RootTable.Columns("tcfdoc")
-            .Caption = "Fecha"
+        With grPendiente.RootTable.Columns("NumeroRecibo")
+            .Caption = "Nro Factura"
+            .Width = 100
+            .MaxLength = 20
+            .Visible = True
+        End With
+        With grPendiente.RootTable.Columns("Nit")
+            .Caption = "Nit"
+            .Width = 100
+            .Visible = True
+        End With
+        With grPendiente.RootTable.Columns("Rsocial")
+            .Caption = "Razón Social"
+            .Width = 150
+            .Visible = True
+        End With
+        With grPendiente.RootTable.Columns("tcfvencre")
+            .Caption = "F. Venc. Crédito"
             .Width = 110
             .FormatString = "dd/MM/yyyy"
             .Visible = True
@@ -462,12 +475,7 @@ Public Class F0_PagosCreditoCompraUlt
             .MaxLength = 10
             .Visible = False
         End With
-        With grPendiente.RootTable.Columns("NumeroRecibo")
-            .Caption = "Nro Recibo"
-            .Width = 150
-            .MaxLength = 20
-            .Visible = True
-        End With
+
         With grPendiente
             .GroupByBoxVisible = False
             'diseño de la grilla
@@ -489,8 +497,7 @@ Public Class F0_PagosCreditoCompraUlt
         grpagos.DataSource = dt
         grpagos.RetrieveStructure()
         grpagos.AlternatingColors = True
-        '       A.tdnumi, A.tdtc12numi, A.tdnrodoc, A.tdfechaPago, A.tdmonto, A.tdnrorecibo, A.tdfact, A.tdhact
-        ',a.tduact,Cast('' as image)as img 
+
         With grpagos.RootTable.Columns("tdnumi")
             .Width = 100
             .Visible = False
@@ -536,16 +543,10 @@ Public Class F0_PagosCreditoCompraUlt
             .Width = 100
             .Visible = False
         End With
-
-
         With grpagos
             .GroupByBoxVisible = False
             'diseño de la grilla
             .VisualStyle = VisualStyle.Office2007
-
-
-            .VisualStyle = VisualStyle.Office2007
-
 
             .RowHeaders = InheritableBoolean.True
             .TotalRow = InheritableBoolean.True
@@ -553,19 +554,13 @@ Public Class F0_PagosCreditoCompraUlt
             .TotalRowPosition = TotalRowPosition.BottomFixed
         End With
 
-
     End Sub
     Public Sub _prCargarIconDelete(ByRef dt As DataTable)
-
         For i As Integer = 0 To dt.Rows.Count - 1 Step 1
             dt.Rows(i).Item("img") = _fnBytesArchivo(My.Resources.delete, 28, 28)
         Next
     End Sub
     Sub _prInterpretarDatos(ByRef dt As DataTable)
-        '        A.tdnumi, A.tdtv12numi, A.tdnrodoc, A.tdfechaPago, A.tdmonto
-        ',a.tdnrorecibo ,a.tdfact ,a.tdhact ,a.tduact 
-
-        'a.tcnumi,sucursal,NroDoc,as factura,a.tctv1numi ,a.tcty4clie ,cliente,a.tcty4vend,vendedor,a.tcfdoc ,totalfactura, pendiente, PagoAc, NumeroRecibo
         Dim dtcobro As DataTable = CType(grfactura.DataSource, DataTable)
         For i As Integer = 0 To dtcobro.Rows.Count - 1 Step 1
             Dim pago As Double = dtcobro.Rows(i).Item("PagoAc")
@@ -584,7 +579,6 @@ Public Class F0_PagosCreditoCompraUlt
                 _fnObtenerFilaDetalle(pos, lin)
                 If (estado = 0) Then
                     CType(grfactura.DataSource, DataTable).Rows(pos).Item("estado") = -2
-
                 End If
                 If (estado = 1) Then
                     CType(grfactura.DataSource, DataTable).Rows(pos).Item("estado") = -1
@@ -604,12 +598,10 @@ Public Class F0_PagosCreditoCompraUlt
             Dim img As New Bitmap(My.Resources.delete, 28, 28)
             img.Save(Bin, Imaging.ImageFormat.Png)
             CType(grfactura.DataSource, DataTable).Rows(i).Item("img") = Bin.GetBuffer
-
         Next
         grfactura.RootTable.Columns("img").Visible = True
     End Sub
     Function _fnAccesible() As Boolean
-
         Return tbObservacion.ReadOnly = False
     End Function
 
@@ -627,7 +619,6 @@ Public Class F0_PagosCreditoCompraUlt
         grfactura.Select()
         grfactura.Col = 1
         grfactura.Row = grfactura.RowCount - 1
-
     End Sub
     Public Sub _fnObtenerFilaDetalle(ByRef pos As Integer, numi As Integer)
         For i As Integer = 0 To CType(grfactura.DataSource, DataTable).Rows.Count - 1 Step 1
@@ -637,14 +628,12 @@ Public Class F0_PagosCreditoCompraUlt
                 Return
             End If
         Next
-
     End Sub
     Public Function _fnExistePago(idprod As Integer) As Boolean
         For i As Integer = 0 To CType(grfactura.DataSource, DataTable).Rows.Count - 1 Step 1
             Dim _idprod As Integer = CType(grfactura.DataSource, DataTable).Rows(i).Item("numiCredito")
             Dim estado As Integer = CType(grfactura.DataSource, DataTable).Rows(i).Item("estado")
             If (_idprod = idprod And estado >= 0) Then
-
                 Return True
             End If
         Next
@@ -740,7 +729,7 @@ Public Class F0_PagosCreditoCompraUlt
         Dim numi As String = ""
         Dim dtCobro As DataTable = L_fnCobranzasObtenerLosPagosCompra(-1)
         _prInterpretarDatosCobranza(dtCobro)
-        Dim res As Boolean = L_fnGrabarCobranzaCompras(numi, tbfecha.Value.ToString("yyyy/MM/dd"), 0, tbObservacion.Text, dtCobro,
+        Dim res As Boolean = L_fnGrabarCobranzaCompras(numi, tbfecha.Value.ToString("yyyy/MM/dd"), CType(grfactura.DataSource, DataTable).Rows(0).Item("tcty4prov"), tbObservacion.Text, dtCobro,
                                                        gs_VersionSistema, gs_IPMaquina, gs_UsuMaquina)
 
 
@@ -1009,10 +998,7 @@ Public Class F0_PagosCreditoCompraUlt
 
         End If
         If (e.KeyData = Keys.Escape And grfactura.Row >= 0) Then
-
             _prELiminarFila()
-
-
         End If
 
     End Sub
@@ -1021,7 +1007,6 @@ Public Class F0_PagosCreditoCompraUlt
         If (Not _fnAccesible()) Then
             Return
         End If
-
 
         If (e.KeyData = Keys.Enter) Then
             Dim f, c As Integer
@@ -1048,6 +1033,8 @@ Public Class F0_PagosCreditoCompraUlt
                     CType(grfactura.DataSource, DataTable).Rows(pos).Item("tctc1numi") = grPendiente.GetValue("tctc1numi")
                     CType(grfactura.DataSource, DataTable).Rows(pos).Item("tcty4prov") = grPendiente.GetValue("tcty4prov")
                     CType(grfactura.DataSource, DataTable).Rows(pos).Item("pendiente") = grPendiente.GetValue("pendiente")
+
+                    tbObservacion.Text = grPendiente.GetValue("NumeroRecibo").ToString + "-" + grPendiente.GetValue("Rsocial")
 
                     _prCargarTablaCreditos()
                     grPendiente.RemoveFilters()

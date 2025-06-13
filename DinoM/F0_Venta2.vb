@@ -1828,6 +1828,8 @@ Public Class F0_Venta2
                         bandera = ef.band
                         If (bandera = True) Then
                             F0_VentasSupermercado.P_prImprimirFacturaNueva(numi, True, True)
+                        Else
+                            F0_VentasSupermercado.GuardarFacturaPDF(numi)
                         End If
 
                         _prImiprimirNotaVenta(numi)

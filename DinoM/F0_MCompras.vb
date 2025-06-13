@@ -954,9 +954,9 @@ Public Class F0_MCompras
             .Visible = True
         End With
         With grCompra.RootTable.Columns("cafvcr")
-            .Width = 50
-            .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Near
-            .Visible = False
+            .Width = 90
+            .Visible = True
+            .Caption = "F.VENC. CREDITO"
         End With
         With grCompra.RootTable.Columns("camon")
             .Width = 50
@@ -2798,7 +2798,7 @@ salirIf:
                                        eToastGlowColor.Green,
                                        eToastPosition.BottomCenter)
         Else
-            ToastNotification.Show(Me, "FALLO LA EXPORTACIÓN DE EL DETALLE DE LA COMPRA...!!!",
+            ToastNotification.Show(Me, "FALLÓ LA EXPORTACIÓN DE EL DETALLE DE LA COMPRA...!!!",
                                        My.Resources.WARNING, 2000,
                                        eToastGlowColor.Red,
                                        eToastPosition.BottomLeft)
@@ -2861,6 +2861,85 @@ salirIf:
 
                 For Each _fil As GridEXRow In grdetalle2.GetRows
                     For Each _col As GridEXColumn In grdetalle2.RootTable.Columns
+                        If (_col.Visible) Then
+                            Dim data As String = CStr(_fil.Cells(_col.Key).Value)
+                            data = data.Replace(";", ",")
+                            _linea = _linea & data & ";"
+                        End If
+                    Next
+                    _linea = Mid(CStr(_linea), 1, _linea.Length - 1)
+                    _escritor.WriteLine(_linea)
+                    _linea = Nothing
+                    'Pbx_Precios.Value += 1
+                Next
+                _escritor.Close()
+                'Pbx_Precios.Visible = False
+                Try
+                    Dim ef = New Efecto
+                    ef._archivo = _archivo
+
+                    ef.tipo = 1
+                    ef.Context = "Su archivo ha sido Guardado en la ruta: " + _archivo + vbLf + "DESEA ABRIR EL ARCHIVO?"
+                    ef.Header = "PREGUNTA"
+                    ef.ShowDialog()
+                    Dim bandera As Boolean = False
+                    bandera = ef.band
+                    If (bandera = True) Then
+                        Process.Start(_archivo)
+                    End If
+
+                    'If (MessageBox.Show("Su archivo ha sido Guardado en la ruta: " + _archivo + vbLf + "DESEA ABRIR EL ARCHIVO?", "PREGUNTA", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = Windows.Forms.DialogResult.Yes) Then
+                    '    Process.Start(_archivo)
+                    'End If
+                    Return True
+                Catch ex As Exception
+                    MsgBox(ex.Message)
+                    Return False
+                End Try
+            Catch ex As Exception
+                MsgBox(ex.Message)
+                Return False
+            End Try
+        End If
+        Return False
+    End Function
+
+    Public Function P_ExportarExcelCompras(_ruta As String) As Boolean
+        Dim _ubicacion As String
+        'Dim _directorio As New FolderBrowserDialog
+
+        If (1 = 1) Then 'If(_directorio.ShowDialog = Windows.Forms.DialogResult.OK) Then
+            '_ubicacion = _directorio.SelectedPath
+            _ubicacion = _ruta
+            Try
+                Dim _stream As Stream
+                Dim _escritor As StreamWriter
+                Dim _fila As Integer = grCompra.GetRows.Length
+                Dim _columna As Integer = grCompra.RootTable.Columns.Count
+                Dim _archivo As String = _ubicacion & "\ListaCompras_" & Now.Date.Day &
+                    "." & Now.Date.Month & "." & Now.Date.Year & "_" & Now.Hour & "." & Now.Minute & "." & Now.Second & ".csv"
+                Dim _linea As String = ""
+                Dim _filadata = 0, columndata As Int32 = 0
+                File.Delete(_archivo)
+                _stream = File.OpenWrite(_archivo)
+                _escritor = New StreamWriter(_stream, System.Text.Encoding.UTF8)
+
+                For Each _col As GridEXColumn In grCompra.RootTable.Columns
+                    If (_col.Visible) Then
+                        _linea = _linea & _col.Caption & ";"
+                    End If
+                Next
+                _linea = Mid(CStr(_linea), 1, _linea.Length - 1)
+                _escritor.WriteLine(_linea)
+                _linea = Nothing
+
+                'Pbx_Precios.Visible = True
+                'Pbx_Precios.Minimum = 1
+                'Pbx_Precios.Maximum = Dgv_Precios.RowCount
+                'Pbx_Precios.Value = 1
+
+                For Each _fil As GridEXRow In grCompra.GetRows
+                    For Each _col As GridEXColumn In grCompra.RootTable.Columns
                         If (_col.Visible) Then
                             Dim data As String = CStr(_fil.Cells(_col.Key).Value)
                             data = data.Replace(";", ",")
@@ -3003,5 +3082,22 @@ salirIf:
 
 
 
+    End Sub
+
+    Private Sub btnExportarCompras_Click(sender As Object, e As EventArgs) Handles btnExportarCompras.Click
+        _prCrearCarpetaReportes()
+        Dim img As Bitmap = New Bitmap(My.Resources.checked, 50, 50)
+        If (P_ExportarExcelCompras(RutaGlobal + "\Reporte\Reporte Compras")) Then
+            L_fnBotonExportar(gs_VersionSistema, gs_IPMaquina, gs_UsuMaquina, 0, "COMPRAS", "COMPRAS GENERAL")
+            ToastNotification.Show(Me, "EXPORTACIÓN DE LAS COMPRAS EXITOSA...!!!",
+                                       img, 2000,
+                                       eToastGlowColor.Green,
+                                       eToastPosition.BottomCenter)
+        Else
+            ToastNotification.Show(Me, "FALLÓ LA EXPORTACIÓN DE LAS COMPRAS...!!!",
+                                       My.Resources.WARNING, 2000,
+                                       eToastGlowColor.Red,
+                                       eToastPosition.BottomLeft)
+        End If
     End Sub
 End Class

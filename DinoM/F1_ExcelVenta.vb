@@ -168,7 +168,7 @@ Public Class F1_ExcelVenta
             With JGrM_Buscador.RootTable.Columns("tbty5prod")
                 .Width = 100
                 .Caption = "COD. DYNASYS"
-                .Visible = False
+                .Visible = True
             End With
             With JGrM_Buscador.RootTable.Columns("CodDelta")
                 .Width = 100

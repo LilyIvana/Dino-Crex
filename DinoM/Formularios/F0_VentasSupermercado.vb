@@ -1492,6 +1492,8 @@ Public Class F0_VentasSupermercado
                         bandera = ef.band
                         If (bandera = True) Then
                             P_prImprimirFacturaNueva(numi, True, True) '_Codigo de la tabla TV001
+                        Else
+                            GuardarFacturaPDF(numi)
                         End If
 
                         ''Solo imprimir notas de venta para pulperia
@@ -1525,6 +1527,51 @@ Public Class F0_VentasSupermercado
         Catch ex As Exception
             MostrarMensajeError(ex.Message)
         End Try
+
+    End Sub
+    Public Sub GuardarFacturaPDF(numi As String)
+        Dim _Ds, _Ds2 As New DataSet
+        Dim _NumFac As Integer
+        Dim _Autorizacion, _Hora, _Literal, _TotalDecimal, _TotalDecimal2 As String
+        Dim _TotalLi As Decimal
+        Dim objrep As Object = Nothing
+
+        _Ds = L_Reporte_FacturaNueva(numi, numi)
+        _NumFac = _Ds.Tables(0).Rows(0).Item("fvanfac")
+        _Autorizacion = _Ds.Tables(0).Rows(0).Item("fvaautoriz")
+        _Hora = _Ds.Tables(0).Rows(0).Item("fvahora")
+        _Ds2 = L_Reporte_Factura_Cia("2")
+        'Literal 
+        _TotalLi = _Ds.Tables(0).Rows(0).Item("fvasubtotal") - _Ds.Tables(0).Rows(0).Item("fvadesc")
+        _TotalDecimal = _TotalLi - Math.Truncate(_TotalLi)
+        _TotalDecimal2 = CDbl(_TotalDecimal) * 100
+
+        _Literal = Facturacion.ConvertirLiteral.A_fnConvertirLiteral(CDbl(_TotalLi) - CDbl(_TotalDecimal)) + "  " + IIf(_TotalDecimal2.Equals("0"), "00", _TotalDecimal2) + "/100 Bolivianos"
+
+        objrep = New R_Factura_7_5x1000
+        objrep.SetDataSource(_Ds.Tables(0))
+        objrep.SetParameterValue("Hora", _Hora)
+        objrep.SetParameterValue("Direccionpr", _Ds2.Tables(0).Rows(0).Item("scdir").ToString)
+        objrep.SetParameterValue("Telefonopr", "Tel. " + _Ds2.Tables(0).Rows(0).Item("sctelf").ToString)
+        objrep.SetParameterValue("Literal1", _Literal)
+        objrep.SetParameterValue("Literal2", " ")
+        objrep.SetParameterValue("Literal3", " ")
+        objrep.SetParameterValue("NroFactura", _NumFac)
+        objrep.SetParameterValue("NroAutoriz", _Autorizacion)
+        objrep.SetParameterValue("ENombre", _Ds2.Tables(0).Rows(0).Item("scneg").ToString) '?
+        objrep.SetParameterValue("ECasaMatriz", _Ds2.Tables(0).Rows(0).Item("scsuc").ToString)
+        objrep.SetParameterValue("PuntoVenta", "PUNTO DE VENTA No. " + _Ds.Tables(0).Rows(0).Item("fvanrocaja").ToString)
+        objrep.SetParameterValue("ECiudadPais", _Ds2.Tables(0).Rows(0).Item("scpai").ToString)
+        objrep.SetParameterValue("ENit", _Ds2.Tables(0).Rows(0).Item("scnit").ToString)
+        objrep.SetParameterValue("EActividad", _Ds2.Tables(0).Rows(0).Item("scact").ToString)
+        objrep.SetParameterValue("ENota", "''" + "ESTA FACTURA CONTRIBUYE AL DESARROLLO DEL PAÍS, EL USO ILÍCITO SERÁ SANCIONADO DE ACUERDO A LEY." + "''")
+        objrep.SetParameterValue("Usuario", gs_user)
+
+        'Copia de Factura en PDF
+        If (Not Directory.Exists(gs_CarpetaRaiz + "\Facturas")) Then
+            Directory.CreateDirectory(gs_CarpetaRaiz + "\Facturas")
+        End If
+        objrep.ExportToDisk(ExportFormatType.PortableDocFormat, gs_CarpetaRaiz + "\Facturas\" + CStr(_NumFac) + "_" + CStr(_Autorizacion) + ".pdf")
 
     End Sub
     Public Sub _prImiprimirNotaVenta(numi As String)
@@ -2640,9 +2687,7 @@ Public Class F0_VentasSupermercado
     End Function
     Private Sub tbProducto_KeyDown(sender As Object, e As KeyEventArgs) Handles tbProducto.KeyDown
         If e.KeyData = Keys.Control + Keys.E Then
-
             Dim dt As DataTable
-
             'dt = L_fnListarClientesVenta()
             dt = L_fnListarClientesVentaPrecioEspecial()
 
@@ -4053,6 +4098,7 @@ Public Class F0_VentasSupermercado
                 Dim FechaF = (Now.Date.ToString("yyyy-MM-dd"))
 
                 Dim dt = ListarFacturas(tokenObtenido, gs_NroCaja.ToString, FechaI, FechaF)
+
                 If dt.Count > 0 Then
                     Dim Conteo As Integer = dt.Count
                     Dim NAutorizacion = dt(Conteo - 1).cuf
