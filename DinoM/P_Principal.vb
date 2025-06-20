@@ -42,6 +42,7 @@ Public Class P_Principal
 
         Catch ex As Exception
             MsgBox(ex.Message)
+            Me.Close()
         End Try
 
     End Sub

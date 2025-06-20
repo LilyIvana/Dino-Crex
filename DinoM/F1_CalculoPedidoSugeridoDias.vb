@@ -98,7 +98,6 @@ Public Class F1_CalculoPedidoSugeridoDias
             Else
                 If System.IO.Directory.Exists(RutaGlobal + "\Reporte\Reporte Productos") = False Then
                     System.IO.Directory.CreateDirectory(RutaGlobal + "\Reporte\Reporte Productos")
-
                 End If
             End If
         End If
@@ -176,7 +175,7 @@ Public Class F1_CalculoPedidoSugeridoDias
             With JGrM_Buscador.RootTable.Columns("unidad")
                 .Width = 80
                 .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far
-                .Caption = "EMPAQUE VENTA"
+                .Caption = "EMPAQUE VENTA SSIZA"
                 .Visible = True
             End With
             With JGrM_Buscador.RootTable.Columns("StockAct")
@@ -271,8 +270,8 @@ Public Class F1_CalculoPedidoSugeridoDias
             End With
             With JGrM_Buscador.RootTable.Columns("PedidoFinalDisp")
                 .Width = 120
-                '.Caption = "SUGERIDO FINAL POR DISPLAY "
-                .Caption = "EQUIVALENTE FINAL POR CAJ/PAQ/DISP PROVEEDOR"
+                ''.Caption = "EQUIVALENTE FINAL POR CAJ/PAQ/DISP PROVEEDOR"
+                .Caption = "CAJAS"
                 .Visible = True
                 .FormatString = "0.00"
                 .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far
@@ -283,6 +282,14 @@ Public Class F1_CalculoPedidoSugeridoDias
                 .Caption = "EMPAQUE COMPRA"
                 .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far
             End With
+            With JGrM_Buscador.RootTable.Columns("PaqDisp")
+                .Width = 120
+                .Caption = "DISPLAY/PAQUETE"
+                .Visible = True
+                ''.FormatString = "0.00"
+                .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far
+            End With
+
             With JGrM_Buscador.RootTable.Columns("CostoNuevo")
                 .Width = 120
                 .Caption = "COSTO UNIDAD VENTA"

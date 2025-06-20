@@ -92,8 +92,6 @@ Public Class F0_PagosCreditoCompraUlt
         tbnrodoc.ReadOnly = False
         tbfecha.IsInputReadOnly = False
         tbObservacion.ReadOnly = False
-
-
         ''  tbCliente.ReadOnly = False  por que solo podra seleccionar Cliente
         ''  tbVendedor.ReadOnly = False
         grfactura.RootTable.Columns("img").Visible = True
@@ -157,7 +155,6 @@ Public Class F0_PagosCreditoCompraUlt
             .Visible = False
         End With
 
-
         With grcobranza
             .GroupByBoxVisible = False
             'diseño de la grilla
@@ -190,14 +187,12 @@ Public Class F0_PagosCreditoCompraUlt
         _prDetalleCobranzas(-1)
         _prAddDetalle()
         tbObservacion.Focus()
-
     End Sub
     Sub _prAddDetalle()
         Dim Bin As New MemoryStream
         Dim img As New Bitmap(My.Resources.delete, 28, 28)
         img.Save(Bin, Imaging.ImageFormat.Png)
-        '       numidetalle,proveedor.yddesc as proveedor, NroDoc,  numiCredito, numiCobranza
-        ',a.tctc1numi ,a.tcty4prov  ,detalle.tdfechaPago, pendiente,PagoAc,NumeroRecibo, DescBanco, banco, detalle.tdnrocheque, img , estado 
+
         cbbanco.SelectedIndex = 0
         CType(grfactura.DataSource, DataTable).Rows.Add(_fnSiguienteNumi() + 1, "", 0, 0, 0, 0, 0, Now.Date, 0,
                                                       0, "", cbbanco.Text, 0, "", Bin.ToArray, 0)
@@ -218,8 +213,7 @@ Public Class F0_PagosCreditoCompraUlt
         grfactura.DataSource = dt
         grfactura.RetrieveStructure()
         grfactura.AlternatingColors = True
-         '       numidetalle,proveedor.yddesc as proveedor, NroDoc,  numiCredito, numiCobranza
-        ',a.tctc1numi ,a.tcty4prov  ,detalle.tdfechaPago, pendiente,PagoAc,NumeroRecibo, DescBanco, banco, detalle.tdnrocheque, img , estado 
+
         With grfactura.RootTable.Columns("numidetalle")
             .Width = 100
             .Visible = False
@@ -383,7 +377,6 @@ Public Class F0_PagosCreditoCompraUlt
             Dim numi As Integer = dt.Rows(i).Item("tcnumi")
             If (Not _fnExistePago(numi)) Then
                 aux.ImportRow(dt.Rows(i))
-
             End If
         Next
         dt = aux
@@ -995,7 +988,6 @@ Public Class F0_PagosCreditoCompraUlt
             Dim indexfil As Integer = grfactura.Row
             Dim indexcol As Integer = grfactura.Col
             _HabilitarProductos()
-
         End If
         If (e.KeyData = Keys.Escape And grfactura.Row >= 0) Then
             _prELiminarFila()

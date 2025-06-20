@@ -156,13 +156,11 @@ Public Class F1_ExcelMixto
                 dt = L_RepMixtoTraspasoIngreso(fechaDesde, fechaHasta)
             Case 7 ''Todos
                 dt = L_RepMixto(fechaDesde, fechaHasta)
-
         End Select
 
 
         If dt.Rows.Count > 0 Then
             L_fnBotonGenerar(gs_VersionSistema, gs_IPMaquina, gs_UsuMaquina, Tipo, "REPORTE MIXTO DETALLADO", "REPORTE MIXTO DETALLADO")
-
 
             JGrM_Buscador.DataSource = dt
             JGrM_Buscador.RetrieveStructure()
