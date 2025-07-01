@@ -79,7 +79,7 @@ Public Class Pr_EstadoCuentasProveedoresTodos
                 MReportViewer.Show()
                 MReportViewer.BringToFront()
             Else
-                ToastNotification.Show(Me, "NO HAY DATOS PARA LOS PARAMETROS SELECCIONADOS..!!!",
+                ToastNotification.Show(Me, "NO HAY DATOS PARA LOS PARÁMETROS SELECCIONADOS..!!!",
                                        My.Resources.INFORMATION, 2000,
                                        eToastGlowColor.Blue,
                                        eToastPosition.BottomLeft)

@@ -1,15 +1,9 @@
 ﻿
-Imports Logica.AccesoLogica
-Imports Janus.Windows.GridEX
-Imports DevComponents.DotNetBar
 Imports System.IO
-Imports DevComponents.DotNetBar.SuperGrid
-Imports System.Drawing
+Imports DevComponents.DotNetBar
 Imports DevComponents.DotNetBar.Controls
-Imports System.Threading
-Imports System.Drawing.Text
-Imports System.Reflection
-Imports System.Runtime.InteropServices
+Imports Janus.Windows.GridEX
+Imports Logica.AccesoLogica
 
 Public Class F0_MovValorado
     Dim _Inter As Integer = 0

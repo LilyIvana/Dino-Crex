@@ -639,7 +639,7 @@ Public Class F0_CierreCaja
             Dim res As Boolean = L_fnGrabarCaja(numi, tbFecha.Value.ToString("yyyy/MM/dd"), tbTotalGral.Value, tbTCredito.Value,
                                                 tbTTarjeta.Value, tbTQR.Value, tbTContado.Value, tbTDeposito.Value, tbTEfectivo.Value,
                                                 tbTDiferencia.Value, tbTPagos.Value, cbTurno.Text, tbMontoInicial.Value, tbTIngresos.Value,
-                                                tbTEgresos.Value, IIf(swEstado.Value = True, 1, 0), Tb_TipoCambio.Value, tbObservacion.Text.Trim,
+                                                tbTEgresos.Value, IIf(swEstado.Value = True, 1, 0), Tb_TipoCambio.Value, tbObservacion.Text.Trim.ToUpper,
                                                 CType(Dgv_Cortes.DataSource, DataTable), CType(Dgv_Depositos.DataSource, DataTable), gs_NroCaja,
                                                 gs_VersionSistema, gs_IPMaquina, gs_UsuMaquina)
             If res Then
@@ -681,7 +681,7 @@ Public Class F0_CierreCaja
                 Dim res As Boolean = L_fnModificarCaja(TbCodigo.Text, tbFecha.Value.ToString("yyyy/MM/dd"), tbTotalGral.Value, tbTCredito.Value,
                                                     tbTTarjeta.Value, tbTQR.Value, TContado, tbTDeposito.Value, tbTEfectivo.Value,
                                                     tbTDiferencia.Value, tbTPagos.Value, cbTurno.Text, tbMontoInicial.Value, tbTIngresos.Value,
-                                                    tbTEgresos.Value, Tb_TipoCambio.Value, tbObservacion.Text.Trim,
+                                                    tbTEgresos.Value, Tb_TipoCambio.Value, tbObservacion.Text.Trim.ToUpper,
                                                     CType(Dgv_Cortes.DataSource, DataTable), CType(Dgv_Depositos.DataSource, DataTable),
                                                     dtventas, gs_NroCaja, gs_VersionSistema, gs_IPMaquina, gs_UsuMaquina)
                 If res Then

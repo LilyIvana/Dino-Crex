@@ -170,14 +170,9 @@ Public Class F1_CalculoPedidoSugeridoDias
             With JGrM_Buscador.RootTable.Columns("Proveedor")
                 .Width = 130
                 .Visible = True
-                .Caption = "PROVEEDOR A CREX"
+                .Caption = "PROVEEDOR"
             End With
-            With JGrM_Buscador.RootTable.Columns("unidad")
-                .Width = 80
-                .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far
-                .Caption = "EMPAQUE VENTA SSIZA"
-                .Visible = True
-            End With
+
             With JGrM_Buscador.RootTable.Columns("StockAct")
                 .Width = 130
                 .Caption = "STOCK ACTUAL"
@@ -261,9 +256,15 @@ Public Class F1_CalculoPedidoSugeridoDias
                 .FormatString = "0.00"
                 .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far
             End With
+            With JGrM_Buscador.RootTable.Columns("unidad")
+                .Width = 80
+                .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far
+                .Caption = "EMPAQUE VENTA SSIZA"
+                .Visible = True
+            End With
             With JGrM_Buscador.RootTable.Columns("PedidoFinalUni")
                 .Width = 120
-                .Caption = "PEDIDO FINAL POR UNIDAD SSIZA"
+                .Caption = "PEDIDO FINAL POR UNIDAD"
                 .Visible = True
                 .FormatString = "0.00"
                 .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far
@@ -289,7 +290,6 @@ Public Class F1_CalculoPedidoSugeridoDias
                 ''.FormatString = "0.00"
                 .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far
             End With
-
             With JGrM_Buscador.RootTable.Columns("CostoNuevo")
                 .Width = 120
                 .Caption = "COSTO UNIDAD VENTA"
@@ -315,7 +315,11 @@ Public Class F1_CalculoPedidoSugeridoDias
                 .Visible = True
                 .Caption = "ESTADO"
             End With
-
+            With JGrM_Buscador.RootTable.Columns("Obs")
+                .Width = 100
+                .Visible = True
+                .Caption = "OBSERVACIÓN"
+            End With
             With JGrM_Buscador
                 .DefaultFilterRowComparison = FilterConditionOperator.Contains
                 .FilterMode = FilterMode.Automatic

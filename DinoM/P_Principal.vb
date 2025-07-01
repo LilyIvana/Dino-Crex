@@ -73,7 +73,6 @@ Public Class P_Principal
         ct.SideNavItem.MouseOver.BorderColors = New Color() {Color.FromArgb(49, 59, 66)} ' No border
         ct.SideNavItem.Selected.BackColors = New Color() {Color.Yellow}
         ''     ct.BorderColors = New Color() {Color.FromArgb(49, 59, 66)} ' Control border color
-
         ''  ct.PanelBackColor = Color.FromArgb(49, 59, 66)
     End Sub
 
@@ -144,7 +143,6 @@ Public Class P_Principal
     Private Sub _prCargarConfiguracionSistema()
         'Dim dtConf As DataTable = L_prConGlobalGeneral()
         'gd_notaAproTeo = dtConf.Rows(0).Item("gbaproteo")
-
     End Sub
 
     Private Sub _PCargarPrivilegios()
@@ -155,7 +153,6 @@ Public Class P_Principal
         listaTabs.Add(MetroTilePanel7)
         listaTabs.Add(MetroTilePanelVentas)
         listaTabs.Add(MenuCreditos)
-
 
         Dim idRolUsu As String = gi_userRol
 
