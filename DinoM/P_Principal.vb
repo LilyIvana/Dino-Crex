@@ -138,6 +138,7 @@ Public Class P_Principal
         gb_password = dtFact.Rows(0).Item("password")
         gb_url = dtFact.Rows(0).Item("url")
         gb_OnOff = dtFact.Rows(0).Item("OnOff")
+        actEconomica = dtFact.Rows(0).Item("actEco")
     End Sub
 
     Private Sub _prCargarConfiguracionSistema()

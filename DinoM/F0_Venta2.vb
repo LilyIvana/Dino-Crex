@@ -2875,7 +2875,8 @@ Public Class F0_Venta2
 
                 Dim dt As DataTable
                 'dt = L_fnListarClientesVenta()
-                dt = L_fnListarClientesVentaPrecioPDV()
+                'dt = L_fnListarClientesVentaPrecioPDV()
+                dt = L_fnListarClientesVentaPrecioEspecialPDV()
 
                 Dim listEstCeldas As New List(Of Modelo.Celda)
                 listEstCeldas.Add(New Modelo.Celda("ydnumi,", True, "ID", 50))
@@ -5133,7 +5134,7 @@ salirIf:
         Emenvio.tipoEmision = gb_OnOff  '1 emite online, 2 emite offline
         Emenvio.usuario = gs_user
         Emenvio.email = email
-        Emenvio.actividadEconomica = 471110 'falta
+        Emenvio.actividadEconomica = actEconomica 'Actividad económica una sola para todos los productos, cambio en fecha 07-07-25
         Emenvio.detalles = array
         Dim json = JsonConvert.SerializeObject(Emenvio)
         Dim url = gb_url + "/api/v2/emision"

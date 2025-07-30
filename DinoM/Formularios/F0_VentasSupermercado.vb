@@ -4008,7 +4008,7 @@ Public Class F0_VentasSupermercado
         Emenvio.tipoEmision = gb_OnOff  '1 emite online, 2 emite offline
         Emenvio.usuario = gs_user
         Emenvio.email = email
-        Emenvio.actividadEconomica = 471110 'Actividad económica una sola para todos los productos
+        Emenvio.actividadEconomica = actEconomica 'Actividad económica una sola para todos los productos, cambio en fecha 07-07-25
         Emenvio.detalles = array
         Dim json = JsonConvert.SerializeObject(Emenvio)
         Dim url = gb_url + "/api/v2/emision"
@@ -4264,7 +4264,8 @@ Public Class F0_VentasSupermercado
             Dim api = New DBApi()
 
             'Dim url = gb_url + "/api/v2/facturas-emitidas/1/471110/1/100"
-            Dim url = gb_url + "/api/v2/facturas/" + NPventa + "/471110/" + fechaI + "/" + fechaF + "/1/1000"
+            'Dim url = gb_url + "/api/v2/facturas/" + NPventa + "/471110/" + fechaI + "/" + fechaF + "/1/1000"
+            Dim url = gb_url + "/api/v2/facturas/" + NPventa + "/" + actEconomica.ToString + "/" + fechaI + "/" + fechaF + "/1/1000"
 
 
             Dim headers = New List(Of Parametro) From {

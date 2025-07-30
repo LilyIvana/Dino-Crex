@@ -10,6 +10,7 @@ Imports DinoM.AeconomicaResp
 Imports DinoM.UmedidaResp
 Imports DinoM.HomologResp
 Imports DinoM.ListarPServResp
+Imports System.Data
 
 Public Class F1_Productos
     Private Const V As String = "yfccant"
@@ -401,7 +402,9 @@ Public Class F1_Productos
         tbDescDet.Clear()
         tbDescCort.Clear()
 
-        CbAeconomica.SelectedIndex = 0 ''Por defecto que carque la primera actividad económica
+        CbAeconomica.SelectedIndex = 0 ''Por defecto que carque la primera actividad económica 471110
+        'CbAeconomica.SelectedIndex = 3 ''Por defecto que carque la actividad económica 4711100
+
         CbUmedida.SelectedIndex = 26 ''26 es la posisicon en la que se encuentra el código 57 desde sifac, para que cargue por defecto unidad (bienes)
         CbProdServ.SelectedIndex = -1
         TbPrecioPsifac.Clear()
@@ -1001,11 +1004,18 @@ Public Class F1_Productos
         UnidadMedida(tokenSifac)
         CbUmedida.SelectedIndex = -1
         ActividadesEconomicas(tokenSifac)
-        CbAeconomica.SelectedIndex = -1
+        'CbAeconomica.SelectedIndex = 1
         ListarProductoServicio(tokenSifac)
+
+        'Dim dt As DataTable = CbProdServ.DataSource
+        'dt = dt.Select("actividadEconomica=4711100").CopyToDataTable
+
+
+        'CbProdServ.DataSource = dt
         CbProdServ.SelectedIndex = -1
         _prIniciarTodo()
     End Sub
+
 
     Private Function _fnCopiarImagenRutaDefinida() As String
         'copio la imagen en la carpeta del sistema
@@ -1666,8 +1676,8 @@ Public Class F1_Productos
                 .DropDownList.Columns("descripcionProducto").Caption = "DESCRIPCION"
                 .ValueMember = "codigoProducto"
                 .DisplayMember = "descripcionProducto"
-                .DataSource = result.data
-                .Refresh()
+            .DataSource = result.data
+            .Refresh()
             End With
 
             'CbProdServ.DropDownList.FilterRow = " company_Type=1"
@@ -2106,5 +2116,7 @@ Public Class F1_Productos
         ImprimirOtros()
     End Sub
 
-
+    Private Sub CbAeconomica_ValueChanged(sender As Object, e As EventArgs) Handles CbAeconomica.ValueChanged
+        tbActEco.Text = CbAeconomica.Value
+    End Sub
 End Class
