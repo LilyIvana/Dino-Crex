@@ -561,6 +561,12 @@
     <Compile Include="F1_Bancos.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="F1_AlarmaRentabilidad.Designer.vb">
+      <DependentUpon>F1_AlarmaRentabilidad.vb</DependentUpon>
+    </Compile>
+    <Compile Include="F1_AlarmaRentabilidad.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="F1_CalculoPedidoSugeridoDias.Designer.vb">
       <DependentUpon>F1_CalculoPedidoSugeridoDias.vb</DependentUpon>
     </Compile>
@@ -1801,6 +1807,9 @@
     <EmbeddedResource Include="F1_Bancos.resx">
       <DependentUpon>F1_Bancos.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="F1_AlarmaRentabilidad.resx">
+      <DependentUpon>F1_AlarmaRentabilidad.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="F1_CalculoPedidoSugeridoDias.resx">
       <DependentUpon>F1_CalculoPedidoSugeridoDias.vb</DependentUpon>
     </EmbeddedResource>
@@ -2755,6 +2764,7 @@
     <Content Include="casa2.ico" />
     <Content Include="IconoSsiza.ico" />
     <Content Include="IconoSsiza1.ico" />
+    <None Include="Resources\alarma.png" />
     <Content Include="Resources\atras1.png" />
     <None Include="Resources\buscar.png" />
     <None Include="Resources\BUSQUEDA1.png" />
