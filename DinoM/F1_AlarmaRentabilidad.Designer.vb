@@ -28,14 +28,16 @@ Partial Class F1_AlarmaRentabilidad
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         Me.GroupPanel2 = New DevComponents.DotNetBar.Controls.GroupPanel()
         Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.LabelX1 = New DevComponents.DotNetBar.LabelX()
+        Me.swStock = New DevComponents.DotNetBar.Controls.SwitchButton()
         Me.tbMargenMax = New DevComponents.Editors.IntegerInput()
         Me.LabelX5 = New DevComponents.DotNetBar.LabelX()
         Me.tbMargenMin = New DevComponents.Editors.IntegerInput()
         Me.LabelX3 = New DevComponents.DotNetBar.LabelX()
         Me.btnExportarExcel = New DevComponents.DotNetBar.ButtonX()
         Me.btnGenerar = New DevComponents.DotNetBar.ButtonX()
-        Me.swStock = New DevComponents.DotNetBar.Controls.SwitchButton()
-        Me.LabelX1 = New DevComponents.DotNetBar.LabelX()
+        Me.LabelX2 = New DevComponents.DotNetBar.LabelX()
+        Me.swAlarma = New DevComponents.DotNetBar.Controls.SwitchButton()
         CType(Me.SuperTabPrincipal, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuperTabPrincipal.SuspendLayout()
         Me.SuperTabControlPanelRegistro.SuspendLayout()
@@ -300,6 +302,8 @@ Partial Class F1_AlarmaRentabilidad
         'Panel1
         '
         Me.Panel1.AutoScroll = True
+        Me.Panel1.Controls.Add(Me.LabelX2)
+        Me.Panel1.Controls.Add(Me.swAlarma)
         Me.Panel1.Controls.Add(Me.LabelX1)
         Me.Panel1.Controls.Add(Me.swStock)
         Me.Panel1.Controls.Add(Me.tbMargenMax)
@@ -314,6 +318,41 @@ Partial Class F1_AlarmaRentabilidad
         Me.Panel1.Size = New System.Drawing.Size(1316, 87)
         Me.Panel1.TabIndex = 227
         '
+        'LabelX1
+        '
+        Me.LabelX1.BackColor = System.Drawing.Color.Transparent
+        '
+        '
+        '
+        Me.LabelX1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.LabelX1.Font = New System.Drawing.Font("Georgia", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LabelX1.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(85, Byte), Integer), CType(CType(139, Byte), Integer))
+        Me.LabelX1.Location = New System.Drawing.Point(610, 30)
+        Me.LabelX1.Name = "LabelX1"
+        Me.LabelX1.SingleLineColor = System.Drawing.SystemColors.Control
+        Me.LabelX1.Size = New System.Drawing.Size(42, 23)
+        Me.LabelX1.TabIndex = 697
+        Me.LabelX1.Text = "Stock:"
+        '
+        'swStock
+        '
+        '
+        '
+        '
+        Me.swStock.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.swStock.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.swStock.Location = New System.Drawing.Point(659, 31)
+        Me.swStock.Name = "swStock"
+        Me.swStock.OffBackColor = System.Drawing.Color.Gold
+        Me.swStock.OffText = "MAYOR A ""0"""
+        Me.swStock.OnBackColor = System.Drawing.Color.LimeGreen
+        Me.swStock.OnText = "TODOS"
+        Me.swStock.Size = New System.Drawing.Size(130, 22)
+        Me.swStock.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+        Me.swStock.TabIndex = 696
+        Me.swStock.Value = True
+        Me.swStock.ValueObject = "Y"
+        '
         'tbMargenMax
         '
         '
@@ -323,7 +362,7 @@ Partial Class F1_AlarmaRentabilidad
         Me.tbMargenMax.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.tbMargenMax.ButtonFreeText.Shortcut = DevComponents.DotNetBar.eShortcut.F2
         Me.tbMargenMax.Font = New System.Drawing.Font("Georgia", 10.0!, System.Drawing.FontStyle.Bold)
-        Me.tbMargenMax.Location = New System.Drawing.Point(568, 30)
+        Me.tbMargenMax.Location = New System.Drawing.Point(491, 30)
         Me.tbMargenMax.MinValue = 0
         Me.tbMargenMax.Name = "tbMargenMax"
         Me.tbMargenMax.RightToLeft = System.Windows.Forms.RightToLeft.No
@@ -340,7 +379,7 @@ Partial Class F1_AlarmaRentabilidad
         Me.LabelX5.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.LabelX5.Font = New System.Drawing.Font("Georgia", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.LabelX5.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(85, Byte), Integer), CType(CType(139, Byte), Integer))
-        Me.LabelX5.Location = New System.Drawing.Point(417, 29)
+        Me.LabelX5.Location = New System.Drawing.Point(340, 29)
         Me.LabelX5.Name = "LabelX5"
         Me.LabelX5.SingleLineColor = System.Drawing.SystemColors.Control
         Me.LabelX5.Size = New System.Drawing.Size(140, 23)
@@ -356,7 +395,7 @@ Partial Class F1_AlarmaRentabilidad
         Me.tbMargenMin.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.tbMargenMin.ButtonFreeText.Shortcut = DevComponents.DotNetBar.eShortcut.F2
         Me.tbMargenMin.Font = New System.Drawing.Font("Georgia", 10.0!, System.Drawing.FontStyle.Bold)
-        Me.tbMargenMin.Location = New System.Drawing.Point(306, 30)
+        Me.tbMargenMin.Location = New System.Drawing.Point(229, 30)
         Me.tbMargenMin.MinValue = 0
         Me.tbMargenMin.Name = "tbMargenMin"
         Me.tbMargenMin.RightToLeft = System.Windows.Forms.RightToLeft.No
@@ -373,7 +412,7 @@ Partial Class F1_AlarmaRentabilidad
         Me.LabelX3.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.LabelX3.Font = New System.Drawing.Font("Georgia", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.LabelX3.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(85, Byte), Integer), CType(CType(139, Byte), Integer))
-        Me.LabelX3.Location = New System.Drawing.Point(158, 29)
+        Me.LabelX3.Location = New System.Drawing.Point(81, 29)
         Me.LabelX3.Name = "LabelX3"
         Me.LabelX3.SingleLineColor = System.Drawing.SystemColors.Control
         Me.LabelX3.Size = New System.Drawing.Size(140, 23)
@@ -388,7 +427,7 @@ Partial Class F1_AlarmaRentabilidad
         Me.btnExportarExcel.Image = Global.DinoM.My.Resources.Resources.sheets
         Me.btnExportarExcel.ImageFixedSize = New System.Drawing.Size(35, 40)
         Me.btnExportarExcel.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top
-        Me.btnExportarExcel.Location = New System.Drawing.Point(1072, 10)
+        Me.btnExportarExcel.Location = New System.Drawing.Point(1169, 10)
         Me.btnExportarExcel.Name = "btnExportarExcel"
         Me.btnExportarExcel.Size = New System.Drawing.Size(65, 65)
         Me.btnExportarExcel.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
@@ -403,47 +442,47 @@ Partial Class F1_AlarmaRentabilidad
         Me.btnGenerar.Image = Global.DinoM.My.Resources.Resources.ventasCostos
         Me.btnGenerar.ImageFixedSize = New System.Drawing.Size(40, 40)
         Me.btnGenerar.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top
-        Me.btnGenerar.Location = New System.Drawing.Point(955, 10)
+        Me.btnGenerar.Location = New System.Drawing.Point(1052, 10)
         Me.btnGenerar.Name = "btnGenerar"
         Me.btnGenerar.Size = New System.Drawing.Size(65, 65)
         Me.btnGenerar.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
         Me.btnGenerar.TabIndex = 240
         Me.btnGenerar.Text = "Generar"
         '
-        'swStock
+        'LabelX2
+        '
+        Me.LabelX2.BackColor = System.Drawing.Color.Transparent
+        '
+        '
+        '
+        Me.LabelX2.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.LabelX2.Font = New System.Drawing.Font("Georgia", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LabelX2.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(85, Byte), Integer), CType(CType(139, Byte), Integer))
+        Me.LabelX2.Location = New System.Drawing.Point(830, 30)
+        Me.LabelX2.Name = "LabelX2"
+        Me.LabelX2.SingleLineColor = System.Drawing.SystemColors.Control
+        Me.LabelX2.Size = New System.Drawing.Size(52, 23)
+        Me.LabelX2.TabIndex = 699
+        Me.LabelX2.Text = "Alarma:"
+        '
+        'swAlarma
         '
         '
         '
         '
-        Me.swStock.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.swStock.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.swStock.Location = New System.Drawing.Point(736, 31)
-        Me.swStock.Name = "swStock"
-        Me.swStock.OffBackColor = System.Drawing.Color.Gold
-        Me.swStock.OffText = "MAYOR A ""0"""
-        Me.swStock.OnBackColor = System.Drawing.Color.LimeGreen
-        Me.swStock.OnText = "TODOS"
-        Me.swStock.Size = New System.Drawing.Size(130, 22)
-        Me.swStock.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-        Me.swStock.TabIndex = 696
-        Me.swStock.Value = True
-        Me.swStock.ValueObject = "Y"
-        '
-        'LabelX1
-        '
-        Me.LabelX1.BackColor = System.Drawing.Color.Transparent
-        '
-        '
-        '
-        Me.LabelX1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.LabelX1.Font = New System.Drawing.Font("Georgia", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelX1.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(85, Byte), Integer), CType(CType(139, Byte), Integer))
-        Me.LabelX1.Location = New System.Drawing.Point(680, 30)
-        Me.LabelX1.Name = "LabelX1"
-        Me.LabelX1.SingleLineColor = System.Drawing.SystemColors.Control
-        Me.LabelX1.Size = New System.Drawing.Size(50, 23)
-        Me.LabelX1.TabIndex = 697
-        Me.LabelX1.Text = "Stock:"
+        Me.swAlarma.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.swAlarma.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.swAlarma.Location = New System.Drawing.Point(888, 31)
+        Me.swAlarma.Name = "swAlarma"
+        Me.swAlarma.OffBackColor = System.Drawing.Color.LimeGreen
+        Me.swAlarma.OffText = "TODOS"
+        Me.swAlarma.OnBackColor = System.Drawing.Color.Red
+        Me.swAlarma.OnText = "SI"
+        Me.swAlarma.Size = New System.Drawing.Size(100, 22)
+        Me.swAlarma.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+        Me.swAlarma.TabIndex = 698
+        Me.swAlarma.Value = True
+        Me.swAlarma.ValueObject = "Y"
         '
         'F1_AlarmaRentabilidad
         '
@@ -490,4 +529,6 @@ Partial Class F1_AlarmaRentabilidad
     Friend WithEvents LabelX5 As DevComponents.DotNetBar.LabelX
     Friend WithEvents LabelX1 As DevComponents.DotNetBar.LabelX
     Friend WithEvents swStock As DevComponents.DotNetBar.Controls.SwitchButton
+    Friend WithEvents LabelX2 As DevComponents.DotNetBar.LabelX
+    Friend WithEvents swAlarma As DevComponents.DotNetBar.Controls.SwitchButton
 End Class

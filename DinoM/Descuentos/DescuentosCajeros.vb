@@ -101,19 +101,19 @@ Public Class DescuentosCajeros
                 .FormatString = "0.00"
             End With
             With grProducto.RootTable.Columns("PrecioVenta")
-                .Caption = "P. Wholesale"
+                .Caption = "(A) P. Wholesale"
                 .Width = 60
                 .Visible = True
                 .FormatString = "0.00"
             End With
             With grProducto.RootTable.Columns("PrecioEspecial")
-                .Caption = "P. Preferencial"
+                .Caption = "(B) P. Preferencial"
                 .Width = 60
                 .Visible = True
                 .FormatString = "0.00"
             End With
             With grProducto.RootTable.Columns("PrecioPDV")
-                .Caption = "P. PDV"
+                .Caption = "(C) P. PDV"
                 .Width = 50
                 .Visible = True
                 .FormatString = "0.00"

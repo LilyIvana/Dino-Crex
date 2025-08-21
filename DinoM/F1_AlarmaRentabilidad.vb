@@ -50,39 +50,6 @@ Public Class F1_AlarmaRentabilidad
             btnEliminar.Visible = False
         End If
     End Sub
-    Private Sub _prCrearCarpetaTemporal()
-
-        If System.IO.Directory.Exists(RutaTemporal) = False Then
-            System.IO.Directory.CreateDirectory(RutaTemporal)
-        Else
-            Try
-                My.Computer.FileSystem.DeleteDirectory(RutaTemporal, FileIO.DeleteDirectoryOption.DeleteAllContents)
-                My.Computer.FileSystem.CreateDirectory(RutaTemporal)
-
-            Catch ex As Exception
-
-            End Try
-
-        End If
-
-    End Sub
-    Private Sub _prCrearCarpetaImagenes()
-        Dim rutaDestino As String = RutaGlobal + "\Imagenes\Imagenes ProductoDino\"
-
-        If System.IO.Directory.Exists(RutaGlobal + "\Imagenes\Imagenes ProductoDino\") = False Then
-            If System.IO.Directory.Exists(RutaGlobal + "\Imagenes") = False Then
-                System.IO.Directory.CreateDirectory(RutaGlobal + "\Imagenes")
-                If System.IO.Directory.Exists(RutaGlobal + "\Imagenes\Imagenes ProductoDino") = False Then
-                    System.IO.Directory.CreateDirectory(RutaGlobal + "\Imagenes\Imagenes ProductoDino")
-                End If
-            Else
-                If System.IO.Directory.Exists(RutaGlobal + "\Imagenes\Imagenes ProductoDino") = False Then
-                    System.IO.Directory.CreateDirectory(RutaGlobal + "\Imagenes\Imagenes ProductoDino")
-
-                End If
-            End If
-        End If
-    End Sub
 
     Private Sub _prCrearCarpetaReportes()
         Dim rutaDestino As String = RutaGlobal + "\Reporte\Reporte Productos\"
@@ -103,7 +70,7 @@ Public Class F1_AlarmaRentabilidad
     Private Sub _prCargarDatos()
         Dim MargenMin As Integer = tbMargenMin.Value
         Dim MargenMax As Integer = tbMargenMax.Value
-        Dim dt, table As New DataTable
+        Dim dt, table, alarma As New DataTable
         If swStock.Value = True Then
             dt = L_CalculoRentabilidad()
         Else
@@ -117,21 +84,19 @@ Public Class F1_AlarmaRentabilidad
             dt = table.Copy
         End If
 
-
         If dt.Rows.Count > 0 Then
-            L_fnBotonGenerar(gs_VersionSistema, gs_IPMaquina, gs_UsuMaquina, 0, "ALARMA RENTABILIDAD", "ALARMA RENTABILIDAD")
-
             For i = 0 To dt.Rows.Count - 1
                 If dt.Rows(i).Item("PrecioVentaNetoMin") > 0 Then
-                    dt.Rows(i).Item("MargenMin") = ((dt.Rows(i).Item("PrecioVentaNetoMin") - dt.Rows(i).Item("PrecioCostoNeto")) / dt.Rows(i).Item("PrecioVentaNetoMin")) * 100
+                    dt.Rows(i).Item("MargenMin") = Format((((dt.Rows(i).Item("PrecioVentaNetoMin") - dt.Rows(i).Item("PrecioCostoNeto")) / dt.Rows(i).Item("PrecioVentaNetoMin")) * 100), "#.#0")
                 Else
-                    dt.Rows(i).Item("MargenMin") = 0
+                    dt.Rows(i).Item("MargenMin") = 0.00
                 End If
                 If dt.Rows(i).Item("PrecioVentaNetoMax") > 0 Then
-                    dt.Rows(i).Item("MargenMax") = ((dt.Rows(i).Item("PrecioVentaNetoMax") - dt.Rows(i).Item("PrecioCostoNeto")) / dt.Rows(i).Item("PrecioVentaNetoMax")) * 100
+                    dt.Rows(i).Item("MargenMax") = Format((((dt.Rows(i).Item("PrecioVentaNetoMax") - dt.Rows(i).Item("PrecioCostoNeto")) / dt.Rows(i).Item("PrecioVentaNetoMax")) * 100), "#.#0")
                 Else
-                    dt.Rows(i).Item("MargenMax") = 0
+                    dt.Rows(i).Item("MargenMax") = 0.00
                 End If
+
 
                 ''Alertas
                 If dt.Rows(i).Item("MargenMin") >= MargenMin And dt.Rows(i).Item("MargenMin") <= MargenMax Then
@@ -145,7 +110,24 @@ Public Class F1_AlarmaRentabilidad
                 Else
                     dt.Rows(i).Item("AlertaMax") = "SI"
                 End If
+
+                If dt.Rows(i).Item("AlertaMin") = "SI" Or dt.Rows(i).Item("AlertaMax") = "SI" Then
+                    dt.Rows(i).Item("AlertaFinal") = "SI"
+                Else
+                    dt.Rows(i).Item("AlertaFinal") = "NO"
+                End If
+
             Next
+
+            If swAlarma.Value = True Then
+                alarma = dt.Clone
+                Dim row As DataRow() = dt.Select("AlertaFinal='SI'")
+
+                For Each ldrRow As DataRow In row
+                    alarma.ImportRow(ldrRow)
+                Next
+                dt = alarma.Copy
+            End If
 
             JGrM_Buscador.DataSource = dt
             JGrM_Buscador.RetrieveStructure()
@@ -166,7 +148,6 @@ Public Class F1_AlarmaRentabilidad
                 .Caption = "COD. DELTA"
                 .Visible = True
             End With
-
             With JGrM_Buscador.RootTable.Columns("CodigoBarra")
                 .Width = 100
                 .Caption = "COD. BARRAS"
@@ -193,14 +174,14 @@ Public Class F1_AlarmaRentabilidad
             End With
             With JGrM_Buscador.RootTable.Columns("PrecioVenta")
                 .Width = 150
-                .Caption = "PRECIO WHOLESALE BRUTO "
+                .Caption = "(A) PRECIO WHOLESALE BRUTO "
                 .Visible = True
                 .FormatString = "0.00"
                 .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far
             End With
             With JGrM_Buscador.RootTable.Columns("PrecioEspecial")
                 .Width = 150
-                .Caption = "PRECIO PREFERENCIAL BRUTO"
+                .Caption = "(B) PRECIO PREFERENCIAL BRUTO"
                 .Visible = True
                 .FormatString = "0.00"
                 .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far
@@ -208,7 +189,7 @@ Public Class F1_AlarmaRentabilidad
             End With
             With JGrM_Buscador.RootTable.Columns("PrecioPDV")
                 .Width = 150
-                .Caption = "PRECIO PDV BRUTO"
+                .Caption = "(C) PRECIO PDV BRUTO"
                 .Visible = True
                 .FormatString = "0.00"
                 .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far
@@ -216,56 +197,62 @@ Public Class F1_AlarmaRentabilidad
             End With
             With JGrM_Buscador.RootTable.Columns("ObsCompra")
                 .Width = 120
-                .Caption = "OBS COMPRA"
+                .Caption = "OBS. COMPRA"
                 .Visible = True
             End With
             With JGrM_Buscador.RootTable.Columns("PrecioCostoNeto")
                 .Width = 120
                 .Caption = "PRECIO COSTO NETO"
                 .Visible = True
-                .FormatString = "0.000"
+                .FormatString = "0.00"
                 .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far
                 '.AggregateFunction = AggregateFunction.Sum
             End With
             With JGrM_Buscador.RootTable.Columns("PrecioVentaNetoMin")
                 .Width = 120
-                .Caption = "PRECIO MIN. PDV NETO"
+                .Caption = "(C) PRECIO MIN. PDV NETO"
                 .Visible = True
-                .FormatString = "0.000"
+                .FormatString = "0.00"
                 .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far
             End With
             With JGrM_Buscador.RootTable.Columns("PrecioVentaNetoMax")
                 .Width = 120
-                .Caption = "PRECIO MAX. WHOLESALE NETO"
+                .Caption = "(A) PRECIO MAX. WHOLESALE NETO"
                 .Visible = True
-                .FormatString = "0.000"
+                .FormatString = "0.00"
                 .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far
             End With
             With JGrM_Buscador.RootTable.Columns("MargenMin")
                 .Width = 150
-                .Caption = "MARGEN MÍNIMO %"
+                .Caption = "MARGEN (C) PRECIO MÍN. %"
                 .Visible = True
-                .FormatString = "0.000"
+                .FormatString = "0.00"
                 .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far
             End With
             With JGrM_Buscador.RootTable.Columns("MargenMax")
                 .Width = 150
-                .Caption = "MARGEN MÁXIMO %"
+                .Caption = "MARGEN (A) PRECIO MÁX. %"
                 .Visible = True
-                .FormatString = "0.000"
+                .FormatString = "0.00"
                 .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far
             End With
             With JGrM_Buscador.RootTable.Columns("AlertaMin")
                 .Width = 120
                 .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far
-                .Caption = "ALERTA MÍN."
+                .Caption = "ALERTA (C) PRECIO MÍN."
                 .Visible = True
             End With
             With JGrM_Buscador.RootTable.Columns("AlertaMax")
                 .Width = 120
                 .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far
-                .Caption = "ALERTA MAX."
+                .Caption = "ALERTA (A) PRECIO MAX."
                 .Visible = True
+            End With
+            With JGrM_Buscador.RootTable.Columns("AlertaFinal")
+                .Width = 120
+                .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far
+                .Caption = "ALERTA FINAL"
+                .Visible = False
             End With
             With JGrM_Buscador
                 .DefaultFilterRowComparison = FilterConditionOperator.Contains
@@ -280,6 +267,7 @@ Public Class F1_AlarmaRentabilidad
                 .RecordNavigatorText = "Datos"
             End With
             _prAplicarCondiccionJanus()
+            L_fnBotonGenerar(gs_VersionSistema, gs_IPMaquina, gs_UsuMaquina, 0, "ALARMA RENTABILIDAD", "ALARMA RENTABILIDAD")
         Else
             JGrM_Buscador.ClearStructure()
             Dim img As Bitmap = New Bitmap(My.Resources.mensaje, 50, 50)
@@ -335,11 +323,6 @@ Public Class F1_AlarmaRentabilidad
                 _escritor.WriteLine(_linea)
                 _linea = Nothing
 
-                'Pbx_Precios.Visible = True
-                'Pbx_Precios.Minimum = 1
-                'Pbx_Precios.Maximum = Dgv_Precios.RowCount
-                'Pbx_Precios.Value = 1
-
                 For Each _fil As GridEXRow In JGrM_Buscador.GetRows
                     For Each _col As GridEXColumn In JGrM_Buscador.RootTable.Columns
                         If (_col.Visible) Then
@@ -351,10 +334,10 @@ Public Class F1_AlarmaRentabilidad
                     _linea = Mid(CStr(_linea), 1, _linea.Length - 1)
                     _escritor.WriteLine(_linea)
                     _linea = Nothing
-                    'Pbx_Precios.Value += 1
+
                 Next
                 _escritor.Close()
-                'Pbx_Precios.Visible = False
+
                 Try
                     Dim ef = New Efecto
                     ef._archivo = _archivo
@@ -369,9 +352,6 @@ Public Class F1_AlarmaRentabilidad
                         Process.Start(_archivo)
                     End If
 
-                    'If (MessageBox.Show("Su archivo ha sido Guardado en la ruta: " + _archivo + vbLf + "DESEA ABRIR EL ARCHIVO?", "PREGUNTA", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = Windows.Forms.DialogResult.Yes) Then
-                    '    Process.Start(_archivo)
-                    'End If
                     Return True
                 Catch ex As Exception
                     MsgBox(ex.Message)
@@ -385,12 +365,10 @@ Public Class F1_AlarmaRentabilidad
         Return False
     End Function
 
-
     Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
         _Inter = _Inter + 1
         If _Inter = 1 Then
             Me.WindowState = FormWindowState.Normal
-
         Else
             Me.Opacity = 100
             Timer1.Enabled = False
@@ -406,7 +384,6 @@ Public Class F1_AlarmaRentabilidad
                            eToastGlowColor.Red,
                            eToastPosition.TopCenter)
         End If
-
     End Sub
 
     Private Sub btnExportarExcel_Click(sender As Object, e As EventArgs) Handles btnExportarExcel.Click
@@ -425,6 +402,5 @@ Public Class F1_AlarmaRentabilidad
                                        eToastPosition.BottomLeft)
         End If
     End Sub
-
 
 End Class

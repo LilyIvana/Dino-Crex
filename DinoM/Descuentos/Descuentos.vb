@@ -93,26 +93,26 @@ Public Class Descuentos
             .FormatString = "0.00"
         End With
         With grProducto.RootTable.Columns("PrecioCosto")
-            .Caption = "Precio Costo"
+            .Caption = "P. Costo"
             .Width = 50
             .Visible = True
             .FormatString = "0.00"
         End With
         With grProducto.RootTable.Columns("PrecioVenta")
-            .Caption = "Precio Wholesale"
+            .Caption = "(A) P. Wholesale"
             .Width = 60
             .Visible = True
             .FormatString = "0.00"
         End With
         With grProducto.RootTable.Columns("PrecioEspecial")
-            .Caption = "Precio Preferencial"
+            .Caption = "(B) P. Preferencial"
             .Width = 60
             .Visible = True
             .WordWrap = True
             .FormatString = "0.00"
         End With
         With grProducto.RootTable.Columns("PrecioPDV")
-            .Caption = "Precio PDV"
+            .Caption = "(C) P. PDV"
             .Width = 50
             .Visible = True
             .FormatString = "0.00"
