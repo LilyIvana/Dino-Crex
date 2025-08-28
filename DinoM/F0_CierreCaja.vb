@@ -391,6 +391,8 @@ Public Class F0_CierreCaja
                 .TotalRowFormatStyle.BackColor = Color.Gold
                 .TotalRowPosition = TotalRowPosition.BottomFixed
 
+                .RecordNavigator = True
+                .RecordNavigatorText = "Ventas/Pagos"
             End With
         Catch ex As Exception
             MostrarMensajeError(ex.Message)
@@ -496,6 +498,8 @@ Public Class F0_CierreCaja
                 .TotalRowFormatStyle.BackColor = Color.Gold
                 .TotalRowPosition = TotalRowPosition.BottomFixed
 
+                .RecordNavigator = True
+                .RecordNavigatorText = "Ventas/Pagos"
             End With
         Catch ex As Exception
             MostrarMensajeError(ex.Message)
@@ -851,6 +855,9 @@ Public Class F0_CierreCaja
                 'diseño de la grilla
                 .VisualStyle = VisualStyle.Office2007
                 .AllowEdit = InheritableBoolean.False
+
+                .RecordNavigator = True
+                .RecordNavigatorText = "Registros"
             End With
 
             'If (dt.Rows.Count <= 0) Then

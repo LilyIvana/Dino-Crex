@@ -127,14 +127,19 @@ Public Class F1_CalculoPedidoSugeridoDias
 
                 If dt.Rows(i).Item("Conversion2") = 1 Then
                     dt.Rows(i).Item("PedidoFinalUni") = (PedConv1 * dt.Rows(i).Item("Conversion1"))
-                    dt.Rows(i).Item("PedidoFinalDisp") = (dt.Rows(i).Item("PedidoFinalUni") / dt.Rows(i).Item("Conversion1"))
+                    'dt.Rows(i).Item("PedidoFinalDisp") = (dt.Rows(i).Item("PedidoFinalUni") / dt.Rows(i).Item("Conversion1"))
+                    'dt.Rows(i).Item("Caja") = 0.00
+                    dt.Rows(i).Item("PedidoFinalDisp") = 0.00
+                    dt.Rows(i).Item("Caja") = (dt.Rows(i).Item("PedidoFinalUni") / dt.Rows(i).Item("Conversion1"))
 
                 ElseIf dt.Rows(i).Item("Conversion2") > 1 Then
                     dt.Rows(i).Item("PedidoFinalUni") = 0
                     dt.Rows(i).Item("PedidoFinalDisp") = ((PedConv1 * dt.Rows(i).Item("Conversion1")) / dt.Rows(i).Item("Conversion1"))
+                    dt.Rows(i).Item("Caja") = 0.00
                 Else
                     dt.Rows(i).Item("PedidoFinalUni") = 0
                     dt.Rows(i).Item("PedidoFinalDisp") = 0
+                    dt.Rows(i).Item("Caja") = 0.00
                 End If
             Next
 
@@ -172,17 +177,30 @@ Public Class F1_CalculoPedidoSugeridoDias
                 .Visible = True
                 .Caption = "PROVEEDOR"
             End With
-
             With JGrM_Buscador.RootTable.Columns("StockAct")
                 .Width = 130
-                .Caption = "STOCK ACTUAL"
+                .Caption = "STOCK ACTUAL UNIDADES"
+                .Visible = True
+                .FormatString = "0.00"
+                .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far
+            End With
+            With JGrM_Buscador.RootTable.Columns("StockAct2")
+                .Width = 130
+                .Caption = "STOCK ACTUAL CAJAS"
                 .Visible = True
                 .FormatString = "0.00"
                 .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far
             End With
             With JGrM_Buscador.RootTable.Columns("cantVentas")
                 .Width = 150
-                .Caption = "CANTIDAD VENDIDA"
+                .Caption = "CANTIDAD VENDIDA UNIDADES"
+                .Visible = True
+                .FormatString = "0.00"
+                .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far
+            End With
+            With JGrM_Buscador.RootTable.Columns("cantVentas2")
+                .Width = 150
+                .Caption = "CANTIDAD VENDIDA CAJAS"
                 .Visible = True
                 .FormatString = "0.00"
                 .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far
@@ -272,7 +290,7 @@ Public Class F1_CalculoPedidoSugeridoDias
             With JGrM_Buscador.RootTable.Columns("PedidoFinalDisp")
                 .Width = 120
                 ''.Caption = "EQUIVALENTE FINAL POR CAJ/PAQ/DISP PROVEEDOR"
-                .Caption = "CAJAS"
+                .Caption = "PEDIDO POR DISPLAY"
                 .Visible = True
                 .FormatString = "0.00"
                 .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far
@@ -283,11 +301,11 @@ Public Class F1_CalculoPedidoSugeridoDias
                 .Caption = "EMPAQUE COMPRA"
                 .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far
             End With
-            With JGrM_Buscador.RootTable.Columns("PaqDisp")
+            With JGrM_Buscador.RootTable.Columns("Caja")
                 .Width = 120
-                .Caption = "DISPLAY/PAQUETE"
+                .Caption = "PAQUETE/CAJA"
                 .Visible = True
-                ''.FormatString = "0.00"
+                .FormatString = "0.00"
                 .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far
             End With
             With JGrM_Buscador.RootTable.Columns("CostoNuevo")

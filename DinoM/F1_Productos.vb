@@ -1676,8 +1676,8 @@ Public Class F1_Productos
                 .DropDownList.Columns("descripcionProducto").Caption = "DESCRIPCION"
                 .ValueMember = "codigoProducto"
                 .DisplayMember = "descripcionProducto"
-            .DataSource = result.data
-            .Refresh()
+                .DataSource = result.data
+                .Refresh()
             End With
 
             'CbProdServ.DropDownList.FilterRow = " company_Type=1"
@@ -2119,4 +2119,5 @@ Public Class F1_Productos
     Private Sub CbAeconomica_ValueChanged(sender As Object, e As EventArgs) Handles CbAeconomica.ValueChanged
         tbActEco.Text = CbAeconomica.Value
     End Sub
+
 End Class
