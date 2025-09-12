@@ -36,6 +36,8 @@ Public Class F1_MontoPagar
     Private Sub F1_MontoPagar_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         _prCargarComboLibreria(cbCambioDolar, 7, 1)
         cbCambioDolar.SelectedIndex = CType(cbCambioDolar.DataSource, DataTable).Rows.Count - 1
+        ArmarComboTipoVenta(cbTipo)
+        cbTipo.SelectedIndex = 0
 
         tbNit.Focus()
         tbNit.Select()
@@ -595,13 +597,16 @@ Public Class F1_MontoPagar
         g_prValidarTextBox(1, e)
     End Sub
 
-    Private Sub swPulperia_ValueChanged(sender As Object, e As EventArgs) Handles swPulperia.ValueChanged
-        If swPulperia.Value = True Then
-            tbObs.Text = "PULPERÍA"
+
+
+    Private Sub cbTipo_ValueChanged(sender As Object, e As EventArgs) Handles cbTipo.ValueChanged
+        If cbTipo.Value <> 1 Then
+            tbObs.Text = cbTipo.Text
             tbMontoBs.Value = TotalVenta
         Else
             tbObs.Clear()
             tbMontoBs.Value = 0
         End If
+
     End Sub
 End Class

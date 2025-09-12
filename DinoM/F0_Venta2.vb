@@ -77,6 +77,7 @@ Public Class F0_Venta2
         tokenObtenido = ObtToken()
         'CodTipoDocumento(tokenObtenido)
         ArmarComboTipoDoc(CbTipoDoc)
+        ArmarComboTipoVenta(cbTipo)
 
         _prValidarLote()
         _prCargarComboLibreriaSucursal(cbSucursal)
@@ -276,7 +277,7 @@ Public Class F0_Venta2
         cbSucursal.ReadOnly = True
         FilaSelectLote = Nothing
 
-        swPulperia.IsReadOnly = True
+        cbTipo.ReadOnly = True
     End Sub
     Private Sub _prhabilitar()
 
@@ -329,15 +330,9 @@ Public Class F0_Venta2
 
         End If
 
-
         dtDescuentos = L_fnListarDescuentosTodos()
-
-        swPulperia.IsReadOnly = False
+        cbTipo.ReadOnly = False
     End Sub
-
-
-
-
 
 
     Public Sub _prFiltrar()
@@ -439,9 +434,10 @@ Public Class F0_Venta2
         TbEmail.Clear()
 
         ''Pulperia
-        swPulperia.Visible = True
-        lbPulperia.Visible = True
-        swPulperia.Value = False
+        cbTipo.Visible = True
+        lbTipo.Visible = True
+        cbTipo.SelectedIndex = 0
+
         cbCanje.SelectedIndex = 1
     End Sub
     Public Sub _prMostrarRegistro(_N As Integer)
@@ -501,8 +497,8 @@ Public Class F0_Venta2
             lbUsuario.Text = .GetValue("tauact").ToString
 
         End With
-        swPulperia.Visible = False
-        lbPulperia.Visible = False
+        cbTipo.Visible = False
+        lbTipo.Visible = False
 
         _prCargarDetalleVenta(tbCodigo.Text)
         tbMdesc.Value = grVentas.GetValue("tadesc")
@@ -5515,16 +5511,6 @@ salirIf:
         End If
     End Sub
 
-    Private Sub swPulperia_ValueChanged(sender As Object, e As EventArgs) Handles swPulperia.ValueChanged
-        If swPulperia.Value = True Then
-            tbObservacion.Text = "PULPERÍA"
-            tbMontoBs.Value = tbTotalBs.Text
-        Else
-            tbObservacion.Clear()
-            tbMontoBs.Value = 0
-        End If
-    End Sub
-
     Private Sub swMostrar_ValueChanged(sender As Object, e As EventArgs) Handles swMostrar.ValueChanged
         _prCargarVenta()
     End Sub
@@ -5598,8 +5584,15 @@ salirIf:
 
     End Sub
 
-
-
+    Private Sub cbTipo_ValueChanged(sender As Object, e As EventArgs) Handles cbTipo.ValueChanged
+        If cbTipo.Value <> 1 Then
+            tbObservacion.Text = cbTipo.Text
+            tbMontoBs.Value = tbTotalBs.Text
+        Else
+            tbObservacion.Clear()
+            tbMontoBs.Value = 0
+        End If
+    End Sub
 
 
 

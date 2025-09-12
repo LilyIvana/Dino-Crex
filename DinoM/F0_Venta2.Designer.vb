@@ -24,6 +24,7 @@ Partial Class F0_Venta2
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
+        Dim cbTipo_DesignTimeLayout As Janus.Windows.GridEX.GridEXLayout = New Janus.Windows.GridEX.GridEXLayout()
         Dim cbCanje_DesignTimeLayout As Janus.Windows.GridEX.GridEXLayout = New Janus.Windows.GridEX.GridEXLayout()
         Dim cbSucursal_DesignTimeLayout As Janus.Windows.GridEX.GridEXLayout = New Janus.Windows.GridEX.GridEXLayout()
         Dim cbCambioDolar_DesignTimeLayout As Janus.Windows.GridEX.GridEXLayout = New Janus.Windows.GridEX.GridEXLayout()
@@ -31,12 +32,12 @@ Partial Class F0_Venta2
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(F0_Venta2))
         Me.GroupPanel2 = New DevComponents.DotNetBar.Controls.GroupPanel()
         Me.Panel2 = New System.Windows.Forms.Panel()
+        Me.lbTipo = New DevComponents.DotNetBar.LabelX()
+        Me.cbTipo = New Janus.Windows.GridEX.EditControls.MultiColumnCombo()
         Me.cbCanje = New Janus.Windows.GridEX.EditControls.MultiColumnCombo()
         Me.LabelX30 = New DevComponents.DotNetBar.LabelX()
         Me.LabelX29 = New DevComponents.DotNetBar.LabelX()
         Me.swMostrar = New DevComponents.DotNetBar.Controls.SwitchButton()
-        Me.lbPulperia = New DevComponents.DotNetBar.LabelX()
-        Me.swPulperia = New DevComponents.DotNetBar.Controls.SwitchButton()
         Me.TbEmail = New DevComponents.DotNetBar.Controls.TextBoxX()
         Me.LabelX27 = New DevComponents.DotNetBar.LabelX()
         Me.lbNroCaja = New System.Windows.Forms.Label()
@@ -162,6 +163,7 @@ Partial Class F0_Venta2
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupPanel2.SuspendLayout()
         Me.Panel2.SuspendLayout()
+        CType(Me.cbTipo, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.cbCanje, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.tbFechaVenc, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.QrFactura, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -449,12 +451,12 @@ Partial Class F0_Venta2
         '
         'Panel2
         '
+        Me.Panel2.Controls.Add(Me.lbTipo)
+        Me.Panel2.Controls.Add(Me.cbTipo)
         Me.Panel2.Controls.Add(Me.cbCanje)
         Me.Panel2.Controls.Add(Me.LabelX30)
         Me.Panel2.Controls.Add(Me.LabelX29)
         Me.Panel2.Controls.Add(Me.swMostrar)
-        Me.Panel2.Controls.Add(Me.lbPulperia)
-        Me.Panel2.Controls.Add(Me.swPulperia)
         Me.Panel2.Controls.Add(Me.TbEmail)
         Me.Panel2.Controls.Add(Me.LabelX27)
         Me.Panel2.Controls.Add(Me.lbNroCaja)
@@ -488,6 +490,39 @@ Partial Class F0_Venta2
         Me.Panel2.Name = "Panel2"
         Me.Panel2.Size = New System.Drawing.Size(1305, 107)
         Me.Panel2.TabIndex = 0
+        '
+        'lbTipo
+        '
+        Me.lbTipo.BackColor = System.Drawing.Color.Transparent
+        '
+        '
+        '
+        Me.lbTipo.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.lbTipo.Font = New System.Drawing.Font("Georgia", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lbTipo.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(85, Byte), Integer), CType(CType(139, Byte), Integer))
+        Me.lbTipo.Location = New System.Drawing.Point(753, 65)
+        Me.lbTipo.Name = "lbTipo"
+        Me.lbTipo.SingleLineColor = System.Drawing.SystemColors.Control
+        Me.lbTipo.Size = New System.Drawing.Size(60, 15)
+        Me.lbTipo.TabIndex = 429
+        Me.lbTipo.Text = "Venta:"
+        '
+        'cbTipo
+        '
+        Me.cbTipo.BorderStyle = Janus.Windows.GridEX.BorderStyle.Flat
+        Me.cbTipo.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
+        cbTipo_DesignTimeLayout.LayoutString = resources.GetString("cbTipo_DesignTimeLayout.LayoutString")
+        Me.cbTipo.DesignTimeLayout = cbTipo_DesignTimeLayout
+        Me.cbTipo.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cbTipo.Location = New System.Drawing.Point(753, 81)
+        Me.cbTipo.Name = "cbTipo"
+        Me.cbTipo.Office2007ColorScheme = Janus.Windows.GridEX.Office2007ColorScheme.Custom
+        Me.cbTipo.Office2007CustomColor = System.Drawing.Color.DodgerBlue
+        Me.cbTipo.SelectedIndex = -1
+        Me.cbTipo.SelectedItem = Nothing
+        Me.cbTipo.Size = New System.Drawing.Size(125, 20)
+        Me.cbTipo.TabIndex = 428
+        Me.cbTipo.VisualStyle = Janus.Windows.GridEX.VisualStyle.Office2007
         '
         'cbCanje
         '
@@ -554,39 +589,6 @@ Partial Class F0_Venta2
         Me.swMostrar.Size = New System.Drawing.Size(160, 22)
         Me.swMostrar.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
         Me.swMostrar.TabIndex = 423
-        '
-        'lbPulperia
-        '
-        Me.lbPulperia.BackColor = System.Drawing.Color.Transparent
-        '
-        '
-        '
-        Me.lbPulperia.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.lbPulperia.Font = New System.Drawing.Font("Georgia", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lbPulperia.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(85, Byte), Integer), CType(CType(139, Byte), Integer))
-        Me.lbPulperia.Location = New System.Drawing.Point(804, 60)
-        Me.lbPulperia.Name = "lbPulperia"
-        Me.lbPulperia.SingleLineColor = System.Drawing.SystemColors.Control
-        Me.lbPulperia.Size = New System.Drawing.Size(60, 15)
-        Me.lbPulperia.TabIndex = 392
-        Me.lbPulperia.Text = "Pulpería:"
-        '
-        'swPulperia
-        '
-        '
-        '
-        '
-        Me.swPulperia.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.swPulperia.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.swPulperia.Location = New System.Drawing.Point(804, 76)
-        Me.swPulperia.Name = "swPulperia"
-        Me.swPulperia.OffBackColor = System.Drawing.Color.SteelBlue
-        Me.swPulperia.OffText = "NO"
-        Me.swPulperia.OnBackColor = System.Drawing.Color.Gold
-        Me.swPulperia.OnText = "SI"
-        Me.swPulperia.Size = New System.Drawing.Size(70, 20)
-        Me.swPulperia.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-        Me.swPulperia.TabIndex = 391
         '
         'TbEmail
         '
@@ -680,7 +682,7 @@ Partial Class F0_Venta2
         Me.tbObservacion.Name = "tbObservacion"
         Me.tbObservacion.PreventEnterBeep = True
         Me.tbObservacion.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
-        Me.tbObservacion.Size = New System.Drawing.Size(700, 32)
+        Me.tbObservacion.Size = New System.Drawing.Size(650, 36)
         Me.tbObservacion.TabIndex = 362
         '
         'lblObservacion
@@ -2603,6 +2605,7 @@ Partial Class F0_Venta2
         Me.GroupPanel2.ResumeLayout(False)
         Me.Panel2.ResumeLayout(False)
         Me.Panel2.PerformLayout()
+        CType(Me.cbTipo, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.cbCanje, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.tbFechaVenc, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.QrFactura, System.ComponentModel.ISupportInitialize).EndInit()
@@ -2750,8 +2753,6 @@ Partial Class F0_Venta2
     Friend WithEvents tbNroTarjeta2 As DevComponents.DotNetBar.Controls.TextBoxX
     Friend WithEvents tbComplemento As TextBox
     Friend WithEvents LabelX26 As DevComponents.DotNetBar.LabelX
-    Friend WithEvents lbPulperia As DevComponents.DotNetBar.LabelX
-    Friend WithEvents swPulperia As DevComponents.DotNetBar.Controls.SwitchButton
     Friend WithEvents LabelX28 As DevComponents.DotNetBar.LabelX
     Friend WithEvents tbCel As DevComponents.DotNetBar.Controls.TextBoxX
     Friend WithEvents swMostrar As DevComponents.DotNetBar.Controls.SwitchButton
@@ -2759,4 +2760,6 @@ Partial Class F0_Venta2
     Friend WithEvents btnMovXpeso As DevComponents.DotNetBar.ButtonX
     Friend WithEvents LabelX30 As DevComponents.DotNetBar.LabelX
     Public WithEvents cbCanje As Janus.Windows.GridEX.EditControls.MultiColumnCombo
+    Friend WithEvents lbTipo As DevComponents.DotNetBar.LabelX
+    Public WithEvents cbTipo As Janus.Windows.GridEX.EditControls.MultiColumnCombo
 End Class

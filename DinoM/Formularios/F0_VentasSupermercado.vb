@@ -639,14 +639,8 @@ Public Class F0_VentasSupermercado
         If Succes = 200 Then
             _GuardarNuevo()
         End If
-
     End Sub
     Public Sub actualizarSaldoSinLote(ByRef dt As DataTable)
-        'b.yfcdprod1 ,a.iclot ,a.icfven  ,a.iccven 
-
-        '      a.tbnumi ,a.tbtv1numi ,a.tbty5prod ,b.yfcdprod1 as producto,a.tbest ,a.tbcmin ,a.tbumin ,Umin .ycdes3 as unidad,a.tbpbas ,a.tbptot ,a.tbobs ,
-        'a.tbpcos,a.tblote ,a.tbfechaVenc , a.tbptot2, a.tbfact ,a.tbhact ,a.tbuact,1 as estado,Cast(null as Image) as img,
-        'Cast (0 as decimal (18,2)) as stock
         Dim _detalle As DataTable = CType(grdetalle.DataSource, DataTable)
 
         For i As Integer = 0 To dt.Rows.Count - 1 Step 1

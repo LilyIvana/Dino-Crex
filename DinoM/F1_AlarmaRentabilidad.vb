@@ -19,10 +19,9 @@ Public Class F1_AlarmaRentabilidad
 #End Region
 #Region "Metodos Privados"
     Private Sub _prIniciarTodo()
-        Me.Text = "ALARMA DE RENTABILIDAD"
-        tbMargenMin.Value = 7
-        tbMargenMax.Value = 25
-
+        Me.Text = "ALARMA DE RENTABILIDAD Y P.O.C."
+        'tbMargenMin.Value = 7
+        'tbMargenMax.Value = 25
         Dim blah As New Bitmap(New Bitmap(My.Resources.alarma), 20, 20)
         Dim ico As Icon = Icon.FromHandle(blah.GetHicon())
         Me.Icon = ico
@@ -68,13 +67,17 @@ Public Class F1_AlarmaRentabilidad
         End If
     End Sub
     Private Sub _prCargarDatos()
-        Dim MargenMin As Integer = tbMargenMin.Value
-        Dim MargenMax As Integer = tbMargenMax.Value
+        Dim MargenMin As Double = tbMargenMin.Value
+        Dim MargenMax As Double = tbMargenMax.Value
         Dim dt, table, alarma As New DataTable
-        If swStock.Value = True Then
+
+        If swTipo.Value = True Then ''Cálculos para rentabilidad
             dt = L_CalculoRentabilidad()
-        Else
-            dt = L_CalculoRentabilidad()
+        Else ''Cálculos para P.O.C.
+            dt = L_CalculoPOC()
+        End If
+
+        If swStock.Value = False Then ''Si el Stock es > 0
             table = dt.Clone
             Dim row As DataRow() = dt.Select("Stock>0")
 
@@ -85,44 +88,76 @@ Public Class F1_AlarmaRentabilidad
         End If
 
         If dt.Rows.Count > 0 Then
-            For i = 0 To dt.Rows.Count - 1
-                If dt.Rows(i).Item("PrecioVentaNetoMin") > 0 Then
-                    dt.Rows(i).Item("MargenMin") = Format((((dt.Rows(i).Item("PrecioVentaNetoMin") - dt.Rows(i).Item("PrecioCostoNeto")) / dt.Rows(i).Item("PrecioVentaNetoMin")) * 100), "#.#0")
-                Else
-                    dt.Rows(i).Item("MargenMin") = 0.00
-                End If
-                If dt.Rows(i).Item("PrecioVentaNetoMax") > 0 Then
-                    dt.Rows(i).Item("MargenMax") = Format((((dt.Rows(i).Item("PrecioVentaNetoMax") - dt.Rows(i).Item("PrecioCostoNeto")) / dt.Rows(i).Item("PrecioVentaNetoMax")) * 100), "#.#0")
-                Else
-                    dt.Rows(i).Item("MargenMax") = 0.00
-                End If
+            If swTipo.Value = True Then ''Cálculos para rentabilidad
+                L_fnBotonGenerar(gs_VersionSistema, gs_IPMaquina, gs_UsuMaquina, 0, "ALARMA RENTABILIDAD", "ALARMA RENTABILIDAD")
 
+                For i = 0 To dt.Rows.Count - 1
+                    If dt.Rows(i).Item("PrecioVentaNetoMin") > 0 Then
+                        dt.Rows(i).Item("MargenMin") = Format((((dt.Rows(i).Item("PrecioVentaNetoMin") - dt.Rows(i).Item("PrecioCostoNeto")) / dt.Rows(i).Item("PrecioVentaNetoMin")) * 100), "#.#0")
+                    Else
+                        dt.Rows(i).Item("MargenMin") = 0.00
+                    End If
+                    If dt.Rows(i).Item("PrecioVentaNetoMax") > 0 Then
+                        dt.Rows(i).Item("MargenMax") = Format((((dt.Rows(i).Item("PrecioVentaNetoMax") - dt.Rows(i).Item("PrecioCostoNeto")) / dt.Rows(i).Item("PrecioVentaNetoMax")) * 100), "#.#0")
+                    Else
+                        dt.Rows(i).Item("MargenMax") = 0.00
+                    End If
 
-                ''Alertas
-                If dt.Rows(i).Item("MargenMin") >= MargenMin And dt.Rows(i).Item("MargenMin") <= MargenMax Then
-                    dt.Rows(i).Item("AlertaMin") = "NO"
-                Else
-                    dt.Rows(i).Item("AlertaMin") = "SI"
-                End If
+                    ''Alertas
+                    If dt.Rows(i).Item("MargenMin") >= MargenMin And dt.Rows(i).Item("MargenMin") <= MargenMax Then
+                        dt.Rows(i).Item("AlertaMin") = "NO"
+                    Else
+                        dt.Rows(i).Item("AlertaMin") = "SI"
+                    End If
 
-                If dt.Rows(i).Item("MargenMax") >= MargenMin And dt.Rows(i).Item("MargenMax") <= MargenMax Then
-                    dt.Rows(i).Item("AlertaMax") = "NO"
-                Else
-                    dt.Rows(i).Item("AlertaMax") = "SI"
-                End If
+                    If dt.Rows(i).Item("MargenMax") >= MargenMin And dt.Rows(i).Item("MargenMax") <= MargenMax Then
+                        dt.Rows(i).Item("AlertaMax") = "NO"
+                    Else
+                        dt.Rows(i).Item("AlertaMax") = "SI"
+                    End If
 
-                If dt.Rows(i).Item("AlertaMin") = "SI" Or dt.Rows(i).Item("AlertaMax") = "SI" Then
-                    dt.Rows(i).Item("AlertaFinal") = "SI"
-                Else
-                    dt.Rows(i).Item("AlertaFinal") = "NO"
-                End If
+                    If dt.Rows(i).Item("AlertaMin") = "SI" Or dt.Rows(i).Item("AlertaMax") = "SI" Then
+                        dt.Rows(i).Item("AlertaFinal") = "SI"
+                    Else
+                        dt.Rows(i).Item("AlertaFinal") = "NO"
+                    End If
+                Next
+            Else  ''Cálculos para P.O.C.
+                L_fnBotonGenerar(gs_VersionSistema, gs_IPMaquina, gs_UsuMaquina, 0, "ALARMA P.O.C.", "ALARMA P.O.C.")
+                For i = 0 To dt.Rows.Count - 1
+                    If dt.Rows(i).Item("PrecioCosto") > 0 Then
+                        dt.Rows(i).Item("MargenMin") = Format((dt.Rows(i).Item("PrecioPDV") / dt.Rows(i).Item("PrecioCosto")), "#.#0")
+                        dt.Rows(i).Item("MargenMax") = Format((dt.Rows(i).Item("PrecioVenta") / dt.Rows(i).Item("PrecioCosto")), "#.#0")
+                    Else
+                        dt.Rows(i).Item("MargenMin") = 0.00
+                        dt.Rows(i).Item("MargenMax") = 0.00
+                    End If
 
-            Next
+                    ''Alertas
+                    If dt.Rows(i).Item("MargenMin") >= MargenMin And dt.Rows(i).Item("MargenMin") <= MargenMax Then
+                        dt.Rows(i).Item("AlertaMin") = "NO"
+                    Else
+                        dt.Rows(i).Item("AlertaMin") = "SI"
+                    End If
+
+                    If dt.Rows(i).Item("MargenMax") >= MargenMin And dt.Rows(i).Item("MargenMax") <= MargenMax Then
+                        dt.Rows(i).Item("AlertaMax") = "NO"
+                    Else
+                        dt.Rows(i).Item("AlertaMax") = "SI"
+                    End If
+
+                    If dt.Rows(i).Item("AlertaMin") = "SI" Or dt.Rows(i).Item("AlertaMax") = "SI" Then
+                        dt.Rows(i).Item("AlertaFinal") = "SI"
+                    Else
+                        dt.Rows(i).Item("AlertaFinal") = "NO"
+                    End If
+                Next
+            End If
+
 
             If swAlarma.Value = True Then
                 alarma = dt.Clone
                 Dim row As DataRow() = dt.Select("AlertaFinal='SI'")
-
                 For Each ldrRow As DataRow In row
                     alarma.ImportRow(ldrRow)
                 Next
@@ -196,45 +231,59 @@ Public Class F1_AlarmaRentabilidad
                 '.AggregateFunction = AggregateFunction.Sum
             End With
             With JGrM_Buscador.RootTable.Columns("ObsCompra")
-                .Width = 120
+                .Width = 180
                 .Caption = "OBS. COMPRA"
                 .Visible = True
             End With
-            With JGrM_Buscador.RootTable.Columns("PrecioCostoNeto")
-                .Width = 120
-                .Caption = "PRECIO COSTO NETO"
-                .Visible = True
-                .FormatString = "0.00"
-                .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far
-                '.AggregateFunction = AggregateFunction.Sum
-            End With
-            With JGrM_Buscador.RootTable.Columns("PrecioVentaNetoMin")
-                .Width = 120
-                .Caption = "(C) PRECIO MIN. PDV NETO"
-                .Visible = True
-                .FormatString = "0.00"
-                .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far
-            End With
-            With JGrM_Buscador.RootTable.Columns("PrecioVentaNetoMax")
-                .Width = 120
-                .Caption = "(A) PRECIO MAX. WHOLESALE NETO"
-                .Visible = True
-                .FormatString = "0.00"
-                .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far
-            End With
+
+            If swTipo.Value = True Then ''Para Rentabilidad
+
+                With JGrM_Buscador.RootTable.Columns("PrecioCostoNeto")
+                    .Width = 120
+                    .Caption = "PRECIO COSTO NETO"
+                    .Visible = True
+                    .FormatString = "0.00"
+                    .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far
+                    '.AggregateFunction = AggregateFunction.Sum
+                End With
+                With JGrM_Buscador.RootTable.Columns("PrecioVentaNetoMin")
+                    .Width = 120
+                    .Caption = "(C) PRECIO MIN. PDV NETO"
+                    .Visible = True
+                    .FormatString = "0.00"
+                    .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far
+                End With
+                With JGrM_Buscador.RootTable.Columns("PrecioVentaNetoMax")
+                    .Width = 120
+                    .Caption = "(A) PRECIO MAX. WHOLESALE NETO"
+                    .Visible = True
+                    .FormatString = "0.00"
+                    .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far
+                End With
+            End If
+
             With JGrM_Buscador.RootTable.Columns("MargenMin")
                 .Width = 150
-                .Caption = "MARGEN (C) PRECIO MÍN. %"
                 .Visible = True
                 .FormatString = "0.00"
                 .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far
+                If swTipo.Value = True Then
+                    .Caption = "MARGEN (C) PRECIO MÍN. %"
+                Else
+                    .Caption = "P.O.C. PRECIO MÍN. (C)"
+                End If
             End With
             With JGrM_Buscador.RootTable.Columns("MargenMax")
                 .Width = 150
-                .Caption = "MARGEN (A) PRECIO MÁX. %"
+
                 .Visible = True
                 .FormatString = "0.00"
                 .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far
+                If swTipo.Value = True Then
+                    .Caption = "MARGEN (A) PRECIO MÁX. %"
+                Else
+                    .Caption = "P.O.C. PRECIO MÁX. (A)"
+                End If
             End With
             With JGrM_Buscador.RootTable.Columns("AlertaMin")
                 .Width = 120
@@ -267,7 +316,7 @@ Public Class F1_AlarmaRentabilidad
                 .RecordNavigatorText = "Datos"
             End With
             _prAplicarCondiccionJanus()
-            L_fnBotonGenerar(gs_VersionSistema, gs_IPMaquina, gs_UsuMaquina, 0, "ALARMA RENTABILIDAD", "ALARMA RENTABILIDAD")
+
         Else
             JGrM_Buscador.ClearStructure()
             Dim img As Bitmap = New Bitmap(My.Resources.mensaje, 50, 50)
@@ -389,18 +438,36 @@ Public Class F1_AlarmaRentabilidad
     Private Sub btnExportarExcel_Click(sender As Object, e As EventArgs) Handles btnExportarExcel.Click
         _prCrearCarpetaReportes()
         Dim img As Bitmap = New Bitmap(My.Resources.checked, 50, 50)
-        If (P_ExportarExcel(RutaGlobal + "\Reporte\Reporte Productos")) Then
-            L_fnBotonExportar(gs_VersionSistema, gs_IPMaquina, gs_UsuMaquina, 0, "ALARMA RENTABILIDAD", "ALARMA RENTABILIDAD")
-            ToastNotification.Show(Me, "EXPORTACIÓN DE ALARMA DE RENTABILIDAD EXITOSA..!!!",
+        If (P_ExportarExcelGlobal(RutaGlobal + "\Reporte\Reporte Productos", JGrM_Buscador, IIf(swTipo.Value = True, "AlarmaRentabilidad", "AlarmaPOC"))) Then
+            L_fnBotonExportar(gs_VersionSistema, gs_IPMaquina, gs_UsuMaquina, 0, IIf(swTipo.Value = True, "ALARMA RENTABILIDAD", "ALARMA P.O.C."), IIf(swTipo.Value = True, "ALARMA RENTABILIDAD", "ALARMA P.O.C."))
+
+            ToastNotification.Show(Me, "EXPORTACIÓN DE ALARMA EXITOSA..!!!",
                                        img, 2000,
                                        eToastGlowColor.Green,
                                        eToastPosition.BottomCenter)
         Else
-            ToastNotification.Show(Me, "FALLÓ LA EXPORTACIÓN DE ALARMA DE RENTABILIDAD..!!!",
+            ToastNotification.Show(Me, "FALLÓ LA EXPORTACIÓN DE ALARMA..!!!",
                                        My.Resources.WARNING, 2000,
                                        eToastGlowColor.Red,
                                        eToastPosition.BottomLeft)
         End If
     End Sub
 
+    Private Sub SwitchButton1_ValueChanged(sender As Object, e As EventArgs) Handles swTipo.ValueChanged
+        If swTipo.Value = True Then
+            lbMin.Text = "Margen Mínimo % (*):"
+            lbMax.Text = "Margen Máximo % (*):"
+            tbMargenMin.Value = 7
+            tbMargenMax.Value = 25
+
+        Else
+            lbMin.Text = "P.O.C. Mínimo(*):"
+            lbMax.Text = "P.O.C. Máximo(*):"
+            tbMargenMin.Value = 1.1
+            tbMargenMax.Value = 1.2
+        End If
+
+
+
+    End Sub
 End Class

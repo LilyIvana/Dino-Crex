@@ -24,6 +24,7 @@ Partial Class F1_MontoPagar
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(F1_MontoPagar))
         Dim cbCambioDolar_DesignTimeLayout As Janus.Windows.GridEX.GridEXLayout = New Janus.Windows.GridEX.GridEXLayout()
+        Dim cbTipo_DesignTimeLayout As Janus.Windows.GridEX.GridEXLayout = New Janus.Windows.GridEX.GridEXLayout()
         Dim CbTipoDoc_DesignTimeLayout As Janus.Windows.GridEX.GridEXLayout = New Janus.Windows.GridEX.GridEXLayout()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
         Me.BtnSalir = New DevComponents.DotNetBar.ButtonX()
@@ -53,6 +54,8 @@ Partial Class F1_MontoPagar
         Me.tbMontoDolar = New DevComponents.Editors.DoubleInput()
         Me.LabelX6 = New DevComponents.DotNetBar.LabelX()
         Me.GroupBox3 = New System.Windows.Forms.GroupBox()
+        Me.cbTipo = New Janus.Windows.GridEX.EditControls.MultiColumnCombo()
+        Me.LabelX9 = New DevComponents.DotNetBar.LabelX()
         Me.LabelX8 = New DevComponents.DotNetBar.LabelX()
         Me.LabelX7 = New DevComponents.DotNetBar.LabelX()
         Me.tbObs = New DevComponents.DotNetBar.Controls.TextBoxX()
@@ -68,8 +71,6 @@ Partial Class F1_MontoPagar
         Me.tbNit = New System.Windows.Forms.TextBox()
         Me.LabelX3 = New DevComponents.DotNetBar.LabelX()
         Me.LabelX4 = New DevComponents.DotNetBar.LabelX()
-        Me.swPulperia = New DevComponents.DotNetBar.Controls.SwitchButton()
-        Me.LabelX9 = New DevComponents.DotNetBar.LabelX()
         Me.GroupBox2.SuspendLayout()
         Me.GroupBox1.SuspendLayout()
         CType(Me.tbMontoQR, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -78,6 +79,7 @@ Partial Class F1_MontoPagar
         CType(Me.tbMontoBs, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.tbMontoDolar, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox3.SuspendLayout()
+        CType(Me.cbTipo, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.CbTipoDoc, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -549,8 +551,8 @@ Partial Class F1_MontoPagar
         '
         Me.GroupBox3.BackColor = System.Drawing.Color.Transparent
         Me.GroupBox3.BackgroundImage = Global.DinoM.My.Resources.Resources.fondo1
+        Me.GroupBox3.Controls.Add(Me.cbTipo)
         Me.GroupBox3.Controls.Add(Me.LabelX9)
-        Me.GroupBox3.Controls.Add(Me.swPulperia)
         Me.GroupBox3.Controls.Add(Me.LabelX8)
         Me.GroupBox3.Controls.Add(Me.LabelX7)
         Me.GroupBox3.Controls.Add(Me.tbObs)
@@ -575,6 +577,39 @@ Partial Class F1_MontoPagar
         Me.GroupBox3.TabIndex = 365
         Me.GroupBox3.TabStop = False
         Me.GroupBox3.Text = "Datos de Factura"
+        '
+        'cbTipo
+        '
+        Me.cbTipo.BorderStyle = Janus.Windows.GridEX.BorderStyle.Flat
+        Me.cbTipo.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
+        cbTipo_DesignTimeLayout.LayoutString = resources.GetString("cbTipo_DesignTimeLayout.LayoutString")
+        Me.cbTipo.DesignTimeLayout = cbTipo_DesignTimeLayout
+        Me.cbTipo.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cbTipo.Location = New System.Drawing.Point(123, 165)
+        Me.cbTipo.Name = "cbTipo"
+        Me.cbTipo.Office2007ColorScheme = Janus.Windows.GridEX.Office2007ColorScheme.Custom
+        Me.cbTipo.Office2007CustomColor = System.Drawing.Color.DodgerBlue
+        Me.cbTipo.SelectedIndex = -1
+        Me.cbTipo.SelectedItem = Nothing
+        Me.cbTipo.Size = New System.Drawing.Size(160, 20)
+        Me.cbTipo.TabIndex = 432
+        Me.cbTipo.VisualStyle = Janus.Windows.GridEX.VisualStyle.Office2007
+        '
+        'LabelX9
+        '
+        Me.LabelX9.BackColor = System.Drawing.Color.Transparent
+        '
+        '
+        '
+        Me.LabelX9.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.LabelX9.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Bold)
+        Me.LabelX9.ForeColor = System.Drawing.Color.White
+        Me.LabelX9.Location = New System.Drawing.Point(9, 163)
+        Me.LabelX9.Name = "LabelX9"
+        Me.LabelX9.SingleLineColor = System.Drawing.SystemColors.Control
+        Me.LabelX9.Size = New System.Drawing.Size(70, 23)
+        Me.LabelX9.TabIndex = 431
+        Me.LabelX9.Text = "Venta:"
         '
         'LabelX8
         '
@@ -808,39 +843,6 @@ Partial Class F1_MontoPagar
         Me.LabelX4.TabIndex = 366
         Me.LabelX4.Text = "Razón Social:"
         '
-        'swPulperia
-        '
-        '
-        '
-        '
-        Me.swPulperia.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.swPulperia.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.swPulperia.Location = New System.Drawing.Point(123, 165)
-        Me.swPulperia.Name = "swPulperia"
-        Me.swPulperia.OffBackColor = System.Drawing.Color.SteelBlue
-        Me.swPulperia.OffText = "NO"
-        Me.swPulperia.OnBackColor = System.Drawing.Color.Gold
-        Me.swPulperia.OnText = "SI"
-        Me.swPulperia.Size = New System.Drawing.Size(70, 20)
-        Me.swPulperia.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-        Me.swPulperia.TabIndex = 430
-        '
-        'LabelX9
-        '
-        Me.LabelX9.BackColor = System.Drawing.Color.Transparent
-        '
-        '
-        '
-        Me.LabelX9.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.LabelX9.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Bold)
-        Me.LabelX9.ForeColor = System.Drawing.Color.White
-        Me.LabelX9.Location = New System.Drawing.Point(9, 163)
-        Me.LabelX9.Name = "LabelX9"
-        Me.LabelX9.SingleLineColor = System.Drawing.SystemColors.Control
-        Me.LabelX9.Size = New System.Drawing.Size(70, 23)
-        Me.LabelX9.TabIndex = 431
-        Me.LabelX9.Text = "Pulpería:"
-        '
         'F1_MontoPagar
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -864,6 +866,7 @@ Partial Class F1_MontoPagar
         CType(Me.tbMontoDolar, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox3.ResumeLayout(False)
         Me.GroupBox3.PerformLayout()
+        CType(Me.cbTipo, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.CbTipoDoc, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
@@ -913,5 +916,5 @@ Partial Class F1_MontoPagar
     Friend WithEvents LabelX8 As DevComponents.DotNetBar.LabelX
     Friend WithEvents tbObs As DevComponents.DotNetBar.Controls.TextBoxX
     Friend WithEvents LabelX9 As DevComponents.DotNetBar.LabelX
-    Friend WithEvents swPulperia As DevComponents.DotNetBar.Controls.SwitchButton
+    Public WithEvents cbTipo As Janus.Windows.GridEX.EditControls.MultiColumnCombo
 End Class
