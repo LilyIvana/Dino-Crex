@@ -402,8 +402,8 @@ Public Class F1_Productos
         tbDescDet.Clear()
         tbDescCort.Clear()
 
-        CbAeconomica.SelectedIndex = 0 ''Por defecto que carque la primera actividad económica 471110
-        'CbAeconomica.SelectedIndex = 3 ''Por defecto que carque la actividad económica 4711100
+        'CbAeconomica.SelectedIndex = 0 ''Por defecto que carque la primera actividad económica 471110
+        CbAeconomica.SelectedIndex = 3 ''Por defecto que carque la actividad económica 4711100
 
         CbUmedida.SelectedIndex = 26 ''26 es la posisicon en la que se encuentra el código 57 desde sifac, para que cargue por defecto unidad (bienes)
         CbProdServ.SelectedIndex = -1
@@ -1007,11 +1007,6 @@ Public Class F1_Productos
         'CbAeconomica.SelectedIndex = 1
         ListarProductoServicio(tokenSifac)
 
-        'Dim dt As DataTable = CbProdServ.DataSource
-        'dt = dt.Select("actividadEconomica=4711100").CopyToDataTable
-
-
-        'CbProdServ.DataSource = dt
         CbProdServ.SelectedIndex = -1
         _prIniciarTodo()
     End Sub

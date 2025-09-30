@@ -5130,7 +5130,7 @@ salirIf:
         Emenvio.tipoEmision = gb_OnOff  '1 emite online, 2 emite offline
         Emenvio.usuario = gs_user
         Emenvio.email = email
-        Emenvio.actividadEconomica = actEconomica 'Actividad económica una sola para todos los productos, cambio en fecha 07-07-25
+        Emenvio.actividadEconomica = actEconomica 'Actividad económica parametrizada desde tabla ParametrosFact
         Emenvio.detalles = array
         Dim json = JsonConvert.SerializeObject(Emenvio)
         Dim url = gb_url + "/api/v2/emision"
