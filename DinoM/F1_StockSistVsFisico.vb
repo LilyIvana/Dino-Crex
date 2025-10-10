@@ -122,7 +122,7 @@ Public Class F1_StockSistVsFisico
             With JGrM_Buscador.RootTable.Columns("yfordenacion")
                 .Width = 90
                 .Visible = True
-                .Caption = "ORDENACIÓN"
+                .Caption = "ORDEN"
             End With
             With JGrM_Buscador.RootTable.Columns("codDynasys")
                 .Width = 100

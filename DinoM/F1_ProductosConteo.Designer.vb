@@ -184,6 +184,9 @@ Partial Class F1_ProductosConteo
         'btnSalir
         '
         '
+        'btnGrabar
+        '
+        '
         'btnEliminar
         '
         Me.btnEliminar.Visible = False
@@ -792,7 +795,7 @@ Partial Class F1_ProductosConteo
         Me.LabelX13.SingleLineColor = System.Drawing.SystemColors.Control
         Me.LabelX13.Size = New System.Drawing.Size(125, 19)
         Me.LabelX13.TabIndex = 224
-        Me.LabelX13.Text = "Ordenación:"
+        Me.LabelX13.Text = "Orden:"
         '
         'LabelX12
         '

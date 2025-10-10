@@ -902,7 +902,7 @@ Public Class F1_Productos
         listEstCeldas.Add(New Modelo.Celda("yfdetprod", True, "Descripción Detallada".ToUpper, 150))
         listEstCeldas.Add(New Modelo.Celda("yfresponsable", True, "Responsable".ToUpper, 130))
         listEstCeldas.Add(New Modelo.Celda("yflado", True, "Lado".ToUpper, 100))
-        listEstCeldas.Add(New Modelo.Celda("yfordenacion", True, "Ordenación".ToUpper, 90))
+        listEstCeldas.Add(New Modelo.Celda("yfordenacion", True, "Orden".ToUpper, 90))
         listEstCeldas.Add(New Modelo.Celda("yfcampo4", True, "Canje".ToUpper, 90))
         listEstCeldas.Add(New Modelo.Celda("Estado", True, "Estado".ToUpper, 100))
         listEstCeldas.Add(New Modelo.Celda("yfcampo3", False))

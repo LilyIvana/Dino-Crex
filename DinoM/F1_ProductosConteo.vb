@@ -415,7 +415,7 @@ Public Class F1_ProductosConteo
         listEstCeldas.Add(New Modelo.Celda("inf", True, "Stock".ToUpper, 100))
         listEstCeldas.Add(New Modelo.Celda("yfresponsable", True, "Responsable".ToUpper, 110))
         listEstCeldas.Add(New Modelo.Celda("yflado", True, "Lado".ToUpper, 100))
-        listEstCeldas.Add(New Modelo.Celda("yfordenacion", True, "Ordenación".ToUpper, 90))
+        listEstCeldas.Add(New Modelo.Celda("yfordenacion", True, "Orden".ToUpper, 90))
         listEstCeldas.Add(New Modelo.Celda("Estado", True, "Estado".ToUpper, 100))
 
         Return listEstCeldas
@@ -660,11 +660,11 @@ Public Class F1_ProductosConteo
         Try
             Dim dt As DataTable
             dt = L_fnMostrarUsuariosConteo()
-            dt.Rows.Add(0, "NADIE")
+            'dt.Rows.Add(0, "NADIE")
             Dim listEstCeldas As New List(Of Modelo.Celda)
-            listEstCeldas.Add(New Modelo.Celda("ydnumi,", True, "COD USUARIO", 120))
-            listEstCeldas.Add(New Modelo.Celda("yduser", True, "USUARIO", 250))
-            listEstCeldas.Add(New Modelo.Celda("ydest", False, "ESTADO", 50))
+            'listEstCeldas.Add(New Modelo.Celda("ydnumi,", True, "COD USUARIO", 120))
+            listEstCeldas.Add(New Modelo.Celda("yduser", True, "RESPONSABLE", 250))
+            'listEstCeldas.Add(New Modelo.Celda("ydest", False, "ESTADO", 50))
 
             Dim ef = New Efecto
             ef.tipo = 3
@@ -700,7 +700,6 @@ Public Class F1_ProductosConteo
                                3000,
                                eToastGlowColor.Red,
                                eToastPosition.TopCenter)
-
     End Sub
 
 End Class

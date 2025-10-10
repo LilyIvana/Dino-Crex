@@ -72,7 +72,7 @@ Public Class F0_ExpImpStockFisico
             grDatos.RetrieveStructure()
 
             With grDatos.RootTable.Columns("ordenacion")
-                .Caption = "ORDENACIÓN"
+                .Caption = "ORDEN"
                 .Width = 70
                 .Visible = True
             End With
@@ -351,9 +351,7 @@ Public Class F0_ExpImpStockFisico
             dt = L_fnMostrarUsuariosConteo()
 
             Dim listEstCeldas As New List(Of Modelo.Celda)
-            listEstCeldas.Add(New Modelo.Celda("ydnumi,", True, "COD USUARIO", 120))
-            listEstCeldas.Add(New Modelo.Celda("yduser", True, "USUARIO", 250))
-            listEstCeldas.Add(New Modelo.Celda("ydest", False, "ESTADO", 50))
+            listEstCeldas.Add(New Modelo.Celda("yduser", True, "RESPONSABLE", 250))
 
             Dim ef = New Efecto
             ef.tipo = 3
@@ -362,7 +360,7 @@ Public Class F0_ExpImpStockFisico
             ef.listEstCeldas = listEstCeldas
             ef.alto = 150
             ef.ancho = 200
-            ef.Context = "Seleccione Usuario".ToUpper
+            ef.Context = "Seleccione Responsable".ToUpper
             ef.SeleclCol = 1
             ef.ShowDialog()
             Dim bandera As Boolean = False
@@ -511,8 +509,8 @@ Public Class F0_ExpImpStockFisico
         grDatos.DataSource = dtImport
         grDatos.RetrieveStructure()
 
-        With grDatos.RootTable.Columns("ORDENACIÓN")
-            .Caption = "ORDENACIÓN"
+        With grDatos.RootTable.Columns("ORDEN")
+            .Caption = "ORDEN"
             .Width = 90
             .Visible = True
         End With

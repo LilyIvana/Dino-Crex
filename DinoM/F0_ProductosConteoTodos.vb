@@ -128,7 +128,7 @@ Public Class F0_ProductosConteoTodos
                 .DropDown = cbLado.DropDownList
             End With
             With grproductos.RootTable.Columns("yfordenacion")
-                .Caption = "ORDENACIÓN"
+                .Caption = "ORDEN"
                 .Width = 90
                 .Visible = True
             End With
@@ -182,12 +182,12 @@ Public Class F0_ProductosConteoTodos
     Private Sub _prCargarComboLibreriaResp(mCombo As Janus.Windows.GridEX.EditControls.MultiColumnCombo)
         Dim dt As New DataTable
         dt = L_fnMostrarUsuariosConteo()
-        dt.Rows.Add(0, "NADIE")
+        'dt.Rows.Add(0, "NADIE")
         With mCombo
             .DropDownList.Columns.Clear()
-            .DropDownList.Columns.Add("ydnumi").Width = 70
-            .DropDownList.Columns("ydnumi").Caption = "COD"
-            .DropDownList.Columns.Add("yduser").Width = 200
+            '.DropDownList.Columns.Add("ydnumi").Width = 70
+            '.DropDownList.Columns("ydnumi").Caption = "COD"
+            .DropDownList.Columns.Add("yduser").Width = 180
             .DropDownList.Columns("yduser").Caption = "RESPONSABLE"
             .ValueMember = "yduser"
             .DisplayMember = "yduser"
