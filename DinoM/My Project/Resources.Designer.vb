@@ -573,6 +573,16 @@ Namespace My.Resources
         '''<summary>
         '''  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         '''</summary>
+        Friend ReadOnly Property EXCEL1() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("EXCEL1", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        '''</summary>
         Friend ReadOnly Property facturacion() As System.Drawing.Bitmap
             Get
                 Dim obj As Object = ResourceManager.GetObject("facturacion", resourceCulture)
@@ -786,6 +796,16 @@ Namespace My.Resources
         Friend ReadOnly Property GUARDAR() As System.Drawing.Bitmap
             Get
                 Dim obj As Object = ResourceManager.GetObject("GUARDAR", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        '''</summary>
+        Friend ReadOnly Property historial_costos() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("historial costos", resourceCulture)
                 Return CType(obj,System.Drawing.Bitmap)
             End Get
         End Property

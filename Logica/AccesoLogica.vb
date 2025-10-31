@@ -9455,4 +9455,43 @@ Public Class AccesoLogica
         Return _Tabla
     End Function
 #End Region
+#Region "Historial Costos"
+    Public Shared Function L_fnImportarHistorialCostos(_dtCostos As DataTable, _fecha As Date, _mot As Integer, _obs As String,
+                                                       _version As String, _ip As String, _usumaquina As String) As Boolean
+        Dim _resultado As Boolean
+        Dim _Tabla As DataTable
+        Dim _listParam As New List(Of Datos.DParametro)
+
+        _listParam.Add(New Datos.DParametro("@tipo", 1))
+        _listParam.Add(New Datos.DParametro("@TCostos", "", _dtCostos))
+        _listParam.Add(New Datos.DParametro("@fecha", _fecha))
+        _listParam.Add(New Datos.DParametro("@mot", _mot))
+        _listParam.Add(New Datos.DParametro("@obs", _obs))
+        _listParam.Add(New Datos.DParametro("@version", _version))
+        _listParam.Add(New Datos.DParametro("@ip", _ip))
+        _listParam.Add(New Datos.DParametro("@usumaquina", _usumaquina))
+        _listParam.Add(New Datos.DParametro("@uact", L_Usuario))
+
+        _Tabla = D_ProcedimientoConParam("ProcBitacoraCostos", _listParam)
+
+        If _Tabla.Rows.Count > 0 Then
+            _resultado = True
+        Else
+            _resultado = False
+        End If
+
+        Return _resultado
+    End Function
+    Public Shared Function L_HistorialCostos(fechaI As String, fechaF As String) As DataTable
+        Dim _Tabla As DataTable
+        Dim _listParam As New List(Of Datos.DParametro)
+        _listParam.Add(New Datos.DParametro("@tipo", 2))
+        _listParam.Add(New Datos.DParametro("@fechaI", fechaI))
+        _listParam.Add(New Datos.DParametro("@fechaF", fechaF))
+        _listParam.Add(New Datos.DParametro("@uact", L_Usuario))
+
+        _Tabla = D_ProcedimientoConParam("ProcBitacoraCostos", _listParam)
+        Return _Tabla
+    End Function
+#End Region
 End Class

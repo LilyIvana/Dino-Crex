@@ -339,6 +339,12 @@
     <Compile Include="F0_ArmadoDesarmadoCombo.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="F0_ImpHistorialPcosto.Designer.vb">
+      <DependentUpon>F0_ImpHistorialPcosto.vb</DependentUpon>
+    </Compile>
+    <Compile Include="F0_ImpHistorialPcosto.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="F0_ImportarPreciosImp.Designer.vb">
       <DependentUpon>F0_ImportarPreciosImp.vb</DependentUpon>
     </Compile>
@@ -1696,6 +1702,9 @@
     <EmbeddedResource Include="F0_ArmadoDesarmadoCombo.resx">
       <DependentUpon>F0_ArmadoDesarmadoCombo.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="F0_ImpHistorialPcosto.resx">
+      <DependentUpon>F0_ImpHistorialPcosto.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="F0_ImportarPreciosImp.resx">
       <DependentUpon>F0_ImportarPreciosImp.vb</DependentUpon>
     </EmbeddedResource>
@@ -2820,6 +2829,7 @@
     <None Include="Resources\Fondo Naranja 2.jfif" />
     <None Include="Resources\Fondo Naranja 3.jpg" />
     <None Include="Resources\Fondo Dino.png" />
+    <None Include="Resources\historial costos.png" />
     <Content Include="Resources\man.png" />
     <None Include="Resources\pdf.png" />
     <None Include="Resources\txt.png" />

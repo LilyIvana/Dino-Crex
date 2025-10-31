@@ -1378,6 +1378,13 @@ Public Class P_Principal
         frm.Show()
     End Sub
 
+    Private Sub btHistorialCostos_Click(sender As Object, e As EventArgs) Handles btHistorialCostos.Click
+        Dim frm As New F0_ImpHistorialPcosto
+        frm._nameButton = btHistorialCostos.Name
+        frm._modulo = FP_Configuracion
+        frm.Show()
+    End Sub
+
 
     'Private Sub btnCredPagoCliente_Click(sender As Object, e As EventArgs) Handles btnCredPagoCliente.Click
     '    SideNav1.IsMenuExpanded = False
