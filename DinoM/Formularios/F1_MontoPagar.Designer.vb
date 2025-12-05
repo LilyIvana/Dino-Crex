@@ -24,6 +24,7 @@ Partial Class F1_MontoPagar
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(F1_MontoPagar))
         Dim cbCambioDolar_DesignTimeLayout As Janus.Windows.GridEX.GridEXLayout = New Janus.Windows.GridEX.GridEXLayout()
+        Dim cbEmpresa_DesignTimeLayout As Janus.Windows.GridEX.GridEXLayout = New Janus.Windows.GridEX.GridEXLayout()
         Dim cbTipo_DesignTimeLayout As Janus.Windows.GridEX.GridEXLayout = New Janus.Windows.GridEX.GridEXLayout()
         Dim CbTipoDoc_DesignTimeLayout As Janus.Windows.GridEX.GridEXLayout = New Janus.Windows.GridEX.GridEXLayout()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
@@ -34,6 +35,8 @@ Partial Class F1_MontoPagar
         Me.lbCambio = New DevComponents.DotNetBar.LabelX()
         Me.lbMontoPagado = New DevComponents.DotNetBar.LabelX()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.tbGiftCard = New DevComponents.Editors.DoubleInput()
+        Me.lbGiftCard = New DevComponents.DotNetBar.LabelX()
         Me.tbNroTarjeta3 = New DevComponents.DotNetBar.Controls.TextBoxX()
         Me.tbNroTarjeta2 = New DevComponents.DotNetBar.Controls.TextBoxX()
         Me.tbMontoQR = New DevComponents.Editors.DoubleInput()
@@ -54,6 +57,10 @@ Partial Class F1_MontoPagar
         Me.tbMontoDolar = New DevComponents.Editors.DoubleInput()
         Me.LabelX6 = New DevComponents.DotNetBar.LabelX()
         Me.GroupBox3 = New System.Windows.Forms.GroupBox()
+        Me.lbCantidad = New DevComponents.DotNetBar.LabelX()
+        Me.tbCantidad = New DevComponents.Editors.IntegerInput()
+        Me.cbEmpresa = New Janus.Windows.GridEX.EditControls.MultiColumnCombo()
+        Me.lbEmpresa = New DevComponents.DotNetBar.LabelX()
         Me.cbTipo = New Janus.Windows.GridEX.EditControls.MultiColumnCombo()
         Me.LabelX9 = New DevComponents.DotNetBar.LabelX()
         Me.LabelX8 = New DevComponents.DotNetBar.LabelX()
@@ -73,12 +80,15 @@ Partial Class F1_MontoPagar
         Me.LabelX4 = New DevComponents.DotNetBar.LabelX()
         Me.GroupBox2.SuspendLayout()
         Me.GroupBox1.SuspendLayout()
+        CType(Me.tbGiftCard, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.tbMontoQR, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.cbCambioDolar, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.tbMontoTarej, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.tbMontoBs, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.tbMontoDolar, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox3.SuspendLayout()
+        CType(Me.tbCantidad, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.cbEmpresa, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.cbTipo, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.CbTipoDoc, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -96,12 +106,12 @@ Partial Class F1_MontoPagar
         Me.GroupBox2.Dock = System.Windows.Forms.DockStyle.Fill
         Me.GroupBox2.Font = New System.Drawing.Font("Georgia", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GroupBox2.ForeColor = System.Drawing.Color.Gold
-        Me.GroupBox2.Location = New System.Drawing.Point(0, 392)
+        Me.GroupBox2.Location = New System.Drawing.Point(0, 460)
         Me.GroupBox2.Name = "GroupBox2"
-        Me.GroupBox2.Size = New System.Drawing.Size(502, 155)
+        Me.GroupBox2.Size = New System.Drawing.Size(502, 134)
         Me.GroupBox2.TabIndex = 364
         Me.GroupBox2.TabStop = False
-        Me.GroupBox2.Text = "Monto Venta/Cambio:"
+        Me.GroupBox2.Text = "Monto a Pagar/Cambio:"
         '
         'BtnSalir
         '
@@ -110,7 +120,7 @@ Partial Class F1_MontoPagar
         Me.BtnSalir.Font = New System.Drawing.Font("Calibri", 10.2!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.BtnSalir.Image = Global.DinoM.My.Resources.Resources.cancel
         Me.BtnSalir.ImageFixedSize = New System.Drawing.Size(30, 30)
-        Me.BtnSalir.Location = New System.Drawing.Point(247, 89)
+        Me.BtnSalir.Location = New System.Drawing.Point(247, 77)
         Me.BtnSalir.Margin = New System.Windows.Forms.Padding(2)
         Me.BtnSalir.Name = "BtnSalir"
         Me.BtnSalir.Size = New System.Drawing.Size(110, 39)
@@ -125,7 +135,7 @@ Partial Class F1_MontoPagar
         Me.btnContinuar.Font = New System.Drawing.Font("Calibri", 10.2!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnContinuar.Image = Global.DinoM.My.Resources.Resources.checked
         Me.btnContinuar.ImageFixedSize = New System.Drawing.Size(30, 30)
-        Me.btnContinuar.Location = New System.Drawing.Point(368, 89)
+        Me.btnContinuar.Location = New System.Drawing.Point(368, 77)
         Me.btnContinuar.Margin = New System.Windows.Forms.Padding(2)
         Me.btnContinuar.Name = "btnContinuar"
         Me.btnContinuar.Size = New System.Drawing.Size(110, 39)
@@ -142,7 +152,7 @@ Partial Class F1_MontoPagar
         Me.txtMontoPagado1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.txtMontoPagado1.Font = New System.Drawing.Font("Calibri", 18.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtMontoPagado1.ForeColor = System.Drawing.Color.YellowGreen
-        Me.txtMontoPagado1.Location = New System.Drawing.Point(137, 20)
+        Me.txtMontoPagado1.Location = New System.Drawing.Point(145, 20)
         Me.txtMontoPagado1.Name = "txtMontoPagado1"
         Me.txtMontoPagado1.SingleLineColor = System.Drawing.SystemColors.Control
         Me.txtMontoPagado1.Size = New System.Drawing.Size(120, 40)
@@ -192,17 +202,19 @@ Partial Class F1_MontoPagar
         Me.lbMontoPagado.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.lbMontoPagado.Font = New System.Drawing.Font("Calibri", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lbMontoPagado.ForeColor = System.Drawing.Color.White
-        Me.lbMontoPagado.Location = New System.Drawing.Point(11, 25)
+        Me.lbMontoPagado.Location = New System.Drawing.Point(8, 25)
         Me.lbMontoPagado.Name = "lbMontoPagado"
         Me.lbMontoPagado.SingleLineColor = System.Drawing.SystemColors.Control
-        Me.lbMontoPagado.Size = New System.Drawing.Size(110, 33)
+        Me.lbMontoPagado.Size = New System.Drawing.Size(130, 33)
         Me.lbMontoPagado.TabIndex = 366
-        Me.lbMontoPagado.Text = "Total Venta Bs. :"
+        Me.lbMontoPagado.Text = "Monto a Pagar Bs.:"
         '
         'GroupBox1
         '
         Me.GroupBox1.BackColor = System.Drawing.Color.Transparent
         Me.GroupBox1.BackgroundImage = Global.DinoM.My.Resources.Resources.fondo1
+        Me.GroupBox1.Controls.Add(Me.tbGiftCard)
+        Me.GroupBox1.Controls.Add(Me.lbGiftCard)
         Me.GroupBox1.Controls.Add(Me.tbNroTarjeta3)
         Me.GroupBox1.Controls.Add(Me.tbNroTarjeta2)
         Me.GroupBox1.Controls.Add(Me.tbMontoQR)
@@ -225,12 +237,46 @@ Partial Class F1_MontoPagar
         Me.GroupBox1.Dock = System.Windows.Forms.DockStyle.Top
         Me.GroupBox1.Font = New System.Drawing.Font("Georgia", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GroupBox1.ForeColor = System.Drawing.Color.Gold
-        Me.GroupBox1.Location = New System.Drawing.Point(0, 251)
+        Me.GroupBox1.Location = New System.Drawing.Point(0, 284)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(502, 141)
+        Me.GroupBox1.Size = New System.Drawing.Size(502, 176)
         Me.GroupBox1.TabIndex = 362
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Efectivo:"
+        '
+        'tbGiftCard
+        '
+        '
+        '
+        '
+        Me.tbGiftCard.BackgroundStyle.Class = "DateTimeInputBackground"
+        Me.tbGiftCard.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.tbGiftCard.ButtonFreeText.Shortcut = DevComponents.DotNetBar.eShortcut.F2
+        Me.tbGiftCard.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.tbGiftCard.ForeColor = System.Drawing.Color.Black
+        Me.tbGiftCard.Increment = 1.0R
+        Me.tbGiftCard.Location = New System.Drawing.Point(113, 45)
+        Me.tbGiftCard.MinValue = 0R
+        Me.tbGiftCard.Name = "tbGiftCard"
+        Me.tbGiftCard.Size = New System.Drawing.Size(120, 26)
+        Me.tbGiftCard.TabIndex = 383
+        Me.tbGiftCard.WatermarkAlignment = DevComponents.Editors.eTextAlignment.Right
+        '
+        'lbGiftCard
+        '
+        Me.lbGiftCard.BackColor = System.Drawing.Color.Transparent
+        '
+        '
+        '
+        Me.lbGiftCard.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.lbGiftCard.Font = New System.Drawing.Font("Calibri", 10.4!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lbGiftCard.ForeColor = System.Drawing.Color.White
+        Me.lbGiftCard.Location = New System.Drawing.Point(9, 39)
+        Me.lbGiftCard.Name = "lbGiftCard"
+        Me.lbGiftCard.SingleLineColor = System.Drawing.SystemColors.Control
+        Me.lbGiftCard.Size = New System.Drawing.Size(98, 38)
+        Me.lbGiftCard.TabIndex = 384
+        Me.lbGiftCard.Text = "Monto Gift-Card:"
         '
         'tbNroTarjeta3
         '
@@ -242,7 +288,7 @@ Partial Class F1_MontoPagar
         Me.tbNroTarjeta3.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.tbNroTarjeta3.Font = New System.Drawing.Font("Georgia", 11.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.tbNroTarjeta3.ForeColor = System.Drawing.Color.Black
-        Me.tbNroTarjeta3.Location = New System.Drawing.Point(279, 110)
+        Me.tbNroTarjeta3.Location = New System.Drawing.Point(279, 142)
         Me.tbNroTarjeta3.MaxLength = 4
         Me.tbNroTarjeta3.Name = "tbNroTarjeta3"
         Me.tbNroTarjeta3.PreventEnterBeep = True
@@ -261,7 +307,7 @@ Partial Class F1_MontoPagar
         Me.tbNroTarjeta2.Enabled = False
         Me.tbNroTarjeta2.Font = New System.Drawing.Font("Georgia", 11.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.tbNroTarjeta2.ForeColor = System.Drawing.Color.Black
-        Me.tbNroTarjeta2.Location = New System.Drawing.Point(189, 110)
+        Me.tbNroTarjeta2.Location = New System.Drawing.Point(189, 142)
         Me.tbNroTarjeta2.MaxLength = 8
         Me.tbNroTarjeta2.Name = "tbNroTarjeta2"
         Me.tbNroTarjeta2.PreventEnterBeep = True
@@ -282,7 +328,7 @@ Partial Class F1_MontoPagar
         Me.tbMontoQR.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.tbMontoQR.ForeColor = System.Drawing.Color.Black
         Me.tbMontoQR.Increment = 1.0R
-        Me.tbMontoQR.Location = New System.Drawing.Point(331, 79)
+        Me.tbMontoQR.Location = New System.Drawing.Point(331, 111)
         Me.tbMontoQR.MinValue = 0R
         Me.tbMontoQR.Name = "tbMontoQR"
         Me.tbMontoQR.Size = New System.Drawing.Size(147, 26)
@@ -297,7 +343,7 @@ Partial Class F1_MontoPagar
         '
         Me.chbQR.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.chbQR.Font = New System.Drawing.Font("Calibri", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.chbQR.Location = New System.Drawing.Point(262, 76)
+        Me.chbQR.Location = New System.Drawing.Point(262, 108)
         Me.chbQR.Name = "chbQR"
         Me.chbQR.Size = New System.Drawing.Size(60, 30)
         Me.chbQR.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
@@ -314,7 +360,7 @@ Partial Class F1_MontoPagar
         Me.lbEjemplo.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.lbEjemplo.Font = New System.Drawing.Font("Georgia", 8.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lbEjemplo.ForeColor = System.Drawing.Color.White
-        Me.lbEjemplo.Location = New System.Drawing.Point(361, 116)
+        Me.lbEjemplo.Location = New System.Drawing.Point(361, 148)
         Me.lbEjemplo.Name = "lbEjemplo"
         Me.lbEjemplo.SingleLineColor = System.Drawing.SystemColors.Control
         Me.lbEjemplo.Size = New System.Drawing.Size(130, 14)
@@ -331,7 +377,7 @@ Partial Class F1_MontoPagar
         Me.tbNroTarjeta1.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.tbNroTarjeta1.Font = New System.Drawing.Font("Georgia", 11.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.tbNroTarjeta1.ForeColor = System.Drawing.Color.Black
-        Me.tbNroTarjeta1.Location = New System.Drawing.Point(113, 110)
+        Me.tbNroTarjeta1.Location = New System.Drawing.Point(113, 142)
         Me.tbNroTarjeta1.MaxLength = 4
         Me.tbNroTarjeta1.Name = "tbNroTarjeta1"
         Me.tbNroTarjeta1.PreventEnterBeep = True
@@ -348,7 +394,7 @@ Partial Class F1_MontoPagar
         Me.lbNroTarjeta.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.lbNroTarjeta.Font = New System.Drawing.Font("Calibri", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lbNroTarjeta.ForeColor = System.Drawing.Color.White
-        Me.lbNroTarjeta.Location = New System.Drawing.Point(10, 114)
+        Me.lbNroTarjeta.Location = New System.Drawing.Point(10, 146)
         Me.lbNroTarjeta.Name = "lbNroTarjeta"
         Me.lbNroTarjeta.SingleLineColor = System.Drawing.SystemColors.Control
         Me.lbNroTarjeta.Size = New System.Drawing.Size(69, 18)
@@ -428,7 +474,7 @@ Partial Class F1_MontoPagar
         Me.tbMontoTarej.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.tbMontoTarej.ForeColor = System.Drawing.Color.Black
         Me.tbMontoTarej.Increment = 1.0R
-        Me.tbMontoTarej.Location = New System.Drawing.Point(113, 77)
+        Me.tbMontoTarej.Location = New System.Drawing.Point(113, 109)
         Me.tbMontoTarej.MinValue = 0R
         Me.tbMontoTarej.Name = "tbMontoTarej"
         Me.tbMontoTarej.Size = New System.Drawing.Size(120, 26)
@@ -457,7 +503,7 @@ Partial Class F1_MontoPagar
         '
         Me.chbTarjeta.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.chbTarjeta.Font = New System.Drawing.Font("Calibri", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.chbTarjeta.Location = New System.Drawing.Point(10, 76)
+        Me.chbTarjeta.Location = New System.Drawing.Point(10, 108)
         Me.chbTarjeta.Name = "chbTarjeta"
         Me.chbTarjeta.Size = New System.Drawing.Size(87, 30)
         Me.chbTarjeta.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
@@ -490,7 +536,7 @@ Partial Class F1_MontoPagar
         Me.tbMontoBs.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.tbMontoBs.ForeColor = System.Drawing.Color.Black
         Me.tbMontoBs.Increment = 1.0R
-        Me.tbMontoBs.Location = New System.Drawing.Point(113, 45)
+        Me.tbMontoBs.Location = New System.Drawing.Point(113, 77)
         Me.tbMontoBs.MinValue = 0R
         Me.tbMontoBs.Name = "tbMontoBs"
         Me.tbMontoBs.Size = New System.Drawing.Size(120, 26)
@@ -506,7 +552,7 @@ Partial Class F1_MontoPagar
         Me.LabelX5.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.LabelX5.Font = New System.Drawing.Font("Calibri", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.LabelX5.ForeColor = System.Drawing.Color.White
-        Me.LabelX5.Location = New System.Drawing.Point(9, 50)
+        Me.LabelX5.Location = New System.Drawing.Point(9, 82)
         Me.LabelX5.Name = "LabelX5"
         Me.LabelX5.SingleLineColor = System.Drawing.SystemColors.Control
         Me.LabelX5.Size = New System.Drawing.Size(98, 18)
@@ -524,7 +570,7 @@ Partial Class F1_MontoPagar
         Me.tbMontoDolar.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.tbMontoDolar.ForeColor = System.Drawing.Color.Black
         Me.tbMontoDolar.Increment = 1.0R
-        Me.tbMontoDolar.Location = New System.Drawing.Point(331, 47)
+        Me.tbMontoDolar.Location = New System.Drawing.Point(331, 79)
         Me.tbMontoDolar.MinValue = 0R
         Me.tbMontoDolar.Name = "tbMontoDolar"
         Me.tbMontoDolar.Size = New System.Drawing.Size(147, 26)
@@ -540,7 +586,7 @@ Partial Class F1_MontoPagar
         Me.LabelX6.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.LabelX6.Font = New System.Drawing.Font("Calibri", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.LabelX6.ForeColor = System.Drawing.Color.White
-        Me.LabelX6.Location = New System.Drawing.Point(262, 51)
+        Me.LabelX6.Location = New System.Drawing.Point(262, 83)
         Me.LabelX6.Name = "LabelX6"
         Me.LabelX6.SingleLineColor = System.Drawing.SystemColors.Control
         Me.LabelX6.Size = New System.Drawing.Size(60, 18)
@@ -551,6 +597,10 @@ Partial Class F1_MontoPagar
         '
         Me.GroupBox3.BackColor = System.Drawing.Color.Transparent
         Me.GroupBox3.BackgroundImage = Global.DinoM.My.Resources.Resources.fondo1
+        Me.GroupBox3.Controls.Add(Me.lbCantidad)
+        Me.GroupBox3.Controls.Add(Me.tbCantidad)
+        Me.GroupBox3.Controls.Add(Me.cbEmpresa)
+        Me.GroupBox3.Controls.Add(Me.lbEmpresa)
         Me.GroupBox3.Controls.Add(Me.cbTipo)
         Me.GroupBox3.Controls.Add(Me.LabelX9)
         Me.GroupBox3.Controls.Add(Me.LabelX8)
@@ -573,10 +623,74 @@ Partial Class F1_MontoPagar
         Me.GroupBox3.ForeColor = System.Drawing.Color.Gold
         Me.GroupBox3.Location = New System.Drawing.Point(0, 0)
         Me.GroupBox3.Name = "GroupBox3"
-        Me.GroupBox3.Size = New System.Drawing.Size(502, 251)
+        Me.GroupBox3.Size = New System.Drawing.Size(502, 284)
         Me.GroupBox3.TabIndex = 365
         Me.GroupBox3.TabStop = False
         Me.GroupBox3.Text = "Datos de Factura"
+        '
+        'lbCantidad
+        '
+        Me.lbCantidad.BackColor = System.Drawing.Color.Transparent
+        '
+        '
+        '
+        Me.lbCantidad.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.lbCantidad.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Bold)
+        Me.lbCantidad.ForeColor = System.Drawing.Color.White
+        Me.lbCantidad.Location = New System.Drawing.Point(348, 164)
+        Me.lbCantidad.Name = "lbCantidad"
+        Me.lbCantidad.SingleLineColor = System.Drawing.SystemColors.Control
+        Me.lbCantidad.Size = New System.Drawing.Size(65, 23)
+        Me.lbCantidad.TabIndex = 436
+        Me.lbCantidad.Text = "Cantidad:"
+        '
+        'tbCantidad
+        '
+        '
+        '
+        '
+        Me.tbCantidad.BackgroundStyle.Class = "DateTimeInputBackground"
+        Me.tbCantidad.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.tbCantidad.ButtonFreeText.Shortcut = DevComponents.DotNetBar.eShortcut.F2
+        Me.tbCantidad.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold)
+        Me.tbCantidad.ForeColor = System.Drawing.Color.Black
+        Me.tbCantidad.Location = New System.Drawing.Point(419, 165)
+        Me.tbCantidad.Name = "tbCantidad"
+        Me.tbCantidad.Size = New System.Drawing.Size(59, 22)
+        Me.tbCantidad.TabIndex = 435
+        '
+        'cbEmpresa
+        '
+        Me.cbEmpresa.BorderStyle = Janus.Windows.GridEX.BorderStyle.Flat
+        Me.cbEmpresa.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
+        cbEmpresa_DesignTimeLayout.LayoutString = resources.GetString("cbEmpresa_DesignTimeLayout.LayoutString")
+        Me.cbEmpresa.DesignTimeLayout = cbEmpresa_DesignTimeLayout
+        Me.cbEmpresa.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cbEmpresa.Location = New System.Drawing.Point(123, 192)
+        Me.cbEmpresa.Name = "cbEmpresa"
+        Me.cbEmpresa.Office2007ColorScheme = Janus.Windows.GridEX.Office2007ColorScheme.Custom
+        Me.cbEmpresa.Office2007CustomColor = System.Drawing.Color.DodgerBlue
+        Me.cbEmpresa.SelectedIndex = -1
+        Me.cbEmpresa.SelectedItem = Nothing
+        Me.cbEmpresa.Size = New System.Drawing.Size(355, 20)
+        Me.cbEmpresa.TabIndex = 434
+        Me.cbEmpresa.VisualStyle = Janus.Windows.GridEX.VisualStyle.Office2007
+        '
+        'lbEmpresa
+        '
+        Me.lbEmpresa.BackColor = System.Drawing.Color.Transparent
+        '
+        '
+        '
+        Me.lbEmpresa.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.lbEmpresa.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Bold)
+        Me.lbEmpresa.ForeColor = System.Drawing.Color.White
+        Me.lbEmpresa.Location = New System.Drawing.Point(9, 190)
+        Me.lbEmpresa.Name = "lbEmpresa"
+        Me.lbEmpresa.SingleLineColor = System.Drawing.SystemColors.Control
+        Me.lbEmpresa.Size = New System.Drawing.Size(112, 23)
+        Me.lbEmpresa.TabIndex = 433
+        Me.lbEmpresa.Text = "Nombre Empresa:"
         '
         'cbTipo
         '
@@ -607,9 +721,9 @@ Partial Class F1_MontoPagar
         Me.LabelX9.Location = New System.Drawing.Point(9, 163)
         Me.LabelX9.Name = "LabelX9"
         Me.LabelX9.SingleLineColor = System.Drawing.SystemColors.Control
-        Me.LabelX9.Size = New System.Drawing.Size(70, 23)
+        Me.LabelX9.Size = New System.Drawing.Size(98, 23)
         Me.LabelX9.TabIndex = 431
-        Me.LabelX9.Text = "Venta:"
+        Me.LabelX9.Text = "Tipo de Venta:"
         '
         'LabelX8
         '
@@ -620,7 +734,7 @@ Partial Class F1_MontoPagar
         Me.LabelX8.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.LabelX8.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Bold)
         Me.LabelX8.ForeColor = System.Drawing.Color.White
-        Me.LabelX8.Location = New System.Drawing.Point(10, 190)
+        Me.LabelX8.Location = New System.Drawing.Point(10, 216)
         Me.LabelX8.Name = "LabelX8"
         Me.LabelX8.SingleLineColor = System.Drawing.SystemColors.Control
         Me.LabelX8.Size = New System.Drawing.Size(88, 23)
@@ -654,8 +768,8 @@ Partial Class F1_MontoPagar
         Me.tbObs.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
         Me.tbObs.Font = New System.Drawing.Font("Georgia", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.tbObs.ForeColor = System.Drawing.Color.FromArgb(CType(CType(45, Byte), Integer), CType(CType(59, Byte), Integer), CType(CType(66, Byte), Integer))
-        Me.tbObs.Location = New System.Drawing.Point(123, 194)
-        Me.tbObs.MaxLength = 50
+        Me.tbObs.Location = New System.Drawing.Point(123, 220)
+        Me.tbObs.MaxLength = 300
         Me.tbObs.Multiline = True
         Me.tbObs.Name = "tbObs"
         Me.tbObs.PreventEnterBeep = True
@@ -847,7 +961,7 @@ Partial Class F1_MontoPagar
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(502, 547)
+        Me.ClientSize = New System.Drawing.Size(502, 594)
         Me.Controls.Add(Me.GroupBox2)
         Me.Controls.Add(Me.GroupBox1)
         Me.Controls.Add(Me.GroupBox3)
@@ -859,6 +973,7 @@ Partial Class F1_MontoPagar
         Me.GroupBox2.ResumeLayout(False)
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox1.PerformLayout()
+        CType(Me.tbGiftCard, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.tbMontoQR, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.cbCambioDolar, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.tbMontoTarej, System.ComponentModel.ISupportInitialize).EndInit()
@@ -866,6 +981,8 @@ Partial Class F1_MontoPagar
         CType(Me.tbMontoDolar, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox3.ResumeLayout(False)
         Me.GroupBox3.PerformLayout()
+        CType(Me.tbCantidad, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.cbEmpresa, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.cbTipo, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.CbTipoDoc, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
@@ -917,4 +1034,10 @@ Partial Class F1_MontoPagar
     Friend WithEvents tbObs As DevComponents.DotNetBar.Controls.TextBoxX
     Friend WithEvents LabelX9 As DevComponents.DotNetBar.LabelX
     Public WithEvents cbTipo As Janus.Windows.GridEX.EditControls.MultiColumnCombo
+    Friend WithEvents tbGiftCard As DevComponents.Editors.DoubleInput
+    Friend WithEvents lbGiftCard As DevComponents.DotNetBar.LabelX
+    Public WithEvents cbEmpresa As Janus.Windows.GridEX.EditControls.MultiColumnCombo
+    Friend WithEvents lbEmpresa As DevComponents.DotNetBar.LabelX
+    Friend WithEvents lbCantidad As DevComponents.DotNetBar.LabelX
+    Friend WithEvents tbCantidad As DevComponents.Editors.IntegerInput
 End Class

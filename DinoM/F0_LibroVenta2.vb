@@ -363,6 +363,16 @@ Public Class F0_LibroVenta2
         DgdLCV.PrimaryGrid.Columns.Add(col)
 
         'G
+        col = New GridColumn("fvagiftcard")
+        col.HeaderText = "GIFTCARD"
+        col.EditorType = GetType(GridTextBoxXEditControl)
+        col.CellStyles.Default.Alignment = Style.Alignment.MiddleRight
+        col.ReadOnly = True
+        col.Visible = True
+        col.Width = 80
+        DgdLCV.PrimaryGrid.Columns.Add(col)
+
+        'G
         col = New GridColumn("fvatotal")
         col.HeaderText = "IMP. BASE"
         col.EditorType = GetType(GridTextBoxXEditControl)

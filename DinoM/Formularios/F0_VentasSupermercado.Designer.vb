@@ -527,6 +527,7 @@ Partial Class F0_VentasSupermercado
         Me.btnNuevo.TabIndex = 417
         Me.btnNuevo.Text = "NUEVO"
         Me.btnNuevo.TextColor = System.Drawing.Color.White
+        Me.btnNuevo.Visible = False
         '
         'btnExportar
         '
@@ -545,6 +546,7 @@ Partial Class F0_VentasSupermercado
         Me.btnExportar.TabIndex = 416
         Me.btnExportar.Text = "GRABAR Y EXPORTAR VALE"
         Me.btnExportar.TextColor = System.Drawing.Color.White
+        Me.btnExportar.Visible = False
         '
         'Label1Conn
         '

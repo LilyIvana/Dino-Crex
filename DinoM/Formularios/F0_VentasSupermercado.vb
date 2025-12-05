@@ -40,6 +40,10 @@ Public Class F0_VentasSupermercado
     Public TipoCambio As Double = 0
     Dim ListImagenes As String()
     Dim contador As Integer = 0
+    Public GiftCard As Double = 0
+    Public TVenta As Integer = 0
+    Public CantVG As Integer = 0
+    Public Empresa As String
 
     Dim dtDescuentos As DataTable = Nothing
     Public Programa As String
@@ -418,15 +422,12 @@ Public Class F0_VentasSupermercado
         grdetalle.DataSource = dt
         grdetalle.RetrieveStructure()
 
-        ' a.tbnumi ,a.tbtv1numi ,a.tbty5prod ,b.yfcdprod1 as producto,a.tbest ,a.tbcmin ,a.tbumin ,Umin .ycdes3 as unidad,a.tbpbas ,a.tbptot,a.tbdesc ,a.tbobs ,
-        'a.tbfact ,a.tbhact ,a.tbuact
 
         With grdetalle.RootTable.Columns("tbnumi")
             .Width = 100
             .Caption = "CODIGO"
             .Visible = False
         End With
-
         With grdetalle.RootTable.Columns("tbtv1numi")
             .Width = 90
             .Visible = False
@@ -456,13 +457,11 @@ Public Class F0_VentasSupermercado
             .Width = 80
             .Visible = False
         End With
-
         With grdetalle.RootTable.Columns("yfcbarra")
             .Caption = "C.B.".ToUpper
             .Width = 40
             .Visible = False
         End With
-
         With grdetalle.RootTable.Columns("producto")
             .Caption = "Productos".ToUpper
             .Width = 340
@@ -475,7 +474,6 @@ Public Class F0_VentasSupermercado
             .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Near
             .Visible = False
         End With
-
         With grdetalle.RootTable.Columns("tbcmin")
             .Width = 70
             .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far
@@ -1454,16 +1452,18 @@ Public Class F0_VentasSupermercado
             Dim d As Double = CDbl("0")
             Dim e As Double = a - b - c - d
             Dim f As Double = 0
-            Dim g As Double = e - f
-            Dim h As Double = g * (gi_IVA / 100)
+            Dim g As Double = GiftCard
+            Dim h As Double = e - f - g
+            Dim i As Double = h * (gi_IVA / 100)
+
             Dim res As Boolean = L_fnGrabarVenta(numi, "", Now.Date.ToString("yyyy/MM/dd"), Vendedor, 1, Now.Date.ToString("yyyy/MM/dd"), _CodCliente, 1, Observacion.Trim,
-                                                 tbDescuento.Value, 0, Str(tbTotal.Value), dtDetalle, Sucursal, 0, tabla, gs_NroCaja, Programa,
-                                                 lbNit.Text.Trim, lbCliente.Text.Trim, TbEmailS.Text.Trim, CbTDoc.Value, actualizar, ComplementoCI, Cel,
-                                                 NroFact, gb_cufSifac, "B-" + IdNit, CStr(Format(a, "####0.00")),
-                                                 CStr(Format(b, "####0.00")), CStr(Format(c, "####0.00")), CStr(Format(d, "####0.00")), CStr(Format(e, "####0.00")),
-                                                 CStr(Format(f, "####0.00")), CStr(Format(g, "####0.00")), CStr(Format(h, "####0.00")), QrUrl, FactUrl,
-                                                 SegundaLeyenda, TerceraLeyenda, Cudf, Anhio, IIf(gb_FacturaEmite = True, 1, 0), gs_VersionSistema,
-                                                 gs_IPMaquina, gs_UsuMaquina, cbCanje.Value, CodigoFicha)
+                                                 tbDescuento.Value, 0, Str(tbTotal.Value), GiftCard, Str(tbTotal.Value - GiftCard), dtDetalle, Sucursal, 0, tabla, gs_NroCaja,
+                                                 Programa, lbNit.Text.Trim, lbCliente.Text.Trim, TbEmailS.Text.Trim, CbTDoc.Value, actualizar, ComplementoCI, Cel, NroFact,
+                                                 gb_cufSifac, "B-" + IdNit, CStr(Format(a, "####0.00")), CStr(Format(b, "####0.00")), CStr(Format(c, "####0.00")),
+                                                 CStr(Format(d, "####0.00")), CStr(Format(e, "####0.00")), CStr(Format(f, "####0.00")), CStr(Format(g, "####0.00")),
+                                                 CStr(Format(h, "####0.00")), CStr(Format(i, "####0.00")), QrUrl, FactUrl, SegundaLeyenda, TerceraLeyenda, Cudf, Anhio,
+                                                 IIf(gb_FacturaEmite = True, 1, 0), gs_VersionSistema, gs_IPMaquina, gs_UsuMaquina, cbCanje.Value, CodigoFicha, Empresa,
+                                                 TVenta, CantVG)
 
             If res Then
                 'Emite factura
@@ -1950,7 +1950,7 @@ Public Class F0_VentasSupermercado
 
 
             'Literal 
-            _TotalLi = _Ds.Tables(0).Rows(0).Item("fvasubtotal") - _Ds.Tables(0).Rows(0).Item("fvadesc")
+            _TotalLi = _Ds.Tables(0).Rows(0).Item("fvasubtotal") - _Ds.Tables(0).Rows(0).Item("fvadesc") - _Ds.Tables(0).Rows(0).Item("fvagiftcard")
             _TotalDecimal = _TotalLi - Math.Truncate(_TotalLi)
             _TotalDecimal2 = CDbl(_TotalDecimal) * 100
 
@@ -2789,6 +2789,10 @@ Public Class F0_VentasSupermercado
                 ComplementoCI = ef.ComplementoCi
                 Cel = ef.cel
                 Observacion = ef.obs
+                GiftCard = ef.giftcard
+                TVenta = ef.tventa
+                CantVG = ef.cantVG
+                Empresa = ef.empresa
 
                 _prGuardar()
             Else
@@ -3972,6 +3976,25 @@ Public Class F0_VentasSupermercado
             NTarjeta = ""
         End If
 
+        If GiftCard > 0 Then ''Solo cuando el monto de giftcard sea mayor a 0
+            If GiftCard = tbTotal.Value Then
+                CodMetPago = 27 'GIFT-CARD
+                NTarjeta = ""
+            ElseIf TotalBs > 0 Then
+                CodMetPago = 35 'EFECTIVO – GIFT-CARD
+                NTarjeta = ""
+            ElseIf NroTarjeta <> "" And TotalTarjeta > 0 Then
+                CodMetPago = 40 ' TARJETA – GIFT-CARD
+                NTarjeta = NroTarjeta
+            ElseIf TotalQR > 0 Then
+                CodMetPago = 78 'GIFT-CARD – PAGO ONLINE
+                NTarjeta = ""
+            Else
+                CodMetPago = 30 'GIFT-CARD OTROS
+                NTarjeta = ""
+            End If
+
+        End If
 
         Dim dtmax = L_fnObtenerMaxFact(gs_NroCaja, Convert.ToInt32(Now.Date.Year))
         If dtmax.Rows.Count = 0 Then
@@ -3994,10 +4017,11 @@ Public Class F0_VentasSupermercado
         Emenvio.codigoMoneda = 1 'falta
         Emenvio.tipoCambio = 1 'CDbl(cbCambioDolar.Text) '--------------------
         Emenvio.descuentoAdicional = 0 '-------------------
+        Emenvio.montoGiftCard = GiftCard '----------------
         Emenvio.montoTotal = Format((PrecioTot - Emenvio.descuentoAdicional), "#.#0")
-        Emenvio.montoTotalSujetoIva = Format((PrecioTot - Emenvio.descuentoAdicional), "#.#0")
+        Emenvio.montoTotalSujetoIva = Format((PrecioTot - Emenvio.descuentoAdicional - Emenvio.montoGiftCard), "#.#0")
         Emenvio.montoTotalMoneda = Format((PrecioTot - Emenvio.descuentoAdicional), "#.#0")
-        Emenvio.montoGiftCard = 0 '----------------
+
         Emenvio.codigoExcepcion = 0 '---------------
         Emenvio.tipoEmision = gb_OnOff  '1 emite online, 2 emite offline
         Emenvio.usuario = gs_user

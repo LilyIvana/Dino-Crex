@@ -117,6 +117,8 @@ Public Class F0_Venta2
         gb_OnOff = dtFact.Rows(0).Item("OnOff")
 
         nombreGrupos = L_fnNameLabel()
+
+
     End Sub
 
     Public Sub _prCargarNameLabel()
@@ -221,9 +223,12 @@ Public Class F0_Venta2
         ''swMostrar.IsReadOnly = True
         cbCanje.ReadOnly = True
         cbCambioDolar.ReadOnly = True
-
         CbTipoDoc.ReadOnly = True
         TbEmail.ReadOnly = True
+
+        cbTipo.ReadOnly = True
+        cbEmpresa.ReadOnly = True
+        tbCantidad.IsInputReadOnly = True
 
         'Datos facturacion
         tbNroAutoriz.ReadOnly = True
@@ -252,6 +257,7 @@ Public Class F0_Venta2
         tbPrueba.IsInputReadOnly = True
         tbMontoBs.IsInputReadOnly = True
         tbMontoDolar.IsInputReadOnly = True
+        tbGiftCard.IsInputReadOnly = True
         tbMontoTarej.IsInputReadOnly = True
         tbMontoQR.IsInputReadOnly = True
         tbNroTarjeta1.ReadOnly = True
@@ -277,7 +283,7 @@ Public Class F0_Venta2
         cbSucursal.ReadOnly = True
         FilaSelectLote = Nothing
 
-        cbTipo.ReadOnly = True
+
     End Sub
     Private Sub _prhabilitar()
 
@@ -304,6 +310,10 @@ Public Class F0_Venta2
         CbTipoDoc.ReadOnly = False
         TbEmail.ReadOnly = False
 
+        cbTipo.ReadOnly = False
+        cbEmpresa.ReadOnly = False
+        tbCantidad.IsInputReadOnly = False
+
         'Datos facturacion
         tbNroAutoriz.ReadOnly = False
         tbNroFactura.ReadOnly = False
@@ -312,6 +322,7 @@ Public Class F0_Venta2
 
         tbMontoBs.IsInputReadOnly = False
         tbMontoDolar.IsInputReadOnly = False
+        tbGiftCard.IsInputReadOnly = False
         'tbMontoTarej.IsInputReadOnly = False
 
         tbNroTarjeta1.ReadOnly = False
@@ -331,7 +342,7 @@ Public Class F0_Venta2
         End If
 
         dtDescuentos = L_fnListarDescuentosTodos()
-        cbTipo.ReadOnly = False
+
     End Sub
 
 
@@ -382,6 +393,7 @@ Public Class F0_Venta2
         txtMontoPagado1.Text = "0.00"
         tbTotalBs.Text = "0.00"
         tbTotalDo.Text = "0.00"
+        tbGiftCard.Value = 0
         chbTarjeta.Checked = False
         chbQR.Checked = False
         chbTarjeta.Enabled = True
@@ -436,9 +448,11 @@ Public Class F0_Venta2
         ''Pulperia
         cbTipo.Visible = True
         lbTipo.Visible = True
-        cbTipo.SelectedIndex = 0
+        'cbTipo.SelectedIndex = 0
+        tbCantidad.Value = 0
 
         cbCanje.SelectedIndex = 1
+        cbEmpresa.SelectedIndex = -1
     End Sub
     Public Sub _prMostrarRegistro(_N As Integer)
         With grVentas
@@ -454,6 +468,10 @@ Public Class F0_Venta2
             swTipoVenta.Value = .GetValue("tatven")
             tbObservacion.Text = .GetValue("taobs")
             lbNroCaja.Text = .GetValue("NroCaja")
+            tbGiftCard.Value = grVentas.GetValue("taGiftCard")
+            cbTipo.Value = .GetValue("taTipoVenta")
+            cbEmpresa.Text = .GetValue("taEmpresa")
+            tbCantidad.Value = .GetValue("taCantidad")
 
             If grVentas.GetValue("taest") = 1 Then
                 txtEstado.Text = "VIGENTE"
@@ -497,12 +515,33 @@ Public Class F0_Venta2
             lbUsuario.Text = .GetValue("tauact").ToString
 
         End With
-        cbTipo.Visible = False
-        lbTipo.Visible = False
+        'cbTipo.Visible = False
+        'lbTipo.Visible = False
+
+        If cbTipo.Value = 2 Or cbTipo.Value = 7 Then ''2=Vale, 7=GiftCard
+            lbEmpresa.Visible = True
+            cbEmpresa.Visible = True
+            lbCantidad.Visible = True
+            tbCantidad.Visible = True
+        Else
+            lbEmpresa.Visible = False
+            cbEmpresa.Visible = False
+            lbCantidad.Visible = False
+            tbCantidad.Visible = False
+        End If
+
+        If cbTipo.Value = 7 Then '' 7=GiftCard
+            lbGiftcard.Visible = True
+            tbGiftCard.Visible = True
+        Else
+            lbGiftcard.Visible = False
+            tbGiftCard.Visible = False
+        End If
 
         _prCargarDetalleVenta(tbCodigo.Text)
         tbMdesc.Value = grVentas.GetValue("tadesc")
         tbIce.Value = grVentas.GetValue("taice")
+
         _prCalcularPrecioTotal()
         'Calcular montos
         Dim tMonto As DataTable = L_fnMostrarMontos(tbCodigo.Text)
@@ -516,13 +555,17 @@ Public Class F0_Venta2
             tbNroTarjeta2.Text = "00000000"
             tbNroTarjeta3.Text = Mid(tMonto.Rows(0).Item("tgNroTarjeta").ToString, 13, 4)
 
-            txtMontoPagado1.Text = tbMontoBs.Value + (tbMontoDolar.Value * IIf(cbCambioDolar.Text = "", 0, Convert.ToDecimal(cbCambioDolar.Text))) + tbMontoTarej.Value + tbMontoQR.Value
+            'txtMontoPagado1.Text = tbMontoBs.Value + (tbMontoDolar.Value * IIf(cbCambioDolar.Text = "", 0, Convert.ToDecimal(cbCambioDolar.Text))) + tbMontoTarej.Value + tbMontoQR.Value
+            txtMontoPagado1.Text = Format((tbTotalBs.Text - tbGiftCard.Value), "####0.00").ToString
 
-            If Convert.ToDecimal(tbTotalBs.Text) <> 0 And Convert.ToDecimal(txtMontoPagado1.Text) >= Convert.ToDecimal(tbTotalBs.Text) Then
-                txtCambio1.Text = Convert.ToDecimal(txtMontoPagado1.Text) - Convert.ToDecimal(tbTotalBs.Text)
+            Dim diferencia As Double = (tbMontoTarej.Value + (tbMontoDolar.Value * cbCambioDolar.Text) + tbMontoBs.Value + tbMontoQR.Value) - (tbTotalBs.Text - tbGiftCard.Value)
+            If (diferencia >= 0) Then
+                txtCambio1.Text = Format(diferencia, "####0.00").ToString
             Else
                 txtCambio1.Text = "0.00"
             End If
+
+
             If tMonto.Rows(0).Item("tgMontTare") > 0 Then
                 chbTarjeta.Checked = True
                 chbTarjeta.Enabled = False
@@ -808,7 +851,7 @@ Public Class F0_Venta2
             .Visible = False
         End With
         With grVentas.RootTable.Columns("vendedor")
-            .Width = 250
+            .Width = 100
             .Visible = True
             .Caption = "VENDEDOR".ToUpper
         End With
@@ -826,6 +869,11 @@ Public Class F0_Venta2
             .Width = 50
             .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Near
             .Visible = False
+        End With
+        With grVentas.RootTable.Columns("ydcod")
+            .Width = 100
+            .Visible = True
+            .Caption = "COD CLIENTE"
         End With
         With grVentas.RootTable.Columns("cliente")
             .Width = 250
@@ -887,12 +935,37 @@ Public Class F0_Venta2
             .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far
         End With
         With grVentas.RootTable.Columns("total")
-            .Width = 150
+            .Width = 100
             .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far
             .Visible = True
             .Caption = "TOTAL"
             .FormatString = "0.00"
             .AggregateFunction = AggregateFunction.Sum
+        End With
+        With grVentas.RootTable.Columns("taGiftCard")
+            .Width = 100
+            .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far
+            .Visible = True
+            .Caption = "GIFTCARD"
+            .FormatString = "0.00"
+            .AggregateFunction = AggregateFunction.Sum
+        End With
+        With grVentas.RootTable.Columns("taImporteTotal")
+            .Width = 100
+            .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far
+            .Visible = True
+            .Caption = "IMPORTE TOTAL"
+            .FormatString = "0.00"
+            .AggregateFunction = AggregateFunction.Sum
+        End With
+        With grVentas.RootTable.Columns("taEmpresa")
+            .Visible = False
+        End With
+        With grVentas.RootTable.Columns("taTipoVenta")
+            .Visible = False
+        End With
+        With grVentas.RootTable.Columns("taCantidad")
+            .Visible = False
         End With
         With grVentas
             .DefaultFilterRowComparison = FilterConditionOperator.Contains
@@ -918,7 +991,7 @@ Public Class F0_Venta2
             _GuardarNuevo()
         Else
             If (tbCodigo.Text <> String.Empty) Then
-                _prGuardarModificado()
+                '_prGuardarModificado()
                 ''    _prInhabiliitar() RODRIGO RLA
             End If
         End If
@@ -1484,16 +1557,7 @@ Public Class F0_Venta2
                 cbSucursal.Focus()
                 Return False
             End If
-            If swTipoVenta.Value = True Then
-                If (Convert.ToDecimal(txtMontoPagado1.Text) = 0) Then
-                    Throw New Exception("El monto Pagado debe ser mayor 0")
-                    Return False
-                End If
-                If (Convert.ToDecimal(txtMontoPagado1.Text) < Convert.ToDecimal(tbTotalBs.Text)) Then
-                    Throw New Exception("El monto Pagado debe ser mayor al monto Total")
-                    Return False
-                End If
-            End If
+
             If (CbTipoDoc.SelectedIndex < 0) Then
                 Dim img As Bitmap = New Bitmap(My.Resources.mensaje, 50, 50)
                 ToastNotification.Show(Me, "Por Favor Seleccione Tipo de Documento".ToUpper, img, 2000, eToastGlowColor.Red, eToastPosition.BottomCenter)
@@ -1527,6 +1591,53 @@ Public Class F0_Venta2
                     Return False
                 End If
             End If
+
+            If cbTipo.Value = 2 Or cbTipo.Value = 7 Then ''2=Vale, 7=GiftCard
+                If cbEmpresa.Text = String.Empty Then
+                    ToastNotification.Show(Me, "Debe seleccionar el nombre de la empresa".ToUpper, My.Resources.WARNING, 3500, eToastGlowColor.Red, eToastPosition.TopCenter)
+                    Return False
+                End If
+                If tbCantidad.Value = 0 Then
+                    ToastNotification.Show(Me, "Debe colocar la cantidad de Vales o GiftCard entregados por el cliente.".ToUpper, My.Resources.WARNING, 4000, eToastGlowColor.Red, eToastPosition.TopCenter)
+                    Return False
+                End If
+            End If
+
+            If cbTipo.Value = 7 Then ''7=GiftCard
+                If tbGiftCard.Value = 0 Then
+                    ToastNotification.Show(Me, "Debe colocar monto de la gift-card!!!".ToUpper, My.Resources.WARNING, 4000, eToastGlowColor.Red, eToastPosition.TopCenter)
+                    Return False
+                End If
+
+                If tbTotalBs.Text < tbGiftCard.Value Then
+                    ToastNotification.Show(Me, "El Monto total de la venta no puede ser menor al monto de la gift-card!!!".ToUpper, My.Resources.WARNING, 4500, eToastGlowColor.Red, eToastPosition.TopCenter)
+                    Return False
+                End If
+            End If
+
+            'If swTipoVenta.Value = True Then
+            '    If (Convert.ToDecimal(txtMontoPagado1.Text) = 0) Then
+            '        Throw New Exception("El monto Pagado debe ser mayor 0")
+            '        Return False
+            '    End If
+            '    If (Convert.ToDecimal(txtMontoPagado1.Text) < Convert.ToDecimal(tbTotalBs.Text)) Then
+            '        Throw New Exception("El monto Pagado debe ser mayor al monto Total")
+            '        Return False
+            '    End If
+            'End If
+
+            If swTipoVenta.Value = True Then
+                If tbTotalBs.Text <> tbGiftCard.Value Then
+                    Dim monto As Double = Format((tbMontoTarej.Value + (tbMontoDolar.Value * cbCambioDolar.Text) + tbMontoBs.Value + tbMontoQR.Value), "####0.00")
+                    Dim tot As Double = Format((tbTotalBs.Text - tbGiftCard.Value), "####0.00")
+                    If (monto < tot) Then
+                        ToastNotification.Show(Me, "Debe Ingresar un Monto Pagado igual o mayor A = ".ToUpper + Str(Format((tbTotalBs.Text - tbGiftCard.Value), "####0.00")), My.Resources.WARNING, 4500, eToastGlowColor.Red, eToastPosition.TopCenter)
+                        Return False
+                    End If
+                End If
+
+            End If
+
 
             'Validar datos de factura
             'If (TbNit.Text = String.Empty) Then
@@ -1789,19 +1900,23 @@ Public Class F0_Venta2
             Dim d As Double = CDbl("0")
             Dim e As Double = a - b - c - d
             Dim f As Double = CDbl(tbMdesc.Value)
-            Dim g As Double = e - f
-            Dim h As Double = g * (gi_IVA / 100)
+            Dim g As Double = tbGiftCard.Value
+            Dim h As Double = e - f - g
+            Dim i As Double = g * (gi_IVA / 100)
             Dim Anhio As Integer = dtiFechaFactura.Value.Year
 
             Dim res As Boolean = L_fnGrabarVenta(numi, "", tbFechaVenta.Value.ToString("yyyy/MM/dd"), _CodEmpleado, IIf(swTipoVenta.Value = True, 1, 0),
                                                  IIf(swTipoVenta.Value = True, Now.Date.ToString("yyyy/MM/dd"), tbFechaVenc.Value.ToString("yyyy/MM/dd")),
                                                  _CodCliente, IIf(swMoneda.Value = True, 1, 0), tbObservacion.Text.Trim, tbMdesc.Value, tbIce.Value,
-                                                 tbTotalBs.Text, dtDetalle, cbSucursal.Value, 0, tabla, gs_NroCaja, Programa, tbNit.Text.Trim, TbNombre1.Text.Trim.Trim,
-                                                 TbEmail.Text.Trim, CbTipoDoc.Value, 1, tbComplemento.Text, tbCel.Text, NroFact, gb_cufSifac, "A-" + _CodCliente.ToString,
-                                                 CStr(Format(a, "####0.00")), CStr(Format(b, "####0.00")), CStr(Format(c, "####0.00")), CStr(Format(d, "####0.00")),
-                                                 CStr(Format(e, "####0.00")), CStr(Format(f, "####0.00")), CStr(Format(g, "####0.00")), CStr(Format(h, "####0.00")),
-                                                 QrUrl, FactUrl, SegundaLeyenda, TerceraLeyenda, Cudf, Anhio, IIf(gb_FacturaEmite = True, 1, 0), gs_VersionSistema,
-                                                 gs_IPMaquina, gs_UsuMaquina, cbCanje.Value, CodigoFicha)
+                                                 tbTotalBs.Text, tbGiftCard.Value, (Convert.ToDouble(tbTotalBs.Text) - tbGiftCard.Value), dtDetalle,
+                                                 cbSucursal.Value, 0, tabla, gs_NroCaja, Programa, tbNit.Text.Trim, TbNombre1.Text.Trim.Trim,
+                                                 TbEmail.Text.Trim, CbTipoDoc.Value, 1, tbComplemento.Text, tbCel.Text, NroFact, gb_cufSifac,
+                                                 "A-" + _CodCliente.ToString, CStr(Format(a, "####0.00")), CStr(Format(b, "####0.00")),
+                                                 CStr(Format(c, "####0.00")), CStr(Format(d, "####0.00")), CStr(Format(e, "####0.00")),
+                                                 CStr(Format(f, "####0.00")), CStr(Format(g, "####0.00")), CStr(Format(h, "####0.00")),
+                                                 CStr(Format(i, "####0.00")), QrUrl, FactUrl, SegundaLeyenda, TerceraLeyenda, Cudf, Anhio,
+                                                 IIf(gb_FacturaEmite = True, 1, 0), gs_VersionSistema, gs_IPMaquina, gs_UsuMaquina, cbCanje.Value,
+                                                 CodigoFicha, cbEmpresa.Text, cbTipo.Value, tbCantidad.Value)
 
             If res Then
                 'Emite factura
@@ -1851,6 +1966,7 @@ Public Class F0_Venta2
                 AsignarClienteEmpleado()
                 tbCliente.Select()
                 Table_Producto = Nothing
+                cbTipo.SelectedIndex = 0
 
             Else
                 Dim img As Bitmap = New Bitmap(My.Resources.cancel, 50, 50)
@@ -2856,7 +2972,7 @@ Public Class F0_Venta2
         PanelNavegacion.Enabled = False
         btnBitacora.Enabled = True
         SwDescuentoProveedor.Enabled = True
-
+        cbTipo.SelectedIndex = 0
         tbCliente.Select()
         'tbNit.Select()
     End Sub
@@ -4406,11 +4522,25 @@ salirIf:
         'grdetalle.Select()
     End Sub
     Private Sub DoubleInput2_ValueChanged(sender As Object, e As EventArgs) Handles tbMontoBs.ValueChanged
+        'If btnGrabar.Enabled = True Then
+        '    If tbMontoBs.Text <> String.Empty Then
+        '        txtMontoPagado1.Text = tbMontoBs.Value + (tbMontoDolar.Value * IIf(cbCambioDolar.Text = "", 0, Convert.ToDecimal(cbCambioDolar.Text))) + tbMontoTarej.Value + tbMontoQR.Value
+        '        If Convert.ToDecimal(tbTotalBs.Text) <> 0 And Convert.ToDecimal(txtMontoPagado1.Text) >= Convert.ToDecimal(tbTotalBs.Text) Then
+        '            txtCambio1.Text = Convert.ToDecimal(txtMontoPagado1.Text) - Convert.ToDecimal(tbTotalBs.Text)
+        '        Else
+        '            txtCambio1.Text = "0.00"
+        '        End If
+        '    Else
+        '        tbMontoBs.Value = 0
+        '    End If
+        'End If
+
         If btnGrabar.Enabled = True Then
-            If tbMontoBs.Text <> String.Empty Then 'tbMontoBs.Value <> 0 And
-                txtMontoPagado1.Text = tbMontoBs.Value + (tbMontoDolar.Value * IIf(cbCambioDolar.Text = "", 0, Convert.ToDecimal(cbCambioDolar.Text))) + tbMontoTarej.Value + tbMontoQR.Value
-                If Convert.ToDecimal(tbTotalBs.Text) <> 0 And Convert.ToDecimal(txtMontoPagado1.Text) >= Convert.ToDecimal(tbTotalBs.Text) Then
-                    txtCambio1.Text = Convert.ToDecimal(txtMontoPagado1.Text) - Convert.ToDecimal(tbTotalBs.Text)
+            If tbMontoBs.Text <> String.Empty Then
+                Dim diferencia As Double = (tbMontoTarej.Value + (tbMontoDolar.Value * cbCambioDolar.Text) + tbMontoBs.Value + tbMontoQR.Value) - (tbTotalBs.Text - tbGiftCard.Value)
+
+                If (diferencia >= 0) Then
+                    txtCambio1.Text = Format(diferencia, "####0.00").ToString
                 Else
                     txtCambio1.Text = "0.00"
                 End If
@@ -4418,40 +4548,83 @@ salirIf:
                 tbMontoBs.Value = 0
             End If
         End If
+
     End Sub
 
     Sub calcularCambio()
+        'If tbMontoBs.Value <> 0 And tbMontoBs.Text <> String.Empty Then
+        '    txtMontoPagado1.Text = tbMontoBs.Value + (tbMontoDolar.Value * IIf(cbCambioDolar.Text = "", 0, Convert.ToDecimal(cbCambioDolar.Text))) + tbMontoTarej.Value
+        '    If Convert.ToDecimal(tbTotalBs.Text) <> 0 And Convert.ToDecimal(txtMontoPagado1.Text) >= Convert.ToDecimal(tbTotalBs.Text) Then
+        '        txtCambio1.Text = Convert.ToDecimal(txtMontoPagado1.Text) - Convert.ToDecimal(tbTotalBs.Text)
+        '    Else
+        '        txtCambio1.Text = "0.00"
+        '    End If
+        'End If
+
         If tbMontoBs.Value <> 0 And tbMontoBs.Text <> String.Empty Then
-            txtMontoPagado1.Text = tbMontoBs.Value + (tbMontoDolar.Value * IIf(cbCambioDolar.Text = "", 0, Convert.ToDecimal(cbCambioDolar.Text))) + tbMontoTarej.Value
-            If Convert.ToDecimal(tbTotalBs.Text) <> 0 And Convert.ToDecimal(txtMontoPagado1.Text) >= Convert.ToDecimal(tbTotalBs.Text) Then
-                txtCambio1.Text = Convert.ToDecimal(txtMontoPagado1.Text) - Convert.ToDecimal(tbTotalBs.Text)
+            Dim diferencia As Double = (tbMontoTarej.Value + (tbMontoDolar.Value * cbCambioDolar.Text) + tbMontoBs.Value + tbMontoQR.Value) - (tbTotalBs.Text - tbGiftCard.Value)
+            If (diferencia >= 0) Then
+                txtCambio1.Text = Format(diferencia, "####0.00").ToString
             Else
                 txtCambio1.Text = "0.00"
             End If
         End If
     End Sub
     Private Sub tbMontoDolar_ValueChanged(sender As Object, e As EventArgs) Handles tbMontoDolar.ValueChanged
+        'If btnGrabar.Enabled = True Then
+        '    If tbMontoDolar.Text <> String.Empty Then 'tbMontoDolar.Value <> 0 And
+        '        txtMontoPagado1.Text = tbMontoBs.Value + (tbMontoDolar.Value * IIf(cbCambioDolar.Text = "", 0, Convert.ToDecimal(cbCambioDolar.Text))) + tbMontoTarej.Value + tbMontoQR.Value
+        '        If Convert.ToDecimal(tbTotalBs.Text) <> 0 And Convert.ToDecimal(txtMontoPagado1.Text) >= Convert.ToDecimal(tbTotalBs.Text) Then
+        '            txtCambio1.Text = Convert.ToDecimal(txtMontoPagado1.Text) - Convert.ToDecimal(tbTotalBs.Text)
+        '        Else
+        '            txtCambio1.Text = "0.00"
+        '        End If
+        '    Else
+        '        tbMontoDolar.Value = 0
+        '    End If
+        'End If
+
         If btnGrabar.Enabled = True Then
-            If tbMontoDolar.Text <> String.Empty Then 'tbMontoDolar.Value <> 0 And
-                txtMontoPagado1.Text = tbMontoBs.Value + (tbMontoDolar.Value * IIf(cbCambioDolar.Text = "", 0, Convert.ToDecimal(cbCambioDolar.Text))) + tbMontoTarej.Value + tbMontoQR.Value
-                If Convert.ToDecimal(tbTotalBs.Text) <> 0 And Convert.ToDecimal(txtMontoPagado1.Text) >= Convert.ToDecimal(tbTotalBs.Text) Then
-                    txtCambio1.Text = Convert.ToDecimal(txtMontoPagado1.Text) - Convert.ToDecimal(tbTotalBs.Text)
+            If tbMontoDolar.Text <> String.Empty Then
+                Dim diferencia As Double = (tbMontoTarej.Value + (tbMontoDolar.Value * cbCambioDolar.Text) + tbMontoBs.Value + tbMontoQR.Value) - (tbTotalBs.Text - tbGiftCard.Value)
+                If (diferencia >= 0) Then
+                    'txtMontoPagado1.Text = TotalVenta.ToString
+                    txtCambio1.Text = Format(diferencia, "####0.00").ToString
                 Else
+                    'txtMontoPagado1.Text = "0.00"
                     txtCambio1.Text = "0.00"
                 End If
             Else
                 tbMontoDolar.Value = 0
             End If
         End If
+
     End Sub
 
     Private Sub tbMontoTarej_ValueChanged(sender As Object, e As EventArgs) Handles tbMontoTarej.ValueChanged
+        'If btnGrabar.Enabled = True Then
+        '    If tbMontoTarej.Text <> String.Empty Then 'tbMontoTarej.Value <> 0 And
+        '        txtMontoPagado1.Text = tbMontoBs.Value + (tbMontoDolar.Value * IIf(cbCambioDolar.Text = "", 0, Convert.ToDecimal(cbCambioDolar.Text))) + tbMontoTarej.Value + tbMontoQR.Value
+        '        If Convert.ToDecimal(tbTotalBs.Text) <> 0 And Convert.ToDecimal(txtMontoPagado1.Text) >= Convert.ToDecimal(tbTotalBs.Text) Then
+        '            txtCambio1.Text = Convert.ToDecimal(txtMontoPagado1.Text) - Convert.ToDecimal(tbTotalBs.Text)
+        '        Else
+        '            txtCambio1.Text = "0.00"
+        '        End If
+        '    Else
+        '        tbMontoTarej.Value = 0
+        '    End If
+        'End If
+
         If btnGrabar.Enabled = True Then
-            If tbMontoTarej.Text <> String.Empty Then 'tbMontoTarej.Value <> 0 And
-                txtMontoPagado1.Text = tbMontoBs.Value + (tbMontoDolar.Value * IIf(cbCambioDolar.Text = "", 0, Convert.ToDecimal(cbCambioDolar.Text))) + tbMontoTarej.Value + tbMontoQR.Value
-                If Convert.ToDecimal(tbTotalBs.Text) <> 0 And Convert.ToDecimal(txtMontoPagado1.Text) >= Convert.ToDecimal(tbTotalBs.Text) Then
-                    txtCambio1.Text = Convert.ToDecimal(txtMontoPagado1.Text) - Convert.ToDecimal(tbTotalBs.Text)
+            tbMontoQR.Value = 0
+            If tbMontoTarej.Text <> String.Empty Then
+
+                Dim diferencia As Double = (tbMontoTarej.Value + (tbMontoDolar.Value * cbCambioDolar.Text) + tbMontoBs.Value + tbMontoQR.Value) - (tbTotalBs.Text - tbGiftCard.Value)
+                If (diferencia >= 0) Then
+                    'txtMontoPagado1.Text = TotalVenta.ToString
+                    txtCambio1.Text = Format(diferencia, "####0.00").ToString
                 Else
+                    'txtMontoPagado1.Text = "0.00"
                     txtCambio1.Text = "0.00"
                 End If
             Else
@@ -4470,7 +4643,7 @@ salirIf:
                 chbQR.Checked = False
                 chbQR.Enabled = False
                 tbMontoTarej.Enabled = True
-                tbMontoTarej.Value = Convert.ToDecimal(tbTotalBs.Text)
+                tbMontoTarej.Value = Format(Convert.ToDecimal(tbTotalBs.Text - tbGiftCard.Value), "####0.00")
                 'tbMontoBs.Enabled = False
                 tbMontoBs.Enabled = True
                 'tbMontoDolar.Enabled = False
@@ -5101,6 +5274,27 @@ salirIf:
             CodMetPago = 6
             NroTarjeta = ""
         End If
+
+        If tbGiftCard.Value > 0 Then ''Solo cuando el monto de giftcard sea mayor a 0
+            If tbGiftCard.Value = tbTotalBs.Text Then
+                CodMetPago = 27 'GIFT-CARD
+                NroTarjeta = ""
+            ElseIf tbMontoBs.Value > 0 Then
+                CodMetPago = 35 'EFECTIVO – GIFT-CARD
+                NroTarjeta = ""
+            ElseIf NroTarjeta <> "" And tbMontoTarej.Value > 0 Then
+                CodMetPago = 40 ' TARJETA – GIFT-CARD
+                NroTarjeta = NroTarjeta
+            ElseIf tbMontoQR.Value > 0 Then
+                CodMetPago = 78 'GIFT-CARD – PAGO ONLINE
+                NroTarjeta = ""
+            Else
+                CodMetPago = 30 'GIFT-CARD OTROS
+                NroTarjeta = ""
+            End If
+        End If
+
+
         Dim dtmax = L_fnObtenerMaxFact(gs_NroCaja, Convert.ToInt32(Now.Date.Year))
         If dtmax.Rows.Count = 0 Then
             NumFactura = 1
@@ -5122,10 +5316,11 @@ salirIf:
         Emenvio.codigoMoneda = 1 'falta
         Emenvio.tipoCambio = 1 'CDbl(cbCambioDolar.Text) '--------------------
         Emenvio.descuentoAdicional = Format(tbMdesc.Value, "#.#0") '-------------------
+        Emenvio.montoGiftCard = tbGiftCard.Value '----------------
         Emenvio.montoTotal = Format((PrecioTot - Emenvio.descuentoAdicional), "#.#0")
-        Emenvio.montoTotalSujetoIva = Format((PrecioTot - Emenvio.descuentoAdicional), "#.#0")
+        Emenvio.montoTotalSujetoIva = Format((PrecioTot - Emenvio.descuentoAdicional - Emenvio.montoGiftCard), "#.#0")
         Emenvio.montoTotalMoneda = Format((PrecioTot - Emenvio.descuentoAdicional), "#.#0")
-        Emenvio.montoGiftCard = 0 '----------------
+
         Emenvio.codigoExcepcion = 0 '---------------
         Emenvio.tipoEmision = gb_OnOff  '1 emite online, 2 emite offline
         Emenvio.usuario = gs_user
@@ -5426,7 +5621,7 @@ salirIf:
                 'tbMontoDolar.Value = 0
                 tbMontoTarej.Value = 0
                 tbMontoQR.Enabled = True
-                tbMontoQR.Value = Convert.ToDecimal(tbTotalBs.Text)
+                tbMontoQR.Value = Format(Convert.ToDecimal(tbTotalBs.Text - tbGiftCard.Value), "####0.00")
                 'tbMontoBs.Enabled = False
                 'tbMontoDolar.Enabled = False
                 tbMontoBs.Enabled = True
@@ -5452,27 +5647,29 @@ salirIf:
     End Sub
 
     Private Sub tbMontoQR_ValueChanged(sender As Object, e As EventArgs) Handles tbMontoQR.ValueChanged
+        'If btnGrabar.Enabled = True Then
+        '    If tbMontoQR.Text <> String.Empty Then 'tbMontoQR.Value <> 0 And
+        '        txtMontoPagado1.Text = tbMontoBs.Value + (tbMontoDolar.Value * IIf(cbCambioDolar.Text = "", 0, Convert.ToDecimal(cbCambioDolar.Text))) + tbMontoTarej.Value + tbMontoQR.Value
+        '        If Convert.ToDecimal(tbTotalBs.Text) <> 0 And Convert.ToDecimal(txtMontoPagado1.Text) >= Convert.ToDecimal(tbTotalBs.Text) Then
+        '            txtCambio1.Text = Convert.ToDecimal(txtMontoPagado1.Text) - Convert.ToDecimal(tbTotalBs.Text)
+        '        Else
+        '            txtCambio1.Text = "0.00"
+        '        End If
+        '    Else
+        '        tbMontoQR.Value = 0
+        '    End If
+
+        'End If
+
         If btnGrabar.Enabled = True Then
-            ''tbMontoDolar.Value = 0
-            ''tbMontoBs.Value = 0
-            'tbMontoTarej.Value = 0
-
-            ''Dim diferencia As Double = tbMontoQR.Value - tbTotalBs.Text
-            'Dim diferencia As Double = (tbMontoTarej.Value + (tbMontoDolar.Value * cbCambioDolar.Text) + tbMontoBs.Value + tbMontoQR.Value) - tbTotalBs.Text
-
-            'If (diferencia >= 0) Then
-            '    txtMontoPagado1.Text = tbTotalBs.Text.ToString
-            '    txtCambio1.Text = Format(diferencia, "####0.00").ToString
-            'Else
-            '    txtMontoPagado1.Text = "0.00"
-            '    txtCambio1.Text = "0.00"
-            'End If
-
-            If tbMontoQR.Text <> String.Empty Then 'tbMontoQR.Value <> 0 And
-                txtMontoPagado1.Text = tbMontoBs.Value + (tbMontoDolar.Value * IIf(cbCambioDolar.Text = "", 0, Convert.ToDecimal(cbCambioDolar.Text))) + tbMontoTarej.Value + tbMontoQR.Value
-                If Convert.ToDecimal(tbTotalBs.Text) <> 0 And Convert.ToDecimal(txtMontoPagado1.Text) >= Convert.ToDecimal(tbTotalBs.Text) Then
-                    txtCambio1.Text = Convert.ToDecimal(txtMontoPagado1.Text) - Convert.ToDecimal(tbTotalBs.Text)
+            tbMontoTarej.Value = 0
+            If tbMontoQR.Text <> String.Empty Then
+                Dim diferencia As Double = Format((tbMontoTarej.Value + (tbMontoDolar.Value * cbCambioDolar.Text) + tbMontoBs.Value + tbMontoQR.Value) - (tbTotalBs.Text - tbGiftCard.Value), "####0.00")
+                If (diferencia >= 0) Then
+                    'txtMontoPagado1.Text = TotalVenta.ToString
+                    txtCambio1.Text = Format(diferencia, "####0.00").ToString
                 Else
+                    'txtMontoPagado1.Text = "0.00"
                     txtCambio1.Text = "0.00"
                 End If
             Else
@@ -5562,7 +5759,6 @@ salirIf:
         Catch ex As Exception
             MostrarMensajeError(ex.Message)
         End Try
-
     End Sub
 
     Private Sub cbCanje_ValueChanged(sender As Object, e As EventArgs) Handles cbCanje.ValueChanged
@@ -5585,16 +5781,80 @@ salirIf:
     End Sub
 
     Private Sub cbTipo_ValueChanged(sender As Object, e As EventArgs) Handles cbTipo.ValueChanged
-        If cbTipo.Value <> 1 Then
-            tbObservacion.Text = cbTipo.Text
-            tbMontoBs.Value = tbTotalBs.Text
-        Else
-            tbObservacion.Clear()
-            tbMontoBs.Value = 0
+        'If cbTipo.Value <> 1 Then
+        '    tbObservacion.Text = cbTipo.Text
+        '    tbMontoBs.Value = tbTotalBs.Text
+        'Else
+        '    tbObservacion.Clear()
+        '    tbMontoBs.Value = 0
+        'End If
+        If btnGrabar.Enabled = True Then
+            If cbTipo.Value = 1 Then
+                tbObservacion.Clear()
+                tbMontoBs.Value = 0
+                tbGiftCard.Value = 0
+                tbCantidad.Value = 0
+            ElseIf cbTipo.Value = 7 Then
+                tbObservacion.Text = cbTipo.Text
+                tbMontoBs.Value = 0
+                tbGiftCard.Value = 0
+                tbCantidad.Value = 0
+            Else
+                tbObservacion.Text = cbTipo.Text
+                tbMontoBs.Value = tbTotalBs.Text
+                tbGiftCard.Value = 0
+                tbCantidad.Value = 0
+            End If
+            If cbTipo.Value = 7 Then ''Tipo de Venta: Gift-Card
+                lbGiftcard.Visible = True
+                tbGiftCard.Visible = True
+            Else
+                lbGiftcard.Visible = False
+                tbGiftCard.Visible = False
+            End If
+
+            If cbTipo.Value = 2 Or cbTipo.Value = 7 Then ''Tipo de Venta: Vale o Gift-Card
+                lbEmpresa.Visible = True
+                cbEmpresa.Visible = True
+                lbCantidad.Visible = True
+                tbCantidad.Visible = True
+            Else
+                lbEmpresa.Visible = False
+                cbEmpresa.Visible = False
+                lbCantidad.Visible = False
+                tbCantidad.Visible = False
+            End If
+            cbEmpresa.SelectedIndex = -1
+            ArmarComboEmpresa(cbEmpresa, cbTipo.Value)
         End If
     End Sub
 
+    Private Sub cbEmpresa_ValueChanged(sender As Object, e As EventArgs) Handles cbEmpresa.ValueChanged
+        If btnGrabar.Enabled = True Then
+            If cbTipo.Value = 2 Or cbTipo.Value = 7 Then
+                tbObservacion.Text = cbTipo.Text + " " + cbEmpresa.Text
+            End If
+        End If
+    End Sub
 
+    Private Sub tbGiftCard_ValueChanged(sender As Object, e As EventArgs) Handles tbGiftCard.ValueChanged
+        If btnGrabar.Enabled = True Then
+            If tbTotalBs.Text >= tbGiftCard.Value Then
+                txtMontoPagado1.Text = (Format((tbTotalBs.Text - tbGiftCard.Value), "####0.00")).ToString
+            Else
+                ToastNotification.Show(Me, "El Monto de la venta no puede ser menor al monto de la gift-card, aumente productos!!!".ToUpper, My.Resources.WARNING, 4500, eToastGlowColor.Red, eToastPosition.TopCenter)
+                txtMontoPagado1.Text = tbTotalBs.Text
+                tbGiftCard.Value = 0
+            End If
+        End If
+    End Sub
+
+    Private Sub tbTotalBs_TextChanged(sender As Object, e As EventArgs) Handles tbTotalBs.TextChanged
+        If btnGrabar.Enabled = True Then
+            txtMontoPagado1.Text = tbTotalBs.Text
+        End If
+
+    End Sub
 
 
 

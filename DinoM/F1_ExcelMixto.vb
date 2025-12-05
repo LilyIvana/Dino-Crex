@@ -302,7 +302,23 @@ Public Class F1_ExcelMixto
             End With
             With JGrM_Buscador.RootTable.Columns("Total")
                 .Width = 150
-                .Caption = "IMPORTE"
+                .Caption = "TOTAL"
+                .Visible = True
+                .FormatString = "0.00"
+                .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far
+                .AggregateFunction = AggregateFunction.Sum
+            End With
+            With JGrM_Buscador.RootTable.Columns("Giftcard")
+                .Width = 150
+                .Caption = "GIFTCARD"
+                .Visible = True
+                .FormatString = "0.00"
+                .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far
+                .AggregateFunction = AggregateFunction.Sum
+            End With
+            With JGrM_Buscador.RootTable.Columns("Importe")
+                .Width = 150
+                .Caption = "IMPORTE TOTAL"
                 .Visible = True
                 .FormatString = "0.00"
                 .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far

@@ -598,7 +598,6 @@ Public Class F0_ImpHistorialPcosto
     End Sub
 
     Private Sub btnExportarExcel_Click(sender As Object, e As EventArgs) Handles btnExportarExcel.Click
-
         If grDatos.RowCount > 0 Then
             _prCrearCarpetaReportes()
             Dim img As Bitmap = New Bitmap(My.Resources.checked, 50, 50)

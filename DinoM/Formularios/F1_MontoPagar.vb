@@ -37,11 +37,14 @@ Public Class F1_MontoPagar
         _prCargarComboLibreria(cbCambioDolar, 7, 1)
         cbCambioDolar.SelectedIndex = CType(cbCambioDolar.DataSource, DataTable).Rows.Count - 1
         ArmarComboTipoVenta(cbTipo)
+
         cbTipo.SelectedIndex = 0
 
         tbNit.Focus()
         tbNit.Select()
-        txtMontoPagado1.Text = "0.00"
+        tbGiftCard.Value = 0
+        'txtMontoPagado1.Text = "0.00"
+        txtMontoPagado1.Text = TotalVenta
         txtCambio1.Text = "0.00"
         tbMontoBs.Value = 0
         tbMontoDolar.Value = 0
@@ -81,18 +84,13 @@ Public Class F1_MontoPagar
         End With
     End Sub
     Private Sub tbMontoBs_ValueChanged(sender As Object, e As EventArgs) Handles tbMontoBs.ValueChanged
-        'tbMontoDolar.Value = 0
-        'tbMontoTarej.Value = 0
         If tbMontoBs.Text <> String.Empty Then
-            'Dim diferencia As Double = tbMontoBs.Value - TotalVenta
-            Dim diferencia As Double = (tbMontoTarej.Value + (tbMontoDolar.Value * cbCambioDolar.Text) + tbMontoBs.Value + tbMontoQR.Value) - TotalVenta
-
+            Dim diferencia As Double = (tbMontoTarej.Value + (tbMontoDolar.Value * cbCambioDolar.Text) + tbMontoBs.Value + tbMontoQR.Value) - (TotalVenta - tbGiftCard.Value)
             If (diferencia >= 0) Then
-                txtMontoPagado1.Text = TotalVenta.ToString
+                'txtMontoPagado1.Text = TotalVenta.ToString - tbGiftCard.Text
                 txtCambio1.Text = Format(diferencia, "####0.00").ToString
-
             Else
-                txtMontoPagado1.Text = "0.00"
+                'txtMontoPagado1.Text = "0.00"
                 txtCambio1.Text = "0.00"
             End If
         Else
@@ -101,41 +99,30 @@ Public Class F1_MontoPagar
     End Sub
 
     Private Sub tbMontoDolar_ValueChanged(sender As Object, e As EventArgs) Handles tbMontoDolar.ValueChanged
-        'tbMontoBs.Value = 0
-        'tbMontoTarej.Value = 0
         If tbMontoDolar.Text <> String.Empty Then
-            'Dim diferencia As Double = (tbMontoDolar.Value * cbCambioDolar.Text) - TotalVenta
-            Dim diferencia As Double = (tbMontoTarej.Value + (tbMontoDolar.Value * cbCambioDolar.Text) + tbMontoBs.Value + tbMontoQR.Value) - TotalVenta
-
+            Dim diferencia As Double = (tbMontoTarej.Value + (tbMontoDolar.Value * cbCambioDolar.Text) + tbMontoBs.Value + tbMontoQR.Value) - (TotalVenta - tbGiftCard.Value)
             If (diferencia >= 0) Then
-                txtMontoPagado1.Text = TotalVenta.ToString
+                'txtMontoPagado1.Text = TotalVenta.ToString
                 txtCambio1.Text = Format(diferencia, "####0.00").ToString
-
             Else
-                txtMontoPagado1.Text = "0.00"
+                'txtMontoPagado1.Text = "0.00"
                 txtCambio1.Text = "0.00"
             End If
         Else
             tbMontoDolar.Value = 0
-
         End If
     End Sub
 
     Private Sub tbMontoTarej_ValueChanged(sender As Object, e As EventArgs) Handles tbMontoTarej.ValueChanged
-        'tbMontoDolar.Value = 0
-        'tbMontoBs.Value = 0
         tbMontoQR.Value = 0
         If tbMontoTarej.Text <> String.Empty Then
 
-            'Dim diferencia As Double = tbMontoTarej.Value - TotalVenta
-            Dim diferencia As Double = (tbMontoTarej.Value + (tbMontoDolar.Value * cbCambioDolar.Text) + tbMontoBs.Value + tbMontoQR.Value) - TotalVenta
-
+            Dim diferencia As Double = (tbMontoTarej.Value + (tbMontoDolar.Value * cbCambioDolar.Text) + tbMontoBs.Value + tbMontoQR.Value) - (TotalVenta - tbGiftCard.Value)
             If (diferencia >= 0) Then
-                txtMontoPagado1.Text = TotalVenta.ToString
+                'txtMontoPagado1.Text = TotalVenta.ToString
                 txtCambio1.Text = Format(diferencia, "####0.00").ToString
-
             Else
-                txtMontoPagado1.Text = "0.00"
+                'txtMontoPagado1.Text = "0.00"
                 txtCambio1.Text = "0.00"
             End If
         Else
@@ -168,7 +155,7 @@ Public Class F1_MontoPagar
 
         End If
         If (e.KeyData = Keys.Control + Keys.S) Then
-            If (tbMontoTarej.Value + tbMontoDolar.Value + tbMontoBs.Value >= TotalVenta) Then
+            If (tbMontoTarej.Value + tbMontoDolar.Value + tbMontoBs.Value >= TotalVenta - tbGiftCard.Value) Then
                 Bandera = True
                 TotalBs = tbMontoBs.Value
                 TotalSus = tbMontoDolar.Value
@@ -179,7 +166,7 @@ Public Class F1_MontoPagar
                 Me.Close()
 
             Else
-                ToastNotification.Show(Me, "Debe Ingresar un Monto a Cobrar Valido igual o mayor A = " + Str(TotalVenta), My.Resources.WARNING, 4000, eToastGlowColor.Red, eToastPosition.TopCenter)
+                ToastNotification.Show(Me, "Debe Ingresar un Monto a Cobrar Valido igual o mayor A = " + Str(TotalVenta - tbGiftCard.Value), My.Resources.WARNING, 4000, eToastGlowColor.Red, eToastPosition.TopCenter)
             End If
 
 
@@ -206,7 +193,7 @@ Public Class F1_MontoPagar
 
         End If
         If (e.KeyData = Keys.Control + Keys.S) Then
-            If (tbMontoTarej.Value + tbMontoDolar.Value + tbMontoBs.Value >= TotalVenta) Then
+            If (tbMontoTarej.Value + tbMontoDolar.Value + tbMontoBs.Value >= TotalVenta - tbGiftCard.Value) Then
                 Bandera = True
                 TotalBs = tbMontoBs.Value
                 TotalSus = tbMontoDolar.Value
@@ -217,7 +204,7 @@ Public Class F1_MontoPagar
                 Me.Close()
 
             Else
-                ToastNotification.Show(Me, "Debe Ingresar un Monto a Cobrar Valido igual o mayor A = " + Str(TotalVenta), My.Resources.WARNING, 4000, eToastGlowColor.Red, eToastPosition.TopCenter)
+                ToastNotification.Show(Me, "Debe Ingresar un Monto a Cobrar Valido igual o mayor A = " + Str(TotalVenta - tbGiftCard.Value), My.Resources.WARNING, 4000, eToastGlowColor.Red, eToastPosition.TopCenter)
             End If
         End If
     End Sub
@@ -241,7 +228,7 @@ Public Class F1_MontoPagar
             Me.Close()
         End If
         If (e.KeyData = Keys.Control + Keys.S) Then
-            If (tbMontoTarej.Value + tbMontoDolar.Value + tbMontoBs.Value >= TotalVenta) Then
+            If (tbMontoTarej.Value + tbMontoDolar.Value + tbMontoBs.Value >= TotalVenta - tbGiftCard.Value) Then
                 Bandera = True
                 TotalBs = tbMontoBs.Value
                 TotalSus = tbMontoDolar.Value
@@ -251,7 +238,7 @@ Public Class F1_MontoPagar
                 RazonSocial = tbRazonSocial.Text
                 Me.Close()
             Else
-                ToastNotification.Show(Me, "Debe Ingresar un Monto a Cobrar Valido igual o mayor A = " + Str(TotalVenta), My.Resources.WARNING, 4000, eToastGlowColor.Red, eToastPosition.TopCenter)
+                ToastNotification.Show(Me, "Debe Ingresar un Monto a Cobrar Valido igual o mayor A = " + Str(TotalVenta - tbGiftCard.Value), My.Resources.WARNING, 4000, eToastGlowColor.Red, eToastPosition.TopCenter)
             End If
         End If
     End Sub
@@ -414,7 +401,31 @@ Public Class F1_MontoPagar
                 End If
             End If
 
-            If ((tbMontoTarej.Value + (tbMontoDolar.Value * cbCambioDolar.Text) + tbMontoBs.Value + tbMontoQR.Value) >= TotalVenta) Then
+            If cbTipo.Value = 2 Or cbTipo.Value = 7 Then ''2=Vale, 7=GiftCard
+                If cbEmpresa.Text = String.Empty Then
+                    ToastNotification.Show(Me, "Debe seleccionar el nombre de la empresa".ToUpper, My.Resources.WARNING, 3500, eToastGlowColor.Red, eToastPosition.TopCenter)
+                    Exit Sub
+                End If
+                If tbCantidad.Value = 0 Then
+                    ToastNotification.Show(Me, "Debe colocar la cantidad de Vales o GiftCard entregados por el cliente.".ToUpper, My.Resources.WARNING, 4000, eToastGlowColor.Red, eToastPosition.TopCenter)
+                    Exit Sub
+                End If
+            End If
+
+            If cbTipo.Value = 7 Then ''7=GiftCard
+                If tbGiftCard.Value = 0 Then
+                    ToastNotification.Show(Me, "Debe colocar monto de la gift-card!!!".ToUpper, My.Resources.WARNING, 4000, eToastGlowColor.Red, eToastPosition.TopCenter)
+                    Exit Sub
+                End If
+
+                If TotalVenta < tbGiftCard.Value Then
+                    ToastNotification.Show(Me, "El Monto total de la venta no puede ser menor al monto de la gift-card!!!".ToUpper, My.Resources.WARNING, 4500, eToastGlowColor.Red, eToastPosition.TopCenter)
+                    Exit Sub
+                End If
+            End If
+
+
+            If ((tbMontoTarej.Value + (tbMontoDolar.Value * cbCambioDolar.Text) + tbMontoBs.Value + tbMontoQR.Value) >= TotalVenta - tbGiftCard.Value) Then
                 Bandera = True
                 TotalBs = tbMontoBs.Value
                 TotalSus = tbMontoDolar.Value
@@ -428,7 +439,7 @@ Public Class F1_MontoPagar
                 Me.Close()
 
             Else
-                ToastNotification.Show(Me, "Debe Ingresar un Monto a Cobrar Valido igual o mayor A = " + Str(TotalVenta), My.Resources.WARNING, 4000, eToastGlowColor.Red, eToastPosition.TopCenter)
+                ToastNotification.Show(Me, "Debe Ingresar un Monto Pagado igual o mayor A = ".ToUpper + Str(TotalVenta - tbGiftCard.Value), My.Resources.WARNING, 4000, eToastGlowColor.Red, eToastPosition.TopCenter)
                 tbMontoBs.Focus()
             End If
         Catch ex As Exception
@@ -463,7 +474,7 @@ Public Class F1_MontoPagar
             chbQR.Enabled = False
             'tbMontoTarej.Enabled = True
             tbMontoTarej.Enabled = True
-            tbMontoTarej.Value = Convert.ToDecimal(TotalVenta)
+            tbMontoTarej.Value = Convert.ToDecimal(TotalVenta - tbGiftCard.Value)
             'tbMontoBs.Enabled = False
             'tbMontoDolar.Enabled = False
             'tbMontoTarej.IsInputReadOnly = True
@@ -546,7 +557,7 @@ Public Class F1_MontoPagar
             'tbMontoDolar.Value = 0
             tbMontoTarej.Value = 0
             tbMontoQR.Enabled = True
-            tbMontoQR.Value = Convert.ToDecimal(TotalVenta)
+            tbMontoQR.Value = Convert.ToDecimal(TotalVenta - tbGiftCard.Value)
             'tbMontoBs.Enabled = False
             'tbMontoDolar.Enabled = False
             tbMontoTarej.Enabled = False
@@ -566,26 +577,17 @@ Public Class F1_MontoPagar
             tbMontoQR.Enabled = False
         End If
 
-
-
-
-
     End Sub
 
     Private Sub tbMontoQR_ValueChanged(sender As Object, e As EventArgs) Handles tbMontoQR.ValueChanged
-        'tbMontoDolar.Value = 0
-        'tbMontoBs.Value = 0
         tbMontoTarej.Value = 0
         If tbMontoQR.Text <> String.Empty Then
-            'Dim diferencia As Double = tbMontoQR.Value - TotalVenta
-            Dim diferencia As Double = (tbMontoTarej.Value + (tbMontoDolar.Value * cbCambioDolar.Text) + tbMontoBs.Value + tbMontoQR.Value) - TotalVenta
-
+            Dim diferencia As Double = (tbMontoTarej.Value + (tbMontoDolar.Value * cbCambioDolar.Text) + tbMontoBs.Value + tbMontoQR.Value) - (TotalVenta - tbGiftCard.Value)
             If (diferencia >= 0) Then
-                txtMontoPagado1.Text = TotalVenta.ToString
+                'txtMontoPagado1.Text = TotalVenta.ToString
                 txtCambio1.Text = Format(diferencia, "####0.00").ToString
-
             Else
-                txtMontoPagado1.Text = "0.00"
+                'txtMontoPagado1.Text = "0.00"
                 txtCambio1.Text = "0.00"
             End If
         Else
@@ -600,13 +602,60 @@ Public Class F1_MontoPagar
 
 
     Private Sub cbTipo_ValueChanged(sender As Object, e As EventArgs) Handles cbTipo.ValueChanged
-        If cbTipo.Value <> 1 Then
-            tbObs.Text = cbTipo.Text
-            tbMontoBs.Value = TotalVenta
-        Else
+        If cbTipo.Value = 1 Then
             tbObs.Clear()
             tbMontoBs.Value = 0
+            tbGiftCard.Value = 0
+            tbCantidad.Value = 0
+        ElseIf cbTipo.Value = 7 Then
+            tbObs.Text = cbTipo.Text
+            tbMontoBs.Value = 0
+            tbGiftCard.Value = 0
+            tbCantidad.Value = 0
+        Else
+            tbObs.Text = cbTipo.Text
+            tbMontoBs.Value = TotalVenta
+            tbGiftCard.Value = 0
+            tbCantidad.Value = 0
         End If
 
+        If cbTipo.Value = 7 Then ''Tipo de Venta: Gift-Card
+            lbGiftCard.Visible = True
+            tbGiftCard.Visible = True
+        Else
+            lbGiftCard.Visible = False
+            tbGiftCard.Visible = False
+        End If
+
+        If cbTipo.Value = 2 Or cbTipo.Value = 7 Then ''Tipo de Venta: Vale o Gift-Card
+            lbEmpresa.Visible = True
+            cbEmpresa.Visible = True
+            lbCantidad.Visible = True
+            tbCantidad.Visible = True
+        Else
+            lbEmpresa.Visible = False
+            cbEmpresa.Visible = False
+            lbCantidad.Visible = False
+            tbCantidad.Visible = False
+        End If
+        cbEmpresa.SelectedIndex = -1
+        ArmarComboEmpresa(cbEmpresa, cbTipo.Value)
+
     End Sub
+
+    Private Sub cbEmpresa_ValueChanged(sender As Object, e As EventArgs) Handles cbEmpresa.ValueChanged
+        If cbTipo.Value = 2 Or cbTipo.Value = 7 Then
+            tbObs.Text = cbTipo.Text + " " + cbEmpresa.Text
+        End If
+    End Sub
+
+    Private Sub tbGiftCard_ValueChanged(sender As Object, e As EventArgs) Handles tbGiftCard.ValueChanged
+        If TotalVenta >= tbGiftCard.Value Then
+            txtMontoPagado1.Text = (Format((TotalVenta - tbGiftCard.Value), "####0.00")).ToString
+        Else
+            ToastNotification.Show(Me, "El Monto de la venta no puede ser menor al monto de la gift-card!!!".ToUpper, My.Resources.WARNING, 4500, eToastGlowColor.Red, eToastPosition.TopCenter)
+            txtMontoPagado1.Text = TotalVenta
+        End If
+    End Sub
+
 End Class

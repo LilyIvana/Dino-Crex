@@ -106,23 +106,261 @@ Public Class F1_ExcelVenta
     Private Sub _prCargarVenta()
         Dim fechaDesde As DateTime = tbFechaI.Value.ToString("yyyy/MM/dd")
         Dim fechaHasta As DateTime = tbFechaF.Value.ToString("yyyy/MM/dd")
-        Dim dt As DataTable = L_VentasProductos(fechaDesde, fechaHasta)
-        Dim dtVentas As DataTable = L_BuscarVentasAtendidas2(fechaDesde, fechaHasta, 0, 0, 0, 0)
+        Dim dt, dtVentas As DataTable
+
+
+        If swTipo.Value = True Then
+            dt = L_VentasProductos(fechaDesde, fechaHasta)
+            dtVentas = L_BuscarVentasAtendidas2(fechaDesde, fechaHasta, 0, 0, 0, 0)
+        Else
+            dt = L_VentasGenerales(fechaDesde, fechaHasta)
+        End If
+
+
         If dt.Rows.Count > 0 Then
-            Dim TotalVentasDetalladas, TotalVentas, TotalContado, TotalCredito As Double
+            If swTipo.Value = True Then
 
-            TotalVentasDetalladas = dt.Compute("Sum(Total)", "")
-            TotalContado = dtVentas.Compute("Sum(TotalContado)", "")
-            TotalCredito = dtVentas.Compute("Sum(TotalCredito)", "")
-            TotalVentas = TotalContado + TotalCredito
+                Dim TotalVentasDetalladas, TotalVentas, TotalContado, TotalCredito As Double
+                TotalVentasDetalladas = dt.Compute("Sum(Total)", "")
+                TotalContado = dtVentas.Compute("Sum(TotalContado)", "")
+                TotalCredito = dtVentas.Compute("Sum(TotalCredito)", "")
+                TotalVentas = TotalContado + TotalCredito
 
-            If TotalVentasDetalladas <> TotalVentas Then
-                JGrM_Buscador.ClearStructure()
-                Dim img As Bitmap = New Bitmap(My.Resources.mensaje, 50, 50)
-                ToastNotification.Show(Me, "Existe diferencia de totales entre este reporte y el reporte de ventas, verificar cierres de caja!!!".ToUpper,
-                                       img, 6000, eToastGlowColor.Red, eToastPosition.TopCenter)
+                If TotalVentasDetalladas <> TotalVentas Then
+                    JGrM_Buscador.ClearStructure()
+                    Dim img As Bitmap = New Bitmap(My.Resources.mensaje, 50, 50)
+                    ToastNotification.Show(Me, "Existe diferencia de totales entre este reporte y el reporte de ventas, verificar cierres de caja!!!".ToUpper,
+                                           img, 6000, eToastGlowColor.Red, eToastPosition.TopCenter)
+                Else
+                    L_fnBotonGenerar(gs_VersionSistema, gs_IPMaquina, gs_UsuMaquina, 0, "VENTAS DETALLADAS POR PRODUCTO", "VENTAS DETALLADAS POR PRODUCTO")
+
+                    JGrM_Buscador.DataSource = dt
+                    JGrM_Buscador.RetrieveStructure()
+                    JGrM_Buscador.AlternatingColors = True
+
+                    With JGrM_Buscador.RootTable.Columns("FechaVenta")
+                        .Width = 90
+                        .Visible = True
+                        .Caption = "FECHA"
+                    End With
+                    With JGrM_Buscador.RootTable.Columns("Dia")
+                        .Width = 60
+                        .Visible = True
+                        .Caption = "DÍA"
+                    End With
+                    With JGrM_Buscador.RootTable.Columns("Mes")
+                        .Width = 60
+                        .Visible = True
+                        .Caption = "MES"
+                    End With
+                    With JGrM_Buscador.RootTable.Columns("Anio")
+                        .Width = 60
+                        .Visible = True
+                        .Caption = "AÑO"
+                    End With
+                    With JGrM_Buscador.RootTable.Columns("Autorizacion")
+                        .Width = 170
+                        .Caption = "COD. AUTORIZACIÓN"
+                        .Visible = True
+                        .FormatString = "0"
+                    End With
+                    With JGrM_Buscador.RootTable.Columns("CodControl")
+                        .Width = 100
+                        .Visible = False
+                    End With
+                    With JGrM_Buscador.RootTable.Columns("NroCaja")
+                        .Width = 90
+                        .Caption = "NRO. CAJA"
+                        .Visible = True
+                    End With
+                    With JGrM_Buscador.RootTable.Columns("NroFactura")
+                        .Width = 120
+                        .Caption = "NRO. FACTURA"
+                        .Visible = True
+                    End With
+                    With JGrM_Buscador.RootTable.Columns("Nit")
+                        .Width = 100
+                        .Caption = "NIT"
+                        .Visible = True
+                    End With
+                    With JGrM_Buscador.RootTable.Columns("RazonSocial")
+                        .Width = 150
+                        .Caption = "RAZÓN SOCIAL"
+                        .Visible = True
+                    End With
+                    With JGrM_Buscador.RootTable.Columns("tbty5prod")
+                        .Width = 100
+                        .Caption = "COD. DYNASYS"
+                        .Visible = True
+                    End With
+                    With JGrM_Buscador.RootTable.Columns("CodDelta")
+                        .Width = 100
+                        .Caption = "COD. PRODUCTO"
+                        .Visible = True
+                    End With
+                    With JGrM_Buscador.RootTable.Columns("yfcdprod1")
+                        .Width = 380
+                        .Caption = "DESCRIPCIÓN"
+                        .Visible = True
+                    End With
+                    With JGrM_Buscador.RootTable.Columns("Unidad")
+                        .Width = 100
+                        .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far
+                        .Caption = "UNIDAD"
+                        .Visible = True
+                    End With
+                    With JGrM_Buscador.RootTable.Columns("Conversion")
+                        .Width = 90
+                        .Caption = "CONVERSIÓN"
+                        .Visible = True
+                        .FormatString = "0.00"
+                        .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far
+                    End With
+                    With JGrM_Buscador.RootTable.Columns("Cantidad")
+                        .Width = 100
+                        .Caption = "CANTIDAD"
+                        .Visible = True
+                        .FormatString = "0.00"
+                        .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far
+                        .AggregateFunction = AggregateFunction.Sum
+                    End With
+                    With JGrM_Buscador.RootTable.Columns("PrecioBase")
+                        .Width = 120
+                        .Caption = "PRECIO BASE"
+                        .Visible = True
+                        .FormatString = "0.00"
+                        .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far
+                    End With
+                    With JGrM_Buscador.RootTable.Columns("PrecioVendido")
+                        .Width = 120
+                        .Caption = "PRECIO VENDIDO"
+                        .Visible = True
+                        .FormatString = "0.00"
+                        .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far
+                    End With
+                    With JGrM_Buscador.RootTable.Columns("Descuento")
+                        .Width = 100
+                        .Caption = "DESCUENTO"
+                        .Visible = True
+                        .FormatString = "0.00"
+                        .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far
+                    End With
+                    With JGrM_Buscador.RootTable.Columns("Total")
+                        .Width = 150
+                        .Caption = "TOTAL VENTA"
+                        .Visible = True
+                        .FormatString = "0.00"
+                        .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far
+                        .AggregateFunction = AggregateFunction.Sum
+                    End With
+                    With JGrM_Buscador.RootTable.Columns("Giftcard")
+                        .Width = 150
+                        .Caption = "GIFTCARD"
+                        .Visible = True
+                        .FormatString = "0.00"
+                        .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far
+                        .AggregateFunction = AggregateFunction.Sum
+                    End With
+                    With JGrM_Buscador.RootTable.Columns("Importe")
+                        .Width = 150
+                        .Caption = "IMPORTE VENTA"
+                        .Visible = True
+                        .FormatString = "0.00"
+                        .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far
+                        .AggregateFunction = AggregateFunction.Sum
+                    End With
+                    With JGrM_Buscador.RootTable.Columns("PrecioCosto")
+                        .Width = 100
+                        .Caption = "COSTO"
+                        .Visible = True
+                        .FormatString = "0.00"
+                        .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far
+                    End With
+                    With JGrM_Buscador.RootTable.Columns("TotalCosto")
+                        .Width = 100
+                        .Caption = "TOTAL COSTO"
+                        .Visible = True
+                        .FormatString = "0.00"
+                        .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far
+                    End With
+                    With JGrM_Buscador.RootTable.Columns("Vendedor")
+                        .Width = 100
+                        .Visible = True
+                        .Caption = "VENDEDOR"
+                    End With
+                    With JGrM_Buscador.RootTable.Columns("Usuario")
+                        .Width = 100
+                        .Visible = True
+                        .Caption = "USUARIO"
+                    End With
+                    With JGrM_Buscador.RootTable.Columns("yccod3")
+                        .Width = 90
+                        .Visible = False
+                    End With
+                    With JGrM_Buscador.RootTable.Columns("Proveedor")
+                        .Width = 150
+                        .Visible = True
+                        .Caption = "PROVEEDOR"
+                    End With
+                    With JGrM_Buscador.RootTable.Columns("Marca")
+                        .Width = 120
+                        .Visible = True
+                        .Caption = "MARCA"
+                    End With
+                    With JGrM_Buscador.RootTable.Columns("Categoria")
+                        .Width = 150
+                        .Visible = True
+                        .Caption = "CATEGORÍA"
+                    End With
+                    With JGrM_Buscador.RootTable.Columns("Gramaje")
+                        .Width = 120
+                        .Visible = True
+                        .Caption = "GRAMAJE"
+                    End With
+                    With JGrM_Buscador.RootTable.Columns("yfdetprod")
+                        .Width = 220
+                        .Visible = True
+                        .Caption = "DESCRIPCIÓN DETALLADA"
+                    End With
+                    With JGrM_Buscador.RootTable.Columns("yfcbarra")
+                        .Width = 150
+                        .Visible = True
+                        .Caption = "CÓDIGO DE BARRAS"
+                    End With
+                    With JGrM_Buscador.RootTable.Columns("CodOrigen")
+                        .Width = 120
+                        .Visible = True
+                        .Caption = "COD. PROVEEDOR"
+                    End With
+                    With JGrM_Buscador.RootTable.Columns("OBSERVACION")
+                        .Width = 120
+                        .Visible = True
+                        .Caption = "OBSERVACIÓN"
+                    End With
+                    With JGrM_Buscador.RootTable.Columns("StockAct")
+                        .Width = 100
+                        .Visible = True
+                        .Caption = "STOCK ACTUAL"
+                        .FormatString = "0.00"
+                    End With
+
+                    With JGrM_Buscador
+                        .DefaultFilterRowComparison = FilterConditionOperator.Contains
+                        .FilterMode = FilterMode.Automatic
+                        .FilterRowUpdateMode = FilterRowUpdateMode.WhenValueChanges
+                        .GroupByBoxVisible = False
+                        .TotalRow = InheritableBoolean.True
+                        .TotalRowFormatStyle.BackColor = Color.Gold
+                        .TotalRowPosition = TotalRowPosition.BottomFixed
+
+                        'diseño de la grilla
+                        .RecordNavigator = True
+                        .RecordNavigatorText = "Datos"
+                    End With
+                End If
+
             Else
-                L_fnBotonGenerar(gs_VersionSistema, gs_IPMaquina, gs_UsuMaquina, 0, "VENTAS DETALLADAS POR PRODUCTO", "VENTAS DETALLADAS POR PRODUCTO")
+                L_fnBotonGenerar(gs_VersionSistema, gs_IPMaquina, gs_UsuMaquina, 0, "VENTAS GENERALES", "VENTAS GENERALES")
 
                 JGrM_Buscador.DataSource = dt
                 JGrM_Buscador.RetrieveStructure()
@@ -148,15 +386,16 @@ Public Class F1_ExcelVenta
                     .Visible = True
                     .Caption = "AÑO"
                 End With
+                With JGrM_Buscador.RootTable.Columns("IDVENTA")
+                    .Width = 100
+                    .Visible = True
+                    .Caption = "IDVENTA"
+                End With
                 With JGrM_Buscador.RootTable.Columns("Autorizacion")
                     .Width = 170
                     .Caption = "COD. AUTORIZACIÓN"
                     .Visible = True
                     .FormatString = "0"
-                End With
-                With JGrM_Buscador.RootTable.Columns("CodControl")
-                    .Width = 100
-                    .Visible = False
                 End With
                 With JGrM_Buscador.RootTable.Columns("NroCaja")
                     .Width = 90
@@ -178,52 +417,9 @@ Public Class F1_ExcelVenta
                     .Caption = "RAZÓN SOCIAL"
                     .Visible = True
                 End With
-                With JGrM_Buscador.RootTable.Columns("tbty5prod")
-                    .Width = 100
-                    .Caption = "COD. DYNASYS"
-                    .Visible = True
-                End With
-                With JGrM_Buscador.RootTable.Columns("CodDelta")
-                    .Width = 100
-                    .Caption = "COD. PRODUCTO"
-                    .Visible = True
-                End With
-                With JGrM_Buscador.RootTable.Columns("yfcdprod1")
-                    .Width = 380
-                    .Caption = "DESCRIPCIÓN"
-                    .Visible = True
-                End With
-                With JGrM_Buscador.RootTable.Columns("Unidad")
-                    .Width = 100
-                    .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far
-                    .Caption = "UNIDAD"
-                    .Visible = True
-                End With
-                With JGrM_Buscador.RootTable.Columns("Conversion")
-                    .Width = 90
-                    .Caption = "CONVERSIÓN"
-                    .Visible = True
-                    .FormatString = "0.00"
-                    .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far
-                End With
-                With JGrM_Buscador.RootTable.Columns("Cantidad")
-                    .Width = 100
-                    .Caption = "CANTIDAD"
-                    .Visible = True
-                    .FormatString = "0.00"
-                    .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far
-                    .AggregateFunction = AggregateFunction.Sum
-                End With
-                With JGrM_Buscador.RootTable.Columns("PrecioBase")
+                With JGrM_Buscador.RootTable.Columns("SubTotal")
                     .Width = 120
-                    .Caption = "PRECIO BASE"
-                    .Visible = True
-                    .FormatString = "0.00"
-                    .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far
-                End With
-                With JGrM_Buscador.RootTable.Columns("PrecioVendido")
-                    .Width = 120
-                    .Caption = "PRECIO VENDIDO"
+                    .Caption = "SUBTOTAL"
                     .Visible = True
                     .FormatString = "0.00"
                     .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far
@@ -237,25 +433,27 @@ Public Class F1_ExcelVenta
                 End With
                 With JGrM_Buscador.RootTable.Columns("Total")
                     .Width = 150
-                    .Caption = "IMPORTE VENTA"
+                    .Caption = "TOTAL VENTA"
                     .Visible = True
                     .FormatString = "0.00"
                     .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far
                     .AggregateFunction = AggregateFunction.Sum
                 End With
-                With JGrM_Buscador.RootTable.Columns("PrecioCosto")
-                    .Width = 100
-                    .Caption = "COSTO"
+                With JGrM_Buscador.RootTable.Columns("Giftcard")
+                    .Width = 150
+                    .Caption = "GIFTCARD"
                     .Visible = True
                     .FormatString = "0.00"
                     .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far
+                    .AggregateFunction = AggregateFunction.Sum
                 End With
-                With JGrM_Buscador.RootTable.Columns("TotalCosto")
-                    .Width = 100
-                    .Caption = "TOTAL COSTO"
+                With JGrM_Buscador.RootTable.Columns("Importe")
+                    .Width = 150
+                    .Caption = "IMPORTE VENTA"
                     .Visible = True
                     .FormatString = "0.00"
                     .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far
+                    .AggregateFunction = AggregateFunction.Sum
                 End With
                 With JGrM_Buscador.RootTable.Columns("Vendedor")
                     .Width = 100
@@ -267,49 +465,53 @@ Public Class F1_ExcelVenta
                     .Visible = True
                     .Caption = "USUARIO"
                 End With
-                With JGrM_Buscador.RootTable.Columns("yccod3")
-                    .Width = 90
-                    .Visible = False
-                End With
-                With JGrM_Buscador.RootTable.Columns("Proveedor")
-                    .Width = 150
+                With JGrM_Buscador.RootTable.Columns("TURNO")
+                    .Width = 100
                     .Visible = True
-                    .Caption = "PROVEEDOR"
+                    .Caption = "TURNO"
                 End With
-                With JGrM_Buscador.RootTable.Columns("Marca")
-                    .Width = 120
+                With JGrM_Buscador.RootTable.Columns("TIPOPAGO")
+                    .Width = 130
                     .Visible = True
-                    .Caption = "MARCA"
+                    .Caption = "TIPO PAGO"
                 End With
-                With JGrM_Buscador.RootTable.Columns("Categoria")
-                    .Width = 150
+                With JGrM_Buscador.RootTable.Columns("CODCLIENTE")
+                    .Width = 100
                     .Visible = True
-                    .Caption = "CATEGORÍA"
+                    .Caption = "COD CLIENTE"
                 End With
-                With JGrM_Buscador.RootTable.Columns("Gramaje")
-                    .Width = 120
+                With JGrM_Buscador.RootTable.Columns("CLIENTE")
+                    .Width = 100
                     .Visible = True
-                    .Caption = "GRAMAJE"
+                    .Caption = "CLIENTE"
                 End With
-                With JGrM_Buscador.RootTable.Columns("yfdetprod")
-                    .Width = 220
+                With JGrM_Buscador.RootTable.Columns("VENDEDORASIGNADO")
+                    .Width = 100
                     .Visible = True
-                    .Caption = "DESCRIPCIÓN DETALLADA"
-                End With
-                With JGrM_Buscador.RootTable.Columns("yfcbarra")
-                    .Width = 150
-                    .Visible = True
-                    .Caption = "CÓDIGO DE BARRAS"
-                End With
-                With JGrM_Buscador.RootTable.Columns("CodOrigen")
-                    .Width = 120
-                    .Visible = True
-                    .Caption = "COD. PROVEEDOR"
+                    .Caption = "VENDEDOR ASIGNADO"
                 End With
                 With JGrM_Buscador.RootTable.Columns("OBSERVACION")
                     .Width = 120
                     .Visible = True
                     .Caption = "OBSERVACIÓN"
+                End With
+                With JGrM_Buscador.RootTable.Columns("taEmpresa")
+                    .Width = 100
+                    .Visible = True
+                    .Caption = "EMPRESA"
+                End With
+                With JGrM_Buscador.RootTable.Columns("taTipoVenta")
+                    .Visible = False
+                End With
+                With JGrM_Buscador.RootTable.Columns("descripcion")
+                    .Width = 100
+                    .Visible = True
+                    .Caption = "TIPO VENTA"
+                End With
+                With JGrM_Buscador.RootTable.Columns("taCantidad")
+                    .Width = 100
+                    .Visible = True
+                    .Caption = "CANTIDAD"
                 End With
 
                 With JGrM_Buscador
@@ -325,12 +527,12 @@ Public Class F1_ExcelVenta
                     .RecordNavigator = True
                     .RecordNavigatorText = "Datos"
                 End With
+
+
             End If
 
-
-
         Else
-            JGrM_Buscador.ClearStructure()
+                JGrM_Buscador.ClearStructure()
             Dim img As Bitmap = New Bitmap(My.Resources.mensaje, 50, 50)
             ToastNotification.Show(Me, "No existe datos para mostrar".ToUpper, img, 2000, eToastGlowColor.Red, eToastPosition.TopCenter)
         End If
@@ -341,104 +543,6 @@ Public Class F1_ExcelVenta
     Private Sub F1_Productos_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         _prIniciarTodo()
     End Sub
-
-
-    Private Sub ButtonX2_Click(sender As Object, e As EventArgs) Handles btExcel.Click
-        _prCrearCarpetaReportes()
-        Dim img As Bitmap = New Bitmap(My.Resources.checked, 50, 50)
-        If (P_ExportarExcel(RutaGlobal + "\Reporte\Reporte Productos")) Then
-            ToastNotification.Show(Me, "EXPORTACIÓN DE LISTA DE PRODUCTOS EXITOSA..!!!",
-                                       img, 2000,
-                                       eToastGlowColor.Green,
-                                       eToastPosition.BottomCenter)
-        Else
-            ToastNotification.Show(Me, "FALLO AL EXPORTACIÓN DE LISTA DE PRODUCTOS..!!!",
-                                       My.Resources.WARNING, 2000,
-                                       eToastGlowColor.Red,
-                                       eToastPosition.BottomLeft)
-        End If
-    End Sub
-
-
-    Public Function P_ExportarExcel(_ruta As String) As Boolean
-        Dim _ubicacion As String
-        'Dim _directorio As New FolderBrowserDialog
-
-        If (1 = 1) Then 'If(_directorio.ShowDialog = Windows.Forms.DialogResult.OK) Then
-            '_ubicacion = _directorio.SelectedPath
-            _ubicacion = _ruta
-            Try
-                Dim _stream As Stream
-                Dim _escritor As StreamWriter
-                Dim _fila As Integer = JGrM_Buscador.GetRows.Length
-                Dim _columna As Integer = JGrM_Buscador.RootTable.Columns.Count
-                Dim _archivo As String = _ubicacion & "\VentaProductos_" & Now.Date.Day &
-                    "." & Now.Date.Month & "." & Now.Date.Year & "_" & Now.Hour & "." & Now.Minute & "." & Now.Second & ".csv"
-                Dim _linea As String = ""
-                Dim _filadata = 0, columndata As Int32 = 0
-                File.Delete(_archivo)
-                _stream = File.OpenWrite(_archivo)
-                _escritor = New StreamWriter(_stream, System.Text.Encoding.UTF8)
-
-                For Each _col As GridEXColumn In JGrM_Buscador.RootTable.Columns
-                    If (_col.Visible) Then
-                        _linea = _linea & _col.Caption & ";"
-                    End If
-                Next
-                _linea = Mid(CStr(_linea), 1, _linea.Length - 1)
-                _escritor.WriteLine(_linea)
-                _linea = Nothing
-
-                'Pbx_Precios.Visible = True
-                'Pbx_Precios.Minimum = 1
-                'Pbx_Precios.Maximum = Dgv_Precios.RowCount
-                'Pbx_Precios.Value = 1
-
-                For Each _fil As GridEXRow In JGrM_Buscador.GetRows
-                    For Each _col As GridEXColumn In JGrM_Buscador.RootTable.Columns
-                        If (_col.Visible) Then
-                            Dim data As String = CStr(_fil.Cells(_col.Key).Value)
-                            data = data.Replace(";", ",")
-                            _linea = _linea & data & ";"
-                        End If
-                    Next
-                    _linea = Mid(CStr(_linea), 1, _linea.Length - 1)
-                    _escritor.WriteLine(_linea)
-                    _linea = Nothing
-                    'Pbx_Precios.Value += 1
-                Next
-                _escritor.Close()
-                'Pbx_Precios.Visible = False
-                Try
-                    Dim ef = New Efecto
-                    ef._archivo = _archivo
-
-                    ef.tipo = 1
-                    ef.Context = "Su archivo ha sido Guardado en la ruta: " + _archivo + vbLf + "DESEA ABRIR EL ARCHIVO?"
-                    ef.Header = "PREGUNTA"
-                    ef.ShowDialog()
-                    Dim bandera As Boolean = False
-                    bandera = ef.band
-                    If (bandera = True) Then
-                        Process.Start(_archivo)
-                    End If
-
-                    'If (MessageBox.Show("Su archivo ha sido Guardado en la ruta: " + _archivo + vbLf + "DESEA ABRIR EL ARCHIVO?", "PREGUNTA", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = Windows.Forms.DialogResult.Yes) Then
-                    '    Process.Start(_archivo)
-                    'End If
-                    Return True
-                Catch ex As Exception
-                    MsgBox(ex.Message)
-                    Return False
-                End Try
-            Catch ex As Exception
-                MsgBox(ex.Message)
-                Return False
-            End Try
-        End If
-        Return False
-    End Function
-
 
     Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
         _Inter = _Inter + 1
@@ -458,14 +562,15 @@ Public Class F1_ExcelVenta
     Private Sub btnExportarExcel_Click(sender As Object, e As EventArgs) Handles btnExportarExcel.Click
         _prCrearCarpetaReportes()
         Dim img As Bitmap = New Bitmap(My.Resources.checked, 50, 50)
-        If (P_ExportarExcel(RutaGlobal + "\Reporte\Reporte Productos")) Then
-            L_fnBotonExportar(gs_VersionSistema, gs_IPMaquina, gs_UsuMaquina, 0, "VENTAS DETALLADAS POR PRODUCTO", "VENTAS DETALLADAS POR PRODUCTO")
-            ToastNotification.Show(Me, "EXPORTACIÓN DE VENTA-PRODUCTOS EXITOSA..!!!",
+        If (P_ExportarExcelGlobal(RutaGlobal + "\Reporte\Reporte Productos", JGrM_Buscador, IIf(swTipo.Value = True, "VentasDetalladasProductos", "VentasGenerales"))) Then
+            L_fnBotonExportar(gs_VersionSistema, gs_IPMaquina, gs_UsuMaquina, 0, IIf(swTipo.Value = True, "VENTAS DETALLADAS PRODUCTOS", "VENTAS GENERALES"), IIf(swTipo.Value = True, "VENTAS DETALLADAS PRODUCTOS", "VENTAS GENERALES"))
+
+            ToastNotification.Show(Me, "EXPORTACIÓN DE " + IIf(swTipo.Value = True, "VENTAS DETALLADAS POR PRODUCTOS", "VENTAS GENERALES") + " EXITOSA..!!!",
                                        img, 2000,
                                        eToastGlowColor.Green,
                                        eToastPosition.TopCenter)
         Else
-            ToastNotification.Show(Me, "FALLÓ LA EXPORTACIÓN DE VENTA-PRODUCTOS..!!!",
+            ToastNotification.Show(Me, "FALLÓ LA EXPORTACIÓN DE " + IIf(swTipo.Value = True, "VENTAS DETALLADAS POR PRODUCTOS", "VENTAS GENERALES") + " ..!!!",
                                        My.Resources.WARNING, 2000,
                                        eToastGlowColor.Red,
                                        eToastPosition.TopCenter)

@@ -2194,15 +2194,16 @@ Public Class AccesoLogica
     Public Shared Function L_fnGrabarVenta(ByRef _tanumi As String, _taidCorelativo As String, _tafdoc As String,
                                            _taven As Integer, _tatven As Integer, _tafvcr As String, _taclpr As Integer,
                                            _tamon As Integer, _taobs As String, _tadesc As Double, _taice As Double,
-                                           _tatotal As Double, detalle As DataTable, _almacen As Integer, _taprforma As Integer,
-                                           Monto As DataTable, _NroCaja As Integer, _programa As String, _Nit As String,
-                                           _Rsocial As String, _Correo As String, _TipoDoc As String, _actualizar As Integer,
-                                           _Complemento As String, _cel As String, _Nfac As String, _NAutoriz As String,
-                                           _CodCli As String, _A As String, _B As String,
-                                           _C As String, _D As String, _E As String, _F As String, _G As String, _H As String,
-                                           _qrurl As String, _facturl As String, _2leyenda As String, _3leyenda As String,
-                                           _cufd As String, _anhio As String, _FacturaEmite As String, _version As String,
-                                           _ip As String, _usumaquina As String, _canje As Integer, _codigoficha As String) As Boolean
+                                           _tatotal As Double, _tagiftcard As Double, _taImportetotal As Double, detalle As DataTable,
+                                           _almacen As Integer, _taprforma As Integer, Monto As DataTable, _NroCaja As Integer,
+                                           _programa As String, _Nit As String, _Rsocial As String, _Correo As String, _TipoDoc As String,
+                                           _actualizar As Integer, _Complemento As String, _cel As String, _Nfac As String,
+                                           _NAutoriz As String, _CodCli As String, _A As String, _B As String, _C As String, _D As String,
+                                           _E As String, _F As String, _G As String, _H As String, _I As String, _qrurl As String,
+                                           _facturl As String, _2leyenda As String, _3leyenda As String, _cufd As String, _anhio As String,
+                                           _FacturaEmite As String, _version As String, _ip As String, _usumaquina As String,
+                                           _canje As Integer, _codigoficha As String, _empresa As String, _tatventa As Integer,
+                                           _tacant As Integer) As Boolean
         Dim _Tabla As DataTable
         Dim _resultado As Boolean
         Dim _listParam As New List(Of Datos.DParametro)
@@ -2223,6 +2224,8 @@ Public Class AccesoLogica
         _listParam.Add(New Datos.DParametro("@tadesc", _tadesc))
         _listParam.Add(New Datos.DParametro("@taice", _taice))
         _listParam.Add(New Datos.DParametro("@tatotal", _tatotal))
+        _listParam.Add(New Datos.DParametro("@tagiftcard", _tagiftcard))
+        _listParam.Add(New Datos.DParametro("@taImporteTotal", _taImportetotal))
         _listParam.Add(New Datos.DParametro("@taNrocaja", _NroCaja))
         _listParam.Add(New Datos.DParametro("@bcprograma", _programa))
         _listParam.Add(New Datos.DParametro("@tauact", L_Usuario))
@@ -2238,6 +2241,10 @@ Public Class AccesoLogica
         _listParam.Add(New Datos.DParametro("@usumaquina", _usumaquina))
         _listParam.Add(New Datos.DParametro("@canje", _canje))
         _listParam.Add(New Datos.DParametro("@codficha", _codigoficha))
+        _listParam.Add(New Datos.DParametro("@taEmpresa", _empresa))
+        _listParam.Add(New Datos.DParametro("@tatventa", _tatventa))
+        _listParam.Add(New Datos.DParametro("@tacantidad", _tacant))
+
         ''Datos Factura
         _listParam.Add(New Datos.DParametro("@Nfac", _Nfac))
         _listParam.Add(New Datos.DParametro("@NAutoriz", _NAutoriz))
@@ -2250,6 +2257,7 @@ Public Class AccesoLogica
         _listParam.Add(New Datos.DParametro("@F", _F))
         _listParam.Add(New Datos.DParametro("@G", _G))
         _listParam.Add(New Datos.DParametro("@H", _H))
+        _listParam.Add(New Datos.DParametro("@I", _I))
         _listParam.Add(New Datos.DParametro("@qrurl", _qrurl))
         _listParam.Add(New Datos.DParametro("@facturl", _facturl))
         _listParam.Add(New Datos.DParametro("@2leyenda", _2leyenda))
@@ -3967,7 +3975,7 @@ Public Class AccesoLogica
             _Tabla1 = D_Datos_Tabla("concat(fvanfac, '_', fvaautoriz) as Archivo, fvanumi as Codigo, fvanfac as [Nro Factura], " _
                          + "fvafec as Fecha, fvacodcli as [Cod Cliente], " _
                          + " fvadescli1 as [Nombre 1], fvadescli2 as [Nombre 2], fvanitcli as Nit, " _
-                         + " fvastot as Subtotal, fvadesc as Descuento, fvatotal as Total, " _
+                         + " fvastot as Subtotal, fvadesc as Descuento, fvagiftcard as GiftCard, fvatotal as Total, " _
                          + " fvaccont as [Cod Control], fvaflim as [Fec Limite], fvaest as Estado",
                          "TFV001", _Where)
 
@@ -3977,7 +3985,7 @@ Public Class AccesoLogica
             _Tabla1 = D_Datos_Tabla("Top(1500) concat(fvanfac, '_', fvaautoriz) as Archivo, fvanumi as Codigo, fvanfac as [Nro Factura], " _
                          + "fvafec as Fecha, fvacodcli as [Cod Cliente], " _
                          + " fvadescli1 as [Nombre 1], fvadescli2 as [Nombre 2], fvanitcli as Nit, " _
-                         + " fvastot as Subtotal, fvadesc as Descuento, fvatotal as Total, " _
+                         + " fvastot as Subtotal, fvadesc as Descuento, fvagiftcard as GiftCard, fvatotal as Total, " _
                          + " fvaccont as [Cod Control], fvaflim as [Fec Limite], fvaest as Estado",
                          "TFV001", _Where)
 
@@ -4170,7 +4178,7 @@ Public Class AccesoLogica
 
 
         End If
-        Dim _select As String = "fvanumi, FORMAT(fvafec,'dd/MM/yyyy') as fvafec, fvanfac, fvaautoriz,fvaest, fvanitcli, fvadescli, fvastot, fvaimpsi, fvaimpeo, fvaimptc, fvasubtotal, fvadesc, fvatotal, fvadebfis, fvaccont,fvaflim,fvaalm, factura, fvanrocaja"
+        Dim _select As String = "fvanumi, FORMAT(fvafec,'dd/MM/yyyy') as fvafec, fvanfac, fvaautoriz,fvaest, fvanitcli, fvadescli, fvastot, fvaimpsi, fvaimpeo, fvaimptc, fvasubtotal, fvadesc, fvagiftcard, fvatotal, fvadebfis, fvaccont,fvaflim,fvaalm, factura, fvanrocaja"
 
         _Tabla = D_Datos_Tabla(_select,
                                "VR_GO_LibroVenta2", _Where)
@@ -5639,6 +5647,17 @@ Public Class AccesoLogica
         Dim _listParam As New List(Of Datos.DParametro)
         _listParam.Add(New Datos.DParametro("@tipo", 14))
         _listParam.Add(New Datos.DParametro("@nroConsig", NroConsig))
+        _listParam.Add(New Datos.DParametro("@uact", L_Usuario))
+        _Tabla = D_ProcedimientoConParam("Proc_ReporteVentas", _listParam)
+        Return _Tabla
+    End Function
+
+    Public Shared Function L_VentasGenerales(fechaI As String, fechaF As String) As DataTable
+        Dim _Tabla As DataTable
+        Dim _listParam As New List(Of Datos.DParametro)
+        _listParam.Add(New Datos.DParametro("@tipo", 15))
+        _listParam.Add(New Datos.DParametro("@fechaI", fechaI))
+        _listParam.Add(New Datos.DParametro("@fechaF", fechaF))
         _listParam.Add(New Datos.DParametro("@uact", L_Usuario))
         _Tabla = D_ProcedimientoConParam("Proc_ReporteVentas", _listParam)
         Return _Tabla
@@ -9259,6 +9278,18 @@ Public Class AccesoLogica
         Dim _listParam As New List(Of Datos.DParametro)
 
         _listParam.Add(New Datos.DParametro("@tipo", 2))
+        _listParam.Add(New Datos.DParametro("@uact", L_Usuario))
+        _Tabla = D_ProcedimientoConParam("Proc_TipoDoc", _listParam)
+
+        Return _Tabla
+    End Function
+    Public Shared Function L_fnNombreEmpresa(tipo As Integer) As DataTable
+        Dim _Tabla As DataTable
+
+        Dim _listParam As New List(Of Datos.DParametro)
+
+        _listParam.Add(New Datos.DParametro("@tipo", 3))
+        _listParam.Add(New Datos.DParametro("@tventa", tipo))
         _listParam.Add(New Datos.DParametro("@uact", L_Usuario))
         _Tabla = D_ProcedimientoConParam("Proc_TipoDoc", _listParam)
 

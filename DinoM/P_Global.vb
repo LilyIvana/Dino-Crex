@@ -233,6 +233,22 @@ Module P_Global
             .Refresh()
         End With
     End Sub
+    Public Sub ArmarComboEmpresa(mCombo As Janus.Windows.GridEX.EditControls.MultiColumnCombo, tipo As Integer)
+        Dim dt As New DataTable
+        dt = L_fnNombreEmpresa(tipo)
+
+        With mCombo
+            .DropDownList.Columns.Clear()
+            .DropDownList.Columns.Add("cod").Width = 60
+            .DropDownList.Columns("cod").Caption = "COD"
+            .DropDownList.Columns.Add("descripcion").Width = 200
+            .DropDownList.Columns("descripcion").Caption = "DESCRIPCION"
+            .ValueMember = "cod"
+            .DisplayMember = "descripcion"
+            .DataSource = dt
+            .Refresh()
+        End With
+    End Sub
 #End Region
 
 #Region "Configuracion del sistema"

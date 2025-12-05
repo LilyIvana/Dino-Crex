@@ -203,6 +203,15 @@ Public Class F0_AnularFactura
         col.Width = 80
         DgdFactura.PrimaryGrid.Columns.Add(col)
 
+        'GiftCard
+        col = New GridColumn("GiftCard")
+        col.EditorType = GetType(GridTextBoxXEditControl)
+        col.CellStyles.Default.Alignment = Style.Alignment.MiddleRight
+        col.ReadOnly = True
+        col.Visible = True
+        col.Width = 80
+        DgdFactura.PrimaryGrid.Columns.Add(col)
+
         'Total
         col = New GridColumn("Total")
         col.EditorType = GetType(GridTextBoxXEditControl)
@@ -257,7 +266,7 @@ Public Class F0_AnularFactura
     End Sub
 
     Private Sub P_LlenarDatos(fil As GridRow)
-        If (fil.Cells.Count = 14) Then
+        If (fil.Cells.Count = 15) Then
             NroFactura = fil.Cells(0).Value.ToString.Split("_")(0)
             NroAutorizacion = fil.Cells(0).Value.ToString.Split("_")(1)
             Tb1Codigo.Text = fil.Cells(1).Value
@@ -274,10 +283,11 @@ Public Class F0_AnularFactura
             Tb6Nit.Text = fil.Cells(7).Value
             Tb7SubTotal.Text = fil.Cells(8).Value
             Tb8Descuento.Text = fil.Cells(9).Value
-            Tb9Total.Text = fil.Cells(10).Value
-            Tb10CodControl.Text = fil.Cells(11).Value
-            Tb11FechaLim.Text = fil.Cells(12).Value
-            Sb1Estado.Value = fil.Cells(13).Value
+            tbGiftCard.Text = fil.Cells(10).Value
+            Tb9Total.Text = fil.Cells(11).Value
+            Tb10CodControl.Text = fil.Cells(12).Value
+            Tb11FechaLim.Text = fil.Cells(13).Value
+            Sb1Estado.Value = fil.Cells(14).Value
 
             If (Sb1Estado.Value) Then
                 GroupPanelFactura.ColorTable = DevComponents.DotNetBar.Controls.ePanelColorTable.Green

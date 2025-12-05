@@ -66,6 +66,8 @@ Partial Class F0_AnularFactura
         Me.SuperTabControlPanel2 = New DevComponents.DotNetBar.SuperTabControlPanel()
         Me.GroupPanelFactura = New DevComponents.DotNetBar.Controls.GroupPanel()
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
+        Me.LabelX14 = New DevComponents.DotNetBar.LabelX()
+        Me.tbGiftCard = New DevComponents.DotNetBar.Controls.TextBoxX()
         Me.PanelSuperior.SuspendLayout()
         Me.PanelInferior.SuspendLayout()
         CType(Me.BubbleBarUsuario, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -370,6 +372,8 @@ Partial Class F0_AnularFactura
         '
         Me.PanelExDatosGenerales.AutoScroll = True
         Me.PanelExDatosGenerales.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+        Me.PanelExDatosGenerales.Controls.Add(Me.LabelX14)
+        Me.PanelExDatosGenerales.Controls.Add(Me.tbGiftCard)
         Me.PanelExDatosGenerales.Controls.Add(Me.swMostrar)
         Me.PanelExDatosGenerales.Controls.Add(Me.CbMotivoA)
         Me.PanelExDatosGenerales.Controls.Add(Me.LabelX25)
@@ -691,7 +695,7 @@ Partial Class F0_AnularFactura
         Me.LabelX10.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.LabelX10.Font = New System.Drawing.Font("Georgia", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.LabelX10.ForeColor = System.Drawing.Color.FromArgb(CType(CType(15, Byte), Integer), CType(CType(72, Byte), Integer), CType(CType(127, Byte), Integer))
-        Me.LabelX10.Location = New System.Drawing.Point(503, 61)
+        Me.LabelX10.Location = New System.Drawing.Point(503, 87)
         Me.LabelX10.Name = "LabelX10"
         Me.LabelX10.Size = New System.Drawing.Size(100, 23)
         Me.LabelX10.TabIndex = 16
@@ -767,7 +771,7 @@ Partial Class F0_AnularFactura
         Me.Tb9Total.Border.Class = "TextBoxBorder"
         Me.Tb9Total.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.Tb9Total.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Tb9Total.Location = New System.Drawing.Point(609, 61)
+        Me.Tb9Total.Location = New System.Drawing.Point(609, 87)
         Me.Tb9Total.Name = "Tb9Total"
         Me.Tb9Total.PreventEnterBeep = True
         Me.Tb9Total.ReadOnly = True
@@ -946,6 +950,37 @@ Partial Class F0_AnularFactura
         Me.Timer1.Enabled = True
         Me.Timer1.Interval = 500
         '
+        'LabelX14
+        '
+        '
+        '
+        '
+        Me.LabelX14.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.LabelX14.Font = New System.Drawing.Font("Georgia", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LabelX14.ForeColor = System.Drawing.Color.FromArgb(CType(CType(15, Byte), Integer), CType(CType(72, Byte), Integer), CType(CType(127, Byte), Integer))
+        Me.LabelX14.Location = New System.Drawing.Point(503, 59)
+        Me.LabelX14.Name = "LabelX14"
+        Me.LabelX14.Size = New System.Drawing.Size(100, 23)
+        Me.LabelX14.TabIndex = 423
+        Me.LabelX14.Text = "GiftCard:"
+        Me.LabelX14.TextAlignment = System.Drawing.StringAlignment.Far
+        '
+        'tbGiftCard
+        '
+        '
+        '
+        '
+        Me.tbGiftCard.Border.Class = "TextBoxBorder"
+        Me.tbGiftCard.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.tbGiftCard.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.tbGiftCard.Location = New System.Drawing.Point(609, 59)
+        Me.tbGiftCard.Name = "tbGiftCard"
+        Me.tbGiftCard.PreventEnterBeep = True
+        Me.tbGiftCard.ReadOnly = True
+        Me.tbGiftCard.Size = New System.Drawing.Size(100, 22)
+        Me.tbGiftCard.TabIndex = 424
+        Me.tbGiftCard.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+        '
         'F0_AnularFactura
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -1024,4 +1059,6 @@ Partial Class F0_AnularFactura
     Friend WithEvents LabelX25 As DevComponents.DotNetBar.LabelX
     Friend WithEvents swMostrar As DevComponents.DotNetBar.Controls.SwitchButton
     Friend WithEvents Timer1 As Timer
+    Friend WithEvents LabelX14 As DevComponents.DotNetBar.LabelX
+    Friend WithEvents tbGiftCard As DevComponents.DotNetBar.Controls.TextBoxX
 End Class

@@ -37,6 +37,10 @@ Public Class Efecto
     Public ComplementoCi As String = ""
     Public cel As String = ""
     Public obs As String = ""
+    Public giftcard As Double = 0
+    Public tventa As Integer = 0
+    Public cantVG As Integer = 0
+    Public empresa As String = ""
 
     Public Conversion As Double = 0
     Public CantidadPrevia As Double = 0
@@ -144,6 +148,10 @@ Public Class Efecto
             ComplementoCi = frmAyuda.tbComplemento.Text
             cel = frmAyuda.tbCel.Text
             obs = frmAyuda.tbObs.Text
+            giftcard = frmAyuda.tbGiftCard.Value
+            tventa = frmAyuda.cbTipo.Value
+            cantVG = frmAyuda.tbCantidad.Value
+            empresa = frmAyuda.cbEmpresa.Text
 
             band = True
             Me.Close()

@@ -47,6 +47,44 @@ Partial Class P_Principal
         Me.lbUsuario = New DevComponents.DotNetBar.Controls.TextBoxX()
         Me.lbVersion = New DevComponents.DotNetBar.LabelX()
         Me.SideNav1 = New DevComponents.DotNetBar.Controls.SideNav()
+        Me.SideNav_Ventas = New DevComponents.DotNetBar.Controls.SideNavPanel()
+        Me.MetroTilePanelVentas = New DevComponents.DotNetBar.Metro.MetroTilePanel()
+        Me.btVentVenta = New DevComponents.DotNetBar.Metro.MetroTileItem()
+        Me.btVentProforma = New DevComponents.DotNetBar.Metro.MetroTileItem()
+        Me.btVales = New DevComponents.DotNetBar.Metro.MetroTileItem()
+        Me.btIngresoEgreso = New DevComponents.DotNetBar.Metro.MetroTileItem()
+        Me.btCierreCaja = New DevComponents.DotNetBar.Metro.MetroTileItem()
+        Me.btVentFactura = New DevComponents.DotNetBar.Metro.MetroTileItem()
+        Me.btVentAnularFactura = New DevComponents.DotNetBar.Metro.MetroTileItem()
+        Me.btVentLibroVenta = New DevComponents.DotNetBar.Metro.MetroTileItem()
+        Me.btVentReporteAtendidas = New DevComponents.DotNetBar.Metro.MetroTileItem()
+        Me.btVentReporteVentaVsCosto = New DevComponents.DotNetBar.Metro.MetroTileItem()
+        Me.btVentReporteProducto = New DevComponents.DotNetBar.Metro.MetroTileItem()
+        Me.btVentGrafica = New DevComponents.DotNetBar.Metro.MetroTileItem()
+        Me.btVentRotProd = New DevComponents.DotNetBar.Metro.MetroTileItem()
+        Me.btComVendedor = New DevComponents.DotNetBar.Metro.MetroTileItem()
+        Me.btVentEstad = New DevComponents.DotNetBar.Metro.MetroTileItem()
+        Me.btnVentaRapida = New DevComponents.DotNetBar.Metro.MetroTileItem()
+        Me.btVentaServicios = New DevComponents.DotNetBar.Metro.MetroTileItem()
+        Me.btVentasCajeras = New DevComponents.DotNetBar.Metro.MetroTileItem()
+        Me.btVentasExportar = New DevComponents.DotNetBar.Metro.MetroTileItem()
+        Me.btDescuentoProd = New DevComponents.DotNetBar.Metro.MetroTileItem()
+        Me.btProdSinVender = New DevComponents.DotNetBar.Metro.MetroTileItem()
+        Me.btRepMixtoDet = New DevComponents.DotNetBar.Metro.MetroTileItem()
+        Me.btResCierreCaja = New DevComponents.DotNetBar.Metro.MetroTileItem()
+        Me.btPreciosProdExcel = New DevComponents.DotNetBar.Metro.MetroTileItem()
+        Me.btRepFactAnuladas = New DevComponents.DotNetBar.Metro.MetroTileItem()
+        Me.btRepConsignacionFlow = New DevComponents.DotNetBar.Metro.MetroTileItem()
+        Me.btInvRepProdVales = New DevComponents.DotNetBar.Metro.MetroTileItem()
+        Me.SideNavPanel6 = New DevComponents.DotNetBar.Controls.SideNavPanel()
+        Me.MetroTilePanel7 = New DevComponents.DotNetBar.Metro.MetroTilePanel()
+        Me.btComProveedor = New DevComponents.DotNetBar.Metro.MetroTileItem()
+        Me.btComCompra = New DevComponents.DotNetBar.Metro.MetroTileItem()
+        Me.btComPagosCredito = New DevComponents.DotNetBar.Metro.MetroTileItem()
+        Me.btComEstadoCuentas = New DevComponents.DotNetBar.Metro.MetroTileItem()
+        Me.btEstadoCuentasProveedores = New DevComponents.DotNetBar.Metro.MetroTileItem()
+        Me.btEstadoCuentasProveedoresTodos = New DevComponents.DotNetBar.Metro.MetroTileItem()
+        Me.btComprasDet = New DevComponents.DotNetBar.Metro.MetroTileItem()
         Me.SideNav_Conf = New DevComponents.DotNetBar.Controls.SideNavPanel()
         Me.MetroTilePanel1 = New DevComponents.DotNetBar.Metro.MetroTilePanel()
         Me.btConfRoles = New DevComponents.DotNetBar.Metro.MetroTileItem()
@@ -99,35 +137,6 @@ Partial Class P_Principal
         Me.btCalculoPedSugeridoDias = New DevComponents.DotNetBar.Metro.MetroTileItem()
         Me.btInvMovimientoProdPeso = New DevComponents.DotNetBar.Metro.MetroTileItem()
         Me.btInvKardexProdPeso = New DevComponents.DotNetBar.Metro.MetroTileItem()
-        Me.SideNav_Ventas = New DevComponents.DotNetBar.Controls.SideNavPanel()
-        Me.MetroTilePanelVentas = New DevComponents.DotNetBar.Metro.MetroTilePanel()
-        Me.btVentVenta = New DevComponents.DotNetBar.Metro.MetroTileItem()
-        Me.btVentProforma = New DevComponents.DotNetBar.Metro.MetroTileItem()
-        Me.btVales = New DevComponents.DotNetBar.Metro.MetroTileItem()
-        Me.btIngresoEgreso = New DevComponents.DotNetBar.Metro.MetroTileItem()
-        Me.btCierreCaja = New DevComponents.DotNetBar.Metro.MetroTileItem()
-        Me.btVentFactura = New DevComponents.DotNetBar.Metro.MetroTileItem()
-        Me.btVentAnularFactura = New DevComponents.DotNetBar.Metro.MetroTileItem()
-        Me.btVentLibroVenta = New DevComponents.DotNetBar.Metro.MetroTileItem()
-        Me.btVentReporteAtendidas = New DevComponents.DotNetBar.Metro.MetroTileItem()
-        Me.btVentReporteVentaVsCosto = New DevComponents.DotNetBar.Metro.MetroTileItem()
-        Me.btVentReporteProducto = New DevComponents.DotNetBar.Metro.MetroTileItem()
-        Me.btVentGrafica = New DevComponents.DotNetBar.Metro.MetroTileItem()
-        Me.btVentRotProd = New DevComponents.DotNetBar.Metro.MetroTileItem()
-        Me.btComVendedor = New DevComponents.DotNetBar.Metro.MetroTileItem()
-        Me.btVentEstad = New DevComponents.DotNetBar.Metro.MetroTileItem()
-        Me.btnVentaRapida = New DevComponents.DotNetBar.Metro.MetroTileItem()
-        Me.btVentaServicios = New DevComponents.DotNetBar.Metro.MetroTileItem()
-        Me.btVentasCajeras = New DevComponents.DotNetBar.Metro.MetroTileItem()
-        Me.btVentasExportar = New DevComponents.DotNetBar.Metro.MetroTileItem()
-        Me.btDescuentoProd = New DevComponents.DotNetBar.Metro.MetroTileItem()
-        Me.btProdSinVender = New DevComponents.DotNetBar.Metro.MetroTileItem()
-        Me.btRepMixtoDet = New DevComponents.DotNetBar.Metro.MetroTileItem()
-        Me.btResCierreCaja = New DevComponents.DotNetBar.Metro.MetroTileItem()
-        Me.btPreciosProdExcel = New DevComponents.DotNetBar.Metro.MetroTileItem()
-        Me.btRepFactAnuladas = New DevComponents.DotNetBar.Metro.MetroTileItem()
-        Me.btRepConsignacionFlow = New DevComponents.DotNetBar.Metro.MetroTileItem()
-        Me.btInvRepProdVales = New DevComponents.DotNetBar.Metro.MetroTileItem()
         Me.SideNavPanel7 = New DevComponents.DotNetBar.Controls.SideNavPanel()
         Me.MenuCreditos = New DevComponents.DotNetBar.Metro.MetroTilePanel()
         Me.btnCredPago = New DevComponents.DotNetBar.Metro.MetroTileItem()
@@ -142,15 +151,6 @@ Partial Class P_Principal
         Me.PanelPrincipal = New System.Windows.Forms.Panel()
         Me.SideNavPanel4 = New DevComponents.DotNetBar.Controls.SideNavPanel()
         Me.MetroTilePanel5 = New DevComponents.DotNetBar.Metro.MetroTilePanel()
-        Me.SideNavPanel6 = New DevComponents.DotNetBar.Controls.SideNavPanel()
-        Me.MetroTilePanel7 = New DevComponents.DotNetBar.Metro.MetroTilePanel()
-        Me.btComProveedor = New DevComponents.DotNetBar.Metro.MetroTileItem()
-        Me.btComCompra = New DevComponents.DotNetBar.Metro.MetroTileItem()
-        Me.btComPagosCredito = New DevComponents.DotNetBar.Metro.MetroTileItem()
-        Me.btComEstadoCuentas = New DevComponents.DotNetBar.Metro.MetroTileItem()
-        Me.btEstadoCuentasProveedores = New DevComponents.DotNetBar.Metro.MetroTileItem()
-        Me.btEstadoCuentasProveedoresTodos = New DevComponents.DotNetBar.Metro.MetroTileItem()
-        Me.btComprasDet = New DevComponents.DotNetBar.Metro.MetroTileItem()
         Me.SideNav_Logistica = New DevComponents.DotNetBar.Controls.SideNavPanel()
         Me.MetroTilePanel2 = New DevComponents.DotNetBar.Metro.MetroTilePanel()
         Me.btZonas = New DevComponents.DotNetBar.Metro.MetroTileItem()
@@ -201,16 +201,16 @@ Partial Class P_Principal
         MetroTileFrame1 = New DevComponents.DotNetBar.Metro.MetroTileFrame()
         MetroTileFrame2 = New DevComponents.DotNetBar.Metro.MetroTileFrame()
         Me.SideNav1.SuspendLayout()
+        Me.SideNav_Ventas.SuspendLayout()
+        Me.SideNavPanel6.SuspendLayout()
         Me.SideNav_Conf.SuspendLayout()
         CType(Me.PictureBox4, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SideNavPanel5.SuspendLayout()
-        Me.SideNav_Ventas.SuspendLayout()
         Me.SideNavPanel7.SuspendLayout()
         Me.SideNavPanel3.SuspendLayout()
         CType(Me.superTabControl3, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.superTabControl3.SuspendLayout()
         Me.SideNavPanel4.SuspendLayout()
-        Me.SideNavPanel6.SuspendLayout()
         Me.SideNav_Logistica.SuspendLayout()
         CType(Me.PictureBox3, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SideNavPanel1.SuspendLayout()
@@ -250,6 +250,10 @@ Partial Class P_Principal
         Me.btSocRepSocio.SymbolColor = System.Drawing.Color.Empty
         Me.btSocRepSocio.TileColor = DevComponents.DotNetBar.Metro.eMetroTileColor.Magenta
         Me.btSocRepSocio.TileSize = New System.Drawing.Size(250, 135)
+        '
+        '
+        '
+        Me.btSocRepSocio.TileStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.btSocRepSocio.TitleText = "VEHICULO"
         '
         'btSocRepSocioEdad
@@ -260,6 +264,10 @@ Partial Class P_Principal
         Me.btSocRepSocioEdad.SymbolColor = System.Drawing.Color.Empty
         Me.btSocRepSocioEdad.TileColor = DevComponents.DotNetBar.Metro.eMetroTileColor.Magenta
         Me.btSocRepSocioEdad.TileSize = New System.Drawing.Size(250, 135)
+        '
+        '
+        '
+        Me.btSocRepSocioEdad.TileStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.btSocRepSocioEdad.TitleText = "VEHICULO"
         '
         'btSocRepSocioPagos
@@ -270,6 +278,10 @@ Partial Class P_Principal
         Me.btSocRepSocioPagos.SymbolColor = System.Drawing.Color.Empty
         Me.btSocRepSocioPagos.TileColor = DevComponents.DotNetBar.Metro.eMetroTileColor.Magenta
         Me.btSocRepSocioPagos.TileSize = New System.Drawing.Size(250, 135)
+        '
+        '
+        '
+        Me.btSocRepSocioPagos.TileStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.btSocRepSocioPagos.TitleText = "VEHICULO"
         '
         'btSocRepSocioPagosGral
@@ -280,6 +292,10 @@ Partial Class P_Principal
         Me.btSocRepSocioPagosGral.SymbolColor = System.Drawing.Color.Empty
         Me.btSocRepSocioPagosGral.TileColor = DevComponents.DotNetBar.Metro.eMetroTileColor.Magenta
         Me.btSocRepSocioPagosGral.TileSize = New System.Drawing.Size(250, 135)
+        '
+        '
+        '
+        Me.btSocRepSocioPagosGral.TileStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.btSocRepSocioPagosGral.TitleText = "VEHICULO"
         '
         'btSocRepSocioPagosMortuoriaGral
@@ -290,6 +306,10 @@ Partial Class P_Principal
         Me.btSocRepSocioPagosMortuoriaGral.SymbolColor = System.Drawing.Color.Empty
         Me.btSocRepSocioPagosMortuoriaGral.TileColor = DevComponents.DotNetBar.Metro.eMetroTileColor.Magenta
         Me.btSocRepSocioPagosMortuoriaGral.TileSize = New System.Drawing.Size(250, 135)
+        '
+        '
+        '
+        Me.btSocRepSocioPagosMortuoriaGral.TileStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.btSocRepSocioPagosMortuoriaGral.TitleText = "VEHICULO"
         '
         'btSocRepSocioListaSociosActivos
@@ -300,6 +320,10 @@ Partial Class P_Principal
         Me.btSocRepSocioListaSociosActivos.SymbolColor = System.Drawing.Color.Empty
         Me.btSocRepSocioListaSociosActivos.TileColor = DevComponents.DotNetBar.Metro.eMetroTileColor.Magenta
         Me.btSocRepSocioListaSociosActivos.TileSize = New System.Drawing.Size(250, 135)
+        '
+        '
+        '
+        Me.btSocRepSocioListaSociosActivos.TileStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.btSocRepSocioListaSociosActivos.TitleText = "VEHICULO"
         '
         'btEscRepPreExamen
@@ -310,6 +334,10 @@ Partial Class P_Principal
         Me.btEscRepPreExamen.SymbolColor = System.Drawing.Color.Empty
         Me.btEscRepPreExamen.TileColor = DevComponents.DotNetBar.Metro.eMetroTileColor.Magenta
         Me.btEscRepPreExamen.TileSize = New System.Drawing.Size(250, 135)
+        '
+        '
+        '
+        Me.btEscRepPreExamen.TileStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.btEscRepPreExamen.TitleText = "VEHICULO"
         '
         'btEscRepEstadosAlumnos
@@ -320,6 +348,10 @@ Partial Class P_Principal
         Me.btEscRepEstadosAlumnos.SymbolColor = System.Drawing.Color.Empty
         Me.btEscRepEstadosAlumnos.TileColor = DevComponents.DotNetBar.Metro.eMetroTileColor.Magenta
         Me.btEscRepEstadosAlumnos.TileSize = New System.Drawing.Size(250, 135)
+        '
+        '
+        '
+        Me.btEscRepEstadosAlumnos.TileStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.btEscRepEstadosAlumnos.TitleText = "VEHICULO"
         '
         'btEscRepAlumnosSinPreExamen
@@ -330,6 +362,10 @@ Partial Class P_Principal
         Me.btEscRepAlumnosSinPreExamen.SymbolColor = System.Drawing.Color.Empty
         Me.btEscRepAlumnosSinPreExamen.TileColor = DevComponents.DotNetBar.Metro.eMetroTileColor.Magenta
         Me.btEscRepAlumnosSinPreExamen.TileSize = New System.Drawing.Size(250, 135)
+        '
+        '
+        '
+        Me.btEscRepAlumnosSinPreExamen.TileStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.btEscRepAlumnosSinPreExamen.TitleText = "VEHICULO"
         '
         'MetroTileItem8
@@ -391,6 +427,10 @@ Partial Class P_Principal
         Me.MetroTileItem4.SymbolColor = System.Drawing.Color.Empty
         Me.MetroTileItem4.TileColor = DevComponents.DotNetBar.Metro.eMetroTileColor.Magenta
         Me.MetroTileItem4.TileSize = New System.Drawing.Size(250, 135)
+        '
+        '
+        '
+        Me.MetroTileItem4.TileStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.MetroTileItem4.TitleText = "VEHICULO"
         '
         'MetroTileItem5
@@ -418,6 +458,10 @@ Partial Class P_Principal
         Me.btVentRepSaldoClientes.SymbolColor = System.Drawing.Color.Empty
         Me.btVentRepSaldoClientes.TileColor = DevComponents.DotNetBar.Metro.eMetroTileColor.Magenta
         Me.btVentRepSaldoClientes.TileSize = New System.Drawing.Size(250, 135)
+        '
+        '
+        '
+        Me.btVentRepSaldoClientes.TileStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.btVentRepSaldoClientes.TitleText = "VEHICULO"
         '
         'rmSesion
@@ -491,7 +535,7 @@ Partial Class P_Principal
         Me.lbVersion.SingleLineColor = System.Drawing.Color.Transparent
         Me.lbVersion.Size = New System.Drawing.Size(127, 18)
         Me.lbVersion.TabIndex = 5
-        Me.lbVersion.Text = "Versión 5.5.2.251031"
+        Me.lbVersion.Text = "Versión 5.6.0.251210"
         Me.lbVersion.TextAlignment = System.Drawing.StringAlignment.Center
         '
         'SideNav1
@@ -499,13 +543,13 @@ Partial Class P_Principal
         Me.SideNav1.BackColor = System.Drawing.Color.FromArgb(CType(CType(49, Byte), Integer), CType(CType(59, Byte), Integer), CType(CType(66, Byte), Integer))
         Me.SideNav1.BackgroundImage = Global.DinoM.My.Resources.Resources.Fondo_empresarial
         Me.SideNav1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.SideNav1.Controls.Add(Me.SideNav_Conf)
         Me.SideNav1.Controls.Add(Me.SideNavPanel5)
+        Me.SideNav1.Controls.Add(Me.SideNavPanel6)
         Me.SideNav1.Controls.Add(Me.SideNav_Ventas)
+        Me.SideNav1.Controls.Add(Me.SideNav_Conf)
         Me.SideNav1.Controls.Add(Me.SideNavPanel7)
         Me.SideNav1.Controls.Add(Me.SideNavPanel3)
         Me.SideNav1.Controls.Add(Me.SideNavPanel4)
-        Me.SideNav1.Controls.Add(Me.SideNavPanel6)
         Me.SideNav1.Controls.Add(Me.SideNav_Logistica)
         Me.SideNav1.Controls.Add(Me.SideNavPanel1)
         Me.SideNav1.Controls.Add(Me.SideNavPanel2)
@@ -517,993 +561,6 @@ Partial Class P_Principal
         Me.SideNav1.Size = New System.Drawing.Size(995, 561)
         Me.SideNav1.TabIndex = 1
         Me.SideNav1.Text = "SideNav1"
-        '
-        'SideNav_Conf
-        '
-        Me.SideNav_Conf.Controls.Add(Me.MetroTilePanel1)
-        Me.SideNav_Conf.Controls.Add(Me.PictureBox4)
-        Me.SideNav_Conf.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.SideNav_Conf.Location = New System.Drawing.Point(142, 36)
-        Me.SideNav_Conf.Name = "SideNav_Conf"
-        Me.SideNav_Conf.Size = New System.Drawing.Size(848, 524)
-        Me.SideNav_Conf.TabIndex = 2
-        '
-        'MetroTilePanel1
-        '
-        Me.MetroTilePanel1.BackColor = System.Drawing.Color.Transparent
-        Me.MetroTilePanel1.BackgroundImage = Global.DinoM.My.Resources.Resources.Fondo_Naranja_1
-        Me.MetroTilePanel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        '
-        '
-        '
-        Me.MetroTilePanel1.BackgroundStyle.BackColor = System.Drawing.Color.Transparent
-        Me.MetroTilePanel1.BackgroundStyle.Class = "MetroTilePanel"
-        Me.MetroTilePanel1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.MetroTilePanel1.ContainerControlProcessDialogKey = True
-        Me.MetroTilePanel1.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.MetroTilePanel1.DragDropSupport = True
-        Me.MetroTilePanel1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.MetroTilePanel1.ForeColor = System.Drawing.Color.White
-        Me.MetroTilePanel1.Items.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.btConfRoles, Me.btConfUsuarios, Me.btConfCliente, Me.btConfProducto, Me.btConfProductoConteo, Me.btConfProdConteoTodos, Me.btConfPrecio, Me.btConfLibreria, Me.btConfDosificacion, Me.btnCodControl, Me.btZonas1, Me.btBancos, Me.btServicios, Me.btConfDescuentos, Me.btConfDescuentosProveedor, Me.btConfDescuentosCajeros, Me.btConfPesaje, Me.btConfActPrecios, Me.btConfVerificarPCosto, Me.btPventaMenorPcosto, Me.btRepClientesCel, Me.btConsultaPrecios, Me.btImpresionPrecios, Me.btBitacora, Me.btAlarmaRent, Me.btHistorialCostos})
-        Me.MetroTilePanel1.ItemSpacing = 10
-        Me.MetroTilePanel1.Location = New System.Drawing.Point(0, 0)
-        Me.MetroTilePanel1.MultiLine = True
-        Me.MetroTilePanel1.Name = "MetroTilePanel1"
-        Me.MetroTilePanel1.Size = New System.Drawing.Size(848, 492)
-        Me.MetroTilePanel1.Style = DevComponents.DotNetBar.eDotNetBarStyle.Office2010
-        Me.MetroTilePanel1.TabIndex = 0
-        Me.MetroTilePanel1.Text = "mtp1Configuracion"
-        '
-        'btConfRoles
-        '
-        Me.btConfRoles.Image = Global.DinoM.My.Resources.Resources.ROLES
-        Me.btConfRoles.ImageTextAlignment = System.Drawing.ContentAlignment.MiddleCenter
-        Me.btConfRoles.ItemAlignment = DevComponents.DotNetBar.eItemAlignment.Center
-        Me.btConfRoles.Name = "btConfRoles"
-        Me.btConfRoles.SymbolColor = System.Drawing.Color.Black
-        Me.btConfRoles.TileColor = DevComponents.DotNetBar.Metro.eMetroTileColor.Azure
-        Me.btConfRoles.TileSize = New System.Drawing.Size(250, 135)
-        '
-        '
-        '
-        Me.btConfRoles.TileStyle.BackColor = System.Drawing.Color.MediumVioletRed
-        Me.btConfRoles.TileStyle.BackColor2 = System.Drawing.Color.FromArgb(CType(CType(141, Byte), Integer), CType(CType(30, Byte), Integer), CType(CType(144, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.btConfRoles.TileStyle.BorderBottom = DevComponents.DotNetBar.eStyleBorderType.Dot
-        Me.btConfRoles.TileStyle.BorderLeft = DevComponents.DotNetBar.eStyleBorderType.Dot
-        Me.btConfRoles.TileStyle.BorderRight = DevComponents.DotNetBar.eStyleBorderType.Dot
-        Me.btConfRoles.TileStyle.BorderTop = DevComponents.DotNetBar.eStyleBorderType.Dot
-        Me.btConfRoles.TileStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.btConfRoles.TileStyle.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btConfRoles.TileStyle.TextAlignment = DevComponents.DotNetBar.eStyleTextAlignment.Center
-        Me.btConfRoles.TitleText = "ROLES"
-        Me.btConfRoles.TitleTextColor = System.Drawing.Color.White
-        '
-        'btConfUsuarios
-        '
-        Me.btConfUsuarios.Image = Global.DinoM.My.Resources.Resources.user
-        Me.btConfUsuarios.ImageTextAlignment = System.Drawing.ContentAlignment.MiddleCenter
-        Me.btConfUsuarios.Name = "btConfUsuarios"
-        Me.btConfUsuarios.SymbolColor = System.Drawing.Color.Empty
-        Me.btConfUsuarios.TileColor = DevComponents.DotNetBar.Metro.eMetroTileColor.Azure
-        Me.btConfUsuarios.TileSize = New System.Drawing.Size(250, 135)
-        '
-        '
-        '
-        Me.btConfUsuarios.TileStyle.BackColor = System.Drawing.Color.ForestGreen
-        Me.btConfUsuarios.TileStyle.BackColor2 = System.Drawing.Color.FromArgb(CType(CType(167, Byte), Integer), CType(CType(75, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(130, Byte), Integer))
-        Me.btConfUsuarios.TileStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.btConfUsuarios.TitleText = "USUARIOS"
-        '
-        'btConfCliente
-        '
-        Me.btConfCliente.Image = Global.DinoM.My.Resources.Resources.cliente
-        Me.btConfCliente.ImageTextAlignment = System.Drawing.ContentAlignment.MiddleCenter
-        Me.btConfCliente.Name = "btConfCliente"
-        Me.btConfCliente.SymbolColor = System.Drawing.Color.Empty
-        Me.btConfCliente.TileColor = DevComponents.DotNetBar.Metro.eMetroTileColor.DarkBlue
-        Me.btConfCliente.TileSize = New System.Drawing.Size(250, 135)
-        '
-        '
-        '
-        Me.btConfCliente.TileStyle.BackColor = System.Drawing.SystemColors.HotTrack
-        Me.btConfCliente.TileStyle.BackColor2 = System.Drawing.SystemColors.ActiveCaption
-        Me.btConfCliente.TileStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.btConfCliente.TitleText = "CLIENTES"
-        '
-        'btConfProducto
-        '
-        Me.btConfProducto.Image = Global.DinoM.My.Resources.Resources.producto
-        Me.btConfProducto.ImageTextAlignment = System.Drawing.ContentAlignment.MiddleCenter
-        Me.btConfProducto.Name = "btConfProducto"
-        Me.btConfProducto.SymbolColor = System.Drawing.Color.Empty
-        Me.btConfProducto.TileColor = DevComponents.DotNetBar.Metro.eMetroTileColor.Azure
-        Me.btConfProducto.TileSize = New System.Drawing.Size(250, 135)
-        '
-        '
-        '
-        Me.btConfProducto.TileStyle.BackColor = System.Drawing.Color.Red
-        Me.btConfProducto.TileStyle.BackColor2 = System.Drawing.Color.MediumOrchid
-        Me.btConfProducto.TileStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.btConfProducto.TitleText = "PRODUCTOS"
-        '
-        'btConfProductoConteo
-        '
-        Me.btConfProductoConteo.Image = Global.DinoM.My.Resources.Resources.producto
-        Me.btConfProductoConteo.ImageTextAlignment = System.Drawing.ContentAlignment.MiddleCenter
-        Me.btConfProductoConteo.Name = "btConfProductoConteo"
-        Me.btConfProductoConteo.SymbolColor = System.Drawing.Color.Empty
-        Me.btConfProductoConteo.TileColor = DevComponents.DotNetBar.Metro.eMetroTileColor.Azure
-        Me.btConfProductoConteo.TileSize = New System.Drawing.Size(250, 135)
-        '
-        '
-        '
-        Me.btConfProductoConteo.TileStyle.BackColor = System.Drawing.Color.MediumOrchid
-        Me.btConfProductoConteo.TileStyle.BackColor2 = System.Drawing.Color.LightPink
-        Me.btConfProductoConteo.TileStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.btConfProductoConteo.TitleText = "PRODUCTOS CONTEO INDIVIDUAL"
-        '
-        'btConfProdConteoTodos
-        '
-        Me.btConfProdConteoTodos.Image = Global.DinoM.My.Resources.Resources.hojaruta
-        Me.btConfProdConteoTodos.ImageTextAlignment = System.Drawing.ContentAlignment.MiddleCenter
-        Me.btConfProdConteoTodos.Name = "btConfProdConteoTodos"
-        Me.btConfProdConteoTodos.SymbolColor = System.Drawing.Color.Empty
-        Me.btConfProdConteoTodos.TileColor = DevComponents.DotNetBar.Metro.eMetroTileColor.Azure
-        Me.btConfProdConteoTodos.TileSize = New System.Drawing.Size(250, 135)
-        '
-        '
-        '
-        Me.btConfProdConteoTodos.TileStyle.BackColor = System.Drawing.Color.DimGray
-        Me.btConfProdConteoTodos.TileStyle.BackColor2 = System.Drawing.Color.Gold
-        Me.btConfProdConteoTodos.TileStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.btConfProdConteoTodos.TitleText = "PRODUCTOS CONTEO LOTE"
-        '
-        'btConfPrecio
-        '
-        Me.btConfPrecio.Image = Global.DinoM.My.Resources.Resources.precio
-        Me.btConfPrecio.ImageTextAlignment = System.Drawing.ContentAlignment.MiddleCenter
-        Me.btConfPrecio.Name = "btConfPrecio"
-        Me.btConfPrecio.SymbolColor = System.Drawing.Color.Empty
-        Me.btConfPrecio.TileColor = DevComponents.DotNetBar.Metro.eMetroTileColor.Azure
-        Me.btConfPrecio.TileSize = New System.Drawing.Size(250, 135)
-        '
-        '
-        '
-        Me.btConfPrecio.TileStyle.BackColor = System.Drawing.Color.Magenta
-        Me.btConfPrecio.TileStyle.BackColor2 = System.Drawing.Color.FromArgb(CType(CType(196, Byte), Integer), CType(CType(30, Byte), Integer), CType(CType(144, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.btConfPrecio.TileStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.btConfPrecio.TitleText = "PRECIOS"
-        '
-        'btConfLibreria
-        '
-        Me.btConfLibreria.Image = Global.DinoM.My.Resources.Resources.check_mark
-        Me.btConfLibreria.ImageTextAlignment = System.Drawing.ContentAlignment.MiddleCenter
-        Me.btConfLibreria.Name = "btConfLibreria"
-        Me.btConfLibreria.SymbolColor = System.Drawing.Color.Empty
-        Me.btConfLibreria.TileColor = DevComponents.DotNetBar.Metro.eMetroTileColor.Azure
-        Me.btConfLibreria.TileSize = New System.Drawing.Size(250, 135)
-        '
-        '
-        '
-        Me.btConfLibreria.TileStyle.BackColor = System.Drawing.Color.FromArgb(CType(CType(164, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.btConfLibreria.TileStyle.BackColor2 = System.Drawing.Color.FromArgb(CType(CType(133, Byte), Integer), CType(CType(184, Byte), Integer), CType(CType(134, Byte), Integer), CType(CType(11, Byte), Integer))
-        Me.btConfLibreria.TileStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.btConfLibreria.TitleText = "LIBRERIA"
-        '
-        'btConfDosificacion
-        '
-        Me.btConfDosificacion.Image = CType(resources.GetObject("btConfDosificacion.Image"), System.Drawing.Image)
-        Me.btConfDosificacion.ImageTextAlignment = System.Drawing.ContentAlignment.MiddleCenter
-        Me.btConfDosificacion.Name = "btConfDosificacion"
-        Me.btConfDosificacion.SymbolColor = System.Drawing.Color.Empty
-        Me.btConfDosificacion.TileColor = DevComponents.DotNetBar.Metro.eMetroTileColor.Azure
-        Me.btConfDosificacion.TileSize = New System.Drawing.Size(250, 135)
-        '
-        '
-        '
-        Me.btConfDosificacion.TileStyle.BackColor = System.Drawing.Color.Green
-        Me.btConfDosificacion.TileStyle.BackColor2 = System.Drawing.Color.FromArgb(CType(CType(124, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(0, Byte), Integer))
-        Me.btConfDosificacion.TileStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.btConfDosificacion.TitleText = "DOSIFICACIÓN"
-        '
-        'btnCodControl
-        '
-        Me.btnCodControl.Image = Global.DinoM.My.Resources.Resources.ic_c
-        Me.btnCodControl.ImageTextAlignment = System.Drawing.ContentAlignment.MiddleCenter
-        Me.btnCodControl.ItemAlignment = DevComponents.DotNetBar.eItemAlignment.Center
-        Me.btnCodControl.Name = "btnCodControl"
-        Me.btnCodControl.SymbolColor = System.Drawing.Color.Empty
-        Me.btnCodControl.Text = "GENERACIÓN CÓDIGO DE CONTROL"
-        Me.btnCodControl.TileColor = DevComponents.DotNetBar.Metro.eMetroTileColor.Teal
-        Me.btnCodControl.TileSize = New System.Drawing.Size(250, 135)
-        '
-        '
-        '
-        Me.btnCodControl.TileStyle.BackColor = System.Drawing.Color.Blue
-        Me.btnCodControl.TileStyle.BackColor2 = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(30, Byte), Integer), CType(CType(144, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.btnCodControl.TileStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.btnCodControl.TileStyle.Font = New System.Drawing.Font("Georgia", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnCodControl.TileStyle.TextLineAlignment = DevComponents.DotNetBar.eStyleTextAlignment.Far
-        Me.btnCodControl.TitleTextAlignment = System.Drawing.ContentAlignment.BottomCenter
-        Me.btnCodControl.TitleTextColor = System.Drawing.Color.Red
-        '
-        'btZonas1
-        '
-        Me.btZonas1.Image = Global.DinoM.My.Resources.Resources.zona
-        Me.btZonas1.ImageTextAlignment = System.Drawing.ContentAlignment.MiddleCenter
-        Me.btZonas1.ItemAlignment = DevComponents.DotNetBar.eItemAlignment.Center
-        Me.btZonas1.Name = "btZonas1"
-        Me.btZonas1.SymbolColor = System.Drawing.Color.Black
-        Me.btZonas1.TileColor = DevComponents.DotNetBar.Metro.eMetroTileColor.Azure
-        Me.btZonas1.TileSize = New System.Drawing.Size(250, 135)
-        '
-        '
-        '
-        Me.btZonas1.TileStyle.BackColor = System.Drawing.Color.MediumVioletRed
-        Me.btZonas1.TileStyle.BackColor2 = System.Drawing.Color.FromArgb(CType(CType(141, Byte), Integer), CType(CType(30, Byte), Integer), CType(CType(144, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.btZonas1.TileStyle.BorderBottom = DevComponents.DotNetBar.eStyleBorderType.Dot
-        Me.btZonas1.TileStyle.BorderLeft = DevComponents.DotNetBar.eStyleBorderType.Dot
-        Me.btZonas1.TileStyle.BorderRight = DevComponents.DotNetBar.eStyleBorderType.Dot
-        Me.btZonas1.TileStyle.BorderTop = DevComponents.DotNetBar.eStyleBorderType.Dot
-        Me.btZonas1.TileStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.btZonas1.TileStyle.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btZonas1.TileStyle.TextAlignment = DevComponents.DotNetBar.eStyleTextAlignment.Center
-        Me.btZonas1.TitleText = "ZONAS"
-        Me.btZonas1.TitleTextColor = System.Drawing.Color.White
-        '
-        'btBancos
-        '
-        Me.btBancos.Image = Global.DinoM.My.Resources.Resources._14
-        Me.btBancos.ImageTextAlignment = System.Drawing.ContentAlignment.MiddleCenter
-        Me.btBancos.ItemAlignment = DevComponents.DotNetBar.eItemAlignment.Center
-        Me.btBancos.Name = "btBancos"
-        Me.btBancos.SymbolColor = System.Drawing.Color.Black
-        Me.btBancos.TileColor = DevComponents.DotNetBar.Metro.eMetroTileColor.Azure
-        Me.btBancos.TileSize = New System.Drawing.Size(250, 135)
-        '
-        '
-        '
-        Me.btBancos.TileStyle.BackColor = System.Drawing.Color.SeaGreen
-        Me.btBancos.TileStyle.BackColor2 = System.Drawing.Color.FromArgb(CType(CType(198, Byte), Integer), CType(CType(195, Byte), Integer), CType(CType(198, Byte), Integer))
-        Me.btBancos.TileStyle.BorderBottom = DevComponents.DotNetBar.eStyleBorderType.Dot
-        Me.btBancos.TileStyle.BorderLeft = DevComponents.DotNetBar.eStyleBorderType.Dot
-        Me.btBancos.TileStyle.BorderRight = DevComponents.DotNetBar.eStyleBorderType.Dot
-        Me.btBancos.TileStyle.BorderTop = DevComponents.DotNetBar.eStyleBorderType.Dot
-        Me.btBancos.TileStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.btBancos.TileStyle.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btBancos.TileStyle.TextAlignment = DevComponents.DotNetBar.eStyleTextAlignment.Center
-        Me.btBancos.TitleText = "BANCOS"
-        Me.btBancos.TitleTextColor = System.Drawing.Color.White
-        '
-        'btServicios
-        '
-        Me.btServicios.Image = Global.DinoM.My.Resources.Resources.check_mark
-        Me.btServicios.ImageTextAlignment = System.Drawing.ContentAlignment.MiddleCenter
-        Me.btServicios.Name = "btServicios"
-        Me.btServicios.SymbolColor = System.Drawing.Color.Empty
-        Me.btServicios.TileColor = DevComponents.DotNetBar.Metro.eMetroTileColor.Azure
-        Me.btServicios.TileSize = New System.Drawing.Size(250, 135)
-        '
-        '
-        '
-        Me.btServicios.TileStyle.BackColor = System.Drawing.Color.FromArgb(CType(CType(164, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.btServicios.TileStyle.BackColor2 = System.Drawing.Color.FromArgb(CType(CType(133, Byte), Integer), CType(CType(184, Byte), Integer), CType(CType(134, Byte), Integer), CType(CType(11, Byte), Integer))
-        Me.btServicios.TileStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.btServicios.TitleText = "SERVICIOS"
-        '
-        'btConfDescuentos
-        '
-        Me.btConfDescuentos.Image = Global.DinoM.My.Resources.Resources.descuentos2
-        Me.btConfDescuentos.ImageIndent = New System.Drawing.Point(3, 3)
-        Me.btConfDescuentos.ImageTextAlignment = System.Drawing.ContentAlignment.MiddleCenter
-        Me.btConfDescuentos.Name = "btConfDescuentos"
-        Me.btConfDescuentos.SymbolColor = System.Drawing.Color.Empty
-        Me.btConfDescuentos.TileColor = DevComponents.DotNetBar.Metro.eMetroTileColor.Azure
-        Me.btConfDescuentos.TileSize = New System.Drawing.Size(250, 135)
-        '
-        '
-        '
-        Me.btConfDescuentos.TileStyle.BackColor = System.Drawing.Color.Gold
-        Me.btConfDescuentos.TileStyle.BackColor2 = System.Drawing.Color.DeepSkyBlue
-        Me.btConfDescuentos.TileStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.btConfDescuentos.TitleText = "DESCUENTOS"
-        '
-        'btConfDescuentosProveedor
-        '
-        Me.btConfDescuentosProveedor.Image = Global.DinoM.My.Resources.Resources.descuentos
-        Me.btConfDescuentosProveedor.ImageTextAlignment = System.Drawing.ContentAlignment.MiddleCenter
-        Me.btConfDescuentosProveedor.Name = "btConfDescuentosProveedor"
-        Me.btConfDescuentosProveedor.SymbolColor = System.Drawing.Color.Empty
-        Me.btConfDescuentosProveedor.TileColor = DevComponents.DotNetBar.Metro.eMetroTileColor.Azure
-        Me.btConfDescuentosProveedor.TileSize = New System.Drawing.Size(250, 135)
-        '
-        '
-        '
-        Me.btConfDescuentosProveedor.TileStyle.BackColor = System.Drawing.Color.RoyalBlue
-        Me.btConfDescuentosProveedor.TileStyle.BackColor2 = System.Drawing.Color.DarkKhaki
-        Me.btConfDescuentosProveedor.TileStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.btConfDescuentosProveedor.TitleText = "DESCUENTOS POR PROVEEDOR"
-        '
-        'btConfDescuentosCajeros
-        '
-        Me.btConfDescuentosCajeros.Image = Global.DinoM.My.Resources.Resources.precio
-        Me.btConfDescuentosCajeros.ImageTextAlignment = System.Drawing.ContentAlignment.MiddleCenter
-        Me.btConfDescuentosCajeros.Name = "btConfDescuentosCajeros"
-        Me.btConfDescuentosCajeros.SymbolColor = System.Drawing.Color.Empty
-        Me.btConfDescuentosCajeros.TileColor = DevComponents.DotNetBar.Metro.eMetroTileColor.Azure
-        Me.btConfDescuentosCajeros.TileSize = New System.Drawing.Size(250, 135)
-        '
-        '
-        '
-        Me.btConfDescuentosCajeros.TileStyle.BackColor = System.Drawing.Color.DarkTurquoise
-        Me.btConfDescuentosCajeros.TileStyle.BackColor2 = System.Drawing.SystemColors.GradientActiveCaption
-        Me.btConfDescuentosCajeros.TileStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.btConfDescuentosCajeros.TitleText = "CONSULTA PRECIOS CAJEROS"
-        '
-        'btConfPesaje
-        '
-        Me.btConfPesaje.Image = Global.DinoM.My.Resources.Resources.pesaje
-        Me.btConfPesaje.ImageTextAlignment = System.Drawing.ContentAlignment.MiddleCenter
-        Me.btConfPesaje.ItemAlignment = DevComponents.DotNetBar.eItemAlignment.Center
-        Me.btConfPesaje.Name = "btConfPesaje"
-        Me.btConfPesaje.SymbolColor = System.Drawing.Color.Empty
-        Me.btConfPesaje.Text = "PESAJE DE PRODUCTOS"
-        Me.btConfPesaje.TileColor = DevComponents.DotNetBar.Metro.eMetroTileColor.Teal
-        Me.btConfPesaje.TileSize = New System.Drawing.Size(250, 135)
-        '
-        '
-        '
-        Me.btConfPesaje.TileStyle.BackColor = System.Drawing.Color.DeepPink
-        Me.btConfPesaje.TileStyle.BackColor2 = System.Drawing.Color.SkyBlue
-        Me.btConfPesaje.TileStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.btConfPesaje.TileStyle.Font = New System.Drawing.Font("Georgia", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btConfPesaje.TileStyle.TextLineAlignment = DevComponents.DotNetBar.eStyleTextAlignment.Far
-        Me.btConfPesaje.TitleTextAlignment = System.Drawing.ContentAlignment.BottomCenter
-        Me.btConfPesaje.TitleTextColor = System.Drawing.Color.Red
-        '
-        'btConfActPrecios
-        '
-        Me.btConfActPrecios.Image = Global.DinoM.My.Resources.Resources.actualizado
-        Me.btConfActPrecios.ImageTextAlignment = System.Drawing.ContentAlignment.MiddleCenter
-        Me.btConfActPrecios.Name = "btConfActPrecios"
-        Me.btConfActPrecios.SymbolColor = System.Drawing.Color.Empty
-        Me.btConfActPrecios.TileColor = DevComponents.DotNetBar.Metro.eMetroTileColor.Azure
-        Me.btConfActPrecios.TileSize = New System.Drawing.Size(250, 135)
-        '
-        '
-        '
-        Me.btConfActPrecios.TileStyle.BackColor = System.Drawing.Color.Red
-        Me.btConfActPrecios.TileStyle.BackColor2 = System.Drawing.Color.DeepPink
-        Me.btConfActPrecios.TileStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.btConfActPrecios.TitleText = "ACTUALIZAR PRECIOS"
-        '
-        'btConfVerificarPCosto
-        '
-        Me.btConfVerificarPCosto.Image = Global.DinoM.My.Resources.Resources.hojaruta
-        Me.btConfVerificarPCosto.ImageTextAlignment = System.Drawing.ContentAlignment.MiddleCenter
-        Me.btConfVerificarPCosto.Name = "btConfVerificarPCosto"
-        Me.btConfVerificarPCosto.SymbolColor = System.Drawing.Color.Empty
-        Me.btConfVerificarPCosto.TileColor = DevComponents.DotNetBar.Metro.eMetroTileColor.Azure
-        Me.btConfVerificarPCosto.TileSize = New System.Drawing.Size(250, 135)
-        '
-        '
-        '
-        Me.btConfVerificarPCosto.TileStyle.BackColor = System.Drawing.Color.BlueViolet
-        Me.btConfVerificarPCosto.TileStyle.BackColor2 = System.Drawing.Color.DarkGray
-        Me.btConfVerificarPCosto.TileStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.btConfVerificarPCosto.TitleText = "VERIFICAR PRECIOS COSTO"
-        '
-        'btPventaMenorPcosto
-        '
-        Me.btPventaMenorPcosto.Image = Global.DinoM.My.Resources.Resources.hojaruta
-        Me.btPventaMenorPcosto.ImageTextAlignment = System.Drawing.ContentAlignment.MiddleCenter
-        Me.btPventaMenorPcosto.Name = "btPventaMenorPcosto"
-        Me.btPventaMenorPcosto.SymbolColor = System.Drawing.Color.Empty
-        Me.btPventaMenorPcosto.TileColor = DevComponents.DotNetBar.Metro.eMetroTileColor.Azure
-        Me.btPventaMenorPcosto.TileSize = New System.Drawing.Size(250, 135)
-        '
-        '
-        '
-        Me.btPventaMenorPcosto.TileStyle.BackColor = System.Drawing.Color.Yellow
-        Me.btPventaMenorPcosto.TileStyle.BackColor2 = System.Drawing.Color.MediumOrchid
-        Me.btPventaMenorPcosto.TileStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.btPventaMenorPcosto.TitleText = "COMPARACIÓN DE PRECIOS"
-        '
-        'btRepClientesCel
-        '
-        Me.btRepClientesCel.Image = Global.DinoM.My.Resources.Resources.check_mark
-        Me.btRepClientesCel.ImageTextAlignment = System.Drawing.ContentAlignment.MiddleCenter
-        Me.btRepClientesCel.Name = "btRepClientesCel"
-        Me.btRepClientesCel.SymbolColor = System.Drawing.Color.Empty
-        Me.btRepClientesCel.TileColor = DevComponents.DotNetBar.Metro.eMetroTileColor.DarkBlue
-        Me.btRepClientesCel.TileSize = New System.Drawing.Size(250, 135)
-        '
-        '
-        '
-        Me.btRepClientesCel.TileStyle.BackColor = System.Drawing.SystemColors.HotTrack
-        Me.btRepClientesCel.TileStyle.BackColor2 = System.Drawing.Color.FromArgb(CType(CType(139, Byte), Integer), CType(CType(165, Byte), Integer), CType(CType(42, Byte), Integer), CType(CType(42, Byte), Integer))
-        Me.btRepClientesCel.TileStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.btRepClientesCel.TitleText = "REPORTE CLIENTES CON CELULAR"
-        '
-        'btConsultaPrecios
-        '
-        Me.btConsultaPrecios.Image = Global.DinoM.My.Resources.Resources.precio
-        Me.btConsultaPrecios.ImageTextAlignment = System.Drawing.ContentAlignment.MiddleCenter
-        Me.btConsultaPrecios.Name = "btConsultaPrecios"
-        Me.btConsultaPrecios.SymbolColor = System.Drawing.Color.Empty
-        Me.btConsultaPrecios.TileColor = DevComponents.DotNetBar.Metro.eMetroTileColor.DarkBlue
-        Me.btConsultaPrecios.TileSize = New System.Drawing.Size(250, 135)
-        '
-        '
-        '
-        Me.btConsultaPrecios.TileStyle.BackColor = System.Drawing.Color.Blue
-        Me.btConsultaPrecios.TileStyle.BackColor2 = System.Drawing.Color.Gold
-        Me.btConsultaPrecios.TileStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.btConsultaPrecios.TitleText = "CONSULTA PRECIOS"
-        '
-        'btImpresionPrecios
-        '
-        Me.btImpresionPrecios.Image = Global.DinoM.My.Resources.Resources.impresora2
-        Me.btImpresionPrecios.ImageTextAlignment = System.Drawing.ContentAlignment.MiddleCenter
-        Me.btImpresionPrecios.ItemAlignment = DevComponents.DotNetBar.eItemAlignment.Center
-        Me.btImpresionPrecios.Name = "btImpresionPrecios"
-        Me.btImpresionPrecios.SymbolColor = System.Drawing.Color.Empty
-        Me.btImpresionPrecios.Text = "IMPRESIÓN DE PRECIOS"
-        Me.btImpresionPrecios.TileColor = DevComponents.DotNetBar.Metro.eMetroTileColor.DarkBlue
-        Me.btImpresionPrecios.TileSize = New System.Drawing.Size(250, 135)
-        '
-        '
-        '
-        Me.btImpresionPrecios.TileStyle.BackColor = System.Drawing.Color.LimeGreen
-        Me.btImpresionPrecios.TileStyle.BackColor2 = System.Drawing.Color.Gold
-        Me.btImpresionPrecios.TileStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.btImpresionPrecios.TileStyle.Font = New System.Drawing.Font("Georgia", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btImpresionPrecios.TileStyle.TextLineAlignment = DevComponents.DotNetBar.eStyleTextAlignment.Far
-        Me.btImpresionPrecios.TitleTextAlignment = System.Drawing.ContentAlignment.BottomCenter
-        Me.btImpresionPrecios.TitleTextColor = System.Drawing.Color.Red
-        '
-        'btBitacora
-        '
-        Me.btBitacora.Image = Global.DinoM.My.Resources.Resources.BUSQUEDA
-        Me.btBitacora.ImageTextAlignment = System.Drawing.ContentAlignment.MiddleCenter
-        Me.btBitacora.Name = "btBitacora"
-        Me.btBitacora.SymbolColor = System.Drawing.Color.Empty
-        Me.btBitacora.TileColor = DevComponents.DotNetBar.Metro.eMetroTileColor.Azure
-        Me.btBitacora.TileSize = New System.Drawing.Size(250, 135)
-        '
-        '
-        '
-        Me.btBitacora.TileStyle.BackColor = System.Drawing.Color.Crimson
-        Me.btBitacora.TileStyle.BackColor2 = System.Drawing.Color.DimGray
-        Me.btBitacora.TileStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.btBitacora.TitleText = "BITÁCORA DEL SISTEMA"
-        '
-        'btAlarmaRent
-        '
-        Me.btAlarmaRent.Image = Global.DinoM.My.Resources.Resources.alarma
-        Me.btAlarmaRent.ImageTextAlignment = System.Drawing.ContentAlignment.MiddleCenter
-        Me.btAlarmaRent.ItemAlignment = DevComponents.DotNetBar.eItemAlignment.Center
-        Me.btAlarmaRent.Name = "btAlarmaRent"
-        Me.btAlarmaRent.SymbolColor = System.Drawing.Color.Black
-        Me.btAlarmaRent.TileColor = DevComponents.DotNetBar.Metro.eMetroTileColor.Azure
-        Me.btAlarmaRent.TileSize = New System.Drawing.Size(250, 135)
-        '
-        '
-        '
-        Me.btAlarmaRent.TileStyle.BackColor = System.Drawing.Color.MediumVioletRed
-        Me.btAlarmaRent.TileStyle.BackColor2 = System.Drawing.Color.FromArgb(CType(CType(141, Byte), Integer), CType(CType(30, Byte), Integer), CType(CType(144, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.btAlarmaRent.TileStyle.BorderBottom = DevComponents.DotNetBar.eStyleBorderType.Dot
-        Me.btAlarmaRent.TileStyle.BorderLeft = DevComponents.DotNetBar.eStyleBorderType.Dot
-        Me.btAlarmaRent.TileStyle.BorderRight = DevComponents.DotNetBar.eStyleBorderType.Dot
-        Me.btAlarmaRent.TileStyle.BorderTop = DevComponents.DotNetBar.eStyleBorderType.Dot
-        Me.btAlarmaRent.TileStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.btAlarmaRent.TileStyle.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btAlarmaRent.TileStyle.TextAlignment = DevComponents.DotNetBar.eStyleTextAlignment.Center
-        Me.btAlarmaRent.TitleText = "ALARMA RENTABILIDAD-P.O.C."
-        Me.btAlarmaRent.TitleTextColor = System.Drawing.Color.White
-        '
-        'btHistorialCostos
-        '
-        Me.btHistorialCostos.Image = Global.DinoM.My.Resources.Resources.historial_costos
-        Me.btHistorialCostos.ImageTextAlignment = System.Drawing.ContentAlignment.MiddleCenter
-        Me.btHistorialCostos.Name = "btHistorialCostos"
-        Me.btHistorialCostos.SymbolColor = System.Drawing.Color.Empty
-        Me.btHistorialCostos.TileColor = DevComponents.DotNetBar.Metro.eMetroTileColor.Azure
-        Me.btHistorialCostos.TileSize = New System.Drawing.Size(250, 135)
-        '
-        '
-        '
-        Me.btHistorialCostos.TileStyle.BackColor = System.Drawing.Color.Aqua
-        Me.btHistorialCostos.TileStyle.BackColor2 = System.Drawing.Color.FromArgb(CType(CType(167, Byte), Integer), CType(CType(75, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(130, Byte), Integer))
-        Me.btHistorialCostos.TileStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.btHistorialCostos.TitleText = "HISTORIAL COSTOS"
-        '
-        'PictureBox4
-        '
-        Me.PictureBox4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.PictureBox4.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.PictureBox4.Location = New System.Drawing.Point(0, 492)
-        Me.PictureBox4.Name = "PictureBox4"
-        Me.PictureBox4.Size = New System.Drawing.Size(848, 32)
-        Me.PictureBox4.TabIndex = 2
-        Me.PictureBox4.TabStop = False
-        Me.PictureBox4.Visible = False
-        '
-        'SideNavPanel5
-        '
-        Me.SideNavPanel5.BackColor = System.Drawing.Color.FromArgb(CType(CType(49, Byte), Integer), CType(CType(59, Byte), Integer), CType(CType(66, Byte), Integer))
-        Me.SideNavPanel5.Controls.Add(Me.MetroTilePanel6)
-        Me.SideNavPanel5.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.SideNavPanel5.Location = New System.Drawing.Point(142, 36)
-        Me.SideNavPanel5.Name = "SideNavPanel5"
-        Me.SideNavPanel5.Size = New System.Drawing.Size(848, 524)
-        Me.SideNavPanel5.TabIndex = 87
-        Me.SideNavPanel5.Visible = False
-        '
-        'MetroTilePanel6
-        '
-        Me.MetroTilePanel6.BackColor = System.Drawing.Color.Transparent
-        Me.MetroTilePanel6.BackgroundImage = Global.DinoM.My.Resources.Resources.Fondo_Naranja_1
-        Me.MetroTilePanel6.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        '
-        '
-        '
-        Me.MetroTilePanel6.BackgroundStyle.BackColor = System.Drawing.Color.Transparent
-        Me.MetroTilePanel6.BackgroundStyle.Class = "MetroTilePanel"
-        Me.MetroTilePanel6.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.MetroTilePanel6.ContainerControlProcessDialogKey = True
-        Me.MetroTilePanel6.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.MetroTilePanel6.DragDropSupport = True
-        Me.MetroTilePanel6.Items.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.btInvDeposito, Me.btInvAmacen, Me.btInvMovimiento, Me.btInvKardex, Me.btInvArmDesarmCombo, Me.btInvSaldo, Me.btInvKardexReporte, Me.btInvUtilidad, Me.btInvSaldoLote, Me.btlvSaldoMinimo, Me.btInvVentas, Me.btInvStockDif, Me.btSaldosValoradosExcel, Me.btProdNoCompra, Me.btCalculoPedSugerido, Me.btRevStockVentaProv, Me.btConteoFisico, Me.btStockSisFis, Me.btCalculoPedSugeridoDias, Me.btInvMovimientoProdPeso, Me.btInvKardexProdPeso})
-        Me.MetroTilePanel6.ItemSpacing = 10
-        Me.MetroTilePanel6.Location = New System.Drawing.Point(0, 0)
-        Me.MetroTilePanel6.MultiLine = True
-        Me.MetroTilePanel6.Name = "MetroTilePanel6"
-        Me.MetroTilePanel6.Size = New System.Drawing.Size(848, 524)
-        Me.MetroTilePanel6.TabIndex = 2
-        Me.MetroTilePanel6.Text = "mtp2Logistica"
-        '
-        'btInvDeposito
-        '
-        Me.btInvDeposito.Image = CType(resources.GetObject("btInvDeposito.Image"), System.Drawing.Image)
-        Me.btInvDeposito.ImageTextAlignment = System.Drawing.ContentAlignment.MiddleCenter
-        Me.btInvDeposito.ItemAlignment = DevComponents.DotNetBar.eItemAlignment.Center
-        Me.btInvDeposito.Name = "btInvDeposito"
-        Me.btInvDeposito.SymbolColor = System.Drawing.Color.Empty
-        Me.btInvDeposito.Text = "DEPOSITO"
-        Me.btInvDeposito.TileColor = DevComponents.DotNetBar.Metro.eMetroTileColor.DarkBlue
-        Me.btInvDeposito.TileSize = New System.Drawing.Size(250, 135)
-        '
-        '
-        '
-        Me.btInvDeposito.TileStyle.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(130, Byte), Integer), CType(CType(0, Byte), Integer))
-        Me.btInvDeposito.TileStyle.BackColor2 = System.Drawing.Color.FromArgb(CType(CType(111, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
-        Me.btInvDeposito.TileStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.btInvDeposito.TileStyle.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btInvDeposito.TileStyle.TextLineAlignment = DevComponents.DotNetBar.eStyleTextAlignment.Far
-        Me.btInvDeposito.TitleTextAlignment = System.Drawing.ContentAlignment.BottomCenter
-        Me.btInvDeposito.TitleTextColor = System.Drawing.Color.Red
-        '
-        'btInvAmacen
-        '
-        Me.btInvAmacen.Image = Global.DinoM.My.Resources.Resources.almacen
-        Me.btInvAmacen.ImageTextAlignment = System.Drawing.ContentAlignment.MiddleCenter
-        Me.btInvAmacen.ItemAlignment = DevComponents.DotNetBar.eItemAlignment.Center
-        Me.btInvAmacen.Name = "btInvAmacen"
-        Me.btInvAmacen.SymbolColor = System.Drawing.Color.Empty
-        Me.btInvAmacen.Text = "ALMACEN"
-        Me.btInvAmacen.TileColor = DevComponents.DotNetBar.Metro.eMetroTileColor.Teal
-        Me.btInvAmacen.TileSize = New System.Drawing.Size(250, 135)
-        '
-        '
-        '
-        Me.btInvAmacen.TileStyle.BackColor = System.Drawing.Color.FromArgb(CType(CType(132, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(132, Byte), Integer))
-        Me.btInvAmacen.TileStyle.BackColor2 = System.Drawing.Color.FromArgb(CType(CType(144, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(43, Byte), Integer), CType(CType(226, Byte), Integer))
-        Me.btInvAmacen.TileStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.btInvAmacen.TileStyle.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btInvAmacen.TileStyle.TextLineAlignment = DevComponents.DotNetBar.eStyleTextAlignment.Far
-        Me.btInvAmacen.TitleTextAlignment = System.Drawing.ContentAlignment.BottomCenter
-        Me.btInvAmacen.TitleTextColor = System.Drawing.Color.Red
-        '
-        'btInvMovimiento
-        '
-        Me.btInvMovimiento.Image = CType(resources.GetObject("btInvMovimiento.Image"), System.Drawing.Image)
-        Me.btInvMovimiento.ImageTextAlignment = System.Drawing.ContentAlignment.MiddleCenter
-        Me.btInvMovimiento.ItemAlignment = DevComponents.DotNetBar.eItemAlignment.Center
-        Me.btInvMovimiento.Name = "btInvMovimiento"
-        Me.btInvMovimiento.SymbolColor = System.Drawing.Color.Empty
-        Me.btInvMovimiento.Text = "MOVIMIENTOS"
-        Me.btInvMovimiento.TileColor = DevComponents.DotNetBar.Metro.eMetroTileColor.Blueish
-        Me.btInvMovimiento.TileSize = New System.Drawing.Size(250, 135)
-        '
-        '
-        '
-        Me.btInvMovimiento.TileStyle.BackColor = System.Drawing.SystemColors.Highlight
-        Me.btInvMovimiento.TileStyle.BackColor2 = System.Drawing.SystemColors.GradientInactiveCaption
-        Me.btInvMovimiento.TileStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.btInvMovimiento.TileStyle.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btInvMovimiento.TileStyle.TextLineAlignment = DevComponents.DotNetBar.eStyleTextAlignment.Far
-        Me.btInvMovimiento.TitleTextAlignment = System.Drawing.ContentAlignment.BottomCenter
-        Me.btInvMovimiento.TitleTextColor = System.Drawing.Color.Red
-        '
-        'btInvKardex
-        '
-        Me.btInvKardex.Image = Global.DinoM.My.Resources.Resources.Kardex3
-        Me.btInvKardex.ImageTextAlignment = System.Drawing.ContentAlignment.MiddleCenter
-        Me.btInvKardex.ItemAlignment = DevComponents.DotNetBar.eItemAlignment.Center
-        Me.btInvKardex.Name = "btInvKardex"
-        Me.btInvKardex.SymbolColor = System.Drawing.Color.Empty
-        Me.btInvKardex.Text = "KARDEX DE PRODUCTO"
-        Me.btInvKardex.TileColor = DevComponents.DotNetBar.Metro.eMetroTileColor.DarkBlue
-        Me.btInvKardex.TileSize = New System.Drawing.Size(250, 135)
-        '
-        '
-        '
-        Me.btInvKardex.TileStyle.BackColor = System.Drawing.Color.SeaGreen
-        Me.btInvKardex.TileStyle.BackColor2 = System.Drawing.Color.FromArgb(CType(CType(201, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(102, Byte), Integer), CType(CType(204, Byte), Integer))
-        Me.btInvKardex.TileStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.btInvKardex.TileStyle.Font = New System.Drawing.Font("Georgia", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btInvKardex.TileStyle.TextLineAlignment = DevComponents.DotNetBar.eStyleTextAlignment.Far
-        Me.btInvKardex.TitleTextAlignment = System.Drawing.ContentAlignment.BottomCenter
-        Me.btInvKardex.TitleTextColor = System.Drawing.Color.Red
-        Me.btInvKardex.TitleTextFont = New System.Drawing.Font("Georgia", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        '
-        'btInvArmDesarmCombo
-        '
-        Me.btInvArmDesarmCombo.Image = Global.DinoM.My.Resources.Resources.combo
-        Me.btInvArmDesarmCombo.ImageTextAlignment = System.Drawing.ContentAlignment.MiddleCenter
-        Me.btInvArmDesarmCombo.ItemAlignment = DevComponents.DotNetBar.eItemAlignment.Center
-        Me.btInvArmDesarmCombo.Name = "btInvArmDesarmCombo"
-        Me.btInvArmDesarmCombo.SymbolColor = System.Drawing.Color.Empty
-        Me.btInvArmDesarmCombo.Text = "ARMADO Y DESARMADO DE COMBOS"
-        Me.btInvArmDesarmCombo.TileColor = DevComponents.DotNetBar.Metro.eMetroTileColor.DarkBlue
-        Me.btInvArmDesarmCombo.TileSize = New System.Drawing.Size(250, 135)
-        '
-        '
-        '
-        Me.btInvArmDesarmCombo.TileStyle.BackColor = System.Drawing.Color.BlueViolet
-        Me.btInvArmDesarmCombo.TileStyle.BackColor2 = System.Drawing.SystemColors.WindowFrame
-        Me.btInvArmDesarmCombo.TileStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.btInvArmDesarmCombo.TileStyle.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btInvArmDesarmCombo.TileStyle.TextLineAlignment = DevComponents.DotNetBar.eStyleTextAlignment.Far
-        Me.btInvArmDesarmCombo.TitleTextAlignment = System.Drawing.ContentAlignment.BottomCenter
-        Me.btInvArmDesarmCombo.TitleTextColor = System.Drawing.Color.Red
-        '
-        'btInvSaldo
-        '
-        Me.btInvSaldo.Image = CType(resources.GetObject("btInvSaldo.Image"), System.Drawing.Image)
-        Me.btInvSaldo.ImageTextAlignment = System.Drawing.ContentAlignment.MiddleCenter
-        Me.btInvSaldo.ItemAlignment = DevComponents.DotNetBar.eItemAlignment.Center
-        Me.btInvSaldo.Name = "btInvSaldo"
-        Me.btInvSaldo.SymbolColor = System.Drawing.Color.Empty
-        Me.btInvSaldo.Text = "SALDO DE PRODUCTOS"
-        Me.btInvSaldo.TileColor = DevComponents.DotNetBar.Metro.eMetroTileColor.Olive
-        Me.btInvSaldo.TileSize = New System.Drawing.Size(250, 135)
-        '
-        '
-        '
-        Me.btInvSaldo.TileStyle.BackColor = System.Drawing.Color.Crimson
-        Me.btInvSaldo.TileStyle.BackColor2 = System.Drawing.Color.DimGray
-        Me.btInvSaldo.TileStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.btInvSaldo.TileStyle.Font = New System.Drawing.Font("Georgia", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btInvSaldo.TileStyle.TextLineAlignment = DevComponents.DotNetBar.eStyleTextAlignment.Far
-        Me.btInvSaldo.TitleTextAlignment = System.Drawing.ContentAlignment.BottomCenter
-        Me.btInvSaldo.TitleTextColor = System.Drawing.Color.Red
-        '
-        'btInvKardexReporte
-        '
-        Me.btInvKardexReporte.Image = Global.DinoM.My.Resources.Resources._14
-        Me.btInvKardexReporte.ImageTextAlignment = System.Drawing.ContentAlignment.MiddleCenter
-        Me.btInvKardexReporte.ItemAlignment = DevComponents.DotNetBar.eItemAlignment.Center
-        Me.btInvKardexReporte.Name = "btInvKardexReporte"
-        Me.btInvKardexReporte.SymbolColor = System.Drawing.Color.Empty
-        Me.btInvKardexReporte.Text = "REPORTE KARDEX PRODUCTO"
-        Me.btInvKardexReporte.TileColor = DevComponents.DotNetBar.Metro.eMetroTileColor.DarkBlue
-        Me.btInvKardexReporte.TileSize = New System.Drawing.Size(250, 135)
-        '
-        '
-        '
-        Me.btInvKardexReporte.TileStyle.BackColor = System.Drawing.SystemColors.HotTrack
-        Me.btInvKardexReporte.TileStyle.BackColor2 = System.Drawing.Color.FromArgb(CType(CType(196, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(43, Byte), Integer), CType(CType(226, Byte), Integer))
-        Me.btInvKardexReporte.TileStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.btInvKardexReporte.TileStyle.Font = New System.Drawing.Font("Georgia", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btInvKardexReporte.TileStyle.TextLineAlignment = DevComponents.DotNetBar.eStyleTextAlignment.Far
-        Me.btInvKardexReporte.TitleTextAlignment = System.Drawing.ContentAlignment.BottomCenter
-        Me.btInvKardexReporte.TitleTextColor = System.Drawing.Color.Red
-        '
-        'btInvUtilidad
-        '
-        Me.btInvUtilidad.Image = Global.DinoM.My.Resources.Resources.rp_estadoCuentas
-        Me.btInvUtilidad.ImageTextAlignment = System.Drawing.ContentAlignment.MiddleCenter
-        Me.btInvUtilidad.ItemAlignment = DevComponents.DotNetBar.eItemAlignment.Center
-        Me.btInvUtilidad.Name = "btInvUtilidad"
-        Me.btInvUtilidad.SymbolColor = System.Drawing.Color.Empty
-        Me.btInvUtilidad.Text = "SALDOS VALORADOS"
-        Me.btInvUtilidad.TileColor = DevComponents.DotNetBar.Metro.eMetroTileColor.DarkBlue
-        Me.btInvUtilidad.TileSize = New System.Drawing.Size(250, 135)
-        '
-        '
-        '
-        Me.btInvUtilidad.TileStyle.BackColor = System.Drawing.Color.FromArgb(CType(CType(170, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(43, Byte), Integer), CType(CType(226, Byte), Integer))
-        Me.btInvUtilidad.TileStyle.BackColor2 = System.Drawing.SystemColors.HotTrack
-        Me.btInvUtilidad.TileStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.btInvUtilidad.TileStyle.Font = New System.Drawing.Font("Georgia", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btInvUtilidad.TileStyle.TextLineAlignment = DevComponents.DotNetBar.eStyleTextAlignment.Far
-        Me.btInvUtilidad.TitleTextAlignment = System.Drawing.ContentAlignment.BottomCenter
-        Me.btInvUtilidad.TitleTextColor = System.Drawing.Color.Red
-        '
-        'btInvSaldoLote
-        '
-        Me.btInvSaldoLote.Image = CType(resources.GetObject("btInvSaldoLote.Image"), System.Drawing.Image)
-        Me.btInvSaldoLote.ImageTextAlignment = System.Drawing.ContentAlignment.MiddleCenter
-        Me.btInvSaldoLote.ItemAlignment = DevComponents.DotNetBar.eItemAlignment.Center
-        Me.btInvSaldoLote.Name = "btInvSaldoLote"
-        Me.btInvSaldoLote.SymbolColor = System.Drawing.Color.Empty
-        Me.btInvSaldoLote.Text = "SALDO POR LOTES"
-        Me.btInvSaldoLote.TileColor = DevComponents.DotNetBar.Metro.eMetroTileColor.Olive
-        Me.btInvSaldoLote.TileSize = New System.Drawing.Size(250, 135)
-        '
-        '
-        '
-        Me.btInvSaldoLote.TileStyle.BackColor = System.Drawing.Color.FromArgb(CType(CType(215, Byte), Integer), CType(CType(47, Byte), Integer), CType(CType(79, Byte), Integer), CType(CType(79, Byte), Integer))
-        Me.btInvSaldoLote.TileStyle.BackColor2 = System.Drawing.Color.DarkGreen
-        Me.btInvSaldoLote.TileStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.btInvSaldoLote.TileStyle.Font = New System.Drawing.Font("Georgia", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btInvSaldoLote.TileStyle.TextLineAlignment = DevComponents.DotNetBar.eStyleTextAlignment.Far
-        Me.btInvSaldoLote.TitleTextAlignment = System.Drawing.ContentAlignment.BottomCenter
-        Me.btInvSaldoLote.TitleTextColor = System.Drawing.Color.Red
-        '
-        'btlvSaldoMinimo
-        '
-        Me.btlvSaldoMinimo.Image = CType(resources.GetObject("btlvSaldoMinimo.Image"), System.Drawing.Image)
-        Me.btlvSaldoMinimo.ImageTextAlignment = System.Drawing.ContentAlignment.MiddleCenter
-        Me.btlvSaldoMinimo.ItemAlignment = DevComponents.DotNetBar.eItemAlignment.Center
-        Me.btlvSaldoMinimo.Name = "btlvSaldoMinimo"
-        Me.btlvSaldoMinimo.SymbolColor = System.Drawing.Color.Empty
-        Me.btlvSaldoMinimo.Text = "SALDOS MENORES AL STOCK MIN."
-        Me.btlvSaldoMinimo.TileColor = DevComponents.DotNetBar.Metro.eMetroTileColor.Olive
-        Me.btlvSaldoMinimo.TileSize = New System.Drawing.Size(250, 135)
-        '
-        '
-        '
-        Me.btlvSaldoMinimo.TileStyle.BackColor = System.Drawing.Color.LimeGreen
-        Me.btlvSaldoMinimo.TileStyle.BackColor2 = System.Drawing.Color.Gold
-        Me.btlvSaldoMinimo.TileStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.btlvSaldoMinimo.TileStyle.Font = New System.Drawing.Font("Georgia", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btlvSaldoMinimo.TileStyle.TextLineAlignment = DevComponents.DotNetBar.eStyleTextAlignment.Far
-        Me.btlvSaldoMinimo.TitleTextAlignment = System.Drawing.ContentAlignment.BottomCenter
-        Me.btlvSaldoMinimo.TitleTextColor = System.Drawing.Color.Red
-        '
-        'btInvVentas
-        '
-        Me.btInvVentas.Image = CType(resources.GetObject("btInvVentas.Image"), System.Drawing.Image)
-        Me.btInvVentas.ImageTextAlignment = System.Drawing.ContentAlignment.MiddleCenter
-        Me.btInvVentas.ItemAlignment = DevComponents.DotNetBar.eItemAlignment.Center
-        Me.btInvVentas.Name = "btInvVentas"
-        Me.btInvVentas.SymbolColor = System.Drawing.Color.Empty
-        Me.btInvVentas.Text = "VENTAS"
-        Me.btInvVentas.TileColor = DevComponents.DotNetBar.Metro.eMetroTileColor.Plum
-        Me.btInvVentas.TileSize = New System.Drawing.Size(250, 135)
-        '
-        '
-        '
-        Me.btInvVentas.TileStyle.BackColor = System.Drawing.SystemColors.HotTrack
-        Me.btInvVentas.TileStyle.BackColor2 = System.Drawing.Color.FromArgb(CType(CType(215, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(43, Byte), Integer), CType(CType(226, Byte), Integer))
-        Me.btInvVentas.TileStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.btInvVentas.TileStyle.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btInvVentas.TileStyle.TextLineAlignment = DevComponents.DotNetBar.eStyleTextAlignment.Far
-        Me.btInvVentas.TitleTextAlignment = System.Drawing.ContentAlignment.BottomCenter
-        Me.btInvVentas.TitleTextColor = System.Drawing.Color.Red
-        '
-        'btInvStockDif
-        '
-        Me.btInvStockDif.Image = Global.DinoM.My.Resources.Resources.hojaruta
-        Me.btInvStockDif.ImageTextAlignment = System.Drawing.ContentAlignment.MiddleCenter
-        Me.btInvStockDif.ItemAlignment = DevComponents.DotNetBar.eItemAlignment.Center
-        Me.btInvStockDif.Name = "btInvStockDif"
-        Me.btInvStockDif.SymbolColor = System.Drawing.Color.Empty
-        Me.btInvStockDif.Text = "STOCK DIFERENCIA"
-        Me.btInvStockDif.TileColor = DevComponents.DotNetBar.Metro.eMetroTileColor.DarkBlue
-        Me.btInvStockDif.TileSize = New System.Drawing.Size(250, 135)
-        '
-        '
-        '
-        Me.btInvStockDif.TileStyle.BackColor = System.Drawing.SystemColors.HotTrack
-        Me.btInvStockDif.TileStyle.BackColor2 = System.Drawing.Color.FromArgb(CType(CType(170, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(43, Byte), Integer), CType(CType(226, Byte), Integer))
-        Me.btInvStockDif.TileStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.btInvStockDif.TileStyle.Font = New System.Drawing.Font("Georgia", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btInvStockDif.TileStyle.TextLineAlignment = DevComponents.DotNetBar.eStyleTextAlignment.Far
-        Me.btInvStockDif.TitleTextAlignment = System.Drawing.ContentAlignment.BottomCenter
-        Me.btInvStockDif.TitleTextColor = System.Drawing.Color.Red
-        '
-        'btSaldosValoradosExcel
-        '
-        Me.btSaldosValoradosExcel.Image = Global.DinoM.My.Resources.Resources.cuentas
-        Me.btSaldosValoradosExcel.ImageTextAlignment = System.Drawing.ContentAlignment.MiddleCenter
-        Me.btSaldosValoradosExcel.ItemAlignment = DevComponents.DotNetBar.eItemAlignment.Center
-        Me.btSaldosValoradosExcel.Name = "btSaldosValoradosExcel"
-        Me.btSaldosValoradosExcel.SymbolColor = System.Drawing.Color.Empty
-        Me.btSaldosValoradosExcel.Text = "SALDOS VALORADOS EXCEL"
-        Me.btSaldosValoradosExcel.TileColor = DevComponents.DotNetBar.Metro.eMetroTileColor.Teal
-        Me.btSaldosValoradosExcel.TileSize = New System.Drawing.Size(250, 135)
-        '
-        '
-        '
-        Me.btSaldosValoradosExcel.TileStyle.BackColor = System.Drawing.Color.FromArgb(CType(CType(132, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(132, Byte), Integer))
-        Me.btSaldosValoradosExcel.TileStyle.BackColor2 = System.Drawing.Color.FromArgb(CType(CType(144, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(43, Byte), Integer), CType(CType(226, Byte), Integer))
-        Me.btSaldosValoradosExcel.TileStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.btSaldosValoradosExcel.TileStyle.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btSaldosValoradosExcel.TileStyle.TextLineAlignment = DevComponents.DotNetBar.eStyleTextAlignment.Far
-        Me.btSaldosValoradosExcel.TitleTextAlignment = System.Drawing.ContentAlignment.BottomCenter
-        Me.btSaldosValoradosExcel.TitleTextColor = System.Drawing.Color.Red
-        '
-        'btProdNoCompra
-        '
-        Me.btProdNoCompra.Image = Global.DinoM.My.Resources.Resources._14
-        Me.btProdNoCompra.ImageTextAlignment = System.Drawing.ContentAlignment.MiddleCenter
-        Me.btProdNoCompra.ItemAlignment = DevComponents.DotNetBar.eItemAlignment.Center
-        Me.btProdNoCompra.Name = "btProdNoCompra"
-        Me.btProdNoCompra.SymbolColor = System.Drawing.Color.Empty
-        Me.btProdNoCompra.Text = "REP. PROD. NO ENTRARON POR COMPRA"
-        Me.btProdNoCompra.TileColor = DevComponents.DotNetBar.Metro.eMetroTileColor.DarkBlue
-        Me.btProdNoCompra.TileSize = New System.Drawing.Size(250, 135)
-        '
-        '
-        '
-        Me.btProdNoCompra.TileStyle.BackColor = System.Drawing.Color.DarkCyan
-        Me.btProdNoCompra.TileStyle.BackColor2 = System.Drawing.Color.DarkCyan
-        Me.btProdNoCompra.TileStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.btProdNoCompra.TileStyle.Font = New System.Drawing.Font("Georgia", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btProdNoCompra.TileStyle.TextLineAlignment = DevComponents.DotNetBar.eStyleTextAlignment.Far
-        Me.btProdNoCompra.TitleTextAlignment = System.Drawing.ContentAlignment.BottomCenter
-        Me.btProdNoCompra.TitleTextColor = System.Drawing.Color.Red
-        '
-        'btCalculoPedSugerido
-        '
-        Me.btCalculoPedSugerido.Image = CType(resources.GetObject("btCalculoPedSugerido.Image"), System.Drawing.Image)
-        Me.btCalculoPedSugerido.ImageTextAlignment = System.Drawing.ContentAlignment.MiddleCenter
-        Me.btCalculoPedSugerido.ItemAlignment = DevComponents.DotNetBar.eItemAlignment.Center
-        Me.btCalculoPedSugerido.Name = "btCalculoPedSugerido"
-        Me.btCalculoPedSugerido.SymbolColor = System.Drawing.Color.Empty
-        Me.btCalculoPedSugerido.Text = "PEDIDO SUGERIDO SEMANAS"
-        Me.btCalculoPedSugerido.TileColor = DevComponents.DotNetBar.Metro.eMetroTileColor.DarkBlue
-        Me.btCalculoPedSugerido.TileSize = New System.Drawing.Size(250, 135)
-        '
-        '
-        '
-        Me.btCalculoPedSugerido.TileStyle.BackColor = System.Drawing.Color.Fuchsia
-        Me.btCalculoPedSugerido.TileStyle.BackColor2 = System.Drawing.Color.FromArgb(CType(CType(111, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
-        Me.btCalculoPedSugerido.TileStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.btCalculoPedSugerido.TileStyle.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btCalculoPedSugerido.TileStyle.TextLineAlignment = DevComponents.DotNetBar.eStyleTextAlignment.Far
-        Me.btCalculoPedSugerido.TitleTextAlignment = System.Drawing.ContentAlignment.BottomCenter
-        Me.btCalculoPedSugerido.TitleTextColor = System.Drawing.Color.Red
-        '
-        'btRevStockVentaProv
-        '
-        Me.btRevStockVentaProv.Image = Global.DinoM.My.Resources.Resources._14
-        Me.btRevStockVentaProv.ImageTextAlignment = System.Drawing.ContentAlignment.MiddleCenter
-        Me.btRevStockVentaProv.ItemAlignment = DevComponents.DotNetBar.eItemAlignment.Center
-        Me.btRevStockVentaProv.Name = "btRevStockVentaProv"
-        Me.btRevStockVentaProv.SymbolColor = System.Drawing.Color.Empty
-        Me.btRevStockVentaProv.Text = "REVISIÓN STOCK-VENTA PROVEEDORES"
-        Me.btRevStockVentaProv.TileColor = DevComponents.DotNetBar.Metro.eMetroTileColor.Olive
-        Me.btRevStockVentaProv.TileSize = New System.Drawing.Size(250, 135)
-        '
-        '
-        '
-        Me.btRevStockVentaProv.TileStyle.BackColor = System.Drawing.Color.SeaGreen
-        Me.btRevStockVentaProv.TileStyle.BackColor2 = System.Drawing.SystemColors.ActiveBorder
-        Me.btRevStockVentaProv.TileStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.btRevStockVentaProv.TileStyle.Font = New System.Drawing.Font("Georgia", 8.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btRevStockVentaProv.TileStyle.TextLineAlignment = DevComponents.DotNetBar.eStyleTextAlignment.Far
-        Me.btRevStockVentaProv.TitleTextAlignment = System.Drawing.ContentAlignment.BottomCenter
-        Me.btRevStockVentaProv.TitleTextColor = System.Drawing.Color.Red
-        '
-        'btConteoFisico
-        '
-        Me.btConteoFisico.Image = Global.DinoM.My.Resources.Resources.check_mark
-        Me.btConteoFisico.ImageTextAlignment = System.Drawing.ContentAlignment.MiddleCenter
-        Me.btConteoFisico.ItemAlignment = DevComponents.DotNetBar.eItemAlignment.Center
-        Me.btConteoFisico.Name = "btConteoFisico"
-        Me.btConteoFisico.SymbolColor = System.Drawing.Color.Empty
-        Me.btConteoFisico.Text = "CONTEO FÍSICO"
-        Me.btConteoFisico.TileColor = DevComponents.DotNetBar.Metro.eMetroTileColor.Magenta
-        Me.btConteoFisico.TileSize = New System.Drawing.Size(250, 135)
-        '
-        '
-        '
-        Me.btConteoFisico.TileStyle.BackColor = System.Drawing.Color.Red
-        Me.btConteoFisico.TileStyle.BackColor2 = System.Drawing.Color.Gray
-        Me.btConteoFisico.TileStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.btConteoFisico.TileStyle.Font = New System.Drawing.Font("Georgia", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btConteoFisico.TileStyle.TextLineAlignment = DevComponents.DotNetBar.eStyleTextAlignment.Far
-        Me.btConteoFisico.TitleTextAlignment = System.Drawing.ContentAlignment.BottomCenter
-        Me.btConteoFisico.TitleTextColor = System.Drawing.Color.Red
-        '
-        'btStockSisFis
-        '
-        Me.btStockSisFis.Image = Global.DinoM.My.Resources.Resources.hojaruta
-        Me.btStockSisFis.ImageTextAlignment = System.Drawing.ContentAlignment.MiddleCenter
-        Me.btStockSisFis.ItemAlignment = DevComponents.DotNetBar.eItemAlignment.Center
-        Me.btStockSisFis.Name = "btStockSisFis"
-        Me.btStockSisFis.SymbolColor = System.Drawing.Color.Empty
-        Me.btStockSisFis.Text = "STOCK SISTEMA VS. FÍSICO"
-        Me.btStockSisFis.TileColor = DevComponents.DotNetBar.Metro.eMetroTileColor.Olive
-        Me.btStockSisFis.TileSize = New System.Drawing.Size(250, 135)
-        '
-        '
-        '
-        Me.btStockSisFis.TileStyle.BackColor = System.Drawing.Color.FromArgb(CType(CType(215, Byte), Integer), CType(CType(47, Byte), Integer), CType(CType(79, Byte), Integer), CType(CType(79, Byte), Integer))
-        Me.btStockSisFis.TileStyle.BackColor2 = System.Drawing.Color.GreenYellow
-        Me.btStockSisFis.TileStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.btStockSisFis.TileStyle.Font = New System.Drawing.Font("Georgia", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btStockSisFis.TileStyle.TextLineAlignment = DevComponents.DotNetBar.eStyleTextAlignment.Far
-        Me.btStockSisFis.TitleTextAlignment = System.Drawing.ContentAlignment.BottomCenter
-        Me.btStockSisFis.TitleTextColor = System.Drawing.Color.Red
-        '
-        'btCalculoPedSugeridoDias
-        '
-        Me.btCalculoPedSugeridoDias.Image = CType(resources.GetObject("btCalculoPedSugeridoDias.Image"), System.Drawing.Image)
-        Me.btCalculoPedSugeridoDias.ImageTextAlignment = System.Drawing.ContentAlignment.MiddleCenter
-        Me.btCalculoPedSugeridoDias.ItemAlignment = DevComponents.DotNetBar.eItemAlignment.Center
-        Me.btCalculoPedSugeridoDias.Name = "btCalculoPedSugeridoDias"
-        Me.btCalculoPedSugeridoDias.SymbolColor = System.Drawing.Color.Empty
-        Me.btCalculoPedSugeridoDias.Text = "PEDIDO SUGERIDO DÍAS"
-        Me.btCalculoPedSugeridoDias.TileColor = DevComponents.DotNetBar.Metro.eMetroTileColor.DarkBlue
-        Me.btCalculoPedSugeridoDias.TileSize = New System.Drawing.Size(250, 135)
-        '
-        '
-        '
-        Me.btCalculoPedSugeridoDias.TileStyle.BackColor = System.Drawing.Color.MediumBlue
-        Me.btCalculoPedSugeridoDias.TileStyle.BackColor2 = System.Drawing.SystemColors.MenuHighlight
-        Me.btCalculoPedSugeridoDias.TileStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.btCalculoPedSugeridoDias.TileStyle.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btCalculoPedSugeridoDias.TileStyle.TextLineAlignment = DevComponents.DotNetBar.eStyleTextAlignment.Far
-        Me.btCalculoPedSugeridoDias.TitleTextAlignment = System.Drawing.ContentAlignment.BottomCenter
-        Me.btCalculoPedSugeridoDias.TitleTextColor = System.Drawing.Color.Red
-        '
-        'btInvMovimientoProdPeso
-        '
-        Me.btInvMovimientoProdPeso.Image = CType(resources.GetObject("btInvMovimientoProdPeso.Image"), System.Drawing.Image)
-        Me.btInvMovimientoProdPeso.ImageTextAlignment = System.Drawing.ContentAlignment.MiddleCenter
-        Me.btInvMovimientoProdPeso.ItemAlignment = DevComponents.DotNetBar.eItemAlignment.Center
-        Me.btInvMovimientoProdPeso.Name = "btInvMovimientoProdPeso"
-        Me.btInvMovimientoProdPeso.SymbolColor = System.Drawing.Color.Empty
-        Me.btInvMovimientoProdPeso.Text = "MOVIMIENTO DE PROD. POR PESO"
-        Me.btInvMovimientoProdPeso.TileColor = DevComponents.DotNetBar.Metro.eMetroTileColor.Blueish
-        Me.btInvMovimientoProdPeso.TileSize = New System.Drawing.Size(250, 135)
-        '
-        '
-        '
-        Me.btInvMovimientoProdPeso.TileStyle.BackColor = System.Drawing.Color.BlueViolet
-        Me.btInvMovimientoProdPeso.TileStyle.BackColor2 = System.Drawing.SystemColors.WindowFrame
-        Me.btInvMovimientoProdPeso.TileStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.btInvMovimientoProdPeso.TileStyle.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btInvMovimientoProdPeso.TileStyle.TextLineAlignment = DevComponents.DotNetBar.eStyleTextAlignment.Far
-        Me.btInvMovimientoProdPeso.TitleTextAlignment = System.Drawing.ContentAlignment.BottomCenter
-        Me.btInvMovimientoProdPeso.TitleTextColor = System.Drawing.Color.Red
-        '
-        'btInvKardexProdPeso
-        '
-        Me.btInvKardexProdPeso.Image = Global.DinoM.My.Resources.Resources.Kardex2
-        Me.btInvKardexProdPeso.ImageTextAlignment = System.Drawing.ContentAlignment.MiddleCenter
-        Me.btInvKardexProdPeso.ItemAlignment = DevComponents.DotNetBar.eItemAlignment.Center
-        Me.btInvKardexProdPeso.Name = "btInvKardexProdPeso"
-        Me.btInvKardexProdPeso.SymbolColor = System.Drawing.Color.Empty
-        Me.btInvKardexProdPeso.Text = "KARDEX DE PRODUCTOS POR PESO"
-        Me.btInvKardexProdPeso.TileColor = DevComponents.DotNetBar.Metro.eMetroTileColor.DarkBlue
-        Me.btInvKardexProdPeso.TileSize = New System.Drawing.Size(250, 135)
-        '
-        '
-        '
-        Me.btInvKardexProdPeso.TileStyle.BackColor = System.Drawing.Color.Aqua
-        Me.btInvKardexProdPeso.TileStyle.BackColor2 = System.Drawing.Color.FromArgb(CType(CType(111, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
-        Me.btInvKardexProdPeso.TileStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.btInvKardexProdPeso.TileStyle.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btInvKardexProdPeso.TileStyle.TextLineAlignment = DevComponents.DotNetBar.eStyleTextAlignment.Far
-        Me.btInvKardexProdPeso.TitleTextAlignment = System.Drawing.ContentAlignment.BottomCenter
-        Me.btInvKardexProdPeso.TitleTextColor = System.Drawing.Color.Red
         '
         'SideNav_Ventas
         '
@@ -2109,6 +1166,1177 @@ Partial Class P_Principal
         Me.btInvRepProdVales.TitleTextAlignment = System.Drawing.ContentAlignment.BottomCenter
         Me.btInvRepProdVales.TitleTextColor = System.Drawing.Color.Red
         '
+        'SideNavPanel6
+        '
+        Me.SideNavPanel6.BackColor = System.Drawing.Color.Transparent
+        Me.SideNavPanel6.BackgroundImage = Global.DinoM.My.Resources.Resources.Fondo_empresarial
+        Me.SideNavPanel6.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.SideNavPanel6.Controls.Add(Me.MetroTilePanel7)
+        Me.SideNavPanel6.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.SideNavPanel6.ForeColor = System.Drawing.Color.Transparent
+        Me.SideNavPanel6.Location = New System.Drawing.Point(142, 36)
+        Me.SideNavPanel6.Name = "SideNavPanel6"
+        Me.SideNavPanel6.Size = New System.Drawing.Size(848, 524)
+        Me.SideNavPanel6.TabIndex = 109
+        Me.SideNavPanel6.Visible = False
+        '
+        'MetroTilePanel7
+        '
+        Me.MetroTilePanel7.BackColor = System.Drawing.Color.Transparent
+        Me.MetroTilePanel7.BackgroundImage = Global.DinoM.My.Resources.Resources.Fondo_Naranja_1
+        Me.MetroTilePanel7.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        '
+        '
+        '
+        Me.MetroTilePanel7.BackgroundStyle.BackColor = System.Drawing.Color.Transparent
+        Me.MetroTilePanel7.BackgroundStyle.Class = "MetroTilePanel"
+        Me.MetroTilePanel7.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.MetroTilePanel7.ContainerControlProcessDialogKey = True
+        Me.MetroTilePanel7.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.MetroTilePanel7.DragDropSupport = True
+        Me.MetroTilePanel7.Items.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.btComProveedor, Me.btComCompra, Me.btComPagosCredito, Me.btComEstadoCuentas, Me.btEstadoCuentasProveedores, Me.btEstadoCuentasProveedoresTodos, Me.btComprasDet})
+        Me.MetroTilePanel7.ItemSpacing = 10
+        Me.MetroTilePanel7.Location = New System.Drawing.Point(0, 0)
+        Me.MetroTilePanel7.MultiLine = True
+        Me.MetroTilePanel7.Name = "MetroTilePanel7"
+        Me.MetroTilePanel7.Size = New System.Drawing.Size(848, 524)
+        Me.MetroTilePanel7.TabIndex = 2
+        Me.MetroTilePanel7.Text = "mtp2Logistica"
+        '
+        'btComProveedor
+        '
+        Me.btComProveedor.Image = Global.DinoM.My.Resources.Resources.user
+        Me.btComProveedor.ImageTextAlignment = System.Drawing.ContentAlignment.MiddleCenter
+        Me.btComProveedor.ItemAlignment = DevComponents.DotNetBar.eItemAlignment.Center
+        Me.btComProveedor.Name = "btComProveedor"
+        Me.btComProveedor.SymbolColor = System.Drawing.Color.Empty
+        Me.btComProveedor.Text = "PROVEEDOR"
+        Me.btComProveedor.TileColor = DevComponents.DotNetBar.Metro.eMetroTileColor.DarkBlue
+        Me.btComProveedor.TileSize = New System.Drawing.Size(250, 135)
+        '
+        '
+        '
+        Me.btComProveedor.TileStyle.BackColor = System.Drawing.Color.FromArgb(CType(CType(132, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(132, Byte), Integer))
+        Me.btComProveedor.TileStyle.BackColor2 = System.Drawing.Color.FromArgb(CType(CType(105, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
+        Me.btComProveedor.TileStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.btComProveedor.TileStyle.Font = New System.Drawing.Font("Georgia", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btComProveedor.TileStyle.TextLineAlignment = DevComponents.DotNetBar.eStyleTextAlignment.Far
+        Me.btComProveedor.TitleTextAlignment = System.Drawing.ContentAlignment.BottomCenter
+        Me.btComProveedor.TitleTextColor = System.Drawing.Color.Red
+        '
+        'btComCompra
+        '
+        Me.btComCompra.Image = CType(resources.GetObject("btComCompra.Image"), System.Drawing.Image)
+        Me.btComCompra.ImageTextAlignment = System.Drawing.ContentAlignment.MiddleCenter
+        Me.btComCompra.ItemAlignment = DevComponents.DotNetBar.eItemAlignment.Center
+        Me.btComCompra.Name = "btComCompra"
+        Me.btComCompra.SymbolColor = System.Drawing.Color.Empty
+        Me.btComCompra.Text = "COMPRA"
+        Me.btComCompra.TileColor = DevComponents.DotNetBar.Metro.eMetroTileColor.Teal
+        Me.btComCompra.TileSize = New System.Drawing.Size(250, 135)
+        '
+        '
+        '
+        Me.btComCompra.TileStyle.BackColor = System.Drawing.Color.MediumVioletRed
+        Me.btComCompra.TileStyle.BackColor2 = System.Drawing.Color.Red
+        Me.btComCompra.TileStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.btComCompra.TileStyle.Font = New System.Drawing.Font("Georgia", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btComCompra.TileStyle.TextLineAlignment = DevComponents.DotNetBar.eStyleTextAlignment.Far
+        Me.btComCompra.TitleTextAlignment = System.Drawing.ContentAlignment.BottomCenter
+        Me.btComCompra.TitleTextColor = System.Drawing.Color.Red
+        '
+        'btComPagosCredito
+        '
+        Me.btComPagosCredito.Image = Global.DinoM.My.Resources.Resources.precio
+        Me.btComPagosCredito.ImageTextAlignment = System.Drawing.ContentAlignment.MiddleCenter
+        Me.btComPagosCredito.ItemAlignment = DevComponents.DotNetBar.eItemAlignment.Center
+        Me.btComPagosCredito.Name = "btComPagosCredito"
+        Me.btComPagosCredito.SymbolColor = System.Drawing.Color.Empty
+        Me.btComPagosCredito.Text = "PAGOS COMPRA CREDITOS"
+        Me.btComPagosCredito.TileColor = DevComponents.DotNetBar.Metro.eMetroTileColor.Blueish
+        Me.btComPagosCredito.TileSize = New System.Drawing.Size(250, 135)
+        '
+        '
+        '
+        Me.btComPagosCredito.TileStyle.BackColor = System.Drawing.Color.Blue
+        Me.btComPagosCredito.TileStyle.BackColor2 = System.Drawing.Color.FromArgb(CType(CType(187, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
+        Me.btComPagosCredito.TileStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.btComPagosCredito.TileStyle.Font = New System.Drawing.Font("Georgia", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btComPagosCredito.TileStyle.TextLineAlignment = DevComponents.DotNetBar.eStyleTextAlignment.Far
+        Me.btComPagosCredito.TitleTextAlignment = System.Drawing.ContentAlignment.BottomCenter
+        Me.btComPagosCredito.TitleTextColor = System.Drawing.Color.Red
+        '
+        'btComEstadoCuentas
+        '
+        Me.btComEstadoCuentas.Image = Global.DinoM.My.Resources.Resources.rp_estadoCuentas
+        Me.btComEstadoCuentas.ImageTextAlignment = System.Drawing.ContentAlignment.MiddleCenter
+        Me.btComEstadoCuentas.ItemAlignment = DevComponents.DotNetBar.eItemAlignment.Center
+        Me.btComEstadoCuentas.Name = "btComEstadoCuentas"
+        Me.btComEstadoCuentas.SymbolColor = System.Drawing.Color.Empty
+        Me.btComEstadoCuentas.Text = "ESTADO DE CUENTAS"
+        Me.btComEstadoCuentas.TileColor = DevComponents.DotNetBar.Metro.eMetroTileColor.Teal
+        Me.btComEstadoCuentas.TileSize = New System.Drawing.Size(250, 135)
+        '
+        '
+        '
+        Me.btComEstadoCuentas.TileStyle.BackColor = System.Drawing.Color.Gold
+        Me.btComEstadoCuentas.TileStyle.BackColor2 = System.Drawing.Color.FromArgb(CType(CType(178, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
+        Me.btComEstadoCuentas.TileStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.btComEstadoCuentas.TileStyle.Font = New System.Drawing.Font("Georgia", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btComEstadoCuentas.TileStyle.TextLineAlignment = DevComponents.DotNetBar.eStyleTextAlignment.Far
+        Me.btComEstadoCuentas.TitleTextAlignment = System.Drawing.ContentAlignment.BottomCenter
+        Me.btComEstadoCuentas.TitleTextColor = System.Drawing.Color.Red
+        '
+        'btEstadoCuentasProveedores
+        '
+        Me.btEstadoCuentasProveedores.Image = Global.DinoM.My.Resources.Resources.cuentas
+        Me.btEstadoCuentasProveedores.ImageTextAlignment = System.Drawing.ContentAlignment.MiddleCenter
+        Me.btEstadoCuentasProveedores.ItemAlignment = DevComponents.DotNetBar.eItemAlignment.Center
+        Me.btEstadoCuentasProveedores.Name = "btEstadoCuentasProveedores"
+        Me.btEstadoCuentasProveedores.SymbolColor = System.Drawing.Color.Empty
+        Me.btEstadoCuentasProveedores.Text = "ESTADO DE CUENTAS PROVEEDORES"
+        Me.btEstadoCuentasProveedores.TileColor = DevComponents.DotNetBar.Metro.eMetroTileColor.Teal
+        Me.btEstadoCuentasProveedores.TileSize = New System.Drawing.Size(250, 135)
+        '
+        '
+        '
+        Me.btEstadoCuentasProveedores.TileStyle.BackColor = System.Drawing.Color.Aqua
+        Me.btEstadoCuentasProveedores.TileStyle.BackColor2 = System.Drawing.Color.DimGray
+        Me.btEstadoCuentasProveedores.TileStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.btEstadoCuentasProveedores.TileStyle.Font = New System.Drawing.Font("Georgia", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btEstadoCuentasProveedores.TileStyle.TextLineAlignment = DevComponents.DotNetBar.eStyleTextAlignment.Far
+        Me.btEstadoCuentasProveedores.TitleTextAlignment = System.Drawing.ContentAlignment.BottomCenter
+        Me.btEstadoCuentasProveedores.TitleTextColor = System.Drawing.Color.Red
+        '
+        'btEstadoCuentasProveedoresTodos
+        '
+        Me.btEstadoCuentasProveedoresTodos.Image = Global.DinoM.My.Resources.Resources.cuentas
+        Me.btEstadoCuentasProveedoresTodos.ImageTextAlignment = System.Drawing.ContentAlignment.MiddleCenter
+        Me.btEstadoCuentasProveedoresTodos.ItemAlignment = DevComponents.DotNetBar.eItemAlignment.Center
+        Me.btEstadoCuentasProveedoresTodos.Name = "btEstadoCuentasProveedoresTodos"
+        Me.btEstadoCuentasProveedoresTodos.SymbolColor = System.Drawing.Color.Empty
+        Me.btEstadoCuentasProveedoresTodos.Text = "ESTADO DE CUENTAS TODOS"
+        Me.btEstadoCuentasProveedoresTodos.TileColor = DevComponents.DotNetBar.Metro.eMetroTileColor.Olive
+        Me.btEstadoCuentasProveedoresTodos.TileSize = New System.Drawing.Size(250, 135)
+        '
+        '
+        '
+        Me.btEstadoCuentasProveedoresTodos.TileStyle.BackColor = System.Drawing.Color.DarkGreen
+        Me.btEstadoCuentasProveedoresTodos.TileStyle.BackColor2 = System.Drawing.Color.FromArgb(CType(CType(132, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(132, Byte), Integer))
+        Me.btEstadoCuentasProveedoresTodos.TileStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.btEstadoCuentasProveedoresTodos.TileStyle.Font = New System.Drawing.Font("Georgia", 9.0!, System.Drawing.FontStyle.Bold)
+        Me.btEstadoCuentasProveedoresTodos.TileStyle.TextLineAlignment = DevComponents.DotNetBar.eStyleTextAlignment.Far
+        Me.btEstadoCuentasProveedoresTodos.TitleTextAlignment = System.Drawing.ContentAlignment.BottomCenter
+        Me.btEstadoCuentasProveedoresTodos.TitleTextColor = System.Drawing.Color.Red
+        '
+        'btComprasDet
+        '
+        Me.btComprasDet.Image = Global.DinoM.My.Resources.Resources.check_mark
+        Me.btComprasDet.ImageTextAlignment = System.Drawing.ContentAlignment.MiddleCenter
+        Me.btComprasDet.ItemAlignment = DevComponents.DotNetBar.eItemAlignment.Center
+        Me.btComprasDet.Name = "btComprasDet"
+        Me.btComprasDet.SymbolColor = System.Drawing.Color.Empty
+        Me.btComprasDet.Text = "COMPRAS DETALLADAS"
+        Me.btComprasDet.TileColor = DevComponents.DotNetBar.Metro.eMetroTileColor.DarkBlue
+        Me.btComprasDet.TileSize = New System.Drawing.Size(250, 135)
+        '
+        '
+        '
+        Me.btComprasDet.TileStyle.BackColor = System.Drawing.SystemColors.Highlight
+        Me.btComprasDet.TileStyle.BackColor2 = System.Drawing.Color.FromArgb(CType(CType(164, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
+        Me.btComprasDet.TileStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.btComprasDet.TileStyle.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btComprasDet.TileStyle.TextLineAlignment = DevComponents.DotNetBar.eStyleTextAlignment.Far
+        Me.btComprasDet.TitleTextAlignment = System.Drawing.ContentAlignment.BottomCenter
+        Me.btComprasDet.TitleTextColor = System.Drawing.Color.Red
+        '
+        'SideNav_Conf
+        '
+        Me.SideNav_Conf.Controls.Add(Me.MetroTilePanel1)
+        Me.SideNav_Conf.Controls.Add(Me.PictureBox4)
+        Me.SideNav_Conf.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.SideNav_Conf.Location = New System.Drawing.Point(142, 36)
+        Me.SideNav_Conf.Name = "SideNav_Conf"
+        Me.SideNav_Conf.Size = New System.Drawing.Size(848, 524)
+        Me.SideNav_Conf.TabIndex = 2
+        Me.SideNav_Conf.Visible = False
+        '
+        'MetroTilePanel1
+        '
+        Me.MetroTilePanel1.BackColor = System.Drawing.Color.Transparent
+        Me.MetroTilePanel1.BackgroundImage = Global.DinoM.My.Resources.Resources.Fondo_Naranja_1
+        Me.MetroTilePanel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        '
+        '
+        '
+        Me.MetroTilePanel1.BackgroundStyle.BackColor = System.Drawing.Color.Transparent
+        Me.MetroTilePanel1.BackgroundStyle.Class = "MetroTilePanel"
+        Me.MetroTilePanel1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.MetroTilePanel1.ContainerControlProcessDialogKey = True
+        Me.MetroTilePanel1.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.MetroTilePanel1.DragDropSupport = True
+        Me.MetroTilePanel1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.MetroTilePanel1.ForeColor = System.Drawing.Color.White
+        Me.MetroTilePanel1.Items.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.btConfRoles, Me.btConfUsuarios, Me.btConfCliente, Me.btConfProducto, Me.btConfProductoConteo, Me.btConfProdConteoTodos, Me.btConfPrecio, Me.btConfLibreria, Me.btConfDosificacion, Me.btnCodControl, Me.btZonas1, Me.btBancos, Me.btServicios, Me.btConfDescuentos, Me.btConfDescuentosProveedor, Me.btConfDescuentosCajeros, Me.btConfPesaje, Me.btConfActPrecios, Me.btConfVerificarPCosto, Me.btPventaMenorPcosto, Me.btRepClientesCel, Me.btConsultaPrecios, Me.btImpresionPrecios, Me.btBitacora, Me.btAlarmaRent, Me.btHistorialCostos})
+        Me.MetroTilePanel1.ItemSpacing = 10
+        Me.MetroTilePanel1.Location = New System.Drawing.Point(0, 0)
+        Me.MetroTilePanel1.MultiLine = True
+        Me.MetroTilePanel1.Name = "MetroTilePanel1"
+        Me.MetroTilePanel1.Size = New System.Drawing.Size(848, 492)
+        Me.MetroTilePanel1.Style = DevComponents.DotNetBar.eDotNetBarStyle.Office2010
+        Me.MetroTilePanel1.TabIndex = 0
+        Me.MetroTilePanel1.Text = "mtp1Configuracion"
+        '
+        'btConfRoles
+        '
+        Me.btConfRoles.Image = Global.DinoM.My.Resources.Resources.ROLES
+        Me.btConfRoles.ImageTextAlignment = System.Drawing.ContentAlignment.MiddleCenter
+        Me.btConfRoles.ItemAlignment = DevComponents.DotNetBar.eItemAlignment.Center
+        Me.btConfRoles.Name = "btConfRoles"
+        Me.btConfRoles.SymbolColor = System.Drawing.Color.Black
+        Me.btConfRoles.TileColor = DevComponents.DotNetBar.Metro.eMetroTileColor.Azure
+        Me.btConfRoles.TileSize = New System.Drawing.Size(250, 135)
+        '
+        '
+        '
+        Me.btConfRoles.TileStyle.BackColor = System.Drawing.Color.MediumVioletRed
+        Me.btConfRoles.TileStyle.BackColor2 = System.Drawing.Color.FromArgb(CType(CType(141, Byte), Integer), CType(CType(30, Byte), Integer), CType(CType(144, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.btConfRoles.TileStyle.BorderBottom = DevComponents.DotNetBar.eStyleBorderType.Dot
+        Me.btConfRoles.TileStyle.BorderLeft = DevComponents.DotNetBar.eStyleBorderType.Dot
+        Me.btConfRoles.TileStyle.BorderRight = DevComponents.DotNetBar.eStyleBorderType.Dot
+        Me.btConfRoles.TileStyle.BorderTop = DevComponents.DotNetBar.eStyleBorderType.Dot
+        Me.btConfRoles.TileStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.btConfRoles.TileStyle.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btConfRoles.TileStyle.TextAlignment = DevComponents.DotNetBar.eStyleTextAlignment.Center
+        Me.btConfRoles.TitleText = "ROLES"
+        Me.btConfRoles.TitleTextColor = System.Drawing.Color.White
+        '
+        'btConfUsuarios
+        '
+        Me.btConfUsuarios.Image = Global.DinoM.My.Resources.Resources.user
+        Me.btConfUsuarios.ImageTextAlignment = System.Drawing.ContentAlignment.MiddleCenter
+        Me.btConfUsuarios.Name = "btConfUsuarios"
+        Me.btConfUsuarios.SymbolColor = System.Drawing.Color.Empty
+        Me.btConfUsuarios.TileColor = DevComponents.DotNetBar.Metro.eMetroTileColor.Azure
+        Me.btConfUsuarios.TileSize = New System.Drawing.Size(250, 135)
+        '
+        '
+        '
+        Me.btConfUsuarios.TileStyle.BackColor = System.Drawing.Color.ForestGreen
+        Me.btConfUsuarios.TileStyle.BackColor2 = System.Drawing.Color.FromArgb(CType(CType(167, Byte), Integer), CType(CType(75, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(130, Byte), Integer))
+        Me.btConfUsuarios.TileStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.btConfUsuarios.TitleText = "USUARIOS"
+        '
+        'btConfCliente
+        '
+        Me.btConfCliente.Image = Global.DinoM.My.Resources.Resources.cliente
+        Me.btConfCliente.ImageTextAlignment = System.Drawing.ContentAlignment.MiddleCenter
+        Me.btConfCliente.Name = "btConfCliente"
+        Me.btConfCliente.SymbolColor = System.Drawing.Color.Empty
+        Me.btConfCliente.TileColor = DevComponents.DotNetBar.Metro.eMetroTileColor.DarkBlue
+        Me.btConfCliente.TileSize = New System.Drawing.Size(250, 135)
+        '
+        '
+        '
+        Me.btConfCliente.TileStyle.BackColor = System.Drawing.SystemColors.HotTrack
+        Me.btConfCliente.TileStyle.BackColor2 = System.Drawing.SystemColors.ActiveCaption
+        Me.btConfCliente.TileStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.btConfCliente.TitleText = "CLIENTES"
+        '
+        'btConfProducto
+        '
+        Me.btConfProducto.Image = Global.DinoM.My.Resources.Resources.producto
+        Me.btConfProducto.ImageTextAlignment = System.Drawing.ContentAlignment.MiddleCenter
+        Me.btConfProducto.Name = "btConfProducto"
+        Me.btConfProducto.SymbolColor = System.Drawing.Color.Empty
+        Me.btConfProducto.TileColor = DevComponents.DotNetBar.Metro.eMetroTileColor.Azure
+        Me.btConfProducto.TileSize = New System.Drawing.Size(250, 135)
+        '
+        '
+        '
+        Me.btConfProducto.TileStyle.BackColor = System.Drawing.Color.Red
+        Me.btConfProducto.TileStyle.BackColor2 = System.Drawing.Color.MediumOrchid
+        Me.btConfProducto.TileStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.btConfProducto.TitleText = "PRODUCTOS"
+        '
+        'btConfProductoConteo
+        '
+        Me.btConfProductoConteo.Image = Global.DinoM.My.Resources.Resources.producto
+        Me.btConfProductoConteo.ImageTextAlignment = System.Drawing.ContentAlignment.MiddleCenter
+        Me.btConfProductoConteo.Name = "btConfProductoConteo"
+        Me.btConfProductoConteo.SymbolColor = System.Drawing.Color.Empty
+        Me.btConfProductoConteo.TileColor = DevComponents.DotNetBar.Metro.eMetroTileColor.Azure
+        Me.btConfProductoConteo.TileSize = New System.Drawing.Size(250, 135)
+        '
+        '
+        '
+        Me.btConfProductoConteo.TileStyle.BackColor = System.Drawing.Color.MediumOrchid
+        Me.btConfProductoConteo.TileStyle.BackColor2 = System.Drawing.Color.LightPink
+        Me.btConfProductoConteo.TileStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.btConfProductoConteo.TitleText = "PRODUCTOS CONTEO INDIVIDUAL"
+        '
+        'btConfProdConteoTodos
+        '
+        Me.btConfProdConteoTodos.Image = Global.DinoM.My.Resources.Resources.hojaruta
+        Me.btConfProdConteoTodos.ImageTextAlignment = System.Drawing.ContentAlignment.MiddleCenter
+        Me.btConfProdConteoTodos.Name = "btConfProdConteoTodos"
+        Me.btConfProdConteoTodos.SymbolColor = System.Drawing.Color.Empty
+        Me.btConfProdConteoTodos.TileColor = DevComponents.DotNetBar.Metro.eMetroTileColor.Azure
+        Me.btConfProdConteoTodos.TileSize = New System.Drawing.Size(250, 135)
+        '
+        '
+        '
+        Me.btConfProdConteoTodos.TileStyle.BackColor = System.Drawing.Color.DimGray
+        Me.btConfProdConteoTodos.TileStyle.BackColor2 = System.Drawing.Color.Gold
+        Me.btConfProdConteoTodos.TileStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.btConfProdConteoTodos.TitleText = "PRODUCTOS CONTEO LOTE"
+        '
+        'btConfPrecio
+        '
+        Me.btConfPrecio.Image = Global.DinoM.My.Resources.Resources.precio
+        Me.btConfPrecio.ImageTextAlignment = System.Drawing.ContentAlignment.MiddleCenter
+        Me.btConfPrecio.Name = "btConfPrecio"
+        Me.btConfPrecio.SymbolColor = System.Drawing.Color.Empty
+        Me.btConfPrecio.TileColor = DevComponents.DotNetBar.Metro.eMetroTileColor.Azure
+        Me.btConfPrecio.TileSize = New System.Drawing.Size(250, 135)
+        '
+        '
+        '
+        Me.btConfPrecio.TileStyle.BackColor = System.Drawing.Color.Magenta
+        Me.btConfPrecio.TileStyle.BackColor2 = System.Drawing.Color.FromArgb(CType(CType(196, Byte), Integer), CType(CType(30, Byte), Integer), CType(CType(144, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.btConfPrecio.TileStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.btConfPrecio.TitleText = "PRECIOS"
+        '
+        'btConfLibreria
+        '
+        Me.btConfLibreria.Image = Global.DinoM.My.Resources.Resources.check_mark
+        Me.btConfLibreria.ImageTextAlignment = System.Drawing.ContentAlignment.MiddleCenter
+        Me.btConfLibreria.Name = "btConfLibreria"
+        Me.btConfLibreria.SymbolColor = System.Drawing.Color.Empty
+        Me.btConfLibreria.TileColor = DevComponents.DotNetBar.Metro.eMetroTileColor.Azure
+        Me.btConfLibreria.TileSize = New System.Drawing.Size(250, 135)
+        '
+        '
+        '
+        Me.btConfLibreria.TileStyle.BackColor = System.Drawing.Color.FromArgb(CType(CType(164, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.btConfLibreria.TileStyle.BackColor2 = System.Drawing.Color.FromArgb(CType(CType(133, Byte), Integer), CType(CType(184, Byte), Integer), CType(CType(134, Byte), Integer), CType(CType(11, Byte), Integer))
+        Me.btConfLibreria.TileStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.btConfLibreria.TitleText = "LIBRERIA"
+        '
+        'btConfDosificacion
+        '
+        Me.btConfDosificacion.Image = CType(resources.GetObject("btConfDosificacion.Image"), System.Drawing.Image)
+        Me.btConfDosificacion.ImageTextAlignment = System.Drawing.ContentAlignment.MiddleCenter
+        Me.btConfDosificacion.Name = "btConfDosificacion"
+        Me.btConfDosificacion.SymbolColor = System.Drawing.Color.Empty
+        Me.btConfDosificacion.TileColor = DevComponents.DotNetBar.Metro.eMetroTileColor.Azure
+        Me.btConfDosificacion.TileSize = New System.Drawing.Size(250, 135)
+        '
+        '
+        '
+        Me.btConfDosificacion.TileStyle.BackColor = System.Drawing.Color.Green
+        Me.btConfDosificacion.TileStyle.BackColor2 = System.Drawing.Color.FromArgb(CType(CType(124, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(0, Byte), Integer))
+        Me.btConfDosificacion.TileStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.btConfDosificacion.TitleText = "DOSIFICACIÓN"
+        '
+        'btnCodControl
+        '
+        Me.btnCodControl.Image = Global.DinoM.My.Resources.Resources.ic_c
+        Me.btnCodControl.ImageTextAlignment = System.Drawing.ContentAlignment.MiddleCenter
+        Me.btnCodControl.ItemAlignment = DevComponents.DotNetBar.eItemAlignment.Center
+        Me.btnCodControl.Name = "btnCodControl"
+        Me.btnCodControl.SymbolColor = System.Drawing.Color.Empty
+        Me.btnCodControl.Text = "GENERACIÓN CÓDIGO DE CONTROL"
+        Me.btnCodControl.TileColor = DevComponents.DotNetBar.Metro.eMetroTileColor.Teal
+        Me.btnCodControl.TileSize = New System.Drawing.Size(250, 135)
+        '
+        '
+        '
+        Me.btnCodControl.TileStyle.BackColor = System.Drawing.Color.Blue
+        Me.btnCodControl.TileStyle.BackColor2 = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(30, Byte), Integer), CType(CType(144, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.btnCodControl.TileStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.btnCodControl.TileStyle.Font = New System.Drawing.Font("Georgia", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnCodControl.TileStyle.TextLineAlignment = DevComponents.DotNetBar.eStyleTextAlignment.Far
+        Me.btnCodControl.TitleTextAlignment = System.Drawing.ContentAlignment.BottomCenter
+        Me.btnCodControl.TitleTextColor = System.Drawing.Color.Red
+        '
+        'btZonas1
+        '
+        Me.btZonas1.Image = Global.DinoM.My.Resources.Resources.zona
+        Me.btZonas1.ImageTextAlignment = System.Drawing.ContentAlignment.MiddleCenter
+        Me.btZonas1.ItemAlignment = DevComponents.DotNetBar.eItemAlignment.Center
+        Me.btZonas1.Name = "btZonas1"
+        Me.btZonas1.SymbolColor = System.Drawing.Color.Black
+        Me.btZonas1.TileColor = DevComponents.DotNetBar.Metro.eMetroTileColor.Azure
+        Me.btZonas1.TileSize = New System.Drawing.Size(250, 135)
+        '
+        '
+        '
+        Me.btZonas1.TileStyle.BackColor = System.Drawing.Color.MediumVioletRed
+        Me.btZonas1.TileStyle.BackColor2 = System.Drawing.Color.FromArgb(CType(CType(141, Byte), Integer), CType(CType(30, Byte), Integer), CType(CType(144, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.btZonas1.TileStyle.BorderBottom = DevComponents.DotNetBar.eStyleBorderType.Dot
+        Me.btZonas1.TileStyle.BorderLeft = DevComponents.DotNetBar.eStyleBorderType.Dot
+        Me.btZonas1.TileStyle.BorderRight = DevComponents.DotNetBar.eStyleBorderType.Dot
+        Me.btZonas1.TileStyle.BorderTop = DevComponents.DotNetBar.eStyleBorderType.Dot
+        Me.btZonas1.TileStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.btZonas1.TileStyle.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btZonas1.TileStyle.TextAlignment = DevComponents.DotNetBar.eStyleTextAlignment.Center
+        Me.btZonas1.TitleText = "ZONAS"
+        Me.btZonas1.TitleTextColor = System.Drawing.Color.White
+        '
+        'btBancos
+        '
+        Me.btBancos.Image = Global.DinoM.My.Resources.Resources._14
+        Me.btBancos.ImageTextAlignment = System.Drawing.ContentAlignment.MiddleCenter
+        Me.btBancos.ItemAlignment = DevComponents.DotNetBar.eItemAlignment.Center
+        Me.btBancos.Name = "btBancos"
+        Me.btBancos.SymbolColor = System.Drawing.Color.Black
+        Me.btBancos.TileColor = DevComponents.DotNetBar.Metro.eMetroTileColor.Azure
+        Me.btBancos.TileSize = New System.Drawing.Size(250, 135)
+        '
+        '
+        '
+        Me.btBancos.TileStyle.BackColor = System.Drawing.Color.SeaGreen
+        Me.btBancos.TileStyle.BackColor2 = System.Drawing.Color.FromArgb(CType(CType(198, Byte), Integer), CType(CType(195, Byte), Integer), CType(CType(198, Byte), Integer))
+        Me.btBancos.TileStyle.BorderBottom = DevComponents.DotNetBar.eStyleBorderType.Dot
+        Me.btBancos.TileStyle.BorderLeft = DevComponents.DotNetBar.eStyleBorderType.Dot
+        Me.btBancos.TileStyle.BorderRight = DevComponents.DotNetBar.eStyleBorderType.Dot
+        Me.btBancos.TileStyle.BorderTop = DevComponents.DotNetBar.eStyleBorderType.Dot
+        Me.btBancos.TileStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.btBancos.TileStyle.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btBancos.TileStyle.TextAlignment = DevComponents.DotNetBar.eStyleTextAlignment.Center
+        Me.btBancos.TitleText = "BANCOS"
+        Me.btBancos.TitleTextColor = System.Drawing.Color.White
+        '
+        'btServicios
+        '
+        Me.btServicios.Image = Global.DinoM.My.Resources.Resources.check_mark
+        Me.btServicios.ImageTextAlignment = System.Drawing.ContentAlignment.MiddleCenter
+        Me.btServicios.Name = "btServicios"
+        Me.btServicios.SymbolColor = System.Drawing.Color.Empty
+        Me.btServicios.TileColor = DevComponents.DotNetBar.Metro.eMetroTileColor.Azure
+        Me.btServicios.TileSize = New System.Drawing.Size(250, 135)
+        '
+        '
+        '
+        Me.btServicios.TileStyle.BackColor = System.Drawing.Color.FromArgb(CType(CType(164, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.btServicios.TileStyle.BackColor2 = System.Drawing.Color.FromArgb(CType(CType(133, Byte), Integer), CType(CType(184, Byte), Integer), CType(CType(134, Byte), Integer), CType(CType(11, Byte), Integer))
+        Me.btServicios.TileStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.btServicios.TitleText = "SERVICIOS"
+        '
+        'btConfDescuentos
+        '
+        Me.btConfDescuentos.Image = Global.DinoM.My.Resources.Resources.descuentos2
+        Me.btConfDescuentos.ImageIndent = New System.Drawing.Point(3, 3)
+        Me.btConfDescuentos.ImageTextAlignment = System.Drawing.ContentAlignment.MiddleCenter
+        Me.btConfDescuentos.Name = "btConfDescuentos"
+        Me.btConfDescuentos.SymbolColor = System.Drawing.Color.Empty
+        Me.btConfDescuentos.TileColor = DevComponents.DotNetBar.Metro.eMetroTileColor.Azure
+        Me.btConfDescuentos.TileSize = New System.Drawing.Size(250, 135)
+        '
+        '
+        '
+        Me.btConfDescuentos.TileStyle.BackColor = System.Drawing.Color.Gold
+        Me.btConfDescuentos.TileStyle.BackColor2 = System.Drawing.Color.DeepSkyBlue
+        Me.btConfDescuentos.TileStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.btConfDescuentos.TitleText = "DESCUENTOS"
+        '
+        'btConfDescuentosProveedor
+        '
+        Me.btConfDescuentosProveedor.Image = Global.DinoM.My.Resources.Resources.descuentos
+        Me.btConfDescuentosProveedor.ImageTextAlignment = System.Drawing.ContentAlignment.MiddleCenter
+        Me.btConfDescuentosProveedor.Name = "btConfDescuentosProveedor"
+        Me.btConfDescuentosProveedor.SymbolColor = System.Drawing.Color.Empty
+        Me.btConfDescuentosProveedor.TileColor = DevComponents.DotNetBar.Metro.eMetroTileColor.Azure
+        Me.btConfDescuentosProveedor.TileSize = New System.Drawing.Size(250, 135)
+        '
+        '
+        '
+        Me.btConfDescuentosProveedor.TileStyle.BackColor = System.Drawing.Color.RoyalBlue
+        Me.btConfDescuentosProveedor.TileStyle.BackColor2 = System.Drawing.Color.DarkKhaki
+        Me.btConfDescuentosProveedor.TileStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.btConfDescuentosProveedor.TitleText = "DESCUENTOS POR PROVEEDOR"
+        '
+        'btConfDescuentosCajeros
+        '
+        Me.btConfDescuentosCajeros.Image = Global.DinoM.My.Resources.Resources.precio
+        Me.btConfDescuentosCajeros.ImageTextAlignment = System.Drawing.ContentAlignment.MiddleCenter
+        Me.btConfDescuentosCajeros.Name = "btConfDescuentosCajeros"
+        Me.btConfDescuentosCajeros.SymbolColor = System.Drawing.Color.Empty
+        Me.btConfDescuentosCajeros.TileColor = DevComponents.DotNetBar.Metro.eMetroTileColor.Azure
+        Me.btConfDescuentosCajeros.TileSize = New System.Drawing.Size(250, 135)
+        '
+        '
+        '
+        Me.btConfDescuentosCajeros.TileStyle.BackColor = System.Drawing.Color.DarkTurquoise
+        Me.btConfDescuentosCajeros.TileStyle.BackColor2 = System.Drawing.SystemColors.GradientActiveCaption
+        Me.btConfDescuentosCajeros.TileStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.btConfDescuentosCajeros.TitleText = "CONSULTA PRECIOS CAJEROS"
+        '
+        'btConfPesaje
+        '
+        Me.btConfPesaje.Image = Global.DinoM.My.Resources.Resources.pesaje
+        Me.btConfPesaje.ImageTextAlignment = System.Drawing.ContentAlignment.MiddleCenter
+        Me.btConfPesaje.ItemAlignment = DevComponents.DotNetBar.eItemAlignment.Center
+        Me.btConfPesaje.Name = "btConfPesaje"
+        Me.btConfPesaje.SymbolColor = System.Drawing.Color.Empty
+        Me.btConfPesaje.Text = "PESAJE DE PRODUCTOS"
+        Me.btConfPesaje.TileColor = DevComponents.DotNetBar.Metro.eMetroTileColor.Teal
+        Me.btConfPesaje.TileSize = New System.Drawing.Size(250, 135)
+        '
+        '
+        '
+        Me.btConfPesaje.TileStyle.BackColor = System.Drawing.Color.DeepPink
+        Me.btConfPesaje.TileStyle.BackColor2 = System.Drawing.Color.SkyBlue
+        Me.btConfPesaje.TileStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.btConfPesaje.TileStyle.Font = New System.Drawing.Font("Georgia", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btConfPesaje.TileStyle.TextLineAlignment = DevComponents.DotNetBar.eStyleTextAlignment.Far
+        Me.btConfPesaje.TitleTextAlignment = System.Drawing.ContentAlignment.BottomCenter
+        Me.btConfPesaje.TitleTextColor = System.Drawing.Color.Red
+        '
+        'btConfActPrecios
+        '
+        Me.btConfActPrecios.Image = Global.DinoM.My.Resources.Resources.actualizado
+        Me.btConfActPrecios.ImageTextAlignment = System.Drawing.ContentAlignment.MiddleCenter
+        Me.btConfActPrecios.Name = "btConfActPrecios"
+        Me.btConfActPrecios.SymbolColor = System.Drawing.Color.Empty
+        Me.btConfActPrecios.TileColor = DevComponents.DotNetBar.Metro.eMetroTileColor.Azure
+        Me.btConfActPrecios.TileSize = New System.Drawing.Size(250, 135)
+        '
+        '
+        '
+        Me.btConfActPrecios.TileStyle.BackColor = System.Drawing.Color.Red
+        Me.btConfActPrecios.TileStyle.BackColor2 = System.Drawing.Color.DeepPink
+        Me.btConfActPrecios.TileStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.btConfActPrecios.TitleText = "ACTUALIZAR PRECIOS"
+        '
+        'btConfVerificarPCosto
+        '
+        Me.btConfVerificarPCosto.Image = Global.DinoM.My.Resources.Resources.hojaruta
+        Me.btConfVerificarPCosto.ImageTextAlignment = System.Drawing.ContentAlignment.MiddleCenter
+        Me.btConfVerificarPCosto.Name = "btConfVerificarPCosto"
+        Me.btConfVerificarPCosto.SymbolColor = System.Drawing.Color.Empty
+        Me.btConfVerificarPCosto.TileColor = DevComponents.DotNetBar.Metro.eMetroTileColor.Azure
+        Me.btConfVerificarPCosto.TileSize = New System.Drawing.Size(250, 135)
+        '
+        '
+        '
+        Me.btConfVerificarPCosto.TileStyle.BackColor = System.Drawing.Color.BlueViolet
+        Me.btConfVerificarPCosto.TileStyle.BackColor2 = System.Drawing.Color.DarkGray
+        Me.btConfVerificarPCosto.TileStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.btConfVerificarPCosto.TitleText = "VERIFICAR PRECIOS COSTO"
+        '
+        'btPventaMenorPcosto
+        '
+        Me.btPventaMenorPcosto.Image = Global.DinoM.My.Resources.Resources.hojaruta
+        Me.btPventaMenorPcosto.ImageTextAlignment = System.Drawing.ContentAlignment.MiddleCenter
+        Me.btPventaMenorPcosto.Name = "btPventaMenorPcosto"
+        Me.btPventaMenorPcosto.SymbolColor = System.Drawing.Color.Empty
+        Me.btPventaMenorPcosto.TileColor = DevComponents.DotNetBar.Metro.eMetroTileColor.Azure
+        Me.btPventaMenorPcosto.TileSize = New System.Drawing.Size(250, 135)
+        '
+        '
+        '
+        Me.btPventaMenorPcosto.TileStyle.BackColor = System.Drawing.Color.Yellow
+        Me.btPventaMenorPcosto.TileStyle.BackColor2 = System.Drawing.Color.MediumOrchid
+        Me.btPventaMenorPcosto.TileStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.btPventaMenorPcosto.TitleText = "COMPARACIÓN DE PRECIOS"
+        '
+        'btRepClientesCel
+        '
+        Me.btRepClientesCel.Image = Global.DinoM.My.Resources.Resources.check_mark
+        Me.btRepClientesCel.ImageTextAlignment = System.Drawing.ContentAlignment.MiddleCenter
+        Me.btRepClientesCel.Name = "btRepClientesCel"
+        Me.btRepClientesCel.SymbolColor = System.Drawing.Color.Empty
+        Me.btRepClientesCel.TileColor = DevComponents.DotNetBar.Metro.eMetroTileColor.DarkBlue
+        Me.btRepClientesCel.TileSize = New System.Drawing.Size(250, 135)
+        '
+        '
+        '
+        Me.btRepClientesCel.TileStyle.BackColor = System.Drawing.SystemColors.HotTrack
+        Me.btRepClientesCel.TileStyle.BackColor2 = System.Drawing.Color.FromArgb(CType(CType(139, Byte), Integer), CType(CType(165, Byte), Integer), CType(CType(42, Byte), Integer), CType(CType(42, Byte), Integer))
+        Me.btRepClientesCel.TileStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.btRepClientesCel.TitleText = "REPORTE CLIENTES CON CELULAR"
+        '
+        'btConsultaPrecios
+        '
+        Me.btConsultaPrecios.Image = Global.DinoM.My.Resources.Resources.precio
+        Me.btConsultaPrecios.ImageTextAlignment = System.Drawing.ContentAlignment.MiddleCenter
+        Me.btConsultaPrecios.Name = "btConsultaPrecios"
+        Me.btConsultaPrecios.SymbolColor = System.Drawing.Color.Empty
+        Me.btConsultaPrecios.TileColor = DevComponents.DotNetBar.Metro.eMetroTileColor.DarkBlue
+        Me.btConsultaPrecios.TileSize = New System.Drawing.Size(250, 135)
+        '
+        '
+        '
+        Me.btConsultaPrecios.TileStyle.BackColor = System.Drawing.Color.Blue
+        Me.btConsultaPrecios.TileStyle.BackColor2 = System.Drawing.Color.Gold
+        Me.btConsultaPrecios.TileStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.btConsultaPrecios.TitleText = "CONSULTA PRECIOS"
+        '
+        'btImpresionPrecios
+        '
+        Me.btImpresionPrecios.Image = Global.DinoM.My.Resources.Resources.impresora2
+        Me.btImpresionPrecios.ImageTextAlignment = System.Drawing.ContentAlignment.MiddleCenter
+        Me.btImpresionPrecios.ItemAlignment = DevComponents.DotNetBar.eItemAlignment.Center
+        Me.btImpresionPrecios.Name = "btImpresionPrecios"
+        Me.btImpresionPrecios.SymbolColor = System.Drawing.Color.Empty
+        Me.btImpresionPrecios.Text = "IMPRESIÓN DE PRECIOS"
+        Me.btImpresionPrecios.TileColor = DevComponents.DotNetBar.Metro.eMetroTileColor.DarkBlue
+        Me.btImpresionPrecios.TileSize = New System.Drawing.Size(250, 135)
+        '
+        '
+        '
+        Me.btImpresionPrecios.TileStyle.BackColor = System.Drawing.Color.LimeGreen
+        Me.btImpresionPrecios.TileStyle.BackColor2 = System.Drawing.Color.Gold
+        Me.btImpresionPrecios.TileStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.btImpresionPrecios.TileStyle.Font = New System.Drawing.Font("Georgia", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btImpresionPrecios.TileStyle.TextLineAlignment = DevComponents.DotNetBar.eStyleTextAlignment.Far
+        Me.btImpresionPrecios.TitleTextAlignment = System.Drawing.ContentAlignment.BottomCenter
+        Me.btImpresionPrecios.TitleTextColor = System.Drawing.Color.Red
+        '
+        'btBitacora
+        '
+        Me.btBitacora.Image = Global.DinoM.My.Resources.Resources.BUSQUEDA
+        Me.btBitacora.ImageTextAlignment = System.Drawing.ContentAlignment.MiddleCenter
+        Me.btBitacora.Name = "btBitacora"
+        Me.btBitacora.SymbolColor = System.Drawing.Color.Empty
+        Me.btBitacora.TileColor = DevComponents.DotNetBar.Metro.eMetroTileColor.Azure
+        Me.btBitacora.TileSize = New System.Drawing.Size(250, 135)
+        '
+        '
+        '
+        Me.btBitacora.TileStyle.BackColor = System.Drawing.Color.Crimson
+        Me.btBitacora.TileStyle.BackColor2 = System.Drawing.Color.DimGray
+        Me.btBitacora.TileStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.btBitacora.TitleText = "BITÁCORA DEL SISTEMA"
+        '
+        'btAlarmaRent
+        '
+        Me.btAlarmaRent.Image = Global.DinoM.My.Resources.Resources.alarma
+        Me.btAlarmaRent.ImageTextAlignment = System.Drawing.ContentAlignment.MiddleCenter
+        Me.btAlarmaRent.ItemAlignment = DevComponents.DotNetBar.eItemAlignment.Center
+        Me.btAlarmaRent.Name = "btAlarmaRent"
+        Me.btAlarmaRent.SymbolColor = System.Drawing.Color.Black
+        Me.btAlarmaRent.TileColor = DevComponents.DotNetBar.Metro.eMetroTileColor.Azure
+        Me.btAlarmaRent.TileSize = New System.Drawing.Size(250, 135)
+        '
+        '
+        '
+        Me.btAlarmaRent.TileStyle.BackColor = System.Drawing.Color.MediumVioletRed
+        Me.btAlarmaRent.TileStyle.BackColor2 = System.Drawing.Color.FromArgb(CType(CType(141, Byte), Integer), CType(CType(30, Byte), Integer), CType(CType(144, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.btAlarmaRent.TileStyle.BorderBottom = DevComponents.DotNetBar.eStyleBorderType.Dot
+        Me.btAlarmaRent.TileStyle.BorderLeft = DevComponents.DotNetBar.eStyleBorderType.Dot
+        Me.btAlarmaRent.TileStyle.BorderRight = DevComponents.DotNetBar.eStyleBorderType.Dot
+        Me.btAlarmaRent.TileStyle.BorderTop = DevComponents.DotNetBar.eStyleBorderType.Dot
+        Me.btAlarmaRent.TileStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.btAlarmaRent.TileStyle.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btAlarmaRent.TileStyle.TextAlignment = DevComponents.DotNetBar.eStyleTextAlignment.Center
+        Me.btAlarmaRent.TitleText = "ALARMA RENTABILIDAD-P.O.C."
+        Me.btAlarmaRent.TitleTextColor = System.Drawing.Color.White
+        '
+        'btHistorialCostos
+        '
+        Me.btHistorialCostos.Image = Global.DinoM.My.Resources.Resources.historial_costos
+        Me.btHistorialCostos.ImageTextAlignment = System.Drawing.ContentAlignment.MiddleCenter
+        Me.btHistorialCostos.Name = "btHistorialCostos"
+        Me.btHistorialCostos.SymbolColor = System.Drawing.Color.Empty
+        Me.btHistorialCostos.TileColor = DevComponents.DotNetBar.Metro.eMetroTileColor.Azure
+        Me.btHistorialCostos.TileSize = New System.Drawing.Size(250, 135)
+        '
+        '
+        '
+        Me.btHistorialCostos.TileStyle.BackColor = System.Drawing.Color.Aqua
+        Me.btHistorialCostos.TileStyle.BackColor2 = System.Drawing.Color.FromArgb(CType(CType(167, Byte), Integer), CType(CType(75, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(130, Byte), Integer))
+        Me.btHistorialCostos.TileStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.btHistorialCostos.TitleText = "HISTORIAL COSTOS"
+        '
+        'PictureBox4
+        '
+        Me.PictureBox4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.PictureBox4.Dock = System.Windows.Forms.DockStyle.Bottom
+        Me.PictureBox4.Location = New System.Drawing.Point(0, 492)
+        Me.PictureBox4.Name = "PictureBox4"
+        Me.PictureBox4.Size = New System.Drawing.Size(848, 32)
+        Me.PictureBox4.TabIndex = 2
+        Me.PictureBox4.TabStop = False
+        Me.PictureBox4.Visible = False
+        '
+        'SideNavPanel5
+        '
+        Me.SideNavPanel5.BackColor = System.Drawing.Color.FromArgb(CType(CType(49, Byte), Integer), CType(CType(59, Byte), Integer), CType(CType(66, Byte), Integer))
+        Me.SideNavPanel5.Controls.Add(Me.MetroTilePanel6)
+        Me.SideNavPanel5.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.SideNavPanel5.Location = New System.Drawing.Point(142, 36)
+        Me.SideNavPanel5.Name = "SideNavPanel5"
+        Me.SideNavPanel5.Size = New System.Drawing.Size(848, 524)
+        Me.SideNavPanel5.TabIndex = 87
+        '
+        'MetroTilePanel6
+        '
+        Me.MetroTilePanel6.BackColor = System.Drawing.Color.Transparent
+        Me.MetroTilePanel6.BackgroundImage = Global.DinoM.My.Resources.Resources.Fondo_Naranja_1
+        Me.MetroTilePanel6.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        '
+        '
+        '
+        Me.MetroTilePanel6.BackgroundStyle.BackColor = System.Drawing.Color.Transparent
+        Me.MetroTilePanel6.BackgroundStyle.Class = "MetroTilePanel"
+        Me.MetroTilePanel6.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.MetroTilePanel6.ContainerControlProcessDialogKey = True
+        Me.MetroTilePanel6.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.MetroTilePanel6.DragDropSupport = True
+        Me.MetroTilePanel6.Items.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.btInvDeposito, Me.btInvAmacen, Me.btInvMovimiento, Me.btInvKardex, Me.btInvArmDesarmCombo, Me.btInvSaldo, Me.btInvKardexReporte, Me.btInvUtilidad, Me.btInvSaldoLote, Me.btlvSaldoMinimo, Me.btInvVentas, Me.btInvStockDif, Me.btSaldosValoradosExcel, Me.btProdNoCompra, Me.btCalculoPedSugerido, Me.btRevStockVentaProv, Me.btConteoFisico, Me.btStockSisFis, Me.btCalculoPedSugeridoDias, Me.btInvMovimientoProdPeso, Me.btInvKardexProdPeso})
+        Me.MetroTilePanel6.ItemSpacing = 10
+        Me.MetroTilePanel6.Location = New System.Drawing.Point(0, 0)
+        Me.MetroTilePanel6.MultiLine = True
+        Me.MetroTilePanel6.Name = "MetroTilePanel6"
+        Me.MetroTilePanel6.Size = New System.Drawing.Size(848, 524)
+        Me.MetroTilePanel6.TabIndex = 2
+        Me.MetroTilePanel6.Text = "mtp2Logistica"
+        '
+        'btInvDeposito
+        '
+        Me.btInvDeposito.Image = CType(resources.GetObject("btInvDeposito.Image"), System.Drawing.Image)
+        Me.btInvDeposito.ImageTextAlignment = System.Drawing.ContentAlignment.MiddleCenter
+        Me.btInvDeposito.ItemAlignment = DevComponents.DotNetBar.eItemAlignment.Center
+        Me.btInvDeposito.Name = "btInvDeposito"
+        Me.btInvDeposito.SymbolColor = System.Drawing.Color.Empty
+        Me.btInvDeposito.Text = "DEPOSITO"
+        Me.btInvDeposito.TileColor = DevComponents.DotNetBar.Metro.eMetroTileColor.DarkBlue
+        Me.btInvDeposito.TileSize = New System.Drawing.Size(250, 135)
+        '
+        '
+        '
+        Me.btInvDeposito.TileStyle.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(130, Byte), Integer), CType(CType(0, Byte), Integer))
+        Me.btInvDeposito.TileStyle.BackColor2 = System.Drawing.Color.FromArgb(CType(CType(111, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
+        Me.btInvDeposito.TileStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.btInvDeposito.TileStyle.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btInvDeposito.TileStyle.TextLineAlignment = DevComponents.DotNetBar.eStyleTextAlignment.Far
+        Me.btInvDeposito.TitleTextAlignment = System.Drawing.ContentAlignment.BottomCenter
+        Me.btInvDeposito.TitleTextColor = System.Drawing.Color.Red
+        '
+        'btInvAmacen
+        '
+        Me.btInvAmacen.Image = Global.DinoM.My.Resources.Resources.almacen
+        Me.btInvAmacen.ImageTextAlignment = System.Drawing.ContentAlignment.MiddleCenter
+        Me.btInvAmacen.ItemAlignment = DevComponents.DotNetBar.eItemAlignment.Center
+        Me.btInvAmacen.Name = "btInvAmacen"
+        Me.btInvAmacen.SymbolColor = System.Drawing.Color.Empty
+        Me.btInvAmacen.Text = "ALMACEN"
+        Me.btInvAmacen.TileColor = DevComponents.DotNetBar.Metro.eMetroTileColor.Teal
+        Me.btInvAmacen.TileSize = New System.Drawing.Size(250, 135)
+        '
+        '
+        '
+        Me.btInvAmacen.TileStyle.BackColor = System.Drawing.Color.FromArgb(CType(CType(132, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(132, Byte), Integer))
+        Me.btInvAmacen.TileStyle.BackColor2 = System.Drawing.Color.FromArgb(CType(CType(144, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(43, Byte), Integer), CType(CType(226, Byte), Integer))
+        Me.btInvAmacen.TileStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.btInvAmacen.TileStyle.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btInvAmacen.TileStyle.TextLineAlignment = DevComponents.DotNetBar.eStyleTextAlignment.Far
+        Me.btInvAmacen.TitleTextAlignment = System.Drawing.ContentAlignment.BottomCenter
+        Me.btInvAmacen.TitleTextColor = System.Drawing.Color.Red
+        '
+        'btInvMovimiento
+        '
+        Me.btInvMovimiento.Image = CType(resources.GetObject("btInvMovimiento.Image"), System.Drawing.Image)
+        Me.btInvMovimiento.ImageTextAlignment = System.Drawing.ContentAlignment.MiddleCenter
+        Me.btInvMovimiento.ItemAlignment = DevComponents.DotNetBar.eItemAlignment.Center
+        Me.btInvMovimiento.Name = "btInvMovimiento"
+        Me.btInvMovimiento.SymbolColor = System.Drawing.Color.Empty
+        Me.btInvMovimiento.Text = "MOVIMIENTOS"
+        Me.btInvMovimiento.TileColor = DevComponents.DotNetBar.Metro.eMetroTileColor.Blueish
+        Me.btInvMovimiento.TileSize = New System.Drawing.Size(250, 135)
+        '
+        '
+        '
+        Me.btInvMovimiento.TileStyle.BackColor = System.Drawing.SystemColors.Highlight
+        Me.btInvMovimiento.TileStyle.BackColor2 = System.Drawing.SystemColors.GradientInactiveCaption
+        Me.btInvMovimiento.TileStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.btInvMovimiento.TileStyle.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btInvMovimiento.TileStyle.TextLineAlignment = DevComponents.DotNetBar.eStyleTextAlignment.Far
+        Me.btInvMovimiento.TitleTextAlignment = System.Drawing.ContentAlignment.BottomCenter
+        Me.btInvMovimiento.TitleTextColor = System.Drawing.Color.Red
+        '
+        'btInvKardex
+        '
+        Me.btInvKardex.Image = Global.DinoM.My.Resources.Resources.Kardex3
+        Me.btInvKardex.ImageTextAlignment = System.Drawing.ContentAlignment.MiddleCenter
+        Me.btInvKardex.ItemAlignment = DevComponents.DotNetBar.eItemAlignment.Center
+        Me.btInvKardex.Name = "btInvKardex"
+        Me.btInvKardex.SymbolColor = System.Drawing.Color.Empty
+        Me.btInvKardex.Text = "KARDEX DE PRODUCTO"
+        Me.btInvKardex.TileColor = DevComponents.DotNetBar.Metro.eMetroTileColor.DarkBlue
+        Me.btInvKardex.TileSize = New System.Drawing.Size(250, 135)
+        '
+        '
+        '
+        Me.btInvKardex.TileStyle.BackColor = System.Drawing.Color.SeaGreen
+        Me.btInvKardex.TileStyle.BackColor2 = System.Drawing.Color.FromArgb(CType(CType(201, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(102, Byte), Integer), CType(CType(204, Byte), Integer))
+        Me.btInvKardex.TileStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.btInvKardex.TileStyle.Font = New System.Drawing.Font("Georgia", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btInvKardex.TileStyle.TextLineAlignment = DevComponents.DotNetBar.eStyleTextAlignment.Far
+        Me.btInvKardex.TitleTextAlignment = System.Drawing.ContentAlignment.BottomCenter
+        Me.btInvKardex.TitleTextColor = System.Drawing.Color.Red
+        Me.btInvKardex.TitleTextFont = New System.Drawing.Font("Georgia", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        '
+        'btInvArmDesarmCombo
+        '
+        Me.btInvArmDesarmCombo.Image = Global.DinoM.My.Resources.Resources.combo
+        Me.btInvArmDesarmCombo.ImageTextAlignment = System.Drawing.ContentAlignment.MiddleCenter
+        Me.btInvArmDesarmCombo.ItemAlignment = DevComponents.DotNetBar.eItemAlignment.Center
+        Me.btInvArmDesarmCombo.Name = "btInvArmDesarmCombo"
+        Me.btInvArmDesarmCombo.SymbolColor = System.Drawing.Color.Empty
+        Me.btInvArmDesarmCombo.Text = "ARMADO Y DESARMADO DE COMBOS"
+        Me.btInvArmDesarmCombo.TileColor = DevComponents.DotNetBar.Metro.eMetroTileColor.DarkBlue
+        Me.btInvArmDesarmCombo.TileSize = New System.Drawing.Size(250, 135)
+        '
+        '
+        '
+        Me.btInvArmDesarmCombo.TileStyle.BackColor = System.Drawing.Color.BlueViolet
+        Me.btInvArmDesarmCombo.TileStyle.BackColor2 = System.Drawing.SystemColors.WindowFrame
+        Me.btInvArmDesarmCombo.TileStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.btInvArmDesarmCombo.TileStyle.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btInvArmDesarmCombo.TileStyle.TextLineAlignment = DevComponents.DotNetBar.eStyleTextAlignment.Far
+        Me.btInvArmDesarmCombo.TitleTextAlignment = System.Drawing.ContentAlignment.BottomCenter
+        Me.btInvArmDesarmCombo.TitleTextColor = System.Drawing.Color.Red
+        '
+        'btInvSaldo
+        '
+        Me.btInvSaldo.Image = CType(resources.GetObject("btInvSaldo.Image"), System.Drawing.Image)
+        Me.btInvSaldo.ImageTextAlignment = System.Drawing.ContentAlignment.MiddleCenter
+        Me.btInvSaldo.ItemAlignment = DevComponents.DotNetBar.eItemAlignment.Center
+        Me.btInvSaldo.Name = "btInvSaldo"
+        Me.btInvSaldo.SymbolColor = System.Drawing.Color.Empty
+        Me.btInvSaldo.Text = "SALDO DE PRODUCTOS"
+        Me.btInvSaldo.TileColor = DevComponents.DotNetBar.Metro.eMetroTileColor.Olive
+        Me.btInvSaldo.TileSize = New System.Drawing.Size(250, 135)
+        '
+        '
+        '
+        Me.btInvSaldo.TileStyle.BackColor = System.Drawing.Color.Crimson
+        Me.btInvSaldo.TileStyle.BackColor2 = System.Drawing.Color.DimGray
+        Me.btInvSaldo.TileStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.btInvSaldo.TileStyle.Font = New System.Drawing.Font("Georgia", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btInvSaldo.TileStyle.TextLineAlignment = DevComponents.DotNetBar.eStyleTextAlignment.Far
+        Me.btInvSaldo.TitleTextAlignment = System.Drawing.ContentAlignment.BottomCenter
+        Me.btInvSaldo.TitleTextColor = System.Drawing.Color.Red
+        '
+        'btInvKardexReporte
+        '
+        Me.btInvKardexReporte.Image = Global.DinoM.My.Resources.Resources._14
+        Me.btInvKardexReporte.ImageTextAlignment = System.Drawing.ContentAlignment.MiddleCenter
+        Me.btInvKardexReporte.ItemAlignment = DevComponents.DotNetBar.eItemAlignment.Center
+        Me.btInvKardexReporte.Name = "btInvKardexReporte"
+        Me.btInvKardexReporte.SymbolColor = System.Drawing.Color.Empty
+        Me.btInvKardexReporte.Text = "REPORTE KARDEX PRODUCTO"
+        Me.btInvKardexReporte.TileColor = DevComponents.DotNetBar.Metro.eMetroTileColor.DarkBlue
+        Me.btInvKardexReporte.TileSize = New System.Drawing.Size(250, 135)
+        '
+        '
+        '
+        Me.btInvKardexReporte.TileStyle.BackColor = System.Drawing.SystemColors.HotTrack
+        Me.btInvKardexReporte.TileStyle.BackColor2 = System.Drawing.Color.FromArgb(CType(CType(196, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(43, Byte), Integer), CType(CType(226, Byte), Integer))
+        Me.btInvKardexReporte.TileStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.btInvKardexReporte.TileStyle.Font = New System.Drawing.Font("Georgia", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btInvKardexReporte.TileStyle.TextLineAlignment = DevComponents.DotNetBar.eStyleTextAlignment.Far
+        Me.btInvKardexReporte.TitleTextAlignment = System.Drawing.ContentAlignment.BottomCenter
+        Me.btInvKardexReporte.TitleTextColor = System.Drawing.Color.Red
+        '
+        'btInvUtilidad
+        '
+        Me.btInvUtilidad.Image = Global.DinoM.My.Resources.Resources.rp_estadoCuentas
+        Me.btInvUtilidad.ImageTextAlignment = System.Drawing.ContentAlignment.MiddleCenter
+        Me.btInvUtilidad.ItemAlignment = DevComponents.DotNetBar.eItemAlignment.Center
+        Me.btInvUtilidad.Name = "btInvUtilidad"
+        Me.btInvUtilidad.SymbolColor = System.Drawing.Color.Empty
+        Me.btInvUtilidad.Text = "SALDOS VALORADOS"
+        Me.btInvUtilidad.TileColor = DevComponents.DotNetBar.Metro.eMetroTileColor.DarkBlue
+        Me.btInvUtilidad.TileSize = New System.Drawing.Size(250, 135)
+        '
+        '
+        '
+        Me.btInvUtilidad.TileStyle.BackColor = System.Drawing.Color.FromArgb(CType(CType(170, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(43, Byte), Integer), CType(CType(226, Byte), Integer))
+        Me.btInvUtilidad.TileStyle.BackColor2 = System.Drawing.SystemColors.HotTrack
+        Me.btInvUtilidad.TileStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.btInvUtilidad.TileStyle.Font = New System.Drawing.Font("Georgia", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btInvUtilidad.TileStyle.TextLineAlignment = DevComponents.DotNetBar.eStyleTextAlignment.Far
+        Me.btInvUtilidad.TitleTextAlignment = System.Drawing.ContentAlignment.BottomCenter
+        Me.btInvUtilidad.TitleTextColor = System.Drawing.Color.Red
+        '
+        'btInvSaldoLote
+        '
+        Me.btInvSaldoLote.Image = CType(resources.GetObject("btInvSaldoLote.Image"), System.Drawing.Image)
+        Me.btInvSaldoLote.ImageTextAlignment = System.Drawing.ContentAlignment.MiddleCenter
+        Me.btInvSaldoLote.ItemAlignment = DevComponents.DotNetBar.eItemAlignment.Center
+        Me.btInvSaldoLote.Name = "btInvSaldoLote"
+        Me.btInvSaldoLote.SymbolColor = System.Drawing.Color.Empty
+        Me.btInvSaldoLote.Text = "SALDO POR LOTES"
+        Me.btInvSaldoLote.TileColor = DevComponents.DotNetBar.Metro.eMetroTileColor.Olive
+        Me.btInvSaldoLote.TileSize = New System.Drawing.Size(250, 135)
+        '
+        '
+        '
+        Me.btInvSaldoLote.TileStyle.BackColor = System.Drawing.Color.FromArgb(CType(CType(215, Byte), Integer), CType(CType(47, Byte), Integer), CType(CType(79, Byte), Integer), CType(CType(79, Byte), Integer))
+        Me.btInvSaldoLote.TileStyle.BackColor2 = System.Drawing.Color.DarkGreen
+        Me.btInvSaldoLote.TileStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.btInvSaldoLote.TileStyle.Font = New System.Drawing.Font("Georgia", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btInvSaldoLote.TileStyle.TextLineAlignment = DevComponents.DotNetBar.eStyleTextAlignment.Far
+        Me.btInvSaldoLote.TitleTextAlignment = System.Drawing.ContentAlignment.BottomCenter
+        Me.btInvSaldoLote.TitleTextColor = System.Drawing.Color.Red
+        '
+        'btlvSaldoMinimo
+        '
+        Me.btlvSaldoMinimo.Image = CType(resources.GetObject("btlvSaldoMinimo.Image"), System.Drawing.Image)
+        Me.btlvSaldoMinimo.ImageTextAlignment = System.Drawing.ContentAlignment.MiddleCenter
+        Me.btlvSaldoMinimo.ItemAlignment = DevComponents.DotNetBar.eItemAlignment.Center
+        Me.btlvSaldoMinimo.Name = "btlvSaldoMinimo"
+        Me.btlvSaldoMinimo.SymbolColor = System.Drawing.Color.Empty
+        Me.btlvSaldoMinimo.Text = "SALDOS MENORES AL STOCK MIN."
+        Me.btlvSaldoMinimo.TileColor = DevComponents.DotNetBar.Metro.eMetroTileColor.Olive
+        Me.btlvSaldoMinimo.TileSize = New System.Drawing.Size(250, 135)
+        '
+        '
+        '
+        Me.btlvSaldoMinimo.TileStyle.BackColor = System.Drawing.Color.LimeGreen
+        Me.btlvSaldoMinimo.TileStyle.BackColor2 = System.Drawing.Color.Gold
+        Me.btlvSaldoMinimo.TileStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.btlvSaldoMinimo.TileStyle.Font = New System.Drawing.Font("Georgia", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btlvSaldoMinimo.TileStyle.TextLineAlignment = DevComponents.DotNetBar.eStyleTextAlignment.Far
+        Me.btlvSaldoMinimo.TitleTextAlignment = System.Drawing.ContentAlignment.BottomCenter
+        Me.btlvSaldoMinimo.TitleTextColor = System.Drawing.Color.Red
+        '
+        'btInvVentas
+        '
+        Me.btInvVentas.Image = CType(resources.GetObject("btInvVentas.Image"), System.Drawing.Image)
+        Me.btInvVentas.ImageTextAlignment = System.Drawing.ContentAlignment.MiddleCenter
+        Me.btInvVentas.ItemAlignment = DevComponents.DotNetBar.eItemAlignment.Center
+        Me.btInvVentas.Name = "btInvVentas"
+        Me.btInvVentas.SymbolColor = System.Drawing.Color.Empty
+        Me.btInvVentas.Text = "VENTAS"
+        Me.btInvVentas.TileColor = DevComponents.DotNetBar.Metro.eMetroTileColor.Plum
+        Me.btInvVentas.TileSize = New System.Drawing.Size(250, 135)
+        '
+        '
+        '
+        Me.btInvVentas.TileStyle.BackColor = System.Drawing.SystemColors.HotTrack
+        Me.btInvVentas.TileStyle.BackColor2 = System.Drawing.Color.FromArgb(CType(CType(215, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(43, Byte), Integer), CType(CType(226, Byte), Integer))
+        Me.btInvVentas.TileStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.btInvVentas.TileStyle.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btInvVentas.TileStyle.TextLineAlignment = DevComponents.DotNetBar.eStyleTextAlignment.Far
+        Me.btInvVentas.TitleTextAlignment = System.Drawing.ContentAlignment.BottomCenter
+        Me.btInvVentas.TitleTextColor = System.Drawing.Color.Red
+        '
+        'btInvStockDif
+        '
+        Me.btInvStockDif.Image = Global.DinoM.My.Resources.Resources.hojaruta
+        Me.btInvStockDif.ImageTextAlignment = System.Drawing.ContentAlignment.MiddleCenter
+        Me.btInvStockDif.ItemAlignment = DevComponents.DotNetBar.eItemAlignment.Center
+        Me.btInvStockDif.Name = "btInvStockDif"
+        Me.btInvStockDif.SymbolColor = System.Drawing.Color.Empty
+        Me.btInvStockDif.Text = "STOCK DIFERENCIA"
+        Me.btInvStockDif.TileColor = DevComponents.DotNetBar.Metro.eMetroTileColor.DarkBlue
+        Me.btInvStockDif.TileSize = New System.Drawing.Size(250, 135)
+        '
+        '
+        '
+        Me.btInvStockDif.TileStyle.BackColor = System.Drawing.SystemColors.HotTrack
+        Me.btInvStockDif.TileStyle.BackColor2 = System.Drawing.Color.FromArgb(CType(CType(170, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(43, Byte), Integer), CType(CType(226, Byte), Integer))
+        Me.btInvStockDif.TileStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.btInvStockDif.TileStyle.Font = New System.Drawing.Font("Georgia", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btInvStockDif.TileStyle.TextLineAlignment = DevComponents.DotNetBar.eStyleTextAlignment.Far
+        Me.btInvStockDif.TitleTextAlignment = System.Drawing.ContentAlignment.BottomCenter
+        Me.btInvStockDif.TitleTextColor = System.Drawing.Color.Red
+        '
+        'btSaldosValoradosExcel
+        '
+        Me.btSaldosValoradosExcel.Image = Global.DinoM.My.Resources.Resources.cuentas
+        Me.btSaldosValoradosExcel.ImageTextAlignment = System.Drawing.ContentAlignment.MiddleCenter
+        Me.btSaldosValoradosExcel.ItemAlignment = DevComponents.DotNetBar.eItemAlignment.Center
+        Me.btSaldosValoradosExcel.Name = "btSaldosValoradosExcel"
+        Me.btSaldosValoradosExcel.SymbolColor = System.Drawing.Color.Empty
+        Me.btSaldosValoradosExcel.Text = "SALDOS VALORADOS EXCEL"
+        Me.btSaldosValoradosExcel.TileColor = DevComponents.DotNetBar.Metro.eMetroTileColor.Teal
+        Me.btSaldosValoradosExcel.TileSize = New System.Drawing.Size(250, 135)
+        '
+        '
+        '
+        Me.btSaldosValoradosExcel.TileStyle.BackColor = System.Drawing.Color.FromArgb(CType(CType(132, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(132, Byte), Integer))
+        Me.btSaldosValoradosExcel.TileStyle.BackColor2 = System.Drawing.Color.FromArgb(CType(CType(144, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(43, Byte), Integer), CType(CType(226, Byte), Integer))
+        Me.btSaldosValoradosExcel.TileStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.btSaldosValoradosExcel.TileStyle.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btSaldosValoradosExcel.TileStyle.TextLineAlignment = DevComponents.DotNetBar.eStyleTextAlignment.Far
+        Me.btSaldosValoradosExcel.TitleTextAlignment = System.Drawing.ContentAlignment.BottomCenter
+        Me.btSaldosValoradosExcel.TitleTextColor = System.Drawing.Color.Red
+        '
+        'btProdNoCompra
+        '
+        Me.btProdNoCompra.Image = Global.DinoM.My.Resources.Resources._14
+        Me.btProdNoCompra.ImageTextAlignment = System.Drawing.ContentAlignment.MiddleCenter
+        Me.btProdNoCompra.ItemAlignment = DevComponents.DotNetBar.eItemAlignment.Center
+        Me.btProdNoCompra.Name = "btProdNoCompra"
+        Me.btProdNoCompra.SymbolColor = System.Drawing.Color.Empty
+        Me.btProdNoCompra.Text = "REP. PROD. NO ENTRARON POR COMPRA"
+        Me.btProdNoCompra.TileColor = DevComponents.DotNetBar.Metro.eMetroTileColor.DarkBlue
+        Me.btProdNoCompra.TileSize = New System.Drawing.Size(250, 135)
+        '
+        '
+        '
+        Me.btProdNoCompra.TileStyle.BackColor = System.Drawing.Color.DarkCyan
+        Me.btProdNoCompra.TileStyle.BackColor2 = System.Drawing.Color.DarkCyan
+        Me.btProdNoCompra.TileStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.btProdNoCompra.TileStyle.Font = New System.Drawing.Font("Georgia", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btProdNoCompra.TileStyle.TextLineAlignment = DevComponents.DotNetBar.eStyleTextAlignment.Far
+        Me.btProdNoCompra.TitleTextAlignment = System.Drawing.ContentAlignment.BottomCenter
+        Me.btProdNoCompra.TitleTextColor = System.Drawing.Color.Red
+        '
+        'btCalculoPedSugerido
+        '
+        Me.btCalculoPedSugerido.Image = CType(resources.GetObject("btCalculoPedSugerido.Image"), System.Drawing.Image)
+        Me.btCalculoPedSugerido.ImageTextAlignment = System.Drawing.ContentAlignment.MiddleCenter
+        Me.btCalculoPedSugerido.ItemAlignment = DevComponents.DotNetBar.eItemAlignment.Center
+        Me.btCalculoPedSugerido.Name = "btCalculoPedSugerido"
+        Me.btCalculoPedSugerido.SymbolColor = System.Drawing.Color.Empty
+        Me.btCalculoPedSugerido.Text = "PEDIDO SUGERIDO SEMANAS"
+        Me.btCalculoPedSugerido.TileColor = DevComponents.DotNetBar.Metro.eMetroTileColor.DarkBlue
+        Me.btCalculoPedSugerido.TileSize = New System.Drawing.Size(250, 135)
+        '
+        '
+        '
+        Me.btCalculoPedSugerido.TileStyle.BackColor = System.Drawing.Color.Fuchsia
+        Me.btCalculoPedSugerido.TileStyle.BackColor2 = System.Drawing.Color.FromArgb(CType(CType(111, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
+        Me.btCalculoPedSugerido.TileStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.btCalculoPedSugerido.TileStyle.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btCalculoPedSugerido.TileStyle.TextLineAlignment = DevComponents.DotNetBar.eStyleTextAlignment.Far
+        Me.btCalculoPedSugerido.TitleTextAlignment = System.Drawing.ContentAlignment.BottomCenter
+        Me.btCalculoPedSugerido.TitleTextColor = System.Drawing.Color.Red
+        '
+        'btRevStockVentaProv
+        '
+        Me.btRevStockVentaProv.Image = Global.DinoM.My.Resources.Resources._14
+        Me.btRevStockVentaProv.ImageTextAlignment = System.Drawing.ContentAlignment.MiddleCenter
+        Me.btRevStockVentaProv.ItemAlignment = DevComponents.DotNetBar.eItemAlignment.Center
+        Me.btRevStockVentaProv.Name = "btRevStockVentaProv"
+        Me.btRevStockVentaProv.SymbolColor = System.Drawing.Color.Empty
+        Me.btRevStockVentaProv.Text = "REVISIÓN STOCK-VENTA PROVEEDORES"
+        Me.btRevStockVentaProv.TileColor = DevComponents.DotNetBar.Metro.eMetroTileColor.Olive
+        Me.btRevStockVentaProv.TileSize = New System.Drawing.Size(250, 135)
+        '
+        '
+        '
+        Me.btRevStockVentaProv.TileStyle.BackColor = System.Drawing.Color.SeaGreen
+        Me.btRevStockVentaProv.TileStyle.BackColor2 = System.Drawing.SystemColors.ActiveBorder
+        Me.btRevStockVentaProv.TileStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.btRevStockVentaProv.TileStyle.Font = New System.Drawing.Font("Georgia", 8.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btRevStockVentaProv.TileStyle.TextLineAlignment = DevComponents.DotNetBar.eStyleTextAlignment.Far
+        Me.btRevStockVentaProv.TitleTextAlignment = System.Drawing.ContentAlignment.BottomCenter
+        Me.btRevStockVentaProv.TitleTextColor = System.Drawing.Color.Red
+        '
+        'btConteoFisico
+        '
+        Me.btConteoFisico.Image = Global.DinoM.My.Resources.Resources.check_mark
+        Me.btConteoFisico.ImageTextAlignment = System.Drawing.ContentAlignment.MiddleCenter
+        Me.btConteoFisico.ItemAlignment = DevComponents.DotNetBar.eItemAlignment.Center
+        Me.btConteoFisico.Name = "btConteoFisico"
+        Me.btConteoFisico.SymbolColor = System.Drawing.Color.Empty
+        Me.btConteoFisico.Text = "CONTEO FÍSICO"
+        Me.btConteoFisico.TileColor = DevComponents.DotNetBar.Metro.eMetroTileColor.Magenta
+        Me.btConteoFisico.TileSize = New System.Drawing.Size(250, 135)
+        '
+        '
+        '
+        Me.btConteoFisico.TileStyle.BackColor = System.Drawing.Color.Red
+        Me.btConteoFisico.TileStyle.BackColor2 = System.Drawing.Color.Gray
+        Me.btConteoFisico.TileStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.btConteoFisico.TileStyle.Font = New System.Drawing.Font("Georgia", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btConteoFisico.TileStyle.TextLineAlignment = DevComponents.DotNetBar.eStyleTextAlignment.Far
+        Me.btConteoFisico.TitleTextAlignment = System.Drawing.ContentAlignment.BottomCenter
+        Me.btConteoFisico.TitleTextColor = System.Drawing.Color.Red
+        '
+        'btStockSisFis
+        '
+        Me.btStockSisFis.Image = Global.DinoM.My.Resources.Resources.hojaruta
+        Me.btStockSisFis.ImageTextAlignment = System.Drawing.ContentAlignment.MiddleCenter
+        Me.btStockSisFis.ItemAlignment = DevComponents.DotNetBar.eItemAlignment.Center
+        Me.btStockSisFis.Name = "btStockSisFis"
+        Me.btStockSisFis.SymbolColor = System.Drawing.Color.Empty
+        Me.btStockSisFis.Text = "STOCK SISTEMA VS. FÍSICO"
+        Me.btStockSisFis.TileColor = DevComponents.DotNetBar.Metro.eMetroTileColor.Olive
+        Me.btStockSisFis.TileSize = New System.Drawing.Size(250, 135)
+        '
+        '
+        '
+        Me.btStockSisFis.TileStyle.BackColor = System.Drawing.Color.FromArgb(CType(CType(215, Byte), Integer), CType(CType(47, Byte), Integer), CType(CType(79, Byte), Integer), CType(CType(79, Byte), Integer))
+        Me.btStockSisFis.TileStyle.BackColor2 = System.Drawing.Color.GreenYellow
+        Me.btStockSisFis.TileStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.btStockSisFis.TileStyle.Font = New System.Drawing.Font("Georgia", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btStockSisFis.TileStyle.TextLineAlignment = DevComponents.DotNetBar.eStyleTextAlignment.Far
+        Me.btStockSisFis.TitleTextAlignment = System.Drawing.ContentAlignment.BottomCenter
+        Me.btStockSisFis.TitleTextColor = System.Drawing.Color.Red
+        '
+        'btCalculoPedSugeridoDias
+        '
+        Me.btCalculoPedSugeridoDias.Image = CType(resources.GetObject("btCalculoPedSugeridoDias.Image"), System.Drawing.Image)
+        Me.btCalculoPedSugeridoDias.ImageTextAlignment = System.Drawing.ContentAlignment.MiddleCenter
+        Me.btCalculoPedSugeridoDias.ItemAlignment = DevComponents.DotNetBar.eItemAlignment.Center
+        Me.btCalculoPedSugeridoDias.Name = "btCalculoPedSugeridoDias"
+        Me.btCalculoPedSugeridoDias.SymbolColor = System.Drawing.Color.Empty
+        Me.btCalculoPedSugeridoDias.Text = "PEDIDO SUGERIDO DÍAS"
+        Me.btCalculoPedSugeridoDias.TileColor = DevComponents.DotNetBar.Metro.eMetroTileColor.DarkBlue
+        Me.btCalculoPedSugeridoDias.TileSize = New System.Drawing.Size(250, 135)
+        '
+        '
+        '
+        Me.btCalculoPedSugeridoDias.TileStyle.BackColor = System.Drawing.Color.MediumBlue
+        Me.btCalculoPedSugeridoDias.TileStyle.BackColor2 = System.Drawing.SystemColors.MenuHighlight
+        Me.btCalculoPedSugeridoDias.TileStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.btCalculoPedSugeridoDias.TileStyle.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btCalculoPedSugeridoDias.TileStyle.TextLineAlignment = DevComponents.DotNetBar.eStyleTextAlignment.Far
+        Me.btCalculoPedSugeridoDias.TitleTextAlignment = System.Drawing.ContentAlignment.BottomCenter
+        Me.btCalculoPedSugeridoDias.TitleTextColor = System.Drawing.Color.Red
+        '
+        'btInvMovimientoProdPeso
+        '
+        Me.btInvMovimientoProdPeso.Image = CType(resources.GetObject("btInvMovimientoProdPeso.Image"), System.Drawing.Image)
+        Me.btInvMovimientoProdPeso.ImageTextAlignment = System.Drawing.ContentAlignment.MiddleCenter
+        Me.btInvMovimientoProdPeso.ItemAlignment = DevComponents.DotNetBar.eItemAlignment.Center
+        Me.btInvMovimientoProdPeso.Name = "btInvMovimientoProdPeso"
+        Me.btInvMovimientoProdPeso.SymbolColor = System.Drawing.Color.Empty
+        Me.btInvMovimientoProdPeso.Text = "MOVIMIENTO DE PROD. POR PESO"
+        Me.btInvMovimientoProdPeso.TileColor = DevComponents.DotNetBar.Metro.eMetroTileColor.Blueish
+        Me.btInvMovimientoProdPeso.TileSize = New System.Drawing.Size(250, 135)
+        '
+        '
+        '
+        Me.btInvMovimientoProdPeso.TileStyle.BackColor = System.Drawing.Color.BlueViolet
+        Me.btInvMovimientoProdPeso.TileStyle.BackColor2 = System.Drawing.SystemColors.WindowFrame
+        Me.btInvMovimientoProdPeso.TileStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.btInvMovimientoProdPeso.TileStyle.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btInvMovimientoProdPeso.TileStyle.TextLineAlignment = DevComponents.DotNetBar.eStyleTextAlignment.Far
+        Me.btInvMovimientoProdPeso.TitleTextAlignment = System.Drawing.ContentAlignment.BottomCenter
+        Me.btInvMovimientoProdPeso.TitleTextColor = System.Drawing.Color.Red
+        '
+        'btInvKardexProdPeso
+        '
+        Me.btInvKardexProdPeso.Image = Global.DinoM.My.Resources.Resources.Kardex2
+        Me.btInvKardexProdPeso.ImageTextAlignment = System.Drawing.ContentAlignment.MiddleCenter
+        Me.btInvKardexProdPeso.ItemAlignment = DevComponents.DotNetBar.eItemAlignment.Center
+        Me.btInvKardexProdPeso.Name = "btInvKardexProdPeso"
+        Me.btInvKardexProdPeso.SymbolColor = System.Drawing.Color.Empty
+        Me.btInvKardexProdPeso.Text = "KARDEX DE PRODUCTOS POR PESO"
+        Me.btInvKardexProdPeso.TileColor = DevComponents.DotNetBar.Metro.eMetroTileColor.DarkBlue
+        Me.btInvKardexProdPeso.TileSize = New System.Drawing.Size(250, 135)
+        '
+        '
+        '
+        Me.btInvKardexProdPeso.TileStyle.BackColor = System.Drawing.Color.Aqua
+        Me.btInvKardexProdPeso.TileStyle.BackColor2 = System.Drawing.Color.FromArgb(CType(CType(111, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
+        Me.btInvKardexProdPeso.TileStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.btInvKardexProdPeso.TileStyle.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btInvKardexProdPeso.TileStyle.TextLineAlignment = DevComponents.DotNetBar.eStyleTextAlignment.Far
+        Me.btInvKardexProdPeso.TitleTextAlignment = System.Drawing.ContentAlignment.BottomCenter
+        Me.btInvKardexProdPeso.TitleTextColor = System.Drawing.Color.Red
+        '
         'SideNavPanel7
         '
         Me.SideNavPanel7.Controls.Add(Me.MenuCreditos)
@@ -2374,190 +2602,6 @@ Partial Class P_Principal
         Me.MetroTilePanel5.Style = DevComponents.DotNetBar.eDotNetBarStyle.Office2010
         Me.MetroTilePanel5.TabIndex = 1
         Me.MetroTilePanel5.Text = "mtp1Configuracion"
-        '
-        'SideNavPanel6
-        '
-        Me.SideNavPanel6.BackColor = System.Drawing.Color.Transparent
-        Me.SideNavPanel6.BackgroundImage = Global.DinoM.My.Resources.Resources.Fondo_empresarial
-        Me.SideNavPanel6.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.SideNavPanel6.Controls.Add(Me.MetroTilePanel7)
-        Me.SideNavPanel6.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.SideNavPanel6.ForeColor = System.Drawing.Color.Transparent
-        Me.SideNavPanel6.Location = New System.Drawing.Point(142, 36)
-        Me.SideNavPanel6.Name = "SideNavPanel6"
-        Me.SideNavPanel6.Size = New System.Drawing.Size(848, 524)
-        Me.SideNavPanel6.TabIndex = 109
-        Me.SideNavPanel6.Visible = False
-        '
-        'MetroTilePanel7
-        '
-        Me.MetroTilePanel7.BackColor = System.Drawing.Color.Transparent
-        Me.MetroTilePanel7.BackgroundImage = Global.DinoM.My.Resources.Resources.Fondo_Naranja_1
-        Me.MetroTilePanel7.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        '
-        '
-        '
-        Me.MetroTilePanel7.BackgroundStyle.BackColor = System.Drawing.Color.Transparent
-        Me.MetroTilePanel7.BackgroundStyle.Class = "MetroTilePanel"
-        Me.MetroTilePanel7.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.MetroTilePanel7.ContainerControlProcessDialogKey = True
-        Me.MetroTilePanel7.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.MetroTilePanel7.DragDropSupport = True
-        Me.MetroTilePanel7.Items.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.btComProveedor, Me.btComCompra, Me.btComPagosCredito, Me.btComEstadoCuentas, Me.btEstadoCuentasProveedores, Me.btEstadoCuentasProveedoresTodos, Me.btComprasDet})
-        Me.MetroTilePanel7.ItemSpacing = 10
-        Me.MetroTilePanel7.Location = New System.Drawing.Point(0, 0)
-        Me.MetroTilePanel7.MultiLine = True
-        Me.MetroTilePanel7.Name = "MetroTilePanel7"
-        Me.MetroTilePanel7.Size = New System.Drawing.Size(848, 524)
-        Me.MetroTilePanel7.TabIndex = 2
-        Me.MetroTilePanel7.Text = "mtp2Logistica"
-        '
-        'btComProveedor
-        '
-        Me.btComProveedor.Image = Global.DinoM.My.Resources.Resources.user
-        Me.btComProveedor.ImageTextAlignment = System.Drawing.ContentAlignment.MiddleCenter
-        Me.btComProveedor.ItemAlignment = DevComponents.DotNetBar.eItemAlignment.Center
-        Me.btComProveedor.Name = "btComProveedor"
-        Me.btComProveedor.SymbolColor = System.Drawing.Color.Empty
-        Me.btComProveedor.Text = "PROVEEDOR"
-        Me.btComProveedor.TileColor = DevComponents.DotNetBar.Metro.eMetroTileColor.DarkBlue
-        Me.btComProveedor.TileSize = New System.Drawing.Size(250, 135)
-        '
-        '
-        '
-        Me.btComProveedor.TileStyle.BackColor = System.Drawing.Color.FromArgb(CType(CType(132, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(132, Byte), Integer))
-        Me.btComProveedor.TileStyle.BackColor2 = System.Drawing.Color.FromArgb(CType(CType(105, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
-        Me.btComProveedor.TileStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.btComProveedor.TileStyle.Font = New System.Drawing.Font("Georgia", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btComProveedor.TileStyle.TextLineAlignment = DevComponents.DotNetBar.eStyleTextAlignment.Far
-        Me.btComProveedor.TitleTextAlignment = System.Drawing.ContentAlignment.BottomCenter
-        Me.btComProveedor.TitleTextColor = System.Drawing.Color.Red
-        '
-        'btComCompra
-        '
-        Me.btComCompra.Image = CType(resources.GetObject("btComCompra.Image"), System.Drawing.Image)
-        Me.btComCompra.ImageTextAlignment = System.Drawing.ContentAlignment.MiddleCenter
-        Me.btComCompra.ItemAlignment = DevComponents.DotNetBar.eItemAlignment.Center
-        Me.btComCompra.Name = "btComCompra"
-        Me.btComCompra.SymbolColor = System.Drawing.Color.Empty
-        Me.btComCompra.Text = "COMPRA"
-        Me.btComCompra.TileColor = DevComponents.DotNetBar.Metro.eMetroTileColor.Teal
-        Me.btComCompra.TileSize = New System.Drawing.Size(250, 135)
-        '
-        '
-        '
-        Me.btComCompra.TileStyle.BackColor = System.Drawing.Color.MediumVioletRed
-        Me.btComCompra.TileStyle.BackColor2 = System.Drawing.Color.Red
-        Me.btComCompra.TileStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.btComCompra.TileStyle.Font = New System.Drawing.Font("Georgia", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btComCompra.TileStyle.TextLineAlignment = DevComponents.DotNetBar.eStyleTextAlignment.Far
-        Me.btComCompra.TitleTextAlignment = System.Drawing.ContentAlignment.BottomCenter
-        Me.btComCompra.TitleTextColor = System.Drawing.Color.Red
-        '
-        'btComPagosCredito
-        '
-        Me.btComPagosCredito.Image = Global.DinoM.My.Resources.Resources.precio
-        Me.btComPagosCredito.ImageTextAlignment = System.Drawing.ContentAlignment.MiddleCenter
-        Me.btComPagosCredito.ItemAlignment = DevComponents.DotNetBar.eItemAlignment.Center
-        Me.btComPagosCredito.Name = "btComPagosCredito"
-        Me.btComPagosCredito.SymbolColor = System.Drawing.Color.Empty
-        Me.btComPagosCredito.Text = "PAGOS COMPRA CREDITOS"
-        Me.btComPagosCredito.TileColor = DevComponents.DotNetBar.Metro.eMetroTileColor.Blueish
-        Me.btComPagosCredito.TileSize = New System.Drawing.Size(250, 135)
-        '
-        '
-        '
-        Me.btComPagosCredito.TileStyle.BackColor = System.Drawing.Color.Blue
-        Me.btComPagosCredito.TileStyle.BackColor2 = System.Drawing.Color.FromArgb(CType(CType(187, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
-        Me.btComPagosCredito.TileStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.btComPagosCredito.TileStyle.Font = New System.Drawing.Font("Georgia", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btComPagosCredito.TileStyle.TextLineAlignment = DevComponents.DotNetBar.eStyleTextAlignment.Far
-        Me.btComPagosCredito.TitleTextAlignment = System.Drawing.ContentAlignment.BottomCenter
-        Me.btComPagosCredito.TitleTextColor = System.Drawing.Color.Red
-        '
-        'btComEstadoCuentas
-        '
-        Me.btComEstadoCuentas.Image = Global.DinoM.My.Resources.Resources.rp_estadoCuentas
-        Me.btComEstadoCuentas.ImageTextAlignment = System.Drawing.ContentAlignment.MiddleCenter
-        Me.btComEstadoCuentas.ItemAlignment = DevComponents.DotNetBar.eItemAlignment.Center
-        Me.btComEstadoCuentas.Name = "btComEstadoCuentas"
-        Me.btComEstadoCuentas.SymbolColor = System.Drawing.Color.Empty
-        Me.btComEstadoCuentas.Text = "ESTADO DE CUENTAS"
-        Me.btComEstadoCuentas.TileColor = DevComponents.DotNetBar.Metro.eMetroTileColor.Teal
-        Me.btComEstadoCuentas.TileSize = New System.Drawing.Size(250, 135)
-        '
-        '
-        '
-        Me.btComEstadoCuentas.TileStyle.BackColor = System.Drawing.Color.Gold
-        Me.btComEstadoCuentas.TileStyle.BackColor2 = System.Drawing.Color.FromArgb(CType(CType(178, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
-        Me.btComEstadoCuentas.TileStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.btComEstadoCuentas.TileStyle.Font = New System.Drawing.Font("Georgia", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btComEstadoCuentas.TileStyle.TextLineAlignment = DevComponents.DotNetBar.eStyleTextAlignment.Far
-        Me.btComEstadoCuentas.TitleTextAlignment = System.Drawing.ContentAlignment.BottomCenter
-        Me.btComEstadoCuentas.TitleTextColor = System.Drawing.Color.Red
-        '
-        'btEstadoCuentasProveedores
-        '
-        Me.btEstadoCuentasProveedores.Image = Global.DinoM.My.Resources.Resources.cuentas
-        Me.btEstadoCuentasProveedores.ImageTextAlignment = System.Drawing.ContentAlignment.MiddleCenter
-        Me.btEstadoCuentasProveedores.ItemAlignment = DevComponents.DotNetBar.eItemAlignment.Center
-        Me.btEstadoCuentasProveedores.Name = "btEstadoCuentasProveedores"
-        Me.btEstadoCuentasProveedores.SymbolColor = System.Drawing.Color.Empty
-        Me.btEstadoCuentasProveedores.Text = "ESTADO DE CUENTAS PROVEEDORES"
-        Me.btEstadoCuentasProveedores.TileColor = DevComponents.DotNetBar.Metro.eMetroTileColor.Teal
-        Me.btEstadoCuentasProveedores.TileSize = New System.Drawing.Size(250, 135)
-        '
-        '
-        '
-        Me.btEstadoCuentasProveedores.TileStyle.BackColor = System.Drawing.Color.Aqua
-        Me.btEstadoCuentasProveedores.TileStyle.BackColor2 = System.Drawing.Color.DimGray
-        Me.btEstadoCuentasProveedores.TileStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.btEstadoCuentasProveedores.TileStyle.Font = New System.Drawing.Font("Georgia", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btEstadoCuentasProveedores.TileStyle.TextLineAlignment = DevComponents.DotNetBar.eStyleTextAlignment.Far
-        Me.btEstadoCuentasProveedores.TitleTextAlignment = System.Drawing.ContentAlignment.BottomCenter
-        Me.btEstadoCuentasProveedores.TitleTextColor = System.Drawing.Color.Red
-        '
-        'btEstadoCuentasProveedoresTodos
-        '
-        Me.btEstadoCuentasProveedoresTodos.Image = Global.DinoM.My.Resources.Resources.cuentas
-        Me.btEstadoCuentasProveedoresTodos.ImageTextAlignment = System.Drawing.ContentAlignment.MiddleCenter
-        Me.btEstadoCuentasProveedoresTodos.ItemAlignment = DevComponents.DotNetBar.eItemAlignment.Center
-        Me.btEstadoCuentasProveedoresTodos.Name = "btEstadoCuentasProveedoresTodos"
-        Me.btEstadoCuentasProveedoresTodos.SymbolColor = System.Drawing.Color.Empty
-        Me.btEstadoCuentasProveedoresTodos.Text = "ESTADO DE CUENTAS TODOS"
-        Me.btEstadoCuentasProveedoresTodos.TileColor = DevComponents.DotNetBar.Metro.eMetroTileColor.Olive
-        Me.btEstadoCuentasProveedoresTodos.TileSize = New System.Drawing.Size(250, 135)
-        '
-        '
-        '
-        Me.btEstadoCuentasProveedoresTodos.TileStyle.BackColor = System.Drawing.Color.DarkGreen
-        Me.btEstadoCuentasProveedoresTodos.TileStyle.BackColor2 = System.Drawing.Color.FromArgb(CType(CType(132, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(132, Byte), Integer))
-        Me.btEstadoCuentasProveedoresTodos.TileStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.btEstadoCuentasProveedoresTodos.TileStyle.Font = New System.Drawing.Font("Georgia", 9.0!, System.Drawing.FontStyle.Bold)
-        Me.btEstadoCuentasProveedoresTodos.TileStyle.TextLineAlignment = DevComponents.DotNetBar.eStyleTextAlignment.Far
-        Me.btEstadoCuentasProveedoresTodos.TitleTextAlignment = System.Drawing.ContentAlignment.BottomCenter
-        Me.btEstadoCuentasProveedoresTodos.TitleTextColor = System.Drawing.Color.Red
-        '
-        'btComprasDet
-        '
-        Me.btComprasDet.Image = Global.DinoM.My.Resources.Resources.check_mark
-        Me.btComprasDet.ImageTextAlignment = System.Drawing.ContentAlignment.MiddleCenter
-        Me.btComprasDet.ItemAlignment = DevComponents.DotNetBar.eItemAlignment.Center
-        Me.btComprasDet.Name = "btComprasDet"
-        Me.btComprasDet.SymbolColor = System.Drawing.Color.Empty
-        Me.btComprasDet.Text = "COMPRAS DETALLADAS"
-        Me.btComprasDet.TileColor = DevComponents.DotNetBar.Metro.eMetroTileColor.DarkBlue
-        Me.btComprasDet.TileSize = New System.Drawing.Size(250, 135)
-        '
-        '
-        '
-        Me.btComprasDet.TileStyle.BackColor = System.Drawing.SystemColors.Highlight
-        Me.btComprasDet.TileStyle.BackColor2 = System.Drawing.Color.FromArgb(CType(CType(164, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
-        Me.btComprasDet.TileStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.btComprasDet.TileStyle.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btComprasDet.TileStyle.TextLineAlignment = DevComponents.DotNetBar.eStyleTextAlignment.Far
-        Me.btComprasDet.TitleTextAlignment = System.Drawing.ContentAlignment.BottomCenter
-        Me.btComprasDet.TitleTextColor = System.Drawing.Color.Red
         '
         'SideNav_Logistica
         '
@@ -2874,6 +2918,10 @@ Partial Class P_Principal
         Me.btEscVehiculo.SymbolColor = System.Drawing.Color.Empty
         Me.btEscVehiculo.TileColor = DevComponents.DotNetBar.Metro.eMetroTileColor.Magenta
         Me.btEscVehiculo.TileSize = New System.Drawing.Size(250, 135)
+        '
+        '
+        '
+        Me.btEscVehiculo.TileStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.btEscVehiculo.TitleText = "VEHICULO"
         '
         'btEscAlumnos
@@ -2884,6 +2932,10 @@ Partial Class P_Principal
         Me.btEscAlumnos.SymbolColor = System.Drawing.Color.Empty
         Me.btEscAlumnos.TileColor = DevComponents.DotNetBar.Metro.eMetroTileColor.Magenta
         Me.btEscAlumnos.TileSize = New System.Drawing.Size(250, 135)
+        '
+        '
+        '
+        Me.btEscAlumnos.TileStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.btEscAlumnos.TitleText = "VEHICULO"
         '
         'btEscEquipos
@@ -2894,6 +2946,10 @@ Partial Class P_Principal
         Me.btEscEquipos.SymbolColor = System.Drawing.Color.Empty
         Me.btEscEquipos.TileColor = DevComponents.DotNetBar.Metro.eMetroTileColor.Magenta
         Me.btEscEquipos.TileSize = New System.Drawing.Size(250, 135)
+        '
+        '
+        '
+        Me.btEscEquipos.TileStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.btEscEquipos.TitleText = "VEHICULO"
         '
         'btEscClaPracticas
@@ -2904,6 +2960,10 @@ Partial Class P_Principal
         Me.btEscClaPracticas.SymbolColor = System.Drawing.Color.Empty
         Me.btEscClaPracticas.TileColor = DevComponents.DotNetBar.Metro.eMetroTileColor.Magenta
         Me.btEscClaPracticas.TileSize = New System.Drawing.Size(250, 135)
+        '
+        '
+        '
+        Me.btEscClaPracticas.TileStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.btEscClaPracticas.TitleText = "VEHICULO"
         '
         'btEscInscripciones
@@ -2914,6 +2974,10 @@ Partial Class P_Principal
         Me.btEscInscripciones.SymbolColor = System.Drawing.Color.Empty
         Me.btEscInscripciones.TileColor = DevComponents.DotNetBar.Metro.eMetroTileColor.Magenta
         Me.btEscInscripciones.TileSize = New System.Drawing.Size(250, 135)
+        '
+        '
+        '
+        Me.btEscInscripciones.TileStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.btEscInscripciones.TitleText = "VEHICULO"
         '
         'btEscPreExamen
@@ -2924,6 +2988,10 @@ Partial Class P_Principal
         Me.btEscPreExamen.SymbolColor = System.Drawing.Color.Empty
         Me.btEscPreExamen.TileColor = DevComponents.DotNetBar.Metro.eMetroTileColor.Magenta
         Me.btEscPreExamen.TileSize = New System.Drawing.Size(250, 135)
+        '
+        '
+        '
+        Me.btEscPreExamen.TileStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.btEscPreExamen.TitleText = "VEHICULO"
         '
         'btEscClasesTeoricas
@@ -2934,6 +3002,10 @@ Partial Class P_Principal
         Me.btEscClasesTeoricas.SymbolColor = System.Drawing.Color.Empty
         Me.btEscClasesTeoricas.TileColor = DevComponents.DotNetBar.Metro.eMetroTileColor.Magenta
         Me.btEscClasesTeoricas.TileSize = New System.Drawing.Size(250, 135)
+        '
+        '
+        '
+        Me.btEscClasesTeoricas.TileStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.btEscClasesTeoricas.TitleText = "VEHICULO"
         '
         'ItemContainer1
@@ -2987,7 +3059,6 @@ Partial Class P_Principal
         '
         'FP_Configuracion
         '
-        Me.FP_Configuracion.Checked = True
         Me.FP_Configuracion.Name = "FP_Configuracion"
         Me.FP_Configuracion.Panel = Me.SideNav_Conf
         Me.FP_Configuracion.Symbol = ""
@@ -3004,6 +3075,7 @@ Partial Class P_Principal
         '
         'FP_INVENTARIO
         '
+        Me.FP_INVENTARIO.Checked = True
         Me.FP_INVENTARIO.Name = "FP_INVENTARIO"
         Me.FP_INVENTARIO.Panel = Me.SideNavPanel5
         Me.FP_INVENTARIO.Symbol = ""
@@ -3208,16 +3280,16 @@ Partial Class P_Principal
         Me.Text = "DINO-QUINTAL"
         Me.SideNav1.ResumeLayout(False)
         Me.SideNav1.PerformLayout()
+        Me.SideNav_Ventas.ResumeLayout(False)
+        Me.SideNavPanel6.ResumeLayout(False)
         Me.SideNav_Conf.ResumeLayout(False)
         CType(Me.PictureBox4, System.ComponentModel.ISupportInitialize).EndInit()
         Me.SideNavPanel5.ResumeLayout(False)
-        Me.SideNav_Ventas.ResumeLayout(False)
         Me.SideNavPanel7.ResumeLayout(False)
         Me.SideNavPanel3.ResumeLayout(False)
         CType(Me.superTabControl3, System.ComponentModel.ISupportInitialize).EndInit()
         Me.superTabControl3.ResumeLayout(False)
         Me.SideNavPanel4.ResumeLayout(False)
-        Me.SideNavPanel6.ResumeLayout(False)
         Me.SideNav_Logistica.ResumeLayout(False)
         CType(Me.PictureBox3, System.ComponentModel.ISupportInitialize).EndInit()
         Me.SideNavPanel1.ResumeLayout(False)
