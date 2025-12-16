@@ -384,9 +384,6 @@ Public Class F1_ExcelCierresCaja
         End If
 
 
-
-
-
     End Sub
 #End Region
 

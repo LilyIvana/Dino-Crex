@@ -1902,7 +1902,7 @@ Public Class F0_Venta2
             Dim f As Double = CDbl(tbMdesc.Value)
             Dim g As Double = tbGiftCard.Value
             Dim h As Double = e - f - g
-            Dim i As Double = g * (gi_IVA / 100)
+            Dim i As Double = h * (gi_IVA / 100)
             Dim Anhio As Integer = dtiFechaFactura.Value.Year
 
             Dim res As Boolean = L_fnGrabarVenta(numi, "", tbFechaVenta.Value.ToString("yyyy/MM/dd"), _CodEmpleado, IIf(swTipoVenta.Value = True, 1, 0),

@@ -1385,6 +1385,17 @@ Public Class P_Principal
         frm.Show()
     End Sub
 
+    Private Sub btEmpresas_Click(sender As Object, e As EventArgs) Handles btEmpresas.Click
+        Dim frm As New F0_Empresas
+        frm._nameButton = btEmpresas.Name
+        frm._modulo = FP_Configuracion
+        frm.Show()
+    End Sub
+
+    Private Sub lbVersion_Click(sender As Object, e As EventArgs) Handles lbVersion.Click
+
+    End Sub
+
 
     'Private Sub btnCredPagoCliente_Click(sender As Object, e As EventArgs) Handles btnCredPagoCliente.Click
     '    SideNav1.IsMenuExpanded = False

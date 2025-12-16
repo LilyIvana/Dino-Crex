@@ -9525,4 +9525,102 @@ Public Class AccesoLogica
         Return _Tabla
     End Function
 #End Region
+
+#Region "NOMBRES EMPRESAS PARA VALES Y GIFTCARD"
+    Public Shared Function L_fnEliminarEmpresa(numi As String, ByRef mensaje As String, _version As String, _ip As String, _usumaquina As String) As Boolean
+        Dim _resultado As Boolean
+        If L_fnbValidarEliminacion(numi, "TC001", "canumi", mensaje) = True Then
+            Dim _Tabla As DataTable
+            Dim _listParam As New List(Of Datos.DParametro)
+
+            _listParam.Add(New Datos.DParametro("@tipo", -1))
+            _listParam.Add(New Datos.DParametro("@cod", numi))
+            _listParam.Add(New Datos.DParametro("@version", _version))
+            _listParam.Add(New Datos.DParametro("@ip", _ip))
+            _listParam.Add(New Datos.DParametro("@usumaquina", _usumaquina))
+            _listParam.Add(New Datos.DParametro("@uact", L_Usuario))
+            _Tabla = D_ProcedimientoConParam("ProcNombreEmp", _listParam)
+
+            If _Tabla.Rows.Count > 0 Then
+                _resultado = True
+            Else
+                _resultado = False
+            End If
+        Else
+            _resultado = False
+        End If
+        Return _resultado
+    End Function
+    Public Shared Function L_fnGrabarEmpresas(ByRef _id As String, _nombEmp As String, _tipo As Integer, _est As Integer, _obs As String,
+                                              _version As String, _ip As String, _usumaquina As String) As Boolean
+        Dim _Tabla As DataTable
+        Dim _resultado As Boolean
+        Dim _listParam As New List(Of Datos.DParametro)
+
+        _listParam.Add(New Datos.DParametro("@tipo", 1))
+        _listParam.Add(New Datos.DParametro("@cod", _id))
+        _listParam.Add(New Datos.DParametro("@desc", _nombEmp))
+        _listParam.Add(New Datos.DParametro("@tip", _tipo))
+        _listParam.Add(New Datos.DParametro("@estado", _est))
+        _listParam.Add(New Datos.DParametro("@obs", _obs))
+        _listParam.Add(New Datos.DParametro("@cant", 0))
+        _listParam.Add(New Datos.DParametro("@version", _version))
+        _listParam.Add(New Datos.DParametro("@ip", _ip))
+        _listParam.Add(New Datos.DParametro("@usumaquina", _usumaquina))
+        _listParam.Add(New Datos.DParametro("@uact", L_Usuario))
+
+        _Tabla = D_ProcedimientoConParam("ProcNombreEmp", _listParam)
+
+
+        If _Tabla.Rows.Count > 0 Then
+            _id = _Tabla.Rows(0).Item(0)
+            _resultado = True
+        Else
+            _resultado = False
+        End If
+
+        Return _resultado
+    End Function
+
+    Public Shared Function L_fnModificarEmpresas(ByRef _id As String, _nombEmp As String, _tipo As Integer, _est As Integer, _obs As String,
+                                              _version As String, _ip As String, _usumaquina As String) As Boolean
+        Dim _Tabla As DataTable
+        Dim _resultado As Boolean
+        Dim _listParam As New List(Of Datos.DParametro)
+
+        _listParam.Add(New Datos.DParametro("@tipo", 2))
+        _listParam.Add(New Datos.DParametro("@cod", _id))
+        _listParam.Add(New Datos.DParametro("@desc", _nombEmp))
+        _listParam.Add(New Datos.DParametro("@tip", _tipo))
+        _listParam.Add(New Datos.DParametro("@estado", _est))
+        _listParam.Add(New Datos.DParametro("@obs", _obs))
+        _listParam.Add(New Datos.DParametro("@cant", 0))
+        _listParam.Add(New Datos.DParametro("@version", _version))
+        _listParam.Add(New Datos.DParametro("@ip", _ip))
+        _listParam.Add(New Datos.DParametro("@usumaquina", _usumaquina))
+        _listParam.Add(New Datos.DParametro("@uact", L_Usuario))
+
+        _Tabla = D_ProcedimientoConParam("ProcNombreEmp", _listParam)
+
+
+        If _Tabla.Rows.Count > 0 Then
+            _id = _Tabla.Rows(0).Item(0)
+            _resultado = True
+        Else
+            _resultado = False
+        End If
+
+        Return _resultado
+    End Function
+    Public Shared Function L_MostrarEmpresas(_mostrar As Integer) As DataTable
+        Dim _Tabla As DataTable
+        Dim _listParam As New List(Of Datos.DParametro)
+        _listParam.Add(New Datos.DParametro("@tipo", 3))
+        _listParam.Add(New Datos.DParametro("@mostrar", _mostrar))
+        _listParam.Add(New Datos.DParametro("@uact", L_Usuario))
+
+        _Tabla = D_ProcedimientoConParam("ProcNombreEmp", _listParam)
+        Return _Tabla
+    End Function
+#End Region
 End Class
