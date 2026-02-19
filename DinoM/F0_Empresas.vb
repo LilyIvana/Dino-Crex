@@ -153,18 +153,18 @@ Public Class F0_Empresas
         With JGr_Buscador.RootTable.Columns("descripcion")
             .Visible = True
             .Caption = "EMPRESA".ToUpper
-            .Width = 150
+            .Width = 410
         End With
         With JGr_Buscador.RootTable.Columns("tipo")
             .Visible = False
         End With
         With JGr_Buscador.RootTable.Columns("tventa")
             .Caption = "TIPO".ToUpper
-            .Width = 100
+            .Width = 90
         End With
         With JGr_Buscador.RootTable.Columns("obs")
             .Caption = "OBSERVACIÓN".ToUpper
-            .Width = 130
+            .Width = 600
             .Visible = True
         End With
         With JGr_Buscador.RootTable.Columns("cant")
@@ -175,7 +175,7 @@ Public Class F0_Empresas
         End With
         With JGr_Buscador.RootTable.Columns("est")
             .Caption = "ESTADO".ToUpper
-            .Width = 100
+            .Width = 90
             .Visible = True
         End With
         With JGr_Buscador.RootTable.Columns("fact")

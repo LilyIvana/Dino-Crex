@@ -1054,6 +1054,12 @@
       <DependentUpon>R_FacturasAnuladas.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Reporte\R_Nota_7_5x1000.vb">
+      <DependentUpon>R_Nota_7_5x1000.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Include="Reporte\R_ImpresionPrecioCondimenteros.vb">
       <DependentUpon>R_ImpresionPrecioCondimenteros.rpt</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -2057,6 +2063,10 @@
     <EmbeddedResource Include="Reporte\R_FacturasAnuladas.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>R_FacturasAnuladas.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reporte\R_Nota_7_5x1000.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>R_Nota_7_5x1000.vb</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Reporte\R_ImpresionPrecioCondimenteros.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>

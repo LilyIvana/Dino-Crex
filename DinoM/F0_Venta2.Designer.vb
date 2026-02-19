@@ -152,6 +152,7 @@ Partial Class F0_Venta2
         Me.tbCel = New DevComponents.DotNetBar.Controls.TextBoxX()
         Me.LabelX28 = New DevComponents.DotNetBar.LabelX()
         Me.btnMovXpeso = New DevComponents.DotNetBar.ButtonX()
+        Me.lbAvisoPulperia = New System.Windows.Forms.Label()
         Me.PanelSuperior.SuspendLayout()
         Me.PanelInferior.SuspendLayout()
         CType(Me.BubbleBarUsuario, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -461,6 +462,7 @@ Partial Class F0_Venta2
         '
         'Panel2
         '
+        Me.Panel2.Controls.Add(Me.lbAvisoPulperia)
         Me.Panel2.Controls.Add(Me.lbEmpresa)
         Me.Panel2.Controls.Add(Me.cbEmpresa)
         Me.Panel2.Controls.Add(Me.lbCantidad)
@@ -2687,6 +2689,16 @@ Partial Class F0_Venta2
         Me.btnMovXpeso.TextColor = System.Drawing.Color.White
         Me.btnMovXpeso.Visible = False
         '
+        'lbAvisoPulperia
+        '
+        Me.lbAvisoPulperia.AutoSize = True
+        Me.lbAvisoPulperia.Font = New System.Drawing.Font("Calibri", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lbAvisoPulperia.ForeColor = System.Drawing.Color.Black
+        Me.lbAvisoPulperia.Location = New System.Drawing.Point(831, 84)
+        Me.lbAvisoPulperia.Name = "lbAvisoPulperia"
+        Me.lbAvisoPulperia.Size = New System.Drawing.Size(0, 14)
+        Me.lbAvisoPulperia.TabIndex = 441
+        '
         'F0_Venta2
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -2886,4 +2898,5 @@ Partial Class F0_Venta2
     Friend WithEvents tbCantidad As DevComponents.Editors.IntegerInput
     Friend WithEvents lbEmpresa As DevComponents.DotNetBar.LabelX
     Public WithEvents cbEmpresa As Janus.Windows.GridEX.EditControls.MultiColumnCombo
+    Friend WithEvents lbAvisoPulperia As Label
 End Class

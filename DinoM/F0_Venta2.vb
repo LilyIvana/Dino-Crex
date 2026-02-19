@@ -1933,17 +1933,19 @@ Public Class F0_Venta2
                         Dim ef = New Efecto
                         ef.tipo = 2
                         ef.Context = "MENSAJE PRINCIPAL".ToUpper
-                        ef.Header = "¿desea imprimir la Factura?".ToUpper
+                        ef.Header = "¿desea imprimir la Nota de Venta?".ToUpper
                         ef.ShowDialog()
                         Dim bandera As Boolean = False
                         bandera = ef.band
                         If (bandera = True) Then
-                            F0_VentasSupermercado.P_prImprimirFacturaNueva(numi, True, True)
+                            'F0_VentasSupermercado.P_prImprimirFacturaNueva(numi, True, True)
+                            F0_VentasSupermercado.P_prNotaVentaNuevo(numi, True, True)
                         Else
                             F0_VentasSupermercado.GuardarFacturaPDF(numi)
                         End If
 
-                        _prImiprimirNotaVenta(numi)
+                        '_prImiprimirNotaVenta(numi)
+
                     Else
                         _prImiprimirNotaVenta(numi)
                     End If
@@ -1967,11 +1969,9 @@ Public Class F0_Venta2
                 tbCliente.Select()
                 Table_Producto = Nothing
                 cbTipo.SelectedIndex = 0
-
             Else
                 Dim img As Bitmap = New Bitmap(My.Resources.cancel, 50, 50)
                 ToastNotification.Show(Me, "La Venta no pudo ser insertado, intente nuevamente".ToUpper, img, 2500, eToastGlowColor.Red, eToastPosition.BottomCenter)
-
             End If
         Catch ex As Exception
             MostrarMensajeError(ex.Message)
@@ -1988,7 +1988,22 @@ Public Class F0_Venta2
         Dim bandera As Boolean = False
         bandera = ef.band
         If (bandera = True) Then
-            P_GenerarReporte(numi)
+            'P_GenerarReporte(numi)
+            F0_VentasSupermercado.P_prNotaVentaNuevo(numi, True, False)
+        End If
+    End Sub
+
+    Public Sub _prImiprimirFactura(numi As String)
+        Dim ef = New Efecto
+
+        ef.tipo = 2
+        ef.Context = "MENSAJE PRINCIPAL".ToUpper
+        ef.Header = "¿desea imprimir la Factura?".ToUpper
+        ef.ShowDialog()
+        Dim bandera As Boolean = False
+        bandera = ef.band
+        If (bandera = True) Then
+            F0_VentasSupermercado.P_prImprimirFacturaNueva(numi, True, False)
         End If
     End Sub
     Public Sub _prImiprimirFacturaPreimpresa(numi As String)
@@ -2769,6 +2784,8 @@ Public Class F0_Venta2
             End If
         End If
     End Sub
+
+
 
     Private Sub ponerDescripcionProducto(ByRef dt As DataTable)
         For Each fila As DataRow In dt.Rows
@@ -3907,27 +3924,32 @@ salirIf:
 
                             CalcularDescuentos(grdetalle.GetValue("tbty5prod"), grdetalle.GetValue("tbcmin"), grdetalle.GetValue("tbpbas"), pos)
 
-                            ''Controlar Productos que pueden ser unidad o paquete y los cajeros no ponen bien la cantidad
-                            Dim UltimaPalabra As String = CType(grdetalle.DataSource, DataTable).Rows(pos).Item("producto").ToString.Substring(CType(grdetalle.DataSource, DataTable).Rows(pos).Item("producto").ToString.LastIndexOf(" ") + 1)
-                            If UltimaPalabra = "V*" Then
-                                Dim ef = New Efecto
-                                ef.tipo = 2
-                                ef.Context = "¿esta seguro de la cantidad que ingresó?".ToUpper
-                                ef.Header = "Verifique cantidad!!!".ToUpper & vbCrLf & vbCrLf & " Cantidad Ingresada: ".ToUpper + grdetalle.GetValue("tbcmin").ToString
-                                ef.ShowDialog()
-                                Dim respuesta As Boolean = False
-                                respuesta = ef.band
 
-                                If (respuesta = True) Then
 
+                            If (e.Column.Index = grdetalle.RootTable.Columns("tbcmin").Index) Then
+                                ''Controlar Productos que pueden ser unidad o paquete y los cajeros no ponen bien la cantidad
+                                Dim UltimaPalabra As String = CType(grdetalle.DataSource, DataTable).Rows(pos).Item("producto").ToString.Substring(CType(grdetalle.DataSource, DataTable).Rows(pos).Item("producto").ToString.LastIndexOf(" ") + 1)
+                                If UltimaPalabra = "V*" Then
+                                    Dim ef = New Efecto
+                                    ef.tipo = 2
+                                    ef.Context = "¿esta seguro de la cantidad que ingresó?".ToUpper
+                                    ef.Header = "Verifique cantidad!!!".ToUpper & vbCrLf & vbCrLf & " Cantidad Ingresada: ".ToUpper + grdetalle.GetValue("tbcmin").ToString
+                                    ef.ShowDialog()
+                                    Dim respuesta As Boolean = False
+                                    respuesta = ef.band
+
+                                    If (respuesta = True) Then
+
+                                    Else
+                                        ef.Close()
+                                        'grdetalle.Select()
+                                        grdetalle.Col = 7
+                                    End If
                                 Else
-                                    ef.Close()
-                                    'grdetalle.Select()
-                                    grdetalle.Col = 7
-                                End If
-                            Else
 
+                                End If
                             End If
+
 
                             P_PonerTotal(rowIndex)
                             CalculoDescuentoXProveedor()
@@ -3949,28 +3971,30 @@ salirIf:
 
                             CalcularDescuentos(grdetalle.GetValue("tbty5prod"), grdetalle.GetValue("tbcmin"), grdetalle.GetValue("tbpbas"), pos)
 
-                            Dim UltimaPalabra As String = CType(grdetalle.DataSource, DataTable).Rows(pos).Item("producto").ToString.Substring(CType(grdetalle.DataSource, DataTable).Rows(pos).Item("producto").ToString.LastIndexOf(" ") + 1)
-                            If UltimaPalabra = "V*" Then
-                                Dim ef = New Efecto
-                                ef.tipo = 2
-                                'Dim Cantidad As Decimal = grdetalle.GetValue("tbcmin")
-                                ef.Context = "¿esta seguro de la cantidad que ingresó?".ToUpper
-                                ef.Header = "Verifique cantidad!!!".ToUpper & vbCrLf & vbCrLf & " Cantidad Ingresada: ".ToUpper + grdetalle.GetValue("tbcmin").ToString
-                                ef.ShowDialog()
-                                Dim respuesta As Boolean = False
-                                respuesta = ef.band
+                            If (e.Column.Index = grdetalle.RootTable.Columns("tbcmin").Index) Then
+                                ''Controlar Productos que pueden ser unidad o paquete y los cajeros no ponen bien la cantidad
+                                Dim UltimaPalabra As String = CType(grdetalle.DataSource, DataTable).Rows(pos).Item("producto").ToString.Substring(CType(grdetalle.DataSource, DataTable).Rows(pos).Item("producto").ToString.LastIndexOf(" ") + 1)
+                                If UltimaPalabra = "V*" Then
+                                    Dim ef = New Efecto
+                                    ef.tipo = 2
+                                    'Dim Cantidad As Decimal = grdetalle.GetValue("tbcmin")
+                                    ef.Context = "¿esta seguro de la cantidad que ingresó?".ToUpper
+                                    ef.Header = "Verifique cantidad!!!".ToUpper & vbCrLf & vbCrLf & " Cantidad Ingresada: ".ToUpper + grdetalle.GetValue("tbcmin").ToString
+                                    ef.ShowDialog()
+                                    Dim respuesta As Boolean = False
+                                    respuesta = ef.band
 
-                                If (respuesta = True) Then
+                                    If (respuesta = True) Then
 
+                                    Else
+                                        ef.Close()
+                                        'grdetalle.Select()
+                                        grdetalle.Col = 7
+                                    End If
                                 Else
-                                    ef.Close()
-                                    'grdetalle.Select()
-                                    grdetalle.Col = 7
+
                                 End If
-                            Else
-
                             End If
-
 
                             _prCalcularPrecioTotal()
                             P_PonerTotal(rowIndex)
@@ -4474,8 +4498,8 @@ salirIf:
                 'System.Diagnostics.Process.Start(url)
                 '_prImiprimirNotaVenta(tbCodigo.Text)
 
-                F0_VentasSupermercado.P_prImprimirFacturaNueva(tbCodigo.Text, True, False)
                 _prImiprimirNotaVenta(tbCodigo.Text)
+                _prImiprimirFactura(tbCodigo.Text)
                 L_fnBotonImprimir(gs_VersionSistema, gs_IPMaquina, gs_UsuMaquina, tbCodigo.Text, "TV001", "VENTA")
 
                 'If (gb_FacturaEmite) Then
@@ -5824,6 +5848,13 @@ salirIf:
                 cbEmpresa.Visible = False
                 lbCantidad.Visible = False
                 tbCantidad.Visible = False
+            End If
+            If cbTipo.Value = 3 Or cbTipo.Value = 5 Then ''Tipo de Venta: Pulperia o Pulperia Showroom
+                Dim dt As DataTable
+                dt = L_fnMostrarMontoPulperia(_CodCliente)
+                lbAvisoPulperia.Text = "Este cliente ya tiene acumulado en pulpería este mes un total de Bs.:  ".ToUpper + IIf(dt.Rows(0).Item("Total").ToString = String.Empty, "0", dt.Rows(0).Item("Total").ToString.ToUpper)
+            Else
+                lbAvisoPulperia.Text = ""
             End If
             cbEmpresa.SelectedIndex = -1
             ArmarComboEmpresa(cbEmpresa, cbTipo.Value)

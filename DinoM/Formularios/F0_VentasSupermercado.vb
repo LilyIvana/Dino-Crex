@@ -1480,26 +1480,27 @@ Public Class F0_VentasSupermercado
                         Dim ef = New Efecto
                         ef.tipo = 2
                         ef.Context = "MENSAJE PRINCIPAL".ToUpper
-                        ef.Header = "¿desea imprimir la Factura?".ToUpper
+                        ef.Header = "¿desea imprimir la Nota de Venta?".ToUpper
                         ef.ShowDialog()
                         Dim bandera As Boolean = False
                         bandera = ef.band
                         If (bandera = True) Then
-                            P_prImprimirFacturaNueva(numi, True, True) '_Codigo de la tabla TV001
+                            'P_prImprimirFacturaNueva(numi, True, True) '_Codigo de la tabla TV001
+                            P_prNotaVentaNuevo(numi, True, True)
                         Else
                             GuardarFacturaPDF(numi)
                         End If
 
-                        ''Solo imprimir notas de venta para pulperia
-                        If Observacion = "PULPERÍA" Then
-                            F0_Venta2._prImiprimirNotaVenta(numi)
-                        End If
+                        '''Solo imprimir notas de venta para pulperia
+                        'If Observacion = "PULPERÍA" Then
+                        '    'F0_Venta2._prImiprimirNotaVenta(numi)
+                        'End If
 
                     Else
-                        _prImiprimirNotaVenta(numi)
+                        F0_Venta2._prImiprimirNotaVenta(numi)
                     End If
                 Else
-                    _prImiprimirNotaVenta(numi)
+                    F0_Venta2._prImiprimirNotaVenta(numi)
                 End If
 
                 Dim img As Bitmap = New Bitmap(My.Resources.checked, 50, 50)
@@ -1509,7 +1510,6 @@ Public Class F0_VentasSupermercado
                                           eToastPosition.TopCenter
                                           )
                 'System.Diagnostics.Process.Start(FactUrl)
-
                 _Limpiar()
                 Table_Producto = Nothing
 
@@ -1993,6 +1993,63 @@ Public Class F0_VentasSupermercado
             ToastNotification.Show(Me, "No existe datos de Facturación".ToUpper,
                                                  My.Resources.WARNING, 3500,
                                                  eToastGlowColor.Blue, eToastPosition.TopCenter)
+        End If
+    End Sub
+
+    Public Sub P_prNotaVentaNuevo(numi As String, impFactura As Boolean, grabarPDF As Boolean)
+        Dim _Fecha As Date
+        Dim _Ds, _Ds1, _Ds2, _Ds3 As New DataSet
+        Dim _Autorizacion, _Nit, _Total, _Hora,
+            _Literal, _TotalDecimal, _TotalDecimal2 As String
+        Dim I, _NumFac As Integer
+        Dim _TotalLi As Decimal
+        Dim _VistaPrevia As Integer = 0
+
+        _Ds = L_Reporte_FacturaNueva(numi, numi)
+
+        If _Ds.Tables.Count > 0 Then
+            _Fecha = _Ds.Tables(0).Rows(0).Item("fvafec")
+            _Hora = _Ds.Tables(0).Rows(0).Item("fvahora")
+            _Autorizacion = _Ds.Tables(0).Rows(0).Item("fvaautoriz")
+            _NumFac = _Ds.Tables(0).Rows(0).Item("fvanfac")
+
+            'Literal 
+            '_TotalLi = _Ds.Tables(0).Rows(0).Item("fvasubtotal") - _Ds.Tables(0).Rows(0).Item("fvadesc") - _Ds.Tables(0).Rows(0).Item("fvagiftcard")
+            _TotalLi = _Ds.Tables(0).Rows(0).Item("fvasubtotal") - _Ds.Tables(0).Rows(0).Item("fvadesc")
+            _TotalDecimal = _TotalLi - Math.Truncate(_TotalLi)
+            _TotalDecimal2 = CDbl(_TotalDecimal) * 100
+
+            _Literal = Facturacion.ConvertirLiteral.A_fnConvertirLiteral(CDbl(_TotalLi) - CDbl(_TotalDecimal)) + "  " + IIf(_TotalDecimal2.Equals("0"), "00", _TotalDecimal2) + "/100 Bolivianos"
+
+            _Ds2 = L_Reporte_Factura_Cia("2")
+            QrFactura.Text = _Ds.Tables(0).Rows(0).Item("fvaQrUrl").ToString
+
+            If Not IsNothing(P_Global.Visualizador) Then
+                P_Global.Visualizador.Close()
+            End If
+
+            For I = 0 To _Ds.Tables(0).Rows.Count - 1
+                _Ds.Tables(0).Rows(I).Item("fvaimgqr") = P_fnImageToByteArray(QrFactura.Image)
+            Next
+            If (impFactura) Then
+                Dim objrep As Object = Nothing
+                Dim empresaId = ObtenerEmpresaHabilitada()
+                Dim empresaHabilitada As DataTable = ObtenerEmpresaTipoReporte(empresaId, Convert.ToInt32(ENReporte.NOTAVENTA))
+                For Each fila As DataRow In empresaHabilitada.Rows
+                    Select Case fila.Item("TipoReporte").ToString
+                        Case ENReporteTipo.NOTAVENTA_Ticket
+                            objrep = New R_Nota_7_5x1000
+                            SerPArametrosNuevo(_Ds, _Ds2, _Autorizacion, _Hora, _Literal, _NumFac, objrep,
+                                      fila.Item("TipoReporte").ToString, _Fecha, grabarPDF, numi)
+
+                    End Select
+                Next
+            End If
+
+        Else
+            ToastNotification.Show(Me, "No existe datos de Facturación".ToUpper,
+                                                 My.Resources.WARNING, 3500,
+                                                 eToastGlowColor.Blue, eToastPosition.TopCenter)
 
         End If
     End Sub
@@ -2109,22 +2166,31 @@ Public Class F0_VentasSupermercado
                 objrep.SetParameterValue("Literal3", " ")
                 objrep.SetParameterValue("NroFactura", _NumFac)
                 objrep.SetParameterValue("NroAutoriz", _Autorizacion)
-                objrep.SetParameterValue("ENombre", _Ds2.Tables(0).Rows(0).Item("scneg").ToString) '?
+                objrep.SetParameterValue("ENombre", _Ds2.Tables(0).Rows(0).Item("scneg").ToString)
                 objrep.SetParameterValue("ECasaMatriz", _Ds2.Tables(0).Rows(0).Item("scsuc").ToString)
                 objrep.SetParameterValue("PuntoVenta", "PUNTO DE VENTA No. " + _Ds.Tables(0).Rows(0).Item("fvanrocaja").ToString)
                 objrep.SetParameterValue("ECiudadPais", _Ds2.Tables(0).Rows(0).Item("scpai").ToString)
-                'objrep.SetParameterValue("ESFC", "SFC " + _Ds1.Tables(0).Rows(0).Item("sbsfc").ToString)
                 objrep.SetParameterValue("ENit", _Ds2.Tables(0).Rows(0).Item("scnit").ToString)
                 objrep.SetParameterValue("EActividad", _Ds2.Tables(0).Rows(0).Item("scact").ToString)
-
                 objrep.SetParameterValue("ENota", "''" + "ESTA FACTURA CONTRIBUYE AL DESARROLLO DEL PAÍS, EL USO ILÍCITO SERÁ SANCIONADO DE ACUERDO A LEY." + "''")
+                objrep.SetParameterValue("Usuario", gs_user)
 
-                'objrep.SetParameterValue("ELey", _Ds1.Tables(0).Rows(0).Item("sbnota2").ToString)
-                'objrep.SetParameterValue("FechaLim", _Ds1.Tables(0).Rows(0).Item("sbfal"))
+            Case ENReporteTipo.NOTAVENTA_Ticket
+                objrep.SetDataSource(_Ds.Tables(0))
+                objrep.SetParameterValue("Hora", _Hora)
+                objrep.SetParameterValue("Direccionpr", _Ds2.Tables(0).Rows(0).Item("scdir").ToString)
+                objrep.SetParameterValue("Telefonopr", "Tel. " + _Ds2.Tables(0).Rows(0).Item("sctelf").ToString)
+                objrep.SetParameterValue("Literal1", _Literal)
+                objrep.SetParameterValue("NroFactura", _NumFac)
+                objrep.SetParameterValue("ENombre", _Ds2.Tables(0).Rows(0).Item("scnom").ToString)
+                objrep.SetParameterValue("ECasaMatriz", _Ds2.Tables(0).Rows(0).Item("scsuc").ToString)
+                objrep.SetParameterValue("PuntoVenta", "PUNTO DE VENTA No. " + _Ds.Tables(0).Rows(0).Item("fvanrocaja").ToString)
+                objrep.SetParameterValue("ECiudadPais", _Ds2.Tables(0).Rows(0).Item("scpai").ToString)
+                objrep.SetParameterValue("ENit", _Ds2.Tables(0).Rows(0).Item("scnit").ToString)
                 objrep.SetParameterValue("Usuario", gs_user)
 
         End Select
-        Dim _Ds3 As DataSet = L_ObtenerRutaImpresora("1") ' Datos de Impresion de Facturación
+        Dim _Ds3 As DataSet = L_ObtenerRutaImpresora(tipoReporte) ' Datos de Impresion de Facturación
         If (_Ds3.Tables(0).Rows(0).Item("cbvp")) Then 'Vista Previa de la Ventana de Vizualización 1 = True 0 = False
             P_Global.Visualizador = New Visualizador
             P_Global.Visualizador.CrGeneral.ReportSource = objrep
@@ -2753,6 +2819,7 @@ Public Class F0_VentasSupermercado
             ef.RazonSocial = lbCliente.Text
             ef.Email = TbEmailS.Text
             ef.cel = Cel
+            ef.CodCli = _CodCliente
 
             Dim TipoDoc As String = CbTDoc.Value
 

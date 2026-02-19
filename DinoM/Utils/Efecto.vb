@@ -23,6 +23,7 @@ Public Class Efecto
     Public TotalVenta As Double
     Public NameProducto As String = ""
     Public TipoCambio As Double = 0
+    Public CodCli As Integer
 
     Public Stock As Double = 0
     Public Cantidad As Double = 0
@@ -112,6 +113,7 @@ Public Class Efecto
         frmAyuda.Nit = Nit
         frmAyuda.RazonSocial = RazonSocial
         frmAyuda.tbCel.Text = cel
+        frmAyuda.CodCli_ = CodCli
 
         With frmAyuda.CbTipoDoc
             .DropDownList.Columns.Clear()

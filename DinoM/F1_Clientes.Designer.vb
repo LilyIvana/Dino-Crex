@@ -97,6 +97,7 @@ Partial Class F1_Clientes
         Me.cbTipoDoc = New Janus.Windows.GridEX.EditControls.MultiColumnCombo()
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         Me.btExcel = New DevComponents.DotNetBar.ButtonX()
+        Me.LabelX22 = New DevComponents.DotNetBar.LabelX()
         CType(Me.SuperTabPrincipal, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuperTabPrincipal.SuspendLayout()
         Me.SuperTabControlPanelRegistro.SuspendLayout()
@@ -1058,6 +1059,7 @@ Partial Class F1_Clientes
         '
         Me.Panel4.AutoScroll = True
         Me.Panel4.BackColor = System.Drawing.Color.Transparent
+        Me.Panel4.Controls.Add(Me.LabelX22)
         Me.Panel4.Controls.Add(Me.TbLCred)
         Me.Panel4.Controls.Add(Me.LabelX14)
         Me.Panel4.Controls.Add(Me.LabelX21)
@@ -1212,7 +1214,7 @@ Partial Class F1_Clientes
         Me.LabelX16.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.LabelX16.Font = New System.Drawing.Font("Georgia", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.LabelX16.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(85, Byte), Integer), CType(CType(139, Byte), Integer))
-        Me.LabelX16.Location = New System.Drawing.Point(201, 276)
+        Me.LabelX16.Location = New System.Drawing.Point(293, 190)
         Me.LabelX16.Name = "LabelX16"
         Me.LabelX16.SingleLineColor = System.Drawing.SystemColors.Control
         Me.LabelX16.Size = New System.Drawing.Size(93, 23)
@@ -1224,7 +1226,7 @@ Partial Class F1_Clientes
         '
         Me.tbUltVenta.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.tbUltVenta.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
-        Me.tbUltVenta.Location = New System.Drawing.Point(299, 276)
+        Me.tbUltVenta.Location = New System.Drawing.Point(293, 220)
         Me.tbUltVenta.Name = "tbUltVenta"
         Me.tbUltVenta.Size = New System.Drawing.Size(97, 22)
         Me.tbUltVenta.TabIndex = 9
@@ -1262,12 +1264,11 @@ Partial Class F1_Clientes
         '
         Me.tbFnac.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.tbFnac.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
-        Me.tbFnac.Location = New System.Drawing.Point(304, 221)
+        Me.tbFnac.Location = New System.Drawing.Point(293, 275)
         Me.tbFnac.Name = "tbFnac"
         Me.tbFnac.Size = New System.Drawing.Size(122, 22)
         Me.tbFnac.TabIndex = 7
         Me.tbFnac.TabStop = False
-        Me.tbFnac.Visible = False
         '
         'tbNit
         '
@@ -1498,6 +1499,22 @@ Partial Class F1_Clientes
         Me.btExcel.Text = "EXPORTAR"
         Me.btExcel.TextColor = System.Drawing.Color.White
         '
+        'LabelX22
+        '
+        Me.LabelX22.BackColor = System.Drawing.Color.Transparent
+        '
+        '
+        '
+        Me.LabelX22.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.LabelX22.Font = New System.Drawing.Font("Georgia", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LabelX22.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(85, Byte), Integer), CType(CType(139, Byte), Integer))
+        Me.LabelX22.Location = New System.Drawing.Point(209, 275)
+        Me.LabelX22.Name = "LabelX22"
+        Me.LabelX22.SingleLineColor = System.Drawing.SystemColors.Control
+        Me.LabelX22.Size = New System.Drawing.Size(73, 23)
+        Me.LabelX22.TabIndex = 254
+        Me.LabelX22.Text = "Fecha Nac.:"
+        '
         'F1_Clientes
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -1618,4 +1635,5 @@ Partial Class F1_Clientes
     Friend WithEvents LabelX14 As DevComponents.DotNetBar.LabelX
     Friend WithEvents Timer1 As Timer
     Friend WithEvents btExcel As DevComponents.DotNetBar.ButtonX
+    Friend WithEvents LabelX22 As DevComponents.DotNetBar.LabelX
 End Class

@@ -57,6 +57,7 @@ Partial Class F1_MontoPagar
         Me.tbMontoDolar = New DevComponents.Editors.DoubleInput()
         Me.LabelX6 = New DevComponents.DotNetBar.LabelX()
         Me.GroupBox3 = New System.Windows.Forms.GroupBox()
+        Me.lbAvisoPulperia = New System.Windows.Forms.Label()
         Me.lbCantidad = New DevComponents.DotNetBar.LabelX()
         Me.tbCantidad = New DevComponents.Editors.IntegerInput()
         Me.cbEmpresa = New Janus.Windows.GridEX.EditControls.MultiColumnCombo()
@@ -106,9 +107,9 @@ Partial Class F1_MontoPagar
         Me.GroupBox2.Dock = System.Windows.Forms.DockStyle.Fill
         Me.GroupBox2.Font = New System.Drawing.Font("Georgia", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GroupBox2.ForeColor = System.Drawing.Color.Gold
-        Me.GroupBox2.Location = New System.Drawing.Point(0, 460)
+        Me.GroupBox2.Location = New System.Drawing.Point(0, 470)
         Me.GroupBox2.Name = "GroupBox2"
-        Me.GroupBox2.Size = New System.Drawing.Size(502, 134)
+        Me.GroupBox2.Size = New System.Drawing.Size(502, 124)
         Me.GroupBox2.TabIndex = 364
         Me.GroupBox2.TabStop = False
         Me.GroupBox2.Text = "Monto a Pagar/Cambio:"
@@ -237,7 +238,7 @@ Partial Class F1_MontoPagar
         Me.GroupBox1.Dock = System.Windows.Forms.DockStyle.Top
         Me.GroupBox1.Font = New System.Drawing.Font("Georgia", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GroupBox1.ForeColor = System.Drawing.Color.Gold
-        Me.GroupBox1.Location = New System.Drawing.Point(0, 284)
+        Me.GroupBox1.Location = New System.Drawing.Point(0, 294)
         Me.GroupBox1.Name = "GroupBox1"
         Me.GroupBox1.Size = New System.Drawing.Size(502, 176)
         Me.GroupBox1.TabIndex = 362
@@ -597,6 +598,7 @@ Partial Class F1_MontoPagar
         '
         Me.GroupBox3.BackColor = System.Drawing.Color.Transparent
         Me.GroupBox3.BackgroundImage = Global.DinoM.My.Resources.Resources.fondo1
+        Me.GroupBox3.Controls.Add(Me.lbAvisoPulperia)
         Me.GroupBox3.Controls.Add(Me.lbCantidad)
         Me.GroupBox3.Controls.Add(Me.tbCantidad)
         Me.GroupBox3.Controls.Add(Me.cbEmpresa)
@@ -623,10 +625,20 @@ Partial Class F1_MontoPagar
         Me.GroupBox3.ForeColor = System.Drawing.Color.Gold
         Me.GroupBox3.Location = New System.Drawing.Point(0, 0)
         Me.GroupBox3.Name = "GroupBox3"
-        Me.GroupBox3.Size = New System.Drawing.Size(502, 284)
+        Me.GroupBox3.Size = New System.Drawing.Size(502, 294)
         Me.GroupBox3.TabIndex = 365
         Me.GroupBox3.TabStop = False
         Me.GroupBox3.Text = "Datos de Factura"
+        '
+        'lbAvisoPulperia
+        '
+        Me.lbAvisoPulperia.AutoSize = True
+        Me.lbAvisoPulperia.Font = New System.Drawing.Font("Calibri", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lbAvisoPulperia.ForeColor = System.Drawing.Color.White
+        Me.lbAvisoPulperia.Location = New System.Drawing.Point(9, 272)
+        Me.lbAvisoPulperia.Name = "lbAvisoPulperia"
+        Me.lbAvisoPulperia.Size = New System.Drawing.Size(0, 14)
+        Me.lbAvisoPulperia.TabIndex = 437
         '
         'lbCantidad
         '
@@ -1040,4 +1052,5 @@ Partial Class F1_MontoPagar
     Friend WithEvents lbEmpresa As DevComponents.DotNetBar.LabelX
     Friend WithEvents lbCantidad As DevComponents.DotNetBar.LabelX
     Friend WithEvents tbCantidad As DevComponents.Editors.IntegerInput
+    Friend WithEvents lbAvisoPulperia As Label
 End Class

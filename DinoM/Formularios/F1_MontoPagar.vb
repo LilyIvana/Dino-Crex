@@ -28,6 +28,7 @@ Public Class F1_MontoPagar
     Public tipoDoc As ComboBox
     Public email As String = ""
     Public IdNit As String = ""
+    Public CodCli_ As Integer
 
 
     Public CExcep As Integer
@@ -638,6 +639,14 @@ Public Class F1_MontoPagar
             lbCantidad.Visible = False
             tbCantidad.Visible = False
         End If
+        If cbTipo.Value = 3 Or cbTipo.Value = 5 Then ''Tipo de Venta: Pulperia o Pulperia Showroom
+            Dim dt As DataTable
+            dt = L_fnMostrarMontoPulperia(CodCli_)
+            lbAvisoPulperia.Text = "Este cliente ya tiene acumulado en pulpería este mes un total de Bs.:  ".ToUpper + IIf(dt.Rows(0).Item("Total").ToString = String.Empty, "0", dt.Rows(0).Item("Total").ToString.ToUpper)
+        Else
+            lbAvisoPulperia.Text = ""
+        End If
+
         cbEmpresa.SelectedIndex = -1
         ArmarComboEmpresa(cbEmpresa, cbTipo.Value)
 
