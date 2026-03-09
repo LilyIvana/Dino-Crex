@@ -140,6 +140,16 @@ Public Class F1_RevStockVentaProv
                 .Caption = "COD. BARRAS"
                 .Visible = True
             End With
+            With JGrM_Buscador.RootTable.Columns("Pref")
+                .Width = 100
+                .Visible = True
+                .Caption = "PREFIJO ROTACIÓN"
+            End With
+            With JGrM_Buscador.RootTable.Columns("PrefVenc")
+                .Width = 90
+                .Visible = True
+                .Caption = "COD. VENC."
+            End With
             With JGrM_Buscador.RootTable.Columns("yfcdprod1")
                 .Width = 400
                 .Caption = "DESCRIPCIÓN"

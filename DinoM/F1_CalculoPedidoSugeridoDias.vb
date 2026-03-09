@@ -167,6 +167,16 @@ Public Class F1_CalculoPedidoSugeridoDias
                 .Caption = "COD. BARRAS"
                 .Visible = True
             End With
+            With JGrM_Buscador.RootTable.Columns("pref")
+                .Width = 100
+                .Visible = True
+                .Caption = "PREFIJO ROTACIÓN"
+            End With
+            With JGrM_Buscador.RootTable.Columns("PrefVenc")
+                .Width = 90
+                .Visible = True
+                .Caption = "COD. VENC."
+            End With
             With JGrM_Buscador.RootTable.Columns("yfcdprod1")
                 .Width = 400
                 .Caption = "DESCRIPCIÓN"
@@ -295,12 +305,7 @@ Public Class F1_CalculoPedidoSugeridoDias
                 .FormatString = "0.00"
                 .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far
             End With
-            With JGrM_Buscador.RootTable.Columns("UniCompra")
-                .Width = 90
-                .Visible = False
-                .Caption = "EMPAQUE COMPRA"
-                .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far
-            End With
+
             With JGrM_Buscador.RootTable.Columns("Caja")
                 .Width = 120
                 .Caption = "PAQUETE/CAJA"
@@ -323,11 +328,7 @@ Public Class F1_CalculoPedidoSugeridoDias
                 .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far
                 .AggregateFunction = AggregateFunction.Sum
             End With
-            With JGrM_Buscador.RootTable.Columns("pref")
-                .Width = 100
-                .Visible = True
-                .Caption = "PREFIJO ROTACIÓN"
-            End With
+
             With JGrM_Buscador.RootTable.Columns("Estado")
                 .Width = 100
                 .Visible = True

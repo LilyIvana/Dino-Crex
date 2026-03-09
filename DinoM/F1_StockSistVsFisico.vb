@@ -144,6 +144,16 @@ Public Class F1_StockSistVsFisico
                 .Caption = "COD. PROVEEDOR"
                 .Visible = True
             End With
+            With JGrM_Buscador.RootTable.Columns("pref")
+                .Width = 90
+                .Caption = "PREFIJO ROTACION"
+                .Visible = True
+            End With
+            With JGrM_Buscador.RootTable.Columns("PrefVenc")
+                .Width = 90
+                .Caption = "CÓD. VENC."
+                .Visible = True
+            End With
             With JGrM_Buscador.RootTable.Columns("prod")
                 .Width = 380
                 .Caption = "PRODUCTO"

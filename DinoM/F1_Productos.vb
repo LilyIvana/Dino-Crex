@@ -306,9 +306,6 @@ Public Class F1_Productos
 
 
             End Try
-
-
-
         End If
     End Sub
 #End Region
@@ -866,6 +863,7 @@ Public Class F1_Productos
         listEstCeldas.Add(New Modelo.Celda("yfcdprod2", True, "Cod. Proveedor".ToUpper, 100))
         listEstCeldas.Add(New Modelo.Celda("yfcbarra", True, "Cod.Barra".ToUpper, 110))
         listEstCeldas.Add(New Modelo.Celda("yfcampo1", True, "Prefijo Rotación".ToUpper, 100))
+        listEstCeldas.Add(New Modelo.Celda("UCompra", True, "Cod. Venc.".ToUpper, 100))
         listEstCeldas.Add(New Modelo.Celda("yfcdprod1", True, "Descripción Producto".ToUpper, 400))
         listEstCeldas.Add(New Modelo.Celda("yfgr1", False))
         listEstCeldas.Add(New Modelo.Celda("yfgr2", False))
@@ -878,7 +876,6 @@ Public Class F1_Productos
         listEstCeldas.Add(New Modelo.Celda("yfvsup", True, "Unidades por CAJ/PAQ/DISP".ToUpper, 100, Format("0.00")))
         listEstCeldas.Add(New Modelo.Celda("yfcampo2", True, "Displays por CAJ/PAQ".ToUpper, 100, Format("0.00")))
         listEstCeldas.Add(New Modelo.Celda("yfucompra", False, "CodUni".ToUpper, 100))
-        listEstCeldas.Add(New Modelo.Celda("UCompra", True, "UniCompra".ToUpper, 100))
         listEstCeldas.Add(New Modelo.Celda("yfmstk", False))
         listEstCeldas.Add(New Modelo.Celda("yfclot", False))
         listEstCeldas.Add(New Modelo.Celda("ygcodact", True, "Cod. Actividad Económica".ToUpper, 70))

@@ -167,6 +167,16 @@ Public Class F1_SaldosExcel
                 .Caption = "CÓD. BARRAS"
                 .Visible = True
             End With
+            With JGrM_Buscador.RootTable.Columns("pref")
+                .Width = 90
+                .Caption = "PREFIJO ROTACION"
+                .Visible = True
+            End With
+            With JGrM_Buscador.RootTable.Columns("PrefVenc")
+                .Width = 90
+                .Caption = "CÓD. VENC."
+                .Visible = True
+            End With
             With JGrM_Buscador.RootTable.Columns("yfcdprod1")
                 .Width = 440
                 .Caption = "PRODUCTO"

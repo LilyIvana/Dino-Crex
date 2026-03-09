@@ -493,7 +493,7 @@ Partial Class F1_Productos
         Me.cbUniCompra.DesignTimeLayout = cbUniCompra_DesignTimeLayout
         Me.cbUniCompra.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cbUniCompra.Location = New System.Drawing.Point(101, 67)
-        Me.cbUniCompra.MaxLength = 2
+        Me.cbUniCompra.MaxLength = 5
         Me.cbUniCompra.Name = "cbUniCompra"
         Me.cbUniCompra.Office2007ColorScheme = Janus.Windows.GridEX.Office2007ColorScheme.Custom
         Me.cbUniCompra.Office2007CustomColor = System.Drawing.Color.DodgerBlue
@@ -516,9 +516,9 @@ Partial Class F1_Productos
         Me.LabelX20.Location = New System.Drawing.Point(4, 70)
         Me.LabelX20.Name = "LabelX20"
         Me.LabelX20.SingleLineColor = System.Drawing.SystemColors.Control
-        Me.LabelX20.Size = New System.Drawing.Size(94, 16)
+        Me.LabelX20.Size = New System.Drawing.Size(73, 16)
         Me.LabelX20.TabIndex = 213
-        Me.LabelX20.Text = "Unid. Compra:"
+        Me.LabelX20.Text = "Cod. Venc.:"
         '
         'btUniCompra
         '
@@ -1309,7 +1309,7 @@ Partial Class F1_Productos
         Me.LabelX13.SingleLineColor = System.Drawing.SystemColors.Control
         Me.LabelX13.Size = New System.Drawing.Size(143, 23)
         Me.LabelX13.TabIndex = 228
-        Me.LabelX13.Text = "Descripción Detallada:"
+        Me.LabelX13.Text = "Datos Adicionales:"
         '
         'tbDescDet
         '
