@@ -591,6 +591,12 @@
     <Compile Include="F1_Bitacora.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="F1_ExcelSiglas.Designer.vb">
+      <DependentUpon>F1_ExcelSiglas.vb</DependentUpon>
+    </Compile>
+    <Compile Include="F1_ExcelSiglas.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="F1_ExcelVale.Designer.vb">
       <DependentUpon>F1_ExcelVale.vb</DependentUpon>
     </Compile>
@@ -1840,6 +1846,9 @@
     <EmbeddedResource Include="F1_Bitacora.resx">
       <DependentUpon>F1_Bitacora.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="F1_ExcelSiglas.resx">
+      <DependentUpon>F1_ExcelSiglas.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="F1_ExcelVale.resx">
       <DependentUpon>F1_ExcelVale.vb</DependentUpon>
     </EmbeddedResource>
@@ -2772,6 +2781,8 @@
     <None Include="Resources\trash.png" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\sigla1.png" />
+    <None Include="Resources\sigla.png" />
     <None Include="Resources\rep vales.png" />
     <None Include="Resources\vale2.png" />
     <None Include="Resources\vale.png" />

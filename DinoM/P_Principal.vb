@@ -1392,8 +1392,12 @@ Public Class P_Principal
         frm.Show()
     End Sub
 
-    Private Sub lbVersion_Click(sender As Object, e As EventArgs) Handles lbVersion.Click
 
+    Private Sub btSiglas_Click(sender As Object, e As EventArgs) Handles btSiglas.Click
+        Dim frm As New F1_ExcelSiglas
+        frm._nameButton = btSiglas.Name
+        frm._modulo = FP_Configuracion
+        frm.Show()
     End Sub
 
 

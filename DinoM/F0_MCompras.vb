@@ -1102,13 +1102,13 @@ Public Class F0_MCompras
         grProductos.AlternatingColors = True
 
         With grProductos.RootTable.Columns("yfnumi")
-            .Width = 80
-            .Caption = "COD. DYNASYS"
+            .Width = 70
+            .Caption = "C. DYNASYS"
             .Visible = True
         End With
         With grProductos.RootTable.Columns("yfcprod")
-            .Width = 80
-            .Caption = "COD. DELTA"
+            .Width = 70
+            .Caption = "C. DELTA"
             .Visible = True
         End With
         With grProductos.RootTable.Columns("yfcbarra")
@@ -1116,15 +1116,20 @@ Public Class F0_MCompras
             .Caption = "COD. BARRA"
             .Visible = True
         End With
+        With grProductos.RootTable.Columns("ycdes3")
+            .Width = 60
+            .Caption = "C. VENC"
+            .Visible = True
+        End With
         With grProductos.RootTable.Columns("yfcdprod1")
-            .Width = 450
+            .Width = 420
             .Visible = True
             .Caption = "DESCRIPCIÓN"
             .WordWrap = True
             .MaxLines = 2
         End With
         With grProductos.RootTable.Columns("yfcdprod2")
-            .Width = 120
+            .Width = 80
             .Visible = True
             .Caption = "COD. PROVEEDOR"
         End With
@@ -1184,6 +1189,16 @@ Public Class F0_MCompras
                 .Visible = True
             End With
         End If
+        With grProductos.RootTable.Columns("tiempovenc")
+            .Width = 210
+            .Visible = True
+            .Caption = "TIEMPO VENC."
+        End With
+        With grProductos.RootTable.Columns("porcVenc")
+            .Width = 80
+            .Visible = True
+            .Caption = "PORCENTAJE MÍNIMO DE VENCIMIENTO PARA RECEPCIÓN"
+        End With
         With grProductos.RootTable.Columns("yfgr2")
             .Width = 50
             .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Near
@@ -1211,14 +1226,14 @@ Public Class F0_MCompras
             .Caption = "UNIDAD MIN."
         End With
         With grProductos.RootTable.Columns("yhprecio")
-            .Width = 120
+            .Width = 80
             .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Near
             .Visible = True
             .Caption = "PRECIO COSTO"
             .FormatString = "0.00"
         End With
         With grProductos.RootTable.Columns("venta")
-            .Width = 120
+            .Width = 100
             .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Near
             .Visible = True
             .Caption = "PRECIO VENTA"

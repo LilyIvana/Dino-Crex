@@ -259,6 +259,8 @@ Public Class F1_ExcelCierresCaja
                 .TotalRowFormatStyle.BackColor = Color.Gold
                 .TotalRowPosition = TotalRowPosition.BottomFixed
                 'diseño de la grilla
+                .RecordNavigator = True
+                .RecordNavigatorText = "Datos"
             End With
 
         ElseIf dt.Rows.Count > 0 And swTipo.Value = False Then
@@ -374,7 +376,10 @@ Public Class F1_ExcelCierresCaja
                 .TotalRow = InheritableBoolean.True
                 .TotalRowFormatStyle.BackColor = Color.Gold
                 .TotalRowPosition = TotalRowPosition.BottomFixed
+
                 'diseño de la grilla
+                .RecordNavigator = True
+                .RecordNavigatorText = "Datos"
             End With
 
         Else
