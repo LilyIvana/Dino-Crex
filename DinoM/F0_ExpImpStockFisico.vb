@@ -93,7 +93,17 @@ Public Class F0_ExpImpStockFisico
             End With
             With grDatos.RootTable.Columns("codProv")
                 .Caption = "COD PROVEEDOR"
-                .Width = 120
+                .Width = 100
+                .Visible = True
+            End With
+            With grDatos.RootTable.Columns("codVenc")
+                .Caption = "COD VENC"
+                .Width = 90
+                .Visible = True
+            End With
+            With grDatos.RootTable.Columns("dato1")
+                .Caption = "COLOR"
+                .Width = 90
                 .Visible = True
             End With
             With grDatos.RootTable.Columns("prod")
@@ -428,7 +438,7 @@ Public Class F0_ExpImpStockFisico
         Try
             If InventarioImport.Rows.Count > 0 Then
 
-                If InventarioImport.Columns.Count = 22 Then
+                If InventarioImport.Columns.Count = 24 Then
 
                     Dim resp = InventarioImport.Rows(0).Item("RESPONSABLE")
                     Dim TablaProductos As DataTable = L_fnMostrarProductosXresponsable(resp)
@@ -489,7 +499,7 @@ Public Class F0_ExpImpStockFisico
 
                 Else
                     InventarioImport.Reset()
-                    ToastNotification.Show(Me, "No puede importar porque el excel tiene que tener 22 columnas, usted modificó el excel, corrija por favor".ToUpper,
+                    ToastNotification.Show(Me, "No puede importar porque el excel tiene que tener 23 columnas, usted modificó el excel, corrija por favor".ToUpper,
                                          My.Resources.WARNING, 7000, eToastGlowColor.Green, eToastPosition.TopCenter)
                 End If
             Else
@@ -661,6 +671,7 @@ Public Class F0_ExpImpStockFisico
                               eToastGlowColor.Green,
                               eToastPosition.BottomCenter)
                     btnGrabarImp.Visible = False
+                    grDatos.ClearStructure()
                 Else
                     ToastNotification.Show(Me, "FALLÓ LA IMPORTACIÓN DEL INVENTARIO FÍSICO!!!",
                               My.Resources.WARNING, 4000,

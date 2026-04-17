@@ -186,7 +186,9 @@ Public Class F1_ExcelSiglas
                 .Caption = "ALERTA MÁXIMA"
             End With
             With JGrM_Buscador.RootTable.Columns("dato1")
-                .Visible = False
+                .Width = 100
+                .Visible = IIf(Tipo = 2, True, False)
+                .Caption = "COLOR"
             End With
             With JGrM_Buscador.RootTable.Columns("dato2")
                 .Visible = False

@@ -154,6 +154,11 @@ Public Class F1_StockSistVsFisico
                 .Caption = "CÓD. VENC."
                 .Visible = True
             End With
+            With JGrM_Buscador.RootTable.Columns("dato1")
+                .Width = 90
+                .Caption = "COLOR"
+                .Visible = True
+            End With
             With JGrM_Buscador.RootTable.Columns("prod")
                 .Width = 380
                 .Caption = "PRODUCTO"

@@ -343,6 +343,11 @@ Public Class F1_ExcelVenta
                         .Caption = "STOCK ACTUAL"
                         .FormatString = "0.00"
                     End With
+                    With JGrM_Buscador.RootTable.Columns("tahact")
+                        .Width = 80
+                        .Visible = True
+                        .Caption = "HORA"
+                    End With
 
                     With JGrM_Buscador
                         .DefaultFilterRowComparison = FilterConditionOperator.Contains
