@@ -143,7 +143,7 @@ Public Class F1_RevStockVentaProv
             With JGrM_Buscador.RootTable.Columns("Pref")
                 .Width = 100
                 .Visible = True
-                .Caption = "PREFIJO ROTACIÓN"
+                .Caption = "SIGLA DEMANDA"
             End With
             With JGrM_Buscador.RootTable.Columns("PrefVenc")
                 .Width = 90

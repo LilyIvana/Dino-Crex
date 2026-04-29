@@ -1940,12 +1940,12 @@ Public Class F0_Venta2
                         If (bandera = True) Then
                             'F0_VentasSupermercado.P_prImprimirFacturaNueva(numi, True, True)
                             F0_VentasSupermercado.P_prNotaVentaNuevo(numi, True, True)
+                            F0_VentasSupermercado.GuardarFacturaPDF(numi)
                         Else
                             F0_VentasSupermercado.GuardarFacturaPDF(numi)
                         End If
 
                         '_prImiprimirNotaVenta(numi)
-
                     Else
                         _prImiprimirNotaVenta(numi)
                     End If

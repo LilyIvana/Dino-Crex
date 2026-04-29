@@ -1487,6 +1487,7 @@ Public Class F0_VentasSupermercado
                         If (bandera = True) Then
                             'P_prImprimirFacturaNueva(numi, True, True) '_Codigo de la tabla TV001
                             P_prNotaVentaNuevo(numi, True, True)
+                            GuardarFacturaPDF(numi)
                         Else
                             GuardarFacturaPDF(numi)
                         End If
@@ -1541,6 +1542,11 @@ Public Class F0_VentasSupermercado
         _TotalDecimal2 = CDbl(_TotalDecimal) * 100
 
         _Literal = Facturacion.ConvertirLiteral.A_fnConvertirLiteral(CDbl(_TotalLi) - CDbl(_TotalDecimal)) + "  " + IIf(_TotalDecimal2.Equals("0"), "00", _TotalDecimal2) + "/100 Bolivianos"
+
+        QrFactura.Text = _Ds.Tables(0).Rows(0).Item("fvaQrUrl").ToString
+        For I = 0 To _Ds.Tables(0).Rows.Count - 1
+            _Ds.Tables(0).Rows(I).Item("fvaimgqr") = P_fnImageToByteArray(QrFactura.Image)
+        Next
 
         objrep = New R_Factura_7_5x1000
         objrep.SetDataSource(_Ds.Tables(0))
@@ -2042,6 +2048,7 @@ Public Class F0_VentasSupermercado
                             SerPArametrosNuevo(_Ds, _Ds2, _Autorizacion, _Hora, _Literal, _NumFac, objrep,
                                       fila.Item("TipoReporte").ToString, _Fecha, grabarPDF, numi)
 
+
                     End Select
                 Next
             End If
@@ -2053,6 +2060,7 @@ Public Class F0_VentasSupermercado
 
         End If
     End Sub
+
     Private Sub SerPArametros(_Ds As DataSet, ByRef _Ds1 As DataSet, _Ds2 As DataSet, ByRef _Autorizacion As String, ByRef _Hora As String, ByRef _Literal As String,
                               ByRef _NumFac As Integer, objrep As Object, tipoReporte As String, _fecha As String, grabarPDF As Boolean, _numidosif As String, numi As String)
         Select Case tipoReporte
@@ -2218,7 +2226,7 @@ Public Class F0_VentasSupermercado
             If (Not Directory.Exists(gs_CarpetaRaiz + "\Facturas")) Then
                 Directory.CreateDirectory(gs_CarpetaRaiz + "\Facturas")
             End If
-            objrep.ExportToDisk(ExportFormatType.PortableDocFormat, gs_CarpetaRaiz + "\Facturas\" + CStr(_NumFac) + "_" + CStr(_Autorizacion) + ".pdf")
+            objrep.ExportToDisk(ExportFormatType.PortableDocFormat, gs_CarpetaRaiz + "\Facturas\" + "Nota_" + CStr(numi) + "_Fact._" + CStr(_NumFac) + ".pdf")
 
         End If
     End Sub

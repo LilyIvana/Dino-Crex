@@ -56,7 +56,7 @@ Public Class F1_ExcelSiglas
         dt.Columns.Add("COD")
         dt.Columns.Add("TIPO")
 
-        dt.Rows.Add(1, "PREFIJO ROTACIÓN")
+        dt.Rows.Add(1, "SIGLA DEMANDA")
         dt.Rows.Add(2, "COD. VENCIMIENTO")
 
 
@@ -161,8 +161,8 @@ Public Class F1_ExcelSiglas
             End With
             With JGrM_Buscador.RootTable.Columns("tiempovenc")
                 .Width = 260
-                .Visible = IIf(Tipo = 2, True, False)
-                .Caption = "TIEMPO DE VENCIMIENTO"
+                .Visible = True
+                .Caption = IIf(Tipo = 2, "TIEMPO DE VENCIMIENTO", "EQUIVALENTE EN VENTAS POR DIA")
             End With
             With JGrM_Buscador.RootTable.Columns("ejemplos")
                 .Width = 230
@@ -176,14 +176,13 @@ Public Class F1_ExcelSiglas
             End With
             With JGrM_Buscador.RootTable.Columns("alertaMin")
                 .Width = 120
-                .Caption = "ALERTA MÍNIMA"
-                .Visible = IIf(Tipo = 2, True, False)
-                .FormatString = "0"
+                .Visible = True
+                .Caption = IIf(Tipo = 2, "ALERTA MIN", "VENTAS EN UNID. (MENSUAL) MIN")
             End With
             With JGrM_Buscador.RootTable.Columns("alertaMax")
                 .Width = 120
-                .Visible = IIf(Tipo = 2, True, False)
-                .Caption = "ALERTA MÁXIMA"
+                .Visible = True
+                .Caption = IIf(Tipo = 2, "ALERTA MAX", "VENTAS EN UNID. (MENSUAL) MAX")
             End With
             With JGrM_Buscador.RootTable.Columns("dato1")
                 .Width = 100
@@ -337,7 +336,7 @@ Public Class F1_ExcelSiglas
 
         Select Case Tipo
             Case 1
-                nombre = "SiglasPrefijoRotacion"
+                nombre = "SiglasDemanda"
             Case 2
                 nombre = "SiglasCodVencimiento"
         End Select

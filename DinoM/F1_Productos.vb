@@ -862,7 +862,7 @@ Public Class F1_Productos
         listEstCeldas.Add(New Modelo.Celda("yfcprod", True, "Cod. Delta".ToUpper, 80))
         listEstCeldas.Add(New Modelo.Celda("yfcdprod2", True, "Cod. Proveedor".ToUpper, 100))
         listEstCeldas.Add(New Modelo.Celda("yfcbarra", True, "Cod.Barra".ToUpper, 110))
-        listEstCeldas.Add(New Modelo.Celda("yfcampo1", True, "Prefijo Rotación".ToUpper, 100))
+        listEstCeldas.Add(New Modelo.Celda("yfcampo1", True, "Sigla Demanda".ToUpper, 100))
         listEstCeldas.Add(New Modelo.Celda("UCompra", True, "Cod. Venc.".ToUpper, 100))
         listEstCeldas.Add(New Modelo.Celda("yfcdprod1", True, "Descripción Producto".ToUpper, 400))
         listEstCeldas.Add(New Modelo.Celda("yfgr1", False))

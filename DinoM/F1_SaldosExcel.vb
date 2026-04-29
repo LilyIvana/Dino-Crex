@@ -169,7 +169,7 @@ Public Class F1_SaldosExcel
             End With
             With JGrM_Buscador.RootTable.Columns("pref")
                 .Width = 90
-                .Caption = "PREFIJO ROTACION"
+                .Caption = "SIGLA DEMANDA"
                 .Visible = True
             End With
             With JGrM_Buscador.RootTable.Columns("PrefVenc")

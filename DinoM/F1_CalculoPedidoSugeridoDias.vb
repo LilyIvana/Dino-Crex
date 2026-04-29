@@ -170,7 +170,7 @@ Public Class F1_CalculoPedidoSugeridoDias
             With JGrM_Buscador.RootTable.Columns("pref")
                 .Width = 100
                 .Visible = True
-                .Caption = "PREFIJO ROTACIÓN"
+                .Caption = "SIGLA DEMANDA"
             End With
             With JGrM_Buscador.RootTable.Columns("PrefVenc")
                 .Width = 90

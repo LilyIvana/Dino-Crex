@@ -109,10 +109,10 @@ Public Class F1_ExcelVenta
         Dim dt, dtVentas As DataTable
 
 
-        If swTipo.Value = True Then
+        If swTipo.Value = True Then ''VENTAS DETALLADAS
             dt = L_VentasProductos(fechaDesde, fechaHasta)
             dtVentas = L_BuscarVentasAtendidas2(fechaDesde, fechaHasta, 0, 0, 0, 0)
-        Else
+        Else '' VENTAS GENERALES
             dt = L_VentasGenerales(fechaDesde, fechaHasta)
         End If
 
@@ -331,6 +331,16 @@ Public Class F1_ExcelVenta
                         .Width = 120
                         .Visible = True
                         .Caption = "COD. PROVEEDOR"
+                    End With
+                    With JGrM_Buscador.RootTable.Columns("pref")
+                        .Width = 90
+                        .Visible = True
+                        .Caption = "SIGLA DEMANDA"
+                    End With
+                    With JGrM_Buscador.RootTable.Columns("PrefVenc")
+                        .Width = 90
+                        .Visible = True
+                        .Caption = "COD. VENC."
                     End With
                     With JGrM_Buscador.RootTable.Columns("OBSERVACION")
                         .Width = 120
@@ -568,9 +578,9 @@ Public Class F1_ExcelVenta
         _prCrearCarpetaReportes()
         Dim img As Bitmap = New Bitmap(My.Resources.checked, 50, 50)
         If (P_ExportarExcelGlobal(RutaGlobal + "\Reporte\Reporte Productos", JGrM_Buscador, IIf(swTipo.Value = True, "VentasDetalladasProductos", "VentasGenerales"))) Then
-            L_fnBotonExportar(gs_VersionSistema, gs_IPMaquina, gs_UsuMaquina, 0, IIf(swTipo.Value = True, "VENTAS DETALLADAS PRODUCTOS", "VENTAS GENERALES"), IIf(swTipo.Value = True, "VENTAS DETALLADAS PRODUCTOS", "VENTAS GENERALES"))
+            L_fnBotonExportar(gs_VersionSistema, gs_IPMaquina, gs_UsuMaquina, 0, IIf(swTipo.Value = True, "VENTAS DETALLADAS POR PRODUCTO", "VENTAS GENERALES"), IIf(swTipo.Value = True, "VENTAS DETALLADAS POR PRODUCTO", "VENTAS GENERALES"))
 
-            ToastNotification.Show(Me, "EXPORTACIÓN DE " + IIf(swTipo.Value = True, "VENTAS DETALLADAS POR PRODUCTOS", "VENTAS GENERALES") + " EXITOSA..!!!",
+            ToastNotification.Show(Me, "EXPORTACIÓN DE " + IIf(swTipo.Value = True, "VENTAS DETALLADAS POR PRODUCTO", "VENTAS GENERALES") + " EXITOSA..!!!",
                                        img, 2000,
                                        eToastGlowColor.Green,
                                        eToastPosition.TopCenter)

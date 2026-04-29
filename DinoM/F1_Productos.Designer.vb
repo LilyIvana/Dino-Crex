@@ -1293,7 +1293,7 @@ Partial Class F1_Productos
         Me.LabelX19.SingleLineColor = System.Drawing.SystemColors.Control
         Me.LabelX19.Size = New System.Drawing.Size(115, 23)
         Me.LabelX19.TabIndex = 229
-        Me.LabelX19.Text = "Prefijo Rotación:"
+        Me.LabelX19.Text = "Sigla Demanda:"
         '
         'LabelX13
         '

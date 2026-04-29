@@ -320,7 +320,11 @@ Public Class P_Principal
     Private Sub SideNav1_IsMenuExpandedChanged(sender As Object, e As EventArgs) Handles SideNav1.IsMenuExpandedChanged
         If (SideNav1.IsMenuExpanded = True) Then
             FP_Configuracion.Select()
-
+            lbVersion.Visible = True
+            lbUsuario.Visible = True
+        Else
+            lbVersion.Visible = False
+            lbUsuario.Visible = False
         End If
     End Sub
 
@@ -1396,9 +1400,11 @@ Public Class P_Principal
     Private Sub btSiglas_Click(sender As Object, e As EventArgs) Handles btSiglas.Click
         Dim frm As New F1_ExcelSiglas
         frm._nameButton = btSiglas.Name
-        frm._modulo = FP_Configuracion
+        frm._modulo = FP_INVENTARIO
         frm.Show()
     End Sub
+
+
 
 
     'Private Sub btnCredPagoCliente_Click(sender As Object, e As EventArgs) Handles btnCredPagoCliente.Click
