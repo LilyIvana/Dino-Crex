@@ -261,7 +261,7 @@ Public Class F0_Movimiento
                 cbMotivo.SelectedIndex = -1
             End If
         End If
-        
+
         If (cbConcepto.Value = 6) Then ''''Movimiento 6=Traspaso Salida
             _prCargarComboLibreriaMotivo(cbMotivo, 10, 1)
             btnModificar.Enabled = False

@@ -27,6 +27,7 @@ Public Class F1_Productos
     Public _modulo As SideNavItem
     Public Limpiar As Boolean = False  'Bandera para indicar si limpiar todos los datos o mantener datos ya registrados
     Public CodBarras As String
+    Public CodProdD As String
 
     'variables sifac
     Public tokenSifac As String
@@ -680,6 +681,30 @@ Public Class F1_Productos
         '    MEP.SetError(tbDescCort, "")
         'End If
 
+        If tbCodProd.Text <> String.Empty Then
+            If CodProdD <> tbCodProd.Text Then
+                Dim dt = L_fnValidarCodProducto(tbCodProd.Text)
+                If dt.Rows.Count > 0 Then
+                    tbCodProd.BackColor = Color.Red
+                    ToastNotification.Show(Me, "Este código de producto ya existe en otro producto!".ToUpper,
+                                      My.Resources.WARNING, 2000,
+                                      eToastGlowColor.Red,
+                                      eToastPosition.TopCenter
+                                      )
+                    _ok = False
+                Else
+                    tbCodProd.BackColor = Color.White
+                    MEP.SetError(tbCodProd, "")
+                End If
+            Else
+                tbCodProd.BackColor = Color.White
+                MEP.SetError(tbCodProd, "")
+            End If
+        Else
+            tbCodProd.BackColor = Color.White
+            MEP.SetError(tbCodProd, "")
+        End If
+
         If cbgrupo1.SelectedIndex < 0 Then
             cbgrupo1.BackColor = Color.Red
             MEP.SetError(cbgrupo1, "Seleccione grupo del producto!".ToUpper)
@@ -760,7 +785,6 @@ Public Class F1_Productos
                 Dim dt = L_fnValidarCodBarras(tbCodBarra.Text)
                 If dt.Rows.Count > 0 Then
                     tbCodBarra.BackColor = Color.Red
-                    'MEP.SetError(tbCodBarra, "Este código de barras ya existe en otro producto!".ToUpper)
                     ToastNotification.Show(Me, "Este código de barras ya existe en otro producto!".ToUpper,
                                       My.Resources.WARNING, 2000,
                                       eToastGlowColor.Red,
@@ -1563,6 +1587,7 @@ Public Class F1_Productos
 
     Private Sub btnModificar_Click(sender As Object, e As EventArgs) Handles btnModificar.Click
         CodBarras = tbCodBarra.Text
+        CodProdD = tbCodProd.Text
         P_prAddFilaDetalle()
     End Sub
 
@@ -2111,5 +2136,6 @@ Public Class F1_Productos
     Private Sub CbAeconomica_ValueChanged(sender As Object, e As EventArgs) Handles CbAeconomica.ValueChanged
         tbActEco.Text = CbAeconomica.Value
     End Sub
+
 
 End Class

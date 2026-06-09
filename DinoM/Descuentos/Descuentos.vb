@@ -72,6 +72,14 @@ Public Class Descuentos
             .MaxLines = 3
             .Visible = True
         End With
+        With grProducto.RootTable.Columns("yfcampo1")
+            .Visible = False
+        End With
+        With grProducto.RootTable.Columns("venc")
+            .Caption = "Cod. Venc."
+            .Width = 50
+            .Visible = True
+        End With
         With grProducto.RootTable.Columns("NombreProducto")
             .Caption = "Productos"
             .Width = 220

@@ -202,21 +202,28 @@ Public Class F1_AlarmaRentabilidad
             End With
             With JGrM_Buscador.RootTable.Columns("PrecioCosto")
                 .Width = 150
-                .Caption = "PRECIO COSTO BRUTO"
+                .Caption = "P. COSTO BRUTO"
+                .Visible = True
+                .FormatString = "0.00"
+                .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far
+            End With
+            With JGrM_Buscador.RootTable.Columns("PrecioCostoPond")
+                .Width = 150
+                .Caption = "P. COSTO PONDERADO BRUTO"
                 .Visible = True
                 .FormatString = "0.00"
                 .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far
             End With
             With JGrM_Buscador.RootTable.Columns("PrecioVenta")
                 .Width = 150
-                .Caption = "(A) PRECIO WHOLESALE BRUTO "
+                .Caption = "(A) P. WHOLESALE BRUTO "
                 .Visible = True
                 .FormatString = "0.00"
                 .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far
             End With
             With JGrM_Buscador.RootTable.Columns("PrecioEspecial")
                 .Width = 150
-                .Caption = "(B) PRECIO PREFERENCIAL BRUTO"
+                .Caption = "(B) P. PREFERENCIAL BRUTO"
                 .Visible = True
                 .FormatString = "0.00"
                 .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far
@@ -224,7 +231,7 @@ Public Class F1_AlarmaRentabilidad
             End With
             With JGrM_Buscador.RootTable.Columns("PrecioPDV")
                 .Width = 150
-                .Caption = "(C) PRECIO PDV BRUTO"
+                .Caption = "(C) P. PDV BRUTO"
                 .Visible = True
                 .FormatString = "0.00"
                 .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far
@@ -240,7 +247,15 @@ Public Class F1_AlarmaRentabilidad
 
                 With JGrM_Buscador.RootTable.Columns("PrecioCostoNeto")
                     .Width = 120
-                    .Caption = "PRECIO COSTO NETO"
+                    .Caption = "P. COSTO NETO"
+                    .Visible = True
+                    .FormatString = "0.00"
+                    .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far
+                    '.AggregateFunction = AggregateFunction.Sum
+                End With
+                With JGrM_Buscador.RootTable.Columns("PrecioCostoPondNeto")
+                    .Width = 120
+                    .Caption = "P. COSTO PONDERADO NETO"
                     .Visible = True
                     .FormatString = "0.00"
                     .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far
@@ -248,14 +263,14 @@ Public Class F1_AlarmaRentabilidad
                 End With
                 With JGrM_Buscador.RootTable.Columns("PrecioVentaNetoMin")
                     .Width = 120
-                    .Caption = "(C) PRECIO MIN. PDV NETO"
+                    .Caption = "(C) P. MIN. PDV NETO"
                     .Visible = True
                     .FormatString = "0.00"
                     .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far
                 End With
                 With JGrM_Buscador.RootTable.Columns("PrecioVentaNetoMax")
                     .Width = 120
-                    .Caption = "(A) PRECIO MAX. WHOLESALE NETO"
+                    .Caption = "(A) P. MAX. WHOLESALE NETO"
                     .Visible = True
                     .FormatString = "0.00"
                     .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far
@@ -340,7 +355,6 @@ Public Class F1_AlarmaRentabilidad
     Private Sub F1_Productos_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         _prIniciarTodo()
     End Sub
-
 
 
     Public Function P_ExportarExcel(_ruta As String) As Boolean

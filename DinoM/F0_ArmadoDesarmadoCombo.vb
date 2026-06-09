@@ -76,6 +76,7 @@ Public Class F0_ArmadoDesarmadoCombo
         P_prHDComponentes(BoNuevo)
         tbCodPack.ReadOnly = True
         tbProdPack.ReadOnly = True
+        tbCodPack.Enabled = True
         'dtiFechaDoc.Select()
         tbCodPack.Select()
         P_prAddFilaDetalle()
@@ -804,6 +805,7 @@ Public Class F0_ArmadoDesarmadoCombo
         'TextBox
         tbObs.ReadOnly = Not flat
         tbCodPack.ReadOnly = Not flat
+        tbCodPack.Enabled = flat
         tbProdPack.ReadOnly = Not flat
         tbCantP.IsInputReadOnly = Not flat
         tbPcosto.ReadOnly = Not flat
