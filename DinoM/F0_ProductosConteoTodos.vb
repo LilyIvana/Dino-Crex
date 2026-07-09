@@ -88,6 +88,11 @@ Public Class F0_ProductosConteoTodos
                 .Width = 90
                 .Visible = True
             End With
+            With grproductos.RootTable.Columns("PrefVenc")
+                .Caption = "COD VENC"
+                .Width = 90
+                .Visible = True
+            End With
             With grproductos.RootTable.Columns("yfcbarra")
                 .Caption = "COD. BARRAS"
                 .Width = 120

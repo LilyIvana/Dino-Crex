@@ -603,10 +603,22 @@
     <Compile Include="F1_ExcelVale.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="F1_ExcelRepVenc.Designer.vb">
+      <DependentUpon>F1_ExcelRepVenc.vb</DependentUpon>
+    </Compile>
+    <Compile Include="F1_ExcelRepVenc.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="F1_ProductosVales.Designer.vb">
       <DependentUpon>F1_ProductosVales.vb</DependentUpon>
     </Compile>
     <Compile Include="F1_ProductosVales.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="F1_ControlVencimientos.Designer.vb">
+      <DependentUpon>F1_ControlVencimientos.vb</DependentUpon>
+    </Compile>
+    <Compile Include="F1_ControlVencimientos.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="F1_StockSistVsFisico.Designer.vb">
@@ -1852,8 +1864,14 @@
     <EmbeddedResource Include="F1_ExcelVale.resx">
       <DependentUpon>F1_ExcelVale.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="F1_ExcelRepVenc.resx">
+      <DependentUpon>F1_ExcelRepVenc.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="F1_ProductosVales.resx">
       <DependentUpon>F1_ProductosVales.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="F1_ControlVencimientos.resx">
+      <DependentUpon>F1_ControlVencimientos.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="F1_StockSistVsFisico.resx">
       <DependentUpon>F1_StockSistVsFisico.vb</DependentUpon>
@@ -2781,6 +2799,8 @@
     <None Include="Resources\trash.png" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\rep venc.png" />
+    <None Include="Resources\venc.png" />
     <None Include="Resources\sigla1.png" />
     <None Include="Resources\sigla.png" />
     <None Include="Resources\rep vales.png" />

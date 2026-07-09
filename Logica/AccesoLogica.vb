@@ -431,6 +431,12 @@ Public Class AccesoLogica
         _Tabla = D_Datos_Tabla("VerServicios", "SY000", "1=1")
         Return _Tabla
     End Function
+
+    Public Shared Function L_VerTablaSY000() As DataTable
+        Dim _Tabla As DataTable
+        _Tabla = D_Datos_Tabla("*", "SY000", "1=1")
+        Return _Tabla
+    End Function
     Public Shared Function TipoDescuentoEsXCantidad() As Boolean
         Dim _Tabla As DataTable
         _Tabla = D_Datos_Tabla("Count(*)", "SY000", "VerTipoDescuento = 0")
@@ -9661,6 +9667,74 @@ Public Class AccesoLogica
         _listParam.Add(New Datos.DParametro("@sigla", tiposigla))
         _listParam.Add(New Datos.DParametro("@uact", L_Usuario))
         _Tabla = D_ProcedimientoConParam("ProcSignificadoSiglas", _listParam)
+        Return _Tabla
+    End Function
+    Public Shared Function L_RepCodVenc(tiposigla As String) As DataTable
+        Dim _Tabla As DataTable
+        Dim _listParam As New List(Of Datos.DParametro)
+        _listParam.Add(New Datos.DParametro("@tipo", 2))
+        _listParam.Add(New Datos.DParametro("@sigla", tiposigla))
+        _listParam.Add(New Datos.DParametro("@uact", L_Usuario))
+        _Tabla = D_ProcedimientoConParam("ProcSignificadoSiglas", _listParam)
+        Return _Tabla
+    End Function
+#End Region
+#Region "Control de Vencimientos"
+    Public Shared Function L_fnImportarControlVenc(_dtControlv As DataTable, _version As String, _ip As String, _usumaquina As String) As Boolean
+        Dim _resultado As Boolean
+        Dim _Tabla As DataTable
+        Dim _listParam As New List(Of Datos.DParametro)
+
+        _listParam.Add(New Datos.DParametro("@tipo", 1))
+        _listParam.Add(New Datos.DParametro("@TControlV", "", _dtControlv))
+        _listParam.Add(New Datos.DParametro("@version", _version))
+        _listParam.Add(New Datos.DParametro("@ip", _ip))
+        _listParam.Add(New Datos.DParametro("@usumaquina", _usumaquina))
+        _listParam.Add(New Datos.DParametro("@chuact", L_Usuario))
+
+        _Tabla = D_ProcedimientoConParam("ProcControlVenc", _listParam)
+
+        If _Tabla.Rows.Count > 0 Then
+            _resultado = True
+        Else
+            _resultado = False
+        End If
+
+        Return _resultado
+    End Function
+    Public Shared Function L_fnVerificarGrabadoControlVenc(resp As String, fecha As String) As DataTable
+        Dim _Tabla As DataTable
+
+        Dim _listParam As New List(Of Datos.DParametro)
+
+        _listParam.Add(New Datos.DParametro("@tipo", 2))
+        _listParam.Add(New Datos.DParametro("@responsable", resp))
+        _listParam.Add(New Datos.DParametro("@fechaInv", fecha))
+        _listParam.Add(New Datos.DParametro("@chuact", L_Usuario))
+        _Tabla = D_ProcedimientoConParam("ProcControlVenc", _listParam)
+
+        Return _Tabla
+    End Function
+    Public Shared Function L_RepVencimientos(fechaI As String, fechaF As String) As DataTable
+        Dim _Tabla As DataTable
+        Dim _listParam As New List(Of Datos.DParametro)
+        _listParam.Add(New Datos.DParametro("@tipo", 3))
+        _listParam.Add(New Datos.DParametro("@fechaI", fechaI))
+        _listParam.Add(New Datos.DParametro("@fechaF", fechaF))
+        _listParam.Add(New Datos.DParametro("@chuact", L_Usuario))
+        _Tabla = D_ProcedimientoConParam("ProcControlVenc", _listParam)
+        Return _Tabla
+    End Function
+    Public Shared Function L_fnStockSistvsFisicoVenc(fecha As String) As DataTable
+        Dim _Tabla As DataTable
+
+        Dim _listParam As New List(Of Datos.DParametro)
+
+        _listParam.Add(New Datos.DParametro("@tipo", 4))
+        _listParam.Add(New Datos.DParametro("@fechaInv", fecha))
+        _listParam.Add(New Datos.DParametro("@chuact", L_Usuario))
+        _Tabla = D_ProcedimientoConParam("ProcControlVenc", _listParam)
+
         Return _Tabla
     End Function
 #End Region

@@ -499,7 +499,7 @@ Public Class F0_ExpImpStockFisico
 
                 Else
                     InventarioImport.Reset()
-                    ToastNotification.Show(Me, "No puede importar porque el excel tiene que tener 23 columnas, usted modificó el excel, corrija por favor".ToUpper,
+                    ToastNotification.Show(Me, "No puede importar porque el excel tiene que tener 24 columnas, usted modificó el excel, corrija por favor".ToUpper,
                                          My.Resources.WARNING, 7000, eToastGlowColor.Green, eToastPosition.TopCenter)
                 End If
             Else

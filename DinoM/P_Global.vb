@@ -105,12 +105,12 @@ Module P_Global
             .Columns(0).Caption = nombreCodigo
             .Columns(0).Visible = True
 
-            .Columns.Add(dtCombo.Columns("desc").ToString).Width = anchoDesc
+            .Columns.Add(dtCombo.Columns("descripcion").ToString).Width = anchoDesc
             .Columns(1).Caption = nombreDescripción
             .Columns(1).Visible = True
 
             .ValueMember = dtCombo.Columns("cod").ToString
-            .DisplayMember = dtCombo.Columns("desc").ToString
+            .DisplayMember = dtCombo.Columns("descripcion").ToString
             .DataSource = dtCombo
             .Refresh()
         End With

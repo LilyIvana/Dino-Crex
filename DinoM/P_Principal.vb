@@ -33,8 +33,20 @@ Public Class P_Principal
 
             Me.WindowState = FormWindowState.Maximized
             DatosBitacora()
-            'iniciar login de usuario
-            _prLogin()
+
+            ''iniciar login de usuario
+            '_prLogin()
+
+            Dim dt As DataTable = L_VerTablaSY000()
+            Dim Version As String = dt.Rows(0).Item("Version")
+            If gs_VersionSistema = Version Then
+                'iniciar login de usuario
+                _prLogin()
+            Else
+                MessageBox.Show("USTED NO TIENE INSTALADO LA ÚLTIMA VERSIÓN DEL SISTEMA, POR FAVOR HACERSE ACTUALIZAR. EL SISTEMA SE CERRARÁ.!!!", "VERSIÓN CADUCADA", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                End
+            End If
+
 
             'If My.Computer.FileSystem.FileExists(gs_CarpetaRaiz + "\LogoIcoCrex.ico") Then
             '    Me.Icon = Icon.ExtractAssociatedIcon(gs_CarpetaRaiz + "\LogoIcoCrex.ico")
@@ -44,6 +56,12 @@ Public Class P_Principal
             MsgBox(ex.Message)
             Me.Close()
         End Try
+
+    End Sub
+
+
+    Public Sub _prVerVersion()
+
 
     End Sub
     Private Sub DatosBitacora()
@@ -1400,6 +1418,20 @@ Public Class P_Principal
     Private Sub btSiglas_Click(sender As Object, e As EventArgs) Handles btSiglas.Click
         Dim frm As New F1_ExcelSiglas
         frm._nameButton = btSiglas.Name
+        frm._modulo = FP_INVENTARIO
+        frm.Show()
+    End Sub
+
+    Private Sub btControlVenc_Click(sender As Object, e As EventArgs) Handles btControlVenc.Click
+        Dim frm As New F1_ControlVencimientos
+        frm._nameButton = btControlVenc.Name
+        frm._modulo = FP_INVENTARIO
+        frm.Show()
+    End Sub
+
+    Private Sub btRepVenc_Click(sender As Object, e As EventArgs) Handles btRepVenc.Click
+        Dim frm As New F1_ExcelRepVenc
+        frm._nameButton = btRepVenc.Name
         frm._modulo = FP_INVENTARIO
         frm.Show()
     End Sub
