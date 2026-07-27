@@ -99,7 +99,7 @@ Public Class F1_ControlVencimientos
                 With JGrM_Buscador.RootTable.Columns("fecha")
                     .Width = 90
                     .Visible = True
-                    .Caption = "FECHA"
+                    .Caption = "FECHA INVENTARISTAS"
                 End With
                 With JGrM_Buscador.RootTable.Columns("yfordenacion")
                     .Width = 90
@@ -162,7 +162,7 @@ Public Class F1_ControlVencimientos
                 End With
                 With JGrM_Buscador.RootTable.Columns("StockActual")
                     .Width = 100
-                    .Caption = "STOCK ACTUAL"
+                    .Caption = "STOCK ACTUAL SISTEMA"
                     .Visible = True
                     .FormatString = "0.00"
                     .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far
@@ -197,8 +197,13 @@ Public Class F1_ControlVencimientos
                     .Visible = False
                     .Caption = "ESTADO"
                 End With
+                With JGrM_Buscador.RootTable.Columns("HuboCompra")
+                    .Width = 80
+                    .Visible = True
+                    .Caption = "COMPRA ULT 7 DIAS"
+                End With
                 With JGrM_Buscador.RootTable.Columns("cant1")
-                    .Width = 100
+                    .Width = 80
                     .Caption = "CANTIDAD1"
                     .Visible = True
                     .FormatString = "0.00"
@@ -220,7 +225,7 @@ Public Class F1_ControlVencimientos
                     .Caption = "F VENC NUEVO 3"
                 End With
                 With JGrM_Buscador.RootTable.Columns("Obs")
-                    .Width = 150
+                    .Width = 250
                     .Visible = True
                     .Caption = "OBSERVACION"
                 End With
@@ -410,7 +415,7 @@ Public Class F1_ControlVencimientos
         Try
             If VencimientosImport.Rows.Count > 0 Then
 
-                If VencimientosImport.Columns.Count = 20 Then
+                If VencimientosImport.Columns.Count = 21 Then
 
                     'Dim resp = VencimientosImport.Rows(0).Item("RESPONSABLE")
                     'Dim TablaProductos As DataTable = L_fnMostrarProductosXresponsable(resp)
@@ -421,7 +426,7 @@ Public Class F1_ControlVencimientos
                         Dim aux = Tablaaux.Select("CODDYNASYS=" + VencimientosImport.Rows(k).Item("CODDYNASYS").ToString)
                         If aux.Length > 1 Then
                             ToastNotification.Show(Me, "No se puede realizar la importación porque el codigo dynasys:  ".ToUpper & VencimientosImport.Rows(k).Item("CODDYNASYS").ToString & " existe  ".ToUpper & aux.Length.ToString & " veces en la lista".ToUpper,
-                                                   My.Resources.WARNING, 5000, eToastGlowColor.Green, eToastPosition.BottomCenter)
+                                                   My.Resources.WARNING, 7000, eToastGlowColor.Green, eToastPosition.BottomCenter)
                             Exit Sub
                         End If
                     Next
@@ -438,7 +443,7 @@ Public Class F1_ControlVencimientos
                     ''Validación para comprobar fechas de vencimiento
                     For k = 0 To VencimientosImport.Rows.Count - 1
 
-                        If IsDBNull(VencimientosImport.Rows(k).Item("FECHA")) Or IsDBNull(VencimientosImport.Rows(k).Item("F VENC 1")) Or IsDBNull(VencimientosImport.Rows(k).Item("F VENC 2")) Or
+                        If IsDBNull(VencimientosImport.Rows(k).Item("FECHA INVENTARISTAS")) Or IsDBNull(VencimientosImport.Rows(k).Item("F VENC 1")) Or IsDBNull(VencimientosImport.Rows(k).Item("F VENC 2")) Or
                                 IsDBNull(VencimientosImport.Rows(k).Item("F VENC 3")) Or IsDBNull(VencimientosImport.Rows(k).Item("F VENC NUEVO 1")) Or
                                 IsDBNull(VencimientosImport.Rows(k).Item("F VENC NUEVO 2")) Or IsDBNull(VencimientosImport.Rows(k).Item("F VENC NUEVO 3")) Then
                             ToastNotification.Show(Me, "No se puede realizar la importación porque el codigo Dynasys: ".ToUpper & VencimientosImport.Rows(k).Item("CODDYNASYS") &
@@ -473,8 +478,8 @@ Public Class F1_ControlVencimientos
         JGrM_Buscador.DataSource = dtImport
         JGrM_Buscador.RetrieveStructure()
 
-        With JGrM_Buscador.RootTable.Columns("FECHA")
-            .Caption = "FECHA"
+        With JGrM_Buscador.RootTable.Columns("FECHA INVENTARISTAS")
+            .Caption = "FECHA INVENTARISTAS"
             .Width = 90
             .Visible = True
         End With
@@ -528,7 +533,7 @@ Public Class F1_ControlVencimientos
 
             Dim respons As String = L_Usuario
             'Dim fecha As Date = Now.Date.ToString("dd/MM/yyyy")
-            Dim fecha As String = VencimientosImport.Rows(0).Item("FECHA")
+            Dim fecha As String = VencimientosImport.Rows(0).Item("FECHA INVENTARISTAS")
             'Dim CodVenc As String = VencimientosImport.Rows(0).Item("COD VENC")
             Dim dtVerificar = L_fnVerificarGrabadoControlVenc(respons, fecha)
 

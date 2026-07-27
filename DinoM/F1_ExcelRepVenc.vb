@@ -124,7 +124,7 @@ Public Class F1_ExcelRepVenc
             With JGrM_Buscador.RootTable.Columns("chfingreso")
                 .Width = 90
                 .Visible = True
-                .Caption = "FECHA INV."
+                .Caption = "FECHA INVENTARISTAS"
             End With
             With JGrM_Buscador.RootTable.Columns("chorden")
                 .Width = 60
@@ -167,9 +167,7 @@ Public Class F1_ExcelRepVenc
             With JGrM_Buscador.RootTable.Columns("chfisico")
                 .Visible = False
             End With
-            With JGrM_Buscador.RootTable.Columns("chStockAct")
-                .Visible = False
-            End With
+
             With JGrM_Buscador.RootTable.Columns("chfecha1")
                 .Width = 90
                 .Visible = True
@@ -190,6 +188,13 @@ Public Class F1_ExcelRepVenc
                 .Visible = True
                 .Caption = "RESPONSABLE1"
             End With
+            With JGrM_Buscador.RootTable.Columns("chStockAct")
+                .Width = 100
+                .Caption = "STOCK AL GENERAR"
+                .FormatString = "0.00"
+                .Visible = True
+                .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far
+            End With
             With JGrM_Buscador.RootTable.Columns("StockActual")
                 .Width = 100
                 .Caption = "STOCK ACTUAL SISTEMA"
@@ -197,9 +202,14 @@ Public Class F1_ExcelRepVenc
                 .Visible = True
                 .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far
             End With
+            With JGrM_Buscador.RootTable.Columns("chhubocompra")
+                .Width = 80
+                .Visible = True
+                .Caption = "COMPRA ULT. 7 DIAS"
+            End With
             With JGrM_Buscador.RootTable.Columns("chcant1")
                 .Width = 100
-                .Caption = "CANTIDAD1"
+                .Caption = "CANTIDAD1 A VENCERSE"
                 .Visible = True
                 .FormatString = "0.00"
                 .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far
@@ -232,7 +242,7 @@ Public Class F1_ExcelRepVenc
             With JGrM_Buscador.RootTable.Columns("chfact")
                 .Width = 80
                 .Visible = True
-                .Caption = "FECHA SUBIDO AL SISTEMA"
+                .Caption = "FECHA SUBIDA VENCIMIENTOS"
             End With
             With JGrM_Buscador.RootTable.Columns("chhact")
                 .Visible = False
@@ -245,7 +255,16 @@ Public Class F1_ExcelRepVenc
                 .Visible = True
                 .Caption = "ACCIÓN"
             End With
-
+            With JGrM_Buscador.RootTable.Columns("diasvenc")
+                .Width = 80
+                .Visible = True
+                .Caption = "DIAS AL VENCIMIENTO"
+            End With
+            With JGrM_Buscador.RootTable.Columns("alerta")
+                .Width = 80
+                .Visible = True
+                .Caption = "TIPO DE ALERTA"
+            End With
 
             With JGrM_Buscador
                 .DefaultFilterRowComparison = FilterConditionOperator.Contains
@@ -306,4 +325,6 @@ Public Class F1_ExcelRepVenc
                                        eToastPosition.TopCenter)
         End If
     End Sub
+
+
 End Class

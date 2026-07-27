@@ -86,22 +86,24 @@ Public Class F0_ProductosConteoTodos
             With grproductos.RootTable.Columns("yfcdprod2")
                 .Caption = "COD PROVEEDOR"
                 .Width = 90
-                .Visible = True
+                .Visible = False
             End With
             With grproductos.RootTable.Columns("PrefVenc")
                 .Caption = "COD VENC"
-                .Width = 90
+                .Width = 80
                 .Visible = True
             End With
             With grproductos.RootTable.Columns("yfcbarra")
                 .Caption = "COD. BARRAS"
                 .Width = 120
-                .Visible = True
+                .Visible = False
             End With
             With grproductos.RootTable.Columns("yfcdprod1")
                 .Caption = "PRODUCTO"
-                .Width = 450
+                .Width = 440
                 .Visible = True
+                .WordWrap = True
+                .MaxLines = 3
             End With
             With grproductos.RootTable.Columns("yfgr1")
                 .Caption = "COD. PROV"
