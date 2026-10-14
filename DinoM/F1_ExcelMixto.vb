@@ -137,8 +137,8 @@ Public Class F1_ExcelMixto
         End If
     End Sub
     Private Sub _prCargarMixto()
-        Dim fechaDesde As DateTime = tbFechaI.Value.ToString("yyyy/MM/dd")
-        Dim fechaHasta As DateTime = tbFechaF.Value.ToString("yyyy/MM/dd")
+        Dim fechaDesde As DateTime = tbFechaI.Value.ToString("yyyy-MM-dd")
+        Dim fechaHasta As DateTime = tbFechaF.Value.ToString("yyyy-MM-dd")
         Dim dt As DataTable
         Dim Tipo As Integer = cbTipo.Value
         Select Case Tipo

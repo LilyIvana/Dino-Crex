@@ -8267,6 +8267,30 @@ Public Class AccesoLogica
 
         Return _Tabla
     End Function
+    Public Shared Function L_fnControlMensual() As DataTable
+        Dim _Tabla As DataTable
+
+        Dim _listParam As New List(Of Datos.DParametro)
+        _listParam.Add(New Datos.DParametro("@tipo", 8))
+        _Tabla = D_ProcedimientoConParam("ProcConteoFisico", _listParam)
+
+        Return _Tabla
+    End Function
+
+    Public Shared Function L_fnListarConteoUsuarioMensual(resp1 As String, resp2 As String, resp3 As String) As DataTable
+        Dim _Tabla As DataTable
+
+        Dim _listParam As New List(Of Datos.DParametro)
+
+        _listParam.Add(New Datos.DParametro("@tipo", 9))
+        _listParam.Add(New Datos.DParametro("@resp1", resp1))
+        _listParam.Add(New Datos.DParametro("@resp2", resp2))
+        _listParam.Add(New Datos.DParametro("@resp3", resp3))
+        _listParam.Add(New Datos.DParametro("@cguact", L_Usuario))
+        _Tabla = D_ProcedimientoConParam("ProcConteoFisico", _listParam)
+
+        Return _Tabla
+    End Function
 #End Region
 
 #Region "Movimiento de Productos por Peso TI003"

@@ -104,8 +104,8 @@ Public Class F1_ExcelVenta
         End If
     End Sub
     Private Sub _prCargarVenta()
-        Dim fechaDesde As DateTime = tbFechaI.Value.ToString("yyyy/MM/dd")
-        Dim fechaHasta As DateTime = tbFechaF.Value.ToString("yyyy/MM/dd")
+        Dim fechaDesde As DateTime = tbFechaI.Value.ToString("yyyy-MM-dd")
+        Dim fechaHasta As DateTime = tbFechaF.Value.ToString("yyyy-MM-dd")
         Dim dt, dtVentas As DataTable
 
 

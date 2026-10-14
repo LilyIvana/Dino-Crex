@@ -1,23 +1,10 @@
 ﻿
-Imports Logica.AccesoLogica
-Imports Janus.Windows.GridEX
-Imports DevComponents.DotNetBar
-Imports System.IO
-Imports DevComponents.DotNetBar.SuperGrid
-Imports GMap.NET.MapProviders
-Imports GMap.NET
-Imports GMap.NET.WindowsForms.Markers
-Imports GMap.NET.WindowsForms
-Imports GMap.NET.WindowsForms.ToolTips
-Imports System.Drawing
-Imports DevComponents.DotNetBar.Controls
-Imports System.Threading
-Imports System.Drawing.Text
 Imports System.Data.OleDb
-
-Imports System.Reflection
-Imports System.Runtime.InteropServices
-Imports Microsoft.Office.Interop
+Imports System.IO
+Imports DevComponents.DotNetBar
+Imports DevComponents.DotNetBar.Controls
+Imports Janus.Windows.GridEX
+Imports Logica.AccesoLogica
 
 
 Public Class F0_ExpImpStockFisico
@@ -31,10 +18,14 @@ Public Class F0_ExpImpStockFisico
     Public _tab As SuperTabItem
     Public InventarioImport As New DataTable
 
+    Public resp1, resp2, resp3 As String
+
 #End Region
 #Region "MEtodos Privados"
     Private Sub _IniciarTodo()
         _prAsignarPermisos()
+        ValidarControl()
+        _prCargarComboDia(cbDia)
         Me.Text = "CONTEO  FÍSICO  DE  PRODUCTOS"
         tbFechaInv.Value = Now.Date
         Dim blah As New Bitmap(New Bitmap(My.Resources.hojaruta), 20, 20)
@@ -61,9 +52,35 @@ Public Class F0_ExpImpStockFisico
         End If
     End Sub
 
-    Public Sub _prCargarTabla(Usuario As String, fecha As String) ''Bandera = true si es que haiq cargar denuevo la tabla de Precio Bandera =false si solo cargar datos al Janus con el precio antepuesto
+    Private Sub _prCargarComboDia(mCombo As Janus.Windows.GridEX.EditControls.MultiColumnCombo)
+        Dim dt As New DataTable
+        dt = L_fnControlMensual()
 
-        Dim datos As DataTable = L_fnListarConteoUsuario(Usuario, fecha)
+        With mCombo
+            .DropDownList.Columns.Clear()
+            .DropDownList.Columns.Add("Id").Width = 50
+            .DropDownList.Columns("Id").Caption = "COD"
+            .DropDownList.Columns.Add("descripcion").Width = 130
+            .DropDownList.Columns("descripcion").Caption = "DESCRIPCION"
+            .DropDownList.Columns.Add("dias").Width = 220
+            .DropDownList.Columns("dias").Caption = "DIAS"
+            .ValueMember = "descripcion"
+            .DisplayMember = "descripcion"
+            .DataSource = dt
+            .Refresh()
+        End With
+
+    End Sub
+    Public Sub _prCargarTabla(Usuario As String, fecha As String)
+
+        Dim datos As DataTable
+
+        If swTipo.Value = True Then
+            datos = L_fnListarConteoUsuario(Usuario, fecha)
+        Else
+            _prValidarResponsable(resp1, resp2, resp3)
+            datos = L_fnListarConteoUsuarioMensual(resp1, resp2, resp3)
+        End If
 
         If datos.Rows.Count > 0 Then
 
@@ -239,11 +256,22 @@ Public Class F0_ExpImpStockFisico
 
         Else
             grDatos.ClearStructure()
-            ToastNotification.Show(Me, "No existe datos de la fecha elegida para: ".ToUpper & tbUsuario.Text,
+            ToastNotification.Show(Me, "No existe datos de la fecha elegida para: ".ToUpper & L_Usuario,
                            My.Resources.WARNING, 5000, eToastGlowColor.Green, eToastPosition.TopCenter)
         End If
     End Sub
 
+    Public Sub _prValidarResponsable(ByRef resp1 As String, ByRef resp2 As String, ByRef resp3 As String)
+        If cbDia.Text = "PRIMER DIA" Then
+            resp1 = L_Usuario + " LUN"
+            resp2 = L_Usuario + " MAR"
+            resp3 = L_Usuario + " MIE"
+        Else cbDia.Text = "SEGUNDO DIA"
+            resp1 = L_Usuario + " JUE"
+            resp2 = L_Usuario + " VIE"
+            resp3 = L_Usuario + " SAB"
+        End If
+    End Sub
     Private Sub _prInhabiliitar()
 
         btnModificar.Enabled = True
@@ -368,7 +396,7 @@ Public Class F0_ExpImpStockFisico
             ef.dt = dt
             ef.SeleclCol = 1
             ef.listEstCeldas = listEstCeldas
-            ef.alto = 150
+            ef.alto = 370
             ef.ancho = 200
             ef.Context = "Seleccione Responsable".ToUpper
             ef.SeleclCol = 1
@@ -383,7 +411,7 @@ Public Class F0_ExpImpStockFisico
                 End If
 
                 tbUsuario.Text = Row.Cells("yduser").Value
-                _prCargarTabla(tbUsuario.Text, tbFechaInv.Value.ToString("dd/MM/yyyy"))
+                ''_prCargarTabla(tbUsuario.Text, tbFechaInv.Value.ToString("dd/MM/yyyy"))
 
             End If
 
@@ -436,12 +464,20 @@ Public Class F0_ExpImpStockFisico
 
     Private Sub MP_PasarDatos()
         Try
+            Dim TablaProductos As DataTable
             If InventarioImport.Rows.Count > 0 Then
 
                 If InventarioImport.Columns.Count = 24 Then
 
-                    Dim resp = InventarioImport.Rows(0).Item("RESPONSABLE")
-                    Dim TablaProductos As DataTable = L_fnMostrarProductosXresponsable(resp)
+                    If swTipo.Value = True Then
+                        Dim resp = InventarioImport.Rows(0).Item("RESPONSABLE")
+                        TablaProductos = L_fnMostrarProductosXresponsable(resp)
+                    Else
+                        _prValidarResponsable(resp1, resp2, resp3)
+                        TablaProductos = L_fnListarConteoUsuarioMensual(resp1, resp2, resp3)
+                    End If
+
+
 
                     '''Validación para comprobar que no existan dos o mas filas con el mismo codigo
                     'For k = 0 To InventarioImport.Rows.Count - 1
@@ -642,6 +678,17 @@ Public Class F0_ExpImpStockFisico
     End Sub
 
     Private Sub btnImportar_Click(sender As Object, e As EventArgs) Handles btnImportar.Click
+        If swTipo.Value = False Then
+            If cbDia.Text = String.Empty Then
+                ToastNotification.Show(Me, "PRIMERO DEBE SELECCIONAR DIA",
+                       My.Resources.WARNING, 2000,
+                       eToastGlowColor.Red,
+                       eToastPosition.TopCenter)
+                Exit Sub
+            End If
+
+        End If
+
         InventarioImport.Reset()
         InventarioImport.Clear()
         MP_ImportarExcel()
@@ -691,5 +738,57 @@ Public Class F0_ExpImpStockFisico
 
     Private Sub grDatos_EditingCell(sender As Object, e As EditingCellEventArgs) Handles grDatos.EditingCell
         e.Cancel = True
+    End Sub
+
+
+
+    Private Sub swTipo_ValueChanged(sender As Object, e As EventArgs) Handles swTipo.ValueChanged
+        ValidarControl()
+    End Sub
+
+    Private Sub btnGenerar_Click(sender As Object, e As EventArgs) Handles btnGenerar.Click
+
+        If swTipo.Value = True Then
+            If tbUsuario.Text = String.Empty Then
+                ToastNotification.Show(Me, "DEBE SELECCIONAR EL RESPONSABLE!!!",
+                             My.Resources.WARNING, 3000,
+                             eToastGlowColor.Red,
+                             eToastPosition.TopCenter)
+                Exit Sub
+            End If
+        Else
+            If cbDia.Value = String.Empty Then
+                ToastNotification.Show(Me, "DEBE SELECCIONAR EL DIA!!!",
+                             My.Resources.WARNING, 3000,
+                             eToastGlowColor.Red,
+                             eToastPosition.TopCenter)
+                Exit Sub
+            End If
+        End If
+        _prCargarTabla(tbUsuario.Text, tbFechaInv.Value.ToString("dd/MM/yyyy"))
+    End Sub
+
+    Private Sub ValidarControl()
+        If swTipo.Value = False Then
+            lbUsu.Visible = False
+            tbUsuario.Visible = False
+            btnSearch.Visible = False
+            lbCtrlEnter.Visible = False
+
+            lbDia.Visible = True
+            cbDia.Visible = True
+        Else
+            lbUsu.Visible = True
+            tbUsuario.Visible = True
+            btnSearch.Visible = True
+            lbCtrlEnter.Visible = True
+
+            lbDia.Visible = False
+            cbDia.Visible = False
+        End If
+    End Sub
+
+    Private Sub cbDia_ValueChanged(sender As Object, e As EventArgs) Handles cbDia.ValueChanged
+        '' _prCargarTabla(tbUsuario.Text, tbFechaInv.Value.ToString("dd/MM/yyyy"))
     End Sub
 End Class

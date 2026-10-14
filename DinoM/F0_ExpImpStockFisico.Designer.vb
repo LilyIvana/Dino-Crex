@@ -24,21 +24,27 @@ Partial Class F0_ExpImpStockFisico
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(F0_ExpImpStockFisico))
+        Dim cbDia_DesignTimeLayout As Janus.Windows.GridEX.GridEXLayout = New Janus.Windows.GridEX.GridEXLayout()
         Me.PanelPrecios = New System.Windows.Forms.Panel()
         Me.GroupPanel4 = New DevComponents.DotNetBar.Controls.GroupPanel()
         Me.Panel5 = New System.Windows.Forms.Panel()
         Me.grDatos = New Janus.Windows.GridEX.GridEX()
         Me.GroupPanel3 = New DevComponents.DotNetBar.Controls.GroupPanel()
         Me.Panel4 = New System.Windows.Forms.Panel()
+        Me.lbDia = New DevComponents.DotNetBar.LabelX()
+        Me.cbDia = New Janus.Windows.GridEX.EditControls.MultiColumnCombo()
+        Me.LabelX2 = New DevComponents.DotNetBar.LabelX()
+        Me.swTipo = New DevComponents.DotNetBar.Controls.SwitchButton()
         Me.btnGrabarImp = New DevComponents.DotNetBar.ButtonX()
         Me.lbCtrlEnter = New DevComponents.DotNetBar.LabelX()
         Me.btnSearch = New DevComponents.DotNetBar.ButtonX()
-        Me.LabelX1 = New DevComponents.DotNetBar.LabelX()
+        Me.lbUsu = New DevComponents.DotNetBar.LabelX()
         Me.tbUsuario = New DevComponents.DotNetBar.Controls.TextBoxX()
         Me.LabelX4 = New DevComponents.DotNetBar.LabelX()
         Me.tbFechaInv = New DevComponents.Editors.DateTimeAdv.DateTimeInput()
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         Me.btnImportar = New DevComponents.DotNetBar.ButtonX()
+        Me.btnGenerar = New DevComponents.DotNetBar.ButtonX()
         Me.PanelSuperior.SuspendLayout()
         Me.PanelInferior.SuspendLayout()
         CType(Me.BubbleBarUsuario, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -61,6 +67,7 @@ Partial Class F0_ExpImpStockFisico
         CType(Me.grDatos, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupPanel3.SuspendLayout()
         Me.Panel4.SuspendLayout()
+        CType(Me.cbDia, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.tbFechaInv, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -356,10 +363,15 @@ Partial Class F0_ExpImpStockFisico
         '
         Me.Panel4.AutoScroll = True
         Me.Panel4.BackColor = System.Drawing.Color.White
+        Me.Panel4.Controls.Add(Me.btnGenerar)
+        Me.Panel4.Controls.Add(Me.lbDia)
+        Me.Panel4.Controls.Add(Me.cbDia)
+        Me.Panel4.Controls.Add(Me.LabelX2)
+        Me.Panel4.Controls.Add(Me.swTipo)
         Me.Panel4.Controls.Add(Me.btnGrabarImp)
         Me.Panel4.Controls.Add(Me.lbCtrlEnter)
         Me.Panel4.Controls.Add(Me.btnSearch)
-        Me.Panel4.Controls.Add(Me.LabelX1)
+        Me.Panel4.Controls.Add(Me.lbUsu)
         Me.Panel4.Controls.Add(Me.tbUsuario)
         Me.Panel4.Controls.Add(Me.LabelX4)
         Me.Panel4.Controls.Add(Me.tbFechaInv)
@@ -369,6 +381,73 @@ Partial Class F0_ExpImpStockFisico
         Me.Panel4.Size = New System.Drawing.Size(1305, 97)
         Me.Panel4.TabIndex = 0
         '
+        'lbDia
+        '
+        Me.lbDia.BackColor = System.Drawing.Color.Transparent
+        '
+        '
+        '
+        Me.lbDia.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.lbDia.Font = New System.Drawing.Font("Georgia", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lbDia.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(85, Byte), Integer), CType(CType(139, Byte), Integer))
+        Me.lbDia.Location = New System.Drawing.Point(377, 49)
+        Me.lbDia.Name = "lbDia"
+        Me.lbDia.SingleLineColor = System.Drawing.SystemColors.Control
+        Me.lbDia.Size = New System.Drawing.Size(30, 23)
+        Me.lbDia.TabIndex = 706
+        Me.lbDia.Text = "Día:"
+        '
+        'cbDia
+        '
+        Me.cbDia.BackColor = System.Drawing.Color.Gainsboro
+        cbDia_DesignTimeLayout.LayoutString = resources.GetString("cbDia_DesignTimeLayout.LayoutString")
+        Me.cbDia.DesignTimeLayout = cbDia_DesignTimeLayout
+        Me.cbDia.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cbDia.Location = New System.Drawing.Point(407, 51)
+        Me.cbDia.Name = "cbDia"
+        Me.cbDia.Office2007ColorScheme = Janus.Windows.GridEX.Office2007ColorScheme.Custom
+        Me.cbDia.Office2007CustomColor = System.Drawing.Color.DodgerBlue
+        Me.cbDia.SelectedIndex = -1
+        Me.cbDia.SelectedItem = Nothing
+        Me.cbDia.Size = New System.Drawing.Size(310, 22)
+        Me.cbDia.TabIndex = 705
+        Me.cbDia.VisualStyle = Janus.Windows.GridEX.VisualStyle.Office2007
+        '
+        'LabelX2
+        '
+        Me.LabelX2.BackColor = System.Drawing.Color.Transparent
+        '
+        '
+        '
+        Me.LabelX2.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.LabelX2.Font = New System.Drawing.Font("Georgia", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LabelX2.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(85, Byte), Integer), CType(CType(139, Byte), Integer))
+        Me.LabelX2.Location = New System.Drawing.Point(17, 50)
+        Me.LabelX2.Name = "LabelX2"
+        Me.LabelX2.SingleLineColor = System.Drawing.SystemColors.Control
+        Me.LabelX2.Size = New System.Drawing.Size(82, 23)
+        Me.LabelX2.TabIndex = 704
+        Me.LabelX2.Text = "Control:"
+        '
+        'swTipo
+        '
+        '
+        '
+        '
+        Me.swTipo.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.swTipo.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.swTipo.Location = New System.Drawing.Point(141, 50)
+        Me.swTipo.Name = "swTipo"
+        Me.swTipo.OffBackColor = System.Drawing.Color.Gold
+        Me.swTipo.OffText = "MENSUAL"
+        Me.swTipo.OffTextColor = System.Drawing.Color.Black
+        Me.swTipo.OnBackColor = System.Drawing.Color.SeaGreen
+        Me.swTipo.OnText = "DIARIO"
+        Me.swTipo.OnTextColor = System.Drawing.Color.Black
+        Me.swTipo.Size = New System.Drawing.Size(150, 22)
+        Me.swTipo.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+        Me.swTipo.TabIndex = 703
+        '
         'btnGrabarImp
         '
         Me.btnGrabarImp.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
@@ -377,7 +456,7 @@ Partial Class F0_ExpImpStockFisico
         Me.btnGrabarImp.Image = Global.DinoM.My.Resources.Resources.save
         Me.btnGrabarImp.ImageFixedSize = New System.Drawing.Size(40, 40)
         Me.btnGrabarImp.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top
-        Me.btnGrabarImp.Location = New System.Drawing.Point(603, 10)
+        Me.btnGrabarImp.Location = New System.Drawing.Point(903, 12)
         Me.btnGrabarImp.Name = "btnGrabarImp"
         Me.btnGrabarImp.Size = New System.Drawing.Size(65, 65)
         Me.btnGrabarImp.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
@@ -394,7 +473,7 @@ Partial Class F0_ExpImpStockFisico
         Me.lbCtrlEnter.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.lbCtrlEnter.Font = New System.Drawing.Font("Georgia", 7.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lbCtrlEnter.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(85, Byte), Integer), CType(CType(139, Byte), Integer))
-        Me.lbCtrlEnter.Location = New System.Drawing.Point(383, 47)
+        Me.lbCtrlEnter.Location = New System.Drawing.Point(654, 21)
         Me.lbCtrlEnter.Name = "lbCtrlEnter"
         Me.lbCtrlEnter.SingleLineColor = System.Drawing.SystemColors.Control
         Me.lbCtrlEnter.Size = New System.Drawing.Size(75, 11)
@@ -408,27 +487,27 @@ Partial Class F0_ExpImpStockFisico
         Me.btnSearch.ColorTable = DevComponents.DotNetBar.eButtonColor.Flat
         Me.btnSearch.Image = Global.DinoM.My.Resources.Resources.search
         Me.btnSearch.ImageFixedSize = New System.Drawing.Size(24, 22)
-        Me.btnSearch.Location = New System.Drawing.Point(350, 38)
+        Me.btnSearch.Location = New System.Drawing.Point(621, 12)
         Me.btnSearch.Name = "btnSearch"
         Me.btnSearch.Size = New System.Drawing.Size(27, 25)
         Me.btnSearch.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
         Me.btnSearch.TabIndex = 688
         '
-        'LabelX1
+        'lbUsu
         '
-        Me.LabelX1.BackColor = System.Drawing.Color.Transparent
+        Me.lbUsu.BackColor = System.Drawing.Color.Transparent
         '
         '
         '
-        Me.LabelX1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.LabelX1.Font = New System.Drawing.Font("Georgia", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelX1.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(85, Byte), Integer), CType(CType(139, Byte), Integer))
-        Me.LabelX1.Location = New System.Drawing.Point(17, 40)
-        Me.LabelX1.Name = "LabelX1"
-        Me.LabelX1.SingleLineColor = System.Drawing.SystemColors.Control
-        Me.LabelX1.Size = New System.Drawing.Size(115, 23)
-        Me.LabelX1.TabIndex = 241
-        Me.LabelX1.Text = "Usuario:"
+        Me.lbUsu.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.lbUsu.Font = New System.Drawing.Font("Georgia", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lbUsu.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(85, Byte), Integer), CType(CType(139, Byte), Integer))
+        Me.lbUsu.Location = New System.Drawing.Point(319, 12)
+        Me.lbUsu.Name = "lbUsu"
+        Me.lbUsu.SingleLineColor = System.Drawing.SystemColors.Control
+        Me.lbUsu.Size = New System.Drawing.Size(85, 23)
+        Me.lbUsu.TabIndex = 241
+        Me.lbUsu.Text = "Responsable:"
         '
         'tbUsuario
         '
@@ -438,7 +517,7 @@ Partial Class F0_ExpImpStockFisico
         Me.tbUsuario.Border.Class = "TextBoxBorder"
         Me.tbUsuario.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.tbUsuario.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.tbUsuario.Location = New System.Drawing.Point(141, 41)
+        Me.tbUsuario.Location = New System.Drawing.Point(408, 15)
         Me.tbUsuario.Name = "tbUsuario"
         Me.tbUsuario.PreventEnterBeep = True
         Me.tbUsuario.Size = New System.Drawing.Size(203, 21)
@@ -529,6 +608,21 @@ Partial Class F0_ExpImpStockFisico
         Me.btnImportar.Text = "IMPORTAR"
         Me.btnImportar.TextColor = System.Drawing.Color.White
         '
+        'btnGenerar
+        '
+        Me.btnGenerar.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
+        Me.btnGenerar.BackColor = System.Drawing.Color.Transparent
+        Me.btnGenerar.ColorTable = DevComponents.DotNetBar.eButtonColor.BlueOrb
+        Me.btnGenerar.Image = Global.DinoM.My.Resources.Resources.ventasCostos
+        Me.btnGenerar.ImageFixedSize = New System.Drawing.Size(40, 40)
+        Me.btnGenerar.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top
+        Me.btnGenerar.Location = New System.Drawing.Point(802, 12)
+        Me.btnGenerar.Name = "btnGenerar"
+        Me.btnGenerar.Size = New System.Drawing.Size(65, 65)
+        Me.btnGenerar.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+        Me.btnGenerar.TabIndex = 707
+        Me.btnGenerar.Text = "Generar"
+        '
         'F0_ExpImpStockFisico
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -563,6 +657,8 @@ Partial Class F0_ExpImpStockFisico
         CType(Me.grDatos, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupPanel3.ResumeLayout(False)
         Me.Panel4.ResumeLayout(False)
+        Me.Panel4.PerformLayout()
+        CType(Me.cbDia, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.tbFechaInv, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
@@ -577,9 +673,14 @@ Partial Class F0_ExpImpStockFisico
     Friend WithEvents btnImportar As DevComponents.DotNetBar.ButtonX
     Friend WithEvents LabelX4 As DevComponents.DotNetBar.LabelX
     Friend WithEvents tbFechaInv As DevComponents.Editors.DateTimeAdv.DateTimeInput
-    Friend WithEvents LabelX1 As DevComponents.DotNetBar.LabelX
+    Friend WithEvents lbUsu As DevComponents.DotNetBar.LabelX
     Friend WithEvents tbUsuario As DevComponents.DotNetBar.Controls.TextBoxX
     Friend WithEvents btnSearch As DevComponents.DotNetBar.ButtonX
     Friend WithEvents lbCtrlEnter As DevComponents.DotNetBar.LabelX
     Friend WithEvents btnGrabarImp As DevComponents.DotNetBar.ButtonX
+    Friend WithEvents LabelX2 As DevComponents.DotNetBar.LabelX
+    Friend WithEvents swTipo As DevComponents.DotNetBar.Controls.SwitchButton
+    Friend WithEvents lbDia As DevComponents.DotNetBar.LabelX
+    Friend WithEvents cbDia As Janus.Windows.GridEX.EditControls.MultiColumnCombo
+    Friend WithEvents btnGenerar As DevComponents.DotNetBar.ButtonX
 End Class

@@ -68,7 +68,6 @@ Public Class F1_ControlVencimientos
             Else
                 If System.IO.Directory.Exists(RutaGlobal + "\Reporte\Reporte Productos") = False Then
                     System.IO.Directory.CreateDirectory(RutaGlobal + "\Reporte\Reporte Productos")
-
                 End If
             End If
         End If
@@ -79,17 +78,16 @@ Public Class F1_ControlVencimientos
             ToastNotification.Show(Me, "DEBE SELECCIONAR UN CÓDIGO DE VENCIMIENTO!!!", My.Resources.WARNING, 2000, eToastGlowColor.Red, eToastPosition.TopCenter)
         Else
             Dim dt As DataTable = L_fnStockSistvsFisicoVenc(fecha)
+            Dim table As DataTable
 
-            If dt.Rows.Count > 0 Then
-                Dim table As DataTable
-
-                table = dt.Clone
+            table = dt.Clone
                 Dim row As DataRow() = dt.Select("PrefVenc=" + "'" + cbCodVenc.Text + "'")
 
                 For Each ldrRow As DataRow In row
                     table.ImportRow(ldrRow)
                 Next
 
+            If table.Rows.Count > 0 Then
                 L_fnBotonGenerar(gs_VersionSistema, gs_IPMaquina, gs_UsuMaquina, 0, "CONTROL DE VENCIMIENTOS", "CONTROL DE VENCIMIENTOS")
 
                 JGrM_Buscador.DataSource = table
@@ -242,11 +240,10 @@ Public Class F1_ControlVencimientos
                     .RecordNavigator = True
                     .RecordNavigatorText = "Datos"
                 End With
-
             Else
                 JGrM_Buscador.ClearStructure()
                 Dim img As Bitmap = New Bitmap(My.Resources.mensaje, 50, 50)
-                ToastNotification.Show(Me, "No existe datos para mostrar".ToUpper, img, 2000, eToastGlowColor.Red, eToastPosition.TopCenter)
+                ToastNotification.Show(Me, "No existe productos asignados para la fecha seleccionada".ToUpper, img, 2000, eToastGlowColor.Red, eToastPosition.TopCenter)
             End If
         End If
     End Sub
@@ -458,7 +455,7 @@ Public Class F1_ControlVencimientos
 
                 Else
                     VencimientosImport.Reset()
-                    ToastNotification.Show(Me, "No puede importar porque el excel tiene que tener 20 columnas, usted modificó el excel, corrija por favor".ToUpper,
+                    ToastNotification.Show(Me, "No puede importar porque el excel tiene que tener 21 columnas, usted modificó el excel, corrija por favor".ToUpper,
                                          My.Resources.WARNING, 6000, eToastGlowColor.Green, eToastPosition.TopCenter)
                 End If
             Else
